@@ -127,8 +127,9 @@
         echo "<br>", $nombre, " tiene un ",$nota;
     }
             
-    echo "sacamos a jose...<br>";
-    
+    echo "Primer next()";
+    next($lista1);
+    echo next($lista1);
            
     ?>
     
