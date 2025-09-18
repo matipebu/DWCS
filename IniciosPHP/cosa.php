@@ -130,7 +130,11 @@
     echo "Primer next()";
     next($lista1);
     echo next($lista1);
-           
+      
+    include(functions.php);
+
+    echo "El IVA de 130€ es ", calcularIva(130,20), "€";
+
     ?>
     
     </ol>
