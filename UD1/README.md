@@ -3,7 +3,7 @@
 ## Entorno de desarrollo
 Para el desarrollo de los ejercicios y ejemplos de esta unidad utilizaremos una infraestructura de 4 contenedores Docker, definidos en el fichero docker-compose.yml.
 
-* bitnami/apache: contiene el servidor web Apache 2. El sitio web se situa en el directorio /app del contenedor que está vinculado al directorio actual (UD1), por lo tanto, todos los ficheros que incluyamos en el directorio actual serán desplegados en el servidor web. **El puerto tcp/8080 sobre el que corre Apache en el contenedor está mapeado al puerto tpc/80 de la máquina local.**
+* **bitnami/apache**: contiene el servidor web Apache 2. El sitio web se situa en el directorio /app del contenedor que está vinculado al directorio actual (UD1), por lo tanto, todos los ficheros que incluyamos en el directorio actual serán desplegados en el servidor web. **El puerto tcp/8080 sobre el que corre Apache en el contenedor está mapeado al puerto tpc/80 de la máquina local.**
 
 * **bitnami/php-fpm**: contiene el intérprete de PHP que será utilizado para ejecutar los ficheros PHP desplegados en el servidor web. Para ello utiliza el puerto TCP 9000.
 
