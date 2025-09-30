@@ -21,7 +21,7 @@
     $nums = $_POST['nums']??[];
     $nivel = $_POST['nivel']??0;
 
-     $jugando = (comprobarNumeros(explode("-",$numsIn),explode("-",$nums)));
+     $jugando = (comprobarNumeros($numsIn,$nums));
        
 
 
@@ -67,14 +67,23 @@
     <div id="formulario" class="hidden">
         <form action="" method="post">
             <label for="in_nums">Números </label><br>
-            <input type="text" name="in_nums" value="<?php echo implode (".",$nums)?>"></input><br>
+            <?php
+                for($i=0;$i<$nivel;$i++){
+                    echo '<input type="text" name="in_nums[]"<br>';
+                }
+            
+            ?>
+            <input type="text" name="nums[]" value="<?php echo implode (".",$nums)?>"></input><br>
             <input type="text" name="nivel" value="<?php echo $nivel;?>">
             <button type="submit">Comprobar</button>
         </form>
     </div>
     <?php else:?>
         <div id="resultado">
-            Has perdido
+            <?php
+                echo "has fallado <br>Los numeros eran", $nums,"y tu respuesta fue", $numsIn;
+            ?>
+            
             <?php endif; ?>
         </div>
     
