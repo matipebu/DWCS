@@ -2,12 +2,14 @@
 class Persona{
     protected $nombre;
     private $edad;
+    private Direccion $direccion;
 
     
 
-    function __construct($nombre, $edad){
+    function __construct($nombre, $edad, Direccion $direccion){
         $this->nombre = $nombre;
         $this->edad = $edad;
+        $this->direccion = $direccion;
 
     }
 
