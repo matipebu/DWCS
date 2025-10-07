@@ -16,7 +16,7 @@ function addClient($nombre, $telefono){
 $sql="INSERT INTO clientes(nombre, telefono) VALUES ('$nombre','$telefono')";
 $resultado=$db->query($sql);
 var_dump($resultado);
-
+ 
 
 //3.Cerrar conexion.
 $db->close();
