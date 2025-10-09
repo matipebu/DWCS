@@ -30,7 +30,7 @@ function addUser($nic, $nombre,$ap1,$ap2,$email,$pass){
     
 }
 
-function getusuario($nic) {
+function getUsuario($nic) {
     $sql = "SELECT nic, nombre,apellido1,apellido2,email,contraseña WERE nic = '$nic' ";
     $db = conexionDB();
     $statement = $db->query($sql);
