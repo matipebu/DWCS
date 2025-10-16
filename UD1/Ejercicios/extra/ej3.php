@@ -13,6 +13,5 @@ function extraerPalindromos($texto) {
 }
 $texto = "ala oso seres tenet somos casa perro";
 echo extraerPalindromos($texto);
-filter_var($email,FILTER_VALIDATE_EMAIL,FILTER_FLAG_EMAIL_UNICODE)
 ?>
 
