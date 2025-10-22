@@ -47,7 +47,7 @@ if(!jugando()){
             finalizarJuego();
             echo "<a href=''>Volver a empezar</a>";
         }else{
-            $msg = $dif>0?"inferior":"mayor";
+            $msg = $dif > 0 ?"inferior":"mayor";
             echo "El numero es $msg, llevas".getIntentos()."intentos";
         }
 
