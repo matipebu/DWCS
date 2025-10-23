@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Imprime una imagen GD2 a un navegador o fichero</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.imagegd.html">« imagegd</a></li>
+      <li style="float: right;"><a href="function.imagegetclip.html">imagegetclip »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.image.html">Funciones de GD e Im&aacute;genes</a></li>
+    <li>Imprime una imagen GD2 a un navegador o fichero</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.imagegd2" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">imagegd2</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.7, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">imagegd2</span> &mdash; <span class="dc-title">Imprime una imagen GD2 a un navegador o fichero</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.imagegd2-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>imagegd2</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$image</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$to</code><span class="initializer"> = NULL</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$chunk_size</code><span class="initializer"> = 128</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$type</code><span class="initializer"> = IMG_GD2_RAW</span></span><br>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Genera una imagen GD2 en el parámetro <code class="parameter">to</code>. 
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.imagegd2-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    <dt><code class="parameter">
+image</code></dt><dd><p class="para">Un recurso image, es devuelto por una de las funciones de creación de imágenes,
+como <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>.</p></dd>
+    
+     <dt><code class="parameter">to</code></dt>
+     <dd>
+      <p class="para">La ruta o un recurso de flujo de apertura (el cual se cierra automáticamente después de que devuelva esta función) donde guardar el fichero. Si no se establece, o su valor es <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>, se mostrará directamente en la salida el flujo de imagen sin tratar.</p>
+     </dd>
+    
+    
+     <dt><code class="parameter">chunk_size</code></dt>
+     <dd>
+      <p class="para">
+       Tamaño del trozo.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">type</code></dt>
+     <dd>
+      <p class="para">
+       Puede ser <strong><code><a href="image.constants.html#constant.img-gd2-raw">IMG_GD2_RAW</a></code></strong> o
+       <strong><code><a href="image.constants.html#constant.img-gd2-compressed">IMG_GD2_COMPRESSED</a></code></strong>. Por defecto es
+       <strong><code><a href="image.constants.html#constant.img-gd2-raw">IMG_GD2_RAW</a></code></strong>.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.imagegd2-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 changelog" id="refsect1-function.imagegd2-changelog">
+  <h3 class="title">Historial de cambios</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Versión</th>
+       <th>Descripción</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.4.0</td>
+       <td>
+        Se añadió soporte para pasar un <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> de flujo a
+        <code class="parameter">to</code>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.imagegd2-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-2690">
+    <p><strong>Ejemplo #1 Imprimir una imagen GD2</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Crear una imagen en blanco y añadir algún texto<br /></span><span style="color: #0000BB">$im </span><span style="color: #007700">= </span><span style="color: #0000BB">imagecreatetruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">120</span><span style="color: #007700">, </span><span style="color: #0000BB">20</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$color_texto </span><span style="color: #007700">= </span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">233</span><span style="color: #007700">, </span><span style="color: #0000BB">14</span><span style="color: #007700">, </span><span style="color: #0000BB">91</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagestring</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">5</span><span style="color: #007700">, </span><span style="color: #0000BB">5</span><span style="color: #007700">,  </span><span style="color: #DD0000">"Una Sencilla Cadena De Texto"</span><span style="color: #007700">, </span><span style="color: #0000BB">$color_texto</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Imprimir la imagen<br /></span><span style="color: #0000BB">imagegd2</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Liberar memoria<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-2691">
+    <p><strong>Ejemplo #2 Guardar una imagen GD2</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Crear una imagen en blanco y añadir algún texto<br /></span><span style="color: #0000BB">$im </span><span style="color: #007700">= </span><span style="color: #0000BB">imagecreatetruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">120</span><span style="color: #007700">, </span><span style="color: #0000BB">20</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$color_texto </span><span style="color: #007700">= </span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">233</span><span style="color: #007700">, </span><span style="color: #0000BB">14</span><span style="color: #007700">, </span><span style="color: #0000BB">91</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagestring</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">5</span><span style="color: #007700">, </span><span style="color: #0000BB">5</span><span style="color: #007700">,  </span><span style="color: #DD0000">"Una Sencilla Cadena De Texto"</span><span style="color: #007700">, </span><span style="color: #0000BB">$color_texto</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Guardar la imagen gd2<br />// El formato de fichero para imágenes GD2 es .gd2, véase http://www.libgd.org/GdFileFormats<br /></span><span style="color: #0000BB">imagegd2</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #DD0000">'simple.gd2'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Liberar memoria<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 notes" id="refsect1-function.imagegd2-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    El formato GD2 se usa comúnmente para permitir una carga rápida de partes de imágenes.
+    Observe que el formato GD2 sólo es utilizable en aplicaciones compatibles con GD2.
+   </p>
+  </p></blockquote>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.imagegd2-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.imagegd.html" class="function" rel="rdfs-seeAlso">imagegd()</a> - Imprime una imagen GD2 a un navegador o archivo</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

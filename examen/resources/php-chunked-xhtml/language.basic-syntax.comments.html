@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Comentarios</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.basic-syntax.instruction-separation.html">« Separaci&oacute;n de instrucciones</a></li>
+      <li style="float: right;"><a href="language.types.html">Tipos »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.basic-syntax.html">Sintaxis b&aacute;sica</a></li>
+    <li>Comentarios</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.basic-syntax.comments" class="sect1">
+  <h2 class="title">Comentarios</h2>
+  <p class="para">
+   PHP admite comentarios al estilo de &#039;C&#039;, &#039;C++&#039; y de consola de Unix (estilo de Perl). Por ejemplo:
+
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />    </span><span style="color: #007700">echo </span><span style="color: #DD0000">'Esto es una prueba'</span><span style="color: #007700">; </span><span style="color: #FF8000">// Esto es un comentario al estilo de c++ de una sola línea<br />    /* Esto es un comentario multilínea<br />       y otra lína de comentarios */<br />    </span><span style="color: #007700">echo </span><span style="color: #DD0000">'Esto es otra prueba'</span><span style="color: #007700">;<br />    echo </span><span style="color: #DD0000">'Una prueba final'</span><span style="color: #007700">; </span><span style="color: #FF8000"># Esto es un comentario al estilo de consola de una sola línea<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="simpara">
+   Los comentarios al estilo de &quot;una sola línea&quot; solo comentan hasta el final
+   de la línea o del bloque actual de código de PHP, lo primero que suceda.
+   Esto implica que el código HTML después de <code class="literal">// ... ?&gt;</code>
+   o <code class="literal"># ...  ?&gt;</code> SERÁ impreso:
+   ?&gt; sale del modo PHP y vuelve al modo HTML, por lo que
+   <code class="literal">//</code> o <code class="literal">#</code> no pueden influir en eso.
+   Si la directiva de configuración <code class="literal">asp_tags</code>
+   está activada, actúa igual que <code class="literal">// %&gt;</code> y
+   <code class="literal"># %&gt;</code>.
+   Sin embargo, la etiqueta <code class="literal">&lt;/script&gt;</code> no sale del modo PHP en
+   un comentario de una sola línea.
+  </p>
+  <p class="para">
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">&lt;h1&gt;Esto es un <span style="color: #0000BB">&lt;?php </span><span style="color: #FF8000"># echo 'simple';</span><span style="color: #0000BB">?&gt;</span> ejemplo&lt;/h1&gt;<br />&lt;p&gt;El encabezado anterior dirá 'Esto es un  ejemplo'.&lt;/p&gt;</span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="simpara">
+   Los comentarios al estilo de &#039;C&#039; finalizan con el primer <code class="literal">*/</code> que se encuentre.
+   Asegúrese de no anidar comentarios al estilo de &#039;C&#039;. Es muy fácil cometer este
+   error cuando se intenta comentar un bloque grande de código.
+  </p>
+  <p class="para">
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /> </span><span style="color: #FF8000">/*<br />    echo 'Esto es una prueba'; /* Este comentario causará un problema*/<br /> </span><span style="color: #007700">*/<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div></div></div></body></html>

@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Llamado cuando se aplica un filtro</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="class.php-user-filter.html">« php_user_filter</a></li>
+      <li style="float: right;"><a href="php-user-filter.onclose.html">php_user_filter::onClose »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.php-user-filter.html">php_user_filter</a></li>
+    <li>Llamado cuando se aplica un filtro</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="php-user-filter.filter" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">php_user_filter::filter</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">php_user_filter::filter</span> &mdash; <span class="dc-title">Llamado cuando se aplica un filtro</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-php-user-filter.filter-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>php_user_filter::filter</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$in</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$out</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter reference">&$consumed</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$closing</code></span><br>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="para rdfs-comment">
+   Este método es llamado siempre que los datos son leídos desde o escritos en
+   el flujo adjunto (como con <span class="function"><a href="function.fread.html" class="function">fread()</a></span> o <span class="function"><a href="function.fwrite.html" class="function">fwrite()</a></span>).
+  </p>
+  
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-php-user-filter.filter-parameters">
+  <h3 class="title">Parámetros</h3>
+  <dl>
+   
+    <dt><code class="parameter">in</code></dt>
+    <dd>
+     <p class="para">
+      <code class="parameter">in</code> es un recurso que apunta a una <code class="literal">cadena de recipientes</code>
+      que contiene uno o más objetos <code class="literal">recipiente</code> que contienen información que va a ser filtrada.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">out</code></dt>
+    <dd>
+     <p class="para">
+      <code class="parameter">out</code> es un recurso que apunta a una segunda <code class="literal">cadena de recipientes</code>
+      dentro de la cual se deberían ubicar los recipientes modificados.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">consumed</code></dt>
+    <dd>
+     <p class="para">
+      <code class="parameter">consumed</code>, el cual <em>siempre</em> debe
+      ser declarado por referencia, debería ser incrementado por la longitud de la información
+      que el filtro lee y altera. En la mayoría de los casos esto significa que se
+      incrementará <code class="parameter">consumed</code> por <code class="literal">$recipiente-&gt;datalen</code>
+      para cada <code class="literal">$recipiente</code>.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">closing</code></dt>
+    <dd>
+     <p class="para">
+      Si el flujo está en el proceso de cierre
+      (y por lo tanto éste es el último pase a través de la cadena de filtros),
+      el parámetro <code class="parameter">closing</code> será establecido a <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-php-user-filter.filter-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   El método <span class="methodname"><strong>filter()</strong></span> debe devolver uno de estos
+   tres valores cuando se complete.
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Valor Devuelto</th>
+       <th>Significado</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td><strong><code><a href="stream.constants.html#constant.psfs-pass-on">PSFS_PASS_ON</a></code></strong></td>
+       <td>
+        El filtró se procesó con éxito con información disponible en la
+        <code class="literal">cadena de recipientes</code> <code class="parameter">out</code>.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="stream.constants.html#constant.psfs-feed-me">PSFS_FEED_ME</a></code></strong></td>
+       <td>
+        El filtró se procesó con éxito, sin embargo no había información disponible que
+        devolver. Se requiere más información del flujo o del filtro previo.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="stream.constants.html#constant.psfs-err-fatal">PSFS_ERR_FATAL</a></code></strong> (predeterminado)</td>
+       <td>
+        El filtro experimentó un error irrecuperable y no puede continuar.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ 
+ 
+</div></div></div></body></html>

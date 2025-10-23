@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Constantes de clases</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.oop5.properties.html">« Propiedades</a></li>
+      <li style="float: right;"><a href="language.oop5.autoload.html">Autocarga de clases »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.oop5.html">Clases y objetos</a></li>
+    <li>Constantes de clases</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.oop5.constants" class="sect1">
+ <h2 class="title">Constantes de clases</h2>
+ <p class="para">
+  Es posible definir valores constantes en función de cada clase manteniéndola
+  invariable. Las constantes se diferencian de las variables comunes en que no
+  utilizan el símbolo <var class="varname">$</var> al declararlas o emplearlas.
+  La visibilidad predeterminada de las constantes de clase es <code class="literal">public</code>.
+ </p>
+ <p class="para">
+  El valor debe ser una expresión constante, no (por ejemplo) una variable, una
+  propiedad o una llamada a una función.
+ </p>
+ <p class="para">
+  También es posible que las interfaces tengan <code class="literal">constantes</code>. Consulte
+  los ejemplos de la
+  <a href="language.oop5.interfaces.html" class="link">documentación de interfaces</a>.
+ </p>
+ <p class="para">
+  A partir de PHP 5.3.0, es posible referirse a una clase utilizando una variable.
+  El valor de la variable no puede ser una palabra reservada (p.ej., <code class="literal">self</code>,
+  <code class="literal">parent</code> o <code class="literal">static</code>).
+ </p>
+ <p class="para">
+  Observe que las constantes de clase están asignadas una vez por clase, y no por cada
+  instancia de la clase.
+ </p>
+ <div class="example" id="example-235">
+  <p><strong>Ejemplo #1 Definición y uso de una constante</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">MiClase<br /></span><span style="color: #007700">{<br />    const </span><span style="color: #0000BB">CONSTANTE </span><span style="color: #007700">= </span><span style="color: #DD0000">'valor constante'</span><span style="color: #007700">;<br /><br />    function </span><span style="color: #0000BB">mostrarConstante</span><span style="color: #007700">() {<br />        echo  </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">CONSTANTE </span><span style="color: #007700">. </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />    }<br />}<br /><br />echo </span><span style="color: #0000BB">MiClase</span><span style="color: #007700">::</span><span style="color: #0000BB">CONSTANTE </span><span style="color: #007700">. </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$nombreclase </span><span style="color: #007700">= </span><span style="color: #DD0000">"MiClase"</span><span style="color: #007700">;<br />echo </span><span style="color: #0000BB">$nombreclase</span><span style="color: #007700">::</span><span style="color: #0000BB">CONSTANTE </span><span style="color: #007700">. </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">; </span><span style="color: #FF8000">// A partir de PHP 5.3.0<br /><br /></span><span style="color: #0000BB">$clase </span><span style="color: #007700">= new </span><span style="color: #0000BB">MiClase</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$clase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">mostrarConstante</span><span style="color: #007700">();<br /><br />echo </span><span style="color: #0000BB">$clase</span><span style="color: #007700">::</span><span style="color: #0000BB">CONSTANTE</span><span style="color: #007700">.</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">; </span><span style="color: #FF8000">// A partir de PHP 5.3.0<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+  </div>
+
+ </div>
+ <div class="example" id="example-236">
+  <p><strong>Ejemplo #2 Ejemplo de datos estáticos</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br />    </span><span style="color: #FF8000">// A partir de PHP 5.3.0<br />    </span><span style="color: #007700">const </span><span style="color: #0000BB">BAR </span><span style="color: #007700">= &lt;&lt;&lt;'EOT'<br /></span><span style="color: #DD0000">bar<br /></span><span style="color: #007700">EOT;<br />    </span><span style="color: #FF8000">// A partir de PHP 5.3.0<br />    </span><span style="color: #007700">const </span><span style="color: #0000BB">BAZ </span><span style="color: #007700">= &lt;&lt;&lt;EOT<br /></span><span style="color: #DD0000">baz<br /></span><span style="color: #007700">EOT;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+  </div>
+
+ </div>
+ <blockquote class="note"><p><strong class="note">Nota</strong>: 
+  <p class="para">
+   El soporte para la inicialización de constantes con la sintaxis de Heredoc y Nowdoc fue agregado en PHP 5.3.0.
+  </p>
+ </p></blockquote>
+ <p class="para">
+  La constante especial <strong><code>::class</code></strong> está disponible a partir de PHP 5.5.0, y permite
+  la resolución de nombres de clase completamente cualificados en la compilación. Esto es útil para clases en espacios de nombres:
+ </p>
+ <div class="example" id="example-237">
+  <p><strong>Ejemplo #3 Ejemplo de ::class en espacio de nombres</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">namespace </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br />    class </span><span style="color: #0000BB">bar </span><span style="color: #007700">{<br />    }<br /><br />    echo </span><span style="color: #0000BB">bar</span><span style="color: #007700">::class; </span><span style="color: #FF8000">// foo\bar<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+  </div>
+
+ </div>
+ <div class="example" id="example-238">
+  <p><strong>Ejemplo #4 Ejemplo de expresión constante</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">const </span><span style="color: #0000BB">UNO </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /><br />class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br />    </span><span style="color: #FF8000">// A partir de PHP 5.6.0<br />    </span><span style="color: #007700">const </span><span style="color: #0000BB">DOS </span><span style="color: #007700">= </span><span style="color: #0000BB">UNO </span><span style="color: #007700">* </span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />    const </span><span style="color: #0000BB">TRES </span><span style="color: #007700">= </span><span style="color: #0000BB">UNO </span><span style="color: #007700">+ </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">DOS</span><span style="color: #007700">;<br />    const </span><span style="color: #0000BB">SENTENCIA </span><span style="color: #007700">= </span><span style="color: #DD0000">'El valor de TRES es '</span><span style="color: #007700">.</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">TRES</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+  </div>
+
+  <div class="example-contents"><p>
+   Es posible proporcionar una expresión escalar que implique literales numéricos y de string y/o constantes en el contexto de una constante de clase.
+  </p></div>
+ </div>
+ <blockquote class="note"><p><strong class="note">Nota</strong>: 
+  <p class="para">
+   El soporte para expresiones constantes se añadió en PHP 5.6.0.
+  </p>
+ </p></blockquote>
+ 
+ <div class="example" id="example-239">
+  <p><strong>Ejemplo #5 Modificadores de visibilidad de constantes de clase</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">Foo </span><span style="color: #007700">{<br />    </span><span style="color: #FF8000">// A partir de PHP 7.1.0<br />    </span><span style="color: #007700">public const </span><span style="color: #0000BB">BAR </span><span style="color: #007700">= </span><span style="color: #DD0000">'bar'</span><span style="color: #007700">;<br />    private const </span><span style="color: #0000BB">BAZ </span><span style="color: #007700">= </span><span style="color: #DD0000">'baz'</span><span style="color: #007700">;<br />}<br />echo </span><span style="color: #0000BB">Foo</span><span style="color: #007700">::</span><span style="color: #0000BB">BAR</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo </span><span style="color: #0000BB">Foo</span><span style="color: #007700">::</span><span style="color: #0000BB">BAZ</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+  </div>
+
+  <div class="example-contents"><p>Salida del ejemplo anterior en PHP 7.1:</p></div>
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+bar
+
+Fatal error: Uncaught Error: Cannot access private const Foo::BAZ in …
+</pre></div>
+  </div>
+ </div>
+ <blockquote class="note"><p><strong class="note">Nota</strong>: 
+  <p class="para">
+   A partir de PHP 7.1.0, están permitidos los modificadores de visibilidad para constantes de clase.
+  </p>
+ </p></blockquote>
+</div></div></div></body></html>

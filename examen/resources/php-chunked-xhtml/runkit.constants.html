@@ -1,0 +1,245 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Constantes predefinidas</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="runkit7.resources.html">« Tipos de recursos</a></li>
+      <li style="float: right;"><a href="ref.runkit7.html">Funciones de runkit »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.runkit7.html">runkit</a></li>
+    <li>Constantes predefinidas</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="runkit.constants" class="appendix">
+ <h1 class="title">Constantes predefinidas</h1>
+
+ <p class="simpara">
+Estas constantes están definidas por esta extensión y
+estarán disponibles sólo cuando la extensión haya sido
+compilada con PHP, o bien sea cargada dinámicamente en ejecución.
+</p>
+ <dl>
+  
+   <dt id="constant.runkit-import-functions">
+    <strong><code><a href="runkit.constants.html#constant.runkit-import-functions">RUNKIT_IMPORT_FUNCTIONS</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Bandera de <span class="function"><a href="function.runkit-import.html" class="function">runkit_import()</a></span> que indica que
+     las funciones normales deberían ser importadas desde el
+     archivo especificado.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.runkit-import-class-methods">
+    <strong><code><a href="runkit.constants.html#constant.runkit-import-class-methods">RUNKIT_IMPORT_CLASS_METHODS</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Bandera de <span class="function"><a href="function.runkit-import.html" class="function">runkit_import()</a></span> que indica que
+     los métodos de clases deberían ser importados desde el
+     archivo especificado.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.runkit-import-class-consts">
+    <strong><code><a href="runkit.constants.html#constant.runkit-import-class-consts">RUNKIT_IMPORT_CLASS_CONSTS</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Bandera de <span class="function"><a href="function.runkit-import.html" class="function">runkit_import()</a></span> que indica que
+     las constantes de clases deberían ser importadas desde el
+     archivo especificado. Observe que esta bandera sólo tiene sentido
+     en versiones de PHP 5.1.0 y superiores.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.runkit-import-class-props">
+    <strong><code><a href="runkit.constants.html#constant.runkit-import-class-props">RUNKIT_IMPORT_CLASS_PROPS</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Bandera de <span class="function"><a href="function.runkit-import.html" class="function">runkit_import()</a></span> que indica que
+     las propiedades estándar de clases deberían ser importadas desde el
+     archivo especificado.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.runkit-import-class-static-props">
+    <strong><code><a href="runkit.constants.html#constant.runkit-import-class-static-props">RUNKIT_IMPORT_CLASS_STATIC_PROPS</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Bandera de <span class="function"><a href="function.runkit-import.html" class="function">runkit_import()</a></span> que indica
+     que las propiedades estáticas de clases deben ser importadas
+     desde el fichero especificado. Disponible desde Runkit 1.0.1.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.runkit-import-classes">
+    <strong><code><a href="runkit.constants.html#constant.runkit-import-classes">RUNKIT_IMPORT_CLASSES</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Bandera de <span class="function"><a href="function.runkit-import.html" class="function">runkit_import()</a></span> que representa
+     un operador OR a nivel de bit de las constantes <strong><code>RUNKIT_IMPORT_CLASS_*</code></strong>.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.runkit-import-override">
+    <strong><code><a href="runkit.constants.html#constant.runkit-import-override">RUNKIT_IMPORT_OVERRIDE</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Bandera de <span class="function"><a href="function.runkit-import.html" class="function">runkit_import()</a></span> que indica que
+     si cualesquiera de las funciones, métodos, contantes o
+     propiedades importados ya existen deberían ser reemplazados con
+     las nuevas definiciones. Si esta bandera no está establecida, cualquier
+     definición importada que ya exista será descartada.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.runkit-acc-public">
+    <strong><code><a href="runkit.constants.html#constant.runkit-acc-public">RUNKIT_ACC_PUBLIC</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Bandera específica de PHP 5 para <span class="function"><a href="function.runkit-method-add.html" class="function">runkit_method_add()</a></span> y <span class="function"><a href="function.runkit-method-redefine.html" class="function">runkit_method_redefine()</a></span>
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.runkit-acc-protected">
+    <strong><code><a href="runkit.constants.html#constant.runkit-acc-protected">RUNKIT_ACC_PROTECTED</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Bandera específica de PHP 5 para <span class="function"><a href="function.runkit-method-add.html" class="function">runkit_method_add()</a></span> y <span class="function"><a href="function.runkit-method-redefine.html" class="function">runkit_method_redefine()</a></span>
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.runkit-acc-private">
+    <strong><code><a href="runkit.constants.html#constant.runkit-acc-private">RUNKIT_ACC_PRIVATE</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Bandera específica de PHP 5 para <span class="function"><a href="function.runkit-method-add.html" class="function">runkit_method_add()</a></span> y <span class="function"><a href="function.runkit-method-redefine.html" class="function">runkit_method_redefine()</a></span>
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.runkit-acc-static">
+    <strong><code><a href="runkit.constants.html#constant.runkit-acc-static">RUNKIT_ACC_STATIC</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Bandera específica de PHP 5 para <span class="function"><a href="function.runkit-method-add.html" class="function">runkit_method_add()</a></span> y <span class="function"><a href="function.runkit-method-redefine.html" class="function">runkit_method_redefine()</a></span>. Disponible desde Runkit 1.0.1.
+    </span>
+   </dd>
+  
+  
+   <dt>
+    <strong><code>CLASSKIT_ACC_PUBLIC</code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Bandera específica de PHP 5 para <span class="function"><strong>classkit_method_add()</strong></span>
+     Sólo definida cuando la compatibilidad con classkit está habilitada.
+    </span>
+   </dd>
+  
+  
+   <dt>
+    <strong><code>CLASSKIT_ACC_PROTECTED</code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Bandera específica de PHP 5 para <span class="function"><strong>classkit_method_add()</strong></span>
+     Sólo definida cuando la compatibilidad con classkit está habilitada.
+    </span>
+   </dd>
+  
+  
+   <dt>
+    <strong><code>CLASSKIT_ACC_PRIVATE</code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Bandera específica de PHP 5 para <span class="function"><strong>classkit_method_add()</strong></span>
+     Sólo definida cuando la compatibilidad con classkit está habilitada.
+    </span>
+   </dd>
+  
+  
+   <dt>
+    <strong><code>CLASSKIT_AGGREGATE_OVERRIDE</code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Bandera específica de PHP 5 para <span class="function"><strong>classkit_import()</strong></span>
+     Sólo definida cuando la compatibilidad con classkit está habilitada.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.runkit-version">
+    <strong><code><a href="runkit.constants.html#constant.runkit-version">RUNKIT_VERSION</a></code></strong>
+    (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Definida para la versión actual del paquete runkit.
+    </span>
+   </dd>
+  
+  
+   <dt>
+    <strong><code>CLASSKIT_VERSION</code></strong>
+    (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Definida para la versión actual del paquete runkit.
+     Sólo definida cuando la compatibilidad con classkit está habilitada.
+    </span>
+   </dd>
+  
+ </dl>
+</div>
+</div></div></body></html>

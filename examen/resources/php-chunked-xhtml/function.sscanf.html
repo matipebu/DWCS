@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Interpreta un string de entrada de acuerdo con un formato</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.sprintf.html">« sprintf</a></li>
+      <li style="float: right;"><a href="function.str-contains.html">str_contains »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.strings.html">Funciones de strings</a></li>
+    <li>Interpreta un string de entrada de acuerdo con un formato</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.sscanf" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">sscanf</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.1, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">sscanf</span> &mdash; <span class="dc-title">Interpreta un string de entrada de acuerdo con un formato</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.sscanf-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>sscanf</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$str</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$format</code></span>, <span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter reference">&$...</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span></div>
+
+  <p class="para rdfs-comment">
+   La función <span class="function"><strong>sscanf()</strong></span> es la entrada análoga de
+   <span class="function"><a href="function.printf.html" class="function">printf()</a></span>. <span class="function"><strong>sscanf()</strong></span> lee
+   del string <code class="parameter">str</code> y lo interpreta
+   de acuerdo con el <code class="parameter">format</code> especificado, el cual está
+   descrito en la documentación para <span class="function"><a href="function.sprintf.html" class="function">sprintf()</a></span>.
+  </p>
+  <p class="para">
+   Cualquier espacio en blanco en el string de formato coincide con cualquier espacio en blanco en string
+   de entrada. Esto significa que incluso un tabulador \t en el string de formato puede coincidir con un
+   caracter simple de espacio en el string de entrada.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.sscanf-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">str</code></dt>
+     <dd>
+      <p class="para">
+       El <span class="type"><a href="language.types.string.html" class="type string">string</a></span> de entrada para ser interpretado.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">format</code></dt>
+     <dd>
+      <p class="para">
+       El formato interpretado <code class="parameter">str</code>, el cual está
+       descrito en la documentación para <span class="function"><a href="function.sprintf.html" class="function">sprintf()</a></span> con
+       las siguientes diferencia:
+       <ul class="simplelist">
+        <li>
+         La función no es consciente de la configuración regional.
+        </li>
+        <li>
+         <code class="literal">F</code>, <code class="literal">g</code>, <code class="literal">G</code> y
+         <code class="literal">b</code> no están soportados.
+        </li>
+        <li>
+         <code class="literal">D</code> representa número decimal.
+        </li>
+        <li>
+         <code class="literal">i</code> representa integer con detección de base.
+        </li>
+        <li>
+         <code class="literal">n</code> representa el número de caracteres procesados hasta el momento.
+        </li>
+       </ul>
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">...</code></dt>
+     <dd>
+      <p class="para">
+       Opcionalmente variables pasadas por referencia que contendrán los valores interpretados.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.sscanf-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Si sólo se pasan dos parámetros a esta función, los valores interpretados
+   se devolverán como una matriz. De lo contrario, si se pasan parámetros opcionales,
+   la función devolverá el número de valores asignados. Los parámetros
+   opcionales se deben pasar por referencia.
+  </p>
+  <p class="para">
+   Si hay más substrings esperados en el <code class="parameter">format</code>
+   que los que hay disponibles en <code class="parameter">str</code>,
+   será devuelto <code class="literal">-1</code>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.sscanf-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4826">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>sscanf()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// obtener el número serial<br /></span><span style="color: #007700">list(</span><span style="color: #0000BB">$serial</span><span style="color: #007700">) = </span><span style="color: #0000BB">sscanf</span><span style="color: #007700">(</span><span style="color: #DD0000">"SN/2350001"</span><span style="color: #007700">, </span><span style="color: #DD0000">"SN/%d"</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">// y la fecha de manufactura<br /></span><span style="color: #0000BB">$mandate </span><span style="color: #007700">= </span><span style="color: #DD0000">"January 01 2000"</span><span style="color: #007700">;<br />list(</span><span style="color: #0000BB">$month</span><span style="color: #007700">, </span><span style="color: #0000BB">$day</span><span style="color: #007700">, </span><span style="color: #0000BB">$year</span><span style="color: #007700">) = </span><span style="color: #0000BB">sscanf</span><span style="color: #007700">(</span><span style="color: #0000BB">$mandate</span><span style="color: #007700">, </span><span style="color: #DD0000">"%s %d %d"</span><span style="color: #007700">);<br />echo </span><span style="color: #DD0000">"Item </span><span style="color: #0000BB">$serial</span><span style="color: #DD0000"> was manufactured on: </span><span style="color: #0000BB">$year</span><span style="color: #DD0000">-" </span><span style="color: #007700">. </span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">$month</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">) . </span><span style="color: #DD0000">"-</span><span style="color: #0000BB">$day</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Si se pasan parámetros opcionales, la función devolverá el
+   número de valores asignados.
+  </p>
+  <p class="para">
+   <div class="example" id="example-4827">
+    <p><strong>Ejemplo #2 <span class="function"><strong>sscanf()</strong></span> - using optional parameters</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// obtener la información del autor y generar entrada DocBook<br /></span><span style="color: #0000BB">$auth </span><span style="color: #007700">= </span><span style="color: #DD0000">"24\tLewis Carroll"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$n </span><span style="color: #007700">= </span><span style="color: #0000BB">sscanf</span><span style="color: #007700">(</span><span style="color: #0000BB">$auth</span><span style="color: #007700">, </span><span style="color: #DD0000">"%d\t%s %s"</span><span style="color: #007700">, </span><span style="color: #0000BB">$id</span><span style="color: #007700">, </span><span style="color: #0000BB">$first</span><span style="color: #007700">, </span><span style="color: #0000BB">$last</span><span style="color: #007700">);<br />echo </span><span style="color: #DD0000">"&lt;author id='</span><span style="color: #0000BB">$id</span><span style="color: #DD0000">'&gt;<br />    &lt;firstname&gt;</span><span style="color: #0000BB">$first</span><span style="color: #DD0000">&lt;/firstname&gt;<br />    &lt;surname&gt;</span><span style="color: #0000BB">$last</span><span style="color: #DD0000">&lt;/surname&gt;<br />&lt;/author&gt;\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.sscanf-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.fscanf.html" class="function" rel="rdfs-seeAlso">fscanf()</a> - Analiza la entrada desde un archivo de acuerdo a un formato</span></li>
+    <li><span class="function"><a href="function.printf.html" class="function" rel="rdfs-seeAlso">printf()</a> - Imprimir una cadena con formato</span></li>
+    <li><span class="function"><a href="function.sprintf.html" class="function" rel="rdfs-seeAlso">sprintf()</a> - Devuelve un string formateado</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

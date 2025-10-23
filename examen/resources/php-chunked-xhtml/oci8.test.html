@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Pruebas</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="oci8.installation.html">« Instalaci&oacute;n</a></li>
+      <li style="float: right;"><a href="oci8.configuration.html">Configuraci&oacute;n en tiempo de ejecuci&oacute;n »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="oci8.setup.html">Instalaci&oacute;n/Configuraci&oacute;n</a></li>
+    <li>Pruebas</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="oci8.test" class="section">
+ <h2 class="title">Pruebas</h2>
+ <div class="section" id="oci8.testing">
+  <p class="para">
+   El conjunto de pruebas de OCI8 está en el directorio <var class="filename">ext/oci8/tests</var>.
+   Después de ejecutar las pruebas de OCI8, este directorio también contendrá los registros
+   de cualquier fallo.
+  </p>
+ </div>
+ <div class="section">
+  <p class="para">
+   Antes de ejecutar las pruebas de PHP, edite <var class="filename">details.inc</var>
+   y establezca $user, $password y la cadena de conexión $dbase. El
+   conjunto de pruebas de OCI8 ha sido desarrollado usando
+   la cuenta <code class="literal">SYSTEM</code>. Algunas pruebas fallarán si
+   el usuario de las mismas no tiene permisos equivalentes.
+  </p>
+  <p class="para">
+   Si se está comprobando Oracle Database Resident Connection Pooling,
+   establezca $test_drcp a <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> y asegúrese de que
+   la cadena de conexión utiliza un servidor de la agrupación DRCP apropiado.
+  </p>
+  <p class="para">
+   Una alternativa a editar <var class="filename">details.inc</var> es el
+   establecimiento de variables de entorno, por ejemplo:
+   <div class="example-contents">
+<div class="cdata"><pre>
+    $ export PHP_OCI8_TEST_USER=system
+    $ export PHP_OCI8_TEST_PASS=oracle
+    $ export PHP_OCI8_TEST_DB=localhost/XE
+    $ export PHP_OCI8_TEST_DRCP=FALSE
+</pre></div>
+   </div>
+
+   Observe que en algunas shell, estas variables no se propagan correctamente
+   por proceso de PHP y que las pruebas fallarán al conectar si se utiliza
+   este método.
+  </p>
+  <p class="para">
+   Lo siguiente es establecer cualquier entorno necesario para la base de datos de Oracle.
+   Con Oracle 10<em>g</em>R2 XE, haga lo siguiente:
+   <div class="example-contents">
+<div class="cdata"><pre>
+    $ . /usr/lib/oracle/xe/app/oracle/product/10.2.0/server/bin/oracle_env.sh
+</pre></div>
+   </div>
+
+  </p>
+  <p class="para">
+   Con Oracle 11<em>g</em>R2 XE:
+   <div class="example-contents">
+<div class="cdata"><pre>
+    $ . /u01/app/oracle/product/11.2.0/xe/bin/oracle_env.sh
+</pre></div>
+   </div>
+
+  </p>
+  <p class="para">
+   Para otras versiones de la base de datos de Oracle, haga:
+   <div class="example-contents">
+<div class="cdata"><pre>
+    $ . /usr/local/bin/oraenv
+</pre></div>
+   </div>
+
+  </p>
+  <p class="para">
+   Algunas shells requieren que <var class="filename">php.ini</var> contenga <code class="literal">E</code> en el
+   parámetro variables_order, por ejemplo:
+   <div class="example-contents">
+<div class="cdata"><pre>
+    variables_order = &quot;EGPCS&quot;
+</pre></div>
+   </div>
+
+  </p>
+  <p class="para">
+   Ejecute todas las pruebas de PHP con:
+   <div class="example-contents">
+<div class="cdata"><pre>
+    $ cd your_php_src_directory
+    $ make test
+</pre></div>
+   </div>
+
+   o ejecute únicamente las pruebas de OCI8 con
+   <div class="example-contents">
+<div class="cdata"><pre>
+    $ cd your_php_src_directory
+    $ make test TESTS=ext/oci8
+</pre></div>
+   </div>
+
+  </p>
+  <p class="para">
+   Cuando hayan finalizado las pruebas, revise cualquier fallo. En sistemas
+   lentos, algunas pruebas podrían tomar más tiempo que el tiempo de espera de prueba
+   predeterminado de <var class="filename">run-tests.php</var>. Para corregir esto,
+   establezca la variable de entorno <code class="literal">TEST_TIMEOUT</code> a
+   un número mayor de segundos.
+  </p>
+  <p class="para">
+   En máquinas rápidas con una base de datos local configurada para una carga ligera
+   (p.ej. Oracle 11<em>g</em>R2 XE), algunas pruebas podrían ocasionar los errores
+   ORA-12516 u ORA-12520. Para evitarlo, aumente el parámetro <code class="literal">PROCESSES</code>
+   de la base de datos siguiendo estos pasos:
+  </p>
+  <p class="para">
+   Conéctese como propietario del software de Oracle:
+   <div class="example-contents">
+<div class="cdata"><pre>
+    $ su - oracle
+</pre></div>
+   </div>
+
+  </p>
+  <p class="para">
+   Establezca el entorno de Oracle necesario con <var class="filename">oracle_env.sh</var> u
+   <var class="filename">oraenv</var>, tal como está descrito arriba.
+  </p>
+  <p class="para">
+   Inicie la herramienta de línea de comandos SQL*Plus y
+   aumente <code class="literal">PROCESSES</code>
+   <div class="example-contents">
+<div class="cdata"><pre>
+    $ sqlplus / as sysdba
+    SQL&gt; alter system set processes=100 scope=spfile
+</pre></div>
+   </div>
+
+  </p>
+  <p class="para">
+   Reinicie la base de datos:
+   <div class="example-contents">
+<div class="cdata"><pre>
+    SQL&gt; startup force
+</pre></div>
+   </div>
+
+  </p>
+ </div>
+</div></div></div></body></html>

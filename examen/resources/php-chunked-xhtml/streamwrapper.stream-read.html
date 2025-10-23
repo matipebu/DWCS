@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Leer un flujo</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="streamwrapper.stream-open.html">« streamWrapper::stream_open</a></li>
+      <li style="float: right;"><a href="streamwrapper.stream-seek.html">streamWrapper::stream_seek »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.streamwrapper.html">streamWrapper</a></li>
+    <li>Leer un flujo</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="streamwrapper.stream-read" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">streamWrapper::stream_read</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.2, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">streamWrapper::stream_read</span> &mdash; <span class="dc-title">Leer un flujo</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-streamwrapper.stream-read-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>streamWrapper::stream_read</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$count</code></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Este método es llamado en respuesta a <span class="function"><a href="function.fread.html" class="function">fread()</a></span>
+   y <span class="function"><a href="function.fgets.html" class="function">fgets()</a></span>.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Recuerde actualizar la posición de lectura/escritura del flujo (por el número de bytes
+    que fueron leídos con éxito).
+   </p>
+  </p></blockquote>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-streamwrapper.stream-read-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">count</code></dt>
+     <dd>
+      <p class="para">
+       Cuántos bytes de información desde la posición actual deberían ser devueltos.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-streamwrapper.stream-read-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Si hay menos bytes disponibles que en <code class="parameter">count</code>
+   devolver tantos como estén disponibles. Si no hay
+   más información disponible, devolver <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> o una
+   cadena vacía.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-streamwrapper.stream-read-errors">
+  <h3 class="title">Errores/Excepciones</h3>
+  <p class="para">Emite un
+<strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong> si la llamada a este método falla
+(por ej., por no estar implementado).</p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Si el valor devuelto es mayor que <code class="parameter">count</code> se
+    emitirá un error de nivel <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong> y la información en exceso se
+    perderá.
+   </p>
+  </p></blockquote>
+ </div>
+
+ 
+
+
+
+ <div class="refsect1 notes" id="refsect1-streamwrapper.stream-read-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    <span class="methodname"><a href="streamwrapper.stream-eof.html" class="methodname">streamWrapper::stream_eof()</a></span> es llamado directamente después
+    de llamar a <span class="methodname"><strong>streamWrapper::stream_read()</strong></span> para verificar si
+    <abbr title="End Of File">EOF</abbr> ha sido alcanzado. Si no está implementado,
+    se asume <abbr title="End Of File">EOF</abbr>.
+   </p>
+  </p></blockquote>
+  <div class="warning"><strong class="warning">Advertencia</strong>
+    <p class="para">
+      Al leer un fichero entero (por ejemplo, con
+      <span class="function"><a href="function.file-get-contents.html" class="function">file_get_contents()</a></span>), PHP llamará a
+      <span class="methodname"><strong>streamWrapper::stream_read()</strong></span> seguido de
+      <span class="methodname"><a href="streamwrapper.stream-eof.html" class="methodname">streamWrapper::stream_eof()</a></span> en un bucle, pero siempre y cuando
+      <span class="methodname"><strong>streamWrapper::stream_read()</strong></span> devuelva un texto
+      no vacío, el valor que devuelva
+      <span class="methodname"><a href="streamwrapper.stream-eof.html" class="methodname">streamWrapper::stream_eof()</a></span> será ignorado.
+    </p>
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-streamwrapper.stream-read-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.fread.html" class="function" rel="rdfs-seeAlso">fread()</a> - Lectura de un fichero en modo binario seguro</span></li>
+    <li><span class="function"><a href="function.fgets.html" class="function" rel="rdfs-seeAlso">fgets()</a> - Obtiene una l&iacute;nea desde el puntero a un fichero</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

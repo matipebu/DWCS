@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Cambia el tama&ntilde;o de una imagen</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="imagick.thresholdimage.html">« Imagick::thresholdImage</a></li>
+      <li style="float: right;"><a href="imagick.tintimage.html">Imagick::tintImage »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.imagick.html">Imagick</a></li>
+    <li>Cambia el tama&ntilde;o de una imagen</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="imagick.thumbnailimage" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Imagick::thumbnailImage</h1>
+  <p class="verinfo">(PECL imagick 2, PECL imagick 3)</p><p class="refpurpose"><span class="refname">Imagick::thumbnailImage</span> &mdash; <span class="dc-title">Cambia el tamaño de una imagen</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-imagick.thumbnailimage-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>Imagick::thumbnailImage</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$columns</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$rows</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$bestfit</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$fill</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$legacy</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></span></span><br>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Cambia el tamaño de una imagen a las dimensiones dadas y elimina cualquier
+   perfil asociado. El objetivo es producir imágenes de miniaturas pequeñas de bajo
+   coste aptas para mostrar en la web.
+
+   Si se proporciona <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> al tercer parámetro, los parámetros columns y rows
+   se usan como máximos para cada cara. Ambas caras serán escaladas a una proporción menor hasta
+   que coincidan o sean menores que el parámetro dado para la cara.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+<span class="simpara">
+ La conducta del parámetro <code class="parameter">bestfit</code> cambió en Imagick 3.0.0.
+ Antes de esta versión dar la dimensión de 400x400 a una imagen de 200x150 debería no
+ tener efecto. En Imagick 3.0.0 y superiores la imagen sería llevada al tamaño de 400x300 ya que
+ este es el &quot;mejor ajuste&quot; para las dimensiones dadas. Si el parámetro <code class="parameter">bestfit</code>
+ es utilizado, se debe indicar tanto el ancho como el alto.
+</span>
+</p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-imagick.thumbnailimage-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">columns</code></dt>
+     <dd>
+      <p class="para">
+       Ancho de la imagen
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">rows</code></dt>
+     <dd>
+      <p class="para">
+       Alto de la imagen
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">bestfit</code></dt>
+     <dd>
+      <p class="para">
+       Si se fuerzan valores máximos
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-imagick.thumbnailimage-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-imagick.thumbnailimage-errors">
+  <h3 class="title">Errores/Excepciones</h3>
+  <p class="para">
+   Lanza ImagickException en caso de error.
+  </p>
+ </div>
+
+
+
+
+ <div class="refsect1 examples" id="refsect1-imagick.thumbnailimage-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+    <div class="example" id="example-2915">
+      <p><strong>Ejemplo #1  <span class="function"><strong>Imagick::thumbnailImage()</strong></span></strong></p>
+      <div class="example-contents">
+      <div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">thumbnailImage</span><span style="color: #007700">(</span><span style="color: #0000BB">$imagePath</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">$imagick </span><span style="color: #007700">= new </span><span style="color: #0000BB">\Imagick</span><span style="color: #007700">(</span><span style="color: #0000BB">realpath</span><span style="color: #007700">(</span><span style="color: #0000BB">$imagePath</span><span style="color: #007700">));<br />    </span><span style="color: #0000BB">$imagick</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setbackgroundcolor</span><span style="color: #007700">(</span><span style="color: #DD0000">'rgb(64, 64, 64)'</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">$imagick</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">thumbnailImage</span><span style="color: #007700">(</span><span style="color: #0000BB">100</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">, </span><span style="color: #0000BB">true</span><span style="color: #007700">, </span><span style="color: #0000BB">true</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">"Content-Type: image/jpg"</span><span style="color: #007700">);<br />    echo </span><span style="color: #0000BB">$imagick</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getImageBlob</span><span style="color: #007700">();<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+      </div>
+
+    </div>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Averigua la longitud del segmento inicial de un string que consista
+   &uacute;nicamente en caracteres contenidos dentro de una m&aacute;scara dada</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.strrpos.html">« strrpos</a></li>
+      <li style="float: right;"><a href="function.strstr.html">strstr »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.strings.html">Funciones de strings</a></li>
+    <li>Averigua la longitud del segmento inicial de un string que consista
+   &uacute;nicamente en caracteres contenidos dentro de una m&aacute;scara dada</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.strspn" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">strspn</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">strspn</span> &mdash; <span class="dc-title">
+   Averigua la longitud del segmento inicial de un string que consista
+   únicamente en caracteres contenidos dentro de una máscara dada
+  </span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.strspn-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>strspn</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$subject</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$mask</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$start</code><span class="initializer"> = ?</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$length</code><span class="initializer"> = ?</span></span><br>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="para rdfs-comment">
+   Encuentra la longitud del segmento inicial de <code class="parameter">subject</code>
+   que contiene <em>solamente</em> caracteres de <code class="parameter">mask</code>.
+  </p>
+  <p class="para">
+   Si <code class="parameter">start</code> y <code class="parameter">length</code>
+   son omitidos, entonces la totalidad de <code class="parameter">subject</code> será
+   examinada. Si son incluidos, entonces el efecto será el mismo que
+   llamando <code class="literal">strspn(substr($subject, $start, $length),
+   $mask)</code> (ver <a href="function.substr.html" class="xref">substr</a>
+   para más información).
+  </p>
+  <p class="para">
+   La línea de código:
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$var </span><span style="color: #007700">= </span><span style="color: #0000BB">strspn</span><span style="color: #007700">(</span><span style="color: #DD0000">"42 is the answer to the 128th question."</span><span style="color: #007700">, </span><span style="color: #DD0000">"1234567890"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+   asignará <code class="literal">2</code> a <var class="varname">$var</var>,
+   debido a que el string &quot;42&quot; es el segmento inicial
+   de <code class="parameter">subject</code> que consiste solamente en caracteres
+   contenidos dentro de &quot;1234567890&quot;.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.strspn-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">subject</code></dt>
+     <dd>
+      <p class="para">
+       El string a examinar.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">mask</code></dt>
+     <dd>
+      <p class="para">
+       La lista de caracteres permitidos.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">start</code></dt>
+     <dd>
+      <p class="para">
+       La posición en <code class="parameter">subject</code> donde
+       iniciar la búsqueda.
+      </p>
+      <p class="para">
+       Si <code class="parameter">start</code> es dado y no es negativo,
+       entonces <span class="function"><strong>strspn()</strong></span> comenzará a
+       examinar a <code class="parameter">subject</code> en
+       la posición <code class="parameter">start</code>ésima. Por ejemplo, en
+       el string &#039;<code class="literal">abcdef</code>&#039;, el caracter en la
+       posición <code class="literal">0</code> es &#039;<code class="literal">a</code>&#039;, el
+       caracter en la posición <code class="literal">2</code> es
+       &#039;<code class="literal">c</code>&#039; y así sucesivamente.
+      </p>
+      <p class="para">
+       Si <code class="parameter">start</code> es dado y es negativo,
+       entonces <span class="function"><strong>strspn()</strong></span> comenzará a
+       examinar <code class="parameter">subject</code> desde
+       la <code class="parameter">start</code>ésima posición desde el final
+       de <code class="parameter">subject</code>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">length</code></dt>
+     <dd>
+      <p class="para">
+       La longitud del segmento de <code class="parameter">subject</code>
+       a examinar.
+      </p>
+      <p class="para">
+       Si se proporciona <code class="parameter">length</code> y no es negativo,
+       entonces <code class="parameter">subject</code> será examinado
+       por el número <code class="parameter">length</code> de caracteres después de la posición
+       de inicio.
+      </p>
+      <p class="para">
+       Si se proporciona <code class="parameter">length</code> y es negativo,
+       entonces <code class="parameter">subject</code> sera examinado desde
+       la posición de inicio hasta el número <code class="parameter">length</code> de caracteres
+       desde el final de <code class="parameter">subject</code>.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.strspn-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve la longitud del segmento inicial de <code class="parameter">subject</code>
+   el cual enteramente consiste en caracteres en <code class="parameter">mask</code>.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Cuando se establece el parámetro <code class="parameter">start</code>, la longitud devuelta
+    se cuenta a partir de esta posición, no desde el comienzo de
+    <code class="parameter">subject</code>.
+    </p>
+  </p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.strspn-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4867">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>strspn()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// subject no inicia con ningún caracter de mask<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strspn</span><span style="color: #007700">(</span><span style="color: #DD0000">"foo"</span><span style="color: #007700">, </span><span style="color: #DD0000">"o"</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">// examina dos caracteres de subject iniciando en el offset 1<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strspn</span><span style="color: #007700">(</span><span style="color: #DD0000">"foo"</span><span style="color: #007700">, </span><span style="color: #DD0000">"o"</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">// examina un caracter de subject iniciando en el offset 1<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strspn</span><span style="color: #007700">(</span><span style="color: #DD0000">"foo"</span><span style="color: #007700">, </span><span style="color: #DD0000">"o"</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">int(0)
+int(2)
+int(1)</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.strspn-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: <span class="simpara">Esta función es
+segura binariamente.</span></p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.strspn-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.strcspn.html" class="function" rel="rdfs-seeAlso">strcspn()</a> - Averiguar la longitud del segmento inicial que no coincida con una m&aacute;scara</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

@@ -1,0 +1,292 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Nuevas caracter&iacute;sticas</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="migration71.html">« Migraci&oacute;n de PHP 7.0.x a PHP 7.1.x</a></li>
+      <li style="float: right;"><a href="migration71.new-functions.html">Nuevas funciones »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="migration71.html">Migraci&oacute;n de PHP 7.0.x a PHP 7.1.x</a></li>
+    <li>Nuevas caracter&iacute;sticas</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="migration71.new-features" class="sect1">
+ <h2 class="title">Nuevas características</h2>
+ 
+ <div class="sect2" id="migration71.new-features.nullable-types">
+  <h3 class="title">Tipos &#039;nullable&#039;</h3>
+  
+  <p class="para">
+   Las declaraciones de tipos para parámetros y valores de retorno ahora se pueden marcar como
+   «nullable» prefijando el nombre del tipo con un signo de cierre de interrogación. Esto significa
+   que, así como el tipo especificado, se puede pasar <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> como un argumento, o 
+   ser devuelto como un valor, respectivamente.
+  </p>
+  
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">function </span><span style="color: #0000BB">testReturn</span><span style="color: #007700">(): ?</span><span style="color: #0000BB">string<br /></span><span style="color: #007700">{<br />    return </span><span style="color: #DD0000">'elePHPant'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">testReturn</span><span style="color: #007700">());<br /><br />function </span><span style="color: #0000BB">testReturn</span><span style="color: #007700">(): ?</span><span style="color: #0000BB">string<br /></span><span style="color: #007700">{<br />    return </span><span style="color: #0000BB">null</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">testReturn</span><span style="color: #007700">());<br /><br />function </span><span style="color: #0000BB">test</span><span style="color: #007700">(?</span><span style="color: #0000BB">string $name</span><span style="color: #007700">)<br />{<br />    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #DD0000">'elePHPant'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">test</span><span style="color: #007700">();</span></span></code></div>
+   </div>
+
+   <p class="para">El resultado del ejemplo sería:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+string(10) &quot;elePHPant&quot;
+NULL
+string(10) &quot;elePHPant&quot;
+NULL
+Uncaught Error: Too few arguments to function test(), 0 passed in...
+</pre></div>
+   </div>
+  </div>
+ </div>
+ 
+ <div class="sect2" id="migration71.new-features.void-functions">
+  <h3 class="title">Funciones &#039;void&#039;</h3>
+  
+  <p class="para">
+   Se ha introducido un tipo de retorno, <span class="type"><span class="type"><a href="language.types.void.html" class="type void">void</a></span></span>. Las funciones declaradas con
+   &#039;void&#039; como su tipo de retorno deben o bien omitir su sentencia &#039;return&#039; totalmente,
+   o utilizar una sentencia &#039;return&#039; vacía. <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> no es un valor de retorno válido para una
+   función &#039;void&#039;.
+  </p>
+  
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">intercambiar</span><span style="color: #007700">(&amp;</span><span style="color: #0000BB">$izquierdo</span><span style="color: #007700">, &amp;</span><span style="color: #0000BB">$derecho</span><span style="color: #007700">) : </span><span style="color: #0000BB">void<br /></span><span style="color: #007700">{<br />    if (</span><span style="color: #0000BB">$izquierdo </span><span style="color: #007700">=== </span><span style="color: #0000BB">$derecho</span><span style="color: #007700">) {<br />        return;<br />    }<br /><br />    </span><span style="color: #0000BB">$tmp </span><span style="color: #007700">= </span><span style="color: #0000BB">$izquierdo</span><span style="color: #007700">;<br />    </span><span style="color: #0000BB">$izquierdo </span><span style="color: #007700">= </span><span style="color: #0000BB">$derecho</span><span style="color: #007700">;<br />    </span><span style="color: #0000BB">$derecho </span><span style="color: #007700">= </span><span style="color: #0000BB">$tmp</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$a </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b </span><span style="color: #007700">= </span><span style="color: #0000BB">2</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">intercambiar</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">), </span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">);</span></span></code></div>
+   </div>
+
+   <p class="para">El resultado del ejemplo sería:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+null
+int(2)
+int(1)
+</pre></div>
+   </div>
+  </div>
+  
+  <p class="para">
+   El uso del valor de retorno de una función &#039;void&#039; simplemente se evalúa a
+   <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>, sin emitir advertencias. Las razón de esto es porque las advertencias
+   implicarían el uso de funciones genéricas de orden mayor.
+  </p>
+ </div>
+ 
+ <div class="sect2" id="migration71.new-features.symmetric-array-destructuring">
+  <h3 class="title">Desestructuración de arrays simétricos</h3>
+  
+  <p class="para">
+   La sintaxis abreviada de array (<code class="literal">[]</code>) se puede usar ahora para
+   desestructurar arrays para asignaciones (incluyendo dentro de
+   <code class="literal">foreach</code>) como alternativa a la sintaxis
+   <span class="function"><a href="function.list.html" class="function">list()</a></span> existente, la cual aún se admite.
+  </p>
+  
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$datos </span><span style="color: #007700">= [<br />    [</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #DD0000">'Tom'</span><span style="color: #007700">],<br />    [</span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #DD0000">'Fred'</span><span style="color: #007700">],<br />];<br /><br /></span><span style="color: #FF8000">// Estilo de list()<br /></span><span style="color: #007700">list(</span><span style="color: #0000BB">$id1</span><span style="color: #007700">, </span><span style="color: #0000BB">$nombre1</span><span style="color: #007700">) = </span><span style="color: #0000BB">$datos</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br /><br /></span><span style="color: #FF8000">// Estilo de []<br /></span><span style="color: #007700">[</span><span style="color: #0000BB">$id1</span><span style="color: #007700">, </span><span style="color: #0000BB">$list</span><span style="color: #007700">] = </span><span style="color: #0000BB">$datos</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br /><br /></span><span style="color: #FF8000">// Estilo de list()<br /></span><span style="color: #007700">foreach (</span><span style="color: #0000BB">$datos </span><span style="color: #007700">as list(</span><span style="color: #0000BB">$id</span><span style="color: #007700">, </span><span style="color: #0000BB">$nombre</span><span style="color: #007700">)) {<br />    </span><span style="color: #FF8000">// aquí va la lógica con $id y $nombre<br /></span><span style="color: #007700">}<br /><br /></span><span style="color: #FF8000">// Estilo de []<br /></span><span style="color: #007700">foreach (</span><span style="color: #0000BB">$datos </span><span style="color: #007700">as [</span><span style="color: #0000BB">$id</span><span style="color: #007700">, </span><span style="color: #0000BB">$nombre</span><span style="color: #007700">]) {<br />    </span><span style="color: #FF8000">// aquí va la lógica con $id y $nombre<br /></span><span style="color: #007700">}</span></span></code></div>
+   </div>
+
+  </div>
+ </div>
+ 
+ <div class="sect2" id="migration71.new-features.class-constant-visibility">
+  <h3 class="title">Visibilidad de las constantes de clase</h3>
+  
+  <p class="para">
+   Se ha añadido soporte para especificar la visibilidad de constantes de clase.
+  </p>
+  
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">ConstDemo<br /></span><span style="color: #007700">{<br />    const </span><span style="color: #0000BB">PUBLIC_CONST_A </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />    public const </span><span style="color: #0000BB">PUBLIC_CONST_B </span><span style="color: #007700">= </span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />    protected const </span><span style="color: #0000BB">PROTECTED_CONST </span><span style="color: #007700">= </span><span style="color: #0000BB">3</span><span style="color: #007700">;<br />    private const </span><span style="color: #0000BB">PRIVATE_CONST </span><span style="color: #007700">= </span><span style="color: #0000BB">4</span><span style="color: #007700">;<br />}</span></span></code></div>
+   </div>
+
+  </div>
+ </div>
+ 
+ <div class="sect2" id="migration71.new-features.iterable-pseudo-type">
+  <h3 class="title">El seudotipo <span class="type"><a href="language.types.iterable.html" class="type iterable">iterable</a></span></h3>
+  
+  <p class="para">
+   Se ha introducido un nuevo seudotipo (similar a <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span>)
+   llamado <span class="type"><a href="language.types.iterable.html" class="type iterable">iterable</a></span>. Se puede utilizar en parámetros
+   y tipos de retorno, donde acepta tanto arrays u objetos que implementen
+   la interfaz <span class="classname"><a href="class.traversable.html" class="classname">Traversable</a></span>. Con respecto a la subtipificación,
+   los tipos de parámetros de clases hijas podrían ampliar una declaración de la madre de <span class="type"><a href="language.types.array.html" class="type array">array</a></span> 
+   o <span class="classname"><a href="class.traversable.html" class="classname">Traversable</a></span> a <span class="type"><a href="language.types.iterable.html" class="type iterable">iterable</a></span>. Con los tipos de retorno,
+   las clases hijas podrían reducir un tipo de retorno de la madre de <span class="type"><a href="language.types.iterable.html" class="type iterable">iterable</a></span> a
+   <span class="type"><a href="language.types.array.html" class="type array">array</a></span> o un objeto que implemente <span class="classname"><a href="class.traversable.html" class="classname">Traversable</a></span>.
+  </p>
+  
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">iterator</span><span style="color: #007700">(</span><span style="color: #0000BB">iterable $iter</span><span style="color: #007700">)<br />{<br />    foreach (</span><span style="color: #0000BB">$iter </span><span style="color: #007700">as </span><span style="color: #0000BB">$val</span><span style="color: #007700">) {<br />        </span><span style="color: #FF8000">//<br />    </span><span style="color: #007700">}<br />}</span></span></code></div>
+   </div>
+
+  </div>
+ </div>
+ 
+ <div class="sect2" id="migration71.new-features.mulit-catch-exception-handling">
+  <h3 class="title">Manejo de multicaptura de excepciones</h3>
+  
+  <p class="para">
+   Ahora se pueden especificar múltiples excepciones por bloque catch con el carácter
+   tubería (<code class="literal">|</code>). Esto es útil para cuando diferentes
+   excepciones de diferentes jerarquías de clases son manejadas como la misma.
+  </p>
+  
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">try {<br />    </span><span style="color: #FF8000">// algo de código<br /></span><span style="color: #007700">} catch (</span><span style="color: #0000BB">FirstException </span><span style="color: #007700">| </span><span style="color: #0000BB">SecondException $e</span><span style="color: #007700">) {<br />    </span><span style="color: #FF8000">// manejar la primera y segunda excepción<br /></span><span style="color: #007700">}</span></span></code></div>
+   </div>
+
+  </div>
+ </div>
+ 
+ <div class="sect2" id="migration71.new-features.support-for-keys-in-list">
+  <h3 class="title">Soporte para claves en <span class="function"><a href="function.list.html" class="function">list()</a></span></h3>
+  
+  <p class="para">
+   Ahora se pueden especificar claves en <span class="function"><a href="function.list.html" class="function">list()</a></span>, o en su nueva sintaxis
+   abreviada <code class="literal">[]</code>. Esto habilita la desestructuración de arrays con
+   claves no enteras o no secuenciales.
+  </p>
+  
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$datos </span><span style="color: #007700">= [<br />    [</span><span style="color: #DD0000">"id" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #DD0000">"nombre" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Tom'</span><span style="color: #007700">],<br />    [</span><span style="color: #DD0000">"id" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #DD0000">"nombre" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Fred'</span><span style="color: #007700">],<br />];<br /><br /></span><span style="color: #FF8000">// Estilo de list()<br /></span><span style="color: #007700">list(</span><span style="color: #DD0000">"id" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$id1</span><span style="color: #007700">, </span><span style="color: #DD0000">"nombre" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$nombre1</span><span style="color: #007700">) = </span><span style="color: #0000BB">$datos</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br /><br /></span><span style="color: #FF8000">// Estilo de []<br /></span><span style="color: #007700">[</span><span style="color: #DD0000">"id" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$id1</span><span style="color: #007700">, </span><span style="color: #DD0000">"nombre" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$nombre1</span><span style="color: #007700">] = </span><span style="color: #0000BB">$datos</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br /><br /></span><span style="color: #FF8000">// Estilo de list()<br /></span><span style="color: #007700">foreach (</span><span style="color: #0000BB">$datos </span><span style="color: #007700">as list(</span><span style="color: #DD0000">"id" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$id</span><span style="color: #007700">, </span><span style="color: #DD0000">"nombre" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$nombre</span><span style="color: #007700">)) {<br />    </span><span style="color: #FF8000">// aquí va la lógica con $id y $nombre<br /></span><span style="color: #007700">}<br /><br /></span><span style="color: #FF8000">// Estilo de []<br /></span><span style="color: #007700">foreach (</span><span style="color: #0000BB">$datos </span><span style="color: #007700">as [</span><span style="color: #DD0000">"id" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$id</span><span style="color: #007700">, </span><span style="color: #DD0000">"nombre" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$nombre</span><span style="color: #007700">]) {<br />    </span><span style="color: #FF8000">// aquí va la lógica con $id y $nombre<br /></span><span style="color: #007700">}</span></span></code></div>
+   </div>
+
+  </div>
+ </div>
+ 
+ <div class="sect2" id="migration71.new-features.support-for-negative-string-offsets">
+  <h3 class="title">Soporte para índices negativos de cadenas</h3>
+  
+  <p class="para">
+   Se ha añadido soporte para índices negativos de cadenas a las
+   <a href="book.strings.html" class="link">funciones de manipulación de cadenas</a>
+   que acepten índices, así como a la
+   <a href="language.types.string.html#language.types.string.substr" class="link">indexación de cadenas</a> con
+   <code class="literal">[]</code> o <code class="literal">{}</code>. En tales casos, un índice
+   negativo se interpreta como un índice desde el final de la cadena.
+  </p>
+  
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(</span><span style="color: #DD0000">"abcdef"</span><span style="color: #007700">[-</span><span style="color: #0000BB">2</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strpos</span><span style="color: #007700">(</span><span style="color: #DD0000">"aabbcc"</span><span style="color: #007700">, </span><span style="color: #DD0000">"b"</span><span style="color: #007700">, -</span><span style="color: #0000BB">3</span><span style="color: #007700">));</span></span></code></div>
+   </div>
+
+   <p class="para">El resultado del ejemplo sería:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+string (1) &quot;e&quot;
+int(3)
+</pre></div>
+   </div>
+  </div>
+  
+  <p class="para">
+   Los índices negativos de cadenas y arrays ahora tambíen se admiten en la sintaxis
+   del paso de una variable dentro de cadenas.
+  </p>
+  
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$string </span><span style="color: #007700">= </span><span style="color: #DD0000">'bar'</span><span style="color: #007700">;<br />echo </span><span style="color: #DD0000">"The last character of '</span><span style="color: #0000BB">$string</span><span style="color: #DD0000">' is '</span><span style="color: #0000BB">$string</span><span style="color: #007700">[-</span><span style="color: #0000BB">1</span><span style="color: #007700">]</span><span style="color: #DD0000">'.\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <p class="para">El resultado del ejemplo sería:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+The last character of &#039;bar&#039; is &#039;r&#039;.
+</pre></div>
+   </div>
+  </div>
+ </div>
+ 
+ <div class="sect2" id="migration71.new-features.support-for-aead-in-ext-openssl">
+  <h3 class="title">Soporte para AEAD en ext/openssl</h3>
+  
+  <p class="para">
+   Se ha añadido soporte para AEAD (modos GCM y CCM) ampliando las funciones
+   <span class="function"><a href="function.openssl-encrypt.html" class="function">openssl_encrypt()</a></span> y
+   <span class="function"><a href="function.openssl-decrypt.html" class="function">openssl_decrypt()</a></span> con parámetros adicionales.
+  </p>
+ </div>
+ 
+ <div class="sect2" id="migration71.new-features.convert-callables-to-closures">
+  <h3 class="title">Conversión de &#039;callables&#039; <span class="classname"><a href="class.closure.html" class="classname">Closure</a></span> con <span class="methodname"><a href="closure.fromcallable.html" class="methodname">Closure::fromCallable()</a></span></h3>
+  
+  <p class="para">
+   Se ha introducido un nuevo método estático a la clase <span class="classname"><a href="class.closure.html" class="classname">Closure</a></span>
+   para poder convertir de forma sencilla <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span>s a
+   objetos <span class="classname"><a href="class.closure.html" class="classname">Closure</a></span>.
+  </p>
+  
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">Test<br /></span><span style="color: #007700">{<br />    public function </span><span style="color: #0000BB">exposeFunction</span><span style="color: #007700">()<br />    {<br />        return </span><span style="color: #0000BB">Closure</span><span style="color: #007700">::</span><span style="color: #0000BB">fromCallable</span><span style="color: #007700">([</span><span style="color: #0000BB">$this</span><span style="color: #007700">, </span><span style="color: #DD0000">'privateFunction'</span><span style="color: #007700">]);<br />    }<br /><br />    private function </span><span style="color: #0000BB">privateFunction</span><span style="color: #007700">(</span><span style="color: #0000BB">$param</span><span style="color: #007700">)<br />    {<br />        </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$param</span><span style="color: #007700">);<br />    }<br />}<br /><br /></span><span style="color: #0000BB">$privFunc </span><span style="color: #007700">= (new </span><span style="color: #0000BB">Test</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">exposeFunction</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$privFunc</span><span style="color: #007700">(</span><span style="color: #DD0000">'some value'</span><span style="color: #007700">);</span></span></code></div>
+   </div>
+
+   <p class="para">El resultado del ejemplo sería:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+string(10) &quot;some value&quot;
+</pre></div>
+   </div>
+  </div>
+ </div>
+ 
+ <div class="sect2" id="migration71.new-features.asynchronous-signal-handling">
+  <h3 class="title">Manejo de señales asíncronas</h3>
+  
+  <p class="para">
+   Se ha introducido una nueva función llamada <span class="function"><a href="function.pcntl-async-signals.html" class="function">pcntl_async_signals()</a></span>
+   para habilitar el manejo de señales asíncronas sin el empleo de «ticks» (lo cual
+   introduce mucha sobrecarga).
+  </p>
+  
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />pcntl_async_signals</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">); </span><span style="color: #FF8000">// turn on async signals<br /><br /></span><span style="color: #0000BB">pcntl_signal</span><span style="color: #007700">(</span><span style="color: #0000BB">SIGHUP</span><span style="color: #007700">,  function(</span><span style="color: #0000BB">$sig</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">"SIGHUP\n"</span><span style="color: #007700">;<br />});<br /><br /></span><span style="color: #0000BB">posix_kill</span><span style="color: #007700">(</span><span style="color: #0000BB">posix_getpid</span><span style="color: #007700">(), </span><span style="color: #0000BB">SIGHUP</span><span style="color: #007700">);</span></span></code></div>
+   </div>
+
+   <p class="para">El resultado del ejemplo sería:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+SIGHUP
+</pre></div>
+   </div>
+  </div>
+ </div>
+ 
+ <div class="sect2" id="migration71.new-features.http2-server-push-support-in-ext-curl">
+  <h3 class="title">Soporte para &#039;push&#039; del servidor HTTP/2 en ext/curl</h3>
+  
+  <p class="para">
+   Se ha añadido soporte para &#039;push&#039; del servidor a la extensión CURL (requiere
+   la versión 7.46 y superior). Esto se puede aprovechar a través de la
+   función <span class="function"><a href="function.curl-multi-setopt.html" class="function">curl_multi_setopt()</a></span> con la nueva
+   constante <strong><code><a href="curl.constants.html#constant.curlmopt-pushfunction">CURLMOPT_PUSHFUNCTION</a></code></strong>. Las constantes
+   <strong><code><a href="curl.constants.html#constant.curl-push-ok">CURL_PUSH_OK</a></code></strong> y <strong><code><a href="curl.constants.html#constant.curl-push-deny">CURL_PUSH_DENY</a></code></strong> también han sido
+   añadidas, por lo que la ejecución de la retrollamada &#039;push&#039; del servidor pueda ser
+   aprobada o denegada.
+  </p>
+ </div>
+</div></div></div></body></html>

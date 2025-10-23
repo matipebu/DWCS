@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Convierte un string a min&uacute;sculas</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.strtok.html">« strtok</a></li>
+      <li style="float: right;"><a href="function.strtoupper.html">strtoupper »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.strings.html">Funciones de strings</a></li>
+    <li>Convierte un string a min&uacute;sculas</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.strtolower" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">strtolower</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">strtolower</span> &mdash; <span class="dc-title">Convierte un string a minúsculas</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.strtolower-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>strtolower</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$string</code></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Devuelve un <code class="parameter">string</code> con todos los caracteres alfabéticos
+   convertidos a minúsculas.
+  </p>
+  <p class="para">
+   Note que &quot;alfabético&quot; está determinado por la ubicación actual. Esto significa que
+   por ejemplo, en la localidad &quot;C&quot; predeterminada, los caracteres como la diéresis-A (Ä)
+   no serán convertidos.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.strtolower-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">string</code></dt>
+     <dd>
+      <p class="para">
+       El string de entrada.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.strtolower-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el string en minúsculas.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.strtolower-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4872">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>strtolower()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$str </span><span style="color: #007700">= </span><span style="color: #DD0000">"Mary Had A Little Lamb and She LOVED It So"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$str </span><span style="color: #007700">= </span><span style="color: #0000BB">strtolower</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">);<br />echo </span><span style="color: #0000BB">$str</span><span style="color: #007700">; </span><span style="color: #FF8000">// Imprime mary had a little lamb and she loved it s<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>   
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.strtolower-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: <span class="simpara">Esta función es
+segura binariamente.</span></p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.strtolower-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.strtoupper.html" class="function" rel="rdfs-seeAlso">strtoupper()</a> - Convierte un string a may&uacute;sculas</span></li>
+    <li><span class="function"><a href="function.ucfirst.html" class="function" rel="rdfs-seeAlso">ucfirst()</a> - Convierte el primer caracter de una cadena a may&uacute;sculas</span></li>
+    <li><span class="function"><a href="function.ucwords.html" class="function" rel="rdfs-seeAlso">ucwords()</a> - Convierte a may&uacute;sculas el primer caracter de cada palabra de una cadena</span></li>
+    <li><span class="function"><a href="function.mb-strtolower.html" class="function" rel="rdfs-seeAlso">mb_strtolower()</a> - Convierte una cadena de caracteres a min&uacute;sculas</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

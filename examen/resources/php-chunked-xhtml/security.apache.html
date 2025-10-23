@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Instalado como m&oacute;dulo de Apache</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="security.cgi-bin.shell.html">« Caso 4: El analizador de PHP fuera del &aacute;rbol de la web</a></li>
+      <li style="float: right;"><a href="security.sessions.html">Seguridad de una Sesi&oacute;n »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="security.html">Seguridad</a></li>
+    <li>Instalado como m&oacute;dulo de Apache</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="security.apache" class="chapter">
+   <h1 class="title">Instalado como módulo de Apache</h1>
+
+   <p class="simpara">
+    Cuando <abbr title="PHP: Hypertext Preprocessor">PHP</abbr> es usado como un módulo de Apache, hereda los
+    permisos del usuario de Apache (generalmente los del usuario
+    &quot;nobody&quot;). Este hecho representa varios impactos sobre la
+    seguridad y las autorizaciones. Por ejemplo, si se está usando
+    <abbr title="PHP: Hypertext Preprocessor">PHP</abbr> para acceder a una base de datos, a menos que tal base de
+    datos disponga de un control de acceso propio, se tendrá
+    que hacer que la base de datos sea asequible por el usuario
+    &quot;nobody&quot;.  Esto quiere decir que un script malicioso podría
+    tener acceso y modificar la base de datos, incluso sin un nombre
+    de usuario y contraseña. Es completamente posible que una
+    araña web (bot) pudiera toparse con la página web de administración de
+    una base de datos, y eliminar todo de la base de datos. Una 
+    protección ante este tipo de situaciones es mediante el uso del 
+    mecanismo de autorización de Apache, o con modelos de acceso
+    de diseño propio usando LDAP, archivos <var class="filename">.htaccess</var>, etc. e 
+    incluir ese código como parte de los scripts <abbr title="PHP: Hypertext Preprocessor">PHP</abbr>.
+   </p>
+   <p class="simpara">
+    Con frecuencia, una vez la seguridad se ha establecido en un punto
+    en donde el usuario de <abbr title="PHP: Hypertext Preprocessor">PHP</abbr> (en este caso, el usuario de apache)
+    tiene asociada muy poco riesgo, se descubre que
+    <abbr title="PHP: Hypertext Preprocessor">PHP</abbr> se encuentra ahora imposibilitado de escribir archivos en los
+    directorios de los usuarios. O quizás se le haya
+    desprovisto de la capacidad de acceder o modificar bases de
+    datos. Se ha prevenido  que pudiera escribir tanto
+    archivos buenos como malos, o que pudiera realizar transacciones
+    buenas o malas en la base de datos.
+   </p>
+   <p class="simpara">
+    Un error de seguridad cometido con frecuencia en este punto es
+    darle permisos de administrador (root) a apache, o incrementar las
+    habilidades del usuario de apache de alguna otra forma.
+   </p>
+   <p class="simpara">
+    Incrementar los permisos del usuario de Apache hasta el nivel de
+    administrador es extremadamente peligroso y puede comprometer al
+    sistema entero, así que el uso de entornos sudo, chroot, o
+    cualquier otro mecanismo que sea ejecutado como root no
+    debería ser considerado como una opción por aquellos que no
+    son profesionales en seguridad.
+   </p>
+   <p class="simpara">
+    Existen otras soluciones más simples. Mediante el uso
+    de <a href="ini.core.html#ini.open-basedir" class="link">open_basedir</a> se
+    puede controlar y restringir qué directorios 
+    pueden ser usados por <abbr title="PHP: Hypertext Preprocessor">PHP</abbr>. También se pueden definir
+    áreas solo-Apache, para restringir todas las actividades
+    basadas en web a archivos que no son de usuarios o del sistema.
+   </p>
+  </div>
+</div></div></body></html>

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Escapa una cadena de texto para su uso en un filtro LDAP o DN</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.ldap-error.html">« ldap_error</a></li>
+      <li style="float: right;"><a href="function.ldap-exop.html">ldap_exop »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.ldap.html">LDAP Funciones</a></li>
+    <li>Escapa una cadena de texto para su uso en un filtro LDAP o DN</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.ldap-escape" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ldap_escape</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.6.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">ldap_escape</span> &mdash; <span class="dc-title">Escapa una cadena de texto para su uso en un filtro LDAP o DN</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ldap-escape-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>ldap_escape</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$value</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$ignore</code><span class="initializer"> = ?</span></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$flags</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Escapa <code class="parameter">value</code> para su uso en el contexto implicado por 
+   <code class="parameter">flags</code>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.ldap-escape-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">value</code></dt>
+     <dd>
+      <p class="para">
+       El valor a escapar.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">ignore</code></dt>
+     <dd>
+      <p class="para">
+       Caracteres a ignorar en el escapado.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">flags</code></dt>
+     <dd>
+      <p class="para">
+       El contexto la cadena escapado se utilizará en:
+       <strong><code>LDAP_ESCAPE_FILTER</code></strong> para filtros para ser utilizado con
+       <span class="function"><a href="function.ldap-search.html" class="function">ldap_search()</a></span>, o
+       <strong><code>LDAP_ESCAPE_DN</code></strong> para DNs.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.ldap-escape-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Retorna la cadena escapada.
+  </p>
+ </div>
+
+</div></div></div></body></html>

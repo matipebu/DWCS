@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Ejemplos</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="tokenizer.constants.html">« Constantes predefinidas</a></li>
+      <li style="float: right;"><a href="class.phptoken.html">PhpToken »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.tokenizer.html">Tokenizer</a></li>
+    <li>Ejemplos</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="tokenizer.examples" class="appendix">
+ <h1 class="title">Ejemplos</h1>
+
+ <p class="para">
+  Aquí hay un simple ejemplo de scripts PHP donde se usa el tokenizer
+  para leer en un archivo PHP, quitar todo los comentarios del archivo
+  original y mostrar solamente el código puro.
+ </p>
+ <div class="example" id="example-3840">
+  <p><strong>Ejemplo #1 Quitar comentarios con el tokenizer</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$source </span><span style="color: #007700">= </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'example.php'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$tokens </span><span style="color: #007700">= </span><span style="color: #0000BB">token_get_all</span><span style="color: #007700">(</span><span style="color: #0000BB">$source</span><span style="color: #007700">);<br /><br />foreach (</span><span style="color: #0000BB">$tokens </span><span style="color: #007700">as </span><span style="color: #0000BB">$token</span><span style="color: #007700">) {<br />   if (</span><span style="color: #0000BB">is_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$token</span><span style="color: #007700">)) {<br />       </span><span style="color: #FF8000">// simple 1-character token<br />       </span><span style="color: #007700">echo </span><span style="color: #0000BB">$token</span><span style="color: #007700">;<br />   } else {<br />       </span><span style="color: #FF8000">// token array<br />       </span><span style="color: #007700">list(</span><span style="color: #0000BB">$id</span><span style="color: #007700">, </span><span style="color: #0000BB">$text</span><span style="color: #007700">) = </span><span style="color: #0000BB">$token</span><span style="color: #007700">;<br /><br />       switch (</span><span style="color: #0000BB">$id</span><span style="color: #007700">) { <br />           case </span><span style="color: #0000BB">T_COMMENT</span><span style="color: #007700">:<br />           case </span><span style="color: #0000BB">T_DOC_COMMENT</span><span style="color: #007700">:<br />               </span><span style="color: #FF8000">// ninguna acción en comentarios<br />               </span><span style="color: #007700">break;<br /><br />           default:<br />               </span><span style="color: #FF8000">// cualquier otra cosa -&gt; salida "tal cual"<br />               </span><span style="color: #007700">echo </span><span style="color: #0000BB">$text</span><span style="color: #007700">;<br />               break;<br />       }<br />   }<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+  </div>
+
+ </div>    
+</div>
+</div></div></body></html>

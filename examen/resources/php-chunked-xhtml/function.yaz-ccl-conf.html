@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Configura el analizador CCL</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.yaz-addinfo.html">« yaz_addinfo</a></li>
+      <li style="float: right;"><a href="function.yaz-ccl-parse.html">yaz_ccl_parse »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.yaz.html">Funciones de YAZ</a></li>
+    <li>Configura el analizador CCL</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.yaz-ccl-conf" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">yaz_ccl_conf</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.5, PECL yaz &gt;= 0.9.0)</p><p class="refpurpose"><span class="refname">yaz_ccl_conf</span> &mdash; <span class="dc-title">Configura el analizador CCL</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.yaz-ccl-conf-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>yaz_ccl_conf</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$id</code></span>, <span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$config</code></span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+
+  <p class="para rdfs-comment">
+   Ésta función configura la consulta analizadora CCL para un servidor con
+   definiciones de puntos de acceso (Calificadores CCL) y su asignación al RPN.
+  </p>
+  <p class="para">
+   Para asignar una consulta especifica CCL al RPN después se llama la función
+   <span class="function"><a href="function.yaz-ccl-parse.html" class="function">yaz_ccl_parse()</a></span>.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.yaz-ccl-conf-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">id</code></dt>
+     <dd>
+      <p class="para">
+       El recurso de conexión devuelto por <span class="function"><a href="function.yaz-connect.html" class="function">yaz_connect()</a></span>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">config</code></dt>
+     <dd>
+      <p class="para">
+       Un arreglo de configuración. Cada clave del arreglo es el nombre de un campo CCL
+       y el correspondiente valor que mantiene una cadena que especifica una
+       asignación al RPN.
+      </p>
+      <p class="para">
+       La asignación es una secuencia de el tipo de atributo, de los valores de los atributos pares. 
+       El tipo de atributo y el valor del atributo Attribute-type es separado por un signo
+       (<code class="literal">=</code>). Cada par es separado por un epacio en blanco.
+      </p>
+      <p class="para">
+       La información adicional la puede encontrar en la página <a href="http://www.indexdata.dk/yaz/doc/tools.tkl#CCL" class="link external">&raquo;&nbsp;CCL</a>.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.yaz-ccl-conf-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   No devuelve ningún valor.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.yaz-ccl-conf-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   En cada ejemplo a continuación, el analizador CCL está configurado para soportar el árbol de los campos
+   CCL: <code class="literal">ti</code>, <code class="literal">au</code> y
+   <code class="literal">isbn</code>. Cada campo es asignado a su equivalente BIB-1.
+   Es asumida que la variable <code class="literal">$id</code> es la conexión ID.
+  </p>
+  <div class="example" id="example-4604">
+   <p><strong>Ejemplo #1 Configuración del CCL</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$fields </span><span style="color: #007700">= array(<br />  </span><span style="color: #DD0000">"ti" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"1=4"</span><span style="color: #007700">,<br />  </span><span style="color: #DD0000">"au"   </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"1=1"</span><span style="color: #007700">,<br />  </span><span style="color: #DD0000">"isbn" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"1=7"<br /></span><span style="color: #007700">);<br /></span><span style="color: #0000BB">yaz_ccl_conf</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">, </span><span style="color: #0000BB">$fields</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.yaz-ccl-conf-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.yaz-ccl-parse.html" class="function" rel="rdfs-seeAlso">yaz_ccl_parse()</a> - Inviocar el analizador Invoke CCL</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

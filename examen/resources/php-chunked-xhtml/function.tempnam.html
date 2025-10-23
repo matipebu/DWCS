@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Crea un fichero con un nombre de fichero &uacute;nico</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.symlink.html">« symlink</a></li>
+      <li style="float: right;"><a href="function.tmpfile.html">tmpfile »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.filesystem.html">Funciones del Sistema de Archivos</a></li>
+    <li>Crea un fichero con un nombre de fichero &uacute;nico</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.tempnam" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">tempnam</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">tempnam</span> &mdash; <span class="dc-title">Crea un fichero con un nombre de fichero único</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.tempnam-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>tempnam</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$dir</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$prefix</code></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Crea un fichero con un nombre de fichero único, cuyo permiso de acceso está establecido a 0600,
+   en el directorio especificado. Si el directorio no existe o no es escribible, <span class="function"><strong>tempnam()</strong></span>
+   puede generar un fichero en el directorio temporal del sistema, y devolver
+   la ruta completa de este fichero, incluyendo su nombre.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.tempnam-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">dir</code></dt>
+     <dd>
+      <p class="para">
+       El directorio donde el nombre de fichero temporal será creado.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">prefix</code></dt>
+     <dd>
+      <p class="para">
+       El prefijo del nombre de fichero temporal generado.
+      </p>
+      <blockquote class="note"><p><strong class="note">Nota</strong>: 
+       <span class="simpara">
+        Windows usa sólo los tres primeros caracteres del prefijo.
+       </span>
+      </p></blockquote>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.tempnam-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el nuevo nombre del fichero temporal, o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si
+   falla.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.tempnam-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-2233">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>tempnam()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$nombre_fichero_tmp </span><span style="color: #007700">= </span><span style="color: #0000BB">tempnam</span><span style="color: #007700">(</span><span style="color: #DD0000">"/tmp"</span><span style="color: #007700">, </span><span style="color: #DD0000">"FOO"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$gestor </span><span style="color: #007700">= </span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$nombre_fichero_tmp</span><span style="color: #007700">, </span><span style="color: #DD0000">"w"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$gestor</span><span style="color: #007700">, </span><span style="color: #DD0000">"escribiendo en el fichero temporal"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$gestor</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// hacer aquí algo<br /><br /></span><span style="color: #0000BB">unlink</span><span style="color: #007700">(</span><span style="color: #0000BB">$nombre_fichero_tmp</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.tempnam-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <span class="simpara">
+    Si PHP no puede crear un fichero en el parámetro <code class="parameter">directory</code>
+    especificado, retrocede al predeterminado del sistema. En NTFS esto también ocurre
+    si el parámetro <code class="parameter">directory</code> contiene más de 65534 ficheros.
+   </span>
+  </p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.tempnam-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.tmpfile.html" class="function" rel="rdfs-seeAlso">tmpfile()</a> - Crea un archivo temporal</span></li>
+    <li><span class="function"><a href="function.sys-get-temp-dir.html" class="function" rel="rdfs-seeAlso">sys_get_temp_dir()</a> - Devuelve la ruta del directorio para archivos temporales</span></li>
+    <li><span class="function"><a href="function.unlink.html" class="function" rel="rdfs-seeAlso">unlink()</a> - Borra un fichero</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

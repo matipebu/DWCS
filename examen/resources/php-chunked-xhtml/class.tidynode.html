@@ -1,0 +1,262 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>La clase tidyNode</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="tidy.root.html">« tidy::root</a></li>
+      <li style="float: right;"><a href="tidynode.construct.html">tidyNode::__construct »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.tidy.html">Tidy</a></li>
+    <li>La clase tidyNode</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.tidynode" class="reference">
+ <h1 class="title">La clase <span class="classname"><a href="class.tidynode.html" class="classname">tidyNode</a></span></h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PHP 5, PHP 7, PHP 8)</p>
+
+  
+  <div class="section" id="tidynode.intro">
+   <h2 class="title">Introducción</h2>
+   <p class="para">
+    Un nodo HTML en un fichero HTML, como es detectado por tidy.
+   </p>
+  </div>
+  
+
+  <div class="section" id="tidynode.synopsis">
+   <h2 class="title">Sinopsis de la Clase</h2>
+
+   
+   <div class="classsynopsis"><div class="classsynopsisinfo">
+    
+     <span class="modifier">final</span>
+     <span class="modifier">class</span> <strong class="classname"><strong class="classname">tidyNode</strong></strong>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Propiedades */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      <var class="varname"><a href="class.tidynode.html#tidynode.props.value">$<var class="varname">value</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      <var class="varname"><a href="class.tidynode.html#tidynode.props.name">$<var class="varname">name</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="varname"><a href="class.tidynode.html#tidynode.props.type">$<var class="varname">type</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="varname"><a href="class.tidynode.html#tidynode.props.line">$<var class="varname">line</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="varname"><a href="class.tidynode.html#tidynode.props.column">$<var class="varname">column</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span>
+      <var class="varname"><a href="class.tidynode.html#tidynode.props.proprietary">$<var class="varname">proprietary</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">?</span><span class="type"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span><span class="type"></span></span>
+      <var class="varname"><a href="class.tidynode.html#tidynode.props.id">$<var class="varname">id</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">?</span><span class="type"><span class="type"><a href="language.types.array.html" class="type array">array</a></span><span class="type"></span></span>
+      <var class="varname"><a href="class.tidynode.html#tidynode.props.attribute">$<var class="varname">attribute</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">?</span><span class="type"><span class="type"><a href="language.types.array.html" class="type array">array</a></span><span class="type"></span></span>
+      <var class="varname"><a href="class.tidynode.html#tidynode.props.child">$<var class="varname">child</var></a></var>;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Métodos */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">private</span> <span class="methodname"><a href="tidynode.construct.html" class="methodname">__construct</a></span>()</div>
+
+    <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="tidynode.getnextsibling.html" class="methodname">getNextSibling</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="class.tidynode.html" class="type tidyNode">tidyNode</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="tidynode.getparent.html" class="methodname">getParent</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="class.tidynode.html" class="type tidyNode">tidyNode</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="tidynode.getprevioussibling.html" class="methodname">getPreviousSibling</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="class.tidynode.html" class="type tidyNode">tidyNode</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="tidynode.haschildren.html" class="methodname">hasChildren</a></span>(): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="tidynode.hassiblings.html" class="methodname">hasSiblings</a></span>(): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="tidynode.isasp.html" class="methodname">isAsp</a></span>(): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="tidynode.iscomment.html" class="methodname">isComment</a></span>(): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="tidynode.ishtml.html" class="methodname">isHtml</a></span>(): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="tidynode.isjste.html" class="methodname">isJste</a></span>(): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="tidynode.isphp.html" class="methodname">isPhp</a></span>(): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="tidynode.istext.html" class="methodname">isText</a></span>(): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+   }</div>
+   
+
+  </div>
+
+  
+  <div class="section" id="tidynode.props">
+   <h2 class="title">Propiedades</h2>
+   <dl>
+    
+     <dt id="tidynode.props.value"><var class="varname">value</var></dt>
+     <dd>
+      <p class="para">La representación HTML del nodo, incluyendo las etiquetas de los alrededores.</p>
+     </dd>
+    
+    
+     <dt id="tidynode.props.name"><var class="varname">name</var></dt>
+     <dd>
+      <p class="para">El nombre del nodo HTML</p>
+     </dd>
+    
+    
+     <dt id="tidynode.props.type"><var class="varname">type</var></dt>
+     <dd>
+      <p class="para">El tipo de etiqueta (una de las <a href="tidy.constants.html#tidy.constants.nodetype" class="link">constantes nodetype</a>. Por ejemplo, <strong><code><a href="tidy.constants.html#constant.tidy-nodetype-php">TIDY_NODETYPE_PHP</a></code></strong>)</p>
+     </dd>
+    
+    
+     <dt id="tidynode.props.line"><var class="varname">line</var></dt>
+     <dd>
+      <p class="para">el número de línea en la que la etiqueta está ubicada en el archivo</p>
+     </dd>
+    
+    
+     <dt id="tidynode.props.column"><var class="varname">column</var></dt>
+     <dd>
+      <p class="para">El número de columna en la que la etiqueta está ubicada en el archivo</p>
+     </dd>
+    
+    
+     <dt id="tidynode.props.proprietary"><var class="varname">proprietary</var></dt>
+     <dd>
+      <p class="para">Indica si el nodo es una etiqueta de propiedad</p>
+     </dd>
+    
+    
+     <dt id="tidynode.props.id"><var class="varname">id</var></dt>
+     <dd>
+      <p class="para">EL ID de la etiqueta (una de las <a href="tidy.constants.html#tidy.constants.tag" class="link">constantes tag</a>. Por ejemplo, <strong><code><a href="tidy.constants.html#constant.tidy-tag-frame">TIDY_TAG_FRAME</a></code></strong>)</p>
+     </dd>
+    
+    
+     <dt id="tidynode.props.attribute"><var class="varname">attribute</var></dt>
+     <dd>
+      <p class="para">
+       Un array de cadena, representando
+       los nombres de atributos (como las claves) del nodo actual.
+      </p>
+     </dd>
+    
+    
+     <dt id="tidynode.props.child"><var class="varname">child</var></dt>
+     <dd>
+      <p class="para">
+       Un array de <span class="classname"><strong class="classname">tidyNode</strong></span>, representando
+       el hijo del nodo actual.
+      </p>
+     </dd>
+    
+   </dl>
+
+  </div>
+  
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Tabla de contenidos</h2><ul class="chunklist chunklist_reference"><li><a href="tidynode.construct.html">tidyNode::__construct</a> — Private constructor to disallow direct instantiation</li><li><a href="tidynode.getnextsibling.html">tidyNode::getNextSibling</a> — Returns the next sibling node of the current node</li><li><a href="tidynode.getparent.html">tidyNode::getParent</a> — Devuelve el nodo padre del nodo actual</li><li><a href="tidynode.getprevioussibling.html">tidyNode::getPreviousSibling</a> — Returns the previous sibling node of the current node</li><li><a href="tidynode.haschildren.html">tidyNode::hasChildren</a> — Indica si un nodo tiene hijos</li><li><a href="tidynode.hassiblings.html">tidyNode::hasSiblings</a> — Indica si un nodo tiene hermanos</li><li><a href="tidynode.isasp.html">tidyNode::isAsp</a> — Comprueba si el nodo es ASP</li><li><a href="tidynode.iscomment.html">tidyNode::isComment</a> — Comprueba el nodo actual es un comentario</li><li><a href="tidynode.ishtml.html">tidyNode::isHtml</a> — Checks if a node is an element node</li><li><a href="tidynode.isjste.html">tidyNode::isJste</a> — Comprueba si el nodo es JSTE</li><li><a href="tidynode.isphp.html">tidyNode::isPhp</a> — Comprueba si el nodo es PHP</li><li><a href="tidynode.istext.html">tidyNode::isText</a> — Comprueba si un nodo representa un texto (no HTML)</li></ul>
+</div>
+</div></div></body></html>

@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Comprueba si el puntero a un archivo est&aacute; al final del archivo</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.fdatasync.html">« fdatasync</a></li>
+      <li style="float: right;"><a href="function.fflush.html">fflush »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.filesystem.html">Funciones del Sistema de Archivos</a></li>
+    <li>Comprueba si el puntero a un archivo est&aacute; al final del archivo</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.feof" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">feof</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">feof</span> &mdash; <span class="dc-title">Comprueba si el puntero a un archivo está al final del archivo</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.feof-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>feof</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$handle</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Comprueba si el puntero a un archivo está al final del archivo.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.feof-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">handle</code></dt>
+     <dd>
+      <p class="para">El fichero al que se apunta debe ser válido, y debe apuntar a
+un fichero abierto por <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> o
+<span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span> (y que todavía no esté cerrado por
+<span class="function"><a href="function.fclose.html" class="function">fclose()</a></span>).</p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.feof-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> si el puntero al archivo está en EOF o produce un error
+   (incluido el tiempo de espera del socket); de otro modo devuelve <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.feof-notes">
+  <h3 class="title">Notas</h3>
+  <div class="warning"><strong class="warning">Advertencia</strong>
+   <p class="para">
+    Si una conexión abierta por <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span> no se cerró
+    por el servidor, <span class="function"><strong>feof()</strong></span> se colgará. Para solucionar esto, vea
+    el ejemplo siguiente:
+    <div class="example" id="example-2154">
+     <p><strong>Ejemplo #1 Manejar tiempos de espera con <span class="function"><strong>feof()</strong></span></strong></p>
+     <div class="example-contents">
+ <div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">feof_segura</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">, &amp;</span><span style="color: #0000BB">$inicio </span><span style="color: #007700">= </span><span style="color: #0000BB">NULL</span><span style="color: #007700">) {<br /> </span><span style="color: #0000BB">$inicio </span><span style="color: #007700">= </span><span style="color: #0000BB">microtime</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /><br /> return </span><span style="color: #0000BB">feof</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">/* Asumir que $fp está previamente abierto por fsockopen() */<br /><br /></span><span style="color: #0000BB">$inicio </span><span style="color: #007700">= </span><span style="color: #0000BB">NULL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$timeout </span><span style="color: #007700">= </span><span style="color: #0000BB">ini_get</span><span style="color: #007700">(</span><span style="color: #DD0000">'default_socket_timeout'</span><span style="color: #007700">);<br /><br />while(!</span><span style="color: #0000BB">feof_segura</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">, </span><span style="color: #0000BB">$inicio</span><span style="color: #007700">) &amp;&amp; (</span><span style="color: #0000BB">microtime</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">) - </span><span style="color: #0000BB">$inicio</span><span style="color: #007700">) &lt; </span><span style="color: #0000BB">$timeout</span><span style="color: #007700">)<br />{<br /> </span><span style="color: #FF8000">/* Gestor */<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+    </div>
+   </p>
+  </div>
+  <div class="warning"><strong class="warning">Advertencia</strong>
+   <p class="para">
+    Si el puntero al archivo pasado a la función no es válido, se podría dar un bucle infinito,
+    ya que <span class="function"><strong>feof()</strong></span> falla para devolver <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>.
+    <div class="example" id="example-2155">
+     <p><strong>Ejemplo #2 Ejemplo de <span class="function"><strong>feof()</strong></span> con un puntero a un archivo no válido</strong></p>
+     <div class="example-contents">
+ <div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// si el archivo no se puede leer o no existe, la función fopen devuelve FALSE<br /></span><span style="color: #0000BB">$archivo </span><span style="color: #007700">= @</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"ningún_archivo"</span><span style="color: #007700">, </span><span style="color: #DD0000">"r"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// FALSE desde fopen emitirá una advertencia y resultará en un bucle infinito aquí<br /></span><span style="color: #007700">while (!</span><span style="color: #0000BB">feof</span><span style="color: #007700">(</span><span style="color: #0000BB">$archivo</span><span style="color: #007700">)) {<br />}<br /><br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$archivo</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+    </div>
+   </p>
+  </div>
+ </div>
+
+
+</div></div></div></body></html>

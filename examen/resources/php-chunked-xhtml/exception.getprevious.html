@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Devuelve la Throwable anterior</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="exception.getmessage.html">« Exception::getMessage</a></li>
+      <li style="float: right;"><a href="exception.getcode.html">Exception::getCode »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.exception.html">Exception</a></li>
+    <li>Devuelve la Throwable anterior</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="exception.getprevious" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Exception::getPrevious</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">Exception::getPrevious</span> &mdash; <span class="dc-title">Devuelve la Throwable anterior</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-exception.getprevious-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><strong>Exception::getPrevious</strong></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="class.throwable.html" class="type Throwable">Throwable</a></span></span></div>
+
+  <p class="para rdfs-comment">
+   Devuelve la <span class="classname"><a href="class.throwable.html" class="classname">Throwable</a></span> anterior
+   (el tercer parámetro de <span class="methodname"><a href="exception.construct.html" class="methodname">Exception::__construct()</a></span>).
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-exception.getprevious-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">Esta función no tiene parámetros.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-exception.getprevious-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve la <span class="classname"><a href="class.throwable.html" class="classname">Throwable</a></span> anterior si está disponible
+   o <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> si no.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-exception.getprevious-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-376">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="methodname"><strong>Exception::getPrevious()</strong></span></strong></p>
+    <div class="example-contents"><p>
+     Recorrer, e imprimir la traza de una excepción.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">MiPropiaExcepción </span><span style="color: #007700">extends </span><span style="color: #0000BB">Exception </span><span style="color: #007700">{}<br /><br />function </span><span style="color: #0000BB">hacerCosas</span><span style="color: #007700">() {<br />    try {<br />        throw new </span><span style="color: #0000BB">InvalidArgumentException</span><span style="color: #007700">(</span><span style="color: #DD0000">"¡Lo está haciendo mal!"</span><span style="color: #007700">, </span><span style="color: #0000BB">112</span><span style="color: #007700">);<br />    } catch(</span><span style="color: #0000BB">Exception $e</span><span style="color: #007700">) {<br />        throw new </span><span style="color: #0000BB">MiPropiaExcepción</span><span style="color: #007700">(</span><span style="color: #DD0000">"Ocurrió algo"</span><span style="color: #007700">, </span><span style="color: #0000BB">911</span><span style="color: #007700">, </span><span style="color: #0000BB">$e</span><span style="color: #007700">);<br />    }<br />}<br /><br /><br />try {<br />    </span><span style="color: #0000BB">hacerCosas</span><span style="color: #007700">();<br />} catch(</span><span style="color: #0000BB">Exception $e</span><span style="color: #007700">) {<br />    do {<br />        </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%s:%d %s (%d) [%s]\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getFile</span><span style="color: #007700">(), </span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getLine</span><span style="color: #007700">(), </span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">(), </span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getCode</span><span style="color: #007700">(), </span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">));<br />    } while(</span><span style="color: #0000BB">$e </span><span style="color: #007700">= </span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getPrevious</span><span style="color: #007700">());<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">/home/bjori/ex.php:8 Ocurrió algo (911) [MiPropiaExcepción]
+/home/bjori/ex.php:6 ¡Lo está haciendo mal! (112) [InvalidArgumentException]</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-exception.getprevious-seealso">
+  <h3 class="title">Ver también</h3>
+   <p class="para">
+    <ul class="simplelist">
+     <li><span class="methodname"><a href="throwable.getprevious.html" class="methodname" rel="rdfs-seeAlso">Throwable::getPrevious()</a> - Devuelve el objeto Throwable previo</span></li>
+    </ul>
+   </p>
+ </div>
+
+</div></div></div></body></html>

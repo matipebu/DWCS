@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Establece las opciones de socket para el socket</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.socket-set-nonblock.html">« socket_set_nonblock</a></li>
+      <li style="float: right;"><a href="function.socket-setopt.html">socket_setopt »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.sockets.html">Funciones de Socket</a></li>
+    <li>Establece las opciones de socket para el socket</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.socket-set-option" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">socket_set_option</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">socket_set_option</span> &mdash; <span class="dc-title">Establece las opciones de socket para el socket</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.socket-set-option-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>socket_set_option</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$socket</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$level</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$optname</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$optval</code></span><br>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   La función <span class="function"><strong>socket_set_option()</strong></span> establece la opción
+   especificada por el parámetro <code class="parameter">optname</code>, al nivel
+   (<code class="parameter">level</code>) del protocolo especificado, al valor apuntado por
+   el parámetro <code class="parameter">optval</code> para el
+   <code class="parameter">socket</code>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.socket-set-option-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">socket</code></dt>
+     <dd>
+      <p class="para">
+       Un recurso socket válido creado con <span class="function"><a href="function.socket-create.html" class="function">socket_create()</a></span>
+       o <span class="function"><a href="function.socket-accept.html" class="function">socket_accept()</a></span>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">level</code></dt>
+     <dd>
+      <p class="para">
+       El parámetro <code class="parameter">level</code> especifica el nivel de
+       protocolo en el que reside la opción. Por ejemplo, para recuperar opciones a
+       nivel de socket, se debería usar un parámetro
+       <code class="parameter">level</code> de <strong><code><a href="sockets.constants.html#constant.sol-socket">SOL_SOCKET</a></code></strong>. Otros niveles, como
+       TCP, se pueden usar para especificar el número de protocolo de ese nivel. 
+       Los números de protocolo se pueden encontrar usando la
+       función <span class="function"><a href="function.getprotobyname.html" class="function">getprotobyname()</a></span>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">optname</code></dt>
+     <dd>
+      <p class="para">
+       Las opciones de socket dispobibles son las mismas que las de la
+       función <span class="function"><a href="function.socket-get-option.html" class="function">socket_get_option()</a></span>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">optval</code></dt>
+     <dd>
+      <p class="para">
+       El valor opcional.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.socket-set-option-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.socket-set-option-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4528">
+    <p><strong>Ejemplo #1 Un ejemplo de <span class="function"><strong>socket_set_option()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$socket </span><span style="color: #007700">= </span><span style="color: #0000BB">socket_create</span><span style="color: #007700">(</span><span style="color: #0000BB">AF_INET</span><span style="color: #007700">, </span><span style="color: #0000BB">SOCK_STREAM</span><span style="color: #007700">, </span><span style="color: #0000BB">SOL_TCP</span><span style="color: #007700">);<br /><br />if (!</span><span style="color: #0000BB">is_resource</span><span style="color: #007700">(</span><span style="color: #0000BB">$socket</span><span style="color: #007700">)) {<br />    echo </span><span style="color: #DD0000">'No se pudo crear elsocket: '</span><span style="color: #007700">. </span><span style="color: #0000BB">socket_strerror</span><span style="color: #007700">(</span><span style="color: #0000BB">socket_last_error</span><span style="color: #007700">()) . </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}<br /><br />if (!</span><span style="color: #0000BB">socket_set_option</span><span style="color: #007700">(</span><span style="color: #0000BB">$socket</span><span style="color: #007700">, </span><span style="color: #0000BB">SOL_SOCKET</span><span style="color: #007700">, </span><span style="color: #0000BB">SO_REUSEADDR</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">)) {<br />    echo </span><span style="color: #DD0000">'No se pudo establecer la opción del socket: '</span><span style="color: #007700">. </span><span style="color: #0000BB">socket_strerror</span><span style="color: #007700">(</span><span style="color: #0000BB">socket_last_error</span><span style="color: #007700">()) . </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}<br /><br />if (!</span><span style="color: #0000BB">socket_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$socket</span><span style="color: #007700">, </span><span style="color: #DD0000">'127.0.0.1'</span><span style="color: #007700">, </span><span style="color: #0000BB">1223</span><span style="color: #007700">)) {<br />    echo </span><span style="color: #DD0000">'No se pudo vincular el socket: '</span><span style="color: #007700">. </span><span style="color: #0000BB">socket_strerror</span><span style="color: #007700">(</span><span style="color: #0000BB">socket_last_error</span><span style="color: #007700">()) . </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$rval </span><span style="color: #007700">= </span><span style="color: #0000BB">socket_get_option</span><span style="color: #007700">(</span><span style="color: #0000BB">$socket</span><span style="color: #007700">, </span><span style="color: #0000BB">SOL_SOCKET</span><span style="color: #007700">, </span><span style="color: #0000BB">SO_REUSEADDR</span><span style="color: #007700">);<br /><br />if (</span><span style="color: #0000BB">$rval </span><span style="color: #007700">=== </span><span style="color: #0000BB">false</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">'No se pudo obtener la opción del option: '</span><span style="color: #007700">. </span><span style="color: #0000BB">socket_strerror</span><span style="color: #007700">(</span><span style="color: #0000BB">socket_last_error</span><span style="color: #007700">()) . </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />} else if (</span><span style="color: #0000BB">$rval </span><span style="color: #007700">!== </span><span style="color: #0000BB">0</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">'SO_REUSEADDR está establecido en el socket !' </span><span style="color: #007700">. </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.socket-set-option-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.socket-create.html" class="function" rel="rdfs-seeAlso">socket_create()</a> - Crear un socket (extremo de comunicaci&oacute;n)</span></li>
+    <li><span class="function"><a href="function.socket-bind.html" class="function" rel="rdfs-seeAlso">socket_bind()</a> - Vincula un nombre a un socket</span></li>
+    <li><span class="function"><a href="function.socket-strerror.html" class="function" rel="rdfs-seeAlso">socket_strerror()</a> - Devuelve una cadena que describe un error de socket</span></li>
+    <li><span class="function"><a href="function.socket-last-error.html" class="function" rel="rdfs-seeAlso">socket_last_error()</a> - Devuelve el &uacute;ltimo error sobre un socket</span></li>
+    <li><span class="function"><a href="function.socket-get-option.html" class="function" rel="rdfs-seeAlso">socket_get_option()</a> - Obtiene las opciones de socket para el socket</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

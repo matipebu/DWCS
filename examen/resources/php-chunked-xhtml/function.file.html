@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Transfiere un fichero completo a un array</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.fgetss.html">« fgetss</a></li>
+      <li style="float: right;"><a href="function.file-exists.html">file_exists »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.filesystem.html">Funciones del Sistema de Archivos</a></li>
+    <li>Transfiere un fichero completo a un array</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.file" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">file</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">file</span> &mdash; <span class="dc-title">Transfiere un fichero completo a un array</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.file-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>file</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$filename</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span>, <span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$context</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+
+  <p class="para rdfs-comment">
+   Transfiere un fichero completo a un array.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Se puede usar <span class="function"><a href="function.file-get-contents.html" class="function">file_get_contents()</a></span> para devolver el contenido
+    de un fichero como una cadena.
+   </p>
+  </p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.file-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">filename</code></dt>
+     <dd>
+      <p class="para">
+       Ruta al fichero.
+      </p>
+      <div class="tip"><strong class="tip">Sugerencia</strong><p class="simpara">Se puede emplear un URL como
+nombre de fichero con esta función si las <a href="filesystem.configuration.html#ini.allow-url-fopen" class="link">envolturas de fopen</a> han sido activadas.
+Véase <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> para más información de cómo especificar el nombre
+de fichero. Véanse las <a href="wrappers.html" class="xref">Protocolos y Envolturas soportados</a>; continen enlaces con información
+sobre las diferentes capacidades que tienen las envolturas, notas sobre su empleo,
+e información de cualquier variable predefinida que podría
+proporcionarse.</p></div>
+     </dd>
+    
+    
+     <dt><code class="parameter">flags</code></dt>
+     <dd>
+      <p class="para">
+       El parámetro opcional <code class="parameter">flags</code> puede ser una o
+       más de las siguientes constantes:
+       <dl>
+        
+         <dt>
+          <strong><code><a href="filesystem.constants.html#constant.file-use-include-path">FILE_USE_INCLUDE_PATH</a></code></strong>
+         </dt>
+         <dd>
+          <span class="simpara">
+           Buscar el fichero en <a href="ini.core.html#ini.include-path" class="link">include_path</a>.
+          </span>
+         </dd>
+        
+        
+         <dt>
+          <strong><code><a href="filesystem.constants.html#constant.file-ignore-new-lines">FILE_IGNORE_NEW_LINES</a></code></strong>
+         </dt>
+         <dd>
+          <span class="simpara">
+           Omitir nueva línea al final de cada elemento del array
+          </span>
+         </dd>
+        
+        
+         <dt>
+          <strong><code><a href="filesystem.constants.html#constant.file-skip-empty-lines">FILE_SKIP_EMPTY_LINES</a></code></strong>
+         </dt>
+         <dd>
+          <span class="simpara">
+           Saltar las líneas vacías
+          </span>
+         </dd>         
+        
+       </dl>
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">context</code></dt>
+     <dd>
+      <p class="para">
+       Un recurso de contexto válido creado con la
+       función <span class="function"><a href="function.stream-context-create.html" class="function">stream_context_create()</a></span>.
+      </p>
+      <p class="para">
+       <blockquote class="note"><p><strong class="note">Nota</strong>: <span class="simpara">Soporte para context fue
+añadido en PHP 5.0.0. Para una descripción de <code class="literal">contexts</code>, refiérase a
+<a href="book.stream.html" class="xref">Flujos</a>.</span></p></blockquote>
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.file-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el fichero a un array. Cada elemento del array se corresponde con una
+   línea del fichero, con la nueva línea aún adjunta. En caso de fallo,
+   <span class="function"><strong>file()</strong></span> devuelve <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Cada línea del array resultante incuirá el final de línea, a menos que
+    se use <strong><code><a href="filesystem.constants.html#constant.file-ignore-new-lines">FILE_IGNORE_NEW_LINES</a></code></strong>.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: <span class="simpara">Si sufre problemas con PHP
+no reconociendo los finales de línea cuando lee o crea ficheros en Macintosh,
+puede probar de activar la opción de configuración en tiempo de ejecución
+<a href="filesystem.configuration.html#ini.auto-detect-line-endings" class="link">auto_detect_line_endings</a>
+para intentar resolver el problema.</span></p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 errors" id="refsect1-function.file-errors">
+  <h3 class="title">Errores/Excepciones</h3>
+  <p class="para">
+   Emite un error de nivel <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong> si el fichero
+   no existe.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.file-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-2161">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>file()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Escribir un fichero en un array. En este ejemplo iremos a través de HTTP para<br />// obtener el código fuente HTML de un URL.<br /></span><span style="color: #0000BB">$líneas </span><span style="color: #007700">= </span><span style="color: #0000BB">file</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://www.example.com/'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Recorrer nuestro array, mostrar el código fuente HTML como tal y mostrar tambíen los números de línea.<br /></span><span style="color: #007700">foreach (</span><span style="color: #0000BB">$líneas </span><span style="color: #007700">as </span><span style="color: #0000BB">$num_línea </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$línea</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">"Línea #&lt;b&gt;</span><span style="color: #007700">{</span><span style="color: #0000BB">$num_línea</span><span style="color: #007700">}</span><span style="color: #DD0000">&lt;/b&gt; : " </span><span style="color: #007700">. </span><span style="color: #0000BB">htmlspecialchars</span><span style="color: #007700">(</span><span style="color: #0000BB">$línea</span><span style="color: #007700">) . </span><span style="color: #DD0000">"&lt;br /&gt;\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">// Otro ejemplo: vamos a escribir una página web en una cadena. Véase también file_get_contents().<br /></span><span style="color: #0000BB">$html </span><span style="color: #007700">= </span><span style="color: #0000BB">implode</span><span style="color: #007700">(</span><span style="color: #DD0000">''</span><span style="color: #007700">, </span><span style="color: #0000BB">file</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://www.example.com/'</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">// Utilizar el parámetro opcional flags a partir de PHP 5<br /></span><span style="color: #0000BB">$recortes </span><span style="color: #007700">= </span><span style="color: #0000BB">file</span><span style="color: #007700">(</span><span style="color: #DD0000">'fichero.txt'</span><span style="color: #007700">, </span><span style="color: #0000BB">FILE_IGNORE_NEW_LINES </span><span style="color: #007700">| </span><span style="color: #0000BB">FILE_SKIP_EMPTY_LINES</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.file-notes">
+  <h3 class="title">Notas</h3>
+  <div class="warning"><strong class="warning">Advertencia</strong><p class="para">Cuando se usa SSL,
+Microsoft IIS violará el protocolo, cerrando la conexión sin mandar un
+indicador <code class="literal">close_notify</code>. PHP avisará de esto con este mensaje &quot;SSL:
+Fatal Protocol Error&quot;, cuando llegue al final de los datos. Una
+solución a este problema es bajar el nivel de <a href="errorfunc.configuration.html#ini.error-reporting" class="link">aviso de errores</a> del sistema para
+que no incluya advertencias.
+PHP pueden detectar servidores IIS con este problema cuando se
+abre un flujo usando <code class="literal">https://</code> y suprime
+la advertencia. Si usáis la función <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span> para crear un
+socket <code class="literal">ssl://</code>, tendréis que suprimir la advertencia
+explicitamente.</p></div>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.file-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.readfile.html" class="function" rel="rdfs-seeAlso">readfile()</a> - Realizar la salida de un fichero</span></li>
+    <li><span class="function"><a href="function.fopen.html" class="function" rel="rdfs-seeAlso">fopen()</a> - Abre un fichero o un URL</span></li>
+    <li><span class="function"><a href="function.fsockopen.html" class="function" rel="rdfs-seeAlso">fsockopen()</a> - Abre una conexi&oacute;n v&iacute;a sockets a Internet o a un dominio Unix</span></li>
+    <li><span class="function"><a href="function.popen.html" class="function" rel="rdfs-seeAlso">popen()</a> - Abre un proceso de un puntero a un fichero</span></li>
+    <li><span class="function"><a href="function.file-get-contents.html" class="function" rel="rdfs-seeAlso">file_get_contents()</a> - Transmite un fichero completo a una cadena</span></li>
+    <li><span class="function"><a href="function.include.html" class="function" rel="rdfs-seeAlso">include</a> - include</span></li>
+    <li><span class="function"><a href="function.stream-context-create.html" class="function" rel="rdfs-seeAlso">stream_context_create()</a> - Crear un contexto de flujo</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

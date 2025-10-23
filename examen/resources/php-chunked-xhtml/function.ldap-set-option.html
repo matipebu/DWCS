@@ -1,0 +1,326 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Establecer el valor de la opci&oacute;n proporcionada</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.ldap-search.html">« ldap_search</a></li>
+      <li style="float: right;"><a href="function.ldap-set-rebind-proc.html">ldap_set_rebind_proc »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.ldap.html">LDAP Funciones</a></li>
+    <li>Establecer el valor de la opci&oacute;n proporcionada</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.ldap-set-option" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ldap_set_option</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">ldap_set_option</span> &mdash; <span class="dc-title">Establecer el valor de la opción proporcionada</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ldap-set-option-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>ldap_set_option</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$link_identifier</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$option</code></span>, <span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$newval</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Establece el valor de la opción especificada a <code class="parameter">newval</code>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.ldap-set-option-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">link_identifier</code></dt>
+     <dd>
+      <p class="para">
+       Un identificador de enlace de LDAP, devuelto por <span class="function"><a href="function.ldap-connect.html" class="function">ldap_connect()</a></span>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">option</code></dt>
+     <dd>
+      <p class="para">
+       El parámetro <code class="parameter">option</code> puede ser uno de estos:
+       <table class="doctable informaltable">
+        
+         <thead>
+          <tr>
+           <th>Option</th>
+           <th>Type</th>
+           <th>Available since</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-deref">LDAP_OPT_DEREF</a></code></strong></td>
+           <td>integer</td>
+           <td class="empty">&nbsp;</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-sizelimit">LDAP_OPT_SIZELIMIT</a></code></strong></td>
+           <td>integer</td>
+           <td class="empty">&nbsp;</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-timelimit">LDAP_OPT_TIMELIMIT</a></code></strong></td>
+           <td>integer</td>
+           <td class="empty">&nbsp;</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-network-timeout">LDAP_OPT_NETWORK_TIMEOUT</a></code></strong></td>
+           <td>integer</td>
+           <td>PHP 5.3.0</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-protocol-version">LDAP_OPT_PROTOCOL_VERSION</a></code></strong></td>
+           <td>integer</td>
+           <td class="empty">&nbsp;</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-error-number">LDAP_OPT_ERROR_NUMBER</a></code></strong></td>
+           <td>integer</td>
+           <td class="empty">&nbsp;</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-referrals">LDAP_OPT_REFERRALS</a></code></strong></td>
+           <td>bool</td>
+           <td class="empty">&nbsp;</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-restart">LDAP_OPT_RESTART</a></code></strong></td>
+           <td>bool</td>
+           <td class="empty">&nbsp;</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-host-name">LDAP_OPT_HOST_NAME</a></code></strong></td>
+           <td>string</td>
+           <td class="empty">&nbsp;</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-error-string">LDAP_OPT_ERROR_STRING</a></code></strong></td>
+           <td>string</td>
+           <td class="empty">&nbsp;</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-diagnostic-message">LDAP_OPT_DIAGNOSTIC_MESSAGE</a></code></strong></td>
+           <td>string</td>
+           <td class="empty">&nbsp;</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-matched-dn">LDAP_OPT_MATCHED_DN</a></code></strong></td>
+           <td>string</td>
+           <td class="empty">&nbsp;</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-server-controls">LDAP_OPT_SERVER_CONTROLS</a></code></strong></td>
+           <td>array</td>
+           <td class="empty">&nbsp;</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-client-controls">LDAP_OPT_CLIENT_CONTROLS</a></code></strong></td>
+           <td>array</td>
+           <td class="empty">&nbsp;</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-x-keepalive-idle">LDAP_OPT_X_KEEPALIVE_IDLE</a></code></strong></td>
+           <td>int</td>
+           <td>PHP 7.1.0</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-x-keepalive-probes">LDAP_OPT_X_KEEPALIVE_PROBES</a></code></strong></td>
+           <td>int</td>
+           <td>PHP 7.1.0</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-x-keepalive-interval">LDAP_OPT_X_KEEPALIVE_INTERVAL</a></code></strong></td>
+           <td>int</td>
+           <td>PHP 7.1.0</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-x-tls-cacertdir">LDAP_OPT_X_TLS_CACERTDIR</a></code></strong></td>
+           <td>string</td>
+           <td>PHP 7.1.0</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-x-tls-cacertfile">LDAP_OPT_X_TLS_CACERTFILE</a></code></strong></td>
+           <td>string</td>
+           <td>PHP 7.1.0</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-x-tls-certfile">LDAP_OPT_X_TLS_CERTFILE</a></code></strong></td>
+           <td>PHP 7.1.0</td>
+           <td class="empty">&nbsp;</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-x-tls-cipher-suite">LDAP_OPT_X_TLS_CIPHER_SUITE</a></code></strong></td>
+           <td>string</td>
+           <td>PHP 7.1.0</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-x-tls-crlcheck">LDAP_OPT_X_TLS_CRLCHECK</a></code></strong></td>
+           <td>integer</td>
+           <td>PHP 7.1.0</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-x-tls-crlfile">LDAP_OPT_X_TLS_CRLFILE</a></code></strong></td>
+           <td>string</td>
+           <td>PHP 7.1.0</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-x-tls-dhfile">LDAP_OPT_X_TLS_DHFILE</a></code></strong></td>
+           <td>string</td>
+           <td>PHP 7.1.0</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-x-tls-keyfile">LDAP_OPT_X_TLS_KEYFILE</a></code></strong></td>
+           <td>string</td>
+           <td>PHP 7.1.0</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-x-tls-protocol-min">LDAP_OPT_X_TLS_PROTOCOL_MIN</a></code></strong></td>
+           <td>integer</td>
+           <td>PHP 7.1.0</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-x-tls-random-file">LDAP_OPT_X_TLS_RANDOM_FILE</a></code></strong></td>
+           <td>string</td>
+           <td>PHP 7.1.0</td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="ldap.constants.html#constant.ldap-opt-x-tls-require-cert">LDAP_OPT_X_TLS_REQUIRE_CERT</a></code></strong></td>
+           <td>integer</td>
+           <td>PHP 7.0.5</td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+      <p class="para">
+       <strong><code><a href="ldap.constants.html#constant.ldap-opt-server-controls">LDAP_OPT_SERVER_CONTROLS</a></code></strong> y 
+       <strong><code><a href="ldap.constants.html#constant.ldap-opt-client-controls">LDAP_OPT_CLIENT_CONTROLS</a></code></strong> solicitan una lista de
+       controles, lo que significa que el valor debe ser un array de controles. Un
+       control consiste en un <em>oid</em> identificando el control,
+       un <em>value</em> opcional, y un indicador opcional representado por
+       <em>criticality</em>. En PHP un control es proporcionado por un
+       array que contiene un elemento con la clave <em>oid</em>,
+       una cadena de valor, y dos elementos opcionales. Los elementos
+       opcionales son la clave <em>value</em> con un valor de tipo cadena,
+       y la clave <em>iscritical</em> con un valor de tipo booleano.
+       El valor de la clave <em>iscritical</em> de forma predeterminada es <em><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></em>
+       si no es provisto. Vea <a href="http://www.openldap.org/devel/cvsweb.cgi/~checkout~/doc/drafts/draft-ietf-ldapext-ldap-c-api-xx.txt" class="link external">&raquo;&nbsp;draft-ietf-ldapext-ldap-c-api-xx.txt</a>
+       para más detalles. Vea también el segundo ejemplo a continuación.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">newval</code></dt>
+     <dd>
+      <p class="para">
+       El nuevo valor para el <code class="parameter">option</code> especificado.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.ldap-set-option-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.ldap-set-option-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4370">
+    <p><strong>Ejemplo #1 Establecer la versión del protocolo</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// $ds es un identificador de enlace válido para un servidor de directorio<br /></span><span style="color: #007700">if (</span><span style="color: #0000BB">ldap_set_option</span><span style="color: #007700">(</span><span style="color: #0000BB">$ds</span><span style="color: #007700">, </span><span style="color: #0000BB">LDAP_OPT_PROTOCOL_VERSION</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">)) {<br />    echo </span><span style="color: #DD0000">"Utilizando LDAPv3"</span><span style="color: #007700">;<br />} else {<br />    echo </span><span style="color: #DD0000">"Falló al establcer la versión 3 del protocolo"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-4371">
+    <p><strong>Ejemplo #2 Establecer controles del servidor</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// $ds es un identificador de enlace válido para un servidor de directorio<br />// control sin valor<br /></span><span style="color: #0000BB">$ctrl1 </span><span style="color: #007700">= array(</span><span style="color: #DD0000">"oid" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"1.2.752.58.10.1"</span><span style="color: #007700">, </span><span style="color: #DD0000">"iscritical" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">// iscritical de forma predeterminada está en FALSE<br /></span><span style="color: #0000BB">$ctrl2 </span><span style="color: #007700">= array(</span><span style="color: #DD0000">"oid" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"1.2.752.58.1.10"</span><span style="color: #007700">, </span><span style="color: #DD0000">"value" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"magic"</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">// intentar establecer ambos controles<br /></span><span style="color: #007700">if (!</span><span style="color: #0000BB">ldap_set_option</span><span style="color: #007700">(</span><span style="color: #0000BB">$ds</span><span style="color: #007700">, </span><span style="color: #0000BB">LDAP_OPT_SERVER_CONTROLS</span><span style="color: #007700">, array(</span><span style="color: #0000BB">$ctrl1</span><span style="color: #007700">, </span><span style="color: #0000BB">$ctrl2</span><span style="color: #007700">))) {<br />    echo </span><span style="color: #DD0000">"Falló al establecer los controles del servidor"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.ldap-set-option-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Esta función está disponible solamente cuando se utiliza OpenLDAP 2.x.x ó Netscape
+    Directory SDK x.x.
+   </p>
+  </p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.ldap-set-option-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.ldap-get-option.html" class="function" rel="rdfs-seeAlso">ldap_get_option()</a> - Obtener el valor actual para la opci&oacute;n dada</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

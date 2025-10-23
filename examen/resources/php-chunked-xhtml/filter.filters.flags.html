@@ -1,0 +1,378 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Opciones de filtrado</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="filter.filters.misc.html">« Otros filtros</a></li>
+      <li style="float: right;"><a href="filter.constants.html">Constantes predefinidas »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="filter.filters.html">Tipos de filtros</a></li>
+    <li>Opciones de filtrado</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="filter.filters.flags" class="section">
+  <h2 class="title">Opciones de filtrado</h2>
+
+  <p class="para">
+   <table class="doctable table">
+    <caption><strong>Lista de opciones de los filtros</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>ID</th>
+       <th>Usado con</th>
+       <th>Descripción</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-flag-strip-low">FILTER_FLAG_STRIP_LOW</a></code></strong></td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-sanitize-encoded">FILTER_SANITIZE_ENCODED</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-sanitize-special-chars">FILTER_SANITIZE_SPECIAL_CHARS</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-sanitize-string">FILTER_SANITIZE_STRING</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-unsafe-raw">FILTER_UNSAFE_RAW</a></code></strong>
+       </td>
+       <td>
+        Elimina caracteres que tienen un valor numérico &lt;32.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-flag-strip-high">FILTER_FLAG_STRIP_HIGH</a></code></strong></td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-sanitize-encoded">FILTER_SANITIZE_ENCODED</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-sanitize-special-chars">FILTER_SANITIZE_SPECIAL_CHARS</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-sanitize-string">FILTER_SANITIZE_STRING</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-unsafe-raw">FILTER_UNSAFE_RAW</a></code></strong>
+       </td>
+       <td>
+        Elimina caracteres que tienen un valor numérico &gt;127.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code>FILTER_FLAG_STRIP_BACKTICK</code></strong></td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-sanitize-encoded">FILTER_SANITIZE_ENCODED</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-sanitize-special-chars">FILTER_SANITIZE_SPECIAL_CHARS</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-sanitize-string">FILTER_SANITIZE_STRING</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-unsafe-raw">FILTER_UNSAFE_RAW</a></code></strong>
+       </td>
+       <td>
+        Elimina los caracteres de retroceso.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-flag-allow-fraction">FILTER_FLAG_ALLOW_FRACTION</a></code></strong></td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-sanitize-number-float">FILTER_SANITIZE_NUMBER_FLOAT</a></code></strong>
+       </td>
+       <td>
+        Permite usar un punto (<code class="literal">.</code>) como separador de decimales en los
+        números.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-flag-allow-thousand">FILTER_FLAG_ALLOW_THOUSAND</a></code></strong></td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-sanitize-number-float">FILTER_SANITIZE_NUMBER_FLOAT</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-validate-float">FILTER_VALIDATE_FLOAT</a></code></strong>
+       </td>
+       <td>
+        Permite usar una coma (<code class="literal">,</code>) como separador de miles en los
+        números.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-flag-allow-scientific">FILTER_FLAG_ALLOW_SCIENTIFIC</a></code></strong></td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-sanitize-number-float">FILTER_SANITIZE_NUMBER_FLOAT</a></code></strong>
+       </td>
+       <td>
+        Permite usar una <code class="literal">e</code> o <code class="literal">E</code> para la notación científica
+        de números.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-flag-no-encode-quotes">FILTER_FLAG_NO_ENCODE_QUOTES</a></code></strong></td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-sanitize-string">FILTER_SANITIZE_STRING</a></code></strong>
+       </td>
+       <td>
+        Si se indica esta opción, las comillas simples (<code class="literal">&#039;</code>) y las dobles
+        (<code class="literal">&quot;</code>) no se codificarán.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-flag-encode-low">FILTER_FLAG_ENCODE_LOW</a></code></strong></td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-sanitize-encoded">FILTER_SANITIZE_ENCODED</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-sanitize-string">FILTER_SANITIZE_STRING</a></code></strong>,
+        <strong><code>FILTER_SANITIZE_RAW</code></strong>
+       </td>
+       <td>
+        Codifica todos los caracteres con valor numérico &lt;32.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-flag-encode-high">FILTER_FLAG_ENCODE_HIGH</a></code></strong></td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-sanitize-encoded">FILTER_SANITIZE_ENCODED</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-sanitize-special-chars">FILTER_SANITIZE_SPECIAL_CHARS</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-sanitize-string">FILTER_SANITIZE_STRING</a></code></strong>,
+        <strong><code>FILTER_SANITIZE_RAW</code></strong>
+       </td>
+       <td>
+        Codifica todos los caracteres con valor numérico &gt;127.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-flag-encode-amp">FILTER_FLAG_ENCODE_AMP</a></code></strong></td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-sanitize-string">FILTER_SANITIZE_STRING</a></code></strong>,
+        <strong><code>FILTER_SANITIZE_RAW</code></strong>
+       </td>
+       <td>
+        Codifica ampersands (<code class="literal">&amp;</code>).
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-null-on-failure">FILTER_NULL_ON_FAILURE</a></code></strong></td>
+       <td>
+        cualquiera <a href="filter.filters.validate.html" class="link"><strong><code>FILTER_VALIDATE_*</code></strong></a>
+       </td>
+       <td>
+        Devuelve <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> para valores boolean que no se reconozcan.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-flag-allow-octal">FILTER_FLAG_ALLOW_OCTAL</a></code></strong></td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-validate-int">FILTER_VALIDATE_INT</a></code></strong>
+       </td>
+       <td>
+        Permite datos de entrada que comiencen por un cero (<code class="literal">0</code>) como número
+        octal. Esto obliga a que los siguientes dígitos sean únicamente
+        <code class="literal">0-7</code>.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-flag-allow-hex">FILTER_FLAG_ALLOW_HEX</a></code></strong></td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-validate-int">FILTER_VALIDATE_INT</a></code></strong>
+       </td>
+       <td>
+        Permite datos de entrada que comiencen por <code class="literal">0x</code> o
+        <code class="literal">0X</code> como número hexadecimal. Esto obliga a que los siguientes
+        dígitos sean únicamente <code class="literal">a-fA-F0-9</code>.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code>FILTER_FLAG_EMAIL_UNICODE</code></strong></td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-validate-email">FILTER_VALIDATE_EMAIL</a></code></strong>
+       </td>
+       <td>
+        Permite que la parte local de la dirección de correo electrónico contenga caracteres Unicode.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-flag-ipv4">FILTER_FLAG_IPV4</a></code></strong></td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-validate-ip">FILTER_VALIDATE_IP</a></code></strong>
+       </td>
+       <td>
+        Permite direcciones IP en formato IPv4.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-flag-ipv6">FILTER_FLAG_IPV6</a></code></strong></td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-validate-ip">FILTER_VALIDATE_IP</a></code></strong>
+       </td>
+       <td>
+        Permite direcciones IP en formato IPv6.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-flag-no-priv-range">FILTER_FLAG_NO_PRIV_RANGE</a></code></strong></td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-validate-ip">FILTER_VALIDATE_IP</a></code></strong>
+       </td>
+       <td>
+        <p class="para">
+         Falla si se intenta validar alguna de los siguientes rangos privados de IPv4:
+         <code class="literal">10.0.0.0/8</code>, <code class="literal">172.16.0.0/12</code> y
+         <code class="literal">192.168.0.0/16</code>.
+        </p>
+        <p class="para">
+         Falla si se intenta validad direcciones IPv6 que empiecen por
+         <code class="literal">FD</code> o <code class="literal">FC</code>.
+        </p>
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-flag-no-res-range">FILTER_FLAG_NO_RES_RANGE</a></code></strong></td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-validate-ip">FILTER_VALIDATE_IP</a></code></strong>
+       </td>
+       <td>
+        <p class="para">
+        Falla si se intenta validar alguno de los siguientes rangos IPv4 reservados:
+        <code class="literal">0.0.0.0/8</code>, <code class="literal">169.254.0.0/16</code>,
+        <code class="literal">127.0.0.0/8</code> y <code class="literal">240.0.0.0/4</code>.
+        </p>
+        <p class="para">
+         Falla la validación para los siguientes rangos reservados de IPv6:
+         <code class="literal">::1/128</code>, <code class="literal">::/128</code>,
+         <code class="literal">::ffff:0:0/96</code> y <code class="literal">fe80::/10</code>.
+        </p>
+        <p class="para">
+         Estos son los rangos que están marcados como Reservados-Por-Protocolo en el
+         <a href="http://www.faqs.org/rfcs/rfc6890" class="link external">&raquo;&nbsp;RFC 6890</a>.
+        </p>
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code>FILTER_FLAG_SCHEME_REQUIRED</code></strong></td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-validate-url">FILTER_VALIDATE_URL</a></code></strong>
+       </td>
+       <td>
+        Requiere que la <abbr title="Uniform Resource Locator">URL</abbr> contenga parte de la ruta.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code>FILTER_FLAG_HOST_REQUIRED</code></strong></td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-validate-url">FILTER_VALIDATE_URL</a></code></strong>
+       </td>
+       <td>
+        Requires the <abbr title="Uniform Resource Locator">URL</abbr> to contain a host part.
+        Requiere que el <abbr title="Uniform Resource Locator">URL</abbr> contenga parte de la ruta.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-flag-path-required">FILTER_FLAG_PATH_REQUIRED</a></code></strong></td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-validate-url">FILTER_VALIDATE_URL</a></code></strong>
+       </td>
+       <td>
+        Requiere que la <abbr title="Uniform Resource Locator">URL</abbr> contenga parte de la ruta.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-flag-query-required">FILTER_FLAG_QUERY_REQUIRED</a></code></strong></td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-validate-url">FILTER_VALIDATE_URL</a></code></strong>
+       </td>
+       <td>
+        Requiere que la <abbr title="Uniform Resource Locator">URL</abbr> contenga un query string.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-require-scalar">FILTER_REQUIRE_SCALAR</a></code></strong></td>
+       <td>
+       </td>
+       <td>
+        Requiere que el valor sea escalar.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-require-array">FILTER_REQUIRE_ARRAY</a></code></strong></td>
+       <td>
+       </td>
+       <td>
+        Requiere que el valor sea un array.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-force-array">FILTER_FORCE_ARRAY</a></code></strong></td>
+       <td>
+       </td>
+       <td>
+        Si el valor es un escalar, es tratado como un array con el valor escalar
+        cómo único elemento.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+
+  <div class="simplesect">
+   <h3 class="title">Historial de cambios</h3>
+   <p class="para">
+    <table class="doctable informaltable">
+     
+      <thead>
+       <tr>
+        <th>Versión</th>
+        <th>Descripción</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td>7.3.0</td>
+        <td>
+         El uso explícito de <strong><code>FILTER_FLAG_SCHEME_REQUIRED</code></strong>
+         y <strong><code>FILTER_FLAG_HOST_REQUIRED</code></strong> ha quedado obsoleto.
+        </td>
+       </tr>
+
+       <tr>
+        <td>7.1.0</td>
+        <td>
+         Se ha añadido <strong><code>FILTER_FLAG_EMAIL_UNICODE</code></strong>.
+        </td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+  </div>
+ </div></div></div></body></html>

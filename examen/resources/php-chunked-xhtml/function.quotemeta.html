@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Escapa meta caracteres</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.quoted-printable-encode.html">« quoted_printable_encode</a></li>
+      <li style="float: right;"><a href="function.rtrim.html">rtrim »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.strings.html">Funciones de strings</a></li>
+    <li>Escapa meta caracteres</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.quotemeta" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">quotemeta</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">quotemeta</span> &mdash; <span class="dc-title">Escapa meta caracteres</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.quotemeta-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>quotemeta</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$str</code></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Devuelve una versión de str con una barra invertida (<code class="literal">\</code>)
+   antes de cada caracter que sea uno de los siguientes:
+   <div class="example-contents screen">. \ + * ? [ ^ ] ( $ )</div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.quotemeta-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">str</code></dt>
+     <dd>
+      <p class="para">
+       El string de entrada.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.quotemeta-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el string con los meta caracteres escapados o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si un string
+   vacío es dado como <code class="parameter">str</code>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.quotemeta-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: <span class="simpara">Esta función es
+segura binariamente.</span></p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.quotemeta-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.addslashes.html" class="function" rel="rdfs-seeAlso">addslashes()</a> - Quote string with slashes</span></li>
+    <li><span class="function"><a href="function.addcslashes.html" class="function" rel="rdfs-seeAlso">addcslashes()</a> - Escapa una cadena al estilo de C</span></li>
+    <li><span class="function"><a href="function.htmlentities.html" class="function" rel="rdfs-seeAlso">htmlentities()</a> - Convierte todos los caracteres aplicables a entidades HTML</span></li>
+    <li><span class="function"><a href="function.htmlspecialchars.html" class="function" rel="rdfs-seeAlso">htmlspecialchars()</a> - Convierte caracteres especiales en entidades HTML</span></li>
+    <li><span class="function"><a href="function.nl2br.html" class="function" rel="rdfs-seeAlso">nl2br()</a> - Inserta saltos de l&iacute;nea HTML antes de todas las nuevas l&iacute;neas de un string</span></li>
+    <li><span class="function"><a href="function.stripslashes.html" class="function" rel="rdfs-seeAlso">stripslashes()</a> - Quita las barras de un string con comillas escapadas</span></li>
+    <li><span class="function"><a href="function.stripcslashes.html" class="function" rel="rdfs-seeAlso">stripcslashes()</a> - Desmarca la cadena marcada con  addcslashes</span></li>
+    <li><span class="function"><strong>ereg()</strong></span></li>
+    <li><span class="function"><a href="function.preg-quote.html" class="function" rel="rdfs-seeAlso">preg_quote()</a> - Escapar caracteres en una expresi&oacute;n regular</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

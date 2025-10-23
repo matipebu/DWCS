@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Establecer par&aacute;metros para un flujo/envoltura/contexto</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.stream-context-set-options.html">« stream_context_set_options</a></li>
+      <li style="float: right;"><a href="function.stream-copy-to-stream.html">stream_copy_to_stream »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.stream.html">Funciones de Flujos</a></li>
+    <li>Establecer par&aacute;metros para un flujo/envoltura/contexto</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.stream-context-set-params" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">stream_context_set_params</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">stream_context_set_params</span> &mdash; <span class="dc-title">Establecer parámetros para un flujo/envoltura/contexto</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.stream-context-set-params-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>stream_context_set_params</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$stream_or_context</code></span>, <span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$params</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Establece parámetros en el contexto especificado.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.stream-context-set-params-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">stream_or_context</code></dt>
+     <dd>
+      <p class="para">
+       El flujo o el contexto para aplicar los parámetros.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">params</code></dt>
+     <dd>
+      <p class="para">
+       Un array de parámetros para configurar.
+      </p>
+      <blockquote class="note"><p><strong class="note">Nota</strong>: 
+       <p class="para">
+        <code class="parameter">params</code> debería ser un array asociativo con la estructura:
+        <code class="literal">$parámetros[&#039;nombre_parametro&#039;] = &quot;valor_parametro&quot;;</code>.
+       </p>
+      </p></blockquote>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 options" id="refsect1-function.stream-context-set-params-options">
+  <h3 class="title">Parámetros soportados</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>Parámetros</th>
+      <th>Propósito</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><code class="literal">notification</code></td>
+      <td>
+       Nombre de la función de llamada de retorno definida por el usuario a ser llamada siempre que un flujo provoque una notificación.
+       Sólo se soporta para los stream wrappers <a href="wrappers.http.html" class="link">http://</a> y
+       <a href="wrappers.ftp.html" class="link">ftp://</a>.
+      </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">options</code></td>
+      <td>
+       Array de opciones como en <a href="context.html" class="link">opciones y parámetros de
+       contexto</a>.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.stream-context-set-params-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ 
+  <div class="refsect1 seealso" id="refsect1-function.stream-context-set-params-seealso">
+  <h3 class="title">Ver también</h3>
+  <ul class="simplelist">
+   <li><span class="function"><a href="function.stream-notification-callback.html" class="function" rel="rdfs-seeAlso">stream_notification_callback()</a> - Una funci&oacute;n de retrollamada para el par&aacute;metro de contexto de notificaci&oacute;n</span></li>
+  </ul>
+ </div>
+
+ 
+</div></div></div></body></html>

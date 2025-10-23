@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Sentencias M&uacute;ltiples</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqli.quickstart.stored-procedures.html">« Procedimientos almacenados</a></li>
+      <li style="float: right;"><a href="mysqli.quickstart.transactions.html">Soporte de la API para transacciones »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="mysqli.quickstart.html">Gu&iacute;a r&aacute;pida</a></li>
+    <li>Sentencias M&uacute;ltiples</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqli.quickstart.multiple-statement" class="section">
+  <h2 class="title">Sentencias Múltiples</h2>
+  <p class="para">
+   MySQL permite opcionalmente tener múltiples sentencias en una cadena de sentencias.
+   El envío de múltiples sentencias de una sola vez reduce los viajes de ida y vuelta desde
+   el cliente al servidor, pero requiere un manejo especial.
+  </p>
+  <p class="para">
+   Las sentencias múltiples o multiconsultas deben ser ejecutadas
+   con <span class="function"><a href="mysqli.multi-query.html" class="function">mysqli_multi_query()</a></span>. Las sentencias individuales
+   de la cadena de sentencias están serparadas por un punto y coma.
+   Entonces, todos los conjuntos de resultados devueltos por las sentencias ejecutadas deben ser obtenidos.
+  </p>
+  <p class="para">
+   El servidor MySQL permite tener sentencias que devuelven conjuntos de resultados y
+   sentencias que no devuelve conjuntos de resultados en una sentencia múltiple.
+  </p>
+  <p class="para">
+   <div class="example" id="example-1425">
+    <p><strong>Ejemplo #1 Sentencias múltiples</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$mysqli </span><span style="color: #007700">= new </span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"ejemplo.com"</span><span style="color: #007700">, </span><span style="color: #DD0000">"usuario"</span><span style="color: #007700">, </span><span style="color: #DD0000">"contraseña"</span><span style="color: #007700">, </span><span style="color: #DD0000">"basedatos"</span><span style="color: #007700">);<br />if (</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect_errno</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">"Falló la conexión a MySQL: (" </span><span style="color: #007700">. </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect_errno </span><span style="color: #007700">. </span><span style="color: #DD0000">") " </span><span style="color: #007700">. </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect_error</span><span style="color: #007700">;<br />}<br /><br />if (!</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"DROP TABLE IF EXISTS test"</span><span style="color: #007700">) || !</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"CREATE TABLE test(id INT)"</span><span style="color: #007700">)) {<br />    echo </span><span style="color: #DD0000">"Falló la creación de la tabla: (" </span><span style="color: #007700">. </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno </span><span style="color: #007700">. </span><span style="color: #DD0000">") " </span><span style="color: #007700">. </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">error</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$sql </span><span style="color: #007700">= </span><span style="color: #DD0000">"SELECT COUNT(*) AS _num FROM test; "</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$sql</span><span style="color: #007700">.= </span><span style="color: #DD0000">"INSERT INTO test(id) VALUES (1); "</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$sql</span><span style="color: #007700">.= </span><span style="color: #DD0000">"SELECT COUNT(*) AS _num FROM test; "</span><span style="color: #007700">;<br /><br />if (!</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">multi_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">)) {<br />    echo </span><span style="color: #DD0000">"Falló la multiconsulta: (" </span><span style="color: #007700">. </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno </span><span style="color: #007700">. </span><span style="color: #DD0000">") " </span><span style="color: #007700">. </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">error</span><span style="color: #007700">;<br />}<br /><br />do {<br />    if (</span><span style="color: #0000BB">$resultado </span><span style="color: #007700">= </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">store_result</span><span style="color: #007700">()) {<br />        </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$resultado</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetch_all</span><span style="color: #007700">(</span><span style="color: #0000BB">MYSQLI_ASSOC</span><span style="color: #007700">));<br />        </span><span style="color: #0000BB">$resultado</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">free</span><span style="color: #007700">();<br />    }<br />} while (</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">more_results</span><span style="color: #007700">() &amp;&amp; </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">next_result</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+array(1) {
+  [0]=&gt;
+  array(1) {
+    [&quot;_num&quot;]=&gt;
+    string(1) &quot;0&quot;
+  }
+}
+array(1) {
+  [0]=&gt;
+  array(1) {
+    [&quot;_num&quot;]=&gt;
+    string(1) &quot;1&quot;
+  }
+}
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <strong>Consideraciones de seguridad</strong>
+  </p>
+  <p class="para">
+   Las funciones de la API <span class="function"><a href="mysqli.query.html" class="function">mysqli_query()</a></span> y
+   <span class="function"><a href="mysqli.real-query.html" class="function">mysqli_real_query()</a></span> no establecen una bandera de conexión necesaria
+   para activar las multiconsultas en el servidor. Se usa una llamada extra a la API para
+   las sentencias múltiples para reducir la verosimilitud de los ataques de inyecciones SQL
+   accidentales. Un atacante puede intentar añadir sentencias como
+   <code class="literal">; DROP DATABASE mysql</code> o <code class="literal">; SELECT SLEEP(999)</code>.
+   Si el atacante tiene éxito al añadir SQL a la cadena de sentencias pero
+   no se usa <code class="literal">mysqli_multi_query</code>, el servidor no
+   ejecutará la segunda sentencia SQL inyectada y maliciosa.
+  </p>
+  <p class="para">
+   <div class="example" id="example-1426">
+    <p><strong>Ejemplo #2 Inyección SQL</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$mysqli    </span><span style="color: #007700">= new </span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"ejemplo.com"</span><span style="color: #007700">, </span><span style="color: #DD0000">"usuario"</span><span style="color: #007700">, </span><span style="color: #DD0000">"contraseña"</span><span style="color: #007700">, </span><span style="color: #DD0000">"basedatos"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$resultado </span><span style="color: #007700">= </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT 1; DROP TABLE mysql.user"</span><span style="color: #007700">);<br />if (!</span><span style="color: #0000BB">$resultado</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">"Error al ejecutar la consulta: (" </span><span style="color: #007700">. </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno </span><span style="color: #007700">. </span><span style="color: #DD0000">") " </span><span style="color: #007700">. </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">error</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Error al ejecutar la consulta: (1064) You have an error in your SQL syntax;
+check the manual that corresponds to your MySQL server version for the right syntax 
+to use near &#039;DROP TABLE mysql.user&#039; at line 1
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <strong>Sentencias preparadas</strong>
+  </p>
+  <p class="para">
+   El uso de sentencias múltiples con sentencias preparadas no está soportado.
+  </p>
+  <p class="para">
+   <strong>See also</strong>
+  </p>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="methodname"><a href="mysqli.query.html" class="methodname">mysqli::query()</a></span></li>
+    <li><span class="methodname"><a href="mysqli.multi-query.html" class="methodname">mysqli::multi_query()</a></span></li>
+    <li><span class="methodname"><strong>mysqli_result::next-result()</strong></span></li>
+    <li><span class="methodname"><strong>mysqli_result::more-results()</strong></span></li>
+   </ul>
+  </p>
+ </div></div></div></body></html>

@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Verificar que los contenidos de una variable puedan ser llamados como una
+   funci&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.is-bool.html">« is_bool</a></li>
+      <li style="float: right;"><a href="function.is-countable.html">is_countable »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.var.html">Funciones de manejo de variables</a></li>
+    <li>Verificar que los contenidos de una variable puedan ser llamados como una
+   funci&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.is-callable" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">is_callable</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">is_callable</span> &mdash; <span class="dc-title">
+   Verificar que los contenidos de una variable puedan ser llamados como una
+   función
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.is-callable-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>is_callable</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$var</code></span>, <span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$syntax_only</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></span></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter reference">&$callable_name</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Verifica que los contenidos de una variable puedan ser llamados como una función.
+   Esto permite revisar que los contenidos de una variable contengan el nombre de una 
+   función válida, o que un array contenga un objeto adecuadamente codificado y un nombre de función.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.is-callable-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">var</code></dt>
+     <dd>
+      <p class="para">
+       El valor a revisar
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">solo_sintaxis</code></dt>
+     <dd>
+      <p class="para">
+       Si es <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> la función solo verifica que
+       <code class="parameter">nombre</code> pueda ser una función o un método. Solo rechazará 
+    variables simples que no sean cadenas, o un array que no tenga una estructura 
+    válida para ser usado como llamada de retorno. Se espera que las matrices válidas 
+    tengan solo 2 entradas, la primera de las cuales es un objeto o una cadena, y la segunda una cadena.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">callable_name</code></dt>
+     <dd>
+      <p class="para">
+       Recibe el &quot;nombre que puede ser llamado&quot;. En el ejemplo siguiente
+       aquél es &quot;algunaClase:algunMetodo&quot;. Tenga en cuenta, sin embargo, que a pesar de
+       la implicación de que algunaClase::algunMetodo() es un método
+       estático que puede ser llamado, este no es el caso.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.is-callable-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> si <code class="parameter">var</code> puede ser llamado, <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> 
+   de lo contrario.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.is-callable-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-5278">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>is_callable()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//  Cómo chequear una variable para ver si puede ser llamada<br />//  como una función.<br /><br />//<br />//  Variable simple que contiene una función<br />//<br /><br /></span><span style="color: #007700">function </span><span style="color: #0000BB">algunaFuncion</span><span style="color: #007700">() <br />{<br />}<br /><br /></span><span style="color: #0000BB">$variableFuncion </span><span style="color: #007700">= </span><span style="color: #DD0000">'algunaFuncion'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">is_callable</span><span style="color: #007700">(</span><span style="color: #0000BB">$variableFuncion</span><span style="color: #007700">, </span><span style="color: #0000BB">false</span><span style="color: #007700">, </span><span style="color: #0000BB">$nombre_a_llamar</span><span style="color: #007700">));  </span><span style="color: #FF8000">// bool(true)<br /><br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">$nombre_a_llamar</span><span style="color: #007700">, </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;  </span><span style="color: #FF8000">// algunaFuncion<br /><br />//<br />//  Array que contiene un método<br />//<br /><br /></span><span style="color: #007700">class </span><span style="color: #0000BB">algunaClase </span><span style="color: #007700">{<br /><br />  function </span><span style="color: #0000BB">algunMetodo</span><span style="color: #007700">() <br />  {<br />  }<br /><br />}<br /><br /><br /></span><span style="color: #0000BB">$unObjeto </span><span style="color: #007700">= new </span><span style="color: #0000BB">algunaClase</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$variableMetodo </span><span style="color: #007700">= array(</span><span style="color: #0000BB">$unObjeto</span><span style="color: #007700">, </span><span style="color: #DD0000">'algunMetodo'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">is_callable</span><span style="color: #007700">(</span><span style="color: #0000BB">$variableMetodo</span><span style="color: #007700">, </span><span style="color: #0000BB">true</span><span style="color: #007700">, </span><span style="color: #0000BB">$nombre_a_llamar</span><span style="color: #007700">));  </span><span style="color: #FF8000">//  bool(true)<br /><br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">$nombre_a_llamar</span><span style="color: #007700">, </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;  </span><span style="color: #FF8000">//  algunaClase::algunMetodo<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>   
+   <div class="example" id="example-5279">
+    <p><strong>Ejemplo #2 Función <span class="function"><strong>is_callable()</strong></span> y constructores</strong></p>
+    <div class="example-contents"><p>
+     A partir de PHP 5.3.0 la función <span class="function"><strong>is_callable()</strong></span> reporta constructores como
+     que no se pueden llamar. Esto afecta el estilo de los constructores de PHP 5
+     (<code class="literal">__construct</code>) así también el estilo de los constructors de PHP 4 (por ejemplo
+     metodos con el mismo nombre de la clase). Anteriormente, ambos casos han sido
+     considerados como llamables.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class </span><span style="color: #0000BB">Foo<br /></span><span style="color: #007700">{<br />    public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">() {}<br />    public function </span><span style="color: #0000BB">foo</span><span style="color: #007700">() {}<br />}<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(<br />    </span><span style="color: #0000BB">is_callable</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'Foo'</span><span style="color: #007700">, </span><span style="color: #DD0000">'__construct'</span><span style="color: #007700">)),<br />    </span><span style="color: #0000BB">is_callable</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'Foo'</span><span style="color: #007700">, </span><span style="color: #DD0000">'foo'</span><span style="color: #007700">))<br />);</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">bool(false)
+bool(false)</pre>
+</div>
+    </div>
+   </div>
+  </p>   
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.is-callable-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.function-exists.html" class="function" rel="rdfs-seeAlso">function_exists()</a> - Devuelve true si la funci&oacute;n dada ha sido definida</span></li>
+    <li><span class="function"><a href="function.method-exists.html" class="function" rel="rdfs-seeAlso">method_exists()</a> - Comprueba si existe un m&eacute;todo de una clase</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

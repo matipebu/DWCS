@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Ejemplos</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="radius.constants.vendor-specific.html">« RADIUS Vendor Specific Attribute Types</a></li>
+      <li style="float: right;"><a href="ref.radius.html">Funciones Radius »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.radius.html">Radius</a></li>
+    <li>Ejemplos</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="radius.examples" class="chapter">
+ <h1 class="title">Ejemplos</h1>
+
+ 
+ <p class="para">
+  ¿Cómo iniciar?
+  <ul class="itemizedlist">
+   <li class="listitem"><span class="simpara">Obtener un recurso radius</span></li>
+   <li class="listitem"><span class="simpara">Configurar la librería</span></li>
+   <li class="listitem"><span class="simpara">Crear la petición</span></li>      
+   <li class="listitem"><span class="simpara">Poner atributos</span></li>
+   <li class="listitem"><span class="simpara">Enviar la petición</span></li>
+   <li class="listitem"><span class="simpara">Recibir atributos</span></li> 
+   <li class="listitem"><span class="simpara">Cerrar el recurso radius (opcional)</span></li>
+  </ul>
+  También sirve echar un vistazo a los ejemplos en este paquete.
+ </p>
+ <p class="para">
+  El paquete contiene un ejemplo de script php. Este script demuestra como
+  autenticar con radius utilizando PAP o CHAP (md5). Si se autentica con 
+  servidores Microsoft Radius entonces no le será posible utilizar CHAP (md5). Si
+  quisiera autenticarse con servidores Microsoft tiene que utilizar
+  MS-CHAPv1 o MS-CHAPv2, pero es más complicado, porque usted necesita md4,
+  sha1 y des para generar los datos correctos. Los ejemplos adjuntos demuestran
+  todos los métodos de autenticación, incluyendo MS-CHAPv1 y MS-CHAPv2. Para tener
+  funcionando MS-CHAP necesita las extensiones <a href="ref.mcrypt.html" class="link">mcrypt</a> y
+   <a href="ref.mhash.html" class="link">mhash</a> iniciando con la
+  version 1.2 de este paquete, la extensión mcrypt ya no es necesaria.
+ </p>
+</div>
+</div></div></body></html>

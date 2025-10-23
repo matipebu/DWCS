@@ -1,0 +1,303 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Uso b&aacute;sico de SimpleXML</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="simplexml.examples.html">« Ejemplos</a></li>
+      <li style="float: right;"><a href="simplexml.examples-errors.html">Tratar con los errores XML »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="simplexml.examples.html">Ejemplos</a></li>
+    <li>Uso b&aacute;sico de SimpleXML</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="simplexml.examples-basic" class="section">
+  <h2 class="title">Uso básico de SimpleXML</h2>
+  <p class="para">
+   Muchos ejemplos en esta referencia requieren un string XML. En vez de
+   repetir este string en cada ejemplo, se ha puesto en un fichero que se
+   incluye en cada ejemplo. Este fichero se muestra en la siguiente sección de
+   ejemplo. Alternativamente, puede crearse un documento XML y leerlo con
+   <span class="function"><a href="function.simplexml-load-file.html" class="function">simplexml_load_file()</a></span>.
+  </p>
+  <p class="para">
+   <div class="example" id="example-5448">
+    <p><strong>Ejemplo #1 El fichero ejemplo.php a incluir con el string XML</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$xmlstr </span><span style="color: #007700">= &lt;&lt;&lt;XML<br /></span><span style="color: #DD0000">&lt;?xml version='1.0' standalone='yes'?&gt;<br />&lt;peliculas&gt;<br /> &lt;pelicula&gt;<br />  &lt;titulo&gt;PHP: Tras el Analilzador&lt;/titulo&gt;<br />  &lt;personajes&gt;<br />   &lt;personaje&gt;<br />    &lt;nombre&gt;Srta. Programadora&lt;/nombre&gt;<br />    &lt;actor&gt;Onlivia Actora&lt;/actor&gt;<br />   &lt;/personaje&gt;<br />   &lt;personaje&gt;<br />    &lt;nombre&gt;Sr. Programador&lt;/nombre&gt;<br />    &lt;actor&gt;El Act&amp;#211;r&lt;/actor&gt;<br />   &lt;/personaje&gt;<br />  &lt;/personajes&gt;<br />  &lt;argumento&gt;<br />   Así que, este lenguaje. Es como, un lenguaje de programación. ¿O es un<br />   lenguaje de script? Lo descubrirás en esta intrigante y temible parodia<br />   de un documental.<br />  &lt;/argumento&gt;<br />  &lt;grandes-frases&gt;<br />   &lt;frase&gt;PHP soluciona todos los problemas web&lt;/frase&gt;<br />  &lt;/grandes-frases&gt;<br />  &lt;puntuacion tipo="votos"&gt;7&lt;/puntuacion&gt;<br />  &lt;puntuacion tipo="estrellas"&gt;5&lt;/puntuacion&gt;<br /> &lt;/pelicula&gt;<br />&lt;/peliculas&gt;<br /></span><span style="color: #007700">XML;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   La simplicidad de SimpleXML se ve claramente cuando se extrae un string o
+   un número de un documento XMl básico.
+   <div class="example" id="example-5449">
+    <p><strong>Ejemplo #2 Obtener <code class="literal">&lt;argumento&gt;</code></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">include </span><span style="color: #DD0000">'ejemplo.php'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$peliculas </span><span style="color: #007700">= new </span><span style="color: #0000BB">SimpleXMLElement</span><span style="color: #007700">(</span><span style="color: #0000BB">$xmlstr</span><span style="color: #007700">);<br /><br />echo </span><span style="color: #0000BB">$peliculas</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">pelicula</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">argumento</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+
+   Así que, este lenguaje. Es como, un lenguaje de programación. ¿O es un
+   lenguaje de script? Lo descubrirás en esta intrigante y temible parodia
+   de un documental.
+
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   El acceso a elementos dentro de un documento XML que contiene caracteres no permitidos
+   por la convención de nombres de PHP (p.ej., el guión) puede realizarse encapsulando el
+   nombre del elemento dentro de un par de llaves y comillas simples.
+   <div class="example" id="example-5450">
+    <p><strong>Ejemplo #3 Obtener <code class="literal">&lt;frase&gt;</code></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">include </span><span style="color: #DD0000">'ejemplo.php'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$peliculas </span><span style="color: #007700">= new </span><span style="color: #0000BB">SimpleXMLElement</span><span style="color: #007700">(</span><span style="color: #0000BB">$xmlstr</span><span style="color: #007700">);<br /><br />echo </span><span style="color: #0000BB">$peliculas</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">pelicula</span><span style="color: #007700">-&gt;{</span><span style="color: #DD0000">'grandes-frases'</span><span style="color: #007700">}-&gt;</span><span style="color: #0000BB">frase</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+PHP soluciona todos los problemas web
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-5451">
+    <p><strong>Ejemplo #4 Acceder a elementos no únicos en SimpleXML</strong></p>
+    <div class="example-contents"><p>
+     Cuando existen múltiples instancias de un elemento como hijos de un único
+     elemento padre, se aplican las técnicas normales de iteración.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">include </span><span style="color: #DD0000">'ejemplo.php'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$peliculas </span><span style="color: #007700">= new </span><span style="color: #0000BB">SimpleXMLElement</span><span style="color: #007700">(</span><span style="color: #0000BB">$xmlstr</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* Para cada &lt;personaje&gt;, se muestra cada &lt;nombre&gt;. */<br /></span><span style="color: #007700">foreach (</span><span style="color: #0000BB">$peliculas</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">pelicula</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">personajes</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">personaje </span><span style="color: #007700">as </span><span style="color: #0000BB">$personaje</span><span style="color: #007700">) {<br />   echo </span><span style="color: #0000BB">$personaje</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">nombre</span><span style="color: #007700">, </span><span style="color: #DD0000">' interpretado por '</span><span style="color: #007700">, </span><span style="color: #0000BB">$personaje</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">actor</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Srta. Programadora interpretado por Onlivia Actora
+Sr. Programador interpretado por El ActÓr
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Las propiedades (<code class="literal">$peliculas-&gt;pelicula</code> en el ejemplo anterior)
+    no son arrays. Son objetos <a href="class.iterator.html" class="link">iterables</a>
+    y <a href="class.arrayaccess.html" class="link">accesibles</a>.
+   </p>
+  </p></blockquote>
+  <p class="para">
+   <div class="example" id="example-5452">
+    <p><strong>Ejemplo #5 Utilizar atributos</strong></p>
+    <div class="example-contents"><p>
+     Hasta aquí, únicamente se ha cubierto el trabajo de leer nombres de elementos
+     y sus valores. SimpleXML puede también acceder a los atributos de los elementos.
+     Para acceder a ellos, se realiza como si fuesen elementos de un
+     <span class="type"><a href="language.types.array.html" class="type array">array</a></span>.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">include </span><span style="color: #DD0000">'ejemplo.php'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$peliculas </span><span style="color: #007700">= new </span><span style="color: #0000BB">SimpleXMLElement</span><span style="color: #007700">(</span><span style="color: #0000BB">$xmlstr</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* Acceder a los nodos &lt;puntuacion&gt; de la primera película.<br /> * Mostrar la escala de puntuación también. */<br /></span><span style="color: #007700">foreach (</span><span style="color: #0000BB">$peliculas</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">pelicula</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">puntuacion </span><span style="color: #007700">as </span><span style="color: #0000BB">$puntuacion</span><span style="color: #007700">) {<br />    switch((string) </span><span style="color: #0000BB">$puntuacion</span><span style="color: #007700">[</span><span style="color: #DD0000">'tipo'</span><span style="color: #007700">]) { </span><span style="color: #FF8000">// Obtener los atributos como índices del elemento<br />    </span><span style="color: #007700">case </span><span style="color: #DD0000">'votos'</span><span style="color: #007700">:<br />        echo </span><span style="color: #0000BB">$puntuacion</span><span style="color: #007700">, </span><span style="color: #DD0000">' votos positivos'</span><span style="color: #007700">;<br />        break;<br />    case </span><span style="color: #DD0000">'estrellas'</span><span style="color: #007700">:<br />        echo </span><span style="color: #0000BB">$puntuacion</span><span style="color: #007700">, </span><span style="color: #DD0000">' estrellas'</span><span style="color: #007700">;<br />        break;<br />    }<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+7 votos positivos5 estrellas
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-5453">
+    <p><strong>Ejemplo #6 Comparar elementos y atributos con texto</strong></p>
+    <div class="example-contents"><p>
+     Para comparar un elemento o atributo con un string o pasarlo a una
+     función que requiera un string, debe realizarse una conversión a string empleando
+     <code class="literal">(string)</code>. De lo contrario, PHP trata al elemento como un objeto.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php     <br /></span><span style="color: #007700">include </span><span style="color: #DD0000">'ejemplo.php'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$peliculas </span><span style="color: #007700">= new </span><span style="color: #0000BB">SimpleXMLElement</span><span style="color: #007700">(</span><span style="color: #0000BB">$xmlstr</span><span style="color: #007700">);<br /><br />if ((string) </span><span style="color: #0000BB">$peliculas</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">pelicula</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">titulo </span><span style="color: #007700">== </span><span style="color: #DD0000">'PHP: Tras el Analilzador'</span><span style="color: #007700">) {<br />    print </span><span style="color: #DD0000">'Mi película favorita.'</span><span style="color: #007700">;<br />}<br /><br />echo </span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">((string) </span><span style="color: #0000BB">$peliculas</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">pelicula</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">titulo</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Mi película favorita.PHP: Tras el Analilzador
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-5454">
+    <p><strong>Ejemplo #7 Comparar dos elementos</strong></p>
+    <div class="example-contents"><p>
+     Dos SimpleXMLElements son considerados distintos incluso cuando ambos apuntan
+     al mismo elemento desde PHP 5.2.0.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">include </span><span style="color: #DD0000">'ejemplo.php'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$pelicula1 </span><span style="color: #007700">= new </span><span style="color: #0000BB">SimpleXMLElement</span><span style="color: #007700">(</span><span style="color: #0000BB">$xmlstr</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$pelicula2 </span><span style="color: #007700">= new </span><span style="color: #0000BB">SimpleXMLElement</span><span style="color: #007700">(</span><span style="color: #0000BB">$xmlstr</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$pelicula1 </span><span style="color: #007700">== </span><span style="color: #0000BB">$pelicula2</span><span style="color: #007700">); </span><span style="color: #FF8000">// falso desde PHP 5.2.0<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+bool(false)
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-5455">
+    <p><strong>Ejemplo #8 Utilizar XPath</strong></p>
+    <div class="example-contents"><p>
+     SimpleXML incorpora soporte para <abbr title="XML Path Language">XPath</abbr>.
+     Para encontrar todos los elementos <code class="literal">&lt;personaje&gt;</code>:
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">include </span><span style="color: #DD0000">'ejemplo.php'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$peliculas </span><span style="color: #007700">= new </span><span style="color: #0000BB">SimpleXMLElement</span><span style="color: #007700">(</span><span style="color: #0000BB">$xmlstr</span><span style="color: #007700">);<br /><br />foreach (</span><span style="color: #0000BB">$peliculas</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">xpath</span><span style="color: #007700">(</span><span style="color: #DD0000">'//personaje'</span><span style="color: #007700">) as </span><span style="color: #0000BB">$personaje</span><span style="color: #007700">) {<br />    echo </span><span style="color: #0000BB">$personaje</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">nombre </span><span style="color: #007700">. </span><span style="color: #DD0000">' interpretado por ' </span><span style="color: #007700">. </span><span style="color: #0000BB">$personaje</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">actor</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>
+     &#039;<code class="literal">//</code>&#039; actúa como un comodín. Para especificar una ruta
+     absoluta, hay que omitir una de las dos barras.
+    </p></div>
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Srta. Programadora interpretado por Onlivia Actora
+Sr. Programador interpretado por El ActÓr
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-5456">
+    <p><strong>Ejemplo #9 Establecer valores</strong></p>
+    <div class="example-contents"><p>
+     Los datos en SimpleXML no tienen que ser constantes. El objeto permite
+     que se manipulen todos sus elementos.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">include </span><span style="color: #DD0000">'ejemplo.php'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$peliculas </span><span style="color: #007700">= new </span><span style="color: #0000BB">SimpleXMLElement</span><span style="color: #007700">(</span><span style="color: #0000BB">$xmlstr</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$peliculas</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">pelicula</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">personajes</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">personaje</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">nombre </span><span style="color: #007700">= </span><span style="color: #DD0000">'Srta. Programadora'</span><span style="color: #007700">;<br /><br />echo </span><span style="color: #0000BB">$peliculas</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">asXML</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+&lt;?xml version=&quot;1.0&quot; standalone=&quot;yes&quot;?&gt;
+&lt;peliculas&gt;
+ &lt;pelicula&gt;
+  &lt;titulo&gt;PHP: Tras el Analilzador&lt;/titulo&gt;
+  &lt;personajes&gt;
+   &lt;personaje&gt;
+    &lt;nombre&gt;Srta. Programadora&lt;/nombre&gt;
+    &lt;actor&gt;Onlivia Actora&lt;/actor&gt;
+   &lt;/personaje&gt;
+   &lt;personaje&gt;
+    &lt;nombre&gt;Sr. Programador&lt;/nombre&gt;
+    &lt;actor&gt;El Act&amp;#xD3;r&lt;/actor&gt;
+   &lt;/personaje&gt;
+  &lt;/personajes&gt;
+  &lt;argumento&gt;
+   Así que, este lenguaje. Es como, un lenguaje de programación. ¿O es un
+   lenguaje de script? Lo descubrirás en esta intrigante y temible parodia
+   de un documental.
+  &lt;/argumento&gt;
+  &lt;grandes-frases&gt;
+   &lt;frase&gt;PHP soluciona todos los problemas web&lt;/frase&gt;
+  &lt;/grandes-frases&gt;
+  &lt;puntuacion tipo=&quot;votos&quot;&gt;7&lt;/puntuacion&gt;
+  &lt;puntuacion tipo=&quot;estrellas&quot;&gt;5&lt;/puntuacion&gt;
+ &lt;/pelicula&gt;
+&lt;/peliculas&gt;
++</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-5457">
+    <p><strong>Ejemplo #10 Añadir elementos y atributos</strong></p>
+    <div class="example-contents"><p>
+     Desde PHP 5.1.3, SimpleXML tiene la capacidad de añadir fácilmente hijos
+     y atributos.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">include </span><span style="color: #DD0000">'ejemplo.php'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$peliculas </span><span style="color: #007700">= new </span><span style="color: #0000BB">SimpleXMLElement</span><span style="color: #007700">(</span><span style="color: #0000BB">$xmlstr</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$personaje </span><span style="color: #007700">= </span><span style="color: #0000BB">$peliculas</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">pelicula</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">personajes</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addChild</span><span style="color: #007700">(</span><span style="color: #DD0000">'personaje'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$personaje</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addChild</span><span style="color: #007700">(</span><span style="color: #DD0000">'nombre'</span><span style="color: #007700">, </span><span style="color: #DD0000">'Sr. Analizador'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$personaje</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addChild</span><span style="color: #007700">(</span><span style="color: #DD0000">'actor'</span><span style="color: #007700">, </span><span style="color: #DD0000">'John Doe'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$puntuacion </span><span style="color: #007700">= </span><span style="color: #0000BB">$peliculas</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">pelicula</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">addChild</span><span style="color: #007700">(</span><span style="color: #DD0000">'puntuacion'</span><span style="color: #007700">, </span><span style="color: #DD0000">'Todos los públicos'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$puntuacion</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addAttribute</span><span style="color: #007700">(</span><span style="color: #DD0000">'tipo'</span><span style="color: #007700">, </span><span style="color: #DD0000">'clasificacion'</span><span style="color: #007700">);<br /><br />echo </span><span style="color: #0000BB">$peliculas</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">asXML</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+&lt;?xml version=&quot;1.0&quot; standalone=&quot;yes&quot;?&gt;
+&lt;peliculas&gt;
+ &lt;pelicula&gt;
+  &lt;titulo&gt;PHP: Tras el Analizador&lt;/titulo&gt;
+  &lt;personajes&gt;
+   &lt;personaje&gt;
+    &lt;nombre&gt;Srta. Programadora&lt;/nombre&gt;
+    &lt;actor&gt;Onlivia Actora&lt;/actor&gt;
+   &lt;/personaje&gt;
+   &lt;personaje&gt;
+    &lt;nombre&gt;Sr. Programador&lt;/nombre&gt;
+    &lt;actor&gt;El Actor&lt;/actor&gt;
+   &lt;/personaje&gt;
+  &lt;personaje&gt;&lt;nombre&gt;Sr. Analizador&lt;/nombre&gt;&lt;actor&gt;John Doe&lt;/actor&gt;&lt;/personaje&gt;&lt;/personajes&gt;
+  &lt;argumento&gt;
+   Así que, este lenguaje. Es como, un lenguaje de programación. ¿O es un
+   lenguaje de script? Lo descubrirás en esta intrigante y temible parodia
+   de un documental.
+  &lt;/argumento&gt;
+  &lt;grandes-frases&gt;
+   &lt;frase&gt;PHP soluciona todos los problemas web&lt;/frase&gt;
+  &lt;/grandes-frases&gt;
+  &lt;puntuacion tipo=&quot;votos&quot;&gt;7&lt;/puntuacion&gt;
+  &lt;puntuacion tipo=&quot;estrellas&quot;&gt;5&lt;/puntuacion&gt;
+  &lt;puntuacion tipo=&quot;clasificacion&quot;&gt;Todos los públicos&lt;/puntuacion&gt;
+ &lt;/pelicula&gt;
+&lt;/peliculas&gt;
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-5458">
+    <p><strong>Ejemplo #11 Interoperatibilidad con DOM</strong></p>
+    <div class="example-contents"><p>
+     PHP tiene un mecanismo para convertir nodos XML entre los formatos
+     SimpleXML y DOM. Este ejemplo muestra cómo cambiar un elemento DOM a
+     SimpleXML.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$dom </span><span style="color: #007700">= new </span><span style="color: #0000BB">DOMDocument</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$dom</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">loadXML</span><span style="color: #007700">(</span><span style="color: #DD0000">'&lt;libros&gt;&lt;libro&gt;&lt;titulo&gt;bla&lt;/titulo&gt;&lt;/libro&gt;&lt;/libros&gt;'</span><span style="color: #007700">);<br />if (!</span><span style="color: #0000BB">$dom</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">'Error al analizar el documento'</span><span style="color: #007700">);<br />    exit;<br />}<br /><br /></span><span style="color: #0000BB">$s </span><span style="color: #007700">= </span><span style="color: #0000BB">simplexml_import_dom</span><span style="color: #007700">(</span><span style="color: #0000BB">$dom</span><span style="color: #007700">);<br /><br />echo </span><span style="color: #0000BB">$s</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">libro</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">titulo</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+bla
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div></div></div></body></html>

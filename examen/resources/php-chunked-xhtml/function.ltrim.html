@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Retira espacios en blanco (u otros caracteres) del inicio de un string</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.localeconv.html">« localeconv</a></li>
+      <li style="float: right;"><a href="function.md5.html">md5 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.strings.html">Funciones de strings</a></li>
+    <li>Retira espacios en blanco (u otros caracteres) del inicio de un string</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.ltrim" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ltrim</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">ltrim</span> &mdash; <span class="dc-title">Retira espacios en blanco (u otros caracteres) del inicio de un string</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ltrim-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>ltrim</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$str</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$character_mask</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Retira espacios en blanco (u otros caracteres) del inicio de un string.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.ltrim-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">str</code></dt>
+     <dd>
+      <p class="para">
+       El string de entrada.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">character_mask</code></dt>
+     <dd>
+      <p class="para">
+       Se puede también especificar los caracteres que se desean retirar por medio del
+       parámetro <code class="parameter">character_mask</code>.
+       Simplemente se listan todos los caracteres que se quieren retirar. Con
+       <code class="literal">..</code> se puede especificar un rango de caracteres.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.ltrim-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Esta función devuelve un string con los espacios en blanco retirados del
+   inicio de <code class="parameter">str</code>.
+   Sin el segundo parámetro, <span class="function"><strong>ltrim()</strong></span> retirará estos caracteres:
+   
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      &quot; &quot; (<abbr title="American Standard Code for Information Interchange">ASCII</abbr> <code class="literal">32</code>
+      (<code class="literal">0x20</code>)), un espacio ordinario.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;\t&quot; (<abbr title="American Standard Code for Information Interchange">ASCII</abbr> <code class="literal">9</code>
+      (<code class="literal">0x09</code>)), un tabulador.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;\n&quot; (<abbr title="American Standard Code for Information Interchange">ASCII</abbr> <code class="literal">10</code>
+      (<code class="literal">0x0A</code>)), una nueva línea (line feed).
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;\r&quot; (<abbr title="American Standard Code for Information Interchange">ASCII</abbr> <code class="literal">13</code>
+      (<code class="literal">0x0D</code>)), un retorno de carro.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;\0&quot; (<abbr title="American Standard Code for Information Interchange">ASCII</abbr> <code class="literal">0</code>
+      (<code class="literal">0x00</code>)), el byte <code class="literal">NULL</code>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara"> 
+      &quot;\x0B&quot; (<abbr title="American Standard Code for Information Interchange">ASCII</abbr> <code class="literal">11</code>
+      (<code class="literal">0x0B</code>)), un tabulador vertical.
+     </span>
+    </li>
+   </ul>
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.ltrim-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4794">
+    <p><strong>Ejemplo #1 Ejemplo de uso de <span class="function"><strong>ltrim()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$text </span><span style="color: #007700">= </span><span style="color: #DD0000">"\t\tThese are a few words :) ...  "</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$binary </span><span style="color: #007700">= </span><span style="color: #DD0000">"\x09Example string\x0A"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$hello  </span><span style="color: #007700">= </span><span style="color: #DD0000">"Hello World"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$text</span><span style="color: #007700">, </span><span style="color: #0000BB">$binary</span><span style="color: #007700">, </span><span style="color: #0000BB">$hello</span><span style="color: #007700">);<br /><br />print </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /><br /></span><span style="color: #0000BB">$trimmed </span><span style="color: #007700">= </span><span style="color: #0000BB">ltrim</span><span style="color: #007700">(</span><span style="color: #0000BB">$text</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$trimmed</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$trimmed </span><span style="color: #007700">= </span><span style="color: #0000BB">ltrim</span><span style="color: #007700">(</span><span style="color: #0000BB">$text</span><span style="color: #007700">, </span><span style="color: #DD0000">" \t."</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$trimmed</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$trimmed </span><span style="color: #007700">= </span><span style="color: #0000BB">ltrim</span><span style="color: #007700">(</span><span style="color: #0000BB">$hello</span><span style="color: #007700">, </span><span style="color: #DD0000">"Hdle"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$trimmed</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// retira los caracteres ASCII de control al inicio de $binary<br />// (de 0 a 31 inclusive)<br /></span><span style="color: #0000BB">$clean </span><span style="color: #007700">= </span><span style="color: #0000BB">ltrim</span><span style="color: #007700">(</span><span style="color: #0000BB">$binary</span><span style="color: #007700">, </span><span style="color: #DD0000">"\x00..\x1F"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$clean</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">string(32) &quot;        These are a few words :) ...  &quot;
+string(16) &quot;    Example string
+&quot;
+string(11) &quot;Hello World&quot;
+
+string(30) &quot;These are a few words :) ...  &quot;
+string(30) &quot;These are a few words :) ...  &quot;
+string(7) &quot;o World&quot;
+string(15) &quot;Example string
+&quot;</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.ltrim-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.trim.html" class="function" rel="rdfs-seeAlso">trim()</a> - Elimina espacio en blanco (u otro tipo de caracteres) del inicio y el final de la cadena</span></li>
+    <li><span class="function"><a href="function.rtrim.html" class="function" rel="rdfs-seeAlso">rtrim()</a> - Retira los espacios en blanco (u otros caracteres) del final de un string</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

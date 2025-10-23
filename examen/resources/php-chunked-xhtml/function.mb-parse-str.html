@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Analiza datos GET/POST/COOKIE y establece varialbes globales</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.mb-output-handler.html">« mb_output_handler</a></li>
+      <li style="float: right;"><a href="function.mb-preferred-mime-name.html">mb_preferred_mime_name »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.mbstring.html">Funciones de cadenas de caracteres multibyte</a></li>
+    <li>Analiza datos GET/POST/COOKIE y establece varialbes globales</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mb-parse-str" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mb_parse_str</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mb_parse_str</span> &mdash; <span class="dc-title">Analiza datos GET/POST/COOKIE y establece varialbes globales</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.mb-parse-str-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mb_parse_str</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$encoded_string</code></span>, <span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter reference">&$result</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Analiza datos GET/POST/COOKIE y
+   establece variables globales. Ya que PHP no proporciona datos POST/COOKIE
+   sin tratar, solamente se puede usar para datos GET por ahora. Analiza los datos
+   del URL codificado, detecta la codificación, convierte la codificación a la codificación
+   interna y establece los valores del <span class="type"><a href="language.types.array.html" class="type array">array</a></span>  <code class="parameter">result</code> o
+   de las variables globales.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.mb-parse-str-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">encoded_string</code></dt>
+     <dd>
+      <p class="para">
+       Los datos del URL codificado.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">result</code></dt>
+     <dd>
+      <p class="para">
+       Un <span class="type"><a href="language.types.array.html" class="type array">array</a></span> que contiene la decodificación y los valores convertidos de la codificación de caracteres.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.mb-parse-str-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.mb-parse-str-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.mb-detect-order.html" class="function" rel="rdfs-seeAlso">mb_detect_order()</a> - Establece/obtiene el orden de detecci&oacute;n de codificaciones de caracteres</span></li>
+    <li><span class="function"><a href="function.mb-internal-encoding.html" class="function" rel="rdfs-seeAlso">mb_internal_encoding()</a> - Establece/obtiene la codificaci&oacute;n de caracteres interna</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

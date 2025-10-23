@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Descomprime una cadena comprimida</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.gztell.html">« gztell</a></li>
+      <li style="float: right;"><a href="function.gzwrite.html">gzwrite »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.zlib.html">Funciones de Zlib</a></li>
+    <li>Descomprime una cadena comprimida</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.gzuncompress" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">gzuncompress</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.1, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">gzuncompress</span> &mdash; <span class="dc-title">Descomprime una cadena comprimida</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.gzuncompress-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>gzuncompress</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$data</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$max_length</code><span class="initializer"> = 0</span></span>): <span class="type"><span class="type"><a href="language.types.string.html" class="type string">string</a></span>|<span class="type"><a href="language.types.value.html" class="type false">false</a></span></span></div>
+
+  <p class="para rdfs-comment">
+   Está función descomprime una cadena comprimida
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.gzuncompress-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">data</code></dt>
+     <dd>
+      <p class="para">
+       Los datos comprimidos con <span class="function"><a href="function.gzcompress.html" class="function">gzcompress()</a></span>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">max_length</code></dt>
+     <dd>
+      <p class="para">
+       La longitud máxima de datos a decodificar.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.gzuncompress-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Los datos originales sin comprimir o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+  <p class="para">
+   La función retornará un error si los datos descomprimidos son más de
+   32768 veces la longitud de la entrada comprimida <code class="parameter">data</code>
+   o mayores que el parámetro opcional <code class="parameter">max_length</code>.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.gzuncompress-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-891">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>gzuncompress()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$compressed   </span><span style="color: #007700">= </span><span style="color: #0000BB">gzcompress</span><span style="color: #007700">(</span><span style="color: #DD0000">'Compress me'</span><span style="color: #007700">, </span><span style="color: #0000BB">9</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$uncompressed </span><span style="color: #007700">= </span><span style="color: #0000BB">gzuncompress</span><span style="color: #007700">(</span><span style="color: #0000BB">$compressed</span><span style="color: #007700">);<br />echo </span><span style="color: #0000BB">$uncompressed</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.gzuncompress-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.gzcompress.html" class="function" rel="rdfs-seeAlso">gzcompress()</a> - Comprime una cadena</span></li>
+    <li><span class="function"><a href="function.gzinflate.html" class="function" rel="rdfs-seeAlso">gzinflate()</a> - Descomprime una cadena comprimida</span></li>
+    <li><span class="function"><a href="function.gzdeflate.html" class="function" rel="rdfs-seeAlso">gzdeflate()</a> - Comprime una cadena</span></li>
+    <li><span class="function"><a href="function.gzencode.html" class="function" rel="rdfs-seeAlso">gzencode()</a> - Crea una cadena comprimida con gzip</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

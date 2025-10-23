@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Retorna el pr&oacute;ximo campo del resultset</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqli-result.fetch-column.html">« mysqli_result::fetch_column</a></li>
+      <li style="float: right;"><a href="mysqli-result.fetch-field-direct.html">mysqli_result::fetch_field_direct »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.mysqli-result.html">mysqli_result</a></li>
+    <li>Retorna el pr&oacute;ximo campo del resultset</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqli-result.fetch-field" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysqli_result::fetch_field</h1>
+  <h1 class="refname">mysqli_fetch_field</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mysqli_result::fetch_field</span> -- <span class="refname">mysqli_fetch_field</span> &mdash; <span class="dc-title">Retorna el próximo campo del resultset</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mysqli-result.fetch-field-description">
+  <h3 class="title">Descripción</h3>
+  <p class="para">Estilo orientado a objetos</p>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mysqli_result::fetch_field</strong></span>(): <span class="type"><a href="language.types.object.html" class="type object">object</a></span></div>
+
+  <p class="para rdfs-comment">Estilo por procedimientos</p>
+  <div class="methodsynopsis dc-description"><span class="methodname"><strong>mysqli_fetch_field</strong></span>(<span class="methodparam"><span class="type"><a href="class.mysqli-result.html" class="type mysqli_result">mysqli_result</a></span> <code class="parameter">$result</code></span>): <span class="type"><a href="language.types.object.html" class="type object">object</a></span></div>
+
+  <p class="para rdfs-comment">
+   Retorna la definición de una columna del resultset como un objeto. Para
+   obtener la información de todas las columnas del resultset hay que llamar esta
+   función reiterativamente.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mysqli-result.fetch-field-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    <dt><code class="parameter">
+result</code></dt><dd><p class="para">Sólo estilo por procedimientos: Un conjunto de identificadores
+de resultados devuelto por <span class="function"><a href="mysqli.query.html" class="function">mysqli_query()</a></span>, <span class="function"><a href="mysqli.store-result.html" class="function">mysqli_store_result()</a></span>
+o <span class="function"><a href="mysqli.use-result.html" class="function">mysqli_use_result()</a></span>.</p></dd>
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mysqli-result.fetch-field-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Retorna un objeto que contiene la información de la columna o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>
+   en el caso de que la información no esté disponible.
+  </p>
+  <p class="para">
+  <table class="doctable table">
+   <caption><strong>Propiedades del objeto</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Propiedad</th>
+      <th>Descripción</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>name</td>
+      <td>El nombre de la columna</td>
+     </tr>
+
+     <tr>
+      <td>orgname</td>
+      <td>El nombre original de la columna en caso que se haya especificado un alias</td>
+     </tr>
+
+     <tr>
+      <td>table</td>
+      <td>El nombre de la tabla al que este campo pertenece (si no es calculado)</td>
+     </tr>
+
+     <tr>
+      <td>orgtable</td>
+      <td>El nombre original de la tabla en caso que se haya especificado un alias</td>
+     </tr>
+
+     <tr>
+      <td>def</td>
+      <td>Reservado para el valor por omisión, por ahora es siempre &quot;&quot;</td>
+     </tr>
+
+     <tr>
+      <td>db</td>
+      <td>Base de datos (desde PHP 5.3.6)</td>
+     </tr>
+
+     <tr>
+      <td>catalog</td>
+      <td>El nombre del catálogo, siempre &quot;def&quot; (desde PHP 5.3.6)</td>
+     </tr>
+     
+     <tr>
+      <td>max_length</td>
+      <td>El largo máximo del campo en el resultset</td>
+     </tr>
+
+     <tr>
+      <td>length</td>
+      <td>El largo del campo, tal como se especifica en la definición de la tabla.</td>
+     </tr>
+
+     <tr>
+      <td>charsetnr</td>
+      <td>El número del juego de caracteres del campo.</td>
+     </tr>
+
+     <tr>
+      <td>flags</td>
+      <td>Un entero que representa las banderas de bits del campo.</td>
+     </tr>
+
+     <tr>
+      <td>type</td>
+      <td>El tipo de datos que se usa en este campo</td>
+     </tr>
+
+     <tr>
+      <td>decimals</td>
+      <td>El número de decimales utilizado (para campos de tipo integer)</td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mysqli-result.fetch-field-examples">
+  <h3 class="title">Ejemplos</h3>
+  <div class="example" id="example-1516">
+   <p><strong>Ejemplo #1 Estilo orientado a objetos</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$mysqli </span><span style="color: #007700">= new </span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">, </span><span style="color: #DD0000">"my_user"</span><span style="color: #007700">, </span><span style="color: #DD0000">"my_password"</span><span style="color: #007700">, </span><span style="color: #DD0000">"world"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* verificar la conexión */<br /></span><span style="color: #007700">if (</span><span style="color: #0000BB">mysqli_connect_errno</span><span style="color: #007700">()) {<br />    </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Conexión fallida: %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">mysqli_connect_error</span><span style="color: #007700">());<br />    exit();<br />}<br /><br /></span><span style="color: #0000BB">$query </span><span style="color: #007700">= </span><span style="color: #DD0000">"SELECT Name, SurfaceArea from Country ORDER BY Code LIMIT 5"</span><span style="color: #007700">;<br /><br />if (</span><span style="color: #0000BB">$result </span><span style="color: #007700">= </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">)) {<br /><br />    </span><span style="color: #FF8000">/* Obtener la información del campo de cada columna */<br />    </span><span style="color: #007700">while (</span><span style="color: #0000BB">$finfo </span><span style="color: #007700">= </span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetch_field</span><span style="color: #007700">()) {<br /><br />        </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Nombre:     %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$finfo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name</span><span style="color: #007700">);<br />        </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Tabla:    %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$finfo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">table</span><span style="color: #007700">);<br />        </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Largo max: %d\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$finfo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">max_length</span><span style="color: #007700">);<br />        </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Banderas:    %d\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$finfo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">flags</span><span style="color: #007700">);<br />        </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Tipo:     %d\n\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$finfo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">type</span><span style="color: #007700">);<br />    }<br />    </span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br />}<br /><br /></span><span style="color: #FF8000">/* cerrar la conexión */<br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+  <div class="example" id="example-1517">
+   <p><strong>Ejemplo #2 Estilo por procedimientos</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$link </span><span style="color: #007700">= </span><span style="color: #0000BB">mysqli_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">, </span><span style="color: #DD0000">"my_user"</span><span style="color: #007700">, </span><span style="color: #DD0000">"my_password"</span><span style="color: #007700">, </span><span style="color: #DD0000">"world"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* verificar la conexión *<br />if (mysqli_connect_errno()) {<br />    printf("Conexión fallida: %s\n", mysqli_connect_error());<br />    exit();<br />}<br /><br />$query = "SELECT Name, SurfaceArea from Country ORDER BY Code LIMIT 5";<br /><br />if ($result = mysqli_query($link, $query)) {<br /><br />    /* Obtener la información del campo de cada columna */<br />    </span><span style="color: #007700">while (</span><span style="color: #0000BB">$finfo </span><span style="color: #007700">= </span><span style="color: #0000BB">mysqli_fetch_field</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">)) {<br /><br />        </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Nombre:     %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$finfo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name</span><span style="color: #007700">);<br />        </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Tabla:      %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$finfo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">table</span><span style="color: #007700">);<br />        </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Largo max:  %d\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$finfo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">max_length</span><span style="color: #007700">);<br />        </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Banderas:   %d\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$finfo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">flags</span><span style="color: #007700">);<br />        </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Tipo:       %d\n\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$finfo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">type</span><span style="color: #007700">);<br />    }<br />    </span><span style="color: #0000BB">mysqli_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">/* cerrar la conexión */<br /></span><span style="color: #0000BB">mysqli_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado de los ejemplos sería:</p></div>
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Nombre:     Name
+Tabla:      Country
+Largo max:  11
+Banderas:   1
+Tipo:       254
+
+Nombre:     SurfaceArea
+Tabla:      Country
+Largo max:  10
+Banderas:   32769
+Tipo:       4</pre>
+</div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mysqli-result.fetch-field-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="mysqli-result.field-count.html" class="function" rel="rdfs-seeAlso">mysqli_num_fields()</a> - Obtiene el n&uacute;mero de campos de un resultado</span></li>
+    <li><span class="function"><a href="mysqli-result.fetch-field-direct.html" class="function" rel="rdfs-seeAlso">mysqli_fetch_field_direct()</a> - Obtener los metadatos de un &uacute;nico campo</span></li>
+    <li><span class="function"><a href="mysqli-result.fetch-fields.html" class="function" rel="rdfs-seeAlso">mysqli_fetch_fields()</a> - Devuelve un array de objetos que representan los campos de un conjunto de resultados</span></li>
+    <li><span class="function"><a href="mysqli-result.field-seek.html" class="function" rel="rdfs-seeAlso">mysqli_field_seek()</a> - Establecer el puntero del resultado al &iacute;ndice del campo especificado</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Devuelve la pendiente de activaci&oacute;n para el n&uacute;mero de neurona y de capa proporcionados</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.fann-get-activation-function.html">« fann_get_activation_function</a></li>
+      <li style="float: right;"><a href="function.fann-get-bias-array.html">fann_get_bias_array »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.fann.html">Funciones de Fann</a></li>
+    <li>Devuelve la pendiente de activaci&oacute;n para el n&uacute;mero de neurona y de capa proporcionados</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.fann-get-activation-steepness" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">fann_get_activation_steepness</h1>
+  <p class="verinfo">(PECL fann &gt;= 1.0.0)</p><p class="refpurpose"><span class="refname">fann_get_activation_steepness</span> &mdash; <span class="dc-title">Devuelve la pendiente de activación para el número de neurona y de capa proporcionados</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.fann-get-activation-steepness-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>fann_get_activation_steepness</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$ann</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$layer</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$neuron</code></span>): <span class="type"><a href="language.types.float.html" class="type float">float</a></span></div>
+
+  <p class="para rdfs-comment">
+   Obtiene la pendiente de activación para la neurona número <code class="literal">neuron</code> en la capa número
+   <code class="literal">layer</code>, contando la capa de entrada como capa 0.
+  </p>
+  <p class="para">
+   No es posible obtener la pendiente de activación para neuronas de la capa de entrada.
+  </p>
+  <p class="para">
+   La pendiente de una función de activación dice algo sobre cómo de rápido va la función de activación
+   del mínimo al máximo. Un valor alto para la función de activación proporcionará un entrenamiento más agresivo.
+  </p>
+  <p class="para">
+   Cuando se entrenan redes neuronales donde los valores de salida deberían estar en los extremos
+   (normalmente 0 y 1, dependiendo de la función de activación), se puede emplear una función de activación (p.ej.  1.0).
+  </p>
+  <p class="para">
+   La pendiente de activación predeterminada es 0.5.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.fann-get-activation-steepness-parameters">
+  <h3 class="title">Parámetros</h3>
+  <dl>
+   
+    <dt><code class="parameter">ann</code></dt>
+    <dd>
+     <p class="para">Un <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> de red neuronal.</p>
+    </dd>
+   
+   
+    <dt><code class="parameter">layer</code></dt>
+    <dd>
+     <p class="para">
+      El número de capa
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">neuron</code></dt>
+    <dd>
+     <p class="para">
+      El número de neurona
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.fann-get-activation-steepness-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   La pendiente de activación para la neurona o -1 si la neurona no está definida en la red neuronal, o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.fann-get-activation-steepness-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.fann-set-activation-function.html" class="function" rel="rdfs-seeAlso">fann_set_activation_function()</a> - Establece la funci&oacute;n de activaci&oacute;n para la neurona y capa proporcionadas</span></li>
+    <li><span class="function"><a href="function.fann-set-activation-steepness-layer.html" class="function" rel="rdfs-seeAlso">fann_set_activation_steepness_layer()</a> - Establece la pendiente de activaci&oacute;n para todas las neuronas del n&uacute;mero de capa proporcionada</span></li>
+    <li><span class="function"><a href="function.fann-set-activation-steepness-hidden.html" class="function" rel="rdfs-seeAlso">fann_set_activation_steepness_hidden()</a> - Establece la pendiente de la activaci&oacute;n para todas las neuronas de todas las capas ocultas</span></li>
+    <li><span class="function"><a href="function.fann-set-activation-steepness-output.html" class="function" rel="rdfs-seeAlso">fann_set_activation_steepness_output()</a> - Establece la pendiente de activaci&oacute;n de la capa de salida</span></li>
+    <li><span class="function"><a href="function.fann-set-activation-steepness.html" class="function" rel="rdfs-seeAlso">fann_set_activation_steepness()</a> - Establece la pendiente de activaci&oacute;n el n&uacute;mero de neurona y capa proporcionados</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+
+</div></div></div></body></html>

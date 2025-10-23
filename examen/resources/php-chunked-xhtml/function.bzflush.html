@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Fuerza la escritura de todos los datos del b&uacute;fer</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.bzerrstr.html">« bzerrstr</a></li>
+      <li style="float: right;"><a href="function.bzopen.html">bzopen »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.bzip2.html">Funciones de Bzip2</a></li>
+    <li>Fuerza la escritura de todos los datos del b&uacute;fer</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.bzflush" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">bzflush</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">bzflush</span> &mdash; <span class="dc-title">Fuerza la escritura de todos los datos del búfer</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.bzflush-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>bzflush</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$bz</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Fuerza la escritura de todos los datos del búfer bzip2 para el puntero del fichero
+   <code class="parameter">bz</code>.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.bzflush-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">bz</code></dt>
+     <dd>
+      <p class="para">
+       El puntero del fichero. Debe ser un puntero a un fichero 
+       abierto con <span class="function"><a href="function.bzopen.html" class="function">bzopen()</a></span> satisfactoriamente.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.bzflush-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.bzflush-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.bzread.html" class="function" rel="rdfs-seeAlso">bzread()</a> - Lectura segura de ficheros bzip2</span></li>
+    <li><span class="function"><a href="function.bzwrite.html" class="function" rel="rdfs-seeAlso">bzwrite()</a> - Escribe en un fichero bzip2 de forma segura binariamente</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Establece el gestor de errores</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="yaf-dispatcher.setdefaultmodule.html">« Yaf_Dispatcher::setDefaultModule</a></li>
+      <li style="float: right;"><a href="yaf-dispatcher.setrequest.html">Yaf_Dispatcher::setRequest »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.yaf-dispatcher.html">Yaf_Dispatcher</a></li>
+    <li>Establece el gestor de errores</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="yaf-dispatcher.seterrorhandler" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Yaf_Dispatcher::setErrorHandler</h1>
+  <p class="verinfo">(Yaf &gt;=1.0.0)</p><p class="refpurpose"><span class="refname">Yaf_Dispatcher::setErrorHandler</span> &mdash; <span class="dc-title">Establece el gestor de errores</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-yaf-dispatcher.seterrorhandler-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>Yaf_Dispatcher::setErrorHandler</strong></span>(<span class="methodparam"><span class="type">call</span> <code class="parameter">$callback</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$error_types</code></span>): <span class="type"><a href="class.yaf-dispatcher.html" class="type Yaf_Dispatcher">Yaf_Dispatcher</a></span></div>
+
+  <p class="para rdfs-comment">
+   Establece el gestor de errores de Yaf. Cuando <a href="yaf.appconfig.html#configuration.yaf.dispatcher.throwexception" class="link">application.dispatcher.throwException</a>
+   está desactivada, Yaf provocará errores capturables mientras ocurran errores inesperados.
+  </p>
+  <p class="para">
+   Por lo tanto, este gestor de errores será invocado mientras se produce el error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-yaf-dispatcher.seterrorhandler-parameters">
+  <h3 class="title">Parámetros</h3>
+  <dl>
+   
+    <dt><code class="parameter">callback</code></dt>
+    <dd>
+     <p class="para">
+      Una llamada de retorno de tipo callable.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">error_types</code></dt>
+    <dd>
+     <p class="para">
+
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-yaf-dispatcher.seterrorhandler-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-yaf-dispatcher.seterrorhandler-seealso">
+  <h3 class="title">Ver también</h3>
+  <ul class="simplelist">
+   <li><span class="methodname"><a href="yaf-dispatcher.throwexception.html" class="methodname" rel="rdfs-seeAlso">Yaf_Dispatcher::throwException()</a> - Activa/desactiva el lanzamiento de excepciones</span></li>
+   <li><span class="methodname"><a href="yaf-application.getlasterrorno.html" class="methodname" rel="rdfs-seeAlso">Yaf_Application::getLastErrorNo()</a> - Pbetner el c&oacute;digo del &uacute;ltimo error ocurrido</span></li>
+   <li><span class="methodname"><a href="yaf-application.getlasterrormsg.html" class="methodname" rel="rdfs-seeAlso">Yaf_Application::getLastErrorMsg()</a> - Obtener el mensaje del &uacute;ltimo error ocurrido</span></li>
+  </ul>
+ </div>
+
+
+</div></div></div></body></html>

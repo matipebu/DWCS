@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>La clase Yaf_Route_Map</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="yaf-route-interface.route.html">« Yaf_Route_Interface::route</a></li>
+      <li style="float: right;"><a href="yaf-route-map.assemble.html">Yaf_Route_Map::assemble »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.yaf.html">Yaf</a></li>
+    <li>La clase Yaf_Route_Map</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.yaf-route-map" class="reference">
+
+ <h1 class="title">La clase Yaf_Route_Map</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(Yaf &gt;=1.0.0)</p>
+
+  
+  <div class="section" id="yaf-route-map.intro">
+   <h2 class="title">Introducción</h2>
+   <p class="para">
+    <span class="classname"><strong class="classname">Yaf_Route_Map</strong></span> es una ruta interna, simplemente
+    convierte el extremo de un URI (la parte del URI que va después del
+    URI base: véase <span class="methodname"><a href="yaf-request-abstract.setbaseuri.html" class="methodname">Yaf_Request_Abstract::setBaseUri()</a></span>)
+    a un nombre de controlador o acción (dependen del parámetro pasado a
+    <span class="methodname"><a href="yaf-route-map.construct.html" class="methodname">Yaf_Route_Map::__construct()</a></span>) en la siguiente regla:
+    A =&gt; controlador A.
+    A/B/C =&gt; controlador A_B_C.
+    A/B/C/D/E =&gt; controlador A_B_C_D_E.
+   </p>
+
+   <p class="para">
+    Si se especifica el segundo parámetro de
+    <span class="methodname"><a href="yaf-route-map.construct.html" class="methodname">Yaf_Route_Map::__construct()</a></span>, solamente
+    la parte de antes del delimitador del URI se usará para enrutar, la parte de después
+    se usa para enrutar parámetros de petición (véase la sección de ejemplos de
+    <span class="methodname"><a href="yaf-route-map.construct.html" class="methodname">Yaf_Route_Map::__construct()</a></span>).
+   </p>
+  </div>
+  
+
+  <div class="section" id="yaf-route-map.synopsis">
+   <h2 class="title">Sinopsis de la Clase</h2>
+
+   
+   <div class="classsynopsis">
+    <span class="ooclass"><strong class="classname"></strong></span>
+
+    
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">class</span> <strong class="classname">Yaf_Route_Map</strong>
+     </span>
+
+     <span class="oointerface"><span class="modifier">implements</span> 
+       <a href="class.yaf-route-interface.html" class="interfacename">Yaf_Route_Interface</a></span> {</div>
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Propiedades */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+      <var class="varname"><a href="class.yaf-route-map.html#yaf-route-map.props.ctl-router">$<var class="varname">_ctl_router</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">protected</span>
+      <var class="varname"><a href="class.yaf-route-map.html#yaf-route-map.props.delimiter">$<var class="varname">_delimiter</var></a></var>;</div>
+
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Métodos */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="yaf-route-map.construct.html" class="methodname">__construct</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$controller_prefer</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></span></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$delimiter</code><span class="initializer"> = &quot;&quot;</span></span>)</div>
+
+    <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="yaf-route-map.assemble.html" class="methodname">assemble</a></span>(<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$info</code></span>, <span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$query</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="yaf-route-map.route.html" class="methodname">route</a></span>(<span class="methodparam"><span class="type"><a href="class.yaf-request-abstract.html" class="type Yaf_Request_Abstract">Yaf_Request_Abstract</a></span> <code class="parameter">$request</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+   }</div>
+   
+
+  </div>
+
+
+  
+  <div class="section" id="yaf-route-map.props">
+   <h2 class="title">Propiedades</h2>
+   <dl>
+    
+     <dt id="yaf-route-map.props.ctl-router"><var class="varname">_ctl_router</var></dt>
+     <dd>
+      <p class="para"/>
+     </dd>
+    
+    
+     <dt id="yaf-route-map.props.delimiter"><var class="varname">_delimiter</var></dt>
+     <dd>
+      <p class="para"/>
+     </dd>
+    
+   </dl>
+  </div>
+  
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Tabla de contenidos</h2><ul class="chunklist chunklist_reference"><li><a href="yaf-route-map.assemble.html">Yaf_Route_Map::assemble</a> — Ensamblar un URL</li><li><a href="yaf-route-map.construct.html">Yaf_Route_Map::__construct</a> — El prop&oacute;sito de __construct</li><li><a href="yaf-route-map.route.html">Yaf_Route_Map::route</a> — El prop&oacute;sito de route</li></ul>
+</div>
+</div></div></body></html>

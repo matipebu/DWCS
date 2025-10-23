@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Establece el puntero interno de un array a su &uacute;ltimo elemento</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.each.html">« each</a></li>
+      <li style="float: right;"><a href="function.extract.html">extract »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.array.html">Funciones de Arrays</a></li>
+    <li>Establece el puntero interno de un array a su &uacute;ltimo elemento</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.end" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">end</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">end</span> &mdash; <span class="dc-title">Establece el puntero interno de un array a su último elemento</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.end-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>end</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter reference">&$array</code></span>): <span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>end()</strong></span> avanza el puntero interno del <code class="parameter">array</code>
+   hasta su último elemento y devuelve su valor.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.end-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">array</code></dt>
+     <dd>
+      <p class="para">
+       El array. Este array es pasado por referencia porque es modificado por la
+       función. Esto significa que se debe pasar una variable real y no 
+       una función que devuelve un array porque solamente variables puede
+       ser pasadas por referencia.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.end-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el valor del último elemento o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si el array está vacío.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.end-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4984">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>end()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$fruits </span><span style="color: #007700">= array(</span><span style="color: #DD0000">'manzana'</span><span style="color: #007700">, </span><span style="color: #DD0000">'plátano'</span><span style="color: #007700">, </span><span style="color: #DD0000">'arándano'</span><span style="color: #007700">);<br />echo </span><span style="color: #0000BB">end</span><span style="color: #007700">(</span><span style="color: #0000BB">$fruits</span><span style="color: #007700">); </span><span style="color: #FF8000">// arándano<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.end-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.current.html" class="function" rel="rdfs-seeAlso">current()</a> - Devuelve el elemento actual en un array</span></li>
+    <li><span class="function"><a href="function.each.html" class="function" rel="rdfs-seeAlso">each()</a> - Devolver el par clave/valor actual de un array y avanzar el cursor del array</span></li>
+    <li><span class="function"><a href="function.prev.html" class="function" rel="rdfs-seeAlso">prev()</a> - Rebobina el puntero interno del array</span></li>
+    <li><span class="function"><a href="function.reset.html" class="function" rel="rdfs-seeAlso">reset()</a> - Establece el puntero interno de un array a su primer elemento</span></li>
+    <li><span class="function"><a href="function.next.html" class="function" rel="rdfs-seeAlso">next()</a> - Avanza el puntero interno de un array</span></li>
+    <li><span class="function"><a href="function.array-key-last.html" class="function" rel="rdfs-seeAlso">array_key_last()</a> - Obtiene la &uacute;ltima clave de un array</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Convierte un string desde UTF-8 a ISO-8859-1, sustituyendo los caracteres no v&aacute;lidos
+   o no representables</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.ucwords.html">« ucwords</a></li>
+      <li style="float: right;"><a href="function.utf8-encode.html">utf8_encode »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.strings.html">Funciones de strings</a></li>
+    <li>Convierte un string desde UTF-8 a ISO-8859-1, sustituyendo los caracteres no v&aacute;lidos
+   o no representables</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.utf8-decode" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">utf8_decode</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">utf8_decode</span> &mdash; <span class="dc-title">
+   Convierte un string desde UTF-8 a ISO-8859-1, sustituyendo los caracteres no válidos
+   o no representables
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.utf8-decode-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>utf8_decode</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$string</code></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Esta función convierte el string <code class="parameter">string</code> desde la
+   codificación <code class="literal">UTF-8</code> a <code class="literal">ISO-8859-1</code>. Los bytes
+   del string que no son <code class="literal">UTF-8</code> válidos, y los
+   caracteres <code class="literal">UTF-8</code> que no existen en
+   <code class="literal">ISO-8859-1</code> (es decir, los puntos de código superiores
+   a <code class="literal">U+00FF</code>) se sustituyen por <code class="literal">?</code>.
+  </p>
+
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Muchas páginas web marcadas con la codificación de caracteres <code class="literal">ISO-8859-1</code>
+    utilizan en realidad la codificación similar <code class="literal">Windows-1252</code>,
+    y los navegadores web interpretarán las páginas web <code class="literal">ISO-8859-1</code> como
+    <code class="literal">Windows-1252</code>. <code class="literal">Windows-1252</code> presenta
+    caracteres imprimibles adicionales, como el signo del euro
+    (<code class="literal">€</code>) y las comillas rizadas (<code class="literal">“</code>
+    <code class="literal">”</code>), en lugar de ciertos caracteres de control de <code class="literal">ISO-8859-1</code>.
+    Esta función no convertirá correctamente estos caracteres de
+    <code class="literal">Windows-1252</code>. Utilice una función diferente
+    si se requiere la conversión de <code class="literal">Windows-1252</code>.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.utf8-decode-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">string</code></dt>
+     <dd>
+      <p class="para">
+       Un string codificado en UTF-8.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.utf8-decode-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve la traducción ISO-8859-1 del <code class="parameter">string</code>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.utf8-decode-changelog">
+  <h3 class="title">Historial de cambios</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Versión</th>
+       <th>Descripción</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>7.2.0</td>
+       <td>
+        Esta función ha sido trasladada de la extensión XML al núcleo de PHP.
+        En versiones anteriores, sólo estaba disponible si la extensión XML estaba instalada.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.utf8-decode-examples">
+  <h3 class="title">Ejemplos</h3>
+  <div class="example" id="example-4891">
+   <p><strong>Ejemplo #1 Ejemplos básicos</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Convertir el string 'Zoë' desde UTF-8 a ISO 8859-1<br /></span><span style="color: #0000BB">$utf8_string </span><span style="color: #007700">= </span><span style="color: #DD0000">"\x5A\x6F\xC3\xAB"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$iso8859_1_string </span><span style="color: #007700">= </span><span style="color: #0000BB">utf8_decode</span><span style="color: #007700">(</span><span style="color: #0000BB">$utf8_string</span><span style="color: #007700">);<br />echo </span><span style="color: #0000BB">bin2hex</span><span style="color: #007700">(</span><span style="color: #0000BB">$iso8859_1_string</span><span style="color: #007700">), </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">// Las secuencias UTF-8 no válidas se sustituyen por '?'<br /></span><span style="color: #0000BB">$invalid_utf8_string </span><span style="color: #007700">= </span><span style="color: #DD0000">"\xC3"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$iso8859_1_string </span><span style="color: #007700">= </span><span style="color: #0000BB">utf8_decode</span><span style="color: #007700">(</span><span style="color: #0000BB">$invalid_utf8_string</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$iso8859_1_string</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Los caracteres que no existen en ISO 8859-1, como<br />// '€' (signo del euro) también se sustituyen por '?'<br /></span><span style="color: #0000BB">$utf8_string </span><span style="color: #007700">= </span><span style="color: #DD0000">"\xE2\x82\xAC"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$iso8859_1_string </span><span style="color: #007700">= </span><span style="color: #0000BB">utf8_decode</span><span style="color: #007700">(</span><span style="color: #0000BB">$utf8_string</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$iso8859_1_string</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">5a6feb
+string(1) &quot;?&quot;
+string(1) &quot;?&quot;</pre>
+</div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.utf8-decode-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.utf8-encode.html" class="function" rel="rdfs-seeAlso">utf8_encode()</a> - Convierte una cadena de ISO-8859-1 a UTF-8</span></li>
+    <li><span class="function"><a href="function.mb-convert-encoding.html" class="function" rel="rdfs-seeAlso">mb_convert_encoding()</a> - Convierte una codificaci&oacute;n de caracteres</span></li>
+    <li><span class="methodname"><a href="uconverter.transcode.html" class="methodname" rel="rdfs-seeAlso">UConverter::transcode()</a> - Convertir un string de un juego de caracteres a otro</span></li>
+    <li><span class="function"><a href="function.iconv.html" class="function" rel="rdfs-seeAlso">iconv()</a> - Convierte un string a la codificaci&oacute;n de caracteres indicada</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

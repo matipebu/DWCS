@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Generar un ID &uacute;nico</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.time-sleep-until.html">« time_sleep_until</a></li>
+      <li style="float: right;"><a href="function.unpack.html">unpack »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.misc.html">Funciones Varias</a></li>
+    <li>Generar un ID &uacute;nico</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.uniqid" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">uniqid</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">uniqid</span> &mdash; <span class="dc-title">Generar un ID único</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.uniqid-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>uniqid</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$prefix</code><span class="initializer"> = &quot;&quot;</span></span>, <span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$more_entropy</code><span class="initializer"> = false</span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Obtiene un identificador único prefijado basado en la hora actual en
+   microsegundos. 
+  </p>
+  <div class="warning"><strong class="warning">Advertencia</strong>
+   <p class="para">
+    Esta función no crea valores de tipo string aleatorios ni impredecibles.
+    <em>Esta función no debe usarse con propósitos de seguridad.</em>
+    Use una función o generador aleatorios criptográficamente seguros y
+    funciones hash criptográficamente seguras para crear ID de seguridad
+    impredecibles.
+   </p>
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.uniqid-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">prefix</code></dt>
+     <dd>
+      <p class="para">
+       Puede ser útil, por ejemplo, si se generan identificadores
+       simultáneamente en varios hosts que podrían, por casualidad, generar el
+       identificador en el mismo microsegundo.
+      </p>
+      <p class="para">
+       Con un <code class="parameter">prefix</code> vacío, el string devuelto tendrá
+       una longitud de 13 caracteres. Si <code class="parameter">more_entropy</code> es
+       <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>, tendrá 23 caracteres.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">more_entropy</code></dt>
+     <dd>
+      <p class="para">
+       Si está establecido a <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>, <span class="function"><strong>uniqid()</strong></span> añadirá entropía
+       adicional (usando el generador congruente lineal combinado) al final
+       del valor retornado, lo que incrementará la posibilidad de que el resultado
+       sea único.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.uniqid-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el identificador único, como string.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.uniqid-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-3491">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>uniqid()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/* Un id único, como: 4b3403665fea6 */<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"uniqid(): %s\r\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">uniqid</span><span style="color: #007700">());<br /><br /></span><span style="color: #FF8000">/* También podemos prefijar el id único, esto es lo mismo que<br /> * hacer:<br /> *<br /> * $uniqid = $prefijo . uniqid();<br /> * $uniqid = uniqid($prefijo);<br /> */<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"uniqid('php_'): %s\r\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">uniqid</span><span style="color: #007700">(</span><span style="color: #DD0000">'php_'</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">/* También podemos activar el parámetro more_entropy, que es<br /> * necesario en algunos sistemas, como Cygwin. Esto hace que uniqid()<br /> * produzca un valor como: 4b340550242239.64159797<br /> */<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"uniqid('', true): %s\r\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">uniqid</span><span style="color: #007700">(</span><span style="color: #DD0000">''</span><span style="color: #007700">, </span><span style="color: #0000BB">true</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.uniqid-notes">
+  <h3 class="title">Notas</h3>
+  <div class="caution"><strong class="caution">Precaución</strong>
+   <p class="para">
+    Esta función no genera tokens criptográficamente seguros,
+    de hecho, el valor devuelto, sin pasar ningún parámetro adicional,
+    es ligeramente diferente del de <span class="function"><a href="function.microtime.html" class="function">microtime()</a></span>. Si
+    fuera necesario generar tokens criptográficamente seguros utilice
+    <span class="function"><a href="function.openssl-random-pseudo-bytes.html" class="function">openssl_random_pseudo_bytes()</a></span>.
+   </p>
+  </div>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Bajo Cygwin, <code class="parameter">more_entropy</code> debe ser establecido
+    a <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para que esta función funcione.
+   </p>
+  </p></blockquote>
+  
+ </div>
+
+ 
+</div></div></div></body></html>

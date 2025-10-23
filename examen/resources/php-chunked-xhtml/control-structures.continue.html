@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>continue</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="control-structures.break.html">« break</a></li>
+      <li style="float: right;"><a href="control-structures.switch.html">switch »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.control-structures.html">Estructuras de Control</a></li>
+    <li>continue</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="control-structures.continue" class="sect1">
+ <h2 class="title"><code class="literal">continue</code></h2>
+ <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p>
+ <p class="simpara">
+  <code class="literal">continue</code> se utiliza dentro de las estructuras iterativas para
+  saltar el resto de la iteración actual del bucle y continuar la ejecución
+  en la evaluación de la condición, para luego comenzar la siguiente iteración.
+ </p>
+ <blockquote class="note"><p><strong class="note">Nota</strong>: 
+  <span class="simpara">
+   En PHP, la sentencia 
+   <a href="control-structures.switch.html" class="link">switch</a> se
+   considera una estructura iterativa para los propósitos de
+   <code class="literal">continue</code>. <code class="literal">continue</code> se comporta igual que
+   <code class="literal">break</code> (cuando no se proporcionan argumentos). Si un
+   <code class="literal">switch</code> está dentro de un bucle,
+   <code class="literal">continue 2</code> continurá con la siguiente iteración
+   del bucle externo.
+  </span>
+ </p></blockquote>
+ <p class="simpara">
+  <code class="literal">continue</code> acepta un argumento numérico opcional,
+  que indica a cuántos niveles de bucles encerrados se ha de saltar
+  al final. El valor por omisión es <code class="literal">1</code>, por lo que salta
+  al final del bucle actual.
+ </p>
+ <p class="para">
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">while (list(</span><span style="color: #0000BB">$clave</span><span style="color: #007700">, </span><span style="color: #0000BB">$valor</span><span style="color: #007700">) = </span><span style="color: #0000BB">each</span><span style="color: #007700">(</span><span style="color: #0000BB">$arr</span><span style="color: #007700">)) {<br />    if (!(</span><span style="color: #0000BB">$clave </span><span style="color: #007700">% </span><span style="color: #0000BB">2</span><span style="color: #007700">)) { </span><span style="color: #FF8000">// saltar los miembros pares<br />        </span><span style="color: #007700">continue;<br />    }<br />    </span><span style="color: #0000BB">hacer_algo</span><span style="color: #007700">(</span><span style="color: #0000BB">$valor</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />while (</span><span style="color: #0000BB">$i</span><span style="color: #007700">++ &lt; </span><span style="color: #0000BB">5</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">"Exterior&lt;br /&gt;\n"</span><span style="color: #007700">;<br />    while (</span><span style="color: #0000BB">1</span><span style="color: #007700">) {<br />        echo </span><span style="color: #DD0000">"Medio&lt;br /&gt;\n"</span><span style="color: #007700">;<br />        while (</span><span style="color: #0000BB">1</span><span style="color: #007700">) {<br />            echo </span><span style="color: #DD0000">"Interior&lt;br /&gt;\n"</span><span style="color: #007700">;<br />            continue </span><span style="color: #0000BB">3</span><span style="color: #007700">;<br />        }<br />        echo </span><span style="color: #DD0000">"Esto nunca se imprimirá.&lt;br /&gt;\n"</span><span style="color: #007700">;<br />    }<br />    echo </span><span style="color: #DD0000">"Ni esto tampoco.&lt;br /&gt;\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="para">
+  Omitir el punto y coma después del <code class="literal">continue</code> puede llevar a 
+  confusión. He aquí un ejemplo de lo que no se debe hacer.
+ </p>
+ <p class="para">
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">5</span><span style="color: #007700">; ++</span><span style="color: #0000BB">$i</span><span style="color: #007700">) {<br />    if (</span><span style="color: #0000BB">$i </span><span style="color: #007700">== </span><span style="color: #0000BB">2</span><span style="color: #007700">)<br />        continue<br />    print </span><span style="color: #DD0000">"</span><span style="color: #0000BB">$i</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <p class="para">
+    Se esperaría que el resultado fuera:
+   </p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+0
+1
+3
+4
+</pre></div>
+   </div>
+   <p class="para">
+    pero, en versiones de PHP anteriores a la 5.4.0, la salida de este script será:
+   </p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+2
+</pre></div>
+   </div>
+   <p class="para">
+    debido a que <code class="literal">continue print &quot;$i\n&quot;;</code> se evalúa completo
+    como una sola expresión, y así <span class="function"><a href="function.print.html" class="function">print</a></span> se llama solamente
+    cuando <code class="literal">$i == 2</code> es verdadero. (El valor de retorno de
+    <code class="literal">print</code> es pasado a <code class="literal">continue</code> como el
+    argumento numérico.)
+   </p>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     A partir de PHP 5.4.0, el ejemplo anterior emitirá un
+     error <strong><code><a href="errorfunc.constants.html#constant.e-compile-error">E_COMPILE_ERROR</a></code></strong>.
+    </p>
+   </p></blockquote>
+  </div>
+ </p>
+ <p class="para">
+  <table class="doctable table">
+   <caption><strong>Registro de cambios para <code class="literal">continue</code></strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Versión</th>
+      <th>Descripción</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>5.4.0</td>
+      <td>
+       <code class="literal">continue 0;</code> ya no es válido. En versiones anteriores era interpretado
+       de la misma manera que <code class="literal">continue 1;</code>.
+      </td>
+     </tr>
+
+     <tr>
+      <td>5.4.0</td>
+      <td>
+       Se eliminó la posibilidad de pasar variables (por ejemplo, <code class="literal">$num = 2; continue $num;</code>)
+       como el argumento numérico.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </p>
+</div></div></div></body></html>

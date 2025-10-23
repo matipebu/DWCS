@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Abre un fichero comprimido con bzip2</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.bzflush.html">« bzflush</a></li>
+      <li style="float: right;"><a href="function.bzread.html">bzread »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.bzip2.html">Funciones de Bzip2</a></li>
+    <li>Abre un fichero comprimido con bzip2</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.bzopen" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">bzopen</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">bzopen</span> &mdash; <span class="dc-title">Abre un fichero comprimido con bzip2</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.bzopen-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>bzopen</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$filename</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$mode</code></span>): <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>bzopen()</strong></span> abre un fichero bzip2 (.bz2) para lectura o 
+   escritura.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.bzopen-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">filename</code></dt>
+     <dd>
+      <p class="para">
+       El nombre del fichero a abrir, o un recurso de flujo existente.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">mode</code></dt>
+     <dd>
+      <p class="para">
+       Similar a la función <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>, solamente &#039;r&#039; (lectura)
+       y &#039;w&#039; (escritura) están soportados. Todo lo demás hará que bzopen
+       devuelva <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.bzopen-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Si al abrir el fichero se produce un error, <span class="function"><strong>bzopen()</strong></span> devolverá <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>, en caso contrario
+   devolverá el puntero del nuevo fichero abierto.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.bzopen-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-706">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>bzopen()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$file </span><span style="color: #007700">= </span><span style="color: #DD0000">"/tmp/foo.bz2"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$bz </span><span style="color: #007700">= </span><span style="color: #0000BB">bzopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">, </span><span style="color: #DD0000">"r"</span><span style="color: #007700">) or die(</span><span style="color: #DD0000">"No se pudo abrir el fichero </span><span style="color: #0000BB">$file</span><span style="color: #DD0000"> para lectura"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">bzclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$bz</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.bzopen-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.bzclose.html" class="function" rel="rdfs-seeAlso">bzclose()</a> - Cierra un fichero bzip2</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

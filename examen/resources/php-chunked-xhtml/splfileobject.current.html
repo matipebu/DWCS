@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Recupera la l&iacute;nea actual del fichero</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="splfileobject.construct.html">« SplFileObject::__construct</a></li>
+      <li style="float: right;"><a href="splfileobject.eof.html">SplFileObject::eof »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.splfileobject.html">SplFileObject</a></li>
+    <li>Recupera la l&iacute;nea actual del fichero</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="splfileobject.current" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SplFileObject::current</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">SplFileObject::current</span> &mdash; <span class="dc-title">Recupera la línea actual del fichero</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-splfileobject.current-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>SplFileObject::current</strong></span>(): <span class="type"><span class="type"><a href="language.types.string.html" class="type string">string</a></span>|<span class="type"><a href="language.types.array.html" class="type array">array</a></span>|<span class="type"><a href="language.types.value.html" class="type false">false</a></span></span></div>
+
+  <p class="para rdfs-comment">
+   Recupera la línea actual del fichero.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-splfileobject.current-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">Esta función no tiene parámetros.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-splfileobject.current-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Recupera la línea actual del fichero. Si la flag <strong><code><a href="class.splfileobject.html#splfileobject.constants.read-csv">SplFileObject::READ_CSV</a></code></strong> está establecida, este método devuelve un array conteniendo la línea actual analizada como datos CSV.
+   Si se alcanza el final del archivo, se devuelve <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-splfileobject.current-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-3713">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="methodname"><strong>SplFileObject::current()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$fichero </span><span style="color: #007700">= new </span><span style="color: #0000BB">SplFileObject</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">);<br />foreach (</span><span style="color: #0000BB">$fichero </span><span style="color: #007700">as </span><span style="color: #0000BB">$k </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$linea</span><span style="color: #007700">) {<br />   echo (</span><span style="color: #0000BB">$fichero</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">key</span><span style="color: #007700">() + </span><span style="color: #0000BB">1</span><span style="color: #007700">) . </span><span style="color: #DD0000">': ' </span><span style="color: #007700">. </span><span style="color: #0000BB">$fichero</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">current</span><span style="color: #007700">();<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">1: &lt;?php
+2: $fichero = new SplFileObject(__FILE__);
+3: foreach ($fichero as $linea) {
+4:     echo ($fichero-&gt;key() + 1) . &#039;: &#039; . $fichero-&gt;current();
+5: }
+6: ?&gt;</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-splfileobject.current-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="methodname"><a href="splfileobject.key.html" class="methodname" rel="rdfs-seeAlso">SplFileObject::key()</a> - Obtiene el n&uacute;mero de l&iacute;nea</span></li>
+    <li><span class="methodname"><a href="splfileobject.seek.html" class="methodname" rel="rdfs-seeAlso">SplFileObject::seek()</a> - Mueve el apuntador interno a la l&iacute;nea espec&iacute;ficada</span></li>
+    <li><span class="methodname"><a href="splfileobject.next.html" class="methodname" rel="rdfs-seeAlso">SplFileObject::next()</a> - Leer la siguiente l&iacute;nea</span></li>
+    <li><span class="methodname"><a href="splfileobject.rewind.html" class="methodname" rel="rdfs-seeAlso">SplFileObject::rewind()</a> - Rebobina el fichero hasta la primera l&iacute;nea</span></li>
+    <li><span class="methodname"><a href="splfileobject.valid.html" class="methodname" rel="rdfs-seeAlso">SplFileObject::valid()</a> - Comprueba si el final del finchero ha sido alcanzado</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

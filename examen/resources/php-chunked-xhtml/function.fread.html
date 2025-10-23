@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Lectura de un fichero en modo binario seguro</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.fputs.html">« fputs</a></li>
+      <li style="float: right;"><a href="function.fscanf.html">fscanf »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.filesystem.html">Funciones del Sistema de Archivos</a></li>
+    <li>Lectura de un fichero en modo binario seguro</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.fread" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">fread</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">fread</span> &mdash; <span class="dc-title">Lectura de un fichero en modo binario seguro</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.fread-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>fread</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$handle</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$length</code></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>fread()</strong></span> lee hasta
+   <code class="parameter">length</code> bytes desde el puntero al fichero
+   referenciado por <code class="parameter">handle</code>. La lectura termina tan pronto como
+   se encuentre una de las siguientes condiciones:
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      <code class="parameter">length</code> bytes han sido leídos
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      EOF (fin de fichero) es alcanzado
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      un paquete se encuentra disponible o el <a href="function.socket-set-timeout.html" class="link">
+      tiempo límite del socket</a> se agota (para flujos de red)
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      si el flujo es leído en buffer y no representa un fichero plano, se
+      realiza al menos una lectura de hasta un número de bytes igual al tamaño del trozo
+      (normalmente 8192); dependiendo del la información previamente almacenada en buffer, el tamaño de la
+      información devuelta puede ser mayor que el tamaño del trozo.
+     </span>
+    </li>
+   </ul>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.fread-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">handle</code></dt>
+     <dd>
+      <p class="para"><span class="type"><a href="language.types.resource.html" class="type Resource">Resource</a></span> que apunta a un fichero del sitema que
+normalmente es creado usando <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>.</p>
+     </dd>
+    
+    
+     <dt><code class="parameter">length</code></dt>
+     <dd>
+      <p class="para">
+       Lectura de hasta <code class="parameter">length</code> número de bytes.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.fread-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve la cadena leída  o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.fread-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-2185">
+    <p><strong>Ejemplo #1 Un ejemplo sencillo de <span class="function"><strong>fread()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// poner el contenido de un fichero en una cadena<br /></span><span style="color: #0000BB">$nombre_fichero </span><span style="color: #007700">= </span><span style="color: #DD0000">"/usr/local/algo.txt"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$gestor </span><span style="color: #007700">= </span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$nombre_fichero</span><span style="color: #007700">, </span><span style="color: #DD0000">"r"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$contenido </span><span style="color: #007700">= </span><span style="color: #0000BB">fread</span><span style="color: #007700">(</span><span style="color: #0000BB">$gestor</span><span style="color: #007700">, </span><span style="color: #0000BB">filesize</span><span style="color: #007700">(</span><span style="color: #0000BB">$nombre_fichero</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$gestor</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-2186">
+    <p><strong>Ejemplo #2 Ejemplo de lectura binaria de <span class="function"><strong>fread()</strong></span></strong></p>
+    <div class="warning"><strong class="warning">Advertencia</strong>
+     <p class="para">
+      En sistemas en los que se diferencia entre archivos binarios y de texto
+      (esto es, Windows) el fichero debe ser abierto con &#039;b&#039; incluida en el
+      parámetro modo de <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>.
+     </p>
+    </div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$filename </span><span style="color: #007700">= </span><span style="color: #DD0000">"c:\\files\\imagen.gif"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$gestor </span><span style="color: #007700">= </span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">, </span><span style="color: #DD0000">"rb"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$contenido </span><span style="color: #007700">= </span><span style="color: #0000BB">fread</span><span style="color: #007700">(</span><span style="color: #0000BB">$gestor</span><span style="color: #007700">, </span><span style="color: #0000BB">filesize</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$gestor</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-2187">
+    <p><strong>Ejemplo #3 Ejemplos de lectura remota con <span class="function"><strong>fread()</strong></span></strong></p>
+    <div class="warning"><strong class="warning">Advertencia</strong>
+     <p class="para">
+      Cuando se lee desde algo que no es un fichero local normal, como
+      los flujos devueltos cuando
+      se leen <a href="features.remote-files.html" class="link">ficheros remotos</a> o desde
+      <span class="function"><a href="function.popen.html" class="function">popen()</a></span> y <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span>, la lectura
+      se detendrá después de que esté disponible un paquete. Esto significa que debería
+      reuinir la información en trozos como se muestra en los ejemplos de abajo.
+     </p>
+    </div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Para PHP 5 y superior<br /></span><span style="color: #0000BB">$gestor </span><span style="color: #007700">= </span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"http://www.example.com/"</span><span style="color: #007700">, </span><span style="color: #DD0000">"rb"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$contenido </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_get_contents</span><span style="color: #007700">(</span><span style="color: #0000BB">$gestor</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$gestor</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$gestor </span><span style="color: #007700">= </span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"http://www.example.com/"</span><span style="color: #007700">, </span><span style="color: #DD0000">"rb"</span><span style="color: #007700">);<br />if (</span><span style="color: #0000BB">FALSE </span><span style="color: #007700">=== </span><span style="color: #0000BB">$gestor</span><span style="color: #007700">) {<br />    exit(</span><span style="color: #DD0000">"Falló la apertura del flujo a la URL"</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$contenido </span><span style="color: #007700">= </span><span style="color: #DD0000">''</span><span style="color: #007700">;<br />while (!</span><span style="color: #0000BB">feof</span><span style="color: #007700">(</span><span style="color: #0000BB">$gestor</span><span style="color: #007700">)) {<br />    </span><span style="color: #0000BB">$contenido </span><span style="color: #007700">.= </span><span style="color: #0000BB">fread</span><span style="color: #007700">(</span><span style="color: #0000BB">$gestor</span><span style="color: #007700">, </span><span style="color: #0000BB">8192</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$gestor</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.fread-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Si sólo quiere poner el contenido de un fichero en una cadena, use
+    <span class="function"><a href="function.file-get-contents.html" class="function">file_get_contents()</a></span> ya que tiene mucho mejor rendimiento
+    que el código de arriba.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Observe que <span class="function"><strong>fread()</strong></span> lee desde la posción actual del
+    puntero al fichero. Use <span class="function"><a href="function.ftell.html" class="function">ftell()</a></span> para encontrar la posición
+    actual del puntero y <span class="function"><a href="function.rewind.html" class="function">rewind()</a></span> para rebobinar la
+    posición del puntero.
+   </p>
+  </p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.fread-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.fwrite.html" class="function" rel="rdfs-seeAlso">fwrite()</a> - Binary-safe file write</span></li>
+    <li><span class="function"><a href="function.fopen.html" class="function" rel="rdfs-seeAlso">fopen()</a> - Abre un fichero o un URL</span></li>
+    <li><span class="function"><a href="function.fsockopen.html" class="function" rel="rdfs-seeAlso">fsockopen()</a> - Abre una conexi&oacute;n v&iacute;a sockets a Internet o a un dominio Unix</span></li>
+    <li><span class="function"><a href="function.popen.html" class="function" rel="rdfs-seeAlso">popen()</a> - Abre un proceso de un puntero a un fichero</span></li>
+    <li><span class="function"><a href="function.fgets.html" class="function" rel="rdfs-seeAlso">fgets()</a> - Obtiene una l&iacute;nea desde el puntero a un fichero</span></li>
+    <li><span class="function"><a href="function.fgetss.html" class="function" rel="rdfs-seeAlso">fgetss()</a> - Obtiene un l&iacute;nea desde un puntero a un archivo y elimina las etiquetas HTML</span></li>
+    <li><span class="function"><a href="function.fscanf.html" class="function" rel="rdfs-seeAlso">fscanf()</a> - Analiza la entrada desde un archivo de acuerdo a un formato</span></li>
+    <li><span class="function"><a href="function.file.html" class="function" rel="rdfs-seeAlso">file()</a> - Transfiere un fichero completo a un array</span></li>
+    <li><span class="function"><a href="function.fpassthru.html" class="function" rel="rdfs-seeAlso">fpassthru()</a> - Escribe toda la informaci&oacute;n restante de un puntero a un archivo</span></li>
+    <li><span class="function"><a href="function.ftell.html" class="function" rel="rdfs-seeAlso">ftell()</a> - Devuelve la posici&oacute;n de lectura/escritura actual del puntero a un fichero</span></li>
+    <li><span class="function"><a href="function.rewind.html" class="function" rel="rdfs-seeAlso">rewind()</a> - Rebobina la posici&oacute;n de un puntero a un archivo</span></li>
+    <li><span class="function"><a href="function.unpack.html" class="function" rel="rdfs-seeAlso">unpack()</a> - Desempaqueta datos de una cadena binaria</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

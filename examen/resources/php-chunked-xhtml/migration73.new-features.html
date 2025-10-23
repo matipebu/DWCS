@@ -1,0 +1,336 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Nuevas caracter&iacute;sticas</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="migration73.html">« Migraci&oacute;n de PHP 7.2.x a PHP 7.3.x</a></li>
+      <li style="float: right;"><a href="migration73.new-functions.html">Nuevas funciones »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="migration73.html">Migraci&oacute;n de PHP 7.2.x a PHP 7.3.x</a></li>
+    <li>Nuevas caracter&iacute;sticas</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="migration73.new-features" class="sect1">
+ <h2 class="title">Nuevas características</h2>
+
+ <div class="sect2" id="migration73.new-features.core">
+  <h3 class="title">PHP Core</h3>
+
+  <div class="sect3" id="migration73.new-features.core.heredoc">
+   <h4 class="title">Sintaxis Heredoc y Nowdoc más flexible</h4>
+
+   <p class="para">
+    Ya no es necesario que el marcador de cierre de los string de documento vaya seguido de un
+    punto y coma o línea nueva. Además, el marcador de cierre puede ser sangrado, en
+    en cuyo caso la indentación se quitará de todas las líneas del string de documento.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration73.new-features.core.destruct-reference">
+   <h4 class="title">La Desestructuración de Arrays soporta las Asignaciones de Referencia</h4>
+
+   <p class="para">
+    La desestructuración de arrays ahora soporta asignaciones de referencia utilizando la sintaxis
+    <code class="literal">[&amp;$a, [$b, &amp;$c]] = $d</code>. Lo mismo se soporta también
+    para <span class="function"><a href="function.list.html" class="function">list()</a></span>.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration73.new-features.core.instanceof-literals">
+   <h4 class="title">Operador Instanceof acepta literales</h4>
+
+   <p class="para">
+    <code class="literal">instanceof</code> ahora permite los literales como el primer operando, en
+    en cuyo caso el resultado es siempre <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration73.new-features.core.compileerror">
+   <h4 class="title">Excepción del error de compilación en lugar de algunos errores de compilación</h4>
+
+   <p class="para">
+    Una nueva excepción <span class="classname"><a href="class.compileerror.html" class="classname">CompileError</a></span> ha sido añadida, de
+    la cual hereda <span class="classname"><a href="class.parseerror.html" class="classname">ParseError</a></span>. Un pequeño número de
+    errores de compilación lanzarán ahora <span class="classname"><a href="class.compileerror.html" class="classname">CompileError</a></span>
+    en vez de generar un error fatal. Actualmente esto sólo afecta a los errores
+    de compilación que pueden ser lanzados por <span class="function"><a href="function.token-get-all.html" class="function">token_get_all()</a></span> en
+    modo <strong><code>TOKEN_PARSE</code></strong>, pero más errores pueden ser convertidos
+    en el futuro.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration73.new-features.core.trailing-commas">
+   <h4 class="title">Se permite el uso de comas en las llamadas</h4>
+
+   <p class="para">
+    Ahora se permiten las comas en las llamadas a funciones y métodos.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration73.new-features.core.argon2id">
+   <h4 class="title">Soporte de Argon2id</h4>
+
+   <p class="para">
+    El argumento de configuración<strong class="option configure">--with-password-argon2[=dir]</strong> 
+    ahora proporciona soporte tanto para los hashes de Argon2i como de Argon2id en las fuynciones 
+    <span class="function"><a href="function.password-hash.html" class="function">password_hash()</a></span>, <span class="function"><a href="function.password-verify.html" class="function">password_verify()</a></span>,
+    <span class="function"><a href="function.password-get-info.html" class="function">password_get_info()</a></span>, y
+    <span class="function"><a href="function.password-needs-rehash.html" class="function">password_needs_rehash()</a></span>. Las contraseñas pueden ser descifradas
+    y verificadas usando la constante <strong><code><a href="password.constants.html#constant.password-argon2id">PASSWORD_ARGON2ID</a></code></strong>.
+    El soporte tanto para Argon2i como para Argon2id en las funciones <span class="function"><strong>password_*()</strong></span>
+    ahora requiere que PHP esté enlazado con la biblioteca de referencia libargon2 ≥
+    20161029.
+   </p>
+  </div>
+
+ </div>
+
+ <div class="sect2" id="migration73.new-features.fpm">
+  <h3 class="title">FastCGI Process Manager</h3>
+
+  <p class="para">
+   Se han añadido nuevas opciones para personalizar el registro de FPM:
+   <dl>
+    
+     <dt><code class="literal">log_limit</code></dt>
+     <dd>
+      <span class="simpara">
+       Esta opción global puede utilizarse para establecer el límite de registro para la
+       línea que permite registrar mensajes de más de 1024 caracteres sin
+       envoltura. También arregla varios problemas de envoltura.
+      </span>
+     </dd>
+    
+    
+     <dt><code class="literal">log_buffering</code></dt>
+     <dd>
+      <span class="simpara">
+       Esta opción global permite un registro experimental sin buffer extra.
+      </span>
+     </dd>
+    
+    
+     <dt><code class="literal">decorate_workers_output</code></dt>
+     <dd>
+      <span class="simpara">
+       Esta opción de pool permite deshabilitar la decoración de salida para la salida de los trabajadores
+       cuando se habilita <code class="literal">catch_workers_output</code>.
+      </span>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="sect2" id="migration73.new-features.bc">
+  <h3 class="title">Funciones matemáticas de BC</h3>
+
+  <p class="para">
+   <span class="function"><a href="function.bcscale.html" class="function">bcscale()</a></span> ahora también puede ser usado como getter para 
+   recuperar la escala actual en uso.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration73.new-features.ldap">
+  <h3 class="title">Protocolo ligero de acceso a directorios</h3>
+
+  <p class="para">
+   El soporte completo para los controles de LDAP se ha añadido a las funciones de consulta <a href="book.ldap.html" class="link">LDAP</a> y
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      Un parámetro <code class="literal">$serverctrls</code> para enviar controles al 
+      servidor en <span class="function"><a href="function.ldap-add.html" class="function">ldap_add()</a></span>,
+      <span class="function"><a href="function.ldap-mod-replace.html" class="function">ldap_mod_replace()</a></span>, <span class="function"><a href="function.ldap-mod-add.html" class="function">ldap_mod_add()</a></span>,
+      <span class="function"><a href="function.ldap-mod-del.html" class="function">ldap_mod_del()</a></span>, <span class="function"><a href="function.ldap-rename.html" class="function">ldap_rename()</a></span>,
+      <span class="function"><a href="function.ldap-compare.html" class="function">ldap_compare()</a></span>, <span class="function"><a href="function.ldap-delete.html" class="function">ldap_delete()</a></span>,
+      <span class="function"><a href="function.ldap-modify-batch.html" class="function">ldap_modify_batch()</a></span>,
+      <span class="function"><a href="function.ldap-search.html" class="function">ldap_search()</a></span>, <span class="function"><a href="function.ldap-list.html" class="function">ldap_list()</a></span> y
+      <span class="function"><a href="function.ldap-read.html" class="function">ldap_read()</a></span> ha sido añadido.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      El parámetro de salida <code class="literal">$serverctrls</code> para obtener los controles del servidor en
+      <span class="function"><a href="function.ldap-parse-result.html" class="function">ldap_parse_result()</a></span> ha sido añadido.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Soporte para <strong><code><a href="ldap.constants.html#constant.ldap-opt-server-controls">LDAP_OPT_SERVER_CONTROLS</a></code></strong> y
+      <strong><code><a href="ldap.constants.html#constant.ldap-opt-client-controls">LDAP_OPT_CLIENT_CONTROLS</a></code></strong> en
+      <span class="function"><a href="function.ldap-get-option.html" class="function">ldap_get_option()</a></span> y
+      <span class="function"><a href="function.ldap-set-option.html" class="function">ldap_set_option()</a></span> ha sido arreglado.
+     </span>
+    </li>
+   </ul>
+  </p>
+ </div>
+
+ <div class="sect2" id="migration73.new-features.mbstring">
+  <h3 class="title">Funciones de string multibyte</h3>
+
+  <div class="sect3" id="migration73.new-features.mbstring.case-mapping-folding">
+   <h4 class="title">Soporte completo de mapeo y plegado de casos</h4>
+
+   <p class="para">
+    Se ha añadido soporte al mapeo completo y el plegado de casos. A diferencia del
+    mapeo simple, el mapeo completo de los casos puede cambiar la longitud del string. Por
+    ejemplo:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />mb_strtoupper</span><span style="color: #007700">(</span><span style="color: #DD0000">"Straße"</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">// Produces STRAßE en PHP 7.2<br />// Produces STRASSE en PHP 7.3<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+    </div>
+    Los diferentes modos de mapeo y plegado están disponibles a través de
+    <span class="function"><a href="function.mb-convert-case.html" class="function">mb_convert_case()</a></span>:
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code><a href="mbstring.constants.html#constant.mb-case-lower">MB_CASE_LOWER</a></code></strong> (usado por <span class="function"><a href="function.mb-strtolower.html" class="function">mb_strtolower()</a></span>)
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code><a href="mbstring.constants.html#constant.mb-case-upper">MB_CASE_UPPER</a></code></strong> (usado por <span class="function"><a href="function.mb-strtoupper.html" class="function">mb_strtoupper()</a></span>)
+      </span>
+     </li> 
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code><a href="mbstring.constants.html#constant.mb-case-title">MB_CASE_TITLE</a></code></strong>
+      </span>
+     </li> 
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code><a href="mbstring.constants.html#constant.mb-case-fold">MB_CASE_FOLD</a></code></strong>
+      </span>
+     </li> 
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code><a href="mbstring.constants.html#constant.mb-case-lower-simple">MB_CASE_LOWER_SIMPLE</a></code></strong>
+      </span>
+     </li> 
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code><a href="mbstring.constants.html#constant.mb-case-upper-simple">MB_CASE_UPPER_SIMPLE</a></code></strong>
+      </span>
+     </li> 
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code><a href="mbstring.constants.html#constant.mb-case-title-simple">MB_CASE_TITLE_SIMPLE</a></code></strong>
+      </span>
+     </li> 
+     <li class="listitem">
+      <span class="simpara">
+       <strong><code><a href="mbstring.constants.html#constant.mb-case-fold-simple">MB_CASE_FOLD_SIMPLE</a></code></strong> (utilizado en operaciones que no tienen en cuenta los casos)
+      </span>
+     </li> 
+    </ul>
+    Sólo se realiza un mapeo de casos completo incondicional y agnóstico del lenguaje.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration73.new-features.mbstring.case-insensitive-ops">
+   <h4 class="title">Las operaciones de string insensible a los casos que utilizan el plegado de casos</h4>
+
+   <p class="para">
+    Las operaciones de string insensible a las mayúsculas y minúsculas utilizan ahora el plegado de mayúsculas 
+    en lugar del mapeo de mayúsculas y minúsculas durante las comparaciones. Esto significa que más caracteres serán
+    considerado (caso insensible) igual ahora.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration73.new-features.mbstring.mb-case-title">
+   <h4 class="title">MB_CASE_TITLE realiza la conversión de casos de título</h4>
+
+   <p class="para">
+    <span class="function"><a href="function.mb-convert-case.html" class="function">mb_convert_case()</a></span> con <strong><code><a href="mbstring.constants.html#constant.mb-case-title">MB_CASE_TITLE</a></code></strong>
+    ahora realiza una conversión de título-caso basado en Cased y CaseIgnorable
+    propiedades derivadas de Unicode. En particular, esto también mejora el manejo de
+    comillas y apóstrofes.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration73.new-features.mbstring.ucd11">
+   <h4 class="title">Soporte Unicode 11</h4>
+
+   <p class="para">
+    La tabla de datos <a href="book.mbstring.html" class="link">Multibyte String</a> 
+    ha sido actualizado para Unicode 11.
+   </p> 
+  </div>
+
+  <div class="sect3" id="migration73.new-features.mbstring.long-strings">
+   <h4 class="title">Soporte de string largos</h4>
+
+   <p class="para">
+    Las <a href="ref.mbstring.html" class="link">Funciones Multibyte String</a> ahora
+    soportan correctamente strings de más de 2GB.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration73.new-features.mbstring.performance">
+   <h4 class="title">Mejoras en el rendimiento</h4>
+
+   <p class="para">
+    Funcionamiento de la extensión <a href="book.mbstring.html" class="link">Multibyte String</a>
+    extension ha mejorado significativamente en todos los aspectos. Las mayores
+    mejoras son en las funciones de conversión de casos.
+   </p>
+  </div>
+
+  <div class="sect3" id="migration73.new-features.mbstring.named-captures">
+   <h4 class="title">Soporte de capturas nombradas</h4>
+
+   <p class="para">
+    Las funciones <code class="literal">mb_ereg_*</code> ahora soportan capturas nombradas.
+    Las funciones de coincidencia como <span class="function"><a href="function.mb-ereg.html" class="function">mb_ereg()</a></span> ahora retornarán
+    capturas nombradas usando su número de grupo como su nombre, de forma similar a la PCRE:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />mb_ereg</span><span style="color: #007700">(</span><span style="color: #DD0000">'(?&lt;word&gt;\w+)'</span><span style="color: #007700">, </span><span style="color: #DD0000">'国'</span><span style="color: #007700">, </span><span style="color: #0000BB">$matches</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">// =&gt; [0 =&gt; "国", 1 =&gt; "国", "word" =&gt; "国"];<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+    </div>
+    Adicionalmente, <span class="function"><a href="function.mb-ereg-replace.html" class="function">mb_ereg_replace()</a></span> ahora soporta la notación 
+    <code class="code">\k&lt;&gt;</code> y <code class="code">\k&#039;&#039;</code> para referirse a las capturas nombradas
+    en el string de reemplazo:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />mb_ereg_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">'\s*(?&lt;word&gt;\w+)\s*'</span><span style="color: #007700">, </span><span style="color: #DD0000">"_\k&lt;word&gt;_\k'word'_"</span><span style="color: #007700">, </span><span style="color: #DD0000">' foo '</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">// =&gt; "_foo_foo_"<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+    </div>
+    <code class="code">\k&lt;&gt;</code> y <code class="code">\k&#039;&#039;</code> también puede utilizarse para referencias 
+    numeradas, que también funciona con números de grupo mayores de 9.
+   </p>
+  </div>
+
+ </div>
+
+ <div class="sect2" id="migration73.new-features.realine">
+  <h3 class="title">Readline</h3>
+
+  <p class="para">
+   Soporte para las opciones <code class="literal">completion_append_character</code> y
+   <code class="literal">completion_suppress_append</code> ha sido añadido para
+   <span class="function"><a href="function.readline-info.html" class="function">readline_info()</a></span>. Estas opciones sólo están disponibles si PHP
+   está vinculado con libreadline (más que con libedit).
+  </p>
+ </div>
+
+</div></div></div></body></html>

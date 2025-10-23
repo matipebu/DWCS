@@ -1,0 +1,384 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Listado de opciones de contexto para SSL</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="context.ftp.html">« Opciones de contexto para FTP</a></li>
+      <li style="float: right;"><a href="context.phar.html">Opciones de contexto Phar »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="context.html">Opciones y par&aacute;metros de contexto</a></li>
+    <li>Listado de opciones de contexto para SSL</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="context.ssl" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Opciones de contexto para SSL</h1>
+  <p class="refpurpose"><span class="refname">Opciones de contexto para SSL</span> &mdash; <span class="dc-title">Listado de opciones de contexto para SSL</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-context.ssl-description">
+  <h3 class="title">Descripción</h3>
+  <p class="para">
+   Opciones de contexto para transportes <code class="literal">ssl://</code> y
+   <code class="literal">tls://</code>
+  </p>
+ </div>
+
+
+ <div class="refsect1 options" id="refsect1-context.ssl-options">
+  <h3 class="title">Opciones</h3>
+  <p class="para">
+   <dl>
+    
+     <dt id="context.ssl.peer-name">
+      <code class="parameter">peer_name</code>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       Nombre del par a utilizar. Si no se establece este valor, se averigua
+       basándose en el nombre del host empleado al abrir el flujo.
+      </p>
+     </dd>
+    
+    
+     <dt id="context.ssl.verify-peer">
+      <code class="parameter">verify_peer</code>
+      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       Requerir verificación del certificado SSL utilizado.
+      </p>
+      <p class="para">
+       Por defecto es <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>.
+      </p>
+     </dd>
+    
+    
+     <dt id="context.ssl.verify-peer-name">
+      <code class="parameter">verify_peer_name</code>
+      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       Requerir verificación de nombre del par.
+      </p>
+      <p class="para">
+       Por defecto es <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>.
+      </p>
+     </dd>
+    
+    
+     <dt id="context.ssl.allow-self-signed">
+      <code class="parameter">allow_self_signed</code>
+      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       Permite certificados auto-firmados. Requiere
+       <a href="context.ssl.html#context.ssl.verify-peer" class="link"><code class="parameter">verify_peer</code></a>.
+      </p>
+      <p class="para">
+       Por defecto es <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>
+      </p>
+     </dd>
+    
+    
+     <dt id="context.ssl.cafile">
+      <code class="parameter">cafile</code>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       Ubicación del archivo de la entidad emisora de certificados en el sistema de archivos local,
+       la cual debe ser utilizada con la opción de contexto <code class="literal">verify_peer</code>
+       para autenticar la identidad del par remoto.
+      </p>
+     </dd>
+    
+    
+     <dt id="context.ssl.capath">
+      <code class="parameter">capath</code>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       Si no se específica <code class="literal">cafile</code> o si no se encuentra
+       el certificado, el directorio al que apunta <code class="literal">capath</code>
+       sera explorado en busca de un certificado apropiado. <code class="literal">capath</code>
+       debe ser un directorio con el hash correcto.
+      </p>
+     </dd>
+    
+    
+     <dt id="context.ssl.local-cert">
+      <code class="parameter">local_cert</code>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       Ruta hacia el archivo del certificado local en el sistema de archivos. Debe ser un
+       archivo codificado con PEM el cual contenga el certificado y la llave privada.
+       Puede, opcionalmente, contener la cadena de los emisores del certificado.
+       La clave privada también podría estar contenida en un fichero aparte especificado
+       por <code class="literal">local_pk</code>.
+      </p>
+     </dd>
+    
+    
+     <dt id="context.ssl.local-pk">
+      <code class="parameter">local_pk</code>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       Ruta a fichero de clave privada local del sistema de ficheros en caso ficheros
+       separados para el certificado (<code class="literal">local_cert</code>) y la clave privada.
+      </p>
+     </dd>
+    
+    
+     <dt id="context.ssl.passphrase">
+      <code class="parameter">passphrase</code>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       La frase de contraseña con la cual el archivo <code class="literal">local_cert</code>
+       fue codificado.
+      </p>
+     </dd>
+    
+    
+     <dt id="context.ssl.cn-match">
+      <code class="parameter">CN_match</code>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       El nombre común que se está esperando. PHP realizará comparaciones limitadas
+       de comodines. Si el nombre común no coincide con esto, el intento
+       de conexión fallará.
+      </p>
+      <blockquote class="note"><p><strong class="note">Nota</strong>: 
+       <span class="simpara">
+        Esta opción está obsoleta a favor de <code class="parameter">peer_name</code>,
+        a partir de PHP 5.6.0.
+       </span>
+      </p></blockquote>
+     </dd>
+    
+    
+     <dt id="context.ssl.verify-depth">
+      <code class="parameter">verify_depth</code>
+      <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       Abortar si la cadena de certificados es demasiado profunda.
+      </p>
+      <p class="para">
+       Por defecto es no verificarlo.
+      </p>
+     </dd>
+    
+    
+     <dt id="context.ssl.ciphers">
+      <code class="parameter">ciphers</code>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       Establece la lista de sistemas de cifrado disponibles. El formato de la cadena se describe
+       en <a href="https://www.openssl.org/docs/manmaster/man1/ciphers.html#CIPHER-LIST-FORMAT" class="link external">&raquo;&nbsp;ciphers(1)</a>.
+      </p>
+      <p class="para">
+       Por defecto es <code class="literal">DEFAULT</code>.
+      </p>
+     </dd>
+    
+    
+     <dt id="context.ssl.capture-peer-cert">
+      <code class="parameter">capture_peer_cert</code>
+      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       Si se establece en <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>, una opción de contexto <code class="literal">peer_certificate</code>
+       será creada, conteniendo el certificado par.
+      </p>
+     </dd>
+    
+    
+     <dt id="context.ssl.capture-peer-cert-chain">
+      <code class="parameter">capture_peer_cert_chain</code>
+      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       Si se establece en <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>, una opción de contexto <code class="literal">peer_certificate_chain</code>
+       será creada, conteniendo la cadena del certificado.
+      </p>
+     </dd>
+    
+    
+     <dt id="context.ssl.sni-enabled">
+      <code class="parameter">SNI_enabled</code>
+      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       Si se establece en <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>, la indicación del nombre del servidor se activará. Activando SNI
+       se permiten múltiples certificados en la misma dirección IP.
+      </p>
+     </dd>
+    
+    
+     <dt id="context.ssl.sni-server-name">
+      <code class="parameter">SNI_server_name</code>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       Si se establece, entonces este valor se utilizará como nombre del servidor para la indicación
+       de nombre de servidor. Si este valor no está establecido, entonces el nombre del servidor se supone
+       basado en el nombre de host utilizado cuando se abre el flujo.
+      </p>
+      <blockquote class="note"><p><strong class="note">Nota</strong>: 
+       <span class="simpara">
+        Esta opción está obsoleta a favor de <code class="parameter">peer_name</code>,
+        a partir de PHP 5.6.0.
+       </span>
+      </p></blockquote>
+     </dd>
+    
+    
+     <dt id="context.ssl.disable-compression">
+      <code class="parameter">disable_compression</code>
+      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       Si está establecido, deshabilita la comprensión TLS. Esto puede ayudar a mitigar el vector
+       de ataque CRIME.
+      </p>
+     </dd>
+    
+    
+     <dt id="context.ssl.peer-fingerprint">
+      <code class="parameter">peer_fingerprint</code>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span> | <span class="type"><a href="language.types.array.html" class="type array">array</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       Aborta cuando el resumen del certificado remoto no coincide con el has
+       especificado.
+      </p>
+      <p class="para">
+       Cuando se emplea un <span class="type"><a href="language.types.string.html" class="type string">string</a></span>, la longitud determinará qué algoritmo hash
+       se aplica, si &quot;md5&quot; (32) o &quot;sha1&quot; (40).
+      </p>
+      <p class="para">
+       Cuando se emplea un <span class="type"><a href="language.types.array.html" class="type array">array</a></span>, las claves indican el nombre del algoritmo hash
+       y cada valor correspondiente es el resumen previsto.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-context.ssl-changelog">
+  <h3 class="title">Historial de cambios</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Versión</th>
+       <th>Descripción</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.6.0</td>
+       <td>
+        Se añadieron <code class="parameter">peer_fingerprint</code> and <code class="parameter">verify_peer_name</code>.
+        El valor predeterminado de <code class="parameter">verify_peer</code> se cambió a <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.4.13</td>
+       <td>
+        Se añadió <code class="parameter">disable_compression</code>. Requiere OpenSSL &gt;= 1.0.0.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.3.2</td>
+       <td>
+        Se añadió <code class="parameter">SNI_enabled</code> y
+        <code class="parameter">SNI_server_name</code>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-context.ssl-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <span class="simpara">
+    Debido a que  <code class="literal">ssl://</code> el es transporte subyacente para las envolturas
+    <a href="wrappers.http.html" class="link"><code class="literal">https://</code></a> y
+    <a href="wrappers.ftp.html" class="link"><code class="literal">ftps://</code></a>,
+    cualquier opción de contexto que aplique para <code class="literal">ssl://</code> también aplica para
+    <code class="literal">https://</code> y <code class="literal">ftps://</code>.
+   </span>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <span class="simpara">
+    Para que SNI (Server Name Indication) esté disponible, entonces PHP se debe compilar
+    con OpenSSL 0.9.8j o superior. Se utiliza
+    <strong><code><a href="openssl.constsni.html#constant.openssl-tlsext-server-name">OPENSSL_TLSEXT_SERVER_NAME</a></code></strong> para determinar si SNI está
+    soportado.
+   </span>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-context.ssl-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><a href="context.socket.html" class="xref">Opciones de contexto de sockets</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

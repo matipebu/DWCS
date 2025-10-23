@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Conjuntos de caracteres</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqlinfo.concepts.buffering.html">« Consultas almacenadas y no almacenadas en buffer</a></li>
+      <li style="float: right;"><a href="book.mysqli.html">MySQLi »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="mysqlinfo.concepts.html">Conceptos</a></li>
+    <li>Conjuntos de caracteres</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqlinfo.concepts.charset" class="section">
+  <h2 class="title">Conjuntos de caracteres</h2>
+  
+  <p class="para">
+   De forma ideal, un conjunto de caracteres apropiado será establecido a nivel del servidor, que está descrito
+   dentro de la sección <a href="http://dev.mysql.com/doc/mysql/en/charset-configuration.html" class="link external">&raquo;&nbsp;Configuración del conjunto de caracteres</a>
+   del manual del Servidor MySQL. De forma alternativa, cada API de MySQL ofrece métodos para establecer
+   el conjunto de caracteres en tiempo de ejecución.
+  </p>
+  
+  <div class="caution"><strong class="caution">Precaución</strong>
+   <h1 class="title">El conjunto de caracteres y el escape de caracteres</h1>
+   <p class="para">
+    El conjunto de caracteres debería entenderse y ser definido, ya que afecta a cada
+    acción, e incluye implicaciones de seguridad. Por ejemplo, el mecanismo de escape
+    (p.ej., <span class="function"><a href="mysqli.real-escape-string.html" class="function">mysqli_real_escape_string()</a></span> para mysqli, <span class="function"><a href="function.mysql-real-escape-string.html" class="function">mysql_real_escape_string()</a></span>
+    para mysql, y <span class="methodname"><a href="pdo.quote.html" class="methodname">PDO::quote()</a></span> para PDO_MySQL) cumplirá con
+    esta configuración. Es importante darse cuenta que estas funciones no usarán el conjunto de
+    caracteres que está definido en una consulta, por lo que, por ejemplo, lo siguiente no tendrá efecto
+    sobre ellas:
+   </p>
+  </div>
+  
+  <div class="example" id="example-1398">
+   <p><strong>Ejemplo #1 Problemas al establecer el conjunto de caracteres con SQL</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$mysqli </span><span style="color: #007700">= new </span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">, </span><span style="color: #DD0000">"mi_usuario"</span><span style="color: #007700">, </span><span style="color: #DD0000">"mi_contraseña"</span><span style="color: #007700">, </span><span style="color: #DD0000">"world"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// NO afectará a $mysqli-&gt;real_escape_string();<br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SET NAMES utf8"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// NO afectará a $mysqli-&gt;real_escape_string();<br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SET CHARACTER SET utf8"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Pero esto sí afectará a $mysqli-&gt;real_escape_string();<br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">set_charset</span><span style="color: #007700">(</span><span style="color: #DD0000">'utf8'</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">// Y esto NO le afectará (utf-8 frente a utf8) -- no emplee guiones aquí<br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">set_charset</span><span style="color: #007700">(</span><span style="color: #DD0000">'utf-8'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+  
+  <p class="para">
+   Abajo hay ejemplos que demuestran cómo alterar adecuadamente el conjunto de caracteres en tiempo de ejecución
+   usando cada API.
+  </p>
+  
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <strong>Posible confusión con UTF-8</strong><br />
+   <p class="para">
+    Debido a que los nombres de los conjuntos de caracteres no contienen guiones, la cadena
+    &quot;utf8&quot; es válida en MySQL para establecer el conjunto de caracteres a UTF-8. La cadena
+    &quot;utf-8&quot; no es válida para cambiar el
+    conjunto de caracteres.
+   </p>
+  </p></blockquote>
+  
+  <div class="example" id="example-1399">
+   <p><strong>Ejemplo #2 Ejemplo para establecer el conjunto de caracteres: mysqli</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$mysqli </span><span style="color: #007700">= new </span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">, </span><span style="color: #DD0000">"mi_usuario"</span><span style="color: #007700">, </span><span style="color: #DD0000">"mi_contraseña"</span><span style="color: #007700">, </span><span style="color: #DD0000">"world"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Conjunto de caracteres inicial: %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">character_set_name</span><span style="color: #007700">());<br /><br />if (!</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">set_charset</span><span style="color: #007700">(</span><span style="color: #DD0000">'utf8'</span><span style="color: #007700">)) {<br />    </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Error cargando el conjunto de caracteres utf8: %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">error</span><span style="color: #007700">);<br />    exit;<br />}<br /><br />echo </span><span style="color: #DD0000">"Información del nuevo conjunto de caracteres:\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">( </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">get_charset</span><span style="color: #007700">() );<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+  
+  <div class="example" id="example-1400">
+   <p><strong>Ejemplo #3 Ejemplo para establecer el conjunto de caracteres: <a href="ref.pdo-mysql.connection.html" class="link">pdo_mysql</a></strong></p>
+   <div class="example-contents"><p>
+    Nota: Sólo funciona a partir de PHP 5.3.6.
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$pdo </span><span style="color: #007700">= new </span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #DD0000">"mysql:host=localhost;dbname=world;charset=utf8"</span><span style="color: #007700">, </span><span style="color: #DD0000">'mi_usuario'</span><span style="color: #007700">, </span><span style="color: #DD0000">'mi_contraseña'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+  
+  <div class="example" id="example-1401">
+   <p><strong>Ejemplo #4 Ejemplo para establecer el conjunto de caracteres: mysql</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$conexión </span><span style="color: #007700">= </span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">, </span><span style="color: #DD0000">"mi_usuario"</span><span style="color: #007700">, </span><span style="color: #DD0000">"mi_contraseña"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$bd   </span><span style="color: #007700">= </span><span style="color: #0000BB">mysql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">"world"</span><span style="color: #007700">);<br /><br />echo </span><span style="color: #DD0000">'Conuunto de caracteres inicial: ' </span><span style="color: #007700">.  </span><span style="color: #0000BB">mysql_client_encoding</span><span style="color: #007700">(</span><span style="color: #0000BB">$conexión</span><span style="color: #007700">) . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br />if (!</span><span style="color: #0000BB">mysql_set_charset</span><span style="color: #007700">(</span><span style="color: #DD0000">'utf8'</span><span style="color: #007700">, </span><span style="color: #0000BB">$conexión</span><span style="color: #007700">)) {<br />    echo </span><span style="color: #DD0000">"Error: No se pudo establecer el conjunto de caracteres.\n"</span><span style="color: #007700">;<br />    exit;<br />}<br /><br />echo </span><span style="color: #DD0000">'El conjunto de caracteres actual es: ' </span><span style="color: #007700">.  </span><span style="color: #0000BB">mysql_client_encoding</span><span style="color: #007700">(</span><span style="color: #0000BB">$conexión</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>  
+ </div></div></div></body></html>

@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Enviar una consulta CUBRID</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.cubrid-ping.html">« cubrid_ping</a></li>
+      <li style="float: right;"><a href="function.cubrid-real-escape-string.html">cubrid_real_escape_string »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="cubridmysql.cubrid.html">Funciones de compatibilidad CUBRID MySQL</a></li>
+    <li>Enviar una consulta CUBRID</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.cubrid-query" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">cubrid_query</h1>
+  <p class="verinfo">(PECL CUBRID &gt;= 8.3.1)</p><p class="refpurpose"><span class="refname">cubrid_query</span> &mdash; <span class="dc-title">Enviar una consulta CUBRID</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.cubrid-query-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>cubrid_query</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$query</code></span>, <span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$conn_identifier</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>cubrid_query()</strong></span> envía una consulta única (no están soportadas consultas múltiples) a la
+   base de datos activa actual en el servidor que está asociado con el <code class="parameter">conn_identifier</code> especificado.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.cubrid-query-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">query</code></dt>
+     <dd>
+      <p class="para">
+       Una consulta SQL
+      </p>
+      <p class="para">
+       La información dentro de la consulta debería estar <a href="function.cubrid-real-escape-string.html" class="link">adecuadamente escapada</a>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">conn_identifier</code></dt>
+     <dd>
+      <p class="para">
+       La conexión CUBRID. Si el identificador de conexión no se especifica,
+       se asume la última conexión abierta por
+       <span class="function"><a href="function.cubrid-connect.html" class="function">cubrid_connect()</a></span>.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.cubrid-query-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Para SELECT, SHOW, DESCRIBE, EXPLAIN y otras sentencias que devuelven conjuntos de resultadosa,
+   <span class="function"><strong>cubrid_query()</strong></span> devuelve un <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> en caso de éxito, o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+  <p class="para">
+   Para otros tipos de sentencias SQL, INSERT, UPDATE, DELETE, DROP, etc,
+   <span class="function"><strong>cubrid_query()</strong></span> devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+  <p class="para">
+   El recurso resultado devuelto debería ser pasado a <span class="function"><a href="function.cubrid-fetch-array.html" class="function">cubrid_fetch_array()</a></span>, y a otras
+   funciones para tratar con las tablas de resultados, para acceder a la información devuelta.
+  </p>
+  <p class="para">
+   Use <span class="function"><a href="function.cubrid-num-rows.html" class="function">cubrid_num_rows()</a></span> para vaeriguar cuántas filas fueron devueltas por una sentencia SELECT o
+   <span class="function"><a href="function.cubrid-affected-rows.html" class="function">cubrid_affected_rows()</a></span> para averiguar cuántas filas fueron afectadas por una sentencia DELETE, INSERT, REPLACE, o UPDATE.
+  </p>
+  <p class="para">
+   <span class="function"><strong>cubrid_query()</strong></span> también podrá fallar y devolver <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>
+   si el usuario no tiene permiso para acceder a la/s tabla/s referenciada/s por la consulta.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.cubrid-query-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-1189">
+    <p><strong>Ejemplo #1 Consulta No Válida</strong></p>
+    <div class="example-contents"><p>
+     La siguiente consulta no es válida sintácticamente, por lo que <span class="function"><strong>cubrid_query()</strong></span> fallará y devolverá <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$conn </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">, </span><span style="color: #0000BB">33000</span><span style="color: #007700">, </span><span style="color: #DD0000">'demodb'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$result </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_query</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT * WHERE 1=1'</span><span style="color: #007700">);<br />if (!</span><span style="color: #0000BB">$result</span><span style="color: #007700">) {<br />    die(</span><span style="color: #DD0000">'Invalid query: ' </span><span style="color: #007700">. </span><span style="color: #0000BB">cubrid_error</span><span style="color: #007700">());<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-1190">
+    <p><strong>Ejemplo #2 Consulta Válida</strong></p>
+    <div class="example-contents"><p>
+     La siguiente consulta es válida, por lo que <span class="function"><strong>cubrid_query()</strong></span> devolverá un <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Esto podría ser proporcionado por el usuario, por ejemplo<br /></span><span style="color: #0000BB">$nombre </span><span style="color: #007700">= </span><span style="color: #DD0000">'fred'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$apellido  </span><span style="color: #007700">= </span><span style="color: #DD0000">'fox'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,</span><span style="color: #DD0000">"DROP TABLE if exists friends"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,</span><span style="color: #DD0000">"create table friends(firstname varchar,lastname varchar,address char(24),age int)"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,</span><span style="color: #DD0000">"insert into friends values('fred','fox','home-1','20')"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,</span><span style="color: #DD0000">"insert into friends values('blue','cat','home-2','21')"</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">// Formular la Consulta<br />// Esta es la mejor manera de realizar una consulta SQL<br />// Para más ejemplos, véase cubrid_real_escape_string()<br /></span><span style="color: #0000BB">$consulta </span><span style="color: #007700">= </span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT firstname, lastname, address, age FROM friends WHERE firstname='%s' AND lastname='%s'"</span><span style="color: #007700">,<br /></span><span style="color: #0000BB">cubrid_real_escape_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$nombre</span><span style="color: #007700">),<br /></span><span style="color: #0000BB">cubrid_real_escape_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$apellido</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">// Realizar la Constulta<br /></span><span style="color: #0000BB">$result </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$consulta</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Verificar el resultado<br />// Esto muestra la consulta real enviada a CUBRID, y el error. Útil para depuración.<br /></span><span style="color: #007700">if (!</span><span style="color: #0000BB">$result</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">$mensaje  </span><span style="color: #007700">= </span><span style="color: #DD0000">'Consulta no válida: ' </span><span style="color: #007700">. </span><span style="color: #0000BB">cubrid_error</span><span style="color: #007700">() . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />    </span><span style="color: #0000BB">$mensaje </span><span style="color: #007700">.= </span><span style="color: #DD0000">'Consulta completa: ' </span><span style="color: #007700">. </span><span style="color: #0000BB">$consulta</span><span style="color: #007700">;<br />    die(</span><span style="color: #0000BB">$mensaje</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">// Usar el resultado<br />// Intentar imprimir $result no permitirá el acceso a la información en el recurso<br />// Se debe usar una de las funciones de resultados de cubrid<br />// Véase también cubrid_result(), cubrid_fetch_array(), cubrid_fetch_row(), etc.<br /></span><span style="color: #007700">while (</span><span style="color: #0000BB">$fila </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_fetch_assoc</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">)) {<br />    echo </span><span style="color: #0000BB">$fila</span><span style="color: #007700">[</span><span style="color: #DD0000">'firstname'</span><span style="color: #007700">];<br />    echo </span><span style="color: #0000BB">$fila</span><span style="color: #007700">[</span><span style="color: #DD0000">'lastname'</span><span style="color: #007700">];<br />    echo </span><span style="color: #0000BB">$fila</span><span style="color: #007700">[</span><span style="color: #DD0000">'address'</span><span style="color: #007700">];<br />    echo </span><span style="color: #0000BB">$fila</span><span style="color: #007700">[</span><span style="color: #DD0000">'age'</span><span style="color: #007700">];<br />}<br /><br /></span><span style="color: #FF8000">// Liberar los recursos asociados con el conjunto de resultados<br />// Esto se hace automáticamente al final del script<br /></span><span style="color: #0000BB">cubrid_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.cubrid-query-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.cubrid-connect.html" class="function" rel="rdfs-seeAlso">cubrid_connect()</a> - Abrir una conexi&oacute;n al servidor CUBRID</span></li>
+    <li><span class="function"><a href="function.cubrid-error.html" class="function" rel="rdfs-seeAlso">cubrid_error()</a> - Se usa para obtener el mensaje de error</span></li>
+    <li><span class="function"><a href="function.cubrid-real-escape-string.html" class="function" rel="rdfs-seeAlso">cubrid_real_escape_string()</a> - Escapar caracteres especiales en una cadena para usarla en una sentencia SQL</span></li>
+    <li><span class="function"><a href="function.cubrid-result.html" class="function" rel="rdfs-seeAlso">cubrid_result()</a> - Devuelve el valor de un campo espec&iacute;fico de una fila espec&iacute;fica</span></li>
+    <li><span class="function"><a href="function.cubrid-fetch-assoc.html" class="function" rel="rdfs-seeAlso">cubrid_fetch_assoc()</a> - Devuelve un array asociativo que se corresponde con la fila obtenida</span></li>
+    <li><span class="function"><a href="function.cubrid-unbuffered-query.html" class="function" rel="rdfs-seeAlso">cubrid_unbuffered_query()</a> - Realiza una consulta sin traer los resultados a memoria</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

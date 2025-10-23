@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Conectar al servidor de Oracle usando una conexi&oacute;n &uacute;nica</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.oci-new-collection.html">« oci_new_collection</a></li>
+      <li style="float: right;"><a href="function.oci-new-cursor.html">oci_new_cursor »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.oci8.html">Funciones de OCI8</a></li>
+    <li>Conectar al servidor de Oracle usando una conexi&oacute;n &uacute;nica</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.oci-new-connect" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">oci_new_connect</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8, PECL OCI8 &gt;= 1.1.0)</p><p class="refpurpose"><span class="refname">oci_new_connect</span> &mdash; <span class="dc-title">Conectar al servidor de Oracle usando una conexión única</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.oci-new-connect-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>oci_new_connect</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$username</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$password</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$connection_string</code><span class="initializer"> = ?</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$character_set</code><span class="initializer"> = ?</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$session_mode</code><span class="initializer"> = ?</span></span><br>): <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span></div>
+
+  <p class="para rdfs-comment">
+   Establece una nueva conexión a un servidor de Oracle y se identifica.
+  </p>
+  <p class="para">
+   A diferencia de <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span> y 
+   <span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span>, <span class="function"><strong>oci_new_connect()</strong></span>
+   no almacena en caché conexiones y siempre devolverá un gestor de conexión
+   recién abierto. Esto es útil si la aplicación necesita
+   aislamiento transaccional entre dos conjuntos de consultas.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.oci-new-connect-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">username</code></dt>
+     <dd>
+      <p class="para">
+       El nombre de usuario de Oracle.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">password</code></dt>
+     <dd>
+      <p class="para">
+       La contraseña para <code class="parameter">username</code>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">connection_string</code></dt>
+     <dd>
+      <p class="para">Contiene
+la <code class="literal">instancia de Oracle</code> a la que conectarse. Puede ser
+una <a href="https://www.oracle.com/pls/topic/lookup?ctx=dblatest&id=GUID-E5358DEA-D619-4B7B-A799-3D2F802500F1" class="link external">&raquo;&nbsp;cadena de Conexión
+Sencilla</a> (Easy Connect), o un Nombre de Conexión del
+fichero <var class="filename">tnsnames.ora</var>, o el nombre de una
+instancia local de Oracle.
+</p>
+<p class="para">Si no se especifica, PHP utiliza
+ variables de entorno como <strong><code>TWO_TASK</code></strong> (en Linux)
+ o <strong><code>LOCAL</code></strong> (en Windows)
+ y <strong><code>ORACLE_SID</code></strong> para determinar la
+ <code class="literal">instancia de Oracle</code> a la que conectarse.
+</p>
+<p class="para">
+ Para utilizar el método de nomenclatura de Conexión Sencila, PHP debe estar vinculado con
+ las bibliotecas cliente de Oracle 10<em>g</em> o superiores. La cadena de Conexión Sencilla para Oracle
+ 10<em>g</em> se utiliza de la siguiente forma:
+ <em>[//]nombre_host[:puerto][/nombre_servicio]</em>. Desde Oracle
+ 11<em>g</em>, la sintaxis es:
+ <em>[//]nombre_host[:puerto][/nombre_servicio][:tipo_servicio][/nombre_instancia]</em>.
+ Los nombres de servicio pueden encontrarse ejecuntado la utilidad de Oracle
+ <code class="literal">lsnrctl status</code> en el servidor donde se encuentra
+ la base de datos.
+</p>
+<p class="para">
+ El fichero <var class="filename">tnsnames.ora</var> puede estar en la ruta de búsqueda de
+ Oracle Net, la cual
+ incluye <var class="filename">$ORACLE_HOME/network/admin</var>
+ y <var class="filename">/etc</var>. De forma alternativa,
+ establezca <code class="literal">TNS_ADMIN</code> para
+ que <var class="filename">$TNS_ADMIN/tnsnames.ora</var> sea leído. Asegúrse
+ que el demonio web tiene acceso de lectura al fichero.
+</p>
+     </dd>
+    
+    
+     <dt><code class="parameter">character_set</code></dt>
+     <dd>
+      <p class="para">Determina
+el juego de caracteres usado por las bibliotecas cliente de Oracle. El juego
+de caracteres no tiene por que coinicidir con el utilizado en la base de datos. Si
+no coinicide, Oracle intentará hacer lo posible para convertir los datos entre los dos
+juegos de caracteres. Dependiendo del juego de caracteres que se esté usando, podría
+no proporcionarse resultados útiles. La conversión también añade algo de carga extra de tiempo.
+</p>
+<p class="para">Si no se especifica, las
+ bibliotacas cliente de Oracle determinarán el juego de caracteres desde
+ la variable de entorno <strong><code>NLS_LANG</code></strong>.
+</p>
+<p class="para">Pasar este parámetro puede
+ reducir el tiempo que toma en conectarse.
+</p>
+     </dd>
+    
+    
+     <dt><code class="parameter">session_mode</code></dt>
+     <dd>
+      <p class="para">Este
+parámetro está disponible desde la versión 5 de PHP (PECL OCI8 1.1) y acepta los
+siguientes valores: <strong><code><a href="oci8.constants.html#constant.oci-default">OCI_DEFAULT</a></code></strong>,
+<strong><code><a href="oci8.constants.html#constant.oci-sysoper">OCI_SYSOPER</a></code></strong> y <strong><code><a href="oci8.constants.html#constant.oci-sysdba">OCI_SYSDBA</a></code></strong>.
+Si se especifica <strong><code><a href="oci8.constants.html#constant.oci-sysoper">OCI_SYSOPER</a></code></strong> o
+<strong><code><a href="oci8.constants.html#constant.oci-sysdba">OCI_SYSDBA</a></code></strong>, esta función intentará
+establecer una conexión privilegiada con las credenciales externas.
+Las conexiones privilegiadas están desactivadas por omisión. Para activarlas
+hay que establecer <a href="oci8.configuration.html#ini.oci8.privileged-connect" class="link">oci8.privileged_connect</a>
+a <code class="literal">On</code>.
+</p>
+<p class="para">
+ En PHP 5.3 (PECL OCI8 1.3.4) se introdujo el valor de modo
+ <strong><code><a href="oci8.constants.html#constant.oci-cred-ext">OCI_CRED_EXT</a></code></strong>. Esto indica a Oracle que utilice
+ la autenticación Externa o del SO, la cual debe estar configurada en la
+ base de datos. La bandera <strong><code><a href="oci8.constants.html#constant.oci-cred-ext">OCI_CRED_EXT</a></code></strong> sólo puede usarse
+ con el nombre de usuario &quot;/&quot; y la contraseña en blanco.
+ <a href="oci8.configuration.html#ini.oci8.privileged-connect" class="link">oci8.privileged_connect</a>
+ podría ser <code class="literal">On</code> o <code class="literal">Off</code>.
+</p>
+<p class="para">
+ <strong><code><a href="oci8.constants.html#constant.oci-cred-ext">OCI_CRED_EXT</a></code></strong> podría estar en combinación con los modos
+ <strong><code><a href="oci8.constants.html#constant.oci-sysoper">OCI_SYSOPER</a></code></strong> o
+ <strong><code><a href="oci8.constants.html#constant.oci-sysdba">OCI_SYSDBA</a></code></strong>.
+</p>
+<p class="para">
+ <strong><code><a href="oci8.constants.html#constant.oci-cred-ext">OCI_CRED_EXT</a></code></strong> no se admite en Windows por
+ razones de seguridad.
+</p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.oci-new-connect-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve un identificador de conexión, o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.oci-new-connect-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   Lo siguiente demuestra cómo se pueden separar conexiones.
+   <div class="example" id="example-1862">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>oci_new_connect()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">// crear la tabla mytab (mycol number);<br /><br /></span><span style="color: #007700">function </span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">, </span><span style="color: #0000BB">$c</span><span style="color: #007700">)<br />{<br />    echo </span><span style="color: #DD0000">"Consultando </span><span style="color: #0000BB">$name</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />    </span><span style="color: #0000BB">$s </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$c</span><span style="color: #007700">, </span><span style="color: #DD0000">"select * from mytab"</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$s</span><span style="color: #007700">, </span><span style="color: #0000BB">OCI_NO_AUTO_COMMIT</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">$row </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$s</span><span style="color: #007700">, </span><span style="color: #0000BB">OCI_ASSOC</span><span style="color: #007700">);<br />    if (!</span><span style="color: #0000BB">$row</span><span style="color: #007700">) {<br />        echo </span><span style="color: #DD0000">"No hay filas\n"</span><span style="color: #007700">;<br />    } else {<br />        do {<br />            foreach (</span><span style="color: #0000BB">$row </span><span style="color: #007700">as </span><span style="color: #0000BB">$item</span><span style="color: #007700">)<br />                echo </span><span style="color: #0000BB">$item </span><span style="color: #007700">. </span><span style="color: #DD0000">" "</span><span style="color: #007700">;<br />            echo </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />        } while ((</span><span style="color: #0000BB">$row </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$s</span><span style="color: #007700">, </span><span style="color: #0000BB">OCI_ASSOC</span><span style="color: #007700">)) != </span><span style="color: #0000BB">false</span><span style="color: #007700">);<br />    }<br />}<br /><br /></span><span style="color: #0000BB">$c1 </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"hr"</span><span style="color: #007700">, </span><span style="color: #DD0000">"welcome"</span><span style="color: #007700">, </span><span style="color: #DD0000">"localhost/orcl"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$c2 </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_new_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"hr"</span><span style="color: #007700">, </span><span style="color: #DD0000">"welcome"</span><span style="color: #007700">, </span><span style="color: #DD0000">"localhost/orcl"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$s </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$c1</span><span style="color: #007700">, </span><span style="color: #DD0000">"insert into mytab values(1234)"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$s</span><span style="color: #007700">, </span><span style="color: #0000BB">OCI_NO_AUTO_COMMIT</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"conexión básica"</span><span style="color: #007700">, </span><span style="color: #0000BB">$c1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"nueva conexión"</span><span style="color: #007700">, </span><span style="color: #0000BB">$c2</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_commit</span><span style="color: #007700">(</span><span style="color: #0000BB">$c1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"nueva conexión después de consignar"</span><span style="color: #007700">, </span><span style="color: #0000BB">$c2</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Output is:<br />//   Consultando conexión básica<br />//   1234 <br />//   Consultando nueva conexión<br />//   No hay filas<br />//   Consultando nueva conexión después de consignar<br />//   1234 <br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Véase <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span> para más ejemplos de uso de parámetros.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.oci-new-connect-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.oci-connect.html" class="function" rel="rdfs-seeAlso">oci_connect()</a> - Conecta a una base de datos de Oracle</span></li>
+    <li><span class="function"><a href="function.oci-pconnect.html" class="function" rel="rdfs-seeAlso">oci_pconnect()</a> - Conectar a una base de datos de Oracle usando una conexi&oacute;n persistente</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

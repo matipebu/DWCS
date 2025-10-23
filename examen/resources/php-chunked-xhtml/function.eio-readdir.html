@@ -1,0 +1,497 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Leer un directorio al completo</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.eio-readahead.html">« eio_readahead</a></li>
+      <li style="float: right;"><a href="function.eio-readlink.html">eio_readlink »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.eio.html">Funciones Eio</a></li>
+    <li>Leer un directorio al completo</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.eio-readdir" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">eio_readdir</h1>
+  <p class="verinfo">(PECL eio &gt;= 0.0.1dev)</p><p class="refpurpose"><span class="refname">eio_readdir</span> &mdash; <span class="dc-title">Leer un directorio al completo</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.eio-readdir-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>eio_readdir</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$path</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$flags</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$pri</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$callback</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$data</code><span class="initializer"> = NULL</span></span><br>): <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span></div>
+
+    <p class="para rdfs-comment">
+     Leer un directorio al completo (mediante las llamadas al sistema de <code class="literal">opendir</code>,
+     <code class="literal">readdir</code> y <code class="literal">closedir</code>) y devuelve o los nombres o un array en
+     el argumento <code class="parameter">result</code> de la función <code class="parameter">callback</code>,
+     dependiendo del argumento <code class="parameter">flags</code>.
+    </p>
+
+   </div>
+
+
+    <div class="refsect1 parameters" id="refsect1-function.eio-readdir-parameters">
+     <h3 class="title">Parámetros</h3>
+     <dl>
+      
+       <dt><code class="parameter">path</code></dt>
+       <dd>
+        <p class="para">
+         La ruta del directorio.
+        </p>
+       </dd>
+      
+      
+       <dt><code class="parameter">flags</code></dt>
+       <dd>
+        <p class="para">
+         Una combinación de constantes <em>EIO_READDIR_*</em>.
+        </p>
+       </dd>
+      
+      
+       <dt><code class="parameter">pri</code></dt>
+       <dd>
+        <p class="para">La prioridad de petición: <strong><code><a href="eio.constants.html#constant.eio-pri-default">EIO_PRI_DEFAULT</a></code></strong>, <strong><code><a href="eio.constants.html#constant.eio-pri-min">EIO_PRI_MIN</a></code></strong>, <strong><code><a href="eio.constants.html#constant.eio-pri-max">EIO_PRI_MAX</a></code></strong>, o <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>.
+Si se pasa <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>, <code class="parameter">pri</code> es establecido internamente a
+<strong><code><a href="eio.constants.html#constant.eio-pri-default">EIO_PRI_DEFAULT</a></code></strong>.
+</p>
+
+       </dd>
+      
+      
+       <dt><code class="parameter">callback</code></dt>
+       <dd>
+        <p class="para">
+La función <code class="parameter">callback</code> es llamada cuando la petición está hecha.
+Debería seguir el siguiente prototipo: <div class="example-contents"><div class="phpcode"><code><span style="color: #000000">void callback(mixed $data, int $result[, resource $req]);</span></code></div></div>
+
+<dl>
+ 
+  <dt><code class="parameter">data</code></dt>
+  <dd><p class="para">son datos personalizados pasados a la petición.</p></dd>
+ 
+ 
+  <dt><code class="parameter">result</code></dt>
+  <dd><p class="para">es el valor del resultado específico de la petición; básicamente, el valor devuelto por la correspondiente
+   llamada al sistema.</p></dd>
+ 
+ 
+  <dt><code class="parameter">req</code></dt>
+  <dd><p class="para">es el recurso de petición opcional que puede usarse con funciones como <span class="function"><a href="function.eio-get-last-error.html" class="function">eio_get_last_error()</a></span></p></dd>
+ 
+</dl>
+</p>
+
+       </dd>
+      
+      
+       <dt><code class="parameter">data</code></dt>
+       <dd>
+        <p class="para">
+         Variable arbitraria pasada a <code class="parameter">callback</code>.
+        </p>
+       </dd>
+      
+     </dl>
+    </div>
+
+
+    <div class="refsect1 returnvalues" id="refsect1-function.eio-readdir-returnvalues">
+     <h3 class="title">Valores devueltos</h3>
+     <p class="para">
+      <span class="function"><strong>eio_readdir()</strong></span> devuelve un recurso de petición en caso de éxito, o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+      Establece el argumento <code class="parameter">result</code> de
+      la función <code class="parameter">callback</code> function según
+      el parámetro <code class="parameter">flags</code>:
+     </p>
+
+     <p class="para">
+      <dl>
+
+       
+       
+        <dt>
+         <strong><code><a href="eio.constants.html#constant.eio-readdir-dents">EIO_READDIR_DENTS</a></code></strong>
+         (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+        </dt>
+        <dd>
+         <span class="simpara">
+          Bandera <span class="function"><strong>eio_readdir()</strong></span>. Si se especifica, el argumento resultante de la llamada de retorno
+          se convierte en un array con las siguientes claves:
+          <code class="literal">&#039;names&#039;</code> - array de nombres de directorios
+          <code class="literal">&#039;dents&#039;</code> - array de <code class="literal">structura eio_dirent</code>-como
+          los arrays pero teniendo las siguientes claves:
+          <code class="literal">&#039;name&#039;</code> - el nombre del directorio;
+          <code class="literal">&#039;type&#039;</code> - una de las constantes
+          <em>EIO_DT_*</em>;
+          <code class="literal">&#039;inode&#039;</code> - el número de inodo, si está disponible, de otro modo
+          sin especificar;
+         </span>
+        </dd>
+       
+       
+        <dt>
+         <strong><code><a href="eio.constants.html#constant.eio-readdir-dirs-first">EIO_READDIR_DIRS_FIRST</a></code></strong>
+         (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+        </dt>
+        <dd>
+         <span class="simpara">
+          Cuando se especifica esta bandera, los nombres serán devueltos en un orden
+          donde probablemente los directorios vallan primero, en un orden de estadísticas óptimo.
+         </span>
+        </dd>
+       
+       
+        <dt>
+         <strong><code><a href="eio.constants.html#constant.eio-readdir-stat-order">EIO_READDIR_STAT_ORDER</a></code></strong>
+         (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+        </dt>
+        <dd>
+         <span class="simpara">
+          Cuando se especifica esta bandera, los nombres serán devueltos en un orden
+          apropiado para realizar estadísticas (<code class="literal">stat</code>) con cada uno. Cuando se planea usar
+          la función <span class="function"><a href="function.stat.html" class="function">stat()</a></span> para realizar estadísticas de todos los archivos del directorio dado, el
+          orden devuelto probablemente sea
+          más rápido.
+         </span>
+        </dd>
+       
+       
+        <dt>
+         <strong><code><a href="eio.constants.html#constant.eio-readdir-found-unknown">EIO_READDIR_FOUND_UNKNOWN</a></code></strong>
+         (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+        </dt>
+        <dd>
+         <span class="simpara">
+
+         </span>
+        </dd>
+       
+       
+
+      </dl>
+     </p>
+
+     <p class="para">Tipos de nodos:
+      <dl>
+
+       
+       
+        <dt>
+         <strong><code><a href="eio.constants.html#constant.eio-dt-unknown">EIO_DT_UNKNOWN</a></code></strong>
+         (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+        </dt>
+        <dd>
+         <span class="simpara">
+          Tipo de nodo desconocido(muy común). Se necistan más estadísticas (<span class="function"><a href="function.stat.html" class="function">stat()</a></span>).
+         </span>
+        </dd>
+       
+       
+        <dt>
+         <strong><code><a href="eio.constants.html#constant.eio-dt-fifo">EIO_DT_FIFO</a></code></strong>
+         (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+        </dt>
+        <dd>
+         <span class="simpara">
+          Tipo de nodo FIFO
+         </span>
+        </dd>
+       
+       
+        <dt>
+         <strong><code><a href="eio.constants.html#constant.eio-dt-chr">EIO_DT_CHR</a></code></strong>
+         (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+        </dt>
+        <dd>
+         <span class="simpara">
+          Tipo de nodo
+         </span>
+        </dd>
+       
+       
+        <dt>
+         <strong><code><a href="eio.constants.html#constant.eio-dt-mpc">EIO_DT_MPC</a></code></strong>
+         (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+        </dt>
+        <dd>
+         <span class="simpara">
+          Tipo de nodo de dispositivo de caracteres multiplexado (v7+coherent)
+         </span>
+        </dd>
+       
+       
+        <dt>
+         <strong><code><a href="eio.constants.html#constant.eio-dt-dir">EIO_DT_DIR</a></code></strong>
+         (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+        </dt>
+        <dd>
+         <span class="simpara">
+          Tipo de nodo de directorio
+         </span>
+        </dd>
+       
+       
+        <dt>
+         <strong><code><a href="eio.constants.html#constant.eio-dt-nam">EIO_DT_NAM</a></code></strong>
+         (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+        </dt>
+        <dd>
+         <span class="simpara">
+          Tipo de nodo de fichero Xenix nominado especial
+         </span>
+        </dd>
+       
+       
+        <dt>
+         <strong><code><a href="eio.constants.html#constant.eio-dt-blk">EIO_DT_BLK</a></code></strong>
+         (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+        </dt>
+        <dd>
+         <span class="simpara">
+          Tipo de nodo
+         </span>
+        </dd>
+       
+       
+        <dt>
+         <strong><code><a href="eio.constants.html#constant.eio-dt-mpb">EIO_DT_MPB</a></code></strong>
+         (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+        </dt>
+        <dd>
+         <span class="simpara">
+          Dispositivo de bloqueo multiplexado (v7+coherent)
+         </span>
+        </dd>
+       
+       
+        <dt>
+         <strong><code><a href="eio.constants.html#constant.eio-dt-reg">EIO_DT_REG</a></code></strong>
+         (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+        </dt>
+        <dd>
+         <span class="simpara">
+          Tipo de nodo
+         </span>
+        </dd>
+       
+       
+        <dt>
+         <strong><code><a href="eio.constants.html#constant.eio-dt-nwk">EIO_DT_NWK</a></code></strong>
+         (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+        </dt>
+        <dd>
+         <span class="simpara">
+         </span>
+        </dd>
+       
+       
+        <dt>
+         <strong><code><a href="eio.constants.html#constant.eio-dt-cmp">EIO_DT_CMP</a></code></strong>
+         (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+        </dt>
+        <dd>
+         <span class="simpara">
+          Tipo de noto especial de red HP-UX
+         </span>
+        </dd>
+       
+       
+        <dt>
+         <strong><code><a href="eio.constants.html#constant.eio-dt-lnk">EIO_DT_LNK</a></code></strong>
+         (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+        </dt>
+        <dd>
+         <span class="simpara">
+          Tipo de nodo de vínculo
+         </span>
+        </dd>
+       
+       
+        <dt>
+         <strong><code><a href="eio.constants.html#constant.eio-dt-sock">EIO_DT_SOCK</a></code></strong>
+         (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+        </dt>
+        <dd>
+         <span class="simpara">
+          Tipo de nodo socket
+         </span>
+        </dd>
+       
+       
+        <dt>
+         <strong><code><a href="eio.constants.html#constant.eio-dt-door">EIO_DT_DOOR</a></code></strong>
+         (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+        </dt>
+        <dd>
+         <span class="simpara">
+          Tipo de nodo de puerta de Solaris
+         </span>
+        </dd>
+       
+       
+        <dt>
+         <strong><code><a href="eio.constants.html#constant.eio-dt-wht">EIO_DT_WHT</a></code></strong>
+         (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+        </dt>
+        <dd>
+         <span class="simpara">
+          Tipo de nodo
+         </span>
+        </dd>
+       
+       
+        <dt>
+         <strong><code><a href="eio.constants.html#constant.eio-dt-max">EIO_DT_MAX</a></code></strong>
+         (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+        </dt>
+        <dd>
+         <span class="simpara">
+          Valor de tipo de nodo más alto
+         </span>
+        </dd>
+       
+
+       
+
+      </dl>
+     </p>
+    </div>
+
+
+    <div class="refsect1 examples" id="refsect1-function.eio-readdir-examples">
+     <h3 class="title">Ejemplos</h3>
+     <div class="example" id="example-3255">
+      <p><strong>Ejemplo #1 <span class="function"><strong>eio_readdir()</strong></span> example</strong></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/* Es llamada cuando eio_readdir() finaliza */<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">mi_llamada_retorno_readdir</span><span style="color: #007700">(</span><span style="color: #0000BB">$datos</span><span style="color: #007700">, </span><span style="color: #0000BB">$resultado</span><span style="color: #007700">) {<br />    echo </span><span style="color: #0000BB">__FUNCTION__</span><span style="color: #007700">, </span><span style="color: #DD0000">" llamada\n"</span><span style="color: #007700">;<br />    echo </span><span style="color: #DD0000">"datos: "</span><span style="color: #007700">; </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$datos</span><span style="color: #007700">);<br />    echo </span><span style="color: #DD0000">"resultado: "</span><span style="color: #007700">; </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$resultado</span><span style="color: #007700">);<br />    echo </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">eio_readdir</span><span style="color: #007700">(</span><span style="color: #DD0000">"/var/spool/news"</span><span style="color: #007700">, </span><span style="color: #0000BB">EIO_READDIR_STAT_ORDER </span><span style="color: #007700">| </span><span style="color: #0000BB">EIO_READDIR_DIRS_FIRST</span><span style="color: #007700">,<br />  </span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">, </span><span style="color: #DD0000">"mi_llamada_retorno_readdir"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">eio_event_loop</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+      </div>
+
+      <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+      <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">mi_llamada_retorno_readdir llamada
+datos: NULL
+resultado: array(2) {
+ [&quot;names&quot;]=&gt;
+  array(7) {
+   [0]=&gt;
+    string(7) &quot;archive&quot;
+    [1]=&gt;
+    string(8) &quot;articles&quot;
+    [2]=&gt;
+    string(8) &quot;incoming&quot;
+    [3]=&gt;
+    string(7) &quot;innfeed&quot;
+    [4]=&gt;
+    string(8) &quot;outgoing&quot;
+    [5]=&gt;
+    string(8) &quot;overview&quot;
+    [6]=&gt;
+    string(3) &quot;tmp&quot;
+  }
+ [&quot;dents&quot;]=&gt;
+  array(7) {
+   [0]=&gt;
+    array(3)
+    {
+     [&quot;name&quot;]=&gt;
+      string(7)
+      &quot;archive&quot;
+      [&quot;type&quot;]=&gt;
+      int(4)
+      [&quot;inode&quot;]=&gt;
+      int(393265)
+    }
+   [1]=&gt;
+    array(3)
+    {
+     [&quot;name&quot;]=&gt;
+      string(8)
+      &quot;articles&quot;
+      [&quot;type&quot;]=&gt;
+      int(4)
+      [&quot;inode&quot;]=&gt;
+      int(393266)
+    }
+   [2]=&gt;
+    array(3)
+    {
+     [&quot;name&quot;]=&gt;
+      string(8)
+      &quot;incoming&quot;
+      [&quot;type&quot;]=&gt;
+      int(4)
+      [&quot;inode&quot;]=&gt;
+      int(393267)
+    }
+   [3]=&gt;
+    array(3)
+    {
+     [&quot;name&quot;]=&gt;
+      string(7)
+      &quot;innfeed&quot;
+      [&quot;type&quot;]=&gt;
+      int(4)
+      [&quot;inode&quot;]=&gt;
+      int(393269)
+    }
+   [4]=&gt;
+    array(3)
+    {
+     [&quot;name&quot;]=&gt;
+      string(8)
+      &quot;outgoing&quot;
+      [&quot;type&quot;]=&gt;
+      int(4)
+      [&quot;inode&quot;]=&gt;
+      int(393270)
+    }
+   [5]=&gt;
+    array(3)
+    {
+     [&quot;name&quot;]=&gt;
+      string(8)
+      &quot;overview&quot;
+      [&quot;type&quot;]=&gt;
+      int(4)
+      [&quot;inode&quot;]=&gt;
+      int(393271)
+    }
+   [6]=&gt;
+    array(3)
+    {
+     [&quot;name&quot;]=&gt;
+      string(3)
+      &quot;tmp&quot;
+      [&quot;type&quot;]=&gt;
+      int(4)
+      [&quot;inode&quot;]=&gt;
+      int(393272)
+    }
+  }
+}</pre>
+</div>
+      </div>
+     </div>
+    </div>
+
+
+
+   </div></div></div></body></html>

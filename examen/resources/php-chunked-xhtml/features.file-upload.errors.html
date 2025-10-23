@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Explicaci&oacute;n de los mensajes de error</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="features.file-upload.post-method.html">« Subida con el m&eacute;todo POST</a></li>
+      <li style="float: right;"><a href="features.file-upload.common-pitfalls.html">Dificultades comunes »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="features.file-upload.html">Subida de ficheros</a></li>
+    <li>Explicaci&oacute;n de los mensajes de error</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="features.file-upload.errors" class="sect1">
+  <h2 class="title">Explicación de los mensajes de error</h2>
+  <p class="simpara">
+   PHP devuelve un código de error apropiado junto con el
+   array de ficheros. El código de error se puede encontrar en el
+   segmento <code class="literal">error</code> del array de ficheros que PHP crea
+   durante la subida de ficheros. En otras palabras, el error puede
+   encontrarse en <var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES['fichero_usuario']['error']</a></var>.
+  </p>
+  <p class="para">
+   <dl>
+    
+     <dt><strong><code>UPLOAD_ERR_OK</code></strong></dt>
+     <dd>
+      <p class="para">
+       Valor: 0; No hay error, fichero subido con éxito.
+      </p>
+     </dd>
+    
+    
+     <dt><strong><code>UPLOAD_ERR_INI_SIZE</code></strong></dt>
+     <dd>
+      <p class="para">
+       Valor: 1; El fichero subido excede la directiva
+       <a href="ini.core.html#ini.upload-max-filesize" class="link">upload_max_filesize</a>
+       de <var class="filename">php.ini</var>.
+      </p>
+     </dd>
+    
+    
+     <dt><strong><code>UPLOAD_ERR_FORM_SIZE</code></strong></dt>
+     <dd>
+      <p class="para">
+       Valor: 2; El fichero subido excede la directiva <em>MAX_FILE_SIZE</em>
+       especificada en el formulario HTML.
+      </p>
+     </dd>
+    
+    
+     <dt><strong><code>UPLOAD_ERR_PARTIAL</code></strong></dt>
+     <dd>
+      <p class="para">
+       Valor: 3; El fichero fue sólo parcialmente subido.
+      </p>
+     </dd>
+    
+    
+     <dt><strong><code>UPLOAD_ERR_NO_FILE</code></strong></dt>
+     <dd>
+      <p class="para">
+       Valor: 4; No se subió ningún fichero.
+      </p>
+     </dd>
+    
+    
+     <dt><strong><code>UPLOAD_ERR_NO_TMP_DIR</code></strong></dt>
+     <dd>
+      <p class="para">
+       Valor: 6; Falta la carpeta temporal.
+      </p>
+     </dd>
+    
+    
+     <dt><strong><code>UPLOAD_ERR_CANT_WRITE</code></strong></dt>
+     <dd>
+      <p class="para">
+       Valor: 7; No se pudo escribir el fichero en el disco.
+      </p>
+     </dd>
+    
+    
+     <dt><strong><code>UPLOAD_ERR_EXTENSION</code></strong></dt>
+     <dd>
+      <p class="para">
+       Valor: 8; Una extensión de PHP detuvo la subida de ficheros. PHP no
+       proporciona una forma de determinar la extensión que causó la parada
+       de la subida de ficheros; el examen de la lista de extensiones cargadas con <span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span> puede ayudar.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div></div></div></body></html>

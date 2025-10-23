@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Abrir un fichero</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.eio-nthreads.html">« eio_nthreads</a></li>
+      <li style="float: right;"><a href="function.eio-poll.html">eio_poll »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.eio.html">Funciones Eio</a></li>
+    <li>Abrir un fichero</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.eio-open" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">eio_open</h1>
+  <p class="verinfo">(PECL eio &gt;= 0.0.1dev)</p><p class="refpurpose"><span class="refname">eio_open</span> &mdash; <span class="dc-title">Abrir un fichero</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.eio-open-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>eio_open</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$path</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$flags</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$mode</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$pri</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$callback</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$data</code><span class="initializer"> = NULL</span></span><br>): <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>eio_open()</strong></span> abre el archivo especificado por
+   <code class="parameter">path</code> en el modo de acceso <code class="parameter">mode</code> con
+  </p>
+  
+  
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.eio-open-parameters">
+  <h3 class="title">Parámetros</h3>
+  <dl>
+   
+    <dt><code class="parameter">path</code></dt>
+    <dd>
+     <p class="para">
+      Ruta del archivo a abrir.
+      <div class="warning"><strong class="warning">Advertencia</strong><p class="simpara">
+       En algunas SAPIs (p.ej. <em>PHP-FPM</em>) podría fallar si no se
+       especifica la ruta completa.
+       </p></div>
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">flags</code></dt>
+    <dd>
+     <p class="para">Una de las constantes <em>EIO_O_*</em>, o sus
+      combinaciones. Las constantes <em>EIO_O_*</em> tienen el mismo
+      significado que sus correspondientes homónimas <em>O_*</em>
+      definidas en el fichero de cabecera C <code class="literal">fnctl.h</code>. Por defecto es
+      <strong><code><a href="eio.constants.html#constant.eio-o-rdwr">EIO_O_RDWR</a></code></strong>.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">mode</code></dt>
+    <dd>
+     <p class="para">Una de las constantes <em>EIO_S_I*</em>, o sus combinaciones
+      (mediante el operador a nivel de bits OR). Las constantes tienen el mismo significado que sus
+      homónimas <em>S_I*</em> definidas en el archivo de cabecera C <a href="http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/sys_stat.h.html" class="link external">&raquo;&nbsp;sys/stat.h</a>.
+      Necesario si se crea un fichero. En otro caso es ignorado.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">pri</code></dt>
+    <dd>
+     <p class="para">La prioridad de petición: <strong><code><a href="eio.constants.html#constant.eio-pri-default">EIO_PRI_DEFAULT</a></code></strong>, <strong><code><a href="eio.constants.html#constant.eio-pri-min">EIO_PRI_MIN</a></code></strong>, <strong><code><a href="eio.constants.html#constant.eio-pri-max">EIO_PRI_MAX</a></code></strong>, o <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>.
+Si se pasa <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>, <code class="parameter">pri</code> es establecido internamente a
+<strong><code><a href="eio.constants.html#constant.eio-pri-default">EIO_PRI_DEFAULT</a></code></strong>.
+</p>
+
+    </dd>
+   
+   
+    <dt><code class="parameter">callback</code></dt>
+    <dd>
+     <p class="para">
+La función <code class="parameter">callback</code> es llamada cuando la petición está hecha.
+Debería seguir el siguiente prototipo: <div class="example-contents"><div class="phpcode"><code><span style="color: #000000">void callback(mixed $data, int $result[, resource $req]);</span></code></div></div>
+
+<dl>
+ 
+  <dt><code class="parameter">data</code></dt>
+  <dd><p class="para">son datos personalizados pasados a la petición.</p></dd>
+ 
+ 
+  <dt><code class="parameter">result</code></dt>
+  <dd><p class="para">es el valor del resultado específico de la petición; básicamente, el valor devuelto por la correspondiente
+   llamada al sistema.</p></dd>
+ 
+ 
+  <dt><code class="parameter">req</code></dt>
+  <dd><p class="para">es el recurso de petición opcional que puede usarse con funciones como <span class="function"><a href="function.eio-get-last-error.html" class="function">eio_get_last_error()</a></span></p></dd>
+ 
+</dl>
+</p>
+
+    </dd>
+   
+   
+    <dt><code class="parameter">data</code></dt>
+    <dd>
+     <p class="para">
+      Variable arbitraria pasada a <code class="parameter">callback</code>.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.eio-open-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   <span class="function"><strong>eio_open()</strong></span> devuelve un descriptor de fichero en
+   el argumento <code class="parameter">result</code> de <code class="parameter">callback</code>
+   en caso de éxito; de otro modo, <code class="parameter">result</code> es igual a <strong><code>-1</code></strong>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.eio-open-examples">
+  <h3 class="title">Ejemplos</h3>
+  <div class="example" id="example-3252">
+   <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>eio_open()</strong></span></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$nombre_fichero_temp </span><span style="color: #007700">= </span><span style="color: #DD0000">"eio-fichero-temp.tmp"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">/* Se llama cuando eio_close() finaliza */<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">my_close_cb</span><span style="color: #007700">(</span><span style="color: #0000BB">$datos</span><span style="color: #007700">, </span><span style="color: #0000BB">$resultado</span><span style="color: #007700">) {<br /> </span><span style="color: #FF8000">// Cero indica éxito<br />    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$resultado </span><span style="color: #007700">== </span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /> @</span><span style="color: #0000BB">unlink</span><span style="color: #007700">(</span><span style="color: #0000BB">$datos</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">/* Se llama cuando eio_open() finaliza */<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">mi_llamada_retorno_fichero_abierto</span><span style="color: #007700">(</span><span style="color: #0000BB">$datos</span><span style="color: #007700">, </span><span style="color: #0000BB">$resultado</span><span style="color: #007700">) {<br /> </span><span style="color: #FF8000">// $resultado debería contener el descriptor de fichero<br />    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$resultado </span><span style="color: #007700">&gt; </span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br />    if (</span><span style="color: #0000BB">$resultado </span><span style="color: #007700">&gt; </span><span style="color: #0000BB">0</span><span style="color: #007700">) {<br />  </span><span style="color: #FF8000">// Cerrar el fichero<br />        </span><span style="color: #0000BB">eio_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$resultado</span><span style="color: #007700">, </span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">, </span><span style="color: #DD0000">"my_close_cb"</span><span style="color: #007700">, </span><span style="color: #0000BB">$datos</span><span style="color: #007700">);<br />        </span><span style="color: #0000BB">eio_event_loop</span><span style="color: #007700">();<br />    }<br />}<br /><br /></span><span style="color: #FF8000">// Crear un nuevo fichero para lectura y escritura<br />// Denegar al grupo y a otros realizar cualquier cosa con ese fichero<br /></span><span style="color: #0000BB">eio_open</span><span style="color: #007700">(</span><span style="color: #0000BB">$nombre_fichero_temp</span><span style="color: #007700">, </span><span style="color: #0000BB">EIO_O_CREAT </span><span style="color: #007700">| </span><span style="color: #0000BB">EIO_O_RDWR</span><span style="color: #007700">, </span><span style="color: #0000BB">EIO_S_IRUSR </span><span style="color: #007700">| </span><span style="color: #0000BB">EIO_S_IWUSR</span><span style="color: #007700">,<br />  </span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">, </span><span style="color: #DD0000">"mi_llamada_retorno_fichero_abierto"</span><span style="color: #007700">, </span><span style="color: #0000BB">$nombre_fichero_temp</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">eio_event_loop</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">bool(true)
+bool(true)</pre>
+</div>
+   </div>
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.eio-open-seealso">
+  <h3 class="title">Ver también</h3>
+  <ul class="simplelist">
+   <li><span class="function"><a href="function.eio-mknod.html" class="function" rel="rdfs-seeAlso">eio_mknod()</a> - Crear un fichero especial u ordinario</span></li>
+  </ul>
+ </div>
+
+ 
+</div></div></div></body></html>

@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Funciones de flecha</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="functions.anonymous.html">« Funciones an&oacute;nimas</a></li>
+      <li style="float: right;"><a href="functions.first_class_callable_syntax.html">First class callable syntax »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.functions.html">Funciones</a></li>
+    <li>Funciones de flecha</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="functions.arrow" class="sect1">
+   <h2 class="title">Funciones de flecha</h2>
+
+   <p class="simpara">
+    Las funciones de flecha fueron introducidas en PHP 7.4 como una sintaxis más concisa para
+    <a href="functions.anonymous.html" class="link">las funciones anónimas</a>.
+   </p>
+   <p class="simpara">
+    Tanto las funciones anónimas como las funciones de flecha se implementan utilizando la
+    clase <a href="class.closure.html" class="link"><span class="classname"><a href="class.closure.html" class="classname">Closure</a></span></a>.
+   </p>
+
+   <p class="simpara">
+    Las funciones de las flechas tienen la forma básica
+    <code class="code">fn (argument_list) =&gt; expr</code>.
+   </p>
+
+   <p class="simpara">
+    Las funciones de las flechas soportan las mismas características que
+    <a href="functions.anonymous.html" class="link">las funciones anónimas</a>,
+    excepto que el uso de variables del ámbito padre siempre es automático.
+   </p>
+
+   <p class="simpara">
+    Cuando una variable utilizada en la expresión se define en el ámbito padre
+    será implícitamente capturada por valor.
+    En el siguiente ejemplo, las funciones <var class="varname">$fn1</var> y
+    <var class="varname">$fn2</var> se comportan de la misma manera.
+   </p>
+
+   <p class="para">
+    <div class="example" id="example-201">
+     <p><strong>Ejemplo #1 Las funciones de flecha capturan las variables por valor automáticamente</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$y </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$fn1 </span><span style="color: #007700">= fn(</span><span style="color: #0000BB">$x</span><span style="color: #007700">) =&gt; </span><span style="color: #0000BB">$x </span><span style="color: #007700">+ </span><span style="color: #0000BB">$y</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">// equivalent to using $y by value:<br /></span><span style="color: #0000BB">$fn2 </span><span style="color: #007700">= function (</span><span style="color: #0000BB">$x</span><span style="color: #007700">) use (</span><span style="color: #0000BB">$y</span><span style="color: #007700">) {<br />    return </span><span style="color: #0000BB">$x </span><span style="color: #007700">+ </span><span style="color: #0000BB">$y</span><span style="color: #007700">;<br />};<br /><br /></span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$fn1</span><span style="color: #007700">(</span><span style="color: #0000BB">3</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+     <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+4
+</pre></div>
+      </div>
+    </div>
+   </p>
+   <p class="simpara">
+    Esto también funciona si las funciones de la flecha están anidadas:
+   </p>
+   <p class="para">
+    <div class="example" id="example-202">
+     <p><strong>Ejemplo #2 Las funciones de flecha capturan variables por valor automáticamente, incluso cuando están anidadas</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$z </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$fn </span><span style="color: #007700">= fn(</span><span style="color: #0000BB">$x</span><span style="color: #007700">) =&gt; fn(</span><span style="color: #0000BB">$y</span><span style="color: #007700">) =&gt; </span><span style="color: #0000BB">$x </span><span style="color: #007700">* </span><span style="color: #0000BB">$y </span><span style="color: #007700">+ </span><span style="color: #0000BB">$z</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">// Outputs 51<br /></span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$fn</span><span style="color: #007700">(</span><span style="color: #0000BB">5</span><span style="color: #007700">)(</span><span style="color: #0000BB">10</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="simpara">
+    De manera similar a las funciones anónimas,
+    la sintaxis de la función de la flecha permite firmas de funciones arbitrarias,
+    incluyendo los tipos de parámetros y de retorno, valores por defecto, variadades,
+    así como por referencia al pasar y al regresar.
+    Todos los siguientes son ejemplos válidos de las funciones de las flechas:
+   </p>
+   <p class="para">
+    <div class="example" id="example-203">
+     <p><strong>Ejemplo #3 Ejemplos de funciones de flecha</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">fn(array </span><span style="color: #0000BB">$x</span><span style="color: #007700">) =&gt; </span><span style="color: #0000BB">$x</span><span style="color: #007700">;<br />static fn(): </span><span style="color: #0000BB">int </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$x</span><span style="color: #007700">;<br />fn(</span><span style="color: #0000BB">$x </span><span style="color: #007700">= </span><span style="color: #0000BB">42</span><span style="color: #007700">) =&gt; </span><span style="color: #0000BB">$x</span><span style="color: #007700">;<br />fn(&amp;</span><span style="color: #0000BB">$x</span><span style="color: #007700">) =&gt; </span><span style="color: #0000BB">$x</span><span style="color: #007700">;<br />fn&amp;(</span><span style="color: #0000BB">$x</span><span style="color: #007700">) =&gt; </span><span style="color: #0000BB">$x</span><span style="color: #007700">;<br />fn(</span><span style="color: #0000BB">$x</span><span style="color: #007700">, ...</span><span style="color: #0000BB">$rest</span><span style="color: #007700">) =&gt; </span><span style="color: #0000BB">$rest</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="simpara">
+    Las funciones de flecha utilizan la unión variable por valor.
+    Esto es aproximadamente equivalente a realizar un <code class="code">use($x)</code> para cada
+    variable  <var class="varname">$x</var> usada dentro de la función de la flecha.
+    Una unión por valores significa que no es posible modificar ningún valor
+    desde el ámbito exterior.
+    <a href="functions.anonymous.html" class="link">Funciones anónimas</a>
+    se pueden utilizar en su lugar para las asignaciones por referencia.
+   </p>
+   <p class="para">
+    <div class="example" id="example-204">
+     <p><strong>Ejemplo #4 Los valores del alcance exterior no pueden ser modificados por las funciones de flecha</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$x </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$fn </span><span style="color: #007700">= fn() =&gt; </span><span style="color: #0000BB">$x</span><span style="color: #007700">++; </span><span style="color: #FF8000">// No tiene ningún efecto<br /></span><span style="color: #0000BB">$fn</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$x</span><span style="color: #007700">);  </span><span style="color: #FF8000">// Salida 1<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+    </div>
+   </p>
+
+   <div class="sect2">
+    <h3 class="title">Historial de cambios</h3>
+    <p class="para">
+     <table class="doctable informaltable">
+      
+       <thead>
+        <tr>
+         <th>Versión</th>
+         <th>Descripción</th>
+        </tr>
+
+       </thead>
+
+       <tbody class="tbody">
+        <tr>
+         <td>7.4.0</td>
+         <td>
+          Las funciones de flecha se hicieron disponibles.
+         </td>
+        </tr>
+
+       </tbody>
+      
+     </table>
+
+    </p>
+   </div>
+
+   <div class="sect2">
+    <h3 class="title">Notas</h3>
+    <blockquote class="note"><p><strong class="note">Nota</strong>: 
+     <span class="simpara">
+      Es posible utilizar <span class="function"><a href="function.func-num-args.html" class="function">func_num_args()</a></span>,
+      <span class="function"><a href="function.func-get-arg.html" class="function">func_get_arg()</a></span>, y <span class="function"><a href="function.func-get-args.html" class="function">func_get_args()</a></span>
+      desde dentro de una función de flecha.
+     </span>
+    </p></blockquote>
+   </div>
+  </div></div></div></body></html>

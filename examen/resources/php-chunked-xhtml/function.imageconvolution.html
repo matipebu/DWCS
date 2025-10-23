@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Aplicar una matriz de convoluci&oacute;n de 3x3, usando coeficiente e &iacute;ndice</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.imagecolortransparent.html">« imagecolortransparent</a></li>
+      <li style="float: right;"><a href="function.imagecopy.html">imagecopy »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.image.html">Funciones de GD e Im&aacute;genes</a></li>
+    <li>Aplicar una matriz de convoluci&oacute;n de 3x3, usando coeficiente e &iacute;ndice</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.imageconvolution" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">imageconvolution</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">imageconvolution</span> &mdash; <span class="dc-title">Aplicar una matriz de convolución de 3x3, usando coeficiente e índice</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.imageconvolution-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>imageconvolution</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$image</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$matrix</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.float.html" class="type float">float</a></span> <code class="parameter">$div</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.float.html" class="type float">float</a></span> <code class="parameter">$offset</code></span><br>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Aplica una matriz de convolución a la imagen, usando el coeficiente y el índice
+   dados.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.imageconvolution-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    <dt><code class="parameter">
+image</code></dt><dd><p class="para">Un recurso image, es devuelto por una de las funciones de creación de imágenes,
+como <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>.</p></dd>
+    
+     <dt><code class="parameter">matrix</code></dt>
+     <dd>
+      <p class="para">
+       Una matriz de 3x3: una matriz de tres matrices de tres valores float.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">div</code></dt>
+     <dd>
+      <p class="para">
+       El divisor del resultado de la convolución, usado para normalización.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">offset</code></dt>
+     <dd>
+      <p class="para">
+       Índice de color.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.imageconvolution-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.imageconvolution-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-2642">
+    <p><strong>Ejemplo #1 Poner en relieve el logotipo de PHP.net</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$imagen </span><span style="color: #007700">= </span><span style="color: #0000BB">imagecreatefromgif</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://www.php.net/images/php.gif'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$relieve </span><span style="color: #007700">= array(array(</span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">), array(</span><span style="color: #0000BB">0</span><span style="color: #007700">, -</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">), array(</span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, -</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">imageconvolution</span><span style="color: #007700">(</span><span style="color: #0000BB">$imagen</span><span style="color: #007700">, </span><span style="color: #0000BB">$relieve</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">127</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Type: image/png'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagepng</span><span style="color: #007700">(</span><span style="color: #0000BB">$imagen</span><span style="color: #007700">, </span><span style="color: #0000BB">null</span><span style="color: #007700">, </span><span style="color: #0000BB">9</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="mediaobject">
+     
+     <div class="imageobject">
+      <img src="images/21009b70229598c6a80eef8b45bf282b-imageconvolution_emboss.png" alt="Salida del ejemplo : Poner en relieve el logotipo de PHP.net" width="120" height="67" />
+     </div>
+    </div>
+   </div>
+   <div class="example" id="example-2643">
+    <p><strong>Ejemplo #2 Borrosidad gaussiana</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$imagen </span><span style="color: #007700">= </span><span style="color: #0000BB">imagecreatetruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">180</span><span style="color: #007700">,</span><span style="color: #0000BB">40</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Escribe el texto y aplica una borrosidad gaussiana a la imagen<br /></span><span style="color: #0000BB">imagestring</span><span style="color: #007700">(</span><span style="color: #0000BB">$imagen</span><span style="color: #007700">, </span><span style="color: #0000BB">5</span><span style="color: #007700">, </span><span style="color: #0000BB">10</span><span style="color: #007700">, </span><span style="color: #0000BB">8</span><span style="color: #007700">, </span><span style="color: #DD0000">'Gaussian Blur Text'</span><span style="color: #007700">, </span><span style="color: #0000BB">0x00ff00</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$gaussiana </span><span style="color: #007700">= array(array(</span><span style="color: #0000BB">1.0</span><span style="color: #007700">, </span><span style="color: #0000BB">2.0</span><span style="color: #007700">, </span><span style="color: #0000BB">1.0</span><span style="color: #007700">), array(</span><span style="color: #0000BB">2.0</span><span style="color: #007700">, </span><span style="color: #0000BB">4.0</span><span style="color: #007700">, </span><span style="color: #0000BB">2.0</span><span style="color: #007700">), array(</span><span style="color: #0000BB">1.0</span><span style="color: #007700">, </span><span style="color: #0000BB">2.0</span><span style="color: #007700">, </span><span style="color: #0000BB">1.0</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">imageconvolution</span><span style="color: #007700">(</span><span style="color: #0000BB">$imagen</span><span style="color: #007700">, </span><span style="color: #0000BB">$gaussiana</span><span style="color: #007700">, </span><span style="color: #0000BB">16</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Reescribe el texto para compararlo<br /></span><span style="color: #0000BB">imagestring</span><span style="color: #007700">(</span><span style="color: #0000BB">$imagen</span><span style="color: #007700">, </span><span style="color: #0000BB">5</span><span style="color: #007700">, </span><span style="color: #0000BB">10</span><span style="color: #007700">, </span><span style="color: #0000BB">18</span><span style="color: #007700">, </span><span style="color: #DD0000">'Gaussian Blur Text'</span><span style="color: #007700">, </span><span style="color: #0000BB">0x00ff00</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Type: image/png'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagepng</span><span style="color: #007700">(</span><span style="color: #0000BB">$imagen</span><span style="color: #007700">, </span><span style="color: #0000BB">null</span><span style="color: #007700">, </span><span style="color: #0000BB">9</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="mediaobject">
+     
+     <div class="imageobject">
+      <img src="images/21009b70229598c6a80eef8b45bf282b-imageconvolution_gaussian.png" alt="Salida del ejemplo : Borrosidad gaussiana" width="180" height="40" />
+     </div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 notes" id="refsect1-function.imageconvolution-notes">
+  <h3 class="title">Notas</h3>
+  <p class="para">
+   Esta función requiere GD 2.1.0 o superior.
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.imageconvolution-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.imagefilter.html" class="function" rel="rdfs-seeAlso">imagefilter()</a> - Aplica un filtro a una imagen</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

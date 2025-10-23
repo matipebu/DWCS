@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Obtener y/o establecer el limitador de cach&eacute; actual</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.session-cache-expire.html">« session_cache_expire</a></li>
+      <li style="float: right;"><a href="function.session-commit.html">session_commit »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.session.html">Funciones de sesi&oacute;n</a></li>
+    <li>Obtener y/o establecer el limitador de cach&eacute; actual</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.session-cache-limiter" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">session_cache_limiter</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.3, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">session_cache_limiter</span> &mdash; <span class="dc-title">Obtener y/o establecer el limitador de caché actual</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.session-cache-limiter-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>session_cache_limiter</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$cache_limiter</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>session_cache_limiter()</strong></span> devuelve el nombre del
+   limitador de caché actual.
+  </p>
+  <p class="para">
+   El limitador de caché define cuáles cabeceras HTTP de control de caché son enviadas
+   al cliente. Estas cabeceras determinan las normas por las cuáles el contenido de la página
+   puede ser examinada por el cliente y por los proxies intermediarios. Establecer el limitador
+   de caché a <code class="literal">nocache</code> rechaza cualquier examen por parte del cliente/proxy.
+   Un valor de <code class="literal">public</code> permite la examen por proxies y el
+   client, mientras que <code class="literal">private</code> rechaza la examen por proxies
+   y permite al cliente examinar el contenido.
+  </p>
+  <p class="para">
+   En modo <code class="literal">private</code>, la cabecera Expire enviada al cliente
+   puede causar confusión a algunos navegadores, incluido <span class="productname">Mozilla</span>.
+   Se puede evitar este problema usando el modo <code class="literal">private_no_expire</code>. La
+   cabecera <code class="literal">Expire</code> nunca se envía al cliente en este modo.
+  </p>
+  <p class="para">
+   Establecer el limitador de caché a <code class="literal">&#039;&#039;</code> desactivará el envío automático
+   de las cabeceras de caché completamente.
+  </p>
+  <p class="para">
+   El limitador de caché se reinicia a su valor predeterminado almacenado en
+   <a href="session.configuration.html#ini.session.cache-limiter" class="link">session.cache_limiter</a>
+   en el momento de iniciar una petición. Por lo tanto, se necesita llamar a
+   <span class="function"><strong>session_cache_limiter()</strong></span> para cada
+   petición (y antes de llamar a <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span>).
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.session-cache-limiter-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">cache_limiter</code></dt>
+     <dd>
+      <p class="para">
+       Si se especifica <code class="parameter">cache_limiter</code>, el nombre del
+       limitador de caché actual se cambia por el nuevo valor.
+      </p>
+      <table class="doctable table">
+       <caption><strong>Valores posibles</strong></caption>
+       
+        <thead>
+         <tr>
+          <th>Valor</th>
+          <th>Cabeceras enviadas</th>
+         </tr>
+
+        </thead>
+
+        <tbody class="tbody">
+         <tr>
+          <td><code class="literal">public</code></td>
+          <td>
+           <div class="example-contents">
+<div class="headercode"><pre class="headercode">Expires: (algún momento en el futuro, según session.cache_expire)
+Cache-Control: public, max-age=(algún momento en el futuro, según session.cache_expire)
+Last-Modified: (la marca de tiempo de cuando la sesión fue guardada por última vez)</pre>
+</div>
+           </div>
+
+          </td>
+         </tr>
+
+         <tr>
+          <td><code class="literal">private_no_expire</code></td>
+          <td>
+           <div class="example-contents">
+<div class="headercode"><pre class="headercode">Cache-Control: private, max-age=(session.cache_expire en el futuro), pre-check=(session.cache_expire en el futuro)
+Last-Modified: (la marca de tiempo de cuando la sesión fue guardada por última vez)</pre>
+</div>
+           </div>
+
+          </td>
+         </tr>
+
+         <tr>
+          <td><code class="literal">private</code></td>
+          <td>
+           <div class="example-contents">
+<div class="headercode"><pre class="headercode">Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: private, max-age=(session.cache_expire en el futuro), pre-check=(session.cache_expire en el futuro)
+Last-Modified: (la marca de tiempo de cuando la sesión fue guardada por última vez)</pre>
+</div>
+           </div>
+
+          </td>
+         </tr>
+
+         <tr>
+          <td><code class="literal">nocache</code></td>
+          <td>
+           <div class="example-contents">
+<div class="headercode"><pre class="headercode">Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache</pre>
+</div>
+           </div>
+
+          </td>
+         </tr>
+
+        </tbody>
+       
+      </table>
+
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.session-cache-limiter-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el nombre del limitador de caché actual.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.session-cache-limiter-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4720">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>session_cache_limiter()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/* establecer el limitador de caché a 'private' */<br /><br /></span><span style="color: #0000BB">session_cache_limiter</span><span style="color: #007700">(</span><span style="color: #DD0000">'private'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cache_limiter </span><span style="color: #007700">= </span><span style="color: #0000BB">session_cache_limiter</span><span style="color: #007700">();<br /><br />echo </span><span style="color: #DD0000">"El limitador de caché ahora está establecido a </span><span style="color: #0000BB">$cache_limiter</span><span style="color: #DD0000">&lt;br /&gt;"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.session-cache-limiter-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><a href="session.configuration.html#ini.session.cache-limiter" class="link">session.cache_limiter</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

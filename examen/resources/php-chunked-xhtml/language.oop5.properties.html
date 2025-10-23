@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Propiedades</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.oop5.basic.html">« Lo b&aacute;sico</a></li>
+      <li style="float: right;"><a href="language.oop5.constants.html">Constantes de clases »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.oop5.html">Clases y objetos</a></li>
+    <li>Propiedades</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.oop5.properties" class="sect1">
+ <h2 class="title">Propiedades</h2>
+
+ <p class="para">
+  Las variables pertenecientes a una clase se llaman <em>propiedades</em>.
+  También se les puede llamar usando otros términos como <em>atributos</em>,
+  o <em>campos</em>, pero para los propósitos de esta referencia se va a utilizar
+  <em>propiedades</em>. Éstas se definen usando una de las palabras reservadas
+  <code class="literal">public</code>, <code class="literal">protected</code>,
+  o <code class="literal">private</code>, opcionalmente, a partir de PHP 7.4,
+  seguido de una declaración de tipo, seguida de una declaración de variable normal.
+  Esta declaración puede incluir una inicialización, pero
+  esta inicialización debe ser un valor de <a href="language.constants.html" class="link">constante</a>.
+ </p>
+ <p class="para">
+  Véase la <a href="language.oop5.visibility.html" class="xref">Visibilidad</a> para más
+  información sobre el significado de
+  <code class="literal">public</code>, <code class="literal">protected</code>,
+  y <code class="literal">private</code>.
+ </p>
+ <blockquote class="note"><p><strong class="note">Nota</strong>: 
+  <p class="para">
+   Como alternativa y no recomendada de declarar las propiedades de una clase, ya que es
+   para mantener la compatibilidad con PHP 4, se acepta el uso
+   de la palabra reservada <code class="literal">var</code>.
+   Esta tratará la propiedad de forma idéntica a como se
+   hubiera declarado como <code class="literal">public</code>.
+  </p>
+ </p></blockquote>
+ <p class="para">
+  Dentro de los métodos de una clase, se puede acceder a las propiedades no estáticas utilizando
+  <code class="literal">-&gt;</code> (el operador de objeto): <var class="varname">$this->propiedad</var>
+  (donde <code class="literal">propiedad</code> es el nombre de la propiedad).
+  A las propiedades estáticas se puede acceder utilizando <code class="literal">::</code> (doble dos puntos):
+  <var class="varname">self::$propiedad</var>. Véase <a href="language.oop5.static.html" class="link">la palabra reservada &#039;static&#039;</a>
+  para más información sobre la diferencia entre propiedades estáticas y no estáticas.
+ </p>
+ <p class="para">
+  La pseudovariable <var class="varname">$this</var> está disponible dentro de
+  cualquier método de clase cuando éste es invocado dentro del contexto
+  de un objeto. <var class="varname">$this</var> es una referencia al objeto
+  invocador (usualmente el objeto al cual pertenece el método,
+  aunque puede que sea otro objeto si el método es llamado
+  <a href="language.oop5.static.html" class="link">estáticamente</a>
+  desde el contexto de un objeto secundario).
+ </p>
+
+ <p class="para">
+  <div class="example" id="example-227">
+   <p><strong>Ejemplo #1 Declaración de propiedades</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">ClaseSencilla<br /></span><span style="color: #007700">{<br />   public </span><span style="color: #0000BB">$var1 </span><span style="color: #007700">= </span><span style="color: #DD0000">'hola ' </span><span style="color: #007700">. </span><span style="color: #DD0000">'mundo'</span><span style="color: #007700">;<br />   public </span><span style="color: #0000BB">$var2 </span><span style="color: #007700">= &lt;&lt;&lt;EOD<br /></span><span style="color: #DD0000">hola mundo<br /></span><span style="color: #007700">EOD;<br />   public </span><span style="color: #0000BB">$var3 </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">+</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />   </span><span style="color: #FF8000">// Declaraciones de propiedades inválidas:<br />   </span><span style="color: #007700">public </span><span style="color: #0000BB">$var4 </span><span style="color: #007700">= </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">miMetodoEstatico</span><span style="color: #007700">();<br />   public </span><span style="color: #0000BB">$var5 </span><span style="color: #007700">= </span><span style="color: #0000BB">$myVar</span><span style="color: #007700">;<br /><br />   </span><span style="color: #FF8000">// Declaraciones de propiedades válidas:<br />   </span><span style="color: #007700">public </span><span style="color: #0000BB">$var6 </span><span style="color: #007700">= </span><span style="color: #0000BB">miConstante</span><span style="color: #007700">;<br />   public </span><span style="color: #0000BB">$var7 </span><span style="color: #007700">= [</span><span style="color: #0000BB">true</span><span style="color: #007700">, </span><span style="color: #0000BB">false</span><span style="color: #007700">];<br /><br />   public </span><span style="color: #0000BB">$var8 </span><span style="color: #007700">= &lt;&lt;&lt;'EOD'<br /></span><span style="color: #DD0000">hola mundo<br /></span><span style="color: #007700">EOD;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </p>
+
+ <blockquote class="note"><p><strong class="note">Nota</strong>: 
+  <p class="para">
+   Existen varias funciones para manipular clases y objetos.
+   Véase <a href="ref.classobj.html" class="link">Las funciones de clases/objetos</a>.
+  </p>
+ </p></blockquote>
+
+  <div class="sect2" id="language.oop5.properties.typed-properties">
+   <h3 class="title">Declaraciones de tipo</h3>
+   <p class="para">
+    A partir de PHP 7.4.0, las definiciones de propiedades pueden incluirse
+    <a href="language.types.declarations.html" class="xref">Declaraciones de tipo</a>,
+    con la excepción de los <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span>.
+    <div class="example" id="example-228">
+     <p><strong>Ejemplo #2 Ejemplo de propiedades tipadas</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class </span><span style="color: #0000BB">User<br /></span><span style="color: #007700">{<br />    public </span><span style="color: #0000BB">int $id</span><span style="color: #007700">;<br />    public ?</span><span style="color: #0000BB">string $name</span><span style="color: #007700">;<br /><br />    public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">int $id</span><span style="color: #007700">, ?</span><span style="color: #0000BB">string $name</span><span style="color: #007700">)<br />    {<br />        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">id </span><span style="color: #007700">= </span><span style="color: #0000BB">$id</span><span style="color: #007700">;<br />        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name </span><span style="color: #007700">= </span><span style="color: #0000BB">$name</span><span style="color: #007700">;<br />    }<br />}<br /><br /></span><span style="color: #0000BB">$user </span><span style="color: #007700">= new </span><span style="color: #0000BB">User</span><span style="color: #007700">(</span><span style="color: #0000BB">1234</span><span style="color: #007700">, </span><span style="color: #0000BB">null</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$user</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">id</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$user</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+     <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+int(1234)
+NULL
+</pre></div>
+     </div>
+    </div>
+   </p>
+
+   <p class="para">
+    Las propiedades tipadas deben ser inicializadas antes de acceder a ellas,
+    de lo contrario se produce un <span class="classname"><a href="class.error.html" class="classname">Error</a></span>.
+    <div class="example" id="example-229">
+     <p><strong>Ejemplo #3 Acceso a las propiedades</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class </span><span style="color: #0000BB">Shape<br /></span><span style="color: #007700">{<br />    public </span><span style="color: #0000BB">int $numberOfSides</span><span style="color: #007700">;<br />    public </span><span style="color: #0000BB">string $name</span><span style="color: #007700">;<br /><br />    public function </span><span style="color: #0000BB">setNumberOfSides</span><span style="color: #007700">(</span><span style="color: #0000BB">int $numberOfSides</span><span style="color: #007700">): </span><span style="color: #0000BB">void<br />    </span><span style="color: #007700">{<br />        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">numberOfSides </span><span style="color: #007700">= </span><span style="color: #0000BB">$numberOfSides</span><span style="color: #007700">;<br />    }<br /><br />    public function </span><span style="color: #0000BB">setName</span><span style="color: #007700">(</span><span style="color: #0000BB">string $name</span><span style="color: #007700">): </span><span style="color: #0000BB">void<br />    </span><span style="color: #007700">{<br />        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name </span><span style="color: #007700">= </span><span style="color: #0000BB">$name</span><span style="color: #007700">;<br />    }<br /><br />    public function </span><span style="color: #0000BB">getNumberOfSides</span><span style="color: #007700">(): </span><span style="color: #0000BB">int<br />    </span><span style="color: #007700">{<br />        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">numberOfSides</span><span style="color: #007700">;<br />    }<br /><br />    public function </span><span style="color: #0000BB">getName</span><span style="color: #007700">(): </span><span style="color: #0000BB">string<br />    </span><span style="color: #007700">{<br />        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name</span><span style="color: #007700">;<br />    }<br />}<br /><br /></span><span style="color: #0000BB">$triangle </span><span style="color: #007700">= new </span><span style="color: #0000BB">Shape</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$triangle</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setName</span><span style="color: #007700">(</span><span style="color: #DD0000">"triangle"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$triangle</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setNumberofSides</span><span style="color: #007700">(</span><span style="color: #0000BB">3</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$triangle</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getName</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$triangle</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getNumberOfSides</span><span style="color: #007700">());<br /><br /></span><span style="color: #0000BB">$circle </span><span style="color: #007700">= new </span><span style="color: #0000BB">Shape</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$circle</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setName</span><span style="color: #007700">(</span><span style="color: #DD0000">"circle"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$circle</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getName</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$circle</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getNumberOfSides</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+     <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+string(8) &quot;triangle&quot;
+int(3)
+string(6) &quot;circle&quot;
+
+Fatal error: Uncaught Error: Typed property Shape::$numberOfSides must not be accessed before initialization
+</pre></div>
+     </div>
+    </div>
+   </p>
+  </div>
+
+  <div class="sect2" id="language.oop5.properties.readonly-properties">
+   <h3 class="title">Propiedad Readonly</h3>
+   <p class="para">
+    A partir de PHP 8.1.0, una propiedad se puede declarar con el modificador <code class="code">readonly</code> (de solo lectura), lo que impide la modificación de la propiedad después de la inicialización.
+    <div class="example" id="example-230">
+     <p><strong>Ejemplo #4 Ejemplo de propiedades de solo lectura</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class </span><span style="color: #0000BB">Test </span><span style="color: #007700">{<br />   public readonly </span><span style="color: #0000BB">string $prop</span><span style="color: #007700">;<br /><br />   public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">string $prop</span><span style="color: #007700">) {<br />       </span><span style="color: #FF8000">// Inicialización.<br />       </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prop </span><span style="color: #007700">= </span><span style="color: #0000BB">$prop</span><span style="color: #007700">;<br />   }<br />}<br /><br /></span><span style="color: #0000BB">$test </span><span style="color: #007700">= new </span><span style="color: #0000BB">Test</span><span style="color: #007700">(</span><span style="color: #DD0000">"foobar"</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">// Lectura.<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$test</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prop</span><span style="color: #007700">); </span><span style="color: #FF8000">// string(6) "foobar"<br /><br />// Reasignación ilegal. No importa que el valor asignado sea el mismo.<br /></span><span style="color: #0000BB">$test</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prop </span><span style="color: #007700">= </span><span style="color: #DD0000">"foobar"</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">// Error: Cannot modify readonly property Test::$prop<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+    </div>
+    <blockquote class="note"><p><strong class="note">Nota</strong>: 
+     <p class="para">
+      El modificador readonly solo se puede aplicar a las <a href="language.oop5.properties.html#language.oop5.properties.typed-properties" class="link">propiedades tipadas</a>.
+      Se puede crear una propiedad readonly sin restricciones mediante el tipo <a href="language.types.declarations.html#language.types.declarations.mixed" class="xref">mixed</a>.
+     </p>
+    </p></blockquote>
+    <blockquote class="note"><p><strong class="note">Nota</strong>: 
+     <p class="para">
+      El modificador readonly no son compatibles en propiedades estáticas.
+     </p>
+    </p></blockquote>
+   </p>
+   <p class="para">
+    Una propiedad readonly solo se puede inicializar una vez, y solo desde el ámbito en el que se ha declarado. Cualquier otra asignación o modificación de la propiedad dará lugar a una excepción de <span class="classname"><a href="class.error.html" class="classname">Error</a></span>.
+    <div class="example" id="example-231">
+     <p><strong>Ejemplo #5 Inicialización ilegal de propiedades readonly</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">Test1 </span><span style="color: #007700">{<br />    public readonly </span><span style="color: #0000BB">string $prop</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$test1 </span><span style="color: #007700">= new </span><span style="color: #0000BB">Test1</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">// Inicialización ilegal fuera del ámbito privado.<br /></span><span style="color: #0000BB">$test1</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prop </span><span style="color: #007700">= </span><span style="color: #DD0000">"foobar"</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">// Error: Cannot initialize readonly property Test1::$prop from global scope<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+    </div>
+   </p>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     No se permite especificar un valor predeterminado explícito en las propiedades readonly, porque una propiedad readonly con un valor predeterminado es esencialmente la misma que una constante y, por lo tanto, no es particularmente útil.
+     <div class="example" id="example-232">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class </span><span style="color: #0000BB">Test </span><span style="color: #007700">{<br />    </span><span style="color: #FF8000">// Fatal error: Readonly property Test::$prop cannot have default value<br />    </span><span style="color: #007700">public readonly </span><span style="color: #0000BB">int $prop </span><span style="color: #007700">= </span><span style="color: #0000BB">42</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+      </div>
+
+     </div>
+    </p>
+   </p></blockquote>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     Las propiedades readonly no pueden usarse con la función <span class="function"><a href="function.unset.html" class="function">unset()</a></span> una vez inicializadas. Sin embargo, es posible desactivar una propiedad readonly antes de la inicialización, desde el ámbito donde se ha declarado la propiedad.
+    </p>
+   </p></blockquote>
+   <p class="para">
+    Las modificaciones no son necesariamente asignaciones simples, todo lo siguiente también dará lugar a una excepción <span class="classname"><a href="class.error.html" class="classname">Error</a></span>:
+    <div class="example" id="example-233">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class </span><span style="color: #0000BB">Test </span><span style="color: #007700">{<br />    public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">(<br />        public readonly </span><span style="color: #0000BB">int $i </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">,<br />        public readonly array </span><span style="color: #0000BB">$ary </span><span style="color: #007700">= [],<br />    ) {}<br />}<br /><br /></span><span style="color: #0000BB">$test </span><span style="color: #007700">= new </span><span style="color: #0000BB">Test</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$test</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">i </span><span style="color: #007700">+= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$test</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">i</span><span style="color: #007700">++;<br />++</span><span style="color: #0000BB">$test</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">i</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$test</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">ary</span><span style="color: #007700">[] = </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$test</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">ary</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">][] = </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$ref </span><span style="color: #007700">=&amp; </span><span style="color: #0000BB">$test</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">i</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$test</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">i </span><span style="color: #007700">=&amp; </span><span style="color: #0000BB">$ref</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">byRef</span><span style="color: #007700">(</span><span style="color: #0000BB">$test</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">i</span><span style="color: #007700">);<br />foreach (</span><span style="color: #0000BB">$test </span><span style="color: #007700">as &amp;</span><span style="color: #0000BB">$prop</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    Sin embargo, las propiedades readonly no excluyen la mutabilidad interior. Los objetos (o recursos) almacenados en propiedades readonly aún pueden modificarse internamente:
+    <div class="example" id="example-234">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class </span><span style="color: #0000BB">Test </span><span style="color: #007700">{<br />    public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">(public readonly </span><span style="color: #0000BB">object $obj</span><span style="color: #007700">) {}<br />}<br /><br /></span><span style="color: #0000BB">$test </span><span style="color: #007700">= new </span><span style="color: #0000BB">Test</span><span style="color: #007700">(new </span><span style="color: #0000BB">stdClass</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">// Mutación interior.<br /></span><span style="color: #0000BB">$test</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">// Reasignación ilegal.<br /></span><span style="color: #0000BB">$test</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">obj </span><span style="color: #007700">= new </span><span style="color: #0000BB">stdClass</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+    </div>
+   </p>
+  </div>
+
+  <div class="sect2" id="language.oop5.properties.dynamic-properties">
+   <h3 class="title">Dynamic properties</h3>
+   <p class="para">
+    If trying to assign to a non existant property on an <span class="type"><a href="language.types.object.html" class="type object">object</a></span>,
+    PHP will automatically create a corresponding property.
+    This dynamically created property will <em>only</em> be
+    available on this class instance.
+   </p>
+
+   <div class="warning"><strong class="warning">Advertencia</strong>
+    <p class="simpara">
+     Dynamic properties are deprecated as of PHP 8.2.0.
+     It is recommended to declare the property instead.
+     To handle arbitrary property names, the class should implement the magic
+     methods <a href="language.oop5.overloading.html#object.get" class="link">__get()</a> and
+     <a href="language.oop5.overloading.html#object.set" class="link">__set()</a>.
+     At last resort the class can be marked with the
+     <code class="code">#[\AllowDynamicProperties]</code> attribute.
+    </p>
+   </div>
+  </div>
+
+ </div></div></div></body></html>

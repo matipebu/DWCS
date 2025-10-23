@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Introducci&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.types.html">« Tipos</a></li>
+      <li style="float: right;"><a href="language.types.type-system.html">Type System »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.types.html">Tipos</a></li>
+    <li>Introducci&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.types.intro" class="sect1">
+  <h2 class="title">Introducción</h2>
+
+  <p class="para">
+   Cada expresión en PHP tiene uno de los siguientes
+   tipos incorporados dependiendo de su valor:
+   <ul class="itemizedlist">
+    <li class="listitem"><span class="simpara"><span class="type"><a href="language.types.null.html" class="type null">null</a></span></span></li>
+    <li class="listitem"><span class="simpara"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></span></li>
+    <li class="listitem"><span class="simpara"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span></span></li>
+    <li class="listitem"><span class="simpara"><span class="type"><a href="language.types.float.html" class="type float">float</a></span> (número de punto flotante, también conocido como <span class="type"><a href="language.types.float.html" class="type double">double</a></span>)</span></li>
+    <li class="listitem"><span class="simpara"><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></li>
+    <li class="listitem"><span class="simpara"><span class="type"><a href="language.types.array.html" class="type array">array</a></span></span></li>
+    <li class="listitem"><span class="simpara"><span class="type"><a href="language.types.object.html" class="type object">object</a></span></span></li>
+    <li class="listitem"><span class="simpara"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span></span></li>
+    <li class="listitem"><span class="simpara"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span></span></li>
+   </ul>
+  </p>
+
+  <p class="simpara">
+   Puede que existan aún algunas referencias al tipo &quot;double&quot; en el manual. Considere
+   al tipo double como float; los dos nombres existen sólo por razones históricas.
+  </p>
+
+  <p class="simpara">
+   El tipo de una variable usualmente no lo declara el programador; al contrario, es
+   decidido en tiempo de ejecución por PHP dependiendo del contexto en el que se emplea
+   dicha variable.
+  </p>
+
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <span class="simpara">
+    Para comprobar el tipo y el valor de una
+    <a href="language.expressions.html" class="link">expresión</a>,
+    utilice la función <span class="function"><a href="function.var-dump.html" class="function">var_dump()</a></span>.
+   </span>
+
+   <p class="para">
+    Para obtener una representación legible por humanos de un tipo con propósitos de depuración, use
+    la función <span class="function"><a href="function.gettype.html" class="function">gettype()</a></span>. Para comprobar un cierto tipo,
+    <em>no</em> emplee <span class="function"><a href="function.gettype.html" class="function">gettype()</a></span>, si no las funciones
+    <code class="literal">is_<span class="replaceable">tipo</span></code>. Algunos
+    ejemplos:
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$un_bool </span><span style="color: #007700">= </span><span style="color: #0000BB">true</span><span style="color: #007700">;   </span><span style="color: #FF8000">// un valor booleano<br /></span><span style="color: #0000BB">$un_str  </span><span style="color: #007700">= </span><span style="color: #DD0000">"foo"</span><span style="color: #007700">;  </span><span style="color: #FF8000">// una cadena de caracteres<br /></span><span style="color: #0000BB">$un_str2 </span><span style="color: #007700">= </span><span style="color: #DD0000">'foo'</span><span style="color: #007700">;  </span><span style="color: #FF8000">// una cadena de caracteres<br /></span><span style="color: #0000BB">$un_int  </span><span style="color: #007700">= </span><span style="color: #0000BB">12</span><span style="color: #007700">;     </span><span style="color: #FF8000">// un número entero<br /><br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">gettype</span><span style="color: #007700">(</span><span style="color: #0000BB">$un_bool</span><span style="color: #007700">); </span><span style="color: #FF8000">// imprime: boolean<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">gettype</span><span style="color: #007700">(</span><span style="color: #0000BB">$un_str</span><span style="color: #007700">);  </span><span style="color: #FF8000">// imprime: string<br /><br />// Si este valor es un entero, incrementarlo en cuatro<br /></span><span style="color: #007700">if (</span><span style="color: #0000BB">is_int</span><span style="color: #007700">(</span><span style="color: #0000BB">$un_int</span><span style="color: #007700">)) {<br />    </span><span style="color: #0000BB">$un_int </span><span style="color: #007700">+= </span><span style="color: #0000BB">4</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">// Si $un_bool es una cadena, imprimirla<br />// (no imprime nada)<br /></span><span style="color: #007700">if (</span><span style="color: #0000BB">is_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$un_bool</span><span style="color: #007700">)) {<br />    echo </span><span style="color: #DD0000">"Cadena: </span><span style="color: #0000BB">$un_bool</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p></blockquote>
+
+  <p class="simpara">
+   Para forzar la conversión de una variable a un cierto tipo, puede <a href="language.types.type-juggling.html#language.types.typecasting" class="link">amoldar</a> la variable o usar la
+   función <span class="function"><a href="function.settype.html" class="function">settype()</a></span> con ella.
+  </p>
+
+  <p class="simpara">
+   Observe que una variable puede ser evaluada con valores diferentes en ciertas
+   situaciones, dependiendo del tipo que posea en cada momento. Para más información,
+   lea la sección sobre <a href="language.types.type-juggling.html" class="link">Manipulación
+   de tipos</a>. <a href="types.comparisons.html" class="link">Las tablas de comparación de
+   tipos</a> pueden resultar útiles también, ya que muestran ejemplos de varias
+   comparaciones relacionadas con tipos.
+  </p>
+ </div></div></div></body></html>

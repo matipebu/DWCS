@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Tipos de datos admitidos</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="oci8.dtrace.html">« OCI8 y rastreo din&aacute;mico de DTrace</a></li>
+      <li style="float: right;"><a href="ref.oci8.html">Funciones de OCI8 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.oci8.html">OCI8</a></li>
+    <li>Tipos de datos admitidos</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="oci8.datatypes" class="chapter">
+ <h1 class="title">Tipos de datos admitidos</h1>
+
+ <table class="doctable table">
+  <caption><strong>El controlador admite los siguientes tipos cuando se vinculan parámetros usando la
+   función <span class="function"><a href="function.oci-bind-by-name.html" class="function">oci_bind_by_name()</a></span>:</strong></caption>
+  
+   <thead>
+    <tr>
+     <th>Tipo</th>
+     <th>Referencia</th>
+    </tr>
+
+   </thead>
+
+   <tbody class="tbody">
+    <tr>
+     <td><strong><code><a href="oci8.constants.html#constant.sqlt-nty">SQLT_NTY</a></code></strong></td>
+     <td>Hace referencia a un tipo de colección nativo desde un objeto colección de PHP,
+      tales como aquellos creados por <span class="function"><a href="function.oci-new-collection.html" class="function">oci_new_collection()</a></span>.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code><a href="oci8.constants.html#constant.sqlt-bfilee">SQLT_BFILEE</a></code></strong></td>
+     <td>Hace referencia a un descriptor nativo, tales como a aquellos creados por
+      <span class="function"><a href="function.oci-new-descriptor.html" class="function">oci_new_descriptor()</a></span>.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code><a href="oci8.constants.html#constant.sqlt-cfilee">SQLT_CFILEE</a></code></strong></td>
+     <td>Hace referencia a un descriptor nativo, tales como a aquellos creados por
+      <span class="function"><a href="function.oci-new-descriptor.html" class="function">oci_new_descriptor()</a></span>.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code><a href="oci8.constants.html#constant.sqlt-clob">SQLT_CLOB</a></code></strong></td>
+     <td>Hace referencia a un descriptor nativo, tales como a aquellos creados por
+      <span class="function"><a href="function.oci-new-descriptor.html" class="function">oci_new_descriptor()</a></span>.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code><a href="oci8.constants.html#constant.sqlt-blob">SQLT_BLOB</a></code></strong></td>
+     <td>Hace referencia a un descriptor nativo, tales como a aquellos creados por
+      <span class="function"><a href="function.oci-new-descriptor.html" class="function">oci_new_descriptor()</a></span>.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code><a href="oci8.constants.html#constant.sqlt-rdd">SQLT_RDD</a></code></strong></td>
+     <td>Hace referencia a un descriptor nativo, tales como a aquellos creados por
+      <span class="function"><a href="function.oci-new-descriptor.html" class="function">oci_new_descriptor()</a></span>.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code><a href="oci8.constants.html#constant.sqlt-num">SQLT_NUM</a></code></strong></td>
+     <td>Convierte el parámetro de PHP al tipo long de &#039;C&#039;, y lo vincula a
+      ese valor.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code><a href="oci8.constants.html#constant.sqlt-rset">SQLT_RSET</a></code></strong></td>
+     <td>Hace referencia a un gestor de sentencias nativo, tales como a aquellos creados por
+      <span class="function"><a href="function.oci-parse.html" class="function">oci_parse()</a></span> o aquellos recuperados desde otras consultas de OCI.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code><a href="oci8.constants.html#constant.sqlt-bol">SQLT_BOL</a></code></strong></td>
+     <td>Vincular el parámetro de PHP a un BOOLEAN de PL/SQL</td>
+    </tr>
+
+    <tr>
+     <td><strong><code><a href="oci8.constants.html#constant.sqlt-chr">SQLT_CHR</a></code></strong> y cualquier otro tipo</td>
+     <td>Convierte el parámetro de PHP al tipo string y lo vincula como
+      string.</td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+ 
+ <table class="doctable table">
+  <caption><strong>Los siguientes tipos son admitidos cuando se recuperan columnas desde un conjunto de resultados:</strong></caption>
+  
+   <thead>
+    <tr>
+     <th>Tipo</th>
+     <th>Referencia</th>
+    </tr>
+
+   </thead>
+
+   <tbody class="tbody">
+    <tr>
+     <td><strong><code><a href="oci8.constants.html#constant.sqlt-rset">SQLT_RSET</a></code></strong></td>
+     <td>Crea un recurso de sentencia de OCI para representar al cursor.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code><a href="oci8.constants.html#constant.sqlt-rdd">SQLT_RDD</a></code></strong></td>
+     <td>Crea un objeto ROWID.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code><a href="oci8.constants.html#constant.sqlt-blob">SQLT_BLOB</a></code></strong></td>
+     <td>Crea un objeto LOB.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code><a href="oci8.constants.html#constant.sqlt-clob">SQLT_CLOB</a></code></strong></td>
+     <td>Crea un objeto LOB.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code>SQLT_BFILE</code></strong></td>
+     <td>Crea un objeto LOB.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code><a href="oci8.constants.html#constant.sqlt-lng">SQLT_LNG</a></code></strong></td>
+     <td>Vinculado como SQLT_CHR, devuelto como string</td>
+    </tr>
+
+    <tr>
+     <td><strong><code><a href="oci8.constants.html#constant.sqlt-lbi">SQLT_LBI</a></code></strong></td>
+     <td>Vinculado como <strong><code><a href="oci8.constants.html#constant.sqlt-bin">SQLT_BIN</a></code></strong>, devuelto como string</td>
+    </tr>
+
+    <tr>
+     <td>Cualquier otro tipo</td>
+     <td>Vinculado como <strong><code><a href="oci8.constants.html#constant.sqlt-chr">SQLT_CHR</a></code></strong>, devuelto como string</td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+</div>
+</div></div></body></html>

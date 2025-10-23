@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Establecer la imagen de pincel para el dibujo de l&iacute;neas</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.imagescale.html">« imagescale</a></li>
+      <li style="float: right;"><a href="function.imagesetclip.html">imagesetclip »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.image.html">Funciones de GD e Im&aacute;genes</a></li>
+    <li>Establecer la imagen de pincel para el dibujo de l&iacute;neas</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.imagesetbrush" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">imagesetbrush</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">imagesetbrush</span> &mdash; <span class="dc-title">Establecer la imagen de pincel para el dibujo de líneas</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.imagesetbrush-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>imagesetbrush</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$image</code></span>, <span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$brush</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>imagesetbrush()</strong></span> establece la imagen de pincel para
+   usarla con todas las funciones de dibujo de líneas (como <span class="function"><a href="function.imageline.html" class="function">imageline()</a></span>
+   y <span class="function"><a href="function.imagepolygon.html" class="function">imagepolygon()</a></span>) cuando se dibuja con los colores
+   especiales <strong><code><a href="image.constants.html#constant.img-color-brushed">IMG_COLOR_BRUSHED</a></code></strong> o
+   <strong><code><a href="image.constants.html#constant.img-color-styledbrushed">IMG_COLOR_STYLEDBRUSHED</a></code></strong>.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.imagesetbrush-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    <dt><code class="parameter">
+image</code></dt><dd><p class="para">Un recurso image, es devuelto por una de las funciones de creación de imágenes,
+como <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>.</p></dd>
+    
+     <dt><code class="parameter">brush</code></dt>
+     <dd>
+      <p class="para">
+       Un recurso de imagen.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.imagesetbrush-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.imagesetbrush-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-2713">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>imagesetbrush()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Cargar un mini logo de php<br /></span><span style="color: #0000BB">$php </span><span style="color: #007700">= </span><span style="color: #0000BB">imagecreatefrompng</span><span style="color: #007700">(</span><span style="color: #DD0000">'./php.png'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Crear la imagen principal, 100x100<br /></span><span style="color: #0000BB">$im </span><span style="color: #007700">= </span><span style="color: #0000BB">imagecreatetruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">100</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Rellenar el fondo con blanco<br /></span><span style="color: #0000BB">$blanco </span><span style="color: #007700">= </span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">255</span><span style="color: #007700">, </span><span style="color: #0000BB">255</span><span style="color: #007700">, </span><span style="color: #0000BB">255</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagefilledrectangle</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">299</span><span style="color: #007700">, </span><span style="color: #0000BB">99</span><span style="color: #007700">, </span><span style="color: #0000BB">$blanco</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Establecer el pincel<br /></span><span style="color: #0000BB">imagesetbrush</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">$php</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Dibujar un par de pinceles, cada uno traslapando al otro<br /></span><span style="color: #0000BB">imageline</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">50</span><span style="color: #007700">, </span><span style="color: #0000BB">50</span><span style="color: #007700">, </span><span style="color: #0000BB">50</span><span style="color: #007700">, </span><span style="color: #0000BB">60</span><span style="color: #007700">, </span><span style="color: #0000BB">IMG_COLOR_BRUSHED</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Imprimir la imagen al navegaador<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-type: image/png'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">imagepng</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$php</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+    <div class="mediaobject">
+     
+     <div class="imageobject">
+      <img src="images/21009b70229598c6a80eef8b45bf282b-imagesetbrush.png" alt="Salida del ejemplo : imagesetbrush()" width="100" height="100" />
+     </div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 notes" id="refsect1-function.imagesetbrush-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    No se necesita tomar acciones especiales cuando se ha dejado de usar un pincel, pero
+    si se destruye la imagen de pincel, ¡no se deben usar los colores
+    <strong><code><a href="image.constants.html#constant.img-color-brushed">IMG_COLOR_BRUSHED</a></code></strong> o
+    <strong><code><a href="image.constants.html#constant.img-color-styledbrushed">IMG_COLOR_STYLEDBRUSHED</a></code></strong> hasta que se haya establecido
+    una nueva imagen de pincel!
+   </p>
+  </p></blockquote>
+ </div>
+
+</div></div></div></body></html>

@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Convierte un 'callable' en un cierre</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="closure.call.html">« Closure::call</a></li>
+      <li style="float: right;"><a href="class.stdclass.html">stdClass »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.closure.html">Closure</a></li>
+    <li>Convierte un 'callable' en un cierre</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="closure.fromcallable" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Closure::fromCallable</h1>
+  <p class="verinfo">(PHP 7 &gt;= 7.1.0)</p><p class="refpurpose"><span class="refname">Closure::fromCallable</span> &mdash; <span class="dc-title">Convierte un &#039;callable&#039; en un cierre</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-closure.fromcallable-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="methodname"><strong>Closure::fromCallable</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$callback</code></span>): <span class="type"><a href="class.closure.html" class="type Closure">Closure</a></span></div>
+
+  <p class="para rdfs-comment">
+   Crea y devuelve una nueva <a href="functions.anonymous.html" class="link">función
+   anónima</a> desde el <code class="parameter">callback</code> dado empleando el
+   ámbito actual. Este método comprueba si <code class="parameter">callback</code> es
+   llamable en el ámbito actual, lanzando un <span class="classname"><a href="class.typeerror.html" class="classname">TypeError</a></span>
+   si no lo es.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    A partir de PHP 8.1.0,
+    <a href="functions.first_class_callable_syntax.html" class="link">Sintaxis de llamada de primera clase</a>
+    tiene la misma semántica que este método.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-closure.fromcallable-parameters">
+  <h3 class="title">Parámetros</h3>
+  <dl>
+   
+    <dt><code class="parameter">callback</code></dt>
+    <dd>
+     <p class="para">
+      El «callable» a convertir.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-closure.fromcallable-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el recién creado <span class="classname"><a href="class.closure.html" class="classname">Closure</a></span> o lanza un
+   <span class="classname"><a href="class.typeerror.html" class="classname">TypeError</a></span> si <code class="parameter">callback</code> no
+   es llamable en el ámbito actual.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-closure.fromcallable-seealso">
+  <h3 class="title">Ver también</h3>
+  <ul class="simplelist">
+   <li><a href="functions.anonymous.html" class="link">Funciones anónimas</a></li>
+   <li><a href="functions.first_class_callable_syntax.html" class="link">Sintaxis de las llamadas de primera clase</a></li>
+  </ul>
+ </div>
+
+
+</div></div></div></body></html>

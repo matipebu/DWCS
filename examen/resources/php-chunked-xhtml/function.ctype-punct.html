@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Chequear posibles caracteres imprimibles que no son ni espacios en
+   blanco ni caracteres alfanum&eacute;ricos</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.ctype-print.html">« ctype_print</a></li>
+      <li style="float: right;"><a href="function.ctype-space.html">ctype_space »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.ctype.html">Funciones de Ctype</a></li>
+    <li>Chequear posibles caracteres imprimibles que no son ni espacios en
+   blanco ni caracteres alfanum&eacute;ricos</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.ctype-punct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ctype_punct</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">ctype_punct</span> &mdash; <span class="dc-title">
+   Chequear posibles caracteres imprimibles que no son ni espacios en
+   blanco ni caracteres alfanuméricos
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.ctype-punct-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>ctype_punct</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$text</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Verifica si todos los caracteres en la <span class="type"><a href="language.types.string.html" class="type string">string</a></span> entregada,
+   <code class="parameter">text</code>, son caracteres de puntuación.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.ctype-punct-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">text</code></dt>
+     <dd>
+      <p class="para">
+       La cadena de prueba.
+       <blockquote class="note"><p><strong class="note">Nota</strong>: <p class="para">
+Si se proporciona un <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> entre -128 y 255 inclusive, se interpreta como
+el valor ASCII de un simple caráter (a los valores negativos se le añade 256 para permitir
+caracteres en el rango ASCII Extendido). Cualquier otro entero se interpreta como una cadena
+que contiene los dígitos decimales del entero.</p></p></blockquote>
+       <div class="warning"><strong class="warning">Advertencia</strong><p class="para">
+As of PHP 8.1.0, passing a non-string argument is deprecated.
+In the future, the argument will be interpreted as a string instead of an ASCII codepoint.
+Depending on the intended behavior, the argument should either be cast to <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+or an explicit call to <span class="function"><a href="function.chr.html" class="function">chr()</a></span> should be made.</p></div>
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.ctype-punct-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> si cada caracter del <code class="parameter">text</code>
+   es imprimible, pero no es una letra, dígito o espacio en
+   blanco; o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> de lo contrario.
+   When called with an empty string the result will always be <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.ctype-punct-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-5047">
+    <p><strong>Ejemplo #1 Un ejemplo de <span class="function"><strong>ctype_punct()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$cadenas </span><span style="color: #007700">= array(</span><span style="color: #DD0000">'ABasdk!@!$#'</span><span style="color: #007700">, </span><span style="color: #DD0000">'!@ # $'</span><span style="color: #007700">, </span><span style="color: #DD0000">'*&amp;$()'</span><span style="color: #007700">);<br />foreach (</span><span style="color: #0000BB">$cadenas </span><span style="color: #007700">as </span><span style="color: #0000BB">$caso_prueba</span><span style="color: #007700">) {<br />    if (</span><span style="color: #0000BB">ctype_punct</span><span style="color: #007700">(</span><span style="color: #0000BB">$caso_prueba</span><span style="color: #007700">)) {<br />        echo </span><span style="color: #DD0000">"La cadena </span><span style="color: #0000BB">$caso_prueba</span><span style="color: #DD0000"> consiste completamente de signos de puntuación.\n"</span><span style="color: #007700">;<br />    } else {<br />        echo </span><span style="color: #DD0000">"La cadena </span><span style="color: #0000BB">$caso_prueba</span><span style="color: #DD0000"> no consiste completamente de signos de puntuación.\n"</span><span style="color: #007700">;<br />    }<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">La cadena ABasdk!@!$# no consiste completamente de signos de puntuación.
+La cadena !@ # $ no consiste completamente de signos de puntuación.
+La cadena *&amp;$() consiste completamente de signos de puntuación.</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.ctype-punct-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.ctype-cntrl.html" class="function" rel="rdfs-seeAlso">ctype_cntrl()</a> - Chequear posibles caracteres de control</span></li>
+    <li><span class="function"><a href="function.ctype-graph.html" class="function" rel="rdfs-seeAlso">ctype_graph()</a> - Chequear posibles caracteres imprimibles, con
+  excepci&oacute;n de los espacios</span></li>
+    <li><span class="function"><a href="intlchar.ispunct.html" class="function" rel="rdfs-seeAlso">IntlChar::ispunct()</a> - Comprobar si un punto de c&oacute;digo es un car&aacute;cter de puntuaci&oacute;n</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

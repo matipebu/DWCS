@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Obtiene las propiedades</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="reflectionclass.getparentclass.html">« ReflectionClass::getParentClass</a></li>
+      <li style="float: right;"><a href="reflectionclass.getproperty.html">ReflectionClass::getProperty »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.reflectionclass.html">ReflectionClass</a></li>
+    <li>Obtiene las propiedades</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="reflectionclass.getproperties" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ReflectionClass::getProperties</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">ReflectionClass::getProperties</span> &mdash; <span class="dc-title">Obtiene las propiedades</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-reflectionclass.getproperties-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>ReflectionClass::getProperties</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$filter</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+
+  <p class="para rdfs-comment">
+   Devuelve las propiedades reflexionadas.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-reflectionclass.getproperties-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">filter</code></dt>
+     <dd>
+      <p class="para">
+       Filtro opcional, para filtrar el tipo de propiedades deseadas. Se configura usando
+       las <a href="class.reflectionproperty.html#reflectionproperty.constants.modifiers" class="link">constantes de ReflectionProperty</a>,
+       y de manera predeterminada devuelve todos los tipos de propiedades.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-reflectionclass.getproperties-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Un array de objetos <span class="classname"><a href="class.reflectionproperty.html" class="classname">ReflectionProperty</a></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-reflectionclass.getproperties-examples">
+  <h3 class="title">Ejemplos</h3>
+  <div class="example" id="reflectionclass.getproperties.example.filter">
+   <p><strong>Ejemplo #1 Ejemplo de filtrado con <span class="function"><strong>ReflectionClass::getProperties()</strong></span></strong></p>
+   <div class="example-contents"><p>
+    Este ejemplo muestra el uso del parámetro opcional <code class="parameter">filter</code>,
+    que esencialmente omite las propiedades privadas.
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">Foo </span><span style="color: #007700">{<br />    public    </span><span style="color: #0000BB">$foo  </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />    protected </span><span style="color: #0000BB">$bar  </span><span style="color: #007700">= </span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />    private   </span><span style="color: #0000BB">$baz  </span><span style="color: #007700">= </span><span style="color: #0000BB">3</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$foo </span><span style="color: #007700">= new </span><span style="color: #0000BB">Foo</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$reflect </span><span style="color: #007700">= new </span><span style="color: #0000BB">ReflectionClass</span><span style="color: #007700">(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$props   </span><span style="color: #007700">= </span><span style="color: #0000BB">$reflect</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getProperties</span><span style="color: #007700">(</span><span style="color: #0000BB">ReflectionProperty</span><span style="color: #007700">::</span><span style="color: #0000BB">IS_PUBLIC </span><span style="color: #007700">| </span><span style="color: #0000BB">ReflectionProperty</span><span style="color: #007700">::</span><span style="color: #0000BB">IS_PROTECTED</span><span style="color: #007700">);<br /><br />foreach (</span><span style="color: #0000BB">$props </span><span style="color: #007700">as </span><span style="color: #0000BB">$prop</span><span style="color: #007700">) {<br />    print </span><span style="color: #0000BB">$prop</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getName</span><span style="color: #007700">() . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$props</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">foo
+bar
+array(2) {
+  [0]=&gt;
+  object(ReflectionProperty)#3 (2) {
+    [&quot;name&quot;]=&gt;
+    string(3) &quot;foo&quot;
+    [&quot;class&quot;]=&gt;
+    string(3) &quot;Foo&quot;
+  }
+  [1]=&gt;
+  object(ReflectionProperty)#4 (2) {
+    [&quot;name&quot;]=&gt;
+    string(3) &quot;bar&quot;
+    [&quot;class&quot;]=&gt;
+    string(3) &quot;Foo&quot;
+  }
+}</pre>
+</div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-reflectionclass.getproperties-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="methodname"><a href="reflectionclass.getproperty.html" class="methodname" rel="rdfs-seeAlso">ReflectionClass::getProperty()</a> - Obtiene un objeto ReflectionProperty para una propiedad de una clase</span></li>
+    <li><span class="classname"><a href="class.reflectionproperty.html" class="classname">ReflectionProperty</a></span></li>
+     <li><a href="class.reflectionproperty.html#reflectionproperty.constants.modifiers" class="link">Constantes de ReflectionProperty</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

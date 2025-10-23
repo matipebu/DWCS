@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>A&ntilde;adir contenido al cuerpo de respuesta</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="class.yaf-response-abstract.html">« Yaf_Response_Abstract</a></li>
+      <li style="float: right;"><a href="yaf-response-abstract.clearbody.html">Yaf_Response_Abstract::clearBody »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.yaf-response-abstract.html">Yaf_Response_Abstract</a></li>
+    <li>A&ntilde;adir contenido al cuerpo de respuesta</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="yaf-response-abstract.appendbody" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Yaf_Response_Abstract::appendBody</h1>
+  <p class="verinfo">(Yaf &gt;=1.0.0)</p><p class="refpurpose"><span class="refname">Yaf_Response_Abstract::appendBody</span> &mdash; <span class="dc-title">Añadir contenido al cuerpo de respuesta</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-yaf-response-abstract.appendbody-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>Yaf_Response_Abstract::appendBody</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$content</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$key</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Añade contenido a un bloque de contenido existente.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-yaf-response-abstract.appendbody-parameters">
+  <h3 class="title">Parámetros</h3>
+  <dl>
+   
+    <dt><code class="parameter">body</code></dt>
+    <dd>
+     <p class="para">
+      La cadena con el contenido.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">key</code></dt>
+    <dd>
+     <p class="para">
+      La clave del contenido, se puede establecer un contenido con una clave, y si no
+      se especifica, se usará Yaf_Response_Abstract::DEFAULT_BODY.
+      <blockquote class="note"><p><strong class="note">Nota</strong>: 
+       <p class="para">
+        Este parámetro se introdujo a partir de la versión 2.2.0
+       </p>
+      </p></blockquote>
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-yaf-response-abstract.appendbody-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Un valor de tipo booleano.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-yaf-response-abstract.appendbody-examples">
+  <h3 class="title">Ejemplos</h3>
+  <div class="example" id="example-3932">
+   <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>Yaf_Response_Abstract::appendBody()</strong></span></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$respuesta </span><span style="color: #007700">= new </span><span style="color: #0000BB">Yaf_Response_Http</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$respuesta</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setBody</span><span style="color: #007700">(</span><span style="color: #DD0000">"Hola"</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">prependBody</span><span style="color: #007700">(</span><span style="color: #DD0000">" Mundo"</span><span style="color: #007700">);<br /><br />echo </span><span style="color: #0000BB">$respuesta</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Hola Mundo</pre>
+</div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-yaf-response-abstract.appendbody-seealso">
+  <h3 class="title">Ver también</h3>
+  <ul class="simplelist">
+   <li><span class="classname"><a href="class.yaf-config-ini.html" class="classname">Yaf_Config_Ini</a></span></li>
+   <li><span class="methodname"><a href="yaf-response-abstract.getbody.html" class="methodname" rel="rdfs-seeAlso">Yaf_Response_Abstract::getBody()</a> - Recupera un contenido existente</span></li>
+   <li><span class="methodname"><a href="yaf-response-abstract.setbody.html" class="methodname" rel="rdfs-seeAlso">Yaf_Response_Abstract::setBody()</a> - Establece el contenido de una respuesta</span></li>
+   <li><span class="methodname"><a href="yaf-response-abstract.prependbody.html" class="methodname" rel="rdfs-seeAlso">Yaf_Response_Abstract::prependBody()</a> - El prop&oacute;sito de prependBody</span></li>
+   <li><span class="methodname"><a href="yaf-response-abstract.clearbody.html" class="methodname" rel="rdfs-seeAlso">Yaf_Response_Abstract::clearBody()</a> - Descarta todo el cuerpo de respuesta existente</span></li>
+  </ul>
+ </div>
+
+
+</div></div></div></body></html>

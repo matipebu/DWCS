@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Errores de Flujos</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="stream.contexts.html">« Contextos de Flujos</a></li>
+      <li style="float: right;"><a href="stream.examples.html">Ejemplos »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.stream.html">Flujos</a></li>
+    <li>Errores de Flujos</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="stream.errors" class="chapter">
+ <h1 class="title">Errores de Flujos</h1>
+
+ <p class="para">
+  Como con cualquier función relacionada con un archivo o con un socket, una operación sobre un flujo
+  puede fallar por varias razones normales (esto es: Incapaz de conectarse al host
+  remoto, archivo no encontrado, etc...). Una llamada relacionada con un flujo puede también fallar
+  porque el flujo no está registrado en el sistema en ejecución. Véase la matriz devuelta
+  por <span class="function"><a href="function.stream-get-wrappers.html" class="function">stream_get_wrappers()</a></span> para una lista de los flujos soportados por su
+  instalación de PHP. Como con la mayoría de la funciones internas de PHP,
+  si ocurre un error se generará un mensaje <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong>
+  describiendo la naturaleza del error.
+ </p>
+</div>
+</div></div></body></html>

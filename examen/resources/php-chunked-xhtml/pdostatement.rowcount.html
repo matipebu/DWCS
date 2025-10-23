@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Devuelve el n&uacute;mero de filas afectadas por la &uacute;ltima sentencia SQL</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="pdostatement.nextrowset.html">« PDOStatement::nextRowset</a></li>
+      <li style="float: right;"><a href="pdostatement.setattribute.html">PDOStatement::setAttribute »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.pdostatement.html">PDOStatement</a></li>
+    <li>Devuelve el n&uacute;mero de filas afectadas por la &uacute;ltima sentencia SQL</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="pdostatement.rowcount" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PDOStatement::rowCount</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8, PECL pdo &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">PDOStatement::rowCount</span> &mdash; <span class="dc-title">
+   Devuelve el número de filas afectadas por la última sentencia SQL
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-pdostatement.rowcount-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>PDOStatement::rowCount</strong></span>(): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  
+  <p class="para rdfs-comment">
+   <span class="function"><strong>PDOStatement::rowCount()</strong></span> devuelve el número de
+   filas afectadas por la última sentencia DELETE, INSERT, o UPDATE
+   ejecutada por el correspondiente objeto <code class="literal">PDOStatement</code>. 
+  </p>
+  <p class="para">
+   Si la última sentencia SQL ejecutada por el objeto <code class="literal">PDOStatement</code>
+   asociado fue una sentencia SELECT, algunas bases de datos
+   podrían devolver el número de filas devuelto por dicha sentencia. Sin embargo, este
+   comportamiento no está garantizado para todas las bases de datos y no debería confiarse
+   en él para aplicaciones portables.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-pdostatement.rowcount-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+   <p class="para">
+    Devuelve el número de filas.
+   </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-pdostatement.rowcount-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-1067">
+    <p><strong>Ejemplo #1 Devolver el número de filas eliminadas</strong></p>
+    <div class="example-contents"><p>
+     <span class="function"><strong>PDOStatement::rowCount()</strong></span> devuelve el número de
+     filas afectadas por una sentencia DELETE, INSERT, o UPDATE.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/* Borrar todas las filas de la tabla FRUIT */<br /></span><span style="color: #0000BB">$del </span><span style="color: #007700">= </span><span style="color: #0000BB">$gbd</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">'DELETE FROM fruit'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$del</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">/* Devolver el número de filas que fueron eliminadas */<br /></span><span style="color: #007700">print(</span><span style="color: #DD0000">"Devolver el número de filas que fueron eliminadas:\n"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cuenta </span><span style="color: #007700">= </span><span style="color: #0000BB">$del</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">rowCount</span><span style="color: #007700">();<br />print(</span><span style="color: #DD0000">"Eliminadas </span><span style="color: #0000BB">$cuenta</span><span style="color: #DD0000"> filas.\n"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Devolver el número de filas que fueron eliminadas:
+Eliminadas 9 filas.</pre>
+</div>
+    </div>
+   </div>
+   <div class="example" id="example-1068">
+    <p><strong>Ejemplo #2 Contar las filas devueltas por una sentencia SELECT</strong></p>
+    <div class="example-contents"><p>
+     Para muchas bases de datos, <span class="function"><strong>PDOStatement::rowCount()</strong></span> no
+     devuelve el número de filas afectadas por una sentencia SELECT. En su lugar, use
+     <span class="function"><a href="pdo.query.html" class="function">PDO::query()</a></span> para ejecutar una sentencia SELECT COUNT(*)
+     con las mismas declaraciones que la sentencia SELECT pretendida, luego use
+     <span class="function"><a href="pdostatement.fetchcolumn.html" class="function">PDOStatement::fetchColumn()</a></span> para recuperar el número
+     de filas que serán devueltas. La aplicación podrá entonces realizar la
+     acción correcta.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$sql </span><span style="color: #007700">= </span><span style="color: #DD0000">"SELECT COUNT(*) FROM fruit WHERE calories &gt; 100"</span><span style="color: #007700">;<br />if (</span><span style="color: #0000BB">$resultado </span><span style="color: #007700">= </span><span style="color: #0000BB">$conexión</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">)) {<br /><br />    </span><span style="color: #FF8000">/* Comprobar el número de filas que coinciden con la sentencia SELECT */<br />  </span><span style="color: #007700">if (</span><span style="color: #0000BB">$resultado</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetchColumn</span><span style="color: #007700">() &gt; </span><span style="color: #0000BB">0</span><span style="color: #007700">) {<br /><br />        </span><span style="color: #FF8000">/* Ejecutar la sentencia SELECT real y trabajar con los resultados */<br />         </span><span style="color: #0000BB">$sql </span><span style="color: #007700">= </span><span style="color: #DD0000">"SELECT name FROM fruit WHERE calories &gt; 100"</span><span style="color: #007700">;<br />       foreach (</span><span style="color: #0000BB">$conexión</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">) as </span><span style="color: #0000BB">$fila</span><span style="color: #007700">) {<br />           print </span><span style="color: #DD0000">"Nombre: " </span><span style="color: #007700">.  </span><span style="color: #0000BB">$fila</span><span style="color: #007700">[</span><span style="color: #DD0000">'NAME'</span><span style="color: #007700">] . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />         }<br />    }<br />    </span><span style="color: #FF8000">/* No coincide ningua fila -- hacer algo en consecuencia */<br />  </span><span style="color: #007700">else {<br />      print </span><span style="color: #DD0000">"Ninguna fila coincide con la consulta."</span><span style="color: #007700">;<br />    }<br />}<br /><br /></span><span style="color: #0000BB">$resultado </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$conexión </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">apple
+banana
+orange
+pear</pre>
+</div>
+    </div>
+   </div>
+   
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-pdostatement.rowcount-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="pdostatement.columncount.html" class="function" rel="rdfs-seeAlso">PDOStatement::columnCount()</a> - Devuelve el n&uacute;mero de columnas de un conjunto de resultados</span></li>
+    <li><span class="function"><a href="pdostatement.fetchcolumn.html" class="function" rel="rdfs-seeAlso">PDOStatement::fetchColumn()</a> - Devuelve una &uacute;nica columna de la siguiente fila de un conjunto de resultados</span></li>
+    <li><span class="function"><a href="pdo.query.html" class="function" rel="rdfs-seeAlso">PDO::query()</a> - Ejecuta una sentencia SQL, devolviendo un conjunto de resultados como un objeto PDOStatement</span></li>
+   </ul>
+  </p>
+  
+ </div>
+
+</div></div></div></body></html>

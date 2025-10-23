@@ -1,0 +1,256 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Constantes predefinidas</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ibm-db2.resources.html">« Tipos de recursos</a></li>
+      <li style="float: right;"><a href="ref.ibm-db2.html">Funciones de IBM DB2 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.ibm-db2.html">IBM DB2</a></li>
+    <li>Constantes predefinidas</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="ibm-db2.constants" class="appendix">
+ <h1 class="title">Constantes predefinidas</h1>
+
+ <p class="simpara">
+Estas constantes están definidas por esta extensión y
+estarán disponibles sólo cuando la extensión haya sido
+compilada con PHP, o bien sea cargada dinámicamente en ejecución.
+</p>
+ <dl>
+  
+   <dt id="constant.db2-binary">
+    <strong><code><a href="ibm-db2.constants.html#constant.db2-binary">DB2_BINARY</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara"> 
+     Indica que los datos binarios se tienen que devolver tal cual. Este es el
+     modo por omisión.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.db2-convert">
+    <strong><code><a href="ibm-db2.constants.html#constant.db2-convert">DB2_CONVERT</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Indica que los datos binarios se tienen que codificar a hexadecimal y
+     se devuelven en forma de string ASCII.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.db2-passthru">
+    <strong><code><a href="ibm-db2.constants.html#constant.db2-passthru">DB2_PASSTHRU</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Indica que los datos binarios se tienen que convertir al valor <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.db2-scrollable">
+    <strong><code><a href="ibm-db2.constants.html#constant.db2-scrollable">DB2_SCROLLABLE</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Especifica un cursor trasladable en un recurso de tipo sentencia. Este modo permite
+     acceder libremente a las filas de un juego de resultados, pero por ahora sólo está
+     soportado por la Base de datos Universal IBM DB2.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.db2-forward-only">
+    <strong><code><a href="ibm-db2.constants.html#constant.db2-forward-only">DB2_FORWARD_ONLY</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Especifica un cursor de sólo avance en un recurso de tipo sentencia. Este es el tipo
+     de cursor por omisión y está soportado por todas las bases de datos.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.db2-param-in">
+    <strong><code><a href="ibm-db2.constants.html#constant.db2-param-in">DB2_PARAM_IN</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Indifica que la variable PHP se utilizará como parámetro IN en los
+     procedimientos almacenados.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.db2-param-out">
+    <strong><code><a href="ibm-db2.constants.html#constant.db2-param-out">DB2_PARAM_OUT</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Especifica que la variable PHP se utilizará como parámetro OUT en los
+     procedimientos almacenados.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.db2-param-inout">
+    <strong><code><a href="ibm-db2.constants.html#constant.db2-param-inout">DB2_PARAM_INOUT</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Especifica que la variable PHP se utilizará como parámetro INOUT en los
+     procedimientos almacenados.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.db2-param-file">
+    <strong><code><a href="ibm-db2.constants.html#constant.db2-param-file">DB2_PARAM_FILE</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Indica que la columna debe vincularse directamente a un fichero de entrada.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.db2-autocommit-on">
+    <strong><code><a href="ibm-db2.constants.html#constant.db2-autocommit-on">DB2_AUTOCOMMIT_ON</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Indica que se debe habilitar la opción autocommit (Realizar cambios inmediatamente).
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.db2-autocommit-off">
+    <strong><code><a href="ibm-db2.constants.html#constant.db2-autocommit-off">DB2_AUTOCOMMIT_OFF</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Indica que se debe deshabilitar la opción autocommit (No se realizan los cambios inmediatamente).
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.db2-double">
+    <strong><code><a href="ibm-db2.constants.html#constant.db2-double">DB2_DOUBLE</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Indica que la variable se establecerá en forma de DOUBLE, FLOAT,
+     o REAL.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.db2-long">
+    <strong><code><a href="ibm-db2.constants.html#constant.db2-long">DB2_LONG</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Indica que la variable se establecerá en forma de SMALLINT, INTEGER, o
+     BIGINT.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.db2-char">
+    <strong><code><a href="ibm-db2.constants.html#constant.db2-char">DB2_CHAR</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Indica que la variable se establecerá en forma de CHAR o VARCHAR.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.db2-case-natural">
+    <strong><code><a href="ibm-db2.constants.html#constant.db2-case-natural">DB2_CASE_NATURAL</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Especifica que los nombres de columnas se devolverán respetando mayúsculas y minúsculas.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.db2-case-lower">
+    <strong><code><a href="ibm-db2.constants.html#constant.db2-case-lower">DB2_CASE_LOWER</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Indica que los nombres de las columnas se devolverán en minúsculas.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.db2-case-upper">
+    <strong><code><a href="ibm-db2.constants.html#constant.db2-case-upper">DB2_CASE_UPPER</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Indica que los nombres de las columnas se devolverán en mayúsculas.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.db2-deferred-prepare-on">
+    <strong><code><a href="ibm-db2.constants.html#constant.db2-deferred-prepare-on">DB2_DEFERRED_PREPARE_ON</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Habilita las sentencias preparadas en el recurso especificado.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.db2-deferred-prepare-off">
+    <strong><code><a href="ibm-db2.constants.html#constant.db2-deferred-prepare-off">DB2_DEFERRED_PREPARE_OFF</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Deshabilita las sentencias preparadas en el recurso especificado.
+    </span>
+   </dd>
+  
+ </dl>
+</div>
+</div></div></body></html>

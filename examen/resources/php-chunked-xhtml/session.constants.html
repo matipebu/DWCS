@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Constantes predefinidas</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="session.resources.html">« Tipos de recursos</a></li>
+      <li style="float: right;"><a href="session.examples.html">Ejemplos »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.session.html">Sesiones</a></li>
+    <li>Constantes predefinidas</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="session.constants" class="appendix">
+ <h1 class="title">Constantes predefinidas</h1>
+
+ <p class="simpara">
+Estas constantes están definidas por esta extensión y
+estarán disponibles sólo cuando la extensión haya sido
+compilada con PHP, o bien sea cargada dinámicamente en ejecución.
+</p>
+ <dl>
+  
+   <dt id="constant.sid">
+    <strong><code><a href="session.constants.html#constant.sid">SID</a></code></strong> 
+    (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Constante que contiene el nombre de la sesión y el ID de sesión en
+     la forma <code class="literal">&quot;name=ID&quot;</code> o una cadena vacía
+     si el ID de sesión fue establecido en una cookie de sesión apropiada. Este es
+     el mismo id que uno devuelto por <span class="function"><a href="function.session-id.html" class="function">session_id()</a></span>.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.php-session-disabled">
+    <strong><code><a href="session.constants.html#constant.php-session-disabled">PHP_SESSION_DISABLED</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Desde PHP 5.4.0. Devolver el valor de la función <span class="function"><a href="function.session-status.html" class="function">session_status()</a></span> si las sesiones están deshabilitadas.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.php-session-none">
+    <strong><code><a href="session.constants.html#constant.php-session-none">PHP_SESSION_NONE</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Desde PHP 5.4.0. Devolver el valor de la función <span class="function"><a href="function.session-status.html" class="function">session_status()</a></span> si las sesiones están habilitadas,
+     pero no existe una sesión.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.php-session-active">
+    <strong><code><a href="session.constants.html#constant.php-session-active">PHP_SESSION_ACTIVE</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Devolver el valor de la función <span class="function"><a href="function.session-status.html" class="function">session_status()</a></span> si las sesiones están habilitadas,
+     y existe una sesión.
+    </span>
+   </dd>
+  
+ </dl>
+</div>
+</div></div></body></html>

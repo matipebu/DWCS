@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Realiza una consulta a la base de datos</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqli.more-results.html">« mysqli::more_results</a></li>
+      <li style="float: right;"><a href="mysqli.next-result.html">mysqli::next_result »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.mysqli.html">mysqli</a></li>
+    <li>Realiza una consulta a la base de datos</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqli.multi-query" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysqli::multi_query</h1>
+  <h1 class="refname">mysqli_multi_query</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mysqli::multi_query</span> -- <span class="refname">mysqli_multi_query</span> &mdash; <span class="dc-title">Realiza una consulta a la base de datos</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mysqli.multi-query-description">
+  <h3 class="title">Descripción</h3>
+  <p class="para">Estilo orientado a objetos</p>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mysqli::multi_query</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$query</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">Estilo por procedimientos</p>
+  <div class="methodsynopsis dc-description"><span class="methodname"><strong>mysqli_multi_query</strong></span>(<span class="methodparam"><span class="type"><a href="class.mysqli.html" class="type mysqli">mysqli</a></span> <code class="parameter">$link</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$query</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Ejecuta una o múltiples consultas concatenadas por puntos y comas.
+  </p>
+  <p class="para">
+   Para obtener el juego de resultados de la primera consulta se puede usar
+   <span class="function"><a href="mysqli.use-result.html" class="function">mysqli_use_result()</a></span> o <span class="function"><a href="mysqli.store-result.html" class="function">mysqli_store_result()</a></span>.
+   El resto de resultados de consultas se pueden obtener usando
+   <span class="function"><a href="mysqli.more-results.html" class="function">mysqli_more_results()</a></span> y <span class="function"><a href="mysqli.next-result.html" class="function">mysqli_next_result()</a></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mysqli.multi-query-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    <dt><code class="parameter">
+link</code></dt><dd><p class="para">Sólo estilo por procediminetos: Un identificador de enlace
+devuelto por <span class="function"><a href="function.mysqli-connect.html" class="function">mysqli_connect()</a></span> o <span class="function"><a href="mysqli.init.html" class="function">mysqli_init()</a></span>
+</p></dd>
+    
+     <dt><code class="parameter">query</code></dt>
+     <dd>
+      <p class="para">
+       Consulta, en forma de string.
+      </p>
+      <p class="para">
+       Los datos dentro de la consulta debe estar <a href="mysqli.real-escape-string.html" class="link">correctamente escapados</a>.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mysqli.multi-query-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si la primera sentencia falló.
+   Para obtener el resto de errores de otras sentencias debe llamarse antes a
+   <span class="function"><a href="mysqli.next-result.html" class="function">mysqli_next_result()</a></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mysqli.multi-query-examples">
+  <h3 class="title">Ejemplos</h3>
+  <div class="example" id="example-1457">
+   <p><strong>Ejemplo #1 Ejemplo de <span class="methodname"><strong>mysqli::multi_query()</strong></span></strong></p>
+   <div class="example-contents"><p>Estilo orientado a objetos</p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$mysqli </span><span style="color: #007700">= new </span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">, </span><span style="color: #DD0000">"mi_usuario"</span><span style="color: #007700">, </span><span style="color: #DD0000">"mi_contraseña"</span><span style="color: #007700">, </span><span style="color: #DD0000">"world"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* comprobar conexión */<br /></span><span style="color: #007700">if (</span><span style="color: #0000BB">mysqli_connect_errno</span><span style="color: #007700">()) {<br />    </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Conexión fallida: %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">mysqli_connect_error</span><span style="color: #007700">());<br />    exit();<br />}<br /><br /></span><span style="color: #0000BB">$query  </span><span style="color: #007700">= </span><span style="color: #DD0000">"SELECT CURRENT_USER();"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$query </span><span style="color: #007700">.= </span><span style="color: #DD0000">"SELECT Name FROM City ORDER BY ID LIMIT 20, 5"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">/* ejecutar multi consulta */<br /></span><span style="color: #007700">if (</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">multi_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">)) {<br />    do {<br />        </span><span style="color: #FF8000">/* almacenar primer juego de resultados */<br />        </span><span style="color: #007700">if (</span><span style="color: #0000BB">$result </span><span style="color: #007700">= </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">store_result</span><span style="color: #007700">()) {<br />            while (</span><span style="color: #0000BB">$row </span><span style="color: #007700">= </span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetch_row</span><span style="color: #007700">()) {<br />                </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]);<br />            }<br />            </span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">free</span><span style="color: #007700">();<br />        }<br />        </span><span style="color: #FF8000">/* mostrar divisor */<br />        </span><span style="color: #007700">if (</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">more_results</span><span style="color: #007700">()) {<br />            </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"-----------------\n"</span><span style="color: #007700">);<br />        }<br />    } while (</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">next_result</span><span style="color: #007700">());<br />}<br /><br /></span><span style="color: #FF8000">/* cerrar conexión */<br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>Estilo por procedimientos</p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$link </span><span style="color: #007700">= </span><span style="color: #0000BB">mysqli_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">, </span><span style="color: #DD0000">"mi_usuario"</span><span style="color: #007700">, </span><span style="color: #DD0000">"mi_contraseña"</span><span style="color: #007700">, </span><span style="color: #DD0000">"world"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* comprobar conexión */<br /></span><span style="color: #007700">if (</span><span style="color: #0000BB">mysqli_connect_errno</span><span style="color: #007700">()) {<br />    </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Conexión fallida: %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">mysqli_connect_error</span><span style="color: #007700">());<br />    exit();<br />}<br /><br /></span><span style="color: #0000BB">$query  </span><span style="color: #007700">= </span><span style="color: #DD0000">"SELECT CURRENT_USER();"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$query </span><span style="color: #007700">.= </span><span style="color: #DD0000">"SELECT Name FROM City ORDER BY ID LIMIT 20, 5"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">/* ejecutar multi consulta */<br /></span><span style="color: #007700">if (</span><span style="color: #0000BB">mysqli_multi_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">, </span><span style="color: #0000BB">$query</span><span style="color: #007700">)) {<br />    do {<br />        </span><span style="color: #FF8000">/* almacenar primer juego de resultados */<br />        </span><span style="color: #007700">if (</span><span style="color: #0000BB">$result </span><span style="color: #007700">= </span><span style="color: #0000BB">mysqli_store_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">)) {<br />            while (</span><span style="color: #0000BB">$row </span><span style="color: #007700">= </span><span style="color: #0000BB">mysqli_fetch_row</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">)) {<br />                </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]);<br />            }<br />            </span><span style="color: #0000BB">mysqli_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br />        }<br />        </span><span style="color: #FF8000">/* mostrar divisor */<br />        </span><span style="color: #007700">if (</span><span style="color: #0000BB">mysqli_more_results</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">)) {<br />            </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"-----------------\n"</span><span style="color: #007700">);<br />        }<br />    } while (</span><span style="color: #0000BB">mysqli_next_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">));<br />}<br /><br /></span><span style="color: #FF8000">/* cerrar conexión */<br /></span><span style="color: #0000BB">mysqli_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado de los ejemplos
+sería algo similar a:</p></div>
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">my_user@localhost
+-----------------
+Amersfoort
+Maastricht
+Dordrecht
+Leiden
+Haarlemmermeer</pre>
+</div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mysqli.multi-query-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="mysqli.query.html" class="function" rel="rdfs-seeAlso">mysqli_query()</a> - Realiza una consulta a la base de datos</span></li>
+    <li><span class="function"><a href="mysqli.use-result.html" class="function" rel="rdfs-seeAlso">mysqli_use_result()</a> - Inicia la recuperaci&oacute;n de un conjunto de resultados</span></li>
+    <li><span class="function"><a href="mysqli.store-result.html" class="function" rel="rdfs-seeAlso">mysqli_store_result()</a> - Transfiere un conjunto de resultados de la &uacute;ltima consulta</span></li>
+    <li><span class="function"><a href="mysqli.next-result.html" class="function" rel="rdfs-seeAlso">mysqli_next_result()</a> - Prepara el siguiente resultado de multi_query</span></li>
+    <li><span class="function"><a href="mysqli.more-results.html" class="function" rel="rdfs-seeAlso">mysqli_more_results()</a> - Comprueba si hay m&aacute;s resultados de una multi consulta</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

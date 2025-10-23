@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Mueve el apuntador interno a la l&iacute;nea espec&iacute;ficada</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="splfileobject.rewind.html">« SplFileObject::rewind</a></li>
+      <li style="float: right;"><a href="splfileobject.setcsvcontrol.html">SplFileObject::setCsvControl »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.splfileobject.html">SplFileObject</a></li>
+    <li>Mueve el apuntador interno a la l&iacute;nea espec&iacute;ficada</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="splfileobject.seek" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SplFileObject::seek</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">SplFileObject::seek</span> &mdash; <span class="dc-title">Mueve el apuntador interno a la línea específicada</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-splfileobject.seek-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>SplFileObject::seek</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$line</code></span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+
+  <p class="para rdfs-comment">
+   Mueve el apuntador interno a la línea específicada en el fichero.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-splfileobject.seek-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">line</code></dt>
+     <dd>
+      <p class="para">
+       El número base cero a mover el apuntador interno.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-splfileobject.seek-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   No devuelve ningún valor.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-splfileobject.seek-errors">
+  <h3 class="title">Errores/Excepciones</h3>
+  <p class="para">
+   Lanza una <span class="classname"><a href="class.logicexception.html" class="classname">LogicException</a></span> si el parámetro
+   <code class="parameter">line_pos</code> es negativo.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-splfileobject.seek-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-3738">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="methodname"><strong>SplFileObject::seek()</strong></span></strong></p>
+    <div class="example-contents"><p>Este ejemplo imprime la tercera línea de el script que se encuentra en la posición 2.</p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$file </span><span style="color: #007700">= new </span><span style="color: #0000BB">SplFileObject</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$file</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">seek</span><span style="color: #007700">(</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br />echo </span><span style="color: #0000BB">$file</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">current</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">$file-&gt;seek(2);</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-splfileobject.seek-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="methodname"><a href="splfileobject.current.html" class="methodname" rel="rdfs-seeAlso">SplFileObject::current()</a> - Recupera la l&iacute;nea actual del fichero</span></li>
+    <li><span class="methodname"><a href="splfileobject.key.html" class="methodname" rel="rdfs-seeAlso">SplFileObject::key()</a> - Obtiene el n&uacute;mero de l&iacute;nea</span></li>
+    <li><span class="methodname"><a href="splfileobject.next.html" class="methodname" rel="rdfs-seeAlso">SplFileObject::next()</a> - Leer la siguiente l&iacute;nea</span></li>
+    <li><span class="methodname"><a href="splfileobject.rewind.html" class="methodname" rel="rdfs-seeAlso">SplFileObject::rewind()</a> - Rebobina el fichero hasta la primera l&iacute;nea</span></li>
+    <li><span class="methodname"><a href="splfileobject.valid.html" class="methodname" rel="rdfs-seeAlso">SplFileObject::valid()</a> - Comprueba si el final del finchero ha sido alcanzado</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Procesar un archivo PHP importando definiciones de funciones y clases, sobrescribiendo cuando sea apropiado</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.runkit-function-rename.html">« runkit_function_rename</a></li>
+      <li style="float: right;"><a href="function.runkit-method-add.html">runkit_method_add »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.runkit7.html">Funciones de runkit</a></li>
+    <li>Procesar un archivo PHP importando definiciones de funciones y clases, sobrescribiendo cuando sea apropiado</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.runkit-import" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">runkit_import</h1>
+  <p class="verinfo">(No version information available, might only be in Git)</p><p class="refpurpose"><span class="refname">runkit_import</span> &mdash; <span class="dc-title">
+   Procesar un archivo PHP importando definiciones de funciones y clases, sobrescribiendo cuando sea apropiado
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.runkit-import-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>runkit_import</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$filename</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$flags</code><span class="initializer"> = RUNKIT_IMPORT_CLASS_METHODS</span></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Similar a <span class="function"><a href="function.include.html" class="function">include</a></span>, sin embargo cualquier código que resida fuera
+   de una función o clase es simplemente ignorado.
+   Además, dependiendo del valor de <code class="parameter">flags</code>,
+   cualquier función o clase ya existente en el entorno de ejecución actual
+   podría ser sobrescrito automáticamente por sus nuevas definiciones.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.runkit-import-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">filename</code></dt>
+     <dd>
+      <p class="para">
+       El nombre de archivo desde que se va a importar las definiciones de funciones y clases
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">flags</code></dt>
+     <dd>
+      <p class="para">
+       Operador OR a nivel de bit de la <a href="runkit.constants.html" class="link">familia de constantes
+       <code class="literal">RUNKIT_IMPORT_*</code></a>.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.runkit-import-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.runkit-import-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-602">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>runkit_import()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// importar clases completamente<br /></span><span style="color: #0000BB">runkit_import</span><span style="color: #007700">(</span><span style="color: #DD0000">'myfile.inc'</span><span style="color: #007700">, </span><span style="color: #0000BB">RUNKIT_IMPORT_CLASSES</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* importar clases, aunque no importar sus propiedades estáticas<br />   (RUNKIT_IMPORT_CLASS_STATIC_PROPS está disponible desde 1.0.1) */<br /></span><span style="color: #0000BB">runkit_import</span><span style="color: #007700">(</span><span style="color: #DD0000">'myfile.inc'</span><span style="color: #007700">, </span><span style="color: #0000BB">RUNKIT_IMPORT_CLASSES </span><span style="color: #007700">&amp; ~</span><span style="color: #0000BB">RUNKIT_IMPORT_CLASS_STATIC_PROPS</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* importar solamente las propiedades estáticas de las clases<br />   (RUNKIT_IMPORT_CLASS_STATIC_PROPS está disponible desde 1.0.1) */<br /></span><span style="color: #0000BB">runkit_import</span><span style="color: #007700">(</span><span style="color: #DD0000">'myfile.inc'</span><span style="color: #007700">, </span><span style="color: #0000BB">RUNKIT_IMPORT_CLASS_STATIC_PROPS</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

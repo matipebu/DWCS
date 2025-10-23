@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Establece la opci&oacute;n de configuraci&oacute;n include_path</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.restore-include-path.html">« restore_include_path</a></li>
+      <li style="float: right;"><a href="function.set-time-limit.html">set_time_limit »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.info.html">Funciones de Opciones/Info de PHP</a></li>
+    <li>Establece la opci&oacute;n de configuraci&oacute;n include_path</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.set-include-path" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">set_include_path</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">set_include_path</span> &mdash; <span class="dc-title">Establece la opción de configuración include_path</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.set-include-path-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>set_include_path</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$new_include_path</code></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Establece la opción de configuración <a href="ini.core.html#ini.include-path" class="link">include_path</a>
+   durante la duración del script.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.set-include-path-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">new_include_path</code></dt>
+     <dd>
+      <p class="para">
+       El nuevo valor para <a href="ini.core.html#ini.include-path" class="link">include_path</a>
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.set-include-path-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el valor antiguo de <a href="ini.core.html#ini.include-path" class="link">include_path</a> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.set-include-path-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-592">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>set_include_path()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Funciona a partir de PHP 4.3.0<br /></span><span style="color: #0000BB">set_include_path</span><span style="color: #007700">(</span><span style="color: #DD0000">'/usr/lib/pear'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Funciona en todas las versiones de PHP<br /></span><span style="color: #0000BB">ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'include_path'</span><span style="color: #007700">, </span><span style="color: #DD0000">'/usr/lib/pear'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-593">
+    <p><strong>Ejemplo #2 Añadir a la ruta de inclusión</strong></p>
+    <div class="example-contents"><p>
+     Haciendo uso de la constante <strong><code><a href="dir.constants.html#constant.path-separator">PATH_SEPARATOR</a></code></strong> es
+     posible extender la ruta de inclusión independientemente del sistema
+     operativo.
+    </p></div>
+    <div class="example-contents"><p>
+     En este ejemplo agregamos <var class="filename">/usr/lib/pear</var> al final
+     del valor <code class="literal">include_path</code> actual.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$ruta </span><span style="color: #007700">= </span><span style="color: #DD0000">'/usr/lib/pear'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">set_include_path</span><span style="color: #007700">(</span><span style="color: #0000BB">get_include_path</span><span style="color: #007700">() . </span><span style="color: #0000BB">PATH_SEPARATOR </span><span style="color: #007700">. </span><span style="color: #0000BB">$ruta</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.set-include-path-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.ini-set.html" class="function" rel="rdfs-seeAlso">ini_set()</a> - Establece el valor de una directiva de configuraci&oacute;n</span></li>
+    <li><span class="function"><a href="function.get-include-path.html" class="function" rel="rdfs-seeAlso">get_include_path()</a> - Obtiene la opci&oacute;n de configuraci&oacute;n include_path actual</span></li>
+    <li><span class="function"><a href="function.restore-include-path.html" class="function" rel="rdfs-seeAlso">restore_include_path()</a> - Restablece el valor de la opci&oacute;n de configuraci&oacute;n include_path</span></li>
+    <li><span class="function"><a href="function.include.html" class="function" rel="rdfs-seeAlso">include</a> - include</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

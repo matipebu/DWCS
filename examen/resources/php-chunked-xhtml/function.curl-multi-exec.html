@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Ejecuta las sub-conexiones del recurso cURL actual</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.curl-multi-errno.html">« curl_multi_errno</a></li>
+      <li style="float: right;"><a href="function.curl-multi-getcontent.html">curl_multi_getcontent »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.curl.html">Funciones de cURL</a></li>
+    <li>Ejecuta las sub-conexiones del recurso cURL actual</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.curl-multi-exec" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">curl_multi_exec</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">curl_multi_exec</span> &mdash; <span class="dc-title">Ejecuta las sub-conexiones del recurso cURL actual</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.curl-multi-exec-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>curl_multi_exec</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$mh</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter reference">&$still_running</code></span>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="para rdfs-comment">
+   Procesa cada uno de los recursos del grupo. Este método puede ser llamado cuando el recurso
+   tenga o no tenga que leer o escribir datos.  
+  </p> 
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.curl-multi-exec-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    <dt><code class="parameter">mh</code>
+</dt><dd><p class="para">El multi recurso cURL multi devuelto por
+<span class="function"><a href="function.curl-multi-init.html" class="function">curl_multi_init()</a></span>.</p></dd>
+    
+     <dt><code class="parameter">still_running</code></dt>
+     <dd>
+      <p class="para">
+       Hace referencia a una bandera que dice cuando las operaciones siguen ejecutándose.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.curl-multi-exec-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Código cURL definido en las <a href="curl.constants.html" class="link">Constantes predefinidas</a> cURL.  
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Solo devuelve errores en relación con el grupo. Es posible que hayan ocurrido problemas
+    en transferencias individuales aunque esta función devuelva <strong><code><a href="curl.constants.html#constant.curlm-ok">CURLM_OK</a></code></strong>.
+   </p>
+  </p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.curl-multi-exec-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4223">
+    <p><strong>Ejemplo #1 <span class="function"><strong>curl_multi_exec()</strong></span> example</strong></p>
+    <div class="example-contents"><p>
+     Este ejemplo creará dos recursos cURL, los añadirá al grupo de
+     recursos y los ejecutará de forma asíncrona.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Crea los dos recursos cURL<br /></span><span style="color: #0000BB">$ch1 </span><span style="color: #007700">= </span><span style="color: #0000BB">curl_init</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$ch2 </span><span style="color: #007700">= </span><span style="color: #0000BB">curl_init</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">// Establecer la URL y otras opciones apropiadas<br /></span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch1</span><span style="color: #007700">, </span><span style="color: #0000BB">CURLOPT_URL</span><span style="color: #007700">, </span><span style="color: #DD0000">"http://lxr.php.net/"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch1</span><span style="color: #007700">, </span><span style="color: #0000BB">CURLOPT_HEADER</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch2</span><span style="color: #007700">, </span><span style="color: #0000BB">CURLOPT_URL</span><span style="color: #007700">, </span><span style="color: #DD0000">"http://www.php.net/"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch2</span><span style="color: #007700">, </span><span style="color: #0000BB">CURLOPT_HEADER</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Crea el recurso cURL múltiple<br /></span><span style="color: #0000BB">$mh </span><span style="color: #007700">= </span><span style="color: #0000BB">curl_multi_init</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">// Añade los dos recursos<br /></span><span style="color: #0000BB">curl_multi_add_handle</span><span style="color: #007700">(</span><span style="color: #0000BB">$mh</span><span style="color: #007700">,</span><span style="color: #0000BB">$ch1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">curl_multi_add_handle</span><span style="color: #007700">(</span><span style="color: #0000BB">$mh</span><span style="color: #007700">,</span><span style="color: #0000BB">$ch2</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$active </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">// Ejecuta los recursos<br /></span><span style="color: #007700">do {<br />    </span><span style="color: #0000BB">$mrc </span><span style="color: #007700">= </span><span style="color: #0000BB">curl_multi_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$mh</span><span style="color: #007700">, </span><span style="color: #0000BB">$active</span><span style="color: #007700">);<br />} while (</span><span style="color: #0000BB">$mrc </span><span style="color: #007700">== </span><span style="color: #0000BB">CURLM_CALL_MULTI_PERFORM</span><span style="color: #007700">);<br /><br />while (</span><span style="color: #0000BB">$active </span><span style="color: #007700">&amp;&amp; </span><span style="color: #0000BB">$mrc </span><span style="color: #007700">== </span><span style="color: #0000BB">CURLM_OK</span><span style="color: #007700">) {<br />    if (</span><span style="color: #0000BB">curl_multi_select</span><span style="color: #007700">(</span><span style="color: #0000BB">$mh</span><span style="color: #007700">) != -</span><span style="color: #0000BB">1</span><span style="color: #007700">) {<br />        do {<br />            </span><span style="color: #0000BB">$mrc </span><span style="color: #007700">= </span><span style="color: #0000BB">curl_multi_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$mh</span><span style="color: #007700">, </span><span style="color: #0000BB">$active</span><span style="color: #007700">);<br />        } while (</span><span style="color: #0000BB">$mrc </span><span style="color: #007700">== </span><span style="color: #0000BB">CURLM_CALL_MULTI_PERFORM</span><span style="color: #007700">);<br />    }<br />}<br /><br /></span><span style="color: #FF8000">// Cierra los recursos<br /></span><span style="color: #0000BB">curl_multi_remove_handle</span><span style="color: #007700">(</span><span style="color: #0000BB">$mh</span><span style="color: #007700">, </span><span style="color: #0000BB">$ch1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">curl_multi_remove_handle</span><span style="color: #007700">(</span><span style="color: #0000BB">$mh</span><span style="color: #007700">, </span><span style="color: #0000BB">$ch2</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">curl_multi_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$mh</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.curl-multi-exec-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.curl-multi-init.html" class="function" rel="rdfs-seeAlso">curl_multi_init()</a> - Devuelve un nuevo multi recurso cURL</span></li>
+    <li><span class="function"><a href="function.curl-multi-select.html" class="function" rel="rdfs-seeAlso">curl_multi_select()</a> - Espera actividad en cualquier conexi&oacute;n en curl_multi</span></li>
+    <li><span class="function"><a href="function.curl-exec.html" class="function" rel="rdfs-seeAlso">curl_exec()</a> - Establece una sesi&oacute;n cURL</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

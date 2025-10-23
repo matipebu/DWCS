@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>return</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="control-structures.declare.html">« declare</a></li>
+      <li style="float: right;"><a href="function.require.html">require »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.control-structures.html">Estructuras de Control</a></li>
+    <li>return</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.return" class="sect1">
+ <h2 class="title">return</h2>
+ <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p>
+ <p class="simpara">
+  <code class="literal">return</code> devuelve el control del programa al módulo que lo invoca.
+  La ejecución vuelve a la siguiente expresión después del módulo que lo invoca.
+ </p>
+ <p class="simpara">
+  Si se llama desde una función, la sentencia <code class="literal">return</code>
+  inmediatamente termina la ejecución de la función actual, y
+  devuelve su argumento como el valor de la llamada a la
+  función. <code class="literal">return</code> también termina la ejecución de
+  una sentencia <span class="function"><a href="function.eval.html" class="function">eval()</a></span> o un archivo de script.
+ </p>
+ <p class="simpara">
+  Si se llama desde el ámbito global, entonces la ejecución del script
+  actual se termina. Si el archivo script actual fue incluido o requerido con
+  <span class="function"><a href="function.include.html" class="function">include</a></span> o <span class="function"><a href="function.require.html" class="function">require</a></span>,
+  entonces el control es pasado de regreso al archivo que hizo el llamado. Además, si
+  el archivo script actual fue incluido con <span class="function"><a href="function.include.html" class="function">include</a></span>, entonces
+  el valor dado a <code class="literal">return</code> será retornado como
+  el valor de la llamada <span class="function"><a href="function.include.html" class="function">include</a></span>. Si
+  <code class="literal">return</code> es llamado desde dentro del fichero del script
+  principal, entonces termina la ejecución del script. Si el archivo script actual fue
+  nombrado por las opciones de configuración <a href="ini.core.html#ini.auto-prepend-file" class="link">auto_prepend_file</a> o <a href="ini.core.html#ini.auto-append-file" class="link">auto_append_file</a>
+  en <var class="filename">php.ini</var>, entonces se 
+  termina la ejecución de ese archivo script.
+ </p>
+ <p class="simpara">Para más información, ver <a href="functions.returning-values.html" class="link">Retornando valores</a>.
+ </p>
+ <p class="para">
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <span class="simpara">
+    Cabe señalar que dado que <code class="literal">return</code> es un constructor
+    del lenguaje y no una función, los paréntesis que rodean su argumento
+    no son obligatorios y se desaconseja su uso.
+   </span>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <span class="simpara">
+    Si no se suministra un parámetro, entonces el paréntesis debe omitirse
+    y <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> será
+    retornado. Llamadas a <code class="literal">return</code> con paréntesis pero
+    sin argumentos resultarán en un error del intérprete.
+   </span>
+  </p></blockquote>
+ </p>
+</div></div></div></body></html>

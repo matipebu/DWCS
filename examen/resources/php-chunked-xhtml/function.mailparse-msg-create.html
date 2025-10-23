@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Crea un recurso de correo mime</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.mailparse-determine-best-xfer-encoding.html">« mailparse_determine_best_xfer_encoding</a></li>
+      <li style="float: right;"><a href="function.mailparse-msg-extract-part.html">mailparse_msg_extract_part »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.mailparse.html">Funciones Mailparse</a></li>
+    <li>Crea un recurso de correo mime</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mailparse-msg-create" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mailparse_msg_create</h1>
+  <p class="verinfo">(PECL mailparse &gt;= 0.9.0)</p><p class="refpurpose"><span class="refname">mailparse_msg_create</span> &mdash; <span class="dc-title">Crea un recurso de correo mime</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.mailparse-msg-create-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mailparse_msg_create</strong></span>(): <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span></div>
+
+  <p class="para rdfs-comment">
+   Crea un recurso tipo correo <code class="literal">MIME</code>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mailparse-msg-create-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">Esta función no tiene parámetros.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mailparse-msg-create-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve un recurso que puede ser usado para interpretar un mensaje.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.mailparse-msg-create-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Se recomienda llamar a <span class="function"><a href="function.mailparse-msg-free.html" class="function">mailparse_msg_free()</a></span> en el resultado
+    de esta función, cuando ya no sea necesaria, para evitar fugas de memoria
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mailparse-msg-create-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.mailparse-msg-free.html" class="function" rel="rdfs-seeAlso">mailparse_msg_free()</a> - Libera un recurso MIME</span></li>
+    <li><span class="function"><a href="function.mailparse-msg-parse-file.html" class="function" rel="rdfs-seeAlso">mailparse_msg_parse_file()</a> - Procesa un archivo</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

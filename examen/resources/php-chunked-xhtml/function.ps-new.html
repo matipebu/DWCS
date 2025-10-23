@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Crear un nuevo objeto de documento PostScript</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.ps-moveto.html">« ps_moveto</a></li>
+      <li style="float: right;"><a href="function.ps-open-file.html">ps_open_file »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.ps.html">Funciones de PS</a></li>
+    <li>Crear un nuevo objeto de documento PostScript</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.ps-new" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ps_new</h1>
+  <p class="verinfo">(PECL ps &gt;= 1.1.0)</p><p class="refpurpose"><span class="refname">ps_new</span> &mdash; <span class="dc-title">Crear un nuevo objeto de documento PostScript</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ps-new-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>ps_new</strong></span>(): <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span></div>
+
+  <p class="para rdfs-comment">
+   Crea una nueva instancia de documento. No crea el fichero en disco o en
+   memoria, simplemente establece todo. <span class="function"><strong>ps_new()</strong></span> normalmente
+   es seguido de una llamada a la función <span class="function"><a href="function.ps-open-file.html" class="function">ps_open_file()</a></span> para crear realmente
+   el documento postscript.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.ps-new-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Un recurso de un documento PostScript,  o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error. El valor devuelto
+   es pasado a todas las demás funciones como primer argumento.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.ps-new-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.ps-delete.html" class="function" rel="rdfs-seeAlso">ps_delete()</a> - Borrar todos los recursos de un documento PostScript</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

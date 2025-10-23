@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>La interfaz Serializable</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="arrayaccess.offsetunset.html">« ArrayAccess::offsetUnset</a></li>
+      <li style="float: right;"><a href="serializable.serialize.html">Serializable::serialize »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="reserved.interfaces.html">Interfaces y clases predefinidas</a></li>
+    <li>La interfaz Serializable</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.serializable" class="reference">
+
+ <h1 class="title">La interfaz Serializable</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8)</p>
+
+  
+  <div class="section" id="serializable.intro">
+   <h2 class="title">Introducción</h2>
+   <p class="para">
+    Interfaz para personalizar la serialización.
+   </p>
+
+   <p class="para">
+    Las clases que implementan esta interfaz ya no admiten
+    <a href="language.oop5.magic.html#object.sleep" class="link">__sleep()</a> ni
+    <a href="language.oop5.magic.html#object.wakeup" class="link">__wakeup()</a>. El método serialize se
+    llama cuando una instancia requiere ser serializada. Esto no invoca a __destruct()
+    ni tiene ningún efecto adicional a menos que se programe dentro del método. Cuando los datos son
+    deserializados, la clase es conocida y se llama al correspondiente método unserialize() como
+    constructor en lugar de llamar al método __construct(). Se puede ejecutar el constructor
+    estándar en el método si fuera necesario.
+   </p>
+
+   <div class="warning"><strong class="warning">Advertencia</strong>
+    <p class="para">
+     A partir de PHP 8.1.0, una clase que implemente
+     <span class="interfacename"><strong class="interfacename">Serializable</strong></span> sin implementar también
+     <a href="language.oop5.magic.html#object.serialize" class="link">__serialize()</a> y
+     <a href="language.oop5.magic.html#object.unserialize" class="link">__unserialize()</a>
+     generará una advertencia de desaprobación.
+    </p>
+   </div>
+  </div>
+  
+
+  <div class="section" id="serializable.synopsis">
+   <h2 class="title">Sinopsis de la Interfaz</h2>
+
+   
+   <div class="classsynopsis"><div class="classsynopsisinfo">
+    
+     <span class="modifier">interface</span> <strong class="interfacename"><strong class="interfacename">Serializable</strong></strong> {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Métodos */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="serializable.serialize.html" class="methodname">serialize</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="serializable.unserialize.html" class="methodname">unserialize</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$data</code></span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+
+   }</div>
+   
+
+  </div>
+
+  <div class="section" id="serializable.examples">
+   <div class="example" id="serializable.example.basic">
+    <p><strong>Ejemplo #1 Uso básico</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">obj </span><span style="color: #007700">implements </span><span style="color: #0000BB">Serializable </span><span style="color: #007700">{<br />    private </span><span style="color: #0000BB">$data</span><span style="color: #007700">;<br />    public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">() {<br />        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">data </span><span style="color: #007700">= </span><span style="color: #DD0000">"My private data"</span><span style="color: #007700">;<br />    }<br />    public function </span><span style="color: #0000BB">serialize</span><span style="color: #007700">() {<br />        return </span><span style="color: #0000BB">serialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">data</span><span style="color: #007700">);<br />    }<br />    public function </span><span style="color: #0000BB">unserialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">) {<br />        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">data </span><span style="color: #007700">= </span><span style="color: #0000BB">unserialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">);<br />    }<br />    public function </span><span style="color: #0000BB">getData</span><span style="color: #007700">() {<br />        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">data</span><span style="color: #007700">;<br />    }<br />}<br /><br /></span><span style="color: #0000BB">$obj </span><span style="color: #007700">= new </span><span style="color: #0000BB">obj</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$ser </span><span style="color: #007700">= </span><span style="color: #0000BB">serialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$ser</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$newobj </span><span style="color: #007700">= </span><span style="color: #0000BB">unserialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$ser</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$newobj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getData</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+string(38) &quot;C:3:&quot;obj&quot;:23:{s:15:&quot;My private data&quot;;}&quot;
+string(15) &quot;My private data&quot;
+</pre></div>
+    </div>
+   </div>
+  </div>
+
+
+ </div>
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+<h2>Tabla de contenidos</h2><ul class="chunklist chunklist_reference"><li><a href="serializable.serialize.html">Serializable::serialize</a> — Representaci&oacute;n en formato cadena de un objeto</li><li><a href="serializable.unserialize.html">Serializable::unserialize</a> — Construye el objeto</li></ul>
+</div>
+</div></div></body></html>

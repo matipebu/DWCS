@@ -1,0 +1,339 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Formatos de fecha</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="datetime.formats.time.html">« Formatos de Hora</a></li>
+      <li style="float: right;"><a href="datetime.formats.compound.html">Formatos compuestos »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="datetime.formats.html">Formatos de fecha y hora admitidos</a></li>
+    <li>Formatos de fecha</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="datetime.formats.date" class="sect1">
+  <h2 class="title">Formatos de fecha</h2>
+  
+  <p class="para">
+   Esta página describe los diferentes formatos de fecha que entiende el analizador de
+   <span class="function"><a href="function.strtotime.html" class="function">strtotime()</a></span>, <span class="classname"><a href="class.datetime.html" class="classname">DateTime</a></span> y
+   <span class="function"><a href="function.date-create.html" class="function">date_create()</a></span>.
+  </p>
+  
+  <table class="doctable table">
+   <caption><strong>Símbolos empleados</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Descripción</th>
+      <th>Formato</th>
+      <th>Ejemplos</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><code class="literal">sufijos de día (en inglés)</code></td>
+      <td>&quot;st&quot; | &quot;nd&quot; | &quot;rd&quot; | &quot;th&quot;</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">dd</code></td>
+      <td>([0-2]?[0-9] | &quot;3&quot;[01]) <code class="literal">sufijos de día</code>?</td>
+      <td>&quot;7th&quot;, &quot;22nd&quot;, &quot;31&quot;</td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">DD</code></td>
+      <td>&quot;0&quot; [0-9] | [1-2][0-9] | &quot;3&quot; [01]</td>
+      <td>&quot;07&quot;, &quot;31&quot;</td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">m</code></td>
+      <td>&#039;january&#039; | &#039;february&#039; | &#039;march&#039; | &#039;april&#039; | &#039;may&#039; | &#039;june&#039; |
+       &#039;july&#039; | &#039;august&#039; | &#039;september&#039; | &#039;october&#039; | &#039;november&#039; | &#039;december&#039; |
+       &#039;jan&#039; | &#039;feb&#039; | &#039;mar&#039; | &#039;apr&#039; | &#039;may&#039; | &#039;jun&#039; | &#039;jul&#039; | &#039;aug&#039; | &#039;sep&#039; |
+       &#039;sept&#039; | &#039;oct&#039; | &#039;nov&#039; | &#039;dec&#039; | &quot;I&quot; | &quot;II&quot; | &quot;III&quot; | &quot;IV&quot; | &quot;V&quot; | &quot;VI&quot;
+       | &quot;VII&quot; | &quot;VIII&quot; | &quot;IX&quot; | &quot;X&quot; | &quot;XI&quot; | &quot;XII&quot;</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">M</code></td>
+      <td>&#039;jan&#039; | &#039;feb&#039; | &#039;mar&#039; | &#039;apr&#039; | &#039;may&#039; | &#039;jun&#039; | &#039;jul&#039; | &#039;aug&#039; |
+       &#039;sep&#039; | &#039;sept&#039; | &#039;oct&#039; | &#039;nov&#039; | &#039;dec&#039;</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">mm</code></td>
+      <td>&quot;0&quot;? [0-9] | &quot;1&quot;[0-2]</td>
+      <td>&quot;0&quot;, &quot;04&quot;, &quot;7&quot;, &quot;12&quot;</td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">MM</code></td>
+      <td>&quot;0&quot; [0-9] | &quot;1&quot;[0-2]</td>
+      <td>&quot;00&quot;, &quot;04&quot;, &quot;07&quot;, &quot;12&quot;</td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">y</code></td>
+      <td>[0-9]{1,4}</td>
+      <td>&quot;00&quot;, &quot;78&quot;, &quot;08&quot;, &quot;8&quot;, &quot;2008&quot;</td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">yy</code></td>
+      <td>[0-9]{2}</td>
+      <td>&quot;00&quot;, &quot;08&quot;, &quot;78&quot;</td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">YY</code></td>
+      <td>[0-9]{4}</td>
+      <td>&quot;2000&quot;, &quot;2008&quot;, &quot;1978&quot;</td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+  
+  <table class="doctable table">
+   <caption><strong>Notaciones regionales</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Descripción</th>
+      <th>Formato</th>
+      <th>Ejemplos</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>Mes y día americanos</td>
+      <td><code class="literal">mm</code> &quot;/&quot; <code class="literal">dd</code></td>
+      <td>&quot;5/12&quot;, &quot;10/27&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Mes, día y año americanos</td>
+      <td><code class="literal">mm</code> &quot;/&quot; <code class="literal">dd</code> &quot;/&quot; <code class="literal">y</code></td>
+      <td>&quot;12/22/78&quot;, &quot;1/17/2006&quot;, &quot;1/17/6&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Año de cuatro dígitos, mes y día con barras</td>
+      <td><code class="literal">YY</code> &quot;/&quot; <code class="literal">mm</code> &quot;/&quot; <code class="literal">dd</code></td>
+      <td>&quot;2008/6/30&quot;, &quot;1978/12/22&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Año de cuatro dígitos y mes (GNU)</td>
+      <td><code class="literal">YY</code> &quot;-&quot; <code class="literal">mm</code></td>
+      <td>&quot;2008-6&quot;, &quot;2008-06&quot;, &quot;1978-12&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Año, mes y día con guiones</td>
+      <td><code class="literal">y</code> &quot;-&quot; <code class="literal">mm</code> &quot;-&quot; <code class="literal">dd</code></td>
+      <td>&quot;2008-6-30&quot;, &quot;78-12-22&quot;, &quot;8-6-21&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Día, mes y año de cuatro dígitos, con puntos, tabulaciones o guiones</td>
+      <td><code class="literal">dd</code> [.\t-] <code class="literal">mm</code> [.-] <code class="literal">YY</code></td>
+      <td>&quot;30-6-2008&quot;, &quot;22.12.1978&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Día, mes y año de dos dígitos, con puntos o tabulaciones</td>
+      <td><code class="literal">dd</code> [.\t] <code class="literal">mm</code> &quot;.&quot; <code class="literal">yy</code></td>
+      <td>&quot;30.6.08&quot;, &quot;22\t12.78&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Día, mes textual y año</td>
+      <td><code class="literal">dd</code> ([ \t.-])* <code class="literal">m</code> ([ \t.-])* <code class="literal">y</code></td>
+      <td>&quot;30-June 2008&quot;, &quot;22DEC78&quot;, &quot;14 III 1879&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Mes textual y año de cuatro dígitos (el día se restablece a 1)</td>
+      <td><code class="literal">m</code> ([ \t.-])* <code class="literal">YY</code></td>
+      <td>&quot;June 2008&quot;, &quot;DEC1978&quot;, &quot;March 1879&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Año de cuatro dígitos y mes textual (el día se restablece a 1)</td>
+      <td><code class="literal">YY</code> ([ \t.-])* <code class="literal">m</code></td>
+      <td>&quot;2008 June&quot;, &quot;1978-XII&quot;, &quot;1879.MArCH&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Mes textual, día y año</td>
+      <td><code class="literal">m</code> ([ .\t-])* <code class="literal">dd</code> [,.stndrh\t ]+ <code class="literal">y</code></td>
+      <td>&quot;July 1st, 2008&quot;, &quot;April 17, 1790&quot;, &quot;May.9,78&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Mes textual y día</td>
+      <td><code class="literal">m</code> ([ .\t-])* <code class="literal">dd</code> [,.stndrh\t ]*</td>
+      <td>&quot;July 1st,&quot;, &quot;Apr 17&quot;, &quot;May.9&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Día y mes textual</td>
+      <td><code class="literal">d</code> ([ .\t-])* <code class="literal">m</code></td>
+      <td>&quot;1 July&quot;, &quot;17 Apr&quot;, &quot;9.May&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Abreviatura de mes, día y año</td>
+      <td><code class="literal">M</code> &quot;-&quot; <code class="literal">DD</code> &quot;-&quot; <code class="literal">y</code></td>
+      <td>&quot;May-09-78&quot;, &quot;Apr-17-1790&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Año, abreviatura de mes y día</td>
+      <td><code class="literal">y</code> &quot;-&quot; <code class="literal">M</code> &quot;-&quot; <code class="literal">DD</code></td>
+      <td>&quot;78-Dec-22&quot;, &quot;1814-MAY-17&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Año (y sólo el año)</td>
+      <td><code class="literal">YY</code></td>
+      <td>&quot;1978&quot;, &quot;2008&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Mes textual (y sólo el mes)</td>
+      <td><code class="literal">m</code></td>
+      <td>&quot;March&quot;, &quot;jun&quot;, &quot;DEC&quot;</td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+  
+  <table class="doctable table">
+   <caption><strong>Notaciones de la ISO 8601</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Descripción</th>
+      <th>Formato</th>
+      <th>Ejemplos</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>Año, mes y día, de ocho dígitos</td>
+      <td><code class="literal">YY</code> <code class="literal">MM</code> <code class="literal">DD</code></td>
+      <td>&quot;15810726&quot;, &quot;19780417&quot;, &quot;18140517&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Año de cuatro dígitos, mes y día con barras</td>
+      <td><code class="literal">YY</code> &quot;/&quot; <code class="literal">MM</code> &quot;/&quot; <code class="literal">DD</code></td>
+      <td>&quot;2008/06/30&quot;, &quot;1978/12/22&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Año de dos dígitos, mes y dís con guiones</td>
+      <td><code class="literal">yy</code> &quot;-&quot; <code class="literal">MM</code> &quot;-&quot; <code class="literal">DD</code></td>
+      <td>&quot;08-06-30&quot;, &quot;78-12-22&quot;</td>
+     </tr>
+
+     <tr>
+      <td>Año de cuatro dígitos con signo opcional, mes y día</td>
+      <td>[+-]? <code class="literal">YY</code> &quot;-&quot; <code class="literal">MM</code> &quot;-&quot; <code class="literal">DD</code></td>
+      <td>&quot;-0002-07-26&quot;, &quot;+1978-04-17&quot;, &quot;1814-05-17&quot;</td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+  
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Para los formatos <code class="literal">y</code> e <code class="literal">yy</code>,
+    los años por debajo de 100 son tratados de manera especial cuando
+    se emplean los símbolos <code class="literal">y</code> o <code class="literal">yy</code>.
+    Si el año cae en el rango de 0 (inclusive) a 69 (inclusive),
+    se añade 2000. Si el año cae en el rango de 70 (inclusive) a
+    99 (inclusive) se añade 1900. Esto significa que &quot;00-01-01&quot; se
+    interpreta como &quot;2000-01-01&quot;.
+   </p>
+  </p></blockquote>
+  
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    El formato &quot;Día, mes y año de dos dígitos, con puntos o tabulaciones&quot;
+    (<code class="literal">dd</code> [.\t] <code class="literal">mm</code> &quot;.&quot;
+    <code class="literal">yy</code>) solamente funciona con valores de años de 61 (inclusive)
+    a 99 (inclusive); fuera de esos años, el <em>formato de
+    hora</em> &quot;<code class="literal">HH</code> [.:] <code class="literal">MM</code>
+    [.:] <code class="literal">SS</code>&quot; tiene precedencia.
+   </p>
+  </p></blockquote>
+  
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    El formato &quot;Año (y sólo el año)&quot; únicamente funciona si se ha encotrado una
+    cadena de hora; de lo contrario, este formato es reconocido como
+    <code class="literal">HH</code> <code class="literal">MM</code>.
+   </p>
+  </p></blockquote>
+  
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Es posible poner en exceso y en defecto los formatos <code class="literal">dd</code> y
+    <code class="literal">DD</code>. Día 0 significa el último día del mes
+    anterior, mientras que en exceso empieza a contar a partir del mes siguiente. Esto es,
+    &quot;2008-08-00&quot; equivale a &quot;2008-07-31&quot;, y &quot;2008-06-31&quot; equivale
+    a &quot;2008-07-01&quot; (junio tiene sólo 30 días).
+   </p>
+   <p class="para">
+    Obsérvese que a paritr de PHP 5.1.0 el rango del día está restringido a 0-31 tal como se indicó
+    en la expresión regular anterior. Por tanto, &quot;2008-06-32&quot; por ejemplo, no es una
+    cadena de fecha válida.
+   </p>
+   <p class="para">
+    También es posible poner en defecto los formatos <code class="literal">mm</code> y
+    <code class="literal">MM</code> con el valor 0. Un valor de mes de
+    0 significa diciemebre del año anterior. Por ejemplo, &quot;2008-00-22&quot; es
+    equivalente a &quot;2007-12-22&quot;.
+   </p>
+   <p class="para">
+    Si se combinan los dos hechos anteriores y se ponen por defecto el día y
+    el mes, sucede lo siguiente: &quot;2008-00-00&quot; primero se convierte
+    a &quot;2007-12-00&quot; que después se convierte a &quot;2007-11-30&quot;. Esto también
+    sucede con la cadena &quot;0000-00-00&quot;, que se transforma en
+    &quot;-0001-11-30&quot; (el año -1 en el calendario ISO 8601, el cuál es 2 A.C.
+    en el calendario gregoriano &quot;proléptico&quot;).
+   </p>
+  </p></blockquote>
+ </div></div></div></body></html>

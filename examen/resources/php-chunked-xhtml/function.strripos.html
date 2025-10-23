@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Encuentra la posici&oacute;n de la &uacute;ltima aparici&oacute;n de un substring insensible a may&uacute;sculas y min&uacute;sculas en un string</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.strrev.html">« strrev</a></li>
+      <li style="float: right;"><a href="function.strrpos.html">strrpos »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.strings.html">Funciones de strings</a></li>
+    <li>Encuentra la posici&oacute;n de la &uacute;ltima aparici&oacute;n de un substring insensible a may&uacute;sculas y min&uacute;sculas en un string</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.strripos" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">strripos</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">strripos</span> &mdash; <span class="dc-title">Encuentra la posición de la última aparición de un substring insensible a mayúsculas y minúsculas en un string</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.strripos-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>strripos</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$haystack</code></span>, <span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$needle</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$offset</code><span class="initializer"> = 0</span></span>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="para rdfs-comment">
+   Encuentra la posición de la última aparición de
+   <code class="parameter">needle</code> (aguja) en el string <code class="parameter">haystack</code> (pajar).
+  </p>
+  <p class="para">  
+   A diferencia de <span class="function"><a href="function.strrpos.html" class="function">strrpos()</a></span>, <span class="function"><strong>strripos()</strong></span> es
+   insensible a mayúsculas y minúsculas.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.strripos-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">haystack</code></dt>
+     <dd>
+      <p class="para">
+       El string en donde buscar.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">needle</code></dt>
+     <dd>
+      
+<p class="para">
+ Si <code class="parameter">needle</code> no es una cadena, se convierte
+ a un entero y se aplica como el valor ordinal de un carácter.
+ Este comportamiento está obsoleto a partir de PHP 7.3.0, por lo que su uso está totalmente
+ desaconsejado. Dependiendo del comportamiento previsto,
+ <code class="parameter">needle</code> deberá ser convertido explícitamente a string,
+ o realizar una llamada explícita a <span class="function"><a href="function.chr.html" class="function">chr()</a></span>.
+</p>
+
+     </dd>
+    
+    
+     <dt><code class="parameter">offset</code></dt>
+     <dd>
+      <p class="para">
+       Si se especifica, la búsqueda iniciará en éste número de caracteres contados desde el
+       comienzo del string. Si el valor es negativo, entonces la búsqueda iniciará
+       desde esa cantidad de caracteres desde el final del string, buscando hacia atrás.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.strripos-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve la posición donde la aguja existe, en relación al inicio del
+   string <code class="parameter">haystack</code> (independiente de la dirección de la búsqueda
+   o del offset).
+   También tener en cuenta que las posiciones de inicio de los string empiezan en 0 y no 1.
+  </p>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si no fue encontrada la aguja.
+  </p>
+  <div class="warning"><strong class="warning">Advertencia</strong><p class="simpara">Esta función puede
+devolver el valor booleano <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>, pero también puede devolver un valor no booleano que se
+evalúa como <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>. Por favor lea la sección sobre <a href="language.types.boolean.html" class="link">Booleanos</a> para más
+información. Use <a href="language.operators.comparison.html" class="link">el operador
+===</a> para comprobar el valor devuelto por esta
+función.</p></div>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.strripos-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4864">
+    <p><strong>Ejemplo #1 Un ejemplo simple de <span class="function"><strong>strripos()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$haystack </span><span style="color: #007700">= </span><span style="color: #DD0000">'ababcd'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$needle   </span><span style="color: #007700">= </span><span style="color: #DD0000">'aB'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$pos      </span><span style="color: #007700">= </span><span style="color: #0000BB">strripos</span><span style="color: #007700">(</span><span style="color: #0000BB">$haystack</span><span style="color: #007700">, </span><span style="color: #0000BB">$needle</span><span style="color: #007700">);<br /><br />if (</span><span style="color: #0000BB">$pos </span><span style="color: #007700">=== </span><span style="color: #0000BB">false</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">"Sorry, we did not find (</span><span style="color: #0000BB">$needle</span><span style="color: #DD0000">) in (</span><span style="color: #0000BB">$haystack</span><span style="color: #DD0000">)"</span><span style="color: #007700">;<br />} else {<br />    echo </span><span style="color: #DD0000">"Congratulations!\n"</span><span style="color: #007700">;<br />    echo </span><span style="color: #DD0000">"We found the last (</span><span style="color: #0000BB">$needle</span><span style="color: #DD0000">) in (</span><span style="color: #0000BB">$haystack</span><span style="color: #DD0000">) at position (</span><span style="color: #0000BB">$pos</span><span style="color: #DD0000">)"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Congratulations!
+   We found the last (aB) in (ababcd) at position (2)</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.strripos-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.strpos.html" class="function" rel="rdfs-seeAlso">strpos()</a> - Encuentra la posici&oacute;n de la primera ocurrencia de un substring en un string</span></li>
+    <li><span class="function"><a href="function.stripos.html" class="function" rel="rdfs-seeAlso">stripos()</a> - Encuentra la posici&oacute;n de la primera aparici&oacute;n de un substring en un string sin considerar may&uacute;sculas ni min&uacute;sculas</span></li>
+    <li><span class="function"><a href="function.strrpos.html" class="function" rel="rdfs-seeAlso">strrpos()</a> - Encuentra la posici&oacute;n de la &uacute;ltima aparici&oacute;n de un substring en un string</span></li>
+    <li><span class="function"><a href="function.strrchr.html" class="function" rel="rdfs-seeAlso">strrchr()</a> - Encuentra la &uacute;ltima aparici&oacute;n de un caracter en un string</span></li>
+    <li><span class="function"><a href="function.stristr.html" class="function" rel="rdfs-seeAlso">stristr()</a> - strstr insensible a may&uacute;sculas y min&uacute;sculas</span></li>
+    <li><span class="function"><a href="function.substr.html" class="function" rel="rdfs-seeAlso">substr()</a> - Devuelve parte de una cadena</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

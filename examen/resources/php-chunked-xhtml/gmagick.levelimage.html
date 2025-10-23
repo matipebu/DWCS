@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Ajusta los niveles de la imagen</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="gmagick.labelimage.html">« Gmagick::labelimage</a></li>
+      <li style="float: right;"><a href="gmagick.magnifyimage.html">Gmagick::magnifyimage »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.gmagick.html">Gmagick</a></li>
+    <li>Ajusta los niveles de la imagen</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="gmagick.levelimage" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Gmagick::levelimage</h1>
+  <p class="verinfo">(PECL gmagick &gt;= Unknown)</p><p class="refpurpose"><span class="refname">Gmagick::levelimage</span> &mdash; <span class="dc-title">Ajusta los niveles de la imagen</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-gmagick.levelimage-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>Gmagick::levelimage</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.float.html" class="type float">float</a></span> <code class="parameter">$blackPoint</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.float.html" class="type float">float</a></span> <code class="parameter">$gamma</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.float.html" class="type float">float</a></span> <code class="parameter">$whitePoint</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$channel</code><span class="initializer"> = Gmagick::CHANNEL_DEFAULT</span></span><br>): <span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span></div>
+
+  <p class="para rdfs-comment">
+   Ajusta los niveles de una imagen escalando la caída de los colores
+   entre los puntos blanco y negro especificados al rango completo de
+   cuantía disponible. Los parámetros proporcionados representan
+   los puntos negro, mitad, y blanco. El punto negro especifica
+   el color más oscuro de la imagen. Los colores más oscuros que el punto
+   negro se establecen a cero. El punto medio especifica una corrección
+   gamma a aplicar a la imagen. Mientras que el punto blanco especifica el
+   color más claro de la imagen. Los colores más claros que el punto
+   blanco se establecen al valor de cuantía máximo.
+  </p>
+
+   
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-gmagick.levelimage-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">blackPoint</code></dt>
+     <dd>
+      <p class="para">
+       El punto negro de la imagen
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">gamma</code></dt>
+     <dd>
+      <p class="para">
+       El valor gamma
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">whitePoint</code></dt>
+     <dd>
+      <p class="para">
+       El punto blanco de la imagen
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">channel</code></dt>
+     <dd>
+      <p class="para">
+       Proporcione cualquier constante de canal que sea válida para su modo de canal. Para
+       aplicar más de un canal, combine las constantes channeltype usando
+       operadores a nivel de bits. Consulte esta lista de
+       <a href="gmagick.constants.html#gmagick.constants.channel" class="link">constantes de canal</a>.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-gmagick.levelimage-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Objeto Gmagick con la imagen nivelada.
+  </p>
+ </div>
+
+ <div class="refsect1 errors" id="refsect1-gmagick.levelimage-errors">
+  <h3 class="title">Errores/Excepciones</h3>
+  <p class="para">
+   Arroja un
+<span class="classname"><strong class="classname">GmagickException</strong></span> en caso de error.
+  </p>
+ </div>
+
+</div></div></div></body></html>

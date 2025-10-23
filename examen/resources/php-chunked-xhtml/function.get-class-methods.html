@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Obtiene los nombres de los m&eacute;todos de una clase</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.get-class.html">« get_class</a></li>
+      <li style="float: right;"><a href="function.get-class-vars.html">get_class_vars »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.classobj.html">Funciones de Clases/Objetos</a></li>
+    <li>Obtiene los nombres de los m&eacute;todos de una clase</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.get-class-methods" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">get_class_methods</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">get_class_methods</span> &mdash; <span class="dc-title">Obtiene los nombres de los métodos de una clase</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.get-class-methods-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>get_class_methods</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$class_name</code></span>): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+
+  <p class="para rdfs-comment">
+   Obtiene los nombres de los métodos de una clase.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.get-class-methods-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">class_name</code></dt>
+     <dd>
+      <p class="para">
+       El nombre de la clase o una instancia de objeto
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.get-class-methods-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve un array con los nombres de los métodos definidos para la clase especificada por
+   <code class="parameter">class_name</code>. Es caso de error devuelve <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.get-class-methods-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-5023">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>get_class_methods()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class </span><span style="color: #0000BB">miclase </span><span style="color: #007700">{<br />    </span><span style="color: #FF8000">// constructor<br />    </span><span style="color: #007700">function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">()<br />    {<br />        return(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br />    }<br /><br />    </span><span style="color: #FF8000">// método 1<br />    </span><span style="color: #007700">function </span><span style="color: #0000BB">mifunc1</span><span style="color: #007700">()<br />    {<br />        return(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br />    }<br /><br />    </span><span style="color: #FF8000">// método 2<br />    </span><span style="color: #007700">function </span><span style="color: #0000BB">mifunc2</span><span style="color: #007700">()<br />    {<br />        return(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br />    }<br />}<br /><br /></span><span style="color: #0000BB">$métodos_clase </span><span style="color: #007700">= </span><span style="color: #0000BB">get_class_methods</span><span style="color: #007700">(</span><span style="color: #DD0000">'miclase'</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">// o<br /></span><span style="color: #0000BB">$métodos_clase </span><span style="color: #007700">= </span><span style="color: #0000BB">get_class_methods</span><span style="color: #007700">(new </span><span style="color: #0000BB">miclase</span><span style="color: #007700">());<br /><br />foreach (</span><span style="color: #0000BB">$métodos_clase </span><span style="color: #007700">as </span><span style="color: #0000BB">$nombre_método</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">"</span><span style="color: #0000BB">$nombre_método</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">miclase
+mifunc1
+mifunc2</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.get-class-methods-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.get-class.html" class="function" rel="rdfs-seeAlso">get_class()</a> - Devuelve el nombre de la clase de un objeto</span></li>
+    <li><span class="function"><a href="function.get-class-vars.html" class="function" rel="rdfs-seeAlso">get_class_vars()</a> - Obtener las propiedades predeterminadas de una clase</span></li>
+    <li><span class="function"><a href="function.get-object-vars.html" class="function" rel="rdfs-seeAlso">get_object_vars()</a> - Obtiene las propiedades del objeto dado</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

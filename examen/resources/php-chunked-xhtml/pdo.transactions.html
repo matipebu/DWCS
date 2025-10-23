@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Transacciones y autoconsigna (&quot;auto-commit&quot;)</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="pdo.connections.html">« Conexiones y su administraci&oacute;n</a></li>
+      <li style="float: right;"><a href="pdo.prepared-statements.html">Sentencias preparadas y procedimientos almacenados »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.pdo.html">PDO</a></li>
+    <li>Transacciones y autoconsigna (&quot;auto-commit&quot;)</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="pdo.transactions" class="chapter">
+ <h1 class="title">Transacciones y autoconsigna (&quot;auto-commit&quot;)</h1>
+
+ <p class="para">
+  Una vez realizada una conexión a través de PDO, es necesario comprender cómo PDO
+  gestiona las transacciones antes de comenzar a realizar consultas. Para aquellos que no
+  han manejado anteriormente transacciones, estas ofrecen cuatro características principales: Atomicidad,
+  Consistencia, Aislamiento y Durabilidad (ACID por sus siglas en inglés). En términos sencillos, se garantiza
+  que cualquier trabajo llevado a cabo en una transacción, incluso si se hace por etapas, sea
+  aplicado a la base de datos de forma segura, y sin interferencia
+  de otras conexiones, cuando sea consignado. El trabajo transaccional puede también
+  ser deshecho automáticamente bajo petición (siempre y cuando no se haya
+  consignado ya), lo que hace más sencillo el manejo de errores en los scripts.
+ </p>
+ <p class="para">
+  Una transacción se implementa normalmente para hacer que el lote de
+  cambios se aplique a la vez. Esto tiene el buen efecto secundario de
+  mejorar drásticamente la eficiencia de las actualizaciones. En otras palabras,
+  las transacciones pueden hacer los scripts más rápidos y potencialmente más robustos
+  (aún así es necesario utilizarlas correctamente para obtener tal beneficio).
+ </p>
+ <p class="para">
+  Desafortunadamente, no todas las bases de datos admiten transacciones, por lo que PDO necesita
+  ejecutarse en lo que es conocido como el modo &quot;auto-commit&quot; cuando se abra por primera vez la 
+  conexión. El modo auto-commit significa que toda consulta que se ejecute tiene su 
+  propia transacción implícita, si la base de datos la admite, o ninguna transacción
+  si la base de datos no las admite. Para iniciar una transacción, si fuera
+  necesario, se debe usar el método <span class="function"><a href="pdo.begintransaction.html" class="function">PDO::beginTransaction()</a></span>.
+  Si el controlador subyacente no admite transacciones, se lanzará
+  una PDOException (independientemente de la configuración del manejo de errores:
+  esto es siempre una condición de error serio). Una vez dentro de una transacción,
+  se puede utilizar <span class="function"><a href="pdo.commit.html" class="function">PDO::commit()</a></span> o
+  <span class="function"><a href="pdo.rollback.html" class="function">PDO::rollBack()</a></span> para finalizarla, dependiendo del éxito del
+  código que se ejecute durante la transacción.
+ </p>
+ <div class="warning"><strong class="warning">Advertencia</strong>
+  <p class="para">
+   PDO solamente comprueba la funcionalidad de transacciones a nivel del controlador. Si una
+   cierta condición durante la ejecución implica que las transacciones no estén disponibles,
+   <span class="methodname"><a href="pdo.begintransaction.html" class="methodname">PDO::beginTransaction()</a></span> seguirá devolviendo <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>
+   sin ningún error si el servidor de bases de datos acepta la solicitud de iniciar una
+   transacción.
+  </p>
+  <p class="para">
+   Un ejemplo podría ser el intento de utilizar transacciones en tablas MyISAM en
+   una base de datos MySQL.
+  </p>
+ </div>
+ <p class="para">
+  Cuando el script finaliza o cuando una conexión está a punto de ser cerrada, si 
+  existe una transacción pendiente, PDO la revertirá automáticamente.
+  Esto es una medida de seguridad que ayuda a evitar inconsistencia en los casos donde
+  el script finaliza inesperadamente (si no se consignó la
+  transacción, se asume que algo salió mal, con lo cual se realiza la reversión
+  para la seguridad de los datos).
+ </p>
+ <div class="warning"><strong class="warning">Advertencia</strong>
+  <p class="para">
+   La reversión automática solamente ocurre si se inicia una transacción a través de
+   <span class="function"><a href="pdo.begintransaction.html" class="function">PDO::beginTransaction()</a></span>. Si se ejecuta manualmente una
+   consulta que inicie una transacción, PDO no tiene forma de saber nada sobre la misma y,
+   por tanto, no puede revertirla si algo saliera mal.
+  </p>
+ </div>
+ <p class="para">
+  <div class="example" id="example-1009"><p><strong>Ejemplo #1 Ejecución de un lote en una transacción</strong></p>
+   <div class="example-contents"><p>
+    En el siguiente ejemplo, se asume que se ha creado un conjunto de
+    entradas para un nuevo empleado, al cual se le ha asignado el número de ID 23.
+    Además de introducir los datos básicos de una persona, también es necesario
+    registrar su sueldo. Es bastante simple realizar dos actualizaciones independientes,
+    pero realizándolas entre las llamadas a
+    <span class="function"><a href="pdo.begintransaction.html" class="function">PDO::beginTransaction()</a></span> y
+    <span class="function"><a href="pdo.commit.html" class="function">PDO::commit()</a></span> se garantiza que nadie más
+    será capaz de ver los cambios hasta que se hayan completado. Si
+    algo sale mal, el bloque catch revierte los cambios realizados
+    desde que se creó la transacción y luego imprime un mensaje de
+    error.
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">try {<br />  </span><span style="color: #0000BB">$mbd </span><span style="color: #007700">= new </span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #DD0000">'odbc:SAMPLE'</span><span style="color: #007700">, </span><span style="color: #DD0000">'db2inst1'</span><span style="color: #007700">, </span><span style="color: #DD0000">'ibmdb2'</span><span style="color: #007700">, <br />      array(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_PERSISTENT </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">true</span><span style="color: #007700">));<br />  echo </span><span style="color: #DD0000">"Conectado\n"</span><span style="color: #007700">;<br />} catch (</span><span style="color: #0000BB">Exception $e</span><span style="color: #007700">) {<br />  die(</span><span style="color: #DD0000">"No se pudo conectar: " </span><span style="color: #007700">. </span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">());<br />}<br /><br />try {  <br />  </span><span style="color: #0000BB">$mbd</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_ERRMODE</span><span style="color: #007700">, </span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ERRMODE_EXCEPTION</span><span style="color: #007700">);<br /><br />  </span><span style="color: #0000BB">$mbd</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">beginTransaction</span><span style="color: #007700">();<br />  </span><span style="color: #0000BB">$mbd</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exec</span><span style="color: #007700">(</span><span style="color: #DD0000">"insert into staff (id, first, last) values (23, 'Joe', 'Bloggs')"</span><span style="color: #007700">);<br />  </span><span style="color: #0000BB">$mbd</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exec</span><span style="color: #007700">(</span><span style="color: #DD0000">"insert into salarychange (id, amount, changedate) <br />      values (23, 50000, NOW())"</span><span style="color: #007700">);<br />  </span><span style="color: #0000BB">$mbd</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">commit</span><span style="color: #007700">();<br />  <br />} catch (</span><span style="color: #0000BB">Exception $e</span><span style="color: #007700">) {<br />  </span><span style="color: #0000BB">$mbd</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">rollBack</span><span style="color: #007700">();<br />  echo </span><span style="color: #DD0000">"Fallo: " </span><span style="color: #007700">. </span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">();<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="para">
+  No exite límite al realizar actualizaciones en una transacción. También es posible
+  ejecutar consultas complejas para extraer datos, con al posibilidad de utilizar esa información para
+  construir más actualizaciones y consultas; mientras que la transacción esté activa,
+  se garantiza que nadie más pueda realizar cambios mientras se esté en mitad del
+  trabajo. Para más información sobre transacciones, consulte la
+  documentación proporcionada por su servidor de base de datos.
+ </p>
+</div>
+</div></div></body></html>

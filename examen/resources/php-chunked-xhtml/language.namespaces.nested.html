@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Declarar subespacios de nombres</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.namespaces.definition.html">« Definir espacios de nombres</a></li>
+      <li style="float: right;"><a href="language.namespaces.definitionmultiple.html">Definir varios espacios de nombres en un mismo fichero »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.namespaces.html">Espacios de nombres</a></li>
+    <li>Declarar subespacios de nombres</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.namespaces.nested" class="sect1">
+  <h2 class="title">Declarar subespacios de nombres</h2>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8)</p>
+  <p class="para">
+   Al igual que los directorios y ficheros, los espacios de nombres de PHP también tienen la capacidad
+   de especificar una jerarquía de nombres de espacios de nombres. Así, un nombre de un espacio de nombres
+   se puede definir con subniveles:
+   <div class="example" id="example-306">
+    <p><strong>Ejemplo #1 Declarar un único espacio de nombres con jerarquía</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">namespace </span><span style="color: #0000BB">MiProyecto\Sub\Nivel</span><span style="color: #007700">;<br /><br />const </span><span style="color: #0000BB">CONECTAR_OK </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />class </span><span style="color: #0000BB">Conexión </span><span style="color: #007700">{ </span><span style="color: #FF8000">/* ... */ </span><span style="color: #007700">}<br />function </span><span style="color: #0000BB">conectar</span><span style="color: #007700">() { </span><span style="color: #FF8000">/* ... */  </span><span style="color: #007700">}<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+   El ejemplo de arriba crea la constante <code class="literal">MiProyecto\Sub\Nivel\CONECTAR_OK</code>,
+   la clase <code class="literal">MiProyecto\Sub\Nivel\Conexión</code> y la función
+   <code class="literal">MiProyecto\Sub\Nivel\conectar</code>.
+  </p>
+ </div></div></div></body></html>

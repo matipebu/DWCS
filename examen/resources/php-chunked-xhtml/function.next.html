@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Avanza el puntero interno de un array</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.natsort.html">« natsort</a></li>
+      <li style="float: right;"><a href="function.pos.html">pos »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.array.html">Funciones de Arrays</a></li>
+    <li>Avanza el puntero interno de un array</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.next" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">next</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">next</span> &mdash; <span class="dc-title">Avanza el puntero interno de un array</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.next-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>next</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter reference">&$array</code></span>): <span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>next()</strong></span> se comporta como
+   <span class="function"><a href="function.current.html" class="function">current()</a></span>, con una diferencia. Avanza 
+   el puntero interno un lugar a delante antes de devolver el
+   valor del elemento. Esto significa que devuelve el siguiente valor del array y
+   avanza el puntero interno del array un lugar.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.next-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">array</code></dt>
+     <dd>
+      <p class="para">
+       El <span class="type"><a href="language.types.array.html" class="type array">array</a></span> afectado.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.next-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el valor del array en el siguiente lugar que está apuntado
+   por el puntero interno o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si no hay más elementos.
+  </p>
+  <div class="warning"><strong class="warning">Advertencia</strong><p class="simpara">Esta función puede
+devolver el valor booleano <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>, pero también puede devolver un valor no booleano que se
+evalúa como <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>. Por favor lea la sección sobre <a href="language.types.boolean.html" class="link">Booleanos</a> para más
+información. Use <a href="language.operators.comparison.html" class="link">el operador
+===</a> para comprobar el valor devuelto por esta
+función.</p></div>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.next-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-5000">
+    <p><strong>Ejemplo #1 Ejemplo del uso de <span class="function"><strong>next()</strong></span> y similares</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$transport </span><span style="color: #007700">= array(</span><span style="color: #DD0000">'pie'</span><span style="color: #007700">, </span><span style="color: #DD0000">'bici'</span><span style="color: #007700">, </span><span style="color: #DD0000">'coche'</span><span style="color: #007700">, </span><span style="color: #DD0000">'avión'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$mode </span><span style="color: #007700">= </span><span style="color: #0000BB">current</span><span style="color: #007700">(</span><span style="color: #0000BB">$transport</span><span style="color: #007700">); </span><span style="color: #FF8000">// $mode = 'pie';<br /></span><span style="color: #0000BB">$mode </span><span style="color: #007700">= </span><span style="color: #0000BB">next</span><span style="color: #007700">(</span><span style="color: #0000BB">$transport</span><span style="color: #007700">);    </span><span style="color: #FF8000">// $mode = 'bici';<br /></span><span style="color: #0000BB">$mode </span><span style="color: #007700">= </span><span style="color: #0000BB">next</span><span style="color: #007700">(</span><span style="color: #0000BB">$transport</span><span style="color: #007700">);    </span><span style="color: #FF8000">// $mode = 'coche';<br /></span><span style="color: #0000BB">$mode </span><span style="color: #007700">= </span><span style="color: #0000BB">prev</span><span style="color: #007700">(</span><span style="color: #0000BB">$transport</span><span style="color: #007700">);    </span><span style="color: #FF8000">// $mode = 'bici';<br /></span><span style="color: #0000BB">$mode </span><span style="color: #007700">= </span><span style="color: #0000BB">end</span><span style="color: #007700">(</span><span style="color: #0000BB">$transport</span><span style="color: #007700">);     </span><span style="color: #FF8000">// $mode = 'avión';<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.next-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <span class="simpara">
+    No hay manera de distinguir el inicio de un array de un elemento
+    de tipo <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>. Para recorrer adecuadamente
+    que puede contener elementos <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> ver la función
+    <span class="function"><a href="function.each.html" class="function">each()</a></span>.
+   </span>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.next-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.current.html" class="function" rel="rdfs-seeAlso">current()</a> - Devuelve el elemento actual en un array</span></li>
+    <li><span class="function"><a href="function.end.html" class="function" rel="rdfs-seeAlso">end()</a> - Establece el puntero interno de un array a su &uacute;ltimo elemento</span></li>
+    <li><span class="function"><a href="function.prev.html" class="function" rel="rdfs-seeAlso">prev()</a> - Rebobina el puntero interno del array</span></li>
+    <li><span class="function"><a href="function.reset.html" class="function" rel="rdfs-seeAlso">reset()</a> - Establece el puntero interno de un array a su primer elemento</span></li>
+    <li><span class="function"><a href="function.each.html" class="function" rel="rdfs-seeAlso">each()</a> - Devolver el par clave/valor actual de un array y avanzar el cursor del array</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

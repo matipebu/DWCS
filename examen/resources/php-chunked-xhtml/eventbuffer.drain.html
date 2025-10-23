@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Elimina un n&uacute;mero espec&iacute;fico de bytes del principio del buffer
+  sin copiarlo a ning&uacute;n lugar</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="eventbuffer.copyout.html">« EventBuffer::copyout</a></li>
+      <li style="float: right;"><a href="eventbuffer.enablelocking.html">EventBuffer::enableLocking »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.eventbuffer.html">EventBuffer</a></li>
+    <li>Elimina un n&uacute;mero espec&iacute;fico de bytes del principio del buffer
+  sin copiarlo a ning&uacute;n lugar</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="eventbuffer.drain" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">EventBuffer::drain</h1>
+  <p class="verinfo">(PECL event &gt;= 1.2.6-beta)</p><p class="refpurpose"><span class="refname">EventBuffer::drain</span> &mdash; <span class="dc-title">Elimina un número específico de bytes del principio del buffer
+  sin copiarlo a ningún lugar</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-eventbuffer.drain-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="methodname"><strong>EventBuffer::drain</strong></span>(<span class="methodparam">
+    
+    <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$len</code>
+   </span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Funciona del mismo modo que
+   <span class="methodname"><a href="eventbuffer.read.html" class="methodname">EventBuffer::read()</a></span>
+   , excepto que no copia los datos: únicamente los elimina del principio
+   del buffer.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-eventbuffer.drain-parameters">
+  <h3 class="title">Parámetros</h3>
+  <dl>
+   
+    <dt>
+     <code class="parameter">len</code>
+    </dt>
+    <dd>
+     <p class="para">
+      El número de bytes a eliminar del buffer.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-eventbuffer.drain-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-eventbuffer.drain-seealso">
+  <h3 class="title">Ver también</h3>
+  <ul class="simplelist">
+   <li>
+    <span class="methodname"><a href="eventbuffer.read.html" class="methodname" rel="rdfs-seeAlso">EventBuffer::read()</a> - Read data from an evbuffer and drain the bytes read</span>
+   </li>
+   <li>
+    <span class="methodname"><a href="eventbuffer.appendfrom.html" class="methodname" rel="rdfs-seeAlso">EventBuffer::appendFrom()</a> - Mueve el n&uacute;mero de bytes especificados desde un buffer fuente, al
+  final del buffer actual</span>
+   </li>
+  </ul>
+ </div>
+
+</div></div></div></body></html>

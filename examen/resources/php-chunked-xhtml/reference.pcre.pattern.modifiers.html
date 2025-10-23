@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Modificadores de patrones</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="regexp.reference.performance.html">« Rendimiento</a></li>
+      <li style="float: right;"><a href="reference.pcre.pattern.differences.html">Diferencias con Perl »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="pcre.pattern.html">Patrones PCRE</a></li>
+    <li>Modificadores de patrones</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="reference.pcre.pattern.modifiers" class="article">
+ <h1 class="title">Modificadores de patrones</h1>
+
+ 
+ <p class="para">
+  Los modificadores PCRE disponibles son listados a continuación. Los nombres
+  entre paréntesis se refieren a nombres internos de PCRE para dichos modificadores.
+  Los espacios y nuevas líneas son ignorados en los modificadores, otros caracteres generan error.
+ </p>
+ <p class="para">
+  <blockquote class="blockquote">
+   <dl>
+    
+     <dt><em>i</em> (<code class="literal">PCRE_CASELESS</code>)</dt>
+     <dd>
+      <span class="simpara">
+       Si se aplica este modificador, las letras en el patrón coincidirán
+       tanto con letras mayúsculas como minúsculas.
+      </span>
+     </dd>
+    
+    
+     <dt><em>m</em> (<code class="literal">PCRE_MULTILINE</code>)</dt>
+     <dd>
+      <span class="simpara">
+       Por defecto, PCRE trata la cadena objetivo como si fuera una
+       única &quot;línea&quot; de caracteres (incluso si en realidad contiene
+       varias nuevas líneas). El meta-carácter &quot;inicio de línea&quot; (^)
+       coincide sólo con el inicio de la cadena, mientras que el
+       meta-carácter &quot;final de línea&quot; ($) coincide sólo con el final de la
+       cadena, o antes del final de una nueva línea (a menos que el modificador
+       <em>D</em> se aplique). Esto es igual que en
+       Perl.
+      </span>
+      <span class="simpara">
+       Cuando se aplica este modificador, los constructores &quot;inicio de línea&quot; y
+       &quot;final de línea&quot; coinciden inmediatamente después o inmediatamente
+       antes que cualquier nueva línea de la cadena objetivo, respectivamente, así
+       como al inicio y final absolutos. Esto es equivalente al
+       modificador /m de Perl. Si no hay caracteres &quot;\n&quot; en una
+       cadena objetivo, o no hay incidencias de ^ o $ en el patrón,
+       la aplicación de este modificador no tiene efecto.
+      </span>
+     </dd>
+    
+    
+     <dt><em>s</em> (<code class="literal">PCRE_DOTALL</code>)</dt>
+     <dd>
+      <span class="simpara">
+       Si se aplica este modificador, un meta-carácter punto en el patrón
+       coincide con todos los caracteres, incluyendo nuevas líneas. Sin él,
+       las nuevas líneas son excluidas. Este modificador es equivalente al
+       modificador /s de Perl. Una clase negativa como [^a] siempre coincidirá con un
+       carácter de nueva línea, independientemente de la aplicación de este
+       modificador.
+      </span>
+     </dd>
+    
+    
+     <dt><em>x</em> (<code class="literal">PCRE_EXTENDED</code>)</dt>
+     <dd>
+      <span class="simpara">
+       Si se aplica este modificador, los caracteres de información de espacios en blanco en el
+       patrón se ignoran totalmente excepto cuando están escapados o dentro de
+       una clase carácter, y los caracteres entre un # sin escapar
+       fuera de una clase carácter y el siguiente carácter nueva línea,
+       inclusive, también son ignorados. Esto es equivalente al modificador /x
+       de Perl, y hace posible incluir comentarios dentro de
+       patrones complicados. Observe, sin embargo, que esto se aplica sólo
+       a caracteres de información. Los caracteres espacio en blanco nunca pueden aparecer
+       dentro de secuencias de caracteres especiales en un patrón, por ejemplo
+       dentro de la secuencia (?( la cual inicia un sub-patrón condicional.
+      </span>
+     </dd>
+    
+    
+     <dt><em>A</em> (<code class="literal">PCRE_ANCHORED</code>)</dt>
+     <dd>
+      <span class="simpara">
+       Si se aplica este modificador, el patrón es forzado a ser
+       &quot;anclado&quot;, es decir, se le obliga a coincidir sólo con el
+       inicio de la cadena que está siendo buscada (la &quot;cadena
+       objetivo&quot;). Este efecto también se puede lograr mediante construcciones
+       apropiadas en el patrón mismo, lo cual es la única manera de hacerlo
+       en Perl.
+      </span>
+     </dd>
+    
+    
+     <dt><em>D</em> (<code class="literal">PCRE_DOLLAR_ENDONLY</code>)</dt>
+     <dd>
+      <span class="simpara">
+       Si se aplica este modificador, un meta-carácter dólar en el patrón
+       coincidirá sólo con el final de la cadena objetivo. Sin este
+       modificador, un dólar coincide también inmediatamente antes del
+       carácter final si éste es una nueva línea (pero no antes de cualquier otra
+       nueva línea). Este modificador es ignorado si el modificadr <em>m</em>
+       se aplica. No existe equivalente a este modificador en
+       Perl.
+      </span>
+     </dd>
+    
+    
+     <dt><em>S</em></dt>
+     <dd>
+      <span class="simpara">
+       Cuando un patrón se va a usar varias veces, merece la pena
+       dedicar más tiempo a analizarlo a fin de acelerar
+       el tiempo tomado para las comparaciones. Si se aplica este modificador, se
+       realiza este análisis extra. Actualmente, estudiar un patrón
+       es útil sólamente para patrones no anclados que no tienen
+       un carácter de inicio único fijo.
+      </span>
+     </dd>
+    
+    
+     <dt><em>U</em> (<code class="literal">PCRE_UNGREEDY</code>)</dt>
+     <dd>
+      <span class="simpara">
+       Este modificador invierte la &quot;codicia&quot; de los cuantificadores de modo
+       que no sean codiciosos por defecto, pero se vuelven codiciosos si son seguidos
+       por <code class="literal">?</code>. Esto no es compatible con Perl. También se puede
+       aplicar por un <a href="regexp.reference.internal-options.html" class="link">modificador
+       de ajuste dentro del patrón</a> (<code class="literal">?U</code>)
+       o por un signo de interrogación detrás del cuantificador (p.ej.
+       <code class="literal">.*?</code>).
+      </span>
+      <blockquote class="note"><p><strong class="note">Nota</strong>: 
+       <p class="para">
+        Normalmente no es posible hacer coincidir más de <a href="pcre.configuration.html#ini.pcre.backtrack-limit" class="link">pcre.backtrack_limit</a>
+        caracteres en el modo no codicioso.
+       </p>
+      </p></blockquote>
+     </dd>
+    
+    
+     <dt><em>X</em> (<code class="literal">PCRE_EXTRA</code>)</dt>
+     <dd>
+      <span class="simpara">
+       Este modificador pone en marcha funcionalidad adicional de PCRE que
+       es incompatible con Perl. Cualquier barra invertida en un patrón que
+       esté seguida por una letra que no tenga un significado especial causa
+       un error, por lo que se reservan estas combinaciones para futuras
+       expansiones. Por defecto, como en Perl, una barra invertida seguida de una
+       letra que no tenga un significado especial se trata como un literal.
+       No hay en la actualidad otras características controladas por este
+       modificador.
+      </span>
+     </dd>
+    
+    
+     <dt><em>J</em> (<code class="literal">PCRE_INFO_JCHANGED</code>)</dt>
+     <dd>
+      <span class="simpara">
+       El ajuste de opción interna (?J) cambia la opción local <code class="literal">PCRE_DUPNAMES</code>.
+       Permite nombres duplicados para sub-patrones.
+      </span>
+     </dd>
+    
+    
+     <dt><em>u</em> (<code class="literal">PCRE_UTF8</code>)</dt>
+     <dd>
+      <span class="simpara">
+       Este modificador pone en marcha funcionalidad adicional de PCRE que
+       es incompatible con Perl. Los string de patrones y objetivos son
+       tratados como UTF-8. Este modificador está disponible a partir de PHP 4.1.0
+       o posterior en Unix y desde PHP 4.2.3 en win32. La validez de UTF-8
+       del patrón y del objetivo es verificada desde PHP
+       4.3.5. Un objetivo inválido causará que la función preg_* no haga
+       coincidir nada; un patrón inválido desencadenará un error de
+       nivel E_WARNING. Las secuencias UTF-8 de cinco o seis octetos se
+       consideran como no válidas desde PHP 5.3.4 (resp. PCRE 7.3
+       2007-08-28); anteriormente se consideraban como
+       UTF-8 válido.
+      </span>
+     </dd>
+    
+   </dl>
+  </blockquote>
+ </p>
+</div>
+</div></div></body></html>

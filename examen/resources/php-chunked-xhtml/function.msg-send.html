@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Eviar un mensaje a una cola de mensajes</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.msg-remove-queue.html">« msg_remove_queue</a></li>
+      <li style="float: right;"><a href="function.msg-set-queue.html">msg_set_queue »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.sem.html">Funciones de Sem&aacute;foro</a></li>
+    <li>Eviar un mensaje a una cola de mensajes</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.msg-send" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">msg_send</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">msg_send</span> &mdash; <span class="dc-title">Eviar un mensaje a una cola de mensajes</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.msg-send-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>msg_send</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$queue</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$msgtype</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$message</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$serialize</code><span class="initializer"> = true</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$blocking</code><span class="initializer"> = true</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter reference">&$errorcode</code><span class="initializer"> = ?</span></span><br>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>msg_send()</strong></span> envía un <code class="parameter">message</code> del tipo
+   <code class="parameter">msgtype</code> (DEBE ser mayor que 0) a
+   la cola de mensajes especificada por <code class="parameter">queue</code>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.msg-send-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">queue</code></dt>
+     <dd>
+      <p class="para">
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">msgtype</code></dt>
+     <dd>
+      <p class="para">
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">message</code></dt>
+     <dd>
+      <p class="para">
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">serialize</code></dt>
+     <dd>
+      <p class="para">
+       El parámetro opcional <code class="parameter">serialize</code> controla el modo de
+       enviar el mensaje dado por <code class="parameter">message</code>. <code class="parameter">serialize</code>
+       es por defecto <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> lo que significa que <code class="parameter">message</code> es
+       serializado usando el mismo mecanismo que el módulo de sesión antes de ser
+       enviado a la cola. Esto permite matrices y objetos complejos para ser enviados a
+       otros scripts de PHP, o si se está usando el serializador WDDX, para cualquier
+       cliente compatible con WDDX.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">blocking</code></dt>
+     <dd>
+      <p class="para">
+       Si el mensaje es demasiado largo para caber en la cola el script esperará
+       hasta que otro proceso lea los mensajes de la cola y libere sufieciente
+       espacio para el mensaje que se va a enviar.
+       Esto se llama bloqueo; se puede prevenir el bloqueo estableciendo el
+       parámetro <code class="parameter">blocking</code> a <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>, en cuyo
+       caso <span class="function"><strong>msg_send()</strong></span> devolverá inmediatamente <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si el
+       mensaje es demasiado grande para la cola, y establecerá el parámetro opcional
+       <code class="parameter">errorcode</code> a <strong><code>MSG_EAGAIN</code></strong>,
+       indicando que se debería intentar enviar el mensaje de nuevo un poco
+       más tarde.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">errorcode</code></dt>
+     <dd>
+      <p class="para">
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.msg-send-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+  <p class="para">
+   Al finalizar con éxito, la estructura de datos de la cola de mensajes se actualiza como
+   sigue: <code class="parameter">msg_lspid</code> se establece al ID del proceso de
+   llamada, <code class="parameter">msg_qnum</code> se incrementa en 1 y
+   <code class="parameter">msg_stime</code> se establece al momento actual.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.msg-send-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.msg-remove-queue.html" class="function" rel="rdfs-seeAlso">msg_remove_queue()</a> - Destruir una cola de mensajes</span></li>
+    <li><span class="function"><a href="function.msg-receive.html" class="function" rel="rdfs-seeAlso">msg_receive()</a> - Recibir un mensaje de la cola de mensajes</span></li>
+    <li><span class="function"><a href="function.msg-stat-queue.html" class="function" rel="rdfs-seeAlso">msg_stat_queue()</a> - Devuelve informaci&oacute;n desde la estructura de datos de la cola de mensajes</span></li>
+    <li><span class="function"><a href="function.msg-set-queue.html" class="function" rel="rdfs-seeAlso">msg_set_queue()</a> - Establecer informaci&oacute;n en la estructura de datos de la cola de mensajes</span></li>
+   </ul>
+  </p>
+ </div>
+  
+ 
+</div></div></div></body></html>

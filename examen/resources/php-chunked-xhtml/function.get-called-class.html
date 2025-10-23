@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>El nombre de la clase enlazada est&aacute;ticamente en tiempo de ejecuci&oacute;n (&quot;late static binding&quot;)</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.enum-exists.html">« enum_exists</a></li>
+      <li style="float: right;"><a href="function.get-class.html">get_class »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.classobj.html">Funciones de Clases/Objetos</a></li>
+    <li>El nombre de la clase enlazada est&aacute;ticamente en tiempo de ejecuci&oacute;n (&quot;late static binding&quot;)</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.get-called-class" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">get_called_class</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">get_called_class</span> &mdash; <span class="dc-title">El nombre de la clase enlazada estáticamente en tiempo de ejecución (&quot;late static binding&quot;)</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.get-called-class-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>get_called_class</strong></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Obtiene el nombre de la clase desde la que se llama al método estático.
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.get-called-class-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el nombre de la clase. Devuelve <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si la llamada se hizo desde fuera de la clase.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.get-called-class-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-5020">
+    <p><strong>Ejemplo #1 Usar <span class="function"><strong>get_called_class()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br />    static public function </span><span style="color: #0000BB">prueba</span><span style="color: #007700">() {<br />        </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">get_called_class</span><span style="color: #007700">());<br />    }<br />}<br /><br />class </span><span style="color: #0000BB">bar </span><span style="color: #007700">extends </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br />}<br /><br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">::</span><span style="color: #0000BB">prueba</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">bar</span><span style="color: #007700">::</span><span style="color: #0000BB">prueba</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">string(3) &quot;foo&quot;
+string(3) &quot;bar&quot;</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.get-called-class-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.get-parent-class.html" class="function" rel="rdfs-seeAlso">get_parent_class()</a> - Recupera el nombre de la clase padre de un objeto o clase</span></li>
+    <li><span class="function"><a href="function.get-class.html" class="function" rel="rdfs-seeAlso">get_class()</a> - Devuelve el nombre de la clase de un objeto</span></li>
+    <li><span class="function"><a href="function.is-subclass-of.html" class="function" rel="rdfs-seeAlso">is_subclass_of()</a> - Comprueba si el objeto tiene esta clase como uno de sus padres o si la implementa</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

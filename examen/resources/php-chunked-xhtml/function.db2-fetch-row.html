@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Establecer el apuntador de los resultados hacia la siguiente fila o a la fila solicitada</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.db2-fetch-object.html">« db2_fetch_object</a></li>
+      <li style="float: right;"><a href="function.db2-field-display-size.html">db2_field_display_size »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.ibm-db2.html">Funciones de IBM DB2</a></li>
+    <li>Establecer el apuntador de los resultados hacia la siguiente fila o a la fila solicitada</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.db2-fetch-row" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">db2_fetch_row</h1>
+  <p class="verinfo">(PECL ibm_db2 &gt;= 1.0.0)</p><p class="refpurpose"><span class="refname">db2_fetch_row</span> &mdash; <span class="dc-title">
+   Establecer el apuntador de los resultados hacia la siguiente fila o a la fila solicitada
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.db2-fetch-row-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>db2_fetch_row</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$stmt</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$row_number</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>db2_fetch_row()</strong></span> se utiliza para iterar a través de un bloque de resultados o 
+   para apuntar a una fila específica del resultado si se utiliza un cursor de recorrido.
+  </p>
+  <p class="para">
+   Para extraer campos individuales del resultado hay que llamar a la 
+   función <span class="function"><a href="function.db2-result.html" class="function">db2_result()</a></span>.
+  </p>
+  <p class="para">
+   En lugar de llamar a <span class="function"><strong>db2_fetch_row()</strong></span> y 
+   <span class="function"><a href="function.db2-result.html" class="function">db2_result()</a></span>, la mayoría de las aplicaciones utilizan las funciones 
+   <span class="function"><a href="function.db2-fetch-assoc.html" class="function">db2_fetch_assoc()</a></span>, <span class="function"><a href="function.db2-fetch-both.html" class="function">db2_fetch_both()</a></span> 
+   o <span class="function"><a href="function.db2-fetch-array.html" class="function">db2_fetch_array()</a></span> para avanzar el apuntador del bloque de resultados y 
+   devolver una fila completa como arreglo.
+  </p>
+
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.db2-fetch-row-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">stmt</code></dt>
+     <dd>
+      <p class="para">
+       Un recurso <code class="literal">stmt</code> válido.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">row_number</code></dt>
+     <dd>
+      <p class="para">
+       Con cursores de recorrido, se puede solicitar un número de fila específica del 
+       bloque de resultados. Las filas se indexan a partir de uno.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.db2-fetch-row-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> si la fila solicitada existe dentro de los resultados. Devuelve 
+   <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si la fila solicitada no existe entre los resultados.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.db2-fetch-row-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-1258">
+    <p><strong>Ejemplo #1 Iterando a través de un bloque de resultados</strong></p>
+    <div class="example-contents"><p>
+     El siguiente ejemplo demuestra como iterar a través de los resultados 
+     con <span class="function"><strong>db2_fetch_row()</strong></span> y extraer las columnas del resultado 
+     con <span class="function"><a href="function.db2-result.html" class="function">db2_result()</a></span>.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$sql </span><span style="color: #007700">= </span><span style="color: #DD0000">'SELECT name, breed FROM animals WHERE weight &lt; ?'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$stmt </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$sql</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">db2_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">, array(</span><span style="color: #0000BB">10</span><span style="color: #007700">));<br />while (</span><span style="color: #0000BB">db2_fetch_row</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">)) {<br />    </span><span style="color: #0000BB">$name </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">$breed </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />    print </span><span style="color: #DD0000">"</span><span style="color: #0000BB">$name</span><span style="color: #DD0000"> </span><span style="color: #0000BB">$breed</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">cat Pook
+gold fish Bubbles
+budgerigar Gizmo
+goat Rickety Ride</pre>
+</div>
+    </div>
+   </div>
+   <div class="example" id="example-1259">
+    <p><strong>Ejemplo #2 Alternativas recomendadas para db2_fetch_row/db2_result en i5/OS</strong></p>
+    <div class="example-contents"><p>
+     En i5/OS se recomienda el uso de <span class="function"><a href="function.db2-fetch-both.html" class="function">db2_fetch_both()</a></span>, 
+     <span class="function"><a href="function.db2-fetch-array.html" class="function">db2_fetch_array()</a></span> o <span class="function"><a href="function.db2-fetch-object.html" class="function">db2_fetch_object()</a></span> 
+     en lugar de <span class="function"><strong>db2_fetch_row()</strong></span>/<span class="function"><a href="function.db2-result.html" class="function">db2_result()</a></span>. En general  
+     <span class="function"><strong>db2_fetch_row()</strong></span>/<span class="function"><a href="function.db2-result.html" class="function">db2_result()</a></span> tienen más problemas  
+     con la traducción de <code class="literal">EBCIDIC</code> a <code class="literal">ASCII</code> en algunos tipos de columnas, 
+     incluyendo posibles truncamientos en aplicaciones <code class="literal">DBCS</code>. 
+     Es posible que el rendimiento de <span class="function"><a href="function.db2-fetch-both.html" class="function">db2_fetch_both()</a></span>, 
+     <span class="function"><a href="function.db2-fetch-array.html" class="function">db2_fetch_array()</a></span> y <span class="function"><a href="function.db2-fetch-object.html" class="function">db2_fetch_object()</a></span> sea  
+     superior comparado con <span class="function"><strong>db2_fetch_row()</strong></span>/<span class="function"><a href="function.db2-result.html" class="function">db2_result()</a></span>.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />  $conn </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">""</span><span style="color: #007700">,</span><span style="color: #DD0000">""</span><span style="color: #007700">,</span><span style="color: #DD0000">""</span><span style="color: #007700">);<br />  </span><span style="color: #0000BB">$sql </span><span style="color: #007700">= </span><span style="color: #DD0000">'SELECT SPECIFIC_SCHEMA, SPECIFIC_NAME, ROUTINE_SCHEMA, ROUTINE_NAME, ROUTINE_TYPE, ROUTINE_CREATED, ROUTINE_BODY, IN_PARMS, OUT_PARMS, INOUT_PARMS, PARAMETER_STYLE, EXTERNAL_NAME, EXTERNAL_LANGUAGE FROM QSYS2.SYSROUTINES FETCH FIRST 2 ROWS ONLY'</span><span style="color: #007700">;<br />  </span><span style="color: #0000BB">$stmt </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$sql</span><span style="color: #007700">, array(</span><span style="color: #DD0000">'cursor' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">DB2_SCROLLABLE</span><span style="color: #007700">));<br />  while (</span><span style="color: #0000BB">$row </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_fetch_both</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">)){<br />    echo </span><span style="color: #DD0000">"&lt;br&gt;db2_fetch_both </span><span style="color: #007700">{</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'SPECIFIC_NAME'</span><span style="color: #007700">]}</span><span style="color: #DD0000"> </span><span style="color: #007700">{</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'ROUTINE_CREATED'</span><span style="color: #007700">]}</span><span style="color: #DD0000"> </span><span style="color: #007700">{</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">5</span><span style="color: #007700">]}</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br />  }<br />  </span><span style="color: #0000BB">$stmt </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$sql</span><span style="color: #007700">, array(</span><span style="color: #DD0000">'cursor' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">DB2_SCROLLABLE</span><span style="color: #007700">));<br />  while (</span><span style="color: #0000BB">$row </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">)){<br />    echo </span><span style="color: #DD0000">"&lt;br&gt;db2_fetch_array </span><span style="color: #007700">{</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]}</span><span style="color: #DD0000">  </span><span style="color: #007700">{</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">5</span><span style="color: #007700">]}</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br />  }<br />  </span><span style="color: #0000BB">$stmt </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$sql</span><span style="color: #007700">, array(</span><span style="color: #DD0000">'cursor' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">DB2_SCROLLABLE</span><span style="color: #007700">));<br />  while (</span><span style="color: #0000BB">$row </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_fetch_object</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">)){<br />    echo </span><span style="color: #DD0000">"&lt;br&gt;db2_fetch_object </span><span style="color: #007700">{</span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">SPECIFIC_NAME</span><span style="color: #007700">}</span><span style="color: #DD0000"> </span><span style="color: #007700">{</span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">ROUTINE_CREATED</span><span style="color: #007700">}</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br />  }<br />  </span><span style="color: #0000BB">db2_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">db2_fetch_both MATCH_ANIMAL 2006-08-25-17.10.23.775000 2006-08-25-17.10.23.775000
+db2_fetch_both MULTIRESULTS 2006-10-17-10.11.05.308000 2006-10-17-10.11.05.308000
+db2_fetch_array MATCH_ANIMAL 2006-08-25-17.10.23.775000
+db2_fetch_array MULTIRESULTS 2006-10-17-10.11.05.308000
+db2_fetch_object MATCH_ANIMAL 2006-08-25-17.10.23.775000
+db2_fetch_object MULTIRESULTS 2006-10-17-10.11.05.308000</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.db2-fetch-row-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.db2-fetch-array.html" class="function" rel="rdfs-seeAlso">db2_fetch_array()</a> - Devolver un arreglo, indexado por la posici&oacute;n de las columnas, que represanta una fila de un bloque de resultados</span></li>
+    <li><span class="function"><a href="function.db2-fetch-assoc.html" class="function" rel="rdfs-seeAlso">db2_fetch_assoc()</a> - Devolver un arreglo, indexado por el nombre de las columnas, representando una fila del bloque de resultados</span></li>
+    <li><span class="function"><a href="function.db2-fetch-both.html" class="function" rel="rdfs-seeAlso">db2_fetch_both()</a> - Devolver un arreglo, indexado por el nombre y por la posici&oacute;n de la columna, representando una fila de un bloque de resultados</span></li>
+    <li><span class="function"><a href="function.db2-fetch-object.html" class="function" rel="rdfs-seeAlso">db2_fetch_object()</a> - Devolver un objeto con atributos que representan a las columnas de una fila extraida</span></li>
+    <li><span class="function"><a href="function.db2-result.html" class="function" rel="rdfs-seeAlso">db2_result()</a> - Devolver una columna espec&iacute;fica del resultado</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

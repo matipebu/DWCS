@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Ejecuta comandos por la shell Bourne, y abre el flujo PTY 
+   al proceso</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.expect-expectl.html">« expect_expectl</a></li>
+      <li style="float: right;"><a href="book.pcntl.html">PCNTL »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.expect.html">Funciones de Expect</a></li>
+    <li>Ejecuta comandos por la shell Bourne, y abre el flujo PTY 
+   al proceso</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.expect-popen" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">expect_popen</h1>
+  <p class="verinfo">(PECL expect &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">expect_popen</span> &mdash; <span class="dc-title">Ejecuta comandos por la shell Bourne, y abre el flujo PTY 
+   al proceso</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.expect-popen-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>expect_popen</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$command</code></span>): <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span></div>
+
+  <p class="para rdfs-comment">
+   Ejecuta comandos por la shell Bourne, y abre el flujo PTY al proceso.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.expect-popen-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">command</code></dt>
+     <dd>
+      <p class="para">
+       Comando a ejecutar.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.expect-popen-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve un flujo PTY abierto al <code class="literal">stdio</code>,
+   <code class="literal">stdout</code>, y <code class="literal">stderr</code> del prceso.
+  </p>
+  <p class="para">
+   En caso de error, devuelve <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.expect-popen-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-3292">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>expect_popen()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Entrar en el repositorio CVS de PHP.net<br /></span><span style="color: #0000BB">$stream </span><span style="color: #007700">= </span><span style="color: #0000BB">expect_popen </span><span style="color: #007700">(</span><span style="color: #DD0000">"cvs -d :pserver:anonymous@cvs.php.net:/repository login"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">sleep </span><span style="color: #007700">(</span><span style="color: #0000BB">3</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fwrite </span><span style="color: #007700">(</span><span style="color: #0000BB">$stream</span><span style="color: #007700">, </span><span style="color: #DD0000">"phpfi\n"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fclose </span><span style="color: #007700">(</span><span style="color: #0000BB">$stream</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.expect-popen-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.popen.html" class="function" rel="rdfs-seeAlso">popen()</a> - Abre un proceso de un puntero a un fichero</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

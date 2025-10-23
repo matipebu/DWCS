@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Elimina un valor del servidor</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="memcache.decrement.html">« Memcache::decrement</a></li>
+      <li style="float: right;"><a href="memcache.flush.html">Memcache::flush »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.memcache.html">Memcache</a></li>
+    <li>Elimina un valor del servidor</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="memcache.delete" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Memcache::delete</h1>
+  <p class="verinfo">(PECL memcache &gt;= 0.2.0)</p><p class="refpurpose"><span class="refname">Memcache::delete</span> &mdash; <span class="dc-title">Elimina un valor del servidor</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-memcache.delete-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>Memcache::delete</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$key</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$timeout</code><span class="initializer"> = 0</span></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>Memcache::delete()</strong></span> elimina el valor según la clave <code class="parameter">key</code>.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-memcache.delete-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">key</code></dt>
+     <dd>
+      <p class="para">
+       La clave asociada con el valor a eliminar.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">timeout</code></dt>
+     <dd>
+      <p class="para">
+       Este parámetro ya no está soportado, y su valor por omisión es <code class="literal">0</code> segundos.
+       No se debe usar este parámetro.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-memcache.delete-changelog">
+  <h3 class="title">Historial de cambios</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>Versión</th>
+      <th>Descripción</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>Desconocido</td>
+      <td>
+       
+       No se recomienda utilizar el parámetro <code class="parameter">timeout</code>. Su comportamiento
+       no es consistente entre las versiones de memcached, pero sí es seguro utilizar
+       <code class="literal">0</code>. El uso de otros valores puede provocar que la función delete
+       de memcache falle.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-memcache.delete-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-memcache.delete-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4380">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>Memcache::delete()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/* API por procedimientos */<br /></span><span style="color: #0000BB">$memcache_obj </span><span style="color: #007700">= </span><span style="color: #0000BB">memcache_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'memcache_host'</span><span style="color: #007700">, </span><span style="color: #0000BB">11211</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* el valor será eliminado por el servidor */<br /></span><span style="color: #0000BB">memcache_delete</span><span style="color: #007700">(</span><span style="color: #0000BB">$memcache_obj</span><span style="color: #007700">, </span><span style="color: #DD0000">'key_to_delete'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* API OO */<br /></span><span style="color: #0000BB">$memcache_obj </span><span style="color: #007700">= new </span><span style="color: #0000BB">Memcache</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$memcache_obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'memcache_host'</span><span style="color: #007700">, </span><span style="color: #0000BB">11211</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$memcache_obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">delete</span><span style="color: #007700">(</span><span style="color: #DD0000">'key_to_delete'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-memcache.delete-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="memcache.set.html" class="function" rel="rdfs-seeAlso">Memcache::set()</a> - Guarda datos en el servidor</span></li>
+    <li><span class="function"><a href="memcache.replace.html" class="function" rel="rdfs-seeAlso">Memcache::replace()</a> - Reemplaza el valor de un valor existente</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Cierra una conexi&oacute;n a Oracle</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.oci-client-version.html">« oci_client_version</a></li>
+      <li style="float: right;"><a href="function.oci-commit.html">oci_commit »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.oci8.html">Funciones de OCI8</a></li>
+    <li>Cierra una conexi&oacute;n a Oracle</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.oci-close" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">oci_close</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8, PECL OCI8 &gt;= 1.1.0)</p><p class="refpurpose"><span class="refname">oci_close</span> &mdash; <span class="dc-title">Cierra una conexión a Oracle</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.oci-close-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>oci_close</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$connection</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Desestablece <code class="parameter">connection</code>. La conexión subyacentte
+   a la base de datos se cierra si otros recursos no la están utilizando y si
+   fue creada con <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span>
+   o <span class="function"><a href="function.oci-new-connect.html" class="function">oci_new_connect()</a></span>.
+  </p>
+  <p class="para">
+   Se recomienda cerrar las conexiones que no sean necesarias
+   ya que esto hace que los recursos de la base de datos  estén disponbles para otros usuarios.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.oci-close-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">connection</code></dt>
+     <dd>
+      <p class="para">
+       Un identificador de conexión de Oracle devuelto por
+       <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span>, <span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span>
+       o <span class="function"><a href="function.oci-new-connect.html" class="function">oci_new_connect()</a></span>.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.oci-close-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.oci-close-examples">
+  <h3 class="title">Ejemplos</h3>
+  <div class="example" id="example-1809">
+   <p><strong>Ejemplo #1 Cerrar una conexión</strong></p>
+   <div class="example-contents"><p>
+    Los recursos asociados con una conexión deberían cerrarse para asegurarse
+    de que la conexión subyacente a la base de datos sea finalizada apropiadamente y sean
+    liberados los recursos de la base de datos.
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$conexión </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'hr'</span><span style="color: #007700">, </span><span style="color: #DD0000">'welcome'</span><span style="color: #007700">, </span><span style="color: #DD0000">'localhost/XE'</span><span style="color: #007700">);<br />if (!</span><span style="color: #0000BB">$conexión</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">$e </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_error</span><span style="color: #007700">();<br />    </span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">], </span><span style="color: #0000BB">ENT_QUOTES</span><span style="color: #007700">), </span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$stid </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conexión</span><span style="color: #007700">, </span><span style="color: #DD0000">'SELECT * FROM departments'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$r </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_fetch_all</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">, </span><span style="color: #0000BB">$res</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Liberar el identificador de sentencia al cerrar la conexión<br /></span><span style="color: #0000BB">oci_free_statement</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conexión</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+  
+  <div class="example" id="example-1810">
+   <p><strong>Ejemplo #2 Las conexiones a bases de datos no se cierran hasta que todas las referencias sean cerradas</strong></p>
+   <div class="example-contents"><p>
+    La cuenta de referencias interna de un identificador de conexión debe ser cero
+    antes de que sea cerrada la conexión subyacente a la base de datos.
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$conexión </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'hr'</span><span style="color: #007700">, </span><span style="color: #DD0000">'welcome'</span><span style="color: #007700">, </span><span style="color: #DD0000">'localhost/XE'</span><span style="color: #007700">);<br />if (!</span><span style="color: #0000BB">$conexión</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">$e </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_error</span><span style="color: #007700">();<br />    </span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">], </span><span style="color: #0000BB">ENT_QUOTES</span><span style="color: #007700">), </span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$stid </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conexión</span><span style="color: #007700">, </span><span style="color: #DD0000">'SELECT * FROM departments'</span><span style="color: #007700">);  </span><span style="color: #FF8000">// esto incrementa la cuenta de referencias de $conn<br /></span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_fetch_all</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">, </span><span style="color: #0000BB">$res</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">oci_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conexión</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// $conexión ya no puede ser utilizada en el script, pero la conexión subyacente<br />// a la base de datos aún se mantiene abierta, hasta que $stid sea liberado.<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$conexión</span><span style="color: #007700">);  </span><span style="color: #FF8000">// imprime NULL  <br /><br />// Mientras PHP duerme, consultar la vista V$SESSION de Oracle en una<br />// ventana terminal mostrará que el ususario de la base de datos que aún está conectado.<br /></span><span style="color: #0000BB">sleep</span><span style="color: #007700">(</span><span style="color: #0000BB">10</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Cuando $stid es liberado, la conexión a la base de datos se cierra físicamente<br /></span><span style="color: #0000BB">oci_free_statement</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);  <br /><br /></span><span style="color: #FF8000">// Mientras PHP duerme, consultar la vista V$SESSION de Oracle en una<br />// ventana terminal mostrará que el ususario de la base de datos se ha desconectado.<br /></span><span style="color: #0000BB">sleep</span><span style="color: #007700">(</span><span style="color: #0000BB">10</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+  
+  <div class="example" id="example-1811">
+   <p><strong>Ejemplo #3 Cerrar una conexión abierta más de una vez</strong></p>
+   <div class="example-contents"><p>
+    Cuando se reutilizan las credenciales de la base de datos, ambas conexiones deben cerrarse
+    antes de que se cierre la conexión subyacente a la base de datos.
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$conexión1 </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'hr'</span><span style="color: #007700">, </span><span style="color: #DD0000">'welcome'</span><span style="color: #007700">, </span><span style="color: #DD0000">'localhost/XE'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Al usar las mismas credenciales se reutiliza la misma conexión subyacente a la base de datos<br />// Cualquier cambio no consignado realizado a $conexión1 será visible en $conexión2<br /></span><span style="color: #0000BB">$conexión2 </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'hr'</span><span style="color: #007700">, </span><span style="color: #DD0000">'welcome'</span><span style="color: #007700">, </span><span style="color: #DD0000">'localhost/XE'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Mientras PHP duerme, consultar la vista V$SESSION de Oracle en una<br />// ventana terminal mostrará que solamente está conectado un ususario de la base de datos.<br /></span><span style="color: #0000BB">sleep</span><span style="color: #007700">(</span><span style="color: #0000BB">10</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">oci_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conexión1</span><span style="color: #007700">); </span><span style="color: #FF8000">// no cierra la conexión subyacente a la base de datos<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$conexión1</span><span style="color: #007700">);  </span><span style="color: #FF8000">// imprime NULL debido a que la variable $conexión1 ya no se puede utilizar<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$conexión2</span><span style="color: #007700">);  </span><span style="color: #FF8000">// muestra que $conexión2 aún es un recurso de conexión válido<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+  
+  <div class="example" id="example-1812">
+   <p><strong>Ejemplo #4 Las conexsiones se cierran cuando las variables salen de su ámbito</strong></p>
+   <div class="example-contents"><p>
+    Cuando todas las variables que hacen referencia a una conexión salen de su ámbito y
+    son liberadas por PHP, se produce una reversión (rollback), si fuera necesaria, y la
+    conexión subyacente a la base de datos se cierra.
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">function </span><span style="color: #0000BB">myfunc</span><span style="color: #007700">() {<br />    </span><span style="color: #0000BB">$conexión </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'hr'</span><span style="color: #007700">, </span><span style="color: #DD0000">'hrpwd'</span><span style="color: #007700">, </span><span style="color: #DD0000">'localhost/XE'</span><span style="color: #007700">);<br />    if (!</span><span style="color: #0000BB">$conexión</span><span style="color: #007700">) {<br />        </span><span style="color: #0000BB">$e </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_error</span><span style="color: #007700">();<br />        </span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">], </span><span style="color: #0000BB">ENT_QUOTES</span><span style="color: #007700">), </span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br />    }<br /><br />    </span><span style="color: #0000BB">$stid </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conexión</span><span style="color: #007700">, </span><span style="color: #DD0000">'UPDATE mytab SET id = 100'</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">, </span><span style="color: #0000BB">OCI_NO_AUTO_COMMIT</span><span style="color: #007700">);<br />    return </span><span style="color: #DD0000">"Finalizado"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$r </span><span style="color: #007700">= </span><span style="color: #0000BB">myfunc</span><span style="color: #007700">();<br /></span><span style="color: #FF8000">// En este punto sucede la reversión y la conexión subyacente a la base de datos queda cerrada.<br /><br /></span><span style="color: #007700">print </span><span style="color: #0000BB">$r</span><span style="color: #007700">;  </span><span style="color: #FF8000">// muestra el valor de retorno "Finalizado" de la función.<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.oci-close-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Las variables que poseen una dependencia sobre el identificador de conexión,
+    tales como los identificadores de sentencias devueltos
+    por <span class="function"><a href="function.oci-parse.html" class="function">oci_parse()</a></span>, también deben ser liberadas antes de
+    cerra la conexión subyacente a la base de datos.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Antes de la versión 5.1.2 de PHP (PECL OCI8
+    1.1) <span class="function"><strong>oci_close()</strong></span> no operaba. En versiones más
+    recientes cierra correctamente la conexión a Oracle.
+    Use la opción <a href="oci8.configuration.html#ini.oci8.old-oci-close-semantics" class="link">oci8.old_oci_close_semantics</a>
+    para restablecer el comportamento antiguo de esta función.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    La función <span class="function"><strong>oci_close()</strong></span> no cierra las
+    conexiones subyacentes de la bases de datos creadas
+    con <span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span>.
+   </p>
+  </p></blockquote>
+  
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.oci-close-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.oci-connect.html" class="function" rel="rdfs-seeAlso">oci_connect()</a> - Conecta a una base de datos de Oracle</span></li>
+    <li><span class="function"><a href="function.oci-free-statement.html" class="function" rel="rdfs-seeAlso">oci_free_statement()</a> - Libera todos los recursos asociados con una sentencia o cursor</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

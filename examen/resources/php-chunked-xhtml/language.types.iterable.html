@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Iterables</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.types.value.html">« Value types</a></li>
+      <li style="float: right;"><a href="language.types.declarations.html">Declaraciones de tipo »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.types.html">Tipos</a></li>
+    <li>Iterables</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.types.iterable" class="sect1">
+ <h2 class="title">Iterables</h2>
+ 
+ <p class="para">
+  <span class="type"><a href="language.types.iterable.html" class="type Iterable">Iterable</a></span> es un seudotipo introducido en PHP 7.1. Acepta cualquier
+  <span class="type"><a href="language.types.array.html" class="type array">array</a></span> u objeto que implemente la interfaz <span class="classname"><a href="class.traversable.html" class="classname">Traversable</a></span>.
+  Estos dos tipos se recorren con <a href="control-structures.foreach.html" class="link">foreach</a> y se pueden emplear
+  con <strong class="command">yield from</strong> dentro de un <a href="language.generators.html" class="link">generador</a>.
+ </p>
+ 
+ <div class="sect2" id="language.types.iterable.using">
+  <h3 class="title">Empleo de iterables</h3>
+  
+  <p class="para">
+   Iterable se puede usar como tipo de parámetro para indicar que una función
+   requiere un conjunto de valores, pero que no importa la forma del dicho conjunto
+   ya que se utiizará con <a href="control-structures.foreach.html" class="link">foreach</a>. Si un valor  no es un array o una
+   instancia de <span class="classname"><a href="class.traversable.html" class="classname">Traversable</a></span>, se
+   lanzará un <span class="classname"><a href="class.typeerror.html" class="classname">TypeError</a></span>.
+  </p>
+  
+  <p class="para">
+   <div class="example" id="example-77">
+    <p><strong>Ejemplo #1 
+     Ejemplo de de tipo de parámetro iterable
+    </strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">iterable $iterable</span><span style="color: #007700">) {<br />    foreach (</span><span style="color: #0000BB">$iterable </span><span style="color: #007700">as </span><span style="color: #0000BB">$valor</span><span style="color: #007700">) {<br />        </span><span style="color: #FF8000">// ...<br />    </span><span style="color: #007700">} <br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  
+  <p class="para">
+   Los parámetros declarados como iterable pueden usar <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> o un array como valor
+   predeterminado.
+  </p>
+  
+  <p class="para">
+   <div class="example" id="example-78">
+    <p><strong>Ejemplo #2 
+     Ejemplo de valor predeterminado de un parámetro iterable
+    </strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">iterable $iterable </span><span style="color: #007700">= []) {<br />    </span><span style="color: #FF8000">// ...<br /></span><span style="color: #007700">}<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  
+  <p class="para">
+   Iterable se puede usar como tipo de retorno para indicar que una función
+   devolverá un valor iterable. Si el valor devuelto no es un array o una instancia
+   de <span class="classname"><a href="class.traversable.html" class="classname">Traversable</a></span>, se lanzará un
+   <span class="classname"><a href="class.typeerror.html" class="classname">TypeError</a></span>.
+  </p>
+  
+  <p class="para">
+   <div class="example" id="example-79">
+    <p><strong>Ejemplo #3 
+     Ejemplo de tipo de retorno iterable
+    </strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">function </span><span style="color: #0000BB">bar</span><span style="color: #007700">(): </span><span style="color: #0000BB">iterable </span><span style="color: #007700">{<br />    return [</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">];<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  
+  <p class="para">
+   Las funciones que declaren su tipo de retorno como también pueden ser <a href="language.generators.html" class="link">generadores</a>.
+  </p>
+  
+  <p class="para">
+   <div class="example" id="example-80">
+    <p><strong>Ejemplo #4 
+     Ejemplo de tipo de retorno de generadro iterable
+    </strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">function </span><span style="color: #0000BB">gen</span><span style="color: #007700">(): </span><span style="color: #0000BB">iterable </span><span style="color: #007700">{<br />    yield </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />    yield </span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />    yield </span><span style="color: #0000BB">3</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+ 
+ <div class="sect2" id="language.types.iterable.variance">
+  <h3 class="title">Varianza del tipo iterable</h3>
+  
+  <p class="para">
+   Las clases que extiendan/implementen podrían ampliar los métodos usando <span class="type"><a href="language.types.array.html" class="type array">array</a></span> o
+   <span class="classname"><a href="class.traversable.html" class="classname">Traversable</a></span> como tipos de parámetro a
+   <span class="type"><a href="language.types.iterable.html" class="type iterable">iterable</a></span> o reducir los tipos de retorno de <span class="type"><a href="language.types.iterable.html" class="type iterable">iterable</a></span> a
+   <span class="type"><a href="language.types.array.html" class="type array">array</a></span> o <span class="classname"><a href="class.traversable.html" class="classname">Traversable</a></span>.
+  </p>
+  
+  <p class="para">
+   <div class="example" id="example-81">
+    <p><strong>Ejemplo #5 
+     Ejemplo de varianza del tipo iterable
+    </strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">interface </span><span style="color: #0000BB">Ejemplo </span><span style="color: #007700">{<br />    public function </span><span style="color: #0000BB">method</span><span style="color: #007700">(array </span><span style="color: #0000BB">$array</span><span style="color: #007700">): </span><span style="color: #0000BB">iterable</span><span style="color: #007700">;<br />}<br /><br />class </span><span style="color: #0000BB">ImplementaciónDeEjemplo </span><span style="color: #007700">implements </span><span style="color: #0000BB">Ejemplo </span><span style="color: #007700">{<br />    public function </span><span style="color: #0000BB">method</span><span style="color: #007700">(</span><span style="color: #0000BB">iterable $iterable</span><span style="color: #007700">): array {<br />        </span><span style="color: #FF8000">// Parámetro ampliado y tipo de retorno reducido.<br />    </span><span style="color: #007700">}<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+ 
+</div></div></div></body></html>

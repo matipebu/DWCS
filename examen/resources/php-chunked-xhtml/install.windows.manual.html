@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Instalaci&oacute;n manual de PHP en Windows</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="install.windows.recommended.html">« Configuraci&oacute;n recomendada en sistemas Windows</a></li>
+      <li style="float: right;"><a href="install.windows.building.html">Compilando desde c&oacute;digo fuente »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="install.windows.html">Instalaci&oacute;n en sistemas Windows</a></li>
+    <li>Instalaci&oacute;n manual de PHP en Windows</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="install.windows.manual" class="sect1">
+  <h2 class="title">Instalación manual de PHP en Windows</h2>
+  <div class="sect2">
+    <h3 class="title">Elección del servidor web</h3>
+    <div class="sect3">
+     <h4 class="title">IIS</h4>
+     <p class="para">
+      IIS está integrado en Windows.
+      En Windows Server, use Server Manager para añadir el rol de IIS. Asegúrese de incluir CGI Role Feature.
+      En Windows Desktop, use Añadir/Eliminar Programas del Panel de Control para añadir IIS.
+      La documentación de Microsoft tiene <a href="https://docs.microsoft.com/en-us/previous-versions/ms181052(v=vs.80)" class="link external">&raquo;&nbsp;instrucciones detallas</a>.
+      Para aplicaciones web de escritorio y desarrollo web, también se puede usar IIS/Express o PHP Desktop.
+      <div class="example" id="example-32">
+        <p><strong>Ejemplo #1 Linea de órdenes para configurar IIS y PHP</strong></p>
+        <div class="example-contents">
+<div class="cdata"><pre>
+
+@echo off
+
+REM Descargar el fichero .ZIP o la compilación de PHP desde http://windows.php.net/downloads/
+REM
+REM Ruta al directorio donde se ha descomprimido el fichero .ZIP de PHP
+set phpdir=c:\php
+
+
+REM Limpiar los manejadores actuales de PHP
+%windir%\system32\inetsrv\appcmd clear config /section:system.webServer/fastCGI
+REM El siguiente comando generará un mensaje de error si PHP no está instalado. Esto puede ser ignorado.
+%windir%\system32\inetsrv\appcmd set config /section:system.webServer/handlers /-[name=&#039;PHP_via_FastCGI&#039;]
+
+REM Instalar el manejador de PHP
+%windir%\system32\inetsrv\appcmd set config /section:system.webServer/fastCGI /+[fullPath=&#039;%phppath%\php-cgi.exe&#039;]
+%windir%\system32\inetsrv\appcmd set config /section:system.webServer/handlers /+[name=&#039;PHP_via_FastCGI&#039;,path=&#039;*.php&#039;,verb=&#039;*&#039;,modules=&#039;FastCgiModule&#039;,scriptProcessor=&#039;%phppath%\php-cgi.exe&#039;,resourceType=&#039;Unspecified&#039;]
+%windir%\system32\inetsrv\appcmd set config /section:system.webServer/handlers /accessPolicy:Read,Script
+
+REM Configurar las variables de FastCGI
+%windir%\system32\inetsrv\appcmd set config -section:system.webServer/fastCgi /[fullPath=&#039;%phppath%\php-cgi.exe&#039;].instanceMaxRequests:10000
+%windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+&quot;[fullPath=&#039;%phppath%\php-cgi.exe&#039;].environmentVariables.[name=&#039;PHP_FCGI_MAX_REQUESTS&#039;,value=&#039;10000&#039;]&quot;
+%windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+&quot;[fullPath=&#039;%phppath%\php-cgi.exe&#039;].environmentVariables.[name=&#039;PHPRC&#039;,value=&#039;%phppath%\php.ini&#039;]&quot;
+</pre></div>
+     </div>
+
+    </div>
+   </p>
+  </div>
+
+  <div class="sect3">
+   <h4 class="title">Apache</h4>
+   <p class="para">
+      Existen varias compilaciones de Apache2 para Windows.
+      Se recomiendan las compilaciones Apache de ApacheLounge, aunque otras opciones pueden ser XAMPP, WampServer y BitNami, las cuales proporcionan herramientas de instalación automática.
+      Se puede utilizar mod_php o mod_fastcgi para cargar PHP en Apache.
+      Si se emplea mod_php, se DEBE utilizar una compilación TS de Apache construida con la misma versión de Visual C y la misma CPU (x86 o x64).
+   </p>
+  </div>
+ </div>
+
+<div class="sect2">
+  <h3 class="title">Elegir una compilación</h3>
+  <p class="para">
+    Descargue las versiones de producción de PHP desde <a href="http://windows.php.net/download/" class="link external">&raquo;&nbsp;http://windows.php.net/download/</a>.
+    Todas las compilaciones están optimizadas (<abbr class="abbrev">PGO</abbr>), y las versiones de QA y GA se prueban exhaustivamente.
+  </p>
+  <p class="para">
+    Existen 4 tipos de compilación de PHP:
+    <ul class="itemizedlist">
+      <li class="listitem">
+        <p class="para">Thread-Safe(TS) - usada para servidores web monoproceso, como Apache con mod_php</p>
+      </li>
+      <li class="listitem">
+        <p class="para">Non-Thread-Safe(NTS) - usada para IIS y otros servidores web FastCGI (Apache con mod_fastcgi) y la recomendad para scripts de línea de comandos</p>
+      </li>
+      <li class="listitem">
+        <p class="para">x86 - para sistemas de 32-bits.</p>
+      </li>
+      <li class="listitem">
+        <p class="para">x64 - para sistemas de 64 bits.</p>
+      </li>
+   </ul>
+  </p>
+ </div>
+</div></div></div></body></html>

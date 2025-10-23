@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Constantes predefinidas</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="pcre.resources.html">« Tipos de recursos</a></li>
+      <li style="float: right;"><a href="pcre.examples.html">Ejemplos »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.pcre.html">PCRE</a></li>
+    <li>Constantes predefinidas</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="pcre.constants" class="appendix">
+ <h1 class="title">Constantes predefinidas</h1>
+
+ <p class="simpara">
+Estas constantes están definidas por esta extensión y
+estarán disponibles sólo cuando la extensión haya sido
+compilada con PHP, o bien sea cargada dinámicamente en ejecución.
+</p>
+ <table class="doctable table">
+  <caption><strong>Constantes PREG</strong></caption>
+  
+   <thead>
+    <tr>
+     <th>Constante</th>
+     <th>Descripción</th>
+     <th>Desde</th>
+    </tr>
+
+   </thead>
+
+   <tbody class="tbody">
+    <tr id="constant.preg-pattern-order">
+     <td><strong><code><a href="pcre.constants.html#constant.preg-pattern-order">PREG_PATTERN_ORDER</a></code></strong></td>
+     <td>
+      Ordena los resultados de forma que <var class="varname">$coincidencias[0]</var> es un array de coincidencias del patrón
+      completo, <var class="varname">$coincidencias[1]</var> es un array de cadenas que coinciden con el primer
+      subpatrón entre paréntesis, y así sucesivamente. Esta bandera sólo se usa con
+      <span class="function"><a href="function.preg-match-all.html" class="function">preg_match_all()</a></span>.
+     </td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr id="constant.preg-set-order">
+     <td><strong><code><a href="pcre.constants.html#constant.preg-set-order">PREG_SET_ORDER</a></code></strong></td>
+     <td>
+      Ordena los resultados de forma que <var class="varname">$coincidencias[0]</var> es un array del primer conjunto de
+      coincidencias, <var class="varname">$coincidencias[1]</var> es un array del segundo conjunto de coincidencias, y así
+      sucesivamente. Esta bandera sólo se usa con <span class="function"><a href="function.preg-match-all.html" class="function">preg_match_all()</a></span>.
+     </td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr id="constant.preg-offset-capture">
+     <td><strong><code><a href="pcre.constants.html#constant.preg-offset-capture">PREG_OFFSET_CAPTURE</a></code></strong></td>
+     <td>
+      Véase la descripción de
+      <strong><code><a href="pcre.constants.html#constant.preg-split-offset-capture">PREG_SPLIT_OFFSET_CAPTURE</a></code></strong>.
+     </td>
+     <td>4.3.0</td>
+    </tr>
+
+    <tr id="constant.preg-split-no-empty">
+     <td><strong><code><a href="pcre.constants.html#constant.preg-split-no-empty">PREG_SPLIT_NO_EMPTY</a></code></strong></td>
+     <td>
+      Esta bandera le indica a <span class="function"><a href="function.preg-split.html" class="function">preg_split()</a></span> que devuelva sólo
+      elementos que no estén vacíos.
+     </td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr id="constant.preg-split-delim-capture">
+     <td><strong><code><a href="pcre.constants.html#constant.preg-split-delim-capture">PREG_SPLIT_DELIM_CAPTURE</a></code></strong></td>
+     <td>
+      Esta bandera le indica a <span class="function"><a href="function.preg-split.html" class="function">preg_split()</a></span> que capture también
+      la expresión entre paréntesis en el patrón delimitador.
+     </td>
+     <td>4.0.5</td>
+    </tr>
+
+    <tr id="constant.preg-split-offset-capture">
+     <td><strong><code><a href="pcre.constants.html#constant.preg-split-offset-capture">PREG_SPLIT_OFFSET_CAPTURE</a></code></strong></td>
+     <td>
+      Si se establece esta bandera, por cada coincidencia producida, el índice
+      de la cadena añadida también será devuelto. Observe que esto cambia los
+      valores devueltos en un array, donde cada elemento es un array consistente
+      en la cadena coincidente en el índice 0, y su índice dentro de la cadena
+      objetivo en el índice 1. Esta bandera sólo es usada por <span class="function"><a href="function.preg-split.html" class="function">preg_split()</a></span>.
+     </td>
+     <td>4.3.0</td>
+    </tr>
+
+    <tr id="constant.preg-unmatched-as-null">
+     <td><strong><code><a href="pcre.constants.html#constant.preg-unmatched-as-null">PREG_UNMATCHED_AS_NULL</a></code></strong></td>
+     <td>
+      
+     </td>
+     <td>7.2.0</td>
+    </tr>
+
+    <tr id="constant.preg-no-error">
+     <td><strong><code><a href="pcre.constants.html#constant.preg-no-error">PREG_NO_ERROR</a></code></strong></td>
+     <td>
+      Devuelto por <span class="function"><a href="function.preg-last-error.html" class="function">preg_last_error()</a></span> si no se produjeron
+      errores.
+     </td>
+     <td>5.2.0</td>
+    </tr>
+
+    <tr id="constant.preg-internal-error">
+     <td><strong><code><a href="pcre.constants.html#constant.preg-internal-error">PREG_INTERNAL_ERROR</a></code></strong></td>
+     <td>
+      Devuelto por <span class="function"><a href="function.preg-last-error.html" class="function">preg_last_error()</a></span> si se produjo un error
+      interno de PCRE.
+     </td>
+     <td>5.2.0</td>
+    </tr>
+
+    <tr id="constant.preg-backtrack-limit-error">
+     <td><strong><code><a href="pcre.constants.html#constant.preg-backtrack-limit-error">PREG_BACKTRACK_LIMIT_ERROR</a></code></strong></td>
+     <td>
+      Devuelto por <span class="function"><a href="function.preg-last-error.html" class="function">preg_last_error()</a></span> si el <a href="pcre.configuration.html#ini.pcre.backtrack-limit" class="link">límite de marcha atrás</a> fue agotado.
+     </td>
+     <td>5.2.0</td>
+    </tr>
+
+    <tr id="constant.preg-recursion-limit-error">
+     <td><strong><code><a href="pcre.constants.html#constant.preg-recursion-limit-error">PREG_RECURSION_LIMIT_ERROR</a></code></strong></td>
+     <td>
+      Devuelto por <span class="function"><a href="function.preg-last-error.html" class="function">preg_last_error()</a></span> si el <a href="pcre.configuration.html#ini.pcre.recursion-limit" class="link">límite de recursividad</a> fue agotado.
+     </td>
+     <td>5.2.0</td>
+    </tr>
+
+    <tr id="constant.preg-bad-utf8-error">
+     <td><strong><code><a href="pcre.constants.html#constant.preg-bad-utf8-error">PREG_BAD_UTF8_ERROR</a></code></strong></td>
+     <td>
+      Devuelto por <span class="function"><a href="function.preg-last-error.html" class="function">preg_last_error()</a></span> si el último error fue
+      causado por datos UTF-8 malformados (sólo cuando se ejecuta una expresión regular en <a href="reference.pcre.pattern.modifiers.html" class="link">modo UTF-8</a>).
+     </td>
+     <td>5.2.0</td>
+    </tr>
+
+    <tr id="constant.preg-bad-utf8-offset-error">
+     <td><strong><code><a href="pcre.constants.html#constant.preg-bad-utf8-offset-error">PREG_BAD_UTF8_OFFSET_ERROR</a></code></strong></td>
+     <td>
+      Devuelto por <span class="function"><a href="function.preg-last-error.html" class="function">preg_last_error()</a></span> si el índice no se
+      correspondió con el inicio de un punto de código UTF-8 válido (sólo cuando
+      se ejecuta una expresión regular en <a href="reference.pcre.pattern.modifiers.html" class="link">modo
+      UTF-8</a>).
+     </td>
+     <td>5.3.0</td>
+    </tr>
+
+    <tr id="constant.preg-jit-stacklimit-error">
+     <td><strong><code><a href="pcre.constants.html#constant.preg-jit-stacklimit-error">PREG_JIT_STACKLIMIT_ERROR</a></code></strong></td>
+     <td>
+      Devuelto por <span class="function"><a href="function.preg-last-error.html" class="function">preg_last_error()</a></span> si la última función de PCRE
+      falló debido al espacio limitado de la pila JIT.
+     </td>
+     <td>7.0.0</td>
+    </tr>
+
+    <tr id="constant.pcre-version">
+     <td><strong><code><a href="pcre.constants.html#constant.pcre-version">PCRE_VERSION</a></code></strong></td>
+     <td>
+      Versión y fecha de distribución de PCRE (p.ej. &quot;<code class="literal">7.0 18-Dec-2006</code>&quot;).
+     </td>
+     <td>5.2.4</td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+</div>
+</div></div></body></html>

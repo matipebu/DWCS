@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Instalaci&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ibm-db2.requirements.html">« Requerimientos</a></li>
+      <li style="float: right;"><a href="ibm-db2.configuration.html">Configuraci&oacute;n en tiempo de ejecuci&oacute;n »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ibm-db2.setup.html">Instalaci&oacute;n/Configuraci&oacute;n</a></li>
+    <li>Instalaci&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="ibm-db2.installation" class="section">
+ <h2 class="title">Instalación</h2>
+ <p class="para">
+  Para construir la extensión ibm_db2, deben estar instaladas en el sistema tanto
+  las cabeceras como las bibliotecas de desarrollo de aplicaciones DB2. DB2 no lo
+  instala por omisión, por lo que se debe habilitar explícitamente en el instalador
+  de DB2. Los ficheros de cabeceras vienen incluidos de forma gratuita en Cliente de
+  Desarrollo de Aplicaciones DB2 de la <a href="https://www.ibm.com/developerworks/downloads/im/db2express/index.html" class="link external">&raquo;&nbsp;página de
+  soporte</a> de la Base de datos Universal IBM DB2.
+ </p>
+ <p class="para">
+  Si se añadieran las cabeceras y bibliotecas de desarrollo de aplicaciones DB2
+  a un sistema Linux o Unix en el que DB2 ya estuviera instalado, será necesario
+  ejecutar el comando <strong class="command">db2iupdt -e</strong> para actualizar los enlaces
+  simbólicos a las cabeceras y bibliotecas de la instancia DB2.
+ </p>
+ <p class="para">
+  ibm_db2 es una extensión  <a href="https://pecl.php.net/" class="link external">&raquo;&nbsp;PECL</a>, por lo que se deben seguir las
+  instrucciones de <a href="install.pecl.html" class="xref">Instalaci&oacute;n de extensiones PECL</a> para instalar esta
+  extensión en PHP. Debe ejecutarse el comando <strong class="command">configure</strong> apuntando a
+  la localización de las cabeceras y bibliotecas DB2 de la siguiente forma:
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+bash$ ./configure --with-IBM_DB2=/path/to/DB2
+</pre></div>
+  </div>
+  El comando <strong class="command">configure</strong> apunta por omisión a
+  <var class="filename">/opt/IBM/db2/V8.1</var>.
+ </p>
+ <p class="para">
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <strong>Nota para usuarios de IIS</strong><br />
+   <p class="para">
+    Si desea usar el driver ibm_db2 con Microsoft Internet Information Server (IIS) 
+    es posible que sea necesario realizar los siguientes pasos:
+   </p>
+   <p class="para">
+    <ul class="simplelist">
+     <li>
+      Instalar DB2 con seguridad de sistema operativo extendidad
+     </li>
+     <li>
+      Añadir la ruta del binario PHP a la variable de entorno del sistema <var class="envar">PATH</var> (por omisión C:\php\).
+     </li>
+     <li>
+      Crear una nueva variable de entorno del sistema que contenga la ruta al fichero PHP.INI (por ejemplo: PHPRC = C:\php\).
+     </li>
+     <li>
+      Añadir IUSR_COMPUTERNAME al grupo DB2USERS.
+     </li>
+    </ul>
+   </p>
+  </p></blockquote>
+ </p>
+</div></div></div></body></html>

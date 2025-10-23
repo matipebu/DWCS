@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Muestra una o m&aacute;s cadenas</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.crypt.html">« crypt</a></li>
+      <li style="float: right;"><a href="function.explode.html">explode »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.strings.html">Funciones de strings</a></li>
+    <li>Muestra una o m&aacute;s cadenas</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.echo" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">echo</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">echo</span> &mdash; <span class="dc-title">Muestra una o más cadenas</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.echo-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>echo</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$arg1</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$...</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+
+  <p class="simpara">
+   Muestra todos los parámetros. No se pospone ningua nueva línea adicional.
+  </p>
+  <p class="para">
+   <code class="literal">echo</code> no es realmente una función (es una
+   construcción del lenguaje), por lo que no se requiere el uso de paréntesis
+   con él. <code class="literal">echo</code> (a diferencia de otras construcciones
+   del lenguaje) no se comporta como una función, es decir no siempre
+   se puede usar en el contexto de una función. Además, si se quiere pasar
+   más de un parámetro a <code class="literal">echo</code>, éstos
+   no deben estar entre paréntesis.
+  </p>
+  <p class="para">
+   <code class="literal">echo</code> también posee una sintaxis abreviada, donde se puede
+   poner el símbolo igual justo después de la etiqueta de apertura de PHP. Antes de PHP 5.4.0,
+   este tipo de sintaxis abreviada únicamente funciona con la opción de configuración
+   <a href="ini.core.html#ini.short-open-tag" class="link">short_open_tag</a>
+   activada.
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">I have <span style="color: #0000BB">&lt;?=$foo?&gt;</span> foo.</span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.echo-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">arg1</code></dt>
+     <dd>
+      <p class="para">
+       El parámetro a mostrar.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">...</code></dt>
+     <dd>
+      <p class="para">
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.echo-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   No devuelve ningún valor.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.echo-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4777">
+    <p><strong>Ejemplo #1 Ejemplos de <code class="literal">echo</code></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo </span><span style="color: #DD0000">"Hola mundo"</span><span style="color: #007700">;<br /><br />echo </span><span style="color: #DD0000">"Esto abarca<br />multiple líneas. Los saltos de línea también<br />se mostrarán"</span><span style="color: #007700">;<br /><br />echo </span><span style="color: #DD0000">"Esto abarca\nmúltiples líneas. Los saltos de línea también\nse mostrarán."</span><span style="color: #007700">;<br /><br />echo </span><span style="color: #DD0000">"Para escapar caracteres se hace \"así\"."</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">// Se pueden usar variables dentro de una sentencia echo<br /></span><span style="color: #0000BB">$foo </span><span style="color: #007700">= </span><span style="color: #DD0000">"foobar"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$bar </span><span style="color: #007700">= </span><span style="color: #DD0000">"barbaz"</span><span style="color: #007700">;<br /><br />echo </span><span style="color: #DD0000">"foo es </span><span style="color: #0000BB">$foo</span><span style="color: #DD0000">"</span><span style="color: #007700">; </span><span style="color: #FF8000">// foo es foobar<br /><br />// También se pueden usar arrays<br /></span><span style="color: #0000BB">$baz </span><span style="color: #007700">= array(</span><span style="color: #DD0000">"valor" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"foo"</span><span style="color: #007700">);<br /><br />echo </span><span style="color: #DD0000">"Esto es </span><span style="color: #007700">{</span><span style="color: #0000BB">$baz</span><span style="color: #007700">[</span><span style="color: #DD0000">'valor'</span><span style="color: #007700">]}</span><span style="color: #DD0000"> !"</span><span style="color: #007700">; </span><span style="color: #FF8000">// Esto es foo !<br /><br />// Si se utilizan comillas simples, se mostrará el nombre de la variable, no su valor<br /></span><span style="color: #007700">echo </span><span style="color: #DD0000">'foo es $foo'</span><span style="color: #007700">; </span><span style="color: #FF8000">// foo es $foo<br /><br />// Si no usan otros caracteres, se puede utilizar echo para mostrar el valor de las variables.<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">$foo</span><span style="color: #007700">;          </span><span style="color: #FF8000">// foobar<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">$foo</span><span style="color: #007700">,</span><span style="color: #0000BB">$bar</span><span style="color: #007700">;     </span><span style="color: #FF8000">// foobarbarbaz<br /><br />// Las cadenas pueden ser pasadas individualmente como varios argumentos o<br />// concatenadas como un único argumento<br /></span><span style="color: #007700">echo </span><span style="color: #DD0000">'Esta '</span><span style="color: #007700">, </span><span style="color: #DD0000">'cadena '</span><span style="color: #007700">, </span><span style="color: #DD0000">'está '</span><span style="color: #007700">, </span><span style="color: #DD0000">'hecha '</span><span style="color: #007700">, </span><span style="color: #DD0000">'con múltiple parámetros.'</span><span style="color: #007700">, </span><span style="color: #0000BB">chr</span><span style="color: #007700">(</span><span style="color: #0000BB">10</span><span style="color: #007700">);<br />echo </span><span style="color: #DD0000">'Esta ' </span><span style="color: #007700">. </span><span style="color: #DD0000">'cadena ' </span><span style="color: #007700">. </span><span style="color: #DD0000">'está ' </span><span style="color: #007700">. </span><span style="color: #DD0000">'hecha ' </span><span style="color: #007700">. </span><span style="color: #DD0000">'con concatenación.' </span><span style="color: #007700">. </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br />echo &lt;&lt;&lt;END<br /></span><span style="color: #DD0000">Aquí se utiliza la sintaxis de "here document" para mostrar<br />múltiples líneas con interpolación de </span><span style="color: #0000BB">$variable</span><span style="color: #DD0000">. Nótese<br />que el finalizador de here document debe aparecer en una <br />línea con solamente un punto y coma. ¡Nada de espacios extra!<br /></span><span style="color: #007700">END;<br /><br /></span><span style="color: #FF8000">// Ya que echo no se comporta como una función, el siguiente código no es válido.<br /></span><span style="color: #007700">(</span><span style="color: #0000BB">$variable</span><span style="color: #007700">) ? echo </span><span style="color: #DD0000">'true' </span><span style="color: #007700">: echo </span><span style="color: #DD0000">'false'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">// Sin embargo, el siguiente código funcionará:<br /></span><span style="color: #007700">(</span><span style="color: #0000BB">$variable</span><span style="color: #007700">) ? print </span><span style="color: #DD0000">'true' </span><span style="color: #007700">: print </span><span style="color: #DD0000">'false'</span><span style="color: #007700">; </span><span style="color: #FF8000">// print también es una construcción, pero<br />                                            // se comporta como una función, por lo que<br />                                            // puede usarse en este contexto.<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">$variable </span><span style="color: #007700">? </span><span style="color: #DD0000">'true'</span><span style="color: #007700">: </span><span style="color: #DD0000">'false'</span><span style="color: #007700">; </span><span style="color: #FF8000">// dando la vuelta a la declaración<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.echo-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: <span class="simpara">Puesto que esto es
+una construcción del lenguaje y no una función, no puede ser llamada usando
+<a href="functions.variable-functions.html" class="link">funciones variables</a>.</span>
+</p></blockquote>
+  <div class="tip"><strong class="tip">Sugerencia</strong>
+   <p class="para">
+    Un beneficio de pasar varios argumentos sobre la concatenación en
+    <span class="function"><strong>echo</strong></span> es la precedencia del operador punto en
+    PHP. Si se pasan varios argumentos, no serán necesarios paréntesis
+    para forzar la precedencia:
+   </p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo </span><span style="color: #DD0000">"Sum: "</span><span style="color: #007700">, </span><span style="color: #0000BB">1 </span><span style="color: #007700">+ </span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />echo </span><span style="color: #DD0000">"Hello "</span><span style="color: #007700">, isset(</span><span style="color: #0000BB">$name</span><span style="color: #007700">) ? </span><span style="color: #0000BB">$name </span><span style="color: #007700">: </span><span style="color: #DD0000">"John Doe"</span><span style="color: #007700">, </span><span style="color: #DD0000">"!"</span><span style="color: #007700">;</span></span></code></div>
+   </div>
+
+
+   <p class="para">
+    Con la concatenación, el operador punto tiene mayor precedencia que
+    los operadores de adición y ternario, por lo que se deben utilizar
+    paréntesis para un correcto funcionamiento:
+   </p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo </span><span style="color: #DD0000">'Sum: ' </span><span style="color: #007700">. (</span><span style="color: #0000BB">1 </span><span style="color: #007700">+ </span><span style="color: #0000BB">2</span><span style="color: #007700">);<br />echo </span><span style="color: #DD0000">'Hello ' </span><span style="color: #007700">. (isset(</span><span style="color: #0000BB">$name</span><span style="color: #007700">) ? </span><span style="color: #0000BB">$name </span><span style="color: #007700">: </span><span style="color: #DD0000">'John Doe'</span><span style="color: #007700">) . </span><span style="color: #DD0000">'!'</span><span style="color: #007700">;</span></span></code></div>
+   </div>
+
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.echo-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.print.html" class="function" rel="rdfs-seeAlso">print</a> - Mostrar una cadena</span></li>
+    <li><span class="function"><a href="function.printf.html" class="function" rel="rdfs-seeAlso">printf()</a> - Imprimir una cadena con formato</span></li>
+    <li><span class="function"><a href="function.flush.html" class="function" rel="rdfs-seeAlso">flush()</a> - Vaciar el b&uacute;fer de salida del sistema</span></li>
+    <li><a href="language.types.string.html#language.types.string.syntax.heredoc" class="link">Sintaxis de Heredoc</a></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

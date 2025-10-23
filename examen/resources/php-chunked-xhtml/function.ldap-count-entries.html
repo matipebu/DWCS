@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Contar el n&uacute;mero de entradas en una b&uacute;squeda</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.ldap-control-paged-result-response.html">« ldap_control_paged_result_response</a></li>
+      <li style="float: right;"><a href="function.ldap-count-references.html">ldap_count_references »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.ldap.html">LDAP Funciones</a></li>
+    <li>Contar el n&uacute;mero de entradas en una b&uacute;squeda</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.ldap-count-entries" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ldap_count_entries</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">ldap_count_entries</span> &mdash; <span class="dc-title">Contar el número de entradas en una búsqueda</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ldap-count-entries-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>ldap_count_entries</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$link_identifier</code></span>, <span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$result_identifier</code></span>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="para rdfs-comment">
+   Devuelve el número de entradas almacenadas en el resultado de previas operaciones
+   de búsqueda.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.ldap-count-entries-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">link_identifier</code></dt>
+     <dd>
+      <p class="para">
+       Un identificador de enlace de LDAP, devuelto por <span class="function"><a href="function.ldap-connect.html" class="function">ldap_connect()</a></span>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">result_identifier</code></dt>
+     <dd>
+      <p class="para">
+       El resultado interno de LDAP.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.ldap-count-entries-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el número de entradas en el resultado o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ 
+ 
+ <div class="refsect1 examples" id="refsect1-function.ldap-count-entries-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="ldap-count-entries.example.basic">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>ldap-count-entries()</strong></span></strong></p>
+    <div class="example-contents"><p>
+     Recuperar el número de entradas del resultado.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">// $ds es un identificador de enlace válido (véase ldap_connect)<br /><br />     $dn        = 'ou=example,dc=org';<br />     $filter    = '(|(sn=Doe*)(givenname=John*))';<br />     $justthese = array('ou', 'sn', 'givenname', 'mail');<br /><br />     $sr = ldap_search($ds, $dn, $filter, $justthese);<br /><br />     var_dump(ldap_count_entries($ds, $sr));</span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">int(1)</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+</div></div></div></body></html>

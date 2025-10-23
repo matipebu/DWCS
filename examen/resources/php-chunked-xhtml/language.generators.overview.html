@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Informaci&oacute;n general de los generadores</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.generators.html">« Generadores</a></li>
+      <li style="float: right;"><a href="language.generators.syntax.html">Generator syntax »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.generators.html">Generadores</a></li>
+    <li>Informaci&oacute;n general de los generadores</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.generators.overview" class="sect1">
+  <h2 class="title">Información general de los generadores</h2>
+  <p class="verinfo">(PHP 5 &gt;= 5.5.0, PHP 7, PHP 8)</p>
+  
+  <p class="para">
+   Los generadores proporcionan un modo fácil de implementar
+   <a href="language.oop5.iterations.html" class="link">iteradores</a> simples sin la
+   sobrecarga o complejidad de implementar una clase que implemente la
+   interfaz <span class="classname"><a href="class.iterator.html" class="classname">Iterator</a></span>.
+  </p>
+  
+  <p class="para">
+   Un generador permite escribir código que utilice <a href="control-structures.foreach.html" class="link">foreach</a> para iterar sobre un
+   conjunto de datos sin que sea necesario cargar el array en memoria, lo que puede ocasionar
+   que se exceda el límite de memoria, o requiera una cantidad considerable de
+   tiempo de procesado para generarse. En su lugar, se puede escribir una función generadora,
+   que es igual que una
+   <a href="functions.user-defined.html" class="link">función</a> normal, con la salvedad de que en vez
+   de
+   hacer un solo <a href="functions.returning-values.html" class="link">return</a>, un
+   generador puede invocar <a href="language.generators.syntax.html#control-structures.yield" class="link">yield</a> tantas veces como necesite para proporcionar
+   valores por los que iterar.
+  </p>
+  
+  <p class="para">
+   Un ejemplo simple de esto es reimplementar la función <span class="function"><a href="function.range.html" class="function">range()</a></span>
+   como un generador. La función estándar <span class="function"><a href="function.range.html" class="function">range()</a></span>
+   tiene que generar un array con cada uno de los valores y devolverlo, lo que puede
+   resultar en arrays grandes: por ejemplo, llamar
+   <strong class="command">range(0, 1000000)</strong>  resultará en más de 100 MB de
+   memoria utilizada.
+  </p>
+  
+  <p class="para">
+   Como alternativa, se puede implementar un generador <code class="literal">xrange()</code>,
+   que sólo necesitará memoria para crear un
+   objeto <span class="classname"><a href="class.iterator.html" class="classname">Iterator</a></span> y controlar el estado actual del
+   generador de manera interna, lo que no ocupa más de 1 kilobyte.
+  </p>
+  
+  <div class="example" id="example-347">
+   <p><strong>Ejemplo #1 Implementando <span class="function"><a href="function.range.html" class="function">range()</a></span> como generador</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">xrange</span><span style="color: #007700">(</span><span style="color: #0000BB">$start</span><span style="color: #007700">, </span><span style="color: #0000BB">$limit</span><span style="color: #007700">, </span><span style="color: #0000BB">$step </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">) {<br />    if (</span><span style="color: #0000BB">$start </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">$limit</span><span style="color: #007700">) {<br />        if (</span><span style="color: #0000BB">$step </span><span style="color: #007700">&lt;= </span><span style="color: #0000BB">0</span><span style="color: #007700">) {<br />            throw new </span><span style="color: #0000BB">LogicException</span><span style="color: #007700">(</span><span style="color: #DD0000">'Step tiene que ser +ve'</span><span style="color: #007700">);<br />        }<br /><br />        for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">$start</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt;= </span><span style="color: #0000BB">$limit</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">+= </span><span style="color: #0000BB">$step</span><span style="color: #007700">) {<br />            yield </span><span style="color: #0000BB">$i</span><span style="color: #007700">;<br />        }<br />    } else {<br />        if (</span><span style="color: #0000BB">$step </span><span style="color: #007700">&gt;= </span><span style="color: #0000BB">0</span><span style="color: #007700">) {<br />            throw new </span><span style="color: #0000BB">LogicException</span><span style="color: #007700">(</span><span style="color: #DD0000">'Step tiene que ser -ve'</span><span style="color: #007700">);<br />        }<br /><br />        for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">$start</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">&gt;= </span><span style="color: #0000BB">$limit</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">+= </span><span style="color: #0000BB">$step</span><span style="color: #007700">) {<br />            yield </span><span style="color: #0000BB">$i</span><span style="color: #007700">;<br />        }<br />    }<br />}<br /><br /></span><span style="color: #FF8000">/*<br /> * Obsereve que tanto range() como xrange() producen la misma<br /> * salida a continuación.<br /> */<br /><br /></span><span style="color: #007700">echo </span><span style="color: #DD0000">'Números impares de una cifra de range():  '</span><span style="color: #007700">;<br />foreach (</span><span style="color: #0000BB">range</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">9</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">) as </span><span style="color: #0000BB">$number</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">"</span><span style="color: #0000BB">$number</span><span style="color: #DD0000"> "</span><span style="color: #007700">;<br />}<br />echo </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br />echo </span><span style="color: #DD0000">'Números impares de una cifra de xrange():  '</span><span style="color: #007700">;<br />foreach (</span><span style="color: #0000BB">xrange</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">9</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">) as </span><span style="color: #0000BB">$number</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">"</span><span style="color: #0000BB">$number</span><span style="color: #DD0000"> "</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Números impares de una cifra de range():  1 3 5 7 9 
+Números impares de una cifra de xrange(): 1 3 5 7 9 
+</pre></div>
+   </div>
+  </div>
+  
+  <div class="sect2" id="language.generators.object">
+   <h3 class="title">Objetos <span class="classname"><a href="class.generator.html" class="classname">Generator</a></span></h3>
+   <p class="para">
+    Cuando una función generadora es invocada por primera vez, se devuelve un
+    objeto de la clase interna <span class="classname"><a href="class.generator.html" class="classname">Generator</a></span>. Este objeto
+    implementa la interfaz <span class="classname"><a href="class.iterator.html" class="classname">Iterator</a></span> de la misma forma
+    que lo haría un objeto iterador de solo avance, y proporciona métodos que pueden
+    ser invocados para manipular el estado del generador, incluyendo el envío
+    de valores hacia y la devolución de valores desde él.
+   </p>
+  </div>
+ </div></div></div></body></html>

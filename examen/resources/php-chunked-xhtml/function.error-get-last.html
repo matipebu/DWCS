@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Obtener el &uacute;ltimo error que ocurri&oacute;</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.error-clear-last.html">« error_clear_last</a></li>
+      <li style="float: right;"><a href="function.error-log.html">error_log »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.errorfunc.html">Funciones de Manejo de Errores</a></li>
+    <li>Obtener el &uacute;ltimo error que ocurri&oacute;</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.error-get-last" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">error_get_last</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.2.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">error_get_last</span> &mdash; <span class="dc-title">Obtener el último error que ocurrió</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.error-get-last-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>error_get_last</strong></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.array.html" class="type array">array</a></span></span></div>
+
+  <p class="para rdfs-comment">
+   Obtiene información sobre el último error que ocurrió.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.error-get-last-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">Esta función no tiene parámetros.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.error-get-last-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve una matriz asociativa describiendo el último error con las claves &quot;type&quot; (tipo),
+   &quot;message&quot; (mensaje), &quot;file&quot; (archivo) y &quot;line&quot; (línea). Si el error ha sido causado por una función
+   interna de PHP, el &quot;message&quot; (mensaje) comienza con su nombre.
+   Devuelve <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> si no ha habido aún un error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.error-get-last-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-519">
+    <p><strong>Ejemplo #1 Un ejemplo de <span class="function"><strong>error_get_last()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">$a</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">error_get_last</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Array
+(
+    [type] =&gt; 8
+    [message] =&gt; Undefined variable: a
+    [file] =&gt; C:\WWW\index.php
+    [line] =&gt; 2
+)</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.error-get-last-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><a href="errorfunc.constants.html" class="link">Constantes de error</a></li>
+    <li>La variable <var class="varname"><a href="reserved.variables.phperrormsg.html" class="classname">$php_errormsg</a></var></li>
+    <li><span class="function"><a href="function.error-clear-last.html" class="function" rel="rdfs-seeAlso">error_clear_last()</a> - Limpiar el error m&aacute;s reciente</span></li>
+    <li><a href="errorfunc.configuration.html#ini.display-errors" class="link">La directiva <code class="parameter">display_errors</code></a></li>
+    <li><a href="errorfunc.configuration.html#ini.html-errors" class="link">La directiva <code class="parameter">html_errors</code></a></li>
+    <li><a href="errorfunc.configuration.html#ini.xmlrpc-errors" class="link">La directiva <code class="parameter">xmlrpc_errors</code></a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

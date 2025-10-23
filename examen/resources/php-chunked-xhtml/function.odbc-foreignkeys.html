@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Recupera informaci&oacute;n de una lista de claves extranjeras</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.odbc-field-type.html">« odbc_field_type</a></li>
+      <li style="float: right;"><a href="function.odbc-free-result.html">odbc_free_result »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.uodbc.html">Funciones ODBC</a></li>
+    <li>Recupera informaci&oacute;n de una lista de claves extranjeras</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.odbc-foreignkeys" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">odbc_foreignkeys</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">odbc_foreignkeys</span> &mdash; <span class="dc-title">Recupera información de una lista de claves extranjeras</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.odbc-foreignkeys-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>odbc_foreignkeys</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$connection_id</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$pk_qualifier</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$pk_owner</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$pk_table</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$fk_qualifier</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$fk_owner</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$fk_table</code></span><br>): <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span></div>
+
+  <p class="para rdfs-comment">
+   Recupera una lista de claves extranjeras de la tabla especificada o una lista de
+   claves extranjeras de otras tablas que hacen referencia a la clave primaria de la
+   tabla especificada
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.odbc-foreignkeys-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">connection_id</code></dt>
+     <dd>
+      <p class="para">El conector identificador ODBC,
+ver <span class="function"><a href="function.odbc-connect.html" class="function">odbc_connect()</a></span> para más información.</p>
+     </dd>
+    
+    
+     <dt><code class="parameter">pk_qualifier</code></dt>
+     <dd>
+      <p class="para">
+       El cualificador de clave primaria.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">pk_owner</code></dt>
+     <dd>
+      <p class="para">
+       El propietario de la clave primaria.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">pk_table</code></dt>
+     <dd>
+      <p class="para">
+       La tabla de la clave primaria.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">fk_qualifier</code></dt>
+     <dd>
+      <p class="para">
+       El cualificador de la clave extranjera.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">fk_owner</code></dt>
+     <dd>
+      <p class="para">
+       El propietario de la clave extranjera.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">fk_table</code></dt>
+     <dd>
+      <p class="para">
+       La tabla de la clave extranjera.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.odbc-foreignkeys-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve un identificador de resultado ODBC  o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+  <p class="para">
+   El conjunto de resultados tiene las siguientes columnas:
+   <ul class="itemizedlist">
+    <li class="listitem"><span class="simpara">PKTABLE_QUALIFIER</span></li>
+    <li class="listitem"><span class="simpara">PKTABLE_OWNER</span></li>
+    <li class="listitem"><span class="simpara">PKTABLE_NAME</span></li>
+    <li class="listitem"><span class="simpara">PKCOLUMN_NAME</span></li>
+    <li class="listitem"><span class="simpara">FKTABLE_QUALIFIER</span></li>
+    <li class="listitem"><span class="simpara">FKTABLE_OWNER</span></li>
+    <li class="listitem"><span class="simpara">FKTABLE_NAME</span></li>
+    <li class="listitem"><span class="simpara">FKCOLUMN_NAME</span></li>
+    <li class="listitem"><span class="simpara">KEY_SEQ</span></li>
+    <li class="listitem"><span class="simpara">UPDATE_RULE</span></li>
+    <li class="listitem"><span class="simpara">DELETE_RULE</span></li>
+    <li class="listitem"><span class="simpara">FK_NAME</span></li>
+    <li class="listitem"><span class="simpara">PK_NAME</span></li>
+   </ul>
+  </p>
+  <p class="simpara">
+   Si <code class="parameter">pk_table</code> contiene un nombre de tabla,
+   <span class="function"><strong>odbc_foreignkeys()</strong></span> devuelve un conjunto de resultados
+   que contienen la clave primaria de la tabla especificada y todas las
+   claves extranjeras que hacen referencia a ella.
+  </p>
+  <p class="simpara">
+   Si <code class="parameter">fk_table</code> contiene un nombre de tabla,
+   <span class="function"><strong>odbc_foreignkeys()</strong></span> devuelve un conjunto de resultados
+   que contienen todas las claves extranjeras de la tabla especificada y las
+   claves primarias (de otras tablas) a las que hacen referencia.
+  </p>
+  <p class="simpara">
+   Si <code class="parameter">pk_table</code> y
+   <code class="parameter">fk_table</code> contienen nombres de tablas,
+   <span class="function"><strong>odbc_foreignkeys()</strong></span> devuelve las claves extranjeras de
+   la tabla especificada en <code class="parameter">fk_table</code> que hacen referencia
+   a la clave primaria de la tabla especificada en
+   <code class="parameter">pk_table</code>. Debería ser una clave como máximo.
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

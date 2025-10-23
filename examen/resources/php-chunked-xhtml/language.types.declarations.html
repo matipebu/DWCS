@@ -1,0 +1,759 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Declaraciones de tipo</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.types.iterable.html">« Iterables</a></li>
+      <li style="float: right;"><a href="language.types.type-juggling.html">Manipulaci&oacute;n de tipos »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.types.html">Tipos</a></li>
+    <li>Declaraciones de tipo</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.types.declarations" class="sect1">
+ <h2 class="title">Declaraciones de tipo</h2>
+
+ <p class="para">
+  Las declaraciones de tipo pueden ser añadidas a los argumentos de función,
+  valores de retorno y desde PHP 7.4.0, propiedades de clase.
+  Éstas declaraciones aseguran que el valor es del tipo especificado en el
+  momento de la llamada, de no ser así se lanzará una
+  excepción de tipo <span class="classname"><a href="class.typeerror.html" class="classname">TypeError</a></span>.
+ </p>
+
+ 
+ <blockquote class="note"><p><strong class="note">Nota</strong>: 
+  
+  <p class="para">
+   Cuando se sobreescribe el método de un padre, el método hijo debe coincidir
+   con cualquier tipo de declaración de retorno del padre. Si el padre no
+   tiene definida un tipo de retorno, entonces el método hijo puede realizarla.
+  </p>
+ </p></blockquote>
+
+ <div class="sect2" id="language.types.declarations.base">
+  <h3 class="title">Tipos simples</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>Tipo</th>
+      <th>Descripción</th>
+      <th>Versión</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>Nombre de la Clase/Interfaz</td>
+      <td>
+       El valor debe ser una instancia de la clase o de la interfaz.
+      </td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr>
+      <td><span class="type">self</span></td>
+      <td>
+       El valor debe ser una <a href="language.operators.type.html" class="link"><code class="literal">instanceof</code></a> de la misma clase que aquella en la que
+       se utiliza la declaración de tipo.
+       Solamente se puede usar en clases.
+      </td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr>
+      <td><span class="type">parent</span></td>
+      <td>
+        El valor debe ser una <a href="language.operators.type.html" class="link"><code class="literal">instanceof</code></a> del padre de la clase en la que se usa
+        la declaración de tipo. Solo se puede usar en clases.
+      </td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr>
+      <td><span class="type"><a href="language.types.array.html" class="type array">array</a></span></td>
+      <td>
+       El valor debe ser un <span class="type"><a href="language.types.array.html" class="type array">array</a></span>.
+      </td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr>
+      <td><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span></td>
+      <td>
+       El valor debe ser un <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> válido.
+       No puede ser usado como una declaración de tipo de propiedad de clase.
+      </td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr>
+      <td><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></td>
+      <td>
+       El valor debe ser un valor booleano.
+      </td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr>
+      <td><span class="type"><a href="language.types.float.html" class="type float">float</a></span></td>
+      <td>
+       El valor debe ser un número de coma flotante.
+      </td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr>
+      <td><span class="type"><a href="language.types.integer.html" class="type int">int</a></span></td>
+      <td>
+       El valor debe ser un número entero.
+      </td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr>
+      <td><span class="type"><a href="language.types.string.html" class="type string">string</a></span></td>
+      <td>
+       El valor debe ser un <span class="type"><a href="language.types.string.html" class="type string">string</a></span>.
+      </td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr>
+      <td><span class="type"><a href="language.types.iterable.html" class="type iterable">iterable</a></span></td>
+      <td>
+       El valor debe ser un <span class="type"><a href="language.types.array.html" class="type array">array</a></span> o una <a href="language.operators.type.html" class="link"><code class="literal">instanceof</code></a> de la clase <span class="classname"><a href="class.traversable.html" class="classname">Traversable</a></span>.
+      </td>
+      <td>PHP 7.1.0</td>
+     </tr>
+
+     <tr>
+      <td><span class="type"><a href="language.types.object.html" class="type object">object</a></span></td>
+      <td>
+       El valor debe ser un <span class="type">objeto</span>.
+      </td>
+      <td>PHP 7.2.0</td>
+     </tr>
+
+     <tr>
+      <td><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span></td>
+      <td>
+       El valor puede ser cualquier valor.
+      </td>
+      <td>PHP 8.0.0</td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+
+  <div class="warning"><strong class="warning">Advertencia</strong>
+   <p class="para">
+    No se admiten los alias para los tipos escalares anteriores.
+    En su lugar, se tratan como nombres de clase o interfaz.
+    Por ejemplo, usar <code class="literal">boolean</code> como declaración de tipo
+    requerirá que el valor sea una <a href="language.operators.type.html" class="link"><code class="literal">instanceof</code></a> de clase o interfaz
+    <code class="literal">boolean</code>, en lugar de tipo <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span>:
+
+   </p>
+   <p class="para">
+    <div class="example" id="example-82">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />    </span><span style="color: #007700">function </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">boolean $parametro</span><span style="color: #007700">) {}<br />    </span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+     <div class="example-contents"><p>Output of the above example in PHP 8:</p></div>
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+Warning: &quot;boolean&quot; will be interpreted as a class name. Did you mean &quot;bool&quot;? Write &quot;\boolean&quot; to suppress this warning in /in/9YrUX on line 2
+
+Fatal error: Uncaught TypeError: test(): Argument #1 ($param) must be of type boolean, bool given, called in - on line 3 and defined in -:2
+Stack trace:
+#0 -(3): test(true)
+#1 {main}
+  thrown in - on line 2
+</pre></div>
+     </div>
+    </div>
+   </p>
+  </div>
+
+ <div class="sect3" id="language.types.declarations.mixed">
+  <h4 class="title">mixed</h4>
+
+  <p class="para">
+   <span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> es equivalente a <a href="language.types.declarations.html#language.types.declarations.composite.union" class="link">union type</a>
+   <span class="type"><span class="type"><a href="language.types.object.html" class="type object">object</a></span>|<span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>|<span class="type"><a href="language.types.array.html" class="type array">array</a></span>|<span class="type"><a href="language.types.string.html" class="type string">string</a></span>|<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>|<span class="type"><a href="language.types.float.html" class="type float">float</a></span>|<span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span>|<span class="type"><a href="language.types.null.html" class="type null">null</a></span></span>.
+   Disponible a partir de PHP 8.0.0.
+  </p>
+ </div>
+
+  <div class="sect3" id="language.types.declarations.examples">
+   <h4 class="title">Ejemplos</h4>
+   <div class="example" id="example-83">
+    <p><strong>Ejemplo #1 Declaración de tipo de clase básica</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">C </span><span style="color: #007700">{}<br />class </span><span style="color: #0000BB">D </span><span style="color: #007700">extends </span><span style="color: #0000BB">C </span><span style="color: #007700">{}<br /><br /></span><span style="color: #FF8000">// Esta clase no extiende de C.<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">E </span><span style="color: #007700">{}<br /><br />function </span><span style="color: #0000BB">f</span><span style="color: #007700">(</span><span style="color: #0000BB">C $c</span><span style="color: #007700">) {<br />    echo </span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$c</span><span style="color: #007700">).</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">f</span><span style="color: #007700">(new </span><span style="color: #0000BB">C</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">f</span><span style="color: #007700">(new </span><span style="color: #0000BB">D</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">f</span><span style="color: #007700">(new </span><span style="color: #0000BB">E</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>Output of the above example in PHP 8:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+C
+D
+
+Fatal error: Uncaught TypeError: f(): Argument #1 ($c) must be of type C, E given, called in /in/gLonb on line 14 and defined in /in/gLonb:8
+Stack trace:
+#0 -(14): f(Object(E))
+#1 {main}
+  thrown in - on line 8
+</pre></div>
+    </div>
+   </div>
+
+   <div class="example" id="example-84">
+    <p><strong>Ejemplo #2 Declaración de tipo de interfaz básica</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">interface </span><span style="color: #0000BB">I </span><span style="color: #007700">{ public function </span><span style="color: #0000BB">f</span><span style="color: #007700">(); }<br />class </span><span style="color: #0000BB">C </span><span style="color: #007700">implements </span><span style="color: #0000BB">I </span><span style="color: #007700">{ public function </span><span style="color: #0000BB">f</span><span style="color: #007700">() {} }<br /><br /></span><span style="color: #FF8000">// Esta clase no implementa I.<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">E </span><span style="color: #007700">{}<br /><br />function </span><span style="color: #0000BB">f</span><span style="color: #007700">(</span><span style="color: #0000BB">I $i</span><span style="color: #007700">) {<br />    echo </span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$i</span><span style="color: #007700">).</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">f</span><span style="color: #007700">(new </span><span style="color: #0000BB">C</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">f</span><span style="color: #007700">(new </span><span style="color: #0000BB">E</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>Output of the above example in PHP 8:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+C
+
+Fatal error: Uncaught TypeError: f(): Argument #1 ($i) must be of type I, E given, called in - on line 13 and defined in -:8
+Stack trace:
+#0 -(13): f(Object(E))
+#1 {main}
+  thrown in - on line 8
+</pre></div>
+    </div>
+   </div>
+
+   <div class="example" id="example-85">
+    <p><strong>Ejemplo #3 Declaración de tipo de retorno básica</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">suma</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">): </span><span style="color: #0000BB">float </span><span style="color: #007700">{<br />    return </span><span style="color: #0000BB">$a </span><span style="color: #007700">+ </span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">// Se devolverá un valor float.<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">suma</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+float(3)
+</pre></div>
+    </div>
+   </div>
+
+   <div class="example" id="example-86">
+    <p><strong>Ejemplo #4 Retornando un objeto</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">C </span><span style="color: #007700">{}<br /><br />function </span><span style="color: #0000BB">getC</span><span style="color: #007700">(): </span><span style="color: #0000BB">C </span><span style="color: #007700">{<br />    return new </span><span style="color: #0000BB">C</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">getC</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+object(C)#1 (0) {
+}
+</pre></div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="language.types.declarations.nullable">
+  <h3 class="title">Tipo Nullable</h3>
+
+  <p class="para">
+   A partir de PHP 7.1.0, las declaraciones de tipo pueden ser marcadas como
+   nullable anteponiendo un interrogante(<code class="literal">?</code>) en el nombre
+   de tipo. Esto conlleva a que el valor puede ser del tipo específico o <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>.
+  </p>
+
+  <p class="para">
+   <div class="example" id="example-87">
+    <p><strong>Ejemplo #5 Declaración de tipo de argumento Nullable</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">C </span><span style="color: #007700">{}<br /><br />function </span><span style="color: #0000BB">f</span><span style="color: #007700">(?</span><span style="color: #0000BB">C $c</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$c</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">f</span><span style="color: #007700">(new </span><span style="color: #0000BB">C</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">f</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+object(C)#1 (0) {
+}
+NULL
+</pre></div>
+    </div>
+   </div>
+
+   <div class="example" id="example-88">
+    <p><strong>Ejemplo #6 Declaración de tipo de retorno Nullable</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">get_item</span><span style="color: #007700">(): ?</span><span style="color: #0000BB">string </span><span style="color: #007700">{<br />    if (isset(</span><span style="color: #0000BB">$_GET</span><span style="color: #007700">[</span><span style="color: #DD0000">'item'</span><span style="color: #007700">])) {<br />        return </span><span style="color: #0000BB">$_GET</span><span style="color: #007700">[</span><span style="color: #DD0000">'item'</span><span style="color: #007700">];<br />    } else {<br />        return </span><span style="color: #0000BB">null</span><span style="color: #007700">;<br />    }<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Es posible lograr argumentos anulables haciendo
+    <code class="literal">null</code> el valor por defecto.
+    Esto no se recomienda ya que se rompe durante la herencia.
+   </p>
+   <div class="example" id="example-89">
+    <p><strong>Ejemplo #7 Forma antigua de hacer argumentos nullable por defecto</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">C </span><span style="color: #007700">{}<br /><br />function </span><span style="color: #0000BB">f</span><span style="color: #007700">(</span><span style="color: #0000BB">C $c </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$c</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">f</span><span style="color: #007700">(new </span><span style="color: #0000BB">C</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">f</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+object(C)#1 (0) {
+}
+NULL
+</pre></div>
+    </div>
+   </div>
+  </p></blockquote>
+ </div>
+
+ <div class="sect2" id="language.types.declarations.composite">
+  <h3 class="title">Tipos compuestos</h3>
+  <p class="para">
+   Es posible combinar tipos simples en tipos compuestos.
+   PHP permite combinar tipos de las siguientes maneras:
+  </p>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     Union de tipos simples. A partir de 8.0.0.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Intersección de tipos de clases (interfaces y nombres de clase). A partir de PHP 8.1.0.
+    </span>
+   </li>
+  </ul>
+
+  <div class="caution"><strong class="caution">Precaución</strong>
+   <p class="simpara">
+    No es posible combinar tipos intersección con tipos unión.
+   </p>
+  </div>
+
+  <div class="sect3" id="language.types.declarations.composite.union">
+   <h4 class="title">Tipos unión</h4>
+   <p class="para">
+    Una declaración de tipo de unión acepta valores de múltiples tipos simples
+    diferentes, en lugar de uno solo.
+    Los tipos de unión se especifican mediante la sintaxis <code class="literal">T1|T2|...</code>.
+    Los tipos de unión están disponibles a partir de PHP 8.0.0.
+   </p>
+
+   <div class="sect4" id="language.types.declarations.composite.union.nullable">
+    <h5 class="title">Tipos unión Nullable</h5>
+    <p class="para">
+     El tipo <code class="literal">null</code> se admite como parte de las uniones,
+     de modo que <code class="literal">T1|T2|null</code> se puede usar para crear una unión nullable.
+     La notación <code class="literal">?T</code> existente se considera una forma abreviada
+     del caso común de <code class="literal">T|null</code>.
+    </p>
+
+    <div class="caution"><strong class="caution">Precaución</strong>
+     <p class="simpara">
+      <code class="literal">null</code> no puede ser usado como tipo standalone.
+     </p>
+    </div>
+   </div>
+
+   <div class="sect4" id="language.types.declarations.composite.union.false">
+    <h5 class="title">false pseudo-type</h5>
+    <p class="para">
+     The <code class="literal">false</code> literal type is supported as part of unions,
+     and is included as for historical reasons many internal functions return
+     <code class="literal">false</code> instead of <code class="literal">null</code> for failures.
+     A classic example of such a function is <span class="function"><a href="function.strpos.html" class="function">strpos()</a></span>.
+    </p>
+
+    <div class="caution"><strong class="caution">Precaución</strong>
+     <p class="simpara">
+      <code class="literal">false</code> no se puede usar como tipo independiente
+      (incluido tipo independiente nullable).
+      Por este motivo <code class="literal">false</code>, <code class="literal">false|null</code>
+      y <code class="literal">?false</code> no están permitidos.
+     </p>
+    </div>
+    <div class="caution"><strong class="caution">Precaución</strong>
+     <p class="simpara">
+      El literal <code class="literal">true</code> <em>no</em> existe.
+     </p>
+    </div>
+   </div>
+  </div>
+
+  <div class="sect3" id="language.types.declarations.composite.intersection">
+   <h4 class="title">Tipos Intersección</h4>
+   <p class="para">
+    Una declaración de tipo de Intersección acepta valores que satisfacen múltiples
+    declaraciones de tipo de clase, en lugar de una sola.
+    Los tipos Intersección se especifican usando la sintaxis <code class="literal">T1&amp;T2&amp;...</code>
+    Los tipos Intersección están disponibles a partir de PHP 8.1.0.
+   </p>
+  </div>
+
+  <div class="sect3" id="language.types.declarations.composite.redundant">
+   <h4 class="title">Tipos duplicados y redundantes</h4>
+   <p class="para">
+    Para detectar errores simples en declaraciones de tipos compuestos, los tipos redundantes que
+    se puedan detectar sin realizar la carga de clase dará como resultado un error en tiempo de compilación.
+    Esto incluye:
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <span class="simpara">
+       Solamente podrá resolverse un mismo tipo una vez. Los tipos como
+       <code class="literal">int|string|INT</code> o
+       <code class="literal">Countable&amp;Traversable&amp;COUNTABLE</code>
+       darán como resultado un error.
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       Usar el tipo <span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> dará como resultado un error.
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">Para los tipos Unión:</span>
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <span class="simpara">
+         Si se usa el tipo <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span>, <span class="type"><a href="language.types.value.html" class="type false">false</a></span> no puede ser usado adicionalmente.
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         Si se usa el tipo <span class="type"><a href="language.types.object.html" class="type object">object</a></span>, los tipos para clase no pueden ser usados adicionalmente.
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         Si se usa el tipo <span class="type"><a href="language.types.iterable.html" class="type iterable">iterable</a></span>, <span class="type"><a href="language.types.array.html" class="type array">array</a></span>
+         y <span class="classname"><a href="class.traversable.html" class="classname">Traversable</a></span> no podrán ser usados adicionalmente.
+        </span>
+       </li>
+      </ul>
+     </li>
+     <li class="listitem">
+      <span class="simpara">Para los tipos Intersección:</span>
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <span class="simpara">
+									El uso de un tipo que no sea un tipo de clase dará como resultado un error.
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         El uso de <span class="type">self</span>, <span class="type">parent</span>, o
+         <span class="type">static</span> resultará en error.
+        </span>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </p>
+
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <span class="simpara">
+     Esto no garantiza que el tipo sea &quot;mínimo&quot;,
+     porque hacerlo requeriría cargar todos los tipos de clase usados.
+    </span>
+   </p></blockquote>
+
+   <p class="para">
+    Por ejemplo, si <code class="literal">A</code> y <code class="literal">B</code> son alias de clase,
+    entonces <code class="literal">A|B</code> sigue siendo un tipo de unión legal,
+    aunque podría reducirse a <code class="literal">A</code> o
+    <code class="literal">B</code>.
+				De manera similar, si la clase <code class="code">B extends A {}</code>, entonces <code class="literal">A|B</code>
+    es también un tipo de unión legal, aunque podría reducirse a solo
+    <code class="literal">A</code>.
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(): </span><span style="color: #0000BB">int</span><span style="color: #007700">|</span><span style="color: #0000BB">INT </span><span style="color: #007700">{} </span><span style="color: #FF8000">// No permitido<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(): </span><span style="color: #0000BB">bool</span><span style="color: #007700">|</span><span style="color: #0000BB">false </span><span style="color: #007700">{} </span><span style="color: #FF8000">// No permitido<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(): </span><span style="color: #0000BB">int</span><span style="color: #007700">&amp;</span><span style="color: #0000BB">Traversable </span><span style="color: #007700">{} </span><span style="color: #FF8000">// No permitido<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(): </span><span style="color: #0000BB">self</span><span style="color: #007700">&amp;</span><span style="color: #0000BB">Traversable </span><span style="color: #007700">{} </span><span style="color: #FF8000">// No permitido<br /><br /></span><span style="color: #007700">use </span><span style="color: #0000BB">A </span><span style="color: #007700">as </span><span style="color: #0000BB">B</span><span style="color: #007700">;<br />function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(): </span><span style="color: #0000BB">A</span><span style="color: #007700">|</span><span style="color: #0000BB">B </span><span style="color: #007700">{} </span><span style="color: #FF8000">// No permitido ("use" es parte de la resolución del nombre)<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(): </span><span style="color: #0000BB">A</span><span style="color: #007700">&amp;</span><span style="color: #0000BB">B </span><span style="color: #007700">{} </span><span style="color: #FF8000">// No permitido ("use" es parte de la resolución del nombre)<br /><br /></span><span style="color: #0000BB">class_alias</span><span style="color: #007700">(</span><span style="color: #DD0000">'X'</span><span style="color: #007700">, </span><span style="color: #DD0000">'Y'</span><span style="color: #007700">);<br />function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(): </span><span style="color: #0000BB">X</span><span style="color: #007700">|</span><span style="color: #0000BB">Y </span><span style="color: #007700">{} </span><span style="color: #FF8000">// Permitido (La redundancia solo se detecta en tiempo de ejecución)<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(): </span><span style="color: #0000BB">X</span><span style="color: #007700">&amp;</span><span style="color: #0000BB">Y </span><span style="color: #007700">{} </span><span style="color: #FF8000">// Permitido (La redundancia solo se detecta en tiempo de ejecución)<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+    </div>
+   </p>
+  </div>
+ </div>
+
+ <div class="sect2" id="language.types.declarations.return-only">
+  <h3 class="title">Tipos de solo lectura</h3>
+
+  <div class="sect3" id="language.types.declarations.void">
+   <h4 class="title">void</h4>
+   <p class="para">
+    <code class="literal">void</code> es un tipo de retorno que indica que la función
+    no devuelve un valor. Por lo tanto, no puede ser parte de una declaración
+    de tipo de unión. Disponible a partir de PHP 7.1.0.
+   </p>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     Queda obsoleto el retorno por referencia desde una funcion <span class="type"><span class="type"><a href="language.types.void.html" class="type void">void</a></span></span> a partir de PHP 8.1.0, debido a que dicha función es contradictoria.
+					Previamente emitía el siguiente <strong><code><a href="errorfunc.constants.html#constant.e-notice">E_NOTICE</a></code></strong> cuando se llamaba: <code class="literal">Only variable references should be returned by reference</code>
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function &amp;</span><span style="color: #0000BB">test</span><span style="color: #007700">(): </span><span style="color: #0000BB">void </span><span style="color: #007700">{}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+      </div>
+
+     </div>
+    </p>
+   </p></blockquote>
+  </div>
+
+  <div class="sect3" id="language.types.declarations.never">
+   <h4 class="title">never</h4>
+   <p class="para">
+    <code class="literal">never</code> es un tipo de retorno que indica que la función no retorna. Esto significa que llama a <span class="function"><a href="function.exit.html" class="function">exit()</a></span>, lanza una excepción o es un ciclo infinito. Por lo tanto, no
+    puede ser parte de una declaración de tipo de unión. Disponible a partir de PHP 8.1.0.
+   </p>
+   <p class="para">
+    <span class="type"><a href="language.types.never.html" class="type never">never</a></span> es, en el lenguaje de la teoría de tipos, el tipo inferior. Lo que significa que es el subtipo de cualquier otro tipo y puede reemplazar cualquier otro tipo de retorno durante la
+    herencia.
+   </p>
+  </div>
+
+  <div class="sect3" id="language.types.declarations.static">
+   <h4 class="title">static</h4>
+   <p class="para">
+			 El valor debe ser una instancia de la misma clase en la que se llama al método.
+			 Disponible a partir de PHP 8.0.0.
+   </p>
+  </div>
+ </div>
+
+ <div class="sect2" id="language.types.declarations.strict">
+  <h3 class="title">Tipificación estricto</h3>
+
+  <p class="para">
+   Por defecto, PHP forzará los valores del tipo incorrecto en la declaración
+   de tipo escalar esperada si es posible. Por ejemplo, una función a la que se le da un
+   <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> para un parámetro que espera una <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+   obtendrá una variable de tipo <span class="type"><a href="language.types.string.html" class="type string">string</a></span>.
+  </p>
+
+  <p class="para">
+   Es posible habilitar el modo estricto por archivo. En modo estricto,
+   solo se aceptará un valor que corresponda exactamente a la declaración de tipo.
+   De lo contrario, se lanzará un <span class="classname"><a href="class.typeerror.html" class="classname">TypeError</a></span>.
+   La única excepción a esta regla es que un valor <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> pasará una
+   declaración de tipo <span class="type"><a href="language.types.float.html" class="type float">float</a></span>.
+  </p>
+
+  <div class="warning"><strong class="warning">Advertencia</strong>
+   <p class="simpara">
+    Las llamadas a funciones desde funciones internas no se verán afectadas por la declaración de <code class="literal">strict_types</code>.
+   </p>
+  </div>
+
+  <p class="para">
+   Para habilitar el modo estricto, se usa el constructor <code class="literal">declare</code> con la declaración <code class="literal">strict_types</code>=1.
+  </p>
+
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    El tipado estricto se aplica a las llamadas de función realizadas desde dentro del archivo con el tipado estricto habilitado, no a las funciones declaradas de ese archivo.
+    Si un archivo sin <code class="literal">strict_types</code> activado realiza una llamada a una función que se definió en un archivo con <code class="literal">strict_types</code> activado, la preferencia será respetada
+    (escritura coercitiva) y se forzará el valor.
+   </p>
+  </p></blockquote>
+
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    La tipificación estricta solo está definida para declaraciones de tipos escalares.
+   </p>
+  </p></blockquote>
+
+  <div class="example" id="example-90">
+   <p><strong>Ejemplo #8 Tipificación estricta para los valores de los argumentos</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">declare(</span><span style="color: #0000BB">strict_types</span><span style="color: #007700">=</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br />function </span><span style="color: #0000BB">suma</span><span style="color: #007700">(</span><span style="color: #0000BB">int $a</span><span style="color: #007700">, </span><span style="color: #0000BB">int $b</span><span style="color: #007700">) {<br />    return </span><span style="color: #0000BB">$a </span><span style="color: #007700">+ </span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">suma</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">suma</span><span style="color: #007700">(</span><span style="color: #0000BB">1.5</span><span style="color: #007700">, </span><span style="color: #0000BB">2.5</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>Output of the above example in PHP 8:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+int(3)
+
+Fatal error: Uncaught TypeError: suma(): Argument #1 ($a) must be of type int, float given, called in - on line 9 and defined in -:4
+Stack trace:
+#0 -(9): sum(1.5, 2.5)
+#1 {main}
+  thrown in - on line 4
+</pre></div>
+   </div>
+  </div>
+
+  <div class="example" id="example-91">
+   <p><strong>Ejemplo #9 Tipificación coercitiva para valores de los argumentos</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">suma</span><span style="color: #007700">(</span><span style="color: #0000BB">int $a</span><span style="color: #007700">, </span><span style="color: #0000BB">int $b</span><span style="color: #007700">) {<br />    return </span><span style="color: #0000BB">$a </span><span style="color: #007700">+ </span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">suma</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">// Estos serán forzados a números enteros: ¡observe el resultado a continuación!<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">suma</span><span style="color: #007700">(</span><span style="color: #0000BB">1.5</span><span style="color: #007700">, </span><span style="color: #0000BB">2.5</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+int(3)
+int(3)
+</pre></div>
+   </div>
+  </div>
+
+  <div class="example" id="example-92">
+   <p><strong>Ejemplo #10 Tipificación estricta para valores de retorno</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">declare(</span><span style="color: #0000BB">strict_types</span><span style="color: #007700">=</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br />function </span><span style="color: #0000BB">suma</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">): </span><span style="color: #0000BB">int </span><span style="color: #007700">{<br />    return </span><span style="color: #0000BB">$a </span><span style="color: #007700">+ </span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">suma</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">suma</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2.5</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+int(3)
+
+Fatal error: Uncaught TypeError: suma(): Return value must be of type int, float returned in -:5
+Stack trace:
+#0 -(9): suma(1, 2.5)
+#1 {main}
+  thrown in - on line 5
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="language.types.declarations.union.coercive">
+  <h3 class="title">Tipificación coercitiva con tipos Unión</h3>
+  <p class="para">
+   Cuando <code class="literal">strict_types</code> no está activado, las declaraciones de tipo escalar están sujetas a coerciones de tipo limitadas.
+			Si el tipo exacto del valor no es parte de la unión, entonces el tipo de destino se elige en el siguiente orden de preferencia:
+
+   <ol type="1">
+    <li class="listitem">
+     <span class="simpara">
+      <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="type"><a href="language.types.float.html" class="type float">float</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span>
+     </span>
+    </li>
+   </ol>
+
+			Si el tipo existe en la unión, y el valor se puede forzar al tipo bajo la semántica
+			de verificación de tipo existente de PHP, entonces se elige el tipo. De lo contrario,
+			se prueba el siguiente tipo.
+  </p>
+
+  <div class="caution"><strong class="caution">Precaución</strong>
+   <p class="para">
+				Como excepción, si el valor es una cadena y tanto int como float son parte de la unión,
+				el tipo preferido está determinado por la semántica de &quot;cadena numérica&quot; ​​existente.
+				Por ejemplo, para <code class="literal">&quot;42&quot;</code> se elige <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>, mientras que
+				para <code class="literal">&quot;42.0&quot;</code> se elige <span class="type"><a href="language.types.float.html" class="type float">float</a></span>.
+   </p>
+  </div>
+
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Los tipos que no forman parte de la lista de preferencias anterior no son
+    objetivos elegibles para la coerción implícita. En particular, no ocurre
+    ninguna coerción implícita para los tipos <code class="literal">null</code> y
+    <code class="literal">false</code>.
+   </p>
+  </p></blockquote>
+
+  <div class="example" id="example-93">
+   <p><strong>Ejemplo #11 Ejemplo de tipos siendo forzados a formar parte del tipo Unión</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// int|string<br /></span><span style="color: #0000BB">42    </span><span style="color: #007700">--&gt; </span><span style="color: #0000BB">42          </span><span style="color: #FF8000">// tipo exacto<br /></span><span style="color: #DD0000">"42"  </span><span style="color: #007700">--&gt; </span><span style="color: #DD0000">"42"        </span><span style="color: #FF8000">// tipo exacto<br /></span><span style="color: #007700">new </span><span style="color: #0000BB">ObjectWithToString </span><span style="color: #007700">--&gt; </span><span style="color: #DD0000">"Resultado de __toString()"<br />                      </span><span style="color: #FF8000">// object nunca compatible con int, se resuelve como string<br /></span><span style="color: #0000BB">42.0  </span><span style="color: #007700">--&gt; </span><span style="color: #0000BB">42          </span><span style="color: #FF8000">// float compatible con int<br /></span><span style="color: #0000BB">42.1  </span><span style="color: #007700">--&gt; </span><span style="color: #0000BB">42          </span><span style="color: #FF8000">// float compatible con int<br /></span><span style="color: #0000BB">1e100 </span><span style="color: #007700">--&gt; </span><span style="color: #DD0000">"1.0E+100"  </span><span style="color: #FF8000">// float demasiado largo para tipo int, se resuelve como string<br /></span><span style="color: #0000BB">INF   </span><span style="color: #007700">--&gt; </span><span style="color: #DD0000">"INF"       </span><span style="color: #FF8000">// float demasiado largo para tipo int, se resuelve como string<br /></span><span style="color: #0000BB">true  </span><span style="color: #007700">--&gt; </span><span style="color: #0000BB">1           </span><span style="color: #FF8000">// bool compatible con int<br /></span><span style="color: #007700">[]    --&gt; </span><span style="color: #0000BB">TypeError   </span><span style="color: #FF8000">// array no compatible con int o string<br /><br />// int|float|bool<br /></span><span style="color: #DD0000">"45"    </span><span style="color: #007700">--&gt; </span><span style="color: #0000BB">45        </span><span style="color: #FF8000">// string numérico int<br /></span><span style="color: #DD0000">"45.0"  </span><span style="color: #007700">--&gt; </span><span style="color: #0000BB">45.0      </span><span style="color: #FF8000">// string numérico float<br /><br /></span><span style="color: #DD0000">"45X"   </span><span style="color: #007700">--&gt; </span><span style="color: #0000BB">true      </span><span style="color: #FF8000">// no es string numérico, se resuelve como bool<br /></span><span style="color: #DD0000">""      </span><span style="color: #007700">--&gt; </span><span style="color: #0000BB">false     </span><span style="color: #FF8000">// no es string numérico, se resuelve como bool<br /></span><span style="color: #DD0000">"X"     </span><span style="color: #007700">--&gt; </span><span style="color: #0000BB">true      </span><span style="color: #FF8000">// no es string numérico, se resuelve como bool<br /></span><span style="color: #007700">[]      --&gt; </span><span style="color: #0000BB">TypeError </span><span style="color: #FF8000">// array no compatible con int, float or bool<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </div>
+
+
+ <div class="sect2" id="language.types.declarations.misc">
+  <h3 class="title">Misc</h3>
+   <div class="example" id="example-94">
+    <p><strong>Ejemplo #12 Tipificación de parámetros pasados por referencia</strong></p>
+    <div class="example-contents"><p>
+     Los tipos declarados de parámetros pasados por referencia se verifican en la entrada
+     de la función, pero no cuando la función devuelve el retorno, por lo que después de que
+     la función haya devuelvo el retorno, el tipo de argumento puede haber cambiado.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">array_baz</span><span style="color: #007700">(array &amp;</span><span style="color: #0000BB">$param</span><span style="color: #007700">)<br />{<br />    </span><span style="color: #0000BB">$param </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">$var </span><span style="color: #007700">= [];<br /></span><span style="color: #0000BB">array_baz</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">array_baz</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>Output of the above example in PHP 8:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+int(1)
+
+Fatal error: Uncaught TypeError: array_baz(): Argument #1 ($param) must be of type array, int given, called in - on line 9 and defined in -:2
+Stack trace:
+#0 -(9): array_baz(1)
+#1 {main}
+  thrown in - on line 2
+</pre></div>
+    </div>
+   </div>
+
+   <div class="example" id="example-95">
+    <p><strong>Ejemplo #13 Capturando <span class="classname"><a href="class.typeerror.html" class="classname">TypeError</a></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">declare(</span><span style="color: #0000BB">strict_types</span><span style="color: #007700">=</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br />function </span><span style="color: #0000BB">suma</span><span style="color: #007700">(</span><span style="color: #0000BB">int $a</span><span style="color: #007700">, </span><span style="color: #0000BB">int $b</span><span style="color: #007700">) {<br />    return </span><span style="color: #0000BB">$a </span><span style="color: #007700">+ </span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br />}<br /><br />try {<br />    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">suma</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">));<br />    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">suma</span><span style="color: #007700">(</span><span style="color: #0000BB">1.5</span><span style="color: #007700">, </span><span style="color: #0000BB">2.5</span><span style="color: #007700">));<br />} catch (</span><span style="color: #0000BB">TypeError $e</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">'Error: '</span><span style="color: #007700">, </span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">();<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>Output of the above example in PHP 8:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+int(3)
+Error: suma(): Argument #1 ($a) must be of type int, float given, called in - on line 10
+</pre></div>
+    </div>
+   </div>
+ </div>
+
+</div></div></div></body></html>

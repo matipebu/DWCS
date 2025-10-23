@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Devuelve la caducidad de la cach&eacute; actual</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.session-abort.html">« session_abort</a></li>
+      <li style="float: right;"><a href="function.session-cache-limiter.html">session_cache_limiter »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.session.html">Funciones de sesi&oacute;n</a></li>
+    <li>Devuelve la caducidad de la cach&eacute; actual</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.session-cache-expire" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">session_cache_expire</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">session_cache_expire</span> &mdash; <span class="dc-title">Devuelve la caducidad de la caché actual</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.session-cache-expire-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>session_cache_expire</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$new_cache_expire</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>session_cache_expire()</strong></span> devuelve la configuración actual de
+   <code class="literal">session.cache_expire</code>. 
+  </p>
+  <p class="para">
+   La caducidad de la caché se reinicia al valor predeterminado de 180 almacenado en
+   <a href="session.configuration.html#ini.session.cache-expire" class="link">session.cache_expire</a>
+   en el momento de iniciar una petición. Por lo tanto,
+   se necesita llamar a <span class="function"><strong>session_cache_expire()</strong></span> por cada
+   petición (y antes de llamar a <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span>).
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.session-cache-expire-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">new_cache_expire</code></dt>
+     <dd>
+      <p class="para">
+       Si se da <code class="parameter">new_cache_expire</code>, la nueva caducidad
+       de la caché se reemplaza por <code class="parameter">new_cache_expire</code>.
+      </p>
+      <p class="para">
+       <blockquote class="note"><p><strong class="note">Nota</strong>: 
+        <span class="simpara">
+         La configuración de <code class="parameter">new_cache_expire</code> es de valores sólamente, si
+         <code class="literal">session.cache_limiter</code> se establece a un valor
+         <em>diferente</em> de <code class="literal">nocache</code>.
+        </span>
+       </p></blockquote>
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.session-cache-expire-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve la configuración actual de <code class="literal">session.cache_expire</code>.
+   El valor devuelto se debería leer en minutos, por defecto es 180. 
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.session-cache-expire-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4719">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>session_cache_expire()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/* establecer el limitador de caché a 'private' */<br /><br /></span><span style="color: #0000BB">session_cache_limiter</span><span style="color: #007700">(</span><span style="color: #DD0000">'private'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cache_limiter </span><span style="color: #007700">= </span><span style="color: #0000BB">session_cache_limiter</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">/* establecer la caducidad de la caché a 30 minutos */<br /></span><span style="color: #0000BB">session_cache_expire</span><span style="color: #007700">(</span><span style="color: #0000BB">30</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cache_expire </span><span style="color: #007700">= </span><span style="color: #0000BB">session_cache_expire</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">/* iniciar la sesión */<br /><br /></span><span style="color: #0000BB">session_start</span><span style="color: #007700">();<br /><br />echo </span><span style="color: #DD0000">"El limitador de caché ahora está establecido a </span><span style="color: #0000BB">$cache_limiter</span><span style="color: #DD0000">&lt;br /&gt;"</span><span style="color: #007700">;<br />echo </span><span style="color: #DD0000">"Las páginas de sesión examinadas caducan después de </span><span style="color: #0000BB">$cache_expire</span><span style="color: #DD0000"> minutos"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.session-cache-expire-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><a href="session.configuration.html#ini.session.cache-expire" class="link">session.cache_expire</a></li>
+    <li><a href="session.configuration.html#ini.session.cache-limiter" class="link">session.cache_limiter</a></li>
+    <li><span class="function"><a href="function.session-cache-limiter.html" class="function" rel="rdfs-seeAlso">session_cache_limiter()</a> - Obtener y/o establecer el limitador de cach&eacute; actual</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

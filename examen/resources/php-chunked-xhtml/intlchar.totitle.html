@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Convertir un car&aacute;cter Unicode a letra titular</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="intlchar.tolower.html">« IntlChar::tolower</a></li>
+      <li style="float: right;"><a href="intlchar.toupper.html">IntlChar::toupper »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.intlchar.html">IntlChar</a></li>
+    <li>Convertir un car&aacute;cter Unicode a letra titular</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="intlchar.totitle" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">IntlChar::totitle</h1>
+  <p class="verinfo">(PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">IntlChar::totitle</span> &mdash; <span class="dc-title">Convertir un carácter Unicode a letra titular</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-intlchar.totitle-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="methodname"><strong>IntlChar::totitle</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$codepoint</code></span>): <span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span></div>
+
+  <p class="para rdfs-comment">
+   Se hace corresponder el carácter dado con su equivalente de letra titular.
+   Si el carácter no tiene dicho equivalente, se devuelve el carácter en sí.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-intlchar.totitle-parameters">
+  <h3 class="title">Parámetros</h3>
+  <dl>
+   
+    <dt><code class="parameter">codepoint</code></dt>
+    <dd>
+     <p class="para">El valor de tipo <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> del punto de código (p.ej. <code class="literal">0x2603</code> para <em>U+2603 SNOWMAN</em>), o el carácter codificado como un <span class="type"><a href="language.types.string.html" class="type string">string</a></span> UTF-8 (p.ej. <code class="literal">&quot;\u{2603}&quot;</code>)</p>
+    </dd>
+   
+  </dl>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-intlchar.totitle-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el Simple_Titlecase_Mapping del punto de código, si lo hubiera;
+   de lo contrario devuelve el punto de código en sí.
+  </p>
+  <p class="para">El tipo devuelto será <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> a menos que el punto de código se pase como un <span class="type"><a href="language.types.string.html" class="type string">string</a></span> UTF-8, en cuyo caso será devuelto un <span class="type"><a href="language.types.string.html" class="type string">string</a></span>.</p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-intlchar.totitle-examples">
+  <h3 class="title">Ejemplos</h3>
+  <div class="example" id="example-2544">
+   <p><strong>Ejemplo #1 Probar diferentes puntos de código</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">totitle</span><span style="color: #007700">(</span><span style="color: #DD0000">"A"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">totitle</span><span style="color: #007700">(</span><span style="color: #DD0000">"a"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">totitle</span><span style="color: #007700">(</span><span style="color: #DD0000">"Φ"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">totitle</span><span style="color: #007700">(</span><span style="color: #DD0000">"φ"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">totitle</span><span style="color: #007700">(</span><span style="color: #DD0000">"1"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">totitle</span><span style="color: #007700">(</span><span style="color: #0000BB">ord</span><span style="color: #007700">(</span><span style="color: #DD0000">"A"</span><span style="color: #007700">)));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">totitle</span><span style="color: #007700">(</span><span style="color: #0000BB">ord</span><span style="color: #007700">(</span><span style="color: #DD0000">"a"</span><span style="color: #007700">)));<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">string(1) &quot;A&quot;
+string(1) &quot;A&quot;
+string(2) &quot;Φ&quot;
+string(2) &quot;Φ&quot;
+string(1) &quot;1&quot;
+int(65)
+int(65)</pre>
+</div>
+   </div>
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-intlchar.totitle-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="intlchar.tolower.html" class="function" rel="rdfs-seeAlso">IntlChar::tolower()</a> - Convertir a min&uacute;sculas un car&aacute;cter Unicode</span></li>
+    <li><span class="function"><a href="intlchar.toupper.html" class="function" rel="rdfs-seeAlso">IntlChar::toupper()</a> - Convertir a may&uacute;sculas un car&aacute;cter Unicode</span></li>
+    <li><span class="function"><a href="function.mb-convert-case.html" class="function" rel="rdfs-seeAlso">mb_convert_case()</a> - Realiza una conversi&oacute;n a may&uacute;sculas/min&uacute;sculas de un string</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

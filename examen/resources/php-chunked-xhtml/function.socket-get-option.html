@@ -1,0 +1,509 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Obtiene las opciones de socket para el socket</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.socket-export-stream.html">« socket_export_stream</a></li>
+      <li style="float: right;"><a href="function.socket-getopt.html">socket_getopt »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.sockets.html">Funciones de Socket</a></li>
+    <li>Obtiene las opciones de socket para el socket</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.socket-get-option" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">socket_get_option</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">socket_get_option</span> &mdash; <span class="dc-title">Obtiene las opciones de socket para el socket</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.socket-get-option-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>socket_get_option</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$socket</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$level</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$optname</code></span>): <span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span></div>
+
+  <p class="para rdfs-comment">
+   La función <span class="function"><strong>socket_get_option()</strong></span> recupera el valor de
+   la opción especificada por el parámetro <code class="parameter">optname</code> para el
+   <code class="parameter">socket</code> especificado.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.socket-get-option-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">socket</code></dt>
+     <dd>
+      <p class="para">
+       Un recurso socket válido creado con <span class="function"><a href="function.socket-create.html" class="function">socket_create()</a></span>
+       o <span class="function"><a href="function.socket-accept.html" class="function">socket_accept()</a></span>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">level</code></dt>
+     <dd>
+      <p class="para">
+       El parámetro <code class="parameter">level</code> especifica el nivel
+       de protcolo en el que reside la opción. Por ejemplo, para recuperar las opciones
+       al nivel de socket se usaría un parámetro <code class="parameter">level</code> de
+       <strong><code><a href="sockets.constants.html#constant.sol-socket">SOL_SOCKET</a></code></strong>. Se puden usar otros niveles como
+       <strong><code>TCP</code></strong> especificando el número de protocolo de ese nivel.
+       Los números de protocolo se pueden averiguar usando la función
+       <span class="function"><a href="function.getprotobyname.html" class="function">getprotobyname()</a></span>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">optname</code></dt>
+     <dd>
+      <table class="doctable table">
+       <caption><strong>Opciones de Socket Disponibles</strong></caption>
+       
+        <thead>
+         <tr>
+          <th>Opción</th>
+          <th>Descripción</th>
+          <th>Tipo</th>
+         </tr>
+
+        </thead>
+
+        <tbody class="tbody">
+         <tr>
+          <td><strong><code><a href="sockets.constants.html#constant.so-debug">SO_DEBUG</a></code></strong></td>
+          <td>
+           Informa si la información de depuración está siendo registrada.
+          </td>
+          <td>
+           <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code><a href="sockets.constants.html#constant.so-broadcast">SO_BROADCAST</a></code></strong></td>
+          <td>
+           Informa si la transmisión de mensajes de emisión está soportada.
+          </td>
+          <td>
+           <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code><a href="sockets.constants.html#constant.so-reuseaddr">SO_REUSEADDR</a></code></strong></td>
+          <td>
+           Informa si las direcciones locales pueden ser rechazadas.
+          </td>
+          <td>
+           <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+          </td>
+         </tr>
+
+          <tr>
+          <td><strong><code><a href="sockets.constants.html#constant.so-reuseport">SO_REUSEPORT</a></code></strong></td>
+          <td>
+           Informa si los puertos locales pueden ser reutilizados.
+          </td>
+          <td>
+           <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code><a href="sockets.constants.html#constant.so-keepalive">SO_KEEPALIVE</a></code></strong></td>
+          <td>
+           Informa si las conexiones se mantienen activas con transmisiones periódicas
+           de mensajes. Si el socket conectado falla al responder a estos mensajes,
+           la conexión es interrumpida y los procesos que escriben en ese socket son notificados
+           con una señal SIGPIPE.
+          </td>
+          <td>
+           <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code><a href="sockets.constants.html#constant.so-linger">SO_LINGER</a></code></strong></td>
+          <td>
+           <p class="para">
+            Informa si el <code class="parameter">socket</code> perdura en
+            <span class="function"><a href="function.socket-close.html" class="function">socket_close()</a></span> si la información está presente. Por omisión, 
+            cuando el socket se cierra, se intenta enviar toda la información no enviada.
+            En el caso de un socket orientado a conexión,
+            <span class="function"><a href="function.socket-close.html" class="function">socket_close()</a></span> esperará a su par para
+            admitir la información.
+           </p>
+           <p class="para">
+            Si <var class="varname">l_onoff</var> no es cero y
+            <var class="varname">l_linger</var> es cero, toda la
+            información no enviada será desechada y se envía RST (reinicio) al
+            par en el caso de un socker orientado a conexión. 
+           </p>
+           <p class="para">
+            Por otro lado, si <var class="varname">l_onoff</var> no
+            es cero y <var class="varname">l_linger</var> no es cero,
+            <span class="function"><a href="function.socket-close.html" class="function">socket_close()</a></span> bloqueará hasta que toda la información
+            sea enviada o transcurra el tiempo especificado en <var class="varname">l_linger</var>.
+            Si el socket es de no-bloqueo,
+            <span class="function"><a href="function.socket-close.html" class="function">socket_close()</a></span> fallará y devolverá un error.
+           </p>
+          </td>
+          <td>
+           <span class="type"><a href="language.types.array.html" class="type array">array</a></span>. La matriz contendrá dos claves:
+           <var class="varname">l_onoff</var> y 
+           <var class="varname">l_linger</var>. 
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code><a href="sockets.constants.html#constant.so-oobinline">SO_OOBINLINE</a></code></strong></td>
+          <td>
+           Informa si el <code class="parameter">socket</code> deja información fuera de banda en línea.
+          </td>
+          <td>
+           <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code><a href="sockets.constants.html#constant.so-sndbuf">SO_SNDBUF</a></code></strong></td>
+          <td>
+           Informa del tamaño del buffer de envío.
+          </td>
+          <td>
+           <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+          </td>          
+         </tr>
+
+         <tr>
+          <td><strong><code><a href="sockets.constants.html#constant.so-rcvbuf">SO_RCVBUF</a></code></strong></td>
+          <td>
+           Informa del tamaño del buffer de recepción.
+          </td>
+          <td>
+           <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+          </td>         
+         </tr>
+
+         <tr>
+          <td><strong><code><a href="sockets.constants.html#constant.so-error">SO_ERROR</a></code></strong></td>
+          <td>
+           Da información sobre el estado de error y lo limpia.
+          </td>
+          <td>
+           <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> (no puede ser establecido por la función <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span>)
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code><a href="sockets.constants.html#constant.so-type">SO_TYPE</a></code></strong></td>
+          <td>
+           Informa del tipo <code class="parameter">socket</code> (p.ej. 
+           <strong><code><a href="sockets.constants.html#constant.sock-stream">SOCK_STREAM</a></code></strong>).
+          </td>
+          <td>
+           <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> (no puede ser establecido mediante <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span>)
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code><a href="sockets.constants.html#constant.so-dontroute">SO_DONTROUTE</a></code></strong></td>
+          <td>
+           Informa si los mensajes salientes se desvían de los mecanismos de ruta estándar.
+          </td>
+          <td>
+           <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code><a href="sockets.constants.html#constant.so-rcvlowat">SO_RCVLOWAT</a></code></strong></td>
+          <td>
+           Informa del número mínimo de bytes a procesar para operaciones de entrada del
+           <code class="parameter">socket</code>.
+          </td>
+          <td>
+           <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code><a href="sockets.constants.html#constant.so-rcvtimeo">SO_RCVTIMEO</a></code></strong></td>
+          <td>
+           Informa del valor del tiempo de espera para operaciones de entrada.
+          </td>
+          <td>
+           <span class="type"><a href="language.types.array.html" class="type array">array</a></span>. La matriz contendrá dos claves:
+           <var class="varname">sec</var> que es la parte de segundos del valor del tiempo límite
+           y <var class="varname">usec</var> que es la parte de microsegundos del valor
+           del tiempo límite.
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code><a href="sockets.constants.html#constant.so-sndtimeo">SO_SNDTIMEO</a></code></strong></td>
+          <td>
+           Informa del valor del tiempo de espera especificando la cantidad de tiempo que una función
+           de salida bloquea porque el control de flujo evita el envío de información.
+          </td>
+          <td>
+           <span class="type"><a href="language.types.array.html" class="type array">array</a></span>. La matriz contendrá dos claves:
+           <var class="varname">sec</var> que es la parte de segundos del valor del tiempo límite
+           y <var class="varname">usec</var> que es la parte de microsegundos del valor
+           del tiempo límite.
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code><a href="sockets.constants.html#constant.so-sndlowat">SO_SNDLOWAT</a></code></strong></td>
+          <td>
+           Informa del número mínimo de bytes a procesar por operaciones de salida del <code class="parameter">socket</code>.
+          </td>
+          <td>
+           <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code><a href="sockets.constants.html#constant.tcp-nodelay">TCP_NODELAY</a></code></strong></td>
+          <td>
+           Informa si el algoritmo Nagle TCP está deshabilitado.
+          </td>
+          <td>
+           <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>MCAST_JOIN_GROUP</code></strong></td>
+          <td>
+           Unirse a un grupo multidifusión. (añadido en PHP 5.4)
+          </td>
+          <td>
+           Un <span class="type"><a href="language.types.array.html" class="type array">array</a></span> con claves <code class="literal">&quot;group&quot;</code>, especificando
+           un <span class="type"><a href="language.types.string.html" class="type string">string</a></span> con la dirección de la multidifusión IPv4 o IPv6 e
+           <code class="literal">&quot;interface&quot;</code>, especificando o un número de
+           intefaz (de tipo <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>) o un <code class="literal">string</code> con
+           el nombre de la interfaz, como <code class="literal">&quot;eth0&quot;</code>.
+           Se puede especificar <code class="literal">0</code> para indicar que la interfaz
+           debería ser seleccionada usando las normas de enrutamiento. (Sólo se puede usar en
+           la función <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span>)
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>MCAST_LEAVE_GROUP</code></strong></td>
+          <td>
+           Abandonar un grupo multidifusión. (añadido en PHP 5.4)
+          </td>
+          <td>
+           <span class="type"><a href="language.types.array.html" class="type array">array</a></span>. Véase <strong><code>MCAST_JOIN_GROUP</code></strong> para
+           más información. (Sólo se puede usar en
+           la función <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span>)
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>MCAST_BLOCK_SOURCE</code></strong></td>
+          <td>
+           Bloquea los paquetes enviados desde un origen específico a un grupo
+           multidifusión específico, al cual se ha tenido que unir previamente.
+           (añadido en PHP 5.4)
+          </td>
+          <td>
+           Un <span class="type"><a href="language.types.array.html" class="type array">array</a></span> con las mismas claves que en
+           <strong><code>MCAST_JOIN_GROUP</code></strong>, más una clave extra,
+           <code class="literal">source</code>, que hace referencia a un <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+           que especifica una dirección IPv4 o IPv6 del origen a ser bloqueado.
+           (Sólo se puede usar en la función <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span>)
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>MCAST_UNBLOCK_SOURCE</code></strong></td>
+          <td>
+           Desbloquea (empieza a recibir de nuevo) paquetes enviados desde una dirección
+           origen especificada a un grupo multidifusión especificado, al cual se ha tenido que
+           unir previamente. (añadido en PHP 5.4)
+          </td>
+          <td>
+           Un <span class="type"><a href="language.types.array.html" class="type array">array</a></span> con el mismo formato que
+           <strong><code>MCAST_BLOCK_SOURCE</code></strong>.
+           (Sólo se puede usar en la función <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span>)
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>MCAST_JOIN_SOURCE_GROUP</code></strong></td>
+          <td>
+           Recibir paquetes destinados aun grupo multidifusión específico cuya dirección
+           de origen coincide con un valor específico. (añadido en PHP 5.4)
+          </td>
+          <td>
+           Un <span class="type"><a href="language.types.array.html" class="type array">array</a></span> con el mismo formato que
+           <strong><code>MCAST_BLOCK_SOURCE</code></strong>.
+           (Sólo se puede usar en la función <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span>)
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>MCAST_LEAVE_SOURCE_GROUP</code></strong></td>
+          <td>
+           Dejar de recibir paquetes destinados a un grupo multidifusión específico cuya
+           dirección de origen coincide con un valor específico. (añadido en PHP 5.4)
+          </td>
+          <td>
+           Un <span class="type"><a href="language.types.array.html" class="type array">array</a></span> con el mismo formato que
+           <strong><code>MCAST_BLOCK_SOURCE</code></strong>.
+           (Sólo se puede usar en la función <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span>)
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>IP_MULTICAST_IF</code></strong></td>
+          <td>
+           La interfaz saliente para paquetes multidifusión IPv4.
+           (añadido en PHP 5.4)
+          </td>
+          <td>
+           O un valor de tipo <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> especificando el número de la interfaz o un
+           <span class="type"><a href="language.types.string.html" class="type string">string</a></span> con el nombre de la interfaz, como
+           <code class="literal">eth0</code>. Se puede usar el valor <span class="type">0</span> para
+           indicar que la tabla de enrutamiento se usa en la selección de la interfaz.
+           La función <span class="function"><strong>socket_get_option()</strong></span> devuelve un
+           índice de interfaz.
+           Observe que, a diferencia de la API de C, esta opción NO toma una dirección
+           IP. Esto elimina las diferencias de interfaz entre
+           <strong><code>IP_MULTICAST_IF</code></strong> y
+           <strong><code>IPV6_MULTICAST_IF</code></strong>.
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>IPV6_MULTICAST_IF</code></strong></td>
+          <td>
+           La interfaz saliente para paquetes multidifusión IPv6.
+           (añadido en PHP 5.4)
+          </td>
+          <td>
+           El mismo que <strong><code>IP_MULTICAST_IF</code></strong>.
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>IP_MULTICAST_LOOP</code></strong></td>
+          <td>
+           La política de loopback multidifusión para paquetes IPv4, la cual
+           determina si los paquetes enviados por este socket también alcanzan
+           los receptores del mismo host al que se ha unidoal mismo grupo multidifusión
+           en la interfaz saliente usada por este socket. Este es el caso por
+           omisión.
+           (añadido en PHP 5.4)
+          </td>
+          <td>
+           Un valor de tipo <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> (<code class="literal">0</code> ó
+           <code class="literal">1</code>). Para la función <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span>
+           será aceptado cualquier valor y será convertido a un booleano
+           siguiendo la reglas habituales de PHP.
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>IPV6_MULTICAST_LOOP</code></strong></td>
+          <td>
+           Análoga a<strong><code>IP_MULTICAST_LOOP</code></strong>, pero para IPv6.
+           (añadido en PHP 5.4)
+          </td>
+          <td>
+           Un valor de tipo <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>. Véase <strong><code>IP_MULTICAST_LOOP</code></strong>.
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>IP_MULTICAST_TTL</code></strong></td>
+          <td>
+           El tiemp de vida de los paquetes multidifusión IPv4 salientes. Debería ser
+           un valor entre 0 (no abandonar la interfaz) y 255. El valor
+           predeterminado es 1 (sólo se alcanza la red local).
+           (añadido en PHP 5.4)
+          </td>
+          <td>
+           Un valor de tipo <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> entre 0 y 255.
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>IPV6_MULTICAST_HOPS</code></strong></td>
+          <td>
+           Análoga a <strong><code>IP_MULTICAST_TTL</code></strong>, pero para paquetes
+           IPv6. También se acepta el valor -1, lo que significa que debería usarse
+           la ruta predeterminada.
+           (añadido en PHP 5.4)
+          </td>
+          <td>
+           Un valor de tipo <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> entre -1 y 255.
+          </td>
+         </tr>
+
+        </tbody>
+       
+      </table>
+
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.socket-get-option-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el valor de la opción dada, o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.socket-get-option-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4517">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>socket_get_option()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$socket </span><span style="color: #007700">= </span><span style="color: #0000BB">socket_create_listen</span><span style="color: #007700">(</span><span style="color: #0000BB">1223</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$linger </span><span style="color: #007700">= array(</span><span style="color: #DD0000">'l_linger' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #DD0000">'l_onoff' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">socket_set_option</span><span style="color: #007700">(</span><span style="color: #0000BB">$socket</span><span style="color: #007700">, </span><span style="color: #0000BB">SOL_SOCKET</span><span style="color: #007700">, </span><span style="color: #0000BB">SO_LINGER</span><span style="color: #007700">, </span><span style="color: #0000BB">$linger</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">socket_get_option</span><span style="color: #007700">(</span><span style="color: #0000BB">$socket</span><span style="color: #007700">, </span><span style="color: #0000BB">SOL_SOCKET</span><span style="color: #007700">, </span><span style="color: #0000BB">SO_REUSEADDR</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.socket-get-option-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.socket-create-listen.html" class="function" rel="rdfs-seeAlso">socket_create_listen()</a> - Abre un socket en un puerto para aceptar conexiones</span></li>
+    <li><span class="function"><a href="function.socket-set-option.html" class="function" rel="rdfs-seeAlso">socket_set_option()</a> - Establece las opciones de socket para el socket</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

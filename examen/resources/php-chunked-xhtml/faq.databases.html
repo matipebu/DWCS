@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Problemas con bases de datos</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="faq.obtaining.html">« Consiguiendo PHP</a></li>
+      <li style="float: right;"><a href="faq.installation.html">Instalaci&oacute;n »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li>Problemas con bases de datos</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="faq.databases" class="chapter">
+ <h1 class="title">Problemas con bases de datos</h1>
+
+ 
+
+ <p class="para">
+  Esta sección contiene preguntas comunes sobre la relación entre PHP y
+  bases de datos. Sí, PHP puede acceder a prácticamente cualquier base de
+  datos disponible hoy en día.
+ </p>
+
+ <div class="qandaset"><ol class="qandaset_questions"><li><a href="#faq.databases.mssql">
+    
+     He escuchado que es posible acceder a Microsoft SQL Server desde PHP. &iquest;C&oacute;mo?
+    
+   </a></li><li><a href="#faq.databases.access">
+    &iquest;Puedo acceder a bases de datos Microsoft Access?
+   </a></li></ol></div>
+  <dl class="qandaentry" id="faq.databases.mssql">
+   <dt><strong>
+    
+     He escuchado que es posible acceder a Microsoft SQL Server desde PHP. ¿Cómo?
+    
+   </strong></dt>
+   <dd class="answer">
+    <p class="para">
+     En máquinas Unix se puede usar <a href="ref.pdo-odbc.html" class="link">PDO_ODBC</a>
+     o la <a href="book.uodbc.html" class="link">API ODBC Unificada</a>.
+    </p>
+    <p class="para">
+     En máquinas Windows se puede usar <a href="ref.pdo-sqlsrv.html" class="link">PDO_SQLSRV</a>
+     o <a href="book.sqlsrv.html" class="link">SQLSRV</a>.
+    </p>
+    <p class="para">
+     Consulte también la respuesta de la siguiente pregunta.
+    </p>
+   </dd>
+  </dl>
+
+  <dl class="qandaentry" id="faq.databases.access">
+   <dt><strong>
+    ¿Puedo acceder a bases de datos Microsoft Access?
+   </strong></dt>
+   <dd class="answer">
+    <p class="para">
+     Si está corriendo PHP en una máquina Unix y desea comunicarse con MS Access
+     en Windows, necesitará controladores ODBC para Unix.
+     <a href="http://www.openlinksw.com/" class="link external">&raquo;&nbsp;OpenLink Software</a>
+     tiene controladores ODBC basados en Unix que tienen esa capacidad.
+    </p>
+    <p class="para">
+     Otra alternativa consiste en usar un servidor SQL que tenga
+     controladores ODBC Windows y usarlo para almacenar los datos, a los
+     cuales puede acceder desde Microsoft Access (usando ODBC) y PHP
+     (usando los controladores incorporados), o usar un formato de archivo
+     intermedio que Access y PHP entiendan, como archivos planos o bases de
+     datos dBase. Sobre este punto, Tim Hayes de OpenLink Software escribe:
+     <blockquote class="blockquote">
+      <p class="para">
+       Usar otra base de datos como intermediario no es una buena idea, cuando es posible
+       usar ODBC desde PHP directamente a su base de datos, es decir, con los controladores de
+       OpenLink. Si realmente necesita usar un formato de archivo intermedio, OpenLink ha lanzado ahora
+       Virtuoso (un motor de bases de datos virtual) para NT, Linux y otras plataformas Unix.
+       Por favor visite nuestro <a href="http://www.openlinksw.com/" class="link external">&raquo;&nbsp;sitio web</a> para una descarga gratuita.
+      </p>
+     </blockquote>
+    </p>
+    <p class="para">
+     Una opción que ha sido probada con éxito es usar MySQL y sus
+     controladores MyODBC en Windows y sincronizar las bases de datos.
+     Steve Lawrence escribe:
+    </p>
+    <p class="para">
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <span class="simpara">
+        Instale MySQL en su plataforma de acuerdo a las instrucciones de
+        MySQL. La última versión disponible se encuentra en <a href="http://www.mysql.com/" class="link external">&raquo;&nbsp;http://www.mysql.com/</a>. No se requiere ninguna
+        configuración especial, exceptuando al momento de configurar una
+        base de datos, y al configurar la cuenta de usuario, debe poner %
+        en el campo de host, o el nombre del host del equipo Windows desde el
+        que desea acceder a MySQL. Anote su nombre de servidor, nombre
+        de usuario y contraseña.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        Descargue el controlador MyODBC para Windows desde el sitio de
+        MySQL. Instálelo en su equipo Windows. Es posible probar su
+        operación con las utilidades incluidas con este programa.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        Cree un usuario o dsn de sistema en su administrador de ODBC,
+        ubicado en el panel de control. Cree un nombre dsn, ingrese su
+        nombre de host, nombre de usuario, contraseña, puerto, etc. para su
+        base de datos MySQL configurada en el paso 1.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        Instale Access usando la instalación completa, esto asegura que
+        tenga las elementos adicionales apropiados... por lo menos
+        requerirá el soporte ODBC y el gestor de tablas enlazadas.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        ¡Ahora la parte divertida! Cree una nueva base de datos Access. En
+        la ventana de tabla use el clic derecho y seleccione Enlazar
+        Tablas, o bajo la opción del menú de archivo, seleccione Obtener
+        Datos Externos y luego Enlazar Tablas. Cuando el cuadro de
+        navegación de archivos aparezca, seleccione archivos de tipo: ODBC.
+        Seleccione dsn de Sistema y el nombre de su dsn creado en el paso
+        3. Seleccione la tabla a enlazar, presione Aceptar, y ¡listo!
+        ¡Ahora es posible abrir la tabla y agregar/eliminar/editar datos en
+        su servidor MySQL!  También es posible construir consultas,
+        importar/exportar tablas a MySQL, construir formularios y reportes,
+        etc.
+       </span>
+      </li>
+     </ul>
+    </p>
+    <p class="para">
+     Consejos y Trucos:
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <span class="simpara">
+        Es posible construir sus tablas en Access y exportarlas a MySQL, y
+        luego enlazarlas de vuelta. Esto facilita la rápida creación de
+        tablas.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        Cuando se crean tablas en Access, es necesario tener una clave
+        primaria definida para tener acceso de escritura a la tabla en
+        Access. Asegúrese de crear una clave primaria en MySQL antes de
+        enlazar en Access.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        Si modifica una tabla en MySQL, es necesario re-enlazarla en
+        Access. Diríjase a Herramientas&gt;Adiciones&gt;Gestor de Tablas
+        Enlazadas, vaya a su DSN ODBC, y seleccione la tabla a re-enlazar
+        desde allí. También es posible transladar su fuente dsn allí,
+        simplemente active el cuadro de verificación &quot;siempre preguntar por
+        una ubicación nueva&quot; antes de presionar Aceptar.
+       </span>
+      </li>
+     </ul>
+    </p>
+   </dd>
+  </dl>
+ 
+</div>
+</div></div></body></html>

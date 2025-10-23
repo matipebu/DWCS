@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Realizar una b&uacute;squeda y sustituci&oacute;n de expresi&oacute;n regular con retrollamadas</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.preg-replace-callback.html">« preg_replace_callback</a></li>
+      <li style="float: right;"><a href="function.preg-split.html">preg_split »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.pcre.html">Funciones de PCRE</a></li>
+    <li>Realizar una b&uacute;squeda y sustituci&oacute;n de expresi&oacute;n regular con retrollamadas</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.preg-replace-callback-array" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">preg_replace_callback_array</h1>
+  <p class="verinfo">(PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">preg_replace_callback_array</span> &mdash; <span class="dc-title">Realizar una búsqueda y sustitución de expresión regular con retrollamadas</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.preg-replace-callback-array-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>preg_replace_callback_array</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$patterns_and_callbacks</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$subject</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$limit</code><span class="initializer"> = -1</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter reference">&$count</code><span class="initializer"> = ?</span></span><br>): <span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span></div>
+
+  <p class="para rdfs-comment">
+   El comportamiento de esta función es similar a la de
+   <span class="function"><a href="function.preg-replace-callback.html" class="function">preg_replace_callback()</a></span>, excepto que las retrollamadas se
+   ejecutan en función de cada patrón.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.preg-replace-callback-array-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">patterns_and_callbacks</code></dt>
+     <dd>
+      <p class="para">
+       Un array asociativo con correspondencias entre patrones (claves) y retrollamadas (valores).
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">subject</code></dt>
+     <dd>
+      <p class="para">
+       El sujeto. Un string o array con varios strings para la búsqueda y sustitución.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">limit</code></dt>
+     <dd>
+      <p class="para">
+       Las sustituciones máximas posibles para cada patrón en cada
+       string de <code class="parameter">subject</code>. Su valor predeterminado es de
+       <code class="literal">-1</code> (sin límite).
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">count</code></dt>
+     <dd>
+      <p class="para">
+       La cuenta. Si se especifica, esta variable contrendrá el número de
+       sustituciones hechas.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.preg-replace-callback-array-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   <span class="function"><strong>preg_replace_callback_array()</strong></span> devuelve un array si el
+   parámetro <code class="parameter">subject</code> es un array, o un string
+   en caso contrario. En caso de error devuelve <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>
+  </p>
+  <p class="para">
+   Si se encuentran coincidencias, será devuelto el nuevo sujeto; si no,
+   <code class="parameter">subject</code> será devuelto sin cambios.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.preg-replace-callback-array-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4762">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>preg_replace_callback_array()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$subject </span><span style="color: #007700">= </span><span style="color: #DD0000">'Aaaaaa Bbb'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">preg_replace_callback_array</span><span style="color: #007700">(<br />    [<br />        </span><span style="color: #DD0000">'~[a]+~i' </span><span style="color: #007700">=&gt; function (</span><span style="color: #0000BB">$match</span><span style="color: #007700">) {<br />            echo </span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$match</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]), </span><span style="color: #DD0000">' coincidencias de "a" encontradas'</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />        },<br />        </span><span style="color: #DD0000">'~[b]+~i' </span><span style="color: #007700">=&gt; function (</span><span style="color: #0000BB">$match</span><span style="color: #007700">) {<br />            echo </span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$match</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]), </span><span style="color: #DD0000">' coincidencias de "b" encontradas'</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />        }<br />    ],<br />    </span><span style="color: #0000BB">$subject<br /></span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">6 coincidencias de &quot;a&quot; encontradas
+3 coincidencias de &quot;b&quot; encontradas</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.preg-replace-callback-array-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><a href="pcre.pattern.html" class="link">Patrones de PCRE</a></li>
+    <li><span class="function"><a href="function.preg-replace-callback.html" class="function" rel="rdfs-seeAlso">preg_replace_callback()</a> - Realiza una b&uacute;squeda y sustituci&oacute;n de una expresi&oacute;n regular usando una llamada de retorno</span></li>
+    <li><span class="function"><a href="function.preg-quote.html" class="function" rel="rdfs-seeAlso">preg_quote()</a> - Escapar caracteres en una expresi&oacute;n regular</span></li>
+    <li><span class="function"><a href="function.preg-replace.html" class="function" rel="rdfs-seeAlso">preg_replace()</a> - Realiza una b&uacute;squeda y sustituci&oacute;n de una expresi&oacute;n regular</span></li>
+    <li><span class="function"><a href="function.preg-last-error.html" class="function" rel="rdfs-seeAlso">preg_last_error()</a> - Devuelve el c&oacute;digo de error de la &uacute;ltima ejecuci&oacute;n de expresi&oacute;n regular de PCRE</span></li>
+    <li><a href="functions.anonymous.html" class="link">Funciones anónimas</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

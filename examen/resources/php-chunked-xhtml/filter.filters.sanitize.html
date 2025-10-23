@@ -1,0 +1,222 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Filtros de saneamiento</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="filter.filters.validate.html">« Filtros de validaci&oacute;n</a></li>
+      <li style="float: right;"><a href="filter.filters.misc.html">Otros filtros »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="filter.filters.html">Tipos de filtros</a></li>
+    <li>Filtros de saneamiento</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="filter.filters.sanitize" class="section">
+  <h2 class="title">Filtros de saneamiento</h2>
+  <p class="para">
+   <table class="doctable table">
+    <caption><strong>Lista de filtros de saneamiento</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>ID</th>
+       <th>Nombre</th>
+       <th>Banderas</th>
+       <th>Descripción</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-sanitize-email">FILTER_SANITIZE_EMAIL</a></code></strong></td>
+       <td>&quot;email&quot;</td>
+       <td class="empty">&nbsp;</td>
+       <td>
+        Elimina todos los caracteres menos letras, dígitos y
+        <code class="literal">!#$%&amp;&#039;*+-=?^_`{|}~@.[]</code>.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-sanitize-encoded">FILTER_SANITIZE_ENCODED</a></code></strong></td>
+       <td>&quot;encoded&quot;</td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-flag-strip-low">FILTER_FLAG_STRIP_LOW</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-flag-strip-high">FILTER_FLAG_STRIP_HIGH</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-flag-encode-low">FILTER_FLAG_ENCODE_LOW</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-flag-encode-high">FILTER_FLAG_ENCODE_HIGH</a></code></strong>
+       </td>
+       <td>String URL-encode, opcionalmente elimina o codifica caracteres especiales.</td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-sanitize-magic-quotes">FILTER_SANITIZE_MAGIC_QUOTES</a></code></strong></td>
+       <td>&quot;magic_quotes&quot;</td>
+       <td class="empty">&nbsp;</td>
+       <td>Aplica <span class="function"><a href="function.addslashes.html" class="function">addslashes()</a></span>.</td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-sanitize-number-float">FILTER_SANITIZE_NUMBER_FLOAT</a></code></strong></td>
+       <td>&quot;number_float&quot;</td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-flag-allow-fraction">FILTER_FLAG_ALLOW_FRACTION</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-flag-allow-thousand">FILTER_FLAG_ALLOW_THOUSAND</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-flag-allow-scientific">FILTER_FLAG_ALLOW_SCIENTIFIC</a></code></strong>
+       </td>
+       <td>
+        Elimina todos los caracteres a excepción de los dígitos, <code class="literal">+-</code> y,
+        opcionalmente, <code class="literal">.,eE</code>.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-sanitize-number-int">FILTER_SANITIZE_NUMBER_INT</a></code></strong></td>
+       <td>&quot;number_int&quot;</td>
+       <td class="empty">&nbsp;</td>
+       <td>
+        Elimina todos los caracteres excepto dígitos y los signos de suma y resta.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-sanitize-special-chars">FILTER_SANITIZE_SPECIAL_CHARS</a></code></strong></td>
+       <td>&quot;special_chars&quot;</td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-flag-strip-low">FILTER_FLAG_STRIP_LOW</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-flag-strip-high">FILTER_FLAG_STRIP_HIGH</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-flag-encode-high">FILTER_FLAG_ENCODE_HIGH</a></code></strong>
+       </td>
+       <td>
+        Escapa caracteres HTML <code class="literal">&#039;&quot;&lt;&gt;&amp;</code> y caracteres con
+        valores ASCII menores que 32, opcionalmente elimina o codifica
+        caracteres especiales.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code>FILTER_SANITIZE_FULL_SPECIAL_CHARS</code></strong></td>
+       <td>&quot;full_special_chars&quot;</td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-flag-no-encode-quotes">FILTER_FLAG_NO_ENCODE_QUOTES</a></code></strong>,
+       </td>
+       <td>
+        Equivalente a llamar a <span class="function"><a href="function.htmlspecialchars.html" class="function">htmlspecialchars()</a></span> con <strong><code><a href="string.constants.html#constant.ent-quotes">ENT_QUOTES</a></code></strong> establecido. Las comillas de codificación pueden
+        ser desactivadas mediante el establecimiento de <strong><code><a href="filter.constants.html#constant.filter-flag-no-encode-quotes">FILTER_FLAG_NO_ENCODE_QUOTES</a></code></strong>. Al igual que <span class="function"><a href="function.htmlspecialchars.html" class="function">htmlspecialchars()</a></span>,
+        este filtro tiene en cuenta el <a href="ini.core.html#ini.default-charset" class="link">default_charset</a> y si en una secuencia de bytes se detecta que
+        contiene un carácter no válido en el conjunto de caracteres actual entonces el string completo es rechazado lo que resulta en un string de longitud 0.
+        Cuando se utiliza este filtro como un filtro predeterminado, vea la advertiencia de abajo sobre establecer las banderas predeterminadas a 0.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-sanitize-string">FILTER_SANITIZE_STRING</a></code></strong></td>
+       <td>&quot;string&quot;</td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-flag-no-encode-quotes">FILTER_FLAG_NO_ENCODE_QUOTES</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-flag-strip-low">FILTER_FLAG_STRIP_LOW</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-flag-strip-high">FILTER_FLAG_STRIP_HIGH</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-flag-encode-low">FILTER_FLAG_ENCODE_LOW</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-flag-encode-high">FILTER_FLAG_ENCODE_HIGH</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-flag-encode-amp">FILTER_FLAG_ENCODE_AMP</a></code></strong>
+       </td>
+       <td>Elimina etiquetas, opcionalmente elimina o codifica caracteres especiales.</td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-sanitize-stripped">FILTER_SANITIZE_STRIPPED</a></code></strong></td>
+       <td>&quot;stripped&quot;</td>
+       <td class="empty">&nbsp;</td>
+       <td>Alias del filtro &quot;string&quot;.</td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-sanitize-url">FILTER_SANITIZE_URL</a></code></strong></td>
+       <td>&quot;url&quot;</td>
+       <td class="empty">&nbsp;</td>
+       <td>
+        Elimina todos los caracteres excepto letras, dígitos y
+        <code class="literal">$-_.+!*&#039;(),{}|\\^~[]`&lt;&gt;#%&quot;;/?:@&amp;=</code>.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-unsafe-raw">FILTER_UNSAFE_RAW</a></code></strong></td>
+       <td>&quot;unsafe_raw&quot;</td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-flag-strip-low">FILTER_FLAG_STRIP_LOW</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-flag-strip-high">FILTER_FLAG_STRIP_HIGH</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-flag-encode-low">FILTER_FLAG_ENCODE_LOW</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-flag-encode-high">FILTER_FLAG_ENCODE_HIGH</a></code></strong>,
+        <strong><code><a href="filter.constants.html#constant.filter-flag-encode-amp">FILTER_FLAG_ENCODE_AMP</a></code></strong>
+       </td>
+       <td>
+        No hace nada, opcionalmente eliminar o codificar caracteres. Este
+        filtro es un alias de <strong><code><a href="filter.constants.html#constant.filter-default">FILTER_DEFAULT</a></code></strong>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+  <div class="warning"><strong class="warning">Advertencia</strong>
+   <p class="para">
+    Cuando se utiliza uno de estos tres filtros como un filtro predetermindo a través de fichero ini
+    o de la configuración del servidor web, las banderas predeterminadas son establecidas a
+    <strong><code><a href="filter.constants.html#constant.filter-flag-no-encode-quotes">FILTER_FLAG_NO_ENCODE_QUOTES</a></code></strong>. Se necesita establecer explícitamente
+    filter.default_flags a 0 para tener la codificación de comillas por omisión. Como esto:
+    <div class="example" id="example-5052">
+     <p><strong>Ejemplo #1 Configurar el filtro predeterminado para que actúe como htmlspecialchars</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">filter.default = full_special_chars<br />filter.default_flags = 0</span></code></div>
+     </div>
+
+    </div>
+   </p>
+  </div>
+
+  <div class="simplesect">
+   <h3 class="title">Historial de cambios</h3>
+   <p class="para">
+    <table class="doctable informaltable">
+     
+      <thead>
+       <tr>
+        <th>Versión</th>
+        <th>Descripción</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td>5.2.11/5.3.1</td>
+        <td>
+         Las barras (<code class="literal">/</code>) son eliminadas por
+         <strong><code><a href="filter.constants.html#constant.filter-sanitize-email">FILTER_SANITIZE_EMAIL</a></code></strong>. Antes se mantenían.
+        </td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+  </div>
+
+ </div></div></div></body></html>

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Caso 2: utilizando cgi.force_redirect</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="security.cgi-bin.default.html">« Caso 1: Ficheros p&uacute;blicos servidos solamente</a></li>
+      <li style="float: right;"><a href="security.cgi-bin.doc-root.html">Caso 3: Configurando doc_root o user_dir »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="security.cgi-bin.html">Instalado como CGI binario</a></li>
+    <li>Caso 2: utilizando cgi.force_redirect</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="security.cgi-bin.force-redirect" class="sect1">
+    <h2 class="title">Caso 2: utilizando <code class="literal">cgi.force_redirect</code></h2>
+    <p class="simpara">
+     La directiva de configuración <a href="ini.core.html#ini.cgi.force-redirect" class="link">cgi.force_redirect</a>
+     previene a cualquiera que llame a PHP
+     directamente por medio de una URL como esta <var class="filename">http://mi.servidor/cgi-bin/php/directoriosecreto/script.php</var>.
+     En cambio, PHP solamente lo analizará en este modo si éste se ha ido a través de
+     una regla directa del servidor web.
+    </p>
+    <p class="simpara">
+     Usualmente la redirección en la configuración de Apache se hace con
+     las siguientes directivas:
+    </p>
+    <div class="example-contents">
+<div class="apache-confcode"><pre class="apache-confcode">Action php-script /cgi-bin/php
+AddHandler php-script .php</pre>
+</div>
+    </div>
+
+    <p class="simpara">
+     Esta opción ha sido probada solamente con el servidor web Apache, y
+     se basa en que en Apache se configure en una variable de entorno no-estándar de CGI
+     <var class="envar">REDIRECT_STATUS</var> para peticiones de redirección.  Si su
+     servidor web no soporta ninguna forma de decirle si la petición es
+     directa o redirigida, usted no puede utilizar esta opción y debe usar
+     una de las otras formas de ejecutar la versión CGI aquí documentadas.
+    </p>
+   </div></div></div></body></html>

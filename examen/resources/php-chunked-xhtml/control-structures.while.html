@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>while</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="control-structures.alternative-syntax.html">« Sintaxis alternativa de estructuras de control</a></li>
+      <li style="float: right;"><a href="control-structures.do.while.html">do-while »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.control-structures.html">Estructuras de Control</a></li>
+    <li>while</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="control-structures.while" class="sect1">
+ <h2 class="title"><code class="literal">while</code></h2>
+ <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p>
+ <p class="para">
+  Los bucles <code class="literal">while</code> son el tipo más sencillo de bucle en
+  PHP. Se comportan igual que su contrapartida en C. La forma básica
+  de una sentencia <code class="literal">while</code> es:
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="cdata"><pre>
+while (expr)
+    sentencia
+</pre></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+  El significado de una sentencia <code class="literal">while</code> es simple. Le
+  dice a PHP que ejecute las sentencias anidadas, tanto
+  como la expresión <code class="literal">while</code> se evalúe como
+  <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>. El valor de la expresión es verificado
+  cada vez al inicio del bucle, por lo que incluso si este valor
+  cambia durante la ejecución de las sentencias anidadas, la ejecución
+  no se detendrá hasta el final de la iteración (cada vez que PHP ejecuta
+  las sentencias contenidas en el bucle es una iteración). A veces, si la
+  expresión <code class="literal">while</code> se evalúa como
+  <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> desde el principio, las sentencias 
+  anidadas no se ejecutarán ni siquiera una vez.
+ </p>
+ <p class="para">
+  Al igual que con la sentencia <code class="literal">if</code>, se pueden agrupar
+  varias instrucciones dentro del mismo bucle <code class="literal">while</code>
+  rodeando un grupo de sentencias con corchetes, o 
+  utilizando la sintaxis alternativa:
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="cdata"><pre>
+while (expr):
+    sentencias
+    ...
+endwhile;
+</pre></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="para">
+  Los siguientes ejemplos son idénticos y ambos presentan los números
+  del 1 al 10:
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/* ejemplo 1 */<br /><br /></span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />while (</span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt;= </span><span style="color: #0000BB">10</span><span style="color: #007700">) {<br />    echo </span><span style="color: #0000BB">$i</span><span style="color: #007700">++;  </span><span style="color: #FF8000">/* el valor presentado sería<br />                   $i antes del incremento<br />                   (post-incremento) */<br /></span><span style="color: #007700">}<br /><br /></span><span style="color: #FF8000">/* ejemplo 2 */<br /><br /></span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />while (</span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt;= </span><span style="color: #0000BB">10</span><span style="color: #007700">):<br />    echo </span><span style="color: #0000BB">$i</span><span style="color: #007700">;<br />    </span><span style="color: #0000BB">$i</span><span style="color: #007700">++;<br />endwhile;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </p>
+</div></div></div></body></html>

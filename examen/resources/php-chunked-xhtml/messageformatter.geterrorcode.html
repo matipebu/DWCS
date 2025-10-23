@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Obtener el c&oacute;digo de error de la &uacute;ltima operaci&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="messageformatter.formatmessage.html">« MessageFormatter::formatMessage</a></li>
+      <li style="float: right;"><a href="messageformatter.geterrormessage.html">MessageFormatter::getErrorMessage »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.messageformatter.html">MessageFormatter</a></li>
+    <li>Obtener el c&oacute;digo de error de la &uacute;ltima operaci&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="messageformatter.geterrorcode" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MessageFormatter::getErrorCode</h1>
+  <h1 class="refname">msgfmt_get_error_code</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8, PECL intl &gt;= 1.0.0)</p><p class="refpurpose"><span class="refname">MessageFormatter::getErrorCode</span> -- <span class="refname">msgfmt_get_error_code</span> &mdash; <span class="dc-title">Obtener el código de error de la última operación</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-messageformatter.geterrorcode-description">
+  <h3 class="title">Descripción</h3>
+  <p class="para">
+   Estilo orientado a objetos
+  </p>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="methodname"><strong>MessageFormatter::getErrorCode</strong></span>(): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="para rdfs-comment">
+   Estilo por procedimientos
+  </p>
+  <div class="methodsynopsis dc-description"><span class="methodname"><strong>msgfmt_get_error_code</strong></span>(<span class="methodparam"><span class="type"><a href="class.messageformatter.html" class="type MessageFormatter">MessageFormatter</a></span> <code class="parameter">$fmt</code></span>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="para rdfs-comment">
+   Obtiene el código de error de la última operación.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-messageformatter.geterrorcode-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">fmt</code></dt>
+     <dd>
+      <p class="para">
+       El formateador de mensajes
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ 
+ <div class="refsect1 returnvalues" id="refsect1-messageformatter.geterrorcode-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   El código de error, uno del os valores UErrorCode. El valor inicial es U_ZERO_ERROR.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-messageformatter.geterrorcode-examples">
+  <h3 class="title">Ejemplos</h3>
+  <div class="example" id="example-2376">
+   <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>msgfmt_get_error_code()</strong></span></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$fmt </span><span style="color: #007700">= </span><span style="color: #0000BB">msgfmt_create</span><span style="color: #007700">(</span><span style="color: #DD0000">"en_US"</span><span style="color: #007700">, </span><span style="color: #DD0000">"{0, number} monkeys on {1, number} trees"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$str </span><span style="color: #007700">= </span><span style="color: #0000BB">msgfmt_format</span><span style="color: #007700">(</span><span style="color: #0000BB">$fmt</span><span style="color: #007700">, array());<br />if(!</span><span style="color: #0000BB">$str</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">"ERROR: "</span><span style="color: #007700">.</span><span style="color: #0000BB">msgfmt_get_error_message</span><span style="color: #007700">(</span><span style="color: #0000BB">$fmt</span><span style="color: #007700">) . </span><span style="color: #DD0000">" (" </span><span style="color: #007700">. </span><span style="color: #0000BB">msgfmt_get_error_code</span><span style="color: #007700">(</span><span style="color: #0000BB">$fmt</span><span style="color: #007700">) . </span><span style="color: #DD0000">")\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+  <div class="example" id="example-2377">
+   <p><strong>Ejemplo #2 Ejemplo orientado a objetos</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$fmt </span><span style="color: #007700">= new </span><span style="color: #0000BB">MessageFormatter</span><span style="color: #007700">(</span><span style="color: #DD0000">"en_US"</span><span style="color: #007700">, </span><span style="color: #DD0000">"{0, number} monkeys on {1, number} trees"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$str </span><span style="color: #007700">= </span><span style="color: #0000BB">$fmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(array());<br />if(!</span><span style="color: #0000BB">$str</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">"ERROR: "</span><span style="color: #007700">.</span><span style="color: #0000BB">$fmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getErrorMessage</span><span style="color: #007700">() . </span><span style="color: #DD0000">" (" </span><span style="color: #007700">. </span><span style="color: #0000BB">$fmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getErrorCode</span><span style="color: #007700">() . </span><span style="color: #DD0000">")\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+  <p class="para">El resultado del ejemplo sería:</p>
+  <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">ERROR: msgfmt_format: not enough parameters: U_ILLEGAL_ARGUMENT_ERROR (1)</pre>
+</div>
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-messageformatter.geterrorcode-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="messageformatter.geterrormessage.html" class="function" rel="rdfs-seeAlso">msgfmt_get_error_message()</a> - Obtener el texto del error de la &uacute;ltima operaci&oacute;n</span></li>
+    <li><span class="function"><a href="function.intl-get-error-code.html" class="function" rel="rdfs-seeAlso">intl_get_error_code()</a> - Obtiene el &uacute;ltimo c&oacute;digo de error</span></li>
+    <li><span class="function"><a href="function.intl-is-failure.html" class="function" rel="rdfs-seeAlso">intl_is_failure()</a> - Comprueba si el c&oacute;digo de error dado indica un fallo</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

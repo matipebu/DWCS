@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Calcula la diferencia entre arrays con un chequeo adicional de &iacute;ndices</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.array-diff.html">« array_diff</a></li>
+      <li style="float: right;"><a href="function.array-diff-key.html">array_diff_key »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.array.html">Funciones de Arrays</a></li>
+    <li>Calcula la diferencia entre arrays con un chequeo adicional de &iacute;ndices</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.array-diff-assoc" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">array_diff_assoc</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">array_diff_assoc</span> &mdash; <span class="dc-title">Calcula la diferencia entre arrays con un chequeo adicional de índices</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.array-diff-assoc-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>array_diff_assoc</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$array1</code></span>, <span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$array2</code></span>, <span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$...</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+
+  <p class="para rdfs-comment">
+   Compara <code class="parameter">array1</code> con <code class="parameter">array2</code> y
+   devuelve la diferencia. A diferencia de <span class="function"><a href="function.array-diff.html" class="function">array_diff()</a></span>,
+   también se usan las claves de los arrays en la comparación.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.array-diff-assoc-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+    
+     <dt><code class="parameter">array1</code></dt>
+     <dd>
+      <p class="para">
+       El array a comparar.
+      </p>
+     </dd>
+    
+    
+    
+     <dt><code class="parameter">array2</code></dt>
+     <dd>
+      <p class="para">
+       Un array con el que comparar
+      </p>
+     </dd>
+    
+    
+    
+     <dt><code class="parameter">...</code></dt>
+     <dd>
+      <p class="para">
+       Más arrays con los que comparar
+      </p>
+     </dd>
+    
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.array-diff-assoc-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve un <span class="type"><a href="language.types.array.html" class="type array">array</a></span> que contiene todos los valores de
+   <code class="parameter">array1</code> que no están presentes en ninguno de los otros arrays.
+  </p>
+ </div>
+
+ 
+ 
+ 
+ <div class="refsect1 examples" id="refsect1-function.array-diff-assoc-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4912">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>array_diff_assoc()</strong></span></strong></p>
+    <div class="example-contents"><p>
+     En este ejemplo se ve que el par <code class="literal">&quot;a&quot; =&gt; &quot;green&quot;</code>
+     está presente en ambos arrays y, por lo tanto, no está en la salida de
+     la función. Al contrario, el par <code class="literal">0 =&gt; &quot;red&quot;</code>
+     está en la salida ya que en el segundo argumento <code class="literal">&quot;red&quot;</code>
+     tiene una clave que es <code class="literal">1</code>.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$array1    </span><span style="color: #007700">= array(</span><span style="color: #DD0000">"a" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"green"</span><span style="color: #007700">, </span><span style="color: #DD0000">"b" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"brown"</span><span style="color: #007700">, </span><span style="color: #DD0000">"c" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"blue"</span><span style="color: #007700">, </span><span style="color: #DD0000">"red"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$array2    </span><span style="color: #007700">= array(</span><span style="color: #DD0000">"a" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"green"</span><span style="color: #007700">, </span><span style="color: #DD0000">"yellow"</span><span style="color: #007700">, </span><span style="color: #DD0000">"red"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$resultado </span><span style="color: #007700">= </span><span style="color: #0000BB">array_diff_assoc</span><span style="color: #007700">(</span><span style="color: #0000BB">$array1</span><span style="color: #007700">, </span><span style="color: #0000BB">$array2</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$resultado</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Array
+(
+    [b] =&gt; brown
+    [c] =&gt; blue
+    [0] =&gt; red
+)</pre>
+</div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-4913">
+    <p><strong>Ejemplo #2 Ejemplo de <span class="function"><strong>array_diff_assoc()</strong></span></strong></p>
+    <div class="example-contents"><p>
+     Dos valores de pares <em>clave =&gt; valor</em> son
+     considerados iguales sólo si <code class="literal">(string) $elem1 === (string)
+     $elem2 </code>. En otras palabras, se realiza un un chequeo estricto
+     de tal forma que las representaciones de string debe ser las mismas.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$array1 </span><span style="color: #007700">= array(</span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$array2 </span><span style="color: #007700">= array(</span><span style="color: #DD0000">"00"</span><span style="color: #007700">, </span><span style="color: #DD0000">"01"</span><span style="color: #007700">, </span><span style="color: #DD0000">"2"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$resultado </span><span style="color: #007700">= </span><span style="color: #0000BB">array_diff_assoc</span><span style="color: #007700">(</span><span style="color: #0000BB">$array1</span><span style="color: #007700">, </span><span style="color: #0000BB">$array2</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$resultado</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Array
+(
+    [0] =&gt; 0
+    [1] =&gt; 1
+    )</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.array-diff-assoc-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <span class="simpara">
+    Esta función sólo comprueba una dimensión de un array n-dimensional.
+    Por supuesto, se pueden comprobar arrays de más dimensiones usando,
+    por ejemplo, <code class="literal">array_diff_assoc($array1[0], $array2[0]);</code>.
+   </span>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <span class="simpara">
+    Asegúrese de proporcionar los argumentos en el orden corrector al comparar arrays
+    similares con más claves. El nuev array debería ser el primero de la lista.
+   </span>
+  </p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.array-diff-assoc-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.array-diff.html" class="function" rel="rdfs-seeAlso">array_diff()</a> - Calcula la diferencia entre arrays</span></li>
+    <li><span class="function"><a href="function.array-diff-uassoc.html" class="function" rel="rdfs-seeAlso">array_diff_uassoc()</a> - Calcula la diferencia entre arrays con un chequeo adicional de &iacute;ndices que se realiza por una funci&oacute;n de devoluci&oacute;n de llamada suministrada por el usuario</span></li>
+    <li><span class="function"><a href="function.array-udiff-assoc.html" class="function" rel="rdfs-seeAlso">array_udiff_assoc()</a> - Computa la diferencia entre arrays con una comprobaci&oacute;n de indices adicional, compara la informaci&oacute;n mediante una funci&oacute;n de llamada de retorno</span></li>
+    <li><span class="function"><a href="function.array-udiff-uassoc.html" class="function" rel="rdfs-seeAlso">array_udiff_uassoc()</a> - Computa la diferencia entre arrays con una verificaci&oacute;n de &iacute;ndices adicional, compara la informaci&oacute;n y los &iacute;ndices mediante una funci&oacute;n de llamada de retorno</span></li>
+    <li><span class="function"><a href="function.array-intersect.html" class="function" rel="rdfs-seeAlso">array_intersect()</a> - Calcula la intersecci&oacute;n de arrays</span></li>
+    <li><span class="function"><a href="function.array-intersect-assoc.html" class="function" rel="rdfs-seeAlso">array_intersect_assoc()</a> - Calcula la intersecci&oacute;n de arrays con un chequeo adicional de &iacute;ndices</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

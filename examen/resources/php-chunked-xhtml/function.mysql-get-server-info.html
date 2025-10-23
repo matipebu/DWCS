@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Obtiene informaci&oacute;n del servidor MySQL</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.mysql-get-proto-info.html">« mysql_get_proto_info</a></li>
+      <li style="float: right;"><a href="function.mysql-info.html">mysql_info »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.mysql.html">Funciones de MySQL</a></li>
+    <li>Obtiene informaci&oacute;n del servidor MySQL</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mysql-get-server-info" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysql_get_server_info</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.5, PHP 5)</p><p class="refpurpose"><span class="refname">mysql_get_server_info</span> &mdash; <span class="dc-title">Obtiene información del servidor MySQL</span></p>
+
+ </div>
+
+ <div id="function.mysql-get-server-info-refsynopsisdiv">
+  <div class="warning"><strong class="warning">Advertencia</strong>
+   <p class="para">Esta extensión fue declarada obsoleta en PHP 5.5.0 y eliminada en PHP 7.0.0.
+En su lugar debería utilzarse las extensiones <a href="book.mysqli.html" class="link">MySQLi</a> o <a href="ref.pdo-mysql.html" class="link">PDO_MySQL</a>.
+Véase también la guía <a href="mysqlinfo.api.choosing.html" class="link">MySQL: elegir una API</a>.
+Las alternativas a esta función son:</p>
+   <ul class="simplelist">
+    <li><span class="function"><a href="mysqli.get-server-info.html" class="function">mysqli_get_server_info()</a></span></li>
+    <li>
+     <span class="methodname"><a href="pdo.getattribute.html" class="methodname">PDO::getAttribute()</a></span>
+     con <code class="parameter">attribute</code> como <strong><code><a href="pdo.constants.html#pdo.constants.attr-server-version">PDO::ATTR_SERVER_VERSION</a></code></strong>
+    </li>
+   </ul>
+  </div>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.mysql-get-server-info-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mysql_get_server_info</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$link_identifier</code><span class="initializer"> = NULL</span></span>): <span class="type"><span class="type"><a href="language.types.string.html" class="type string">string</a></span>|<span class="type"><a href="language.types.value.html" class="type false">false</a></span></span></div>
+
+  <p class="para rdfs-comment">
+   Recupera la versión del servidor MySQL.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mysql-get-server-info-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    <dt><code class="parameter">
+link_identifier</code></dt><dd><p class="para">La conexión MySQL. Si no
+se especifica el identificador de enlace, se asume el último enlace abierto
+por <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span>. Si no se encuentra este enlace, se
+intentará crear un nuevo enlace como si <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> hubiese sido invocada
+sin argumentos. Si no se encuentra o establece ninguna conexión, se genera un error
+de nivel <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong>.</p></dd>
+
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mysql-get-server-info-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve la versión del servidor MySQL en caso de éxito  o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.mysql-get-server-info-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-1764">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>mysql_get_server_info()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$enlace </span><span style="color: #007700">= </span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">, </span><span style="color: #DD0000">"usuario_mysql"</span><span style="color: #007700">, </span><span style="color: #DD0000">"contraseña_mysql"</span><span style="color: #007700">);<br />if (!</span><span style="color: #0000BB">$enlace</span><span style="color: #007700">) {<br />    die(</span><span style="color: #DD0000">"No pudo conectarse: " </span><span style="color: #007700">. </span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br />}<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Versión del servidor MySQL: %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">mysql_get_server_info</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Versión del servidor MySQL: 4.0.1-alpha</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mysql-get-server-info-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.mysql-get-client-info.html" class="function" rel="rdfs-seeAlso">mysql_get_client_info()</a> - Obtiene informaci&oacute;n del cliente MySQL</span></li>
+    <li><span class="function"><a href="function.mysql-get-host-info.html" class="function" rel="rdfs-seeAlso">mysql_get_host_info()</a> - Obtener informaci&oacute;n del anfitri&oacute;n de MySQL</span></li>
+    <li><span class="function"><a href="function.mysql-get-proto-info.html" class="function" rel="rdfs-seeAlso">mysql_get_proto_info()</a> - Obtener informaci&oacute;n del protocolo MySQL</span></li>
+    <li><span class="function"><a href="function.phpversion.html" class="function" rel="rdfs-seeAlso">phpversion()</a> - Obtiene la versi&oacute;n de PHP</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

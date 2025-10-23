@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Convierte de una Fecha Juliana a un calendario soportado</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.cal-days-in-month.html">« cal_days_in_month</a></li>
+      <li style="float: right;"><a href="function.cal-info.html">cal_info »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.calendar.html">Funciones de Calendario</a></li>
+    <li>Convierte de una Fecha Juliana a un calendario soportado</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.cal-from-jd" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">cal_from_jd</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.1.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">cal_from_jd</span> &mdash; <span class="dc-title">Convierte de una Fecha Juliana a un calendario soportado</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.cal-from-jd-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>cal_from_jd</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$jd</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$calendar</code></span>): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>cal_from_jd()</strong></span> convierte el día juliano dado en
+   <code class="parameter">jd</code> a una fecha del calendario
+   <code class="parameter">calendar</code>. Los valores
+   soportados por <code class="parameter">calendar</code> son
+   <strong><code><a href="calendar.constants.html#constant.cal-gregorian">CAL_GREGORIAN</a></code></strong>,
+   <strong><code><a href="calendar.constants.html#constant.cal-julian">CAL_JULIAN</a></code></strong>,
+   <strong><code><a href="calendar.constants.html#constant.cal-jewish">CAL_JEWISH</a></code></strong> y
+   <strong><code><a href="calendar.constants.html#constant.cal-french">CAL_FRENCH</a></code></strong>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.cal-from-jd-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">jd</code></dt>
+     <dd>
+      <p class="para">
+       Un día juliano como un entero
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">calendar</code></dt>
+     <dd>
+      <p class="para">
+       El calendario al que se va a convertir
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.cal-from-jd-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve una matriz que contiene información del calendario como el mes, día, año,
+   día de la semana, nombres abreviados y completos del día de la semana y mes y la
+   fecha como cadena de la forma &quot;mes/día/año&quot;.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.cal-from-jd-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-2025">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>cal_from_jd()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$hoy </span><span style="color: #007700">= </span><span style="color: #0000BB">unixtojd</span><span style="color: #007700">(</span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">8</span><span style="color: #007700">, </span><span style="color: #0000BB">16</span><span style="color: #007700">, </span><span style="color: #0000BB">2003</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">cal_from_jd</span><span style="color: #007700">(</span><span style="color: #0000BB">$hoy</span><span style="color: #007700">, </span><span style="color: #0000BB">CAL_GREGORIAN</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Array
+(
+    [date] =&gt; 8/16/2003
+    [month] =&gt; 8
+    [day] =&gt; 16
+    [year] =&gt; 2003
+    [dow] =&gt; 6
+    [abbrevdayname] =&gt; Sat
+    [dayname] =&gt; Saturday
+    [abbrevmonth] =&gt; Aug
+    [monthname] =&gt; August
+)</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.cal-from-jd-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.cal-to-jd.html" class="function" rel="rdfs-seeAlso">cal_to_jd()</a> - Convertir un calendario soportado a la Fecha Juliana</span></li>
+    <li><span class="function"><a href="function.jdtofrench.html" class="function" rel="rdfs-seeAlso">jdtofrench()</a> - Convierte una Fecha Juliana al Calendario Republicano Franc&eacute;s</span></li>  
+    <li><span class="function"><a href="function.jdtogregorian.html" class="function" rel="rdfs-seeAlso">jdtogregorian()</a> - Convierte una Fecha Juliana en una fecha Gregoriana</span></li>
+    <li><span class="function"><a href="function.jdtojewish.html" class="function" rel="rdfs-seeAlso">jdtojewish()</a> - Convierte una Fecha Juliana a una fecha del Calendario Jud&iacute;o</span></li>  
+    <li><span class="function"><a href="function.jdtojulian.html" class="function" rel="rdfs-seeAlso">jdtojulian()</a> - Convierte una Fecha Juliana a una fecha del Calendario Juliano</span></li>
+    <li><span class="function"><a href="function.jdtounix.html" class="function" rel="rdfs-seeAlso">jdtounix()</a> - Convierte una Fecha Juliana a una fecha Unix</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

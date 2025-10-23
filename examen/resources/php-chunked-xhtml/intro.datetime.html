@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Introducci&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="book.datetime.html">« Fecha/Hora</a></li>
+      <li style="float: right;"><a href="datetime.setup.html">Instalaci&oacute;n/Configuraci&oacute;n »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.datetime.html">Fecha/Hora</a></li>
+    <li>Introducci&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="intro.datetime" class="preface">
+  <h1 class="title">Introducción</h1>
+  <p class="para">
+   Estas funciones permiten obtener la fecha y la hora del servidor
+   donde se están ejecutando los scripts de PHP. Estas funciones se pueden emplear parar dar formato
+   a fechas y horas de muchas maneras diferentes.
+  </p>
+  <p class="para">
+   La información de la fecha y de la hora se almacena internamente como un número de 64 bits, por lo que 
+   se admiten todas las fechas útiles posibles (incluyendo años negativos). El rango va
+   aproximadamente de 292 mil millones de años en el pasado hasta lo mismo en el futuro.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <span class="simpara">
+    Se ha de tener en cuenta que estas funciones dependen de
+    los ajustes de la configuración regional del servidor. Asegúrese de tomar
+    en consideración el horario de verano (use, p.ej.,
+    <code class="literal">$fecha = strtotime(&#039;+7 days&#039;, $fecha)</code>, y no
+    <code class="literal">$fecha += 7*24*60*60</code>)
+    y los años bisiestos cuando trabaje
+    con estas funciones.
+   </span>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <span class="simpara">
+    Las zonas horarias a las que se refiere esta sección pueden encontrarse en el
+    <a href="timezones.html" class="xref">Listado de zonas horarias admitidas</a>.
+   </span>
+  </p></blockquote>
+ </div></div></div></body></html>

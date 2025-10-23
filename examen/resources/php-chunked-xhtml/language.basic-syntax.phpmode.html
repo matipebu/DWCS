@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Salir de HTML</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.basic-syntax.phptags.html">« Etiquetas de PHP</a></li>
+      <li style="float: right;"><a href="language.basic-syntax.instruction-separation.html">Separaci&oacute;n de instrucciones »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.basic-syntax.html">Sintaxis b&aacute;sica</a></li>
+    <li>Salir de HTML</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.basic-syntax.phpmode" class="sect1">
+  <h2 class="title">Salir de HTML</h2>
+  <p class="para">
+   Cualquier cosa fuera de un par de etiquetas de apertura y cierre es ignorado por el
+   intérprete de PHP, lo que permite que los ficheros de PHP tengan contenido mixto. Esto hace
+   que PHP pueda ser embebido en documentos HTML para, por ejemplo, crear plantillas.
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">&lt;p&gt;Esto va a ser ignorado por PHP y mostrado por el navegador.&lt;/p&gt;<br /><span style="color: #0000BB">&lt;?php </span><span style="color: #007700">echo </span><span style="color: #DD0000">'Mientras que esto va a ser interpretado.'</span><span style="color: #007700">; </span><span style="color: #0000BB">?&gt;<br /></span>&lt;p&gt;Esto también será ignorado por PHP y mostrado por el navegador.&lt;/p&gt;</span></code></div>
+    </div>
+
+   </div>
+   Este ejemplo funciona como estaba previsto, porque cuando PHP intercepta las etiquetas de cierre
+   ?&gt;, simplemente comienza a imprimir cualquier cosa que encuentre (a excepción de una nueva línea inmediatamente después; véase la
+   <a href="language.basic-syntax.instruction-separation.html" class="link">separación de instrucciones</a>)
+   hasta que dé con otra etiqueta de apertura a menos que se encuentre en mitad de una sentencia
+   condicional, en cuyo caso el intérprete determinará el resultado de la
+   condición antes de tomar una decisión de qué es lo que tiene que saltar.
+   Vea el siguiente ejemplo.
+  </p>
+  <p class="para">
+   Empleo de estructuras con condiciones
+   <div class="example" id="example-44">
+    <p><strong>Ejemplo #1 Salida avanzada usando condiciones</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php </span><span style="color: #007700">if (</span><span style="color: #0000BB">$expresión </span><span style="color: #007700">== </span><span style="color: #0000BB">true</span><span style="color: #007700">): </span><span style="color: #0000BB">?&gt;<br /></span>  Esto se mostrará si la expresión es verdadera.<br /><span style="color: #0000BB">&lt;?php </span><span style="color: #007700">else: </span><span style="color: #0000BB">?&gt;<br /></span>  En caso contrario se mostrará esto.<br /><span style="color: #0000BB">&lt;?php </span><span style="color: #007700">endif; </span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+   En este ejemplo, PHP saltará los bloques donde la condición no se cumpla, incluso
+   si están fuera de las etiquetas de apertura/cierre de PHP, los saltará según
+   la condición debido a que el intérprete salta los bloques contenidos
+   dentro de una condición que no se cumpla.
+  </p>
+  <p class="para">
+   Para imprimir bloques de texto grandes, es más eficiente abandonar el modo
+   intérprete de PHP que enviar todo el texto a través de
+   <span class="function"><a href="function.echo.html" class="function">echo</a></span> o <span class="function"><a href="function.print.html" class="function">print</a></span>.
+  </p>
+  <p class="para">
+   En PHP 5 existen hasta cinco pares de etiquetas de apertura y cierre diferentes,
+   dependiendo de la configuración de PHP. Dos de estas,
+   <code class="code">&lt;?php ?&gt;</code> y
+   <code class="code">&lt;script language=&quot;php&quot;&gt; &lt;/script&gt;</code>, siempre están
+   disponibles. También existe una etiqueta echo abreviada, <code class="code">&lt;?= ?&gt;</code>,
+   que siempre está disponible en PHP 5.4.0 y posteriores.
+  </p>
+  <p class="para">
+   Las otras dos son las etiquetas abreviadas y las etiquetas al estilo de
+   <span class="productname">ASP</span>. De por sí, aunque algunos encuentran prácticas,
+   las etiquetas abreviadas y las etiquetas al estilo <span class="productname">ASP</span> son menos
+   portables, no recomendándose por lo general.
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     Observe también que si se está embebiendo PHP dentro de XML o XHTML
+     será necesario usar las etiquetas &lt;?php ?&gt; para seguir los
+     estándares.
+    </p>
+   </p></blockquote>
+  </p>
+  <p class="para">
+   PHP 7 elimina el soprte para las etiquetas <span class="productname">ASP</span> y
+   <code class="code">&lt;script language=&quot;php&quot;&gt;</code>. Por tanto, para maximizar la compatibilidad,
+   se recomienda solamente el empleo de <code class="code">&lt;?php ?&gt;</code> y <code class="code">&lt;?= ?&gt;</code>
+   al escribir código de PHP.
+  </p>
+  <p class="para">
+   <div class="example" id="example-45">
+    <p><strong>Ejemplo #2 Etiquetas de apertura y de cierre de PHP</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">1.  <span style="color: #0000BB">&lt;?php </span><span style="color: #007700">echo </span><span style="color: #DD0000">'si quiere proveer código de PHP a documentos XHTML o XML,<br />                emplee estas etiquetas'</span><span style="color: #007700">; </span><span style="color: #0000BB">?&gt;<br /></span><br />2.  Puede emplear la etiqueta echo abreviada para <span style="color: #0000BB">&lt;?= </span><span style="color: #DD0000">'imprimir esta cadena' </span><span style="color: #0000BB">?&gt;</span>.<br />    Siempre está habilitada en PHP 5.4.0 y posterior, y es equivalente a<br />    <span style="color: #0000BB">&lt;?php </span><span style="color: #007700">echo </span><span style="color: #DD0000">'imprimir esta cadena' </span><span style="color: #0000BB">?&gt;</span>.<br /><br />3.  &lt;? echo 'este código está dentro de etiquetas abreviadas, aunque sólo '.<br />            'funcionará si short_open_tag está habilitada'; ?&gt;<br /><br />4.  &lt;script language="php"&gt;<br />        echo 'a algunos editores (como FrontPage) no les gustan<br />              las instruciones de procesamiento dentro de estas etiquetas';<br />    &lt;/script&gt;<br />    Esta sintaxis ha sido eliminada en PHP 7.0.0.<br /><br />5.  &lt;% echo 'Opcionalmente, se pueden emplear las etiquetas al estilo de ASP'; %&gt;<br />    El código dentro de estas etiquetas &lt;%= $variable; %&gt; es una abreviatura para este código &lt;% echo $variable; %&gt;<br />    Ambas sintaxis han sido eliminadas en PHP 7.0.0.</span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Las etiquetas abreviadas (ejemplo tres) solamente están disponibles cuando
+   se activan mediante la directiva <a href="ini.core.html#ini.short-open-tag" class="link">short_open_tag</a>
+   del fichero de configuración <var class="filename">php.ini</var> o si PHP se configuró con la opción
+   <strong class="option unknown">--enable-short-tags</strong>.
+  </p>
+  <p class="para">
+   Las etiquetas de estilo de <span class="productname">ASP</span> (ejemplo cinco) solamente están
+   disponibles cuando se activan mediante la
+   directiva <code class="literal">asp_tags</code> del fichero de configuración
+   <var class="filename">php.ini</var>. Han sido eliminadas en PHP 7.0.0.
+  </p>
+  <p class="para">
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     Debe evitarse el uso de etiquetas abreviadas cuando se desarrollen aplicaciones
+     o bibliotecas que estén pensadas para su redistribución o despliegue en
+     servidores de PHP que no estén bajo su control, porque puede que las etiquetas abreviadas
+     no estén admitidas en un servidor determinado. Por portabilidad y
+     código redistribuible, asegúrese de no usar etiquetas abreviadas.
+    </p>
+   </p></blockquote>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     En PHP 5.2 y anteriores, el analizador no permite que un fichero
+     contenga únicamente la etiqueta de apertura <code class="literal">&lt;?php</code>.
+     A partir de PHP 5.3 sí se permite, siempre que existan uno o más caracteres espacio en
+     blanco después de la etiqueta de apertura.
+    </p>
+   </p></blockquote>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     Desde PHP 5.4, la etiqueta de echo abreviada <code class="literal">&lt;?=</code> siempre es aceptada y
+     válida, independientemente de la configuración de <a href="ini.core.html#ini.short-open-tag" class="link">short_open_tag</a>.
+    </p>
+   </p></blockquote>
+  </p>
+ </div></div></div></body></html>

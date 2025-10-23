@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Imprime los cr&eacute;ditos de PHP</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.php-uname.html">« php_uname</a></li>
+      <li style="float: right;"><a href="function.phpinfo.html">phpinfo »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.info.html">Funciones de Opciones/Info de PHP</a></li>
+    <li>Imprime los cr&eacute;ditos de PHP</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.phpcredits" class="refentry">
+ <div class="refnamediv"> 
+  <h1 class="refname">phpcredits</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">phpcredits</span> &mdash; <span class="dc-title">Imprime los créditos de PHP</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.phpcredits-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>phpcredits</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$flag</code><span class="initializer"> = CREDITS_ALL</span></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Esta función imprime la lista de créditos de los desarrolladores 
+   de PHP, módulos, etc Genera los códigos HTML apropiados para insertar 
+   la información en una página.
+  </p>   
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.phpcredits-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">flag</code></dt>
+     <dd>
+      <p class="para">
+       Para generar una página de créditos personalizada, 
+       puede utilizar el parámetro <code class="parameter">flag</code>.
+      </p>
+      <p class="para">
+       <table class="doctable table">
+        <caption><strong>Pre-defined <span class="function"><strong>phpcredits()</strong></span> flags</strong></caption>
+        
+         <thead>
+          <tr>
+           <th>name</th>
+           <th>description</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td>CREDITS_ALL</td>
+           <td>
+            Todos los créditos, equivalente a usar: <strong><code><a href="info.constants.html#constant.credits-docs">CREDITS_DOCS</a></code></strong> +
+            <strong><code><a href="info.constants.html#constant.credits-general">CREDITS_GENERAL</a></code></strong> + <strong><code><a href="info.constants.html#constant.credits-group">CREDITS_GROUP</a></code></strong> +
+            <strong><code><a href="info.constants.html#constant.credits-modules">CREDITS_MODULES</a></code></strong> + <strong><code><a href="info.constants.html#constant.credits-fullpage">CREDITS_FULLPAGE</a></code></strong>.
+            Genera una completa e independiente, página HTML con las etiquetas apropiadas.
+           </td>
+          </tr>
+
+          <tr>
+           <td>CREDITS_DOCS</td>
+           <td>Los créditos para el equipo de documentación</td>
+          </tr>
+
+          <tr>
+           <td>CREDITS_FULLPAGE</td>
+           <td>
+            Por lo general se utiliza en combinación con las otras flags. 
+            Indica que es independiente de la página HTML debe ser impreso con 
+            la información indicada por las otras flags.
+           </td>
+          </tr>
+
+          <tr>
+           <td>CREDITS_GENERAL</td>
+           <td>
+            Créditos generales: Diseño y concepto del lenguaje, 
+            autores de PHP y el módulo SAPI.
+           </td>
+          </tr>
+
+          <tr>
+           <td>CREDITS_GROUP</td>
+           <td>Una lista de los desarrolladores del núcleo.</td>
+          </tr>
+
+          <tr>
+           <td>CREDITS_MODULES</td>
+           <td>
+            Una lista de los módulos de extensión para PHP, y sus autores.
+           </td>
+          </tr>
+
+          <tr>
+           <td>CREDITS_SAPI</td>
+           <td>
+            Una lista de los módulos de servidor API para PHP, y sus autores.
+           </td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.phpcredits-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.phpcredits-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-584">
+    <p><strong>Ejemplo #1 Imprimir los créditos generales</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />phpcredits</span><span style="color: #007700">(</span><span style="color: #0000BB">CREDITS_GENERAL</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-585">
+    <p><strong>Ejemplo #2 Imprimir los desarrolladores principales y el grupo de documentación</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />phpcredits</span><span style="color: #007700">(</span><span style="color: #0000BB">CREDITS_GROUP </span><span style="color: #007700">| </span><span style="color: #0000BB">CREDITS_DOCS </span><span style="color: #007700">| </span><span style="color: #0000BB">CREDITS_FULLPAGE</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-586">
+    <p><strong>Ejemplo #3 Imprimir todos los créditos</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">&lt;html&gt;<br /> &lt;head&gt;<br />  &lt;title&gt;Mi página de créditos&lt;/title&gt;<br /> &lt;/head&gt;<br /> &lt;body&gt;<br /><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Algún código propio<br /></span><span style="color: #0000BB">phpcredits</span><span style="color: #007700">(</span><span style="color: #0000BB">CREDITS_ALL </span><span style="color: #007700">- </span><span style="color: #0000BB">CREDITS_FULLPAGE</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">// algo más de código<br /></span><span style="color: #0000BB">?&gt;<br /></span> &lt;/body&gt;<br />&lt;/html&gt;</span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.phpcredits-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    <span class="function"><strong>phpcredits()</strong></span> genera texto plano en lugar de HTML al
+    usar el modo CLI.
+   </p>
+  </p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.phpcredits-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.phpversion.html" class="function" rel="rdfs-seeAlso">phpversion()</a> - Obtiene la versi&oacute;n de PHP</span></li>
+    <li><span class="function"><strong>php_logo_guid()</strong></span></li>
+    <li><span class="function"><a href="function.phpinfo.html" class="function" rel="rdfs-seeAlso">phpinfo()</a> - Muestra informaci&oacute;n sobre la configuraci&oacute;n de PHP</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Lista de filtros disponibles</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="resource.html">« Lista de Tipos de Recurso</a></li>
+      <li style="float: right;"><a href="filters.string.html">Filtros de String »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="appendices.html">Ap&eacute;ndices</a></li>
+    <li>Lista de filtros disponibles</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="filters" class="appendix">
+ <h1 class="title">Lista de filtros disponibles</h1>
+<h2>Tabla de contenidos</h2><ul class="chunklist chunklist_appendix"><li><a href="filters.string.html">Filtros de String</a></li><li><a href="filters.convert.html">Filtros de conversi&oacute;n</a></li><li><a href="filters.compression.html">Filtros de compresi&oacute;n</a></li><li><a href="filters.encryption.html">Filtros de encriptaci&oacute;n</a></li></ul>
+
+ <p class="para">
+  La siguiente es una lista de unos cuantos filtros de secuencia integrados
+  que puede usar con <span class="function"><a href="function.stream-filter-append.html" class="function">stream_filter_append()</a></span>.
+  La versión de PHP puede tener más filtros (o menos) que aquellos
+  que aparecen aquí.
+ </p>
+
+ <p class="para">
+  Vale la pena anotar una ligera asimetría entre
+  <span class="function"><a href="function.stream-filter-append.html" class="function">stream_filter_append()</a></span> y
+  <span class="function"><a href="function.stream-filter-prepend.html" class="function">stream_filter_prepend()</a></span>. Cada secuencia en PHP contiene
+  un pequeño <em>búfer de lectura</em> en donde almacena los
+  bloques de datos recibidos desde el sistema de archivos u otro recurso
+  para procesar los datos de la forma más eficiente. Tan pronto como los
+  datos son tomados del recurso y colocados en el búfer interno de la
+  secuencia, éstos son procesados inmediatamente a través de cualquier
+  filtro adjunto sin importar que la aplicación PHP esté lista para los
+  datos o no. Si los datos están en el búfer de lectura cuando un filtro es
+  <em>añadido al final</em>, los datos serán procesados
+  inmediatamente a través del filtro haciendo parecer que el proceso fuera
+  transparente. Sin embargo, si los datos están en el búfer de lectura
+  cuando un filtro es <em>adjuntado al comienzo</em>, los datos
+  <em>NO</em> serán procesados a través del filtro. En su lugar
+  esperará a que el siguiente bloque de datos sea recuperado del recurso.
+ </p>
+
+ <p class="para">
+  Para una lista de filtros instalados en su versión de PHP, use
+  <span class="function"><a href="function.stream-get-filters.html" class="function">stream_get_filters()</a></span>.
+ </p>
+
+ 
+
+ 
+
+ 
+
+ 
+
+</div>
+</div></div></body></html>

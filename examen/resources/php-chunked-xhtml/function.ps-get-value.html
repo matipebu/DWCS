@@ -1,0 +1,328 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Obtener ciertos valores</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.ps-get-parameter.html">« ps_get_parameter</a></li>
+      <li style="float: right;"><a href="function.ps-hyphenate.html">ps_hyphenate »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.ps.html">Funciones de PS</a></li>
+    <li>Obtener ciertos valores</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.ps-get-value" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ps_get_value</h1>
+  <p class="verinfo">(PECL ps &gt;= 1.1.0)</p><p class="refpurpose"><span class="refname">ps_get_value</span> &mdash; <span class="dc-title">Obtener ciertos valores</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ps-get-value-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>ps_get_value</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$psdoc</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$name</code></span>, <span class="methodparam"><span class="type"><a href="language.types.float.html" class="type float">float</a></span> <code class="parameter">$modifier</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.float.html" class="type float">float</a></span></div>
+
+  <p class="para rdfs-comment">Obtiene varios valores que se establecieron con la función
+   <span class="function"><a href="function.ps-set-value.html" class="function">ps_set_value()</a></span>. Los valores son por definición valores de tipo float.
+  </p>
+  <p class="para">
+   El parámetro <code class="parameter">name</code> puede tener los siguientes valores:
+  </p>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="literal">fontsize</code></dt>
+     <dd>
+      <p class="para">
+       El tamaño de la fuente activa o la fuente cuyo
+       identificador es pasado al parámetro <code class="parameter">modifier</code>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">font</code></dt>
+     <dd>
+      <p class="para">
+       La fuente activa misma.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">imagewidth</code></dt>
+     <dd>
+      <p class="para">
+       El ancho de la imagen cuyo ID es pasado al parámetro
+       <code class="parameter">modifier</code>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">imageheight</code></dt>
+     <dd>
+      <p class="para">
+       El alto de la imagen cuyo ID es pasado al parámetro
+       <code class="parameter">modifier</code>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">capheight</code></dt>
+     <dd>
+      <p class="para">
+       El alto de una M mayúscula de la fuente activa o la fuente
+       cuyo identificador es pasado al parámetro
+       <code class="parameter">modifier</code>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">ascender</code></dt>
+     <dd>
+      <p class="para">
+       El ascendente de la fuente activa o la fuente
+       cuyo identificador es pasado al parámetro
+       <code class="parameter">modifier</code>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">descender</code></dt>
+     <dd>
+      <p class="para">
+       El descendente de la fuente activa o la fuente
+       cuyo identificador es pasado al parámetro
+       <code class="parameter">modifier</code>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">italicangle</code></dt>
+     <dd>
+      <p class="para">
+       El ángulo de la letra itálica de la fuente activa o la fuente
+       cuyo identificador es pasado al parámetro
+       <code class="parameter">modifier</code>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">underlineposition</code></dt>
+     <dd>
+      <p class="para">
+       La posición del subrayado de la fuente activa o la fuente
+       cuyo identificador es pasado al parámetro
+       <code class="parameter">modifier</code>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">underlinethickness</code></dt>
+     <dd>
+      <p class="para">
+       El grosor del subrayado de la fuente activa o la fuente
+       cuyo identificador es pasado al parámetro
+       <code class="parameter">modifier</code>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">textx</code></dt>
+     <dd>
+      <p class="para">
+       La coordenada x para la impresión del texto.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">texty</code></dt>
+     <dd>
+      <p class="para">
+       La coordenada y para la impresión del texto.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">textrendering</code></dt>
+     <dd>
+      <p class="para">
+       El modo actual de renderización de texto.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">textrise</code></dt>
+     <dd>
+      <p class="para">
+       El espacio por el que el texto es alzado por encima de la línea base.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">leading</code></dt>
+     <dd>
+      <p class="para">
+       La distancia entre líneas de texto en puntos.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">wordspacing</code></dt>
+     <dd>
+      <p class="para">
+       El espacio entre palabras como un múltiplo del ancho de un carácter espacio.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">charspacing</code></dt>
+     <dd>
+      <p class="para">
+       El espacio entre caracteres. Si &quot;charspacing&quot; es != 0.0, las liagaduras
+       siempre serán disueltas.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">hyphenminchars</code></dt>
+     <dd>
+      <p class="para">
+       El número mínimo de caracteres divididos mediante guión al final de una palabra.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">parindent</code></dt>
+     <dd>
+      <p class="para">
+       El sangrado de las primeras n líneas de un párrafo.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">numindentlines</code></dt>
+     <dd>
+      <p class="para">
+       El número de línea a sangrar de un párrafo si &quot;parindent&quot; != 0.0.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">parskip</code></dt>
+     <dd>
+      <p class="para">
+       La distancia entre párrafos.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">linenumberspace</code></dt>
+     <dd>
+      <p class="para">
+       El espacio total delante de cada línea para el número de línea.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">linenumbersep</code></dt>
+     <dd>
+      <p class="para">
+       El espacio entre la línea y el número de línea.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">major</code></dt>
+     <dd>
+      <p class="para">
+       El número de la versión mayor de pslib.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">minor</code></dt>
+     <dd>
+      <p class="para">
+       El número de la versión menor pslib.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">subminor</code>, <code class="literal">revision</code></dt>
+     <dd>
+      <p class="para">
+       El número de la versión submenor de pslib.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.ps-get-value-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">psdoc</code></dt>
+     <dd>
+      <p class="para">
+       El identificador de recursos del fichero postscript,
+       como el devuelto por la función <span class="function"><a href="function.ps-new.html" class="function">ps_new()</a></span>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">name</code></dt>
+     <dd>
+      <p class="para">
+       El nombre del valor.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">modifier</code></dt>
+     <dd>
+      <p class="para">
+       El parámetro <code class="parameter">modifier</code> especifica el recurso
+       por el que recuperar el valor. Puede ser el ID de una fuente
+       o imagen.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.ps-get-value-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el valor del parámetros o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.ps-get-value-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.ps-set-value.html" class="function" rel="rdfs-seeAlso">ps_set_value()</a> - Establecer ciertos valores</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

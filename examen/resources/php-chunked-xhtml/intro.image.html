@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Introducci&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="book.image.html">« GD</a></li>
+      <li style="float: right;"><a href="image.setup.html">Instalaci&oacute;n/Configuraci&oacute;n »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.image.html">GD</a></li>
+    <li>Introducci&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="intro.image" class="preface">
+  <h1 class="title">Introducción</h1>
+  <p class="para">
+   PHP no está limitado a crear únicamente salidas HTML. También se puede
+   usar para crear y manipular ficheros de imágenes en una variedad de diferentes
+   formatos de imagen, incluyendo <abbr title="Graphic Interchange Format">GIF</abbr>, <abbr title="Portable Network Graphics">PNG</abbr>,
+   <abbr title="Joint Photographic Experts Group">JPEG</abbr>, <abbr title="Wireless Bitmap">WBMP</abbr> y <abbr>XPM</abbr>.
+   Aún más práctico es que PHP puede transferir flujos de imagen directamente al navegador.
+   Necesitará compilar PHP con la biblioteca de funciones de imágenes <abbr title="Graphics Draw">GD</abbr>
+   para que esto funcione. <abbr title="Graphics Draw">GD</abbr> y PHP también pueden requierir
+   otras bibliotecas, dependiendo de los formatos de imagen con los que se quiera trabajar.
+  </p>
+  <p class="para">
+   Se pueden usar las funciones de imagen de PHP para obtener el tamaño de imágenes
+   <abbr title="Joint Photographic Experts Group">JPEG</abbr>, <abbr title="Graphic Interchange Format">GIF</abbr>,
+   <abbr title="Portable Network Graphics">PNG</abbr>, <abbr title="Shockwave Flash">SWF</abbr>,
+   <abbr title="Tagged Image File Format">TIFF</abbr> y <abbr>JPEG2000</abbr>.
+  </p>
+  <p class="para">
+   Con la <a href="ref.exif.html" class="link">extensión exif</a>, se puede
+   trabajar con infomación almacenada en cabeceras de
+   imágenes <abbr title="Joint Photographic Experts Group">JPEG</abbr> y <abbr title="Tagged Image File Format">TIFF</abbr>. De esta manera se pueden
+   leer metadatos generados por cámaras digitales. Las funciones de
+   exif no requieren la biblioteca <abbr title="Graphics Draw">GD</abbr>.
+  </p>
+  
+  <p class="para">
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <span class="simpara">
+     Lea la sección de requisitos sobre cómo expandir las capacidades
+     para leer, escribir y modificar imágenes. Para leer metadatos de fotografías
+     tomadas con cámaras digitales se necesita la <a href="ref.exif.html" class="link">extensión exif</a>
+     mencionada arriba.
+    </span>
+   </p></blockquote>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <span class="simpara">
+     La función <span class="function"><a href="function.getimagesize.html" class="function">getimagesize()</a></span> no requiere la extensión GD.
+    </span>
+   </p></blockquote>
+  </p>
+  
+  <p class="para">
+   GD admite variedad de formatos. Abajo se muestra una lista de los formatos soportados por GD y las observaciones
+   sobre su disponibilidad incluyendo el soporte para lectura/escritura.
+  </p>
+  <p class="para">
+   <table class="doctable table">
+    <caption><strong>Formatos admitidos por GD</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>Formato</th>
+       <th>Soporte para lectura</th>
+       <th>Soporte para escritura</th>
+       <th>Observaciones</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>JPEG</td>
+       <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+       <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td>PNG</td>
+       <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+       <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td>GIF</td>
+       <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+       <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+       <td>Disponible a partir de GD 2.0.28 y PHP 5.0.1</td>
+      </tr>
+
+      <tr>
+       <td>XBM</td>
+       <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+       <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td>XPM</td>
+       <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+       <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+       <td>Soporte para lectura disponible en Windows a partir de PHP 5.3.19</td>
+      </tr>
+
+      <tr>
+       <td>WBMP</td>
+       <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+       <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td>WebP</td>
+       <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+       <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+       <td>PHP 5.5+</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+  <p class="para">
+   A pesar de que la mayoría de los formatos están disponibles tanto para lectura como para escritura en la tabla de arriba,
+   esto no significa que PHP fuera compilado con soporta para ellos. Para averiguar qué formatos estaban disponibles
+   al compilar GD, use la función <span class="function"><a href="function.gd-info.html" class="function">gd_info()</a></span>; para más información
+   sobre el soporte de compilación para uno o más formatos, véase el capítulo de instalación.
+  </p>
+ </div></div></div></body></html>

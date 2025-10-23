@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Obtener el patr&oacute;n usado por el formateador</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="messageformatter.getlocale.html">« MessageFormatter::getLocale</a></li>
+      <li style="float: right;"><a href="messageformatter.parse.html">MessageFormatter::parse »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.messageformatter.html">MessageFormatter</a></li>
+    <li>Obtener el patr&oacute;n usado por el formateador</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="messageformatter.getpattern" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MessageFormatter::getPattern</h1>
+  <h1 class="refname">msgfmt_get_pattern</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8, PECL intl &gt;= 1.0.0)</p><p class="refpurpose"><span class="refname">MessageFormatter::getPattern</span> -- <span class="refname">msgfmt_get_pattern</span> &mdash; <span class="dc-title">Obtener el patrón usado por el formateador</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-messageformatter.getpattern-description">
+  <h3 class="title">Descripción</h3>
+  <p class="para">
+   Estilo orientado a objetos
+  </p>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="methodname"><strong>MessageFormatter::getPattern</strong></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Estilo por procedimientos
+  </p>
+  <div class="methodsynopsis dc-description"><span class="methodname"><strong>msgfmt_get_pattern</strong></span>(<span class="methodparam"><span class="type"><a href="class.messageformatter.html" class="type MessageFormatter">MessageFormatter</a></span> <code class="parameter">$fmt</code></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Obtiene el patrón usado por el formateador
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-messageformatter.getpattern-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">fmt</code></dt>
+     <dd>
+      <p class="para">
+       El formateador de mensajes
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ 
+ <div class="refsect1 returnvalues" id="refsect1-messageformatter.getpattern-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   El <span class="type"><a href="language.types.string.html" class="type string">string</a></span> del patrón para este formateador
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-messageformatter.getpattern-examples">
+  <h3 class="title">Ejemplos</h3>
+  <div class="example" id="example-2382">
+   <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>msgfmt_get_pattern()</strong></span></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$fmt </span><span style="color: #007700">= </span><span style="color: #0000BB">msgfmt_create</span><span style="color: #007700">( </span><span style="color: #DD0000">"es_ES"</span><span style="color: #007700">, </span><span style="color: #DD0000">"{0, number} monos en {1, number} árboles" </span><span style="color: #007700">);<br />echo </span><span style="color: #DD0000">"Patrón predeterminado: '" </span><span style="color: #007700">. </span><span style="color: #0000BB">msgfmt_get_pattern</span><span style="color: #007700">( </span><span style="color: #0000BB">$fmt </span><span style="color: #007700">) . </span><span style="color: #DD0000">"'\n"</span><span style="color: #007700">;<br />echo </span><span style="color: #DD0000">"Resultado del formateo: " </span><span style="color: #007700">. </span><span style="color: #0000BB">msgfmt_format</span><span style="color: #007700">( </span><span style="color: #0000BB">$fmt</span><span style="color: #007700">, array(</span><span style="color: #0000BB">123</span><span style="color: #007700">, </span><span style="color: #0000BB">456</span><span style="color: #007700">) ) . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">msgfmt_set_pattern</span><span style="color: #007700">( </span><span style="color: #0000BB">$fmt</span><span style="color: #007700">, </span><span style="color: #DD0000">"{0, number} árboles alojan {1, number} monos" </span><span style="color: #007700">);<br />echo </span><span style="color: #DD0000">"Patrón nuevo: '" </span><span style="color: #007700">. </span><span style="color: #0000BB">msgfmt_get_pattern</span><span style="color: #007700">( </span><span style="color: #0000BB">$fmt </span><span style="color: #007700">) . </span><span style="color: #DD0000">"'\n"</span><span style="color: #007700">;<br />echo </span><span style="color: #DD0000">"Número formateado: " </span><span style="color: #007700">. </span><span style="color: #0000BB">msgfmt_format</span><span style="color: #007700">( </span><span style="color: #0000BB">$fmt</span><span style="color: #007700">, array(</span><span style="color: #0000BB">123</span><span style="color: #007700">, </span><span style="color: #0000BB">456</span><span style="color: #007700">) ) . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+  <div class="example" id="example-2383">
+   <p><strong>Ejemplo #2 Ejemplo orientado a objetos</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$fmt </span><span style="color: #007700">= new </span><span style="color: #0000BB">MessageFormatter</span><span style="color: #007700">( </span><span style="color: #DD0000">"es_ES"</span><span style="color: #007700">, </span><span style="color: #DD0000">"{0, number} monos en {1, number} árboles" </span><span style="color: #007700">);<br />echo </span><span style="color: #DD0000">"Patrón predeterminado: '" </span><span style="color: #007700">. </span><span style="color: #0000BB">$fmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getPattern</span><span style="color: #007700">() . </span><span style="color: #DD0000">"'\n"</span><span style="color: #007700">;<br />echo </span><span style="color: #DD0000">"Resultado del formateo: " </span><span style="color: #007700">. </span><span style="color: #0000BB">$fmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(array(</span><span style="color: #0000BB">123</span><span style="color: #007700">, </span><span style="color: #0000BB">456</span><span style="color: #007700">)) . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$fmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setPattern</span><span style="color: #007700">( </span><span style="color: #DD0000">"{0, number} árboles alojan {1, number} monos" </span><span style="color: #007700">);<br />echo </span><span style="color: #DD0000">"Patrón nuevo: '" </span><span style="color: #007700">. </span><span style="color: #0000BB">$fmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getPattern</span><span style="color: #007700">() . </span><span style="color: #DD0000">"'\n"</span><span style="color: #007700">;<br />echo </span><span style="color: #DD0000">"Número formateado: " </span><span style="color: #007700">. </span><span style="color: #0000BB">$fmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(array(</span><span style="color: #0000BB">123</span><span style="color: #007700">, </span><span style="color: #0000BB">456</span><span style="color: #007700">)) . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+  <p class="para">El resultado del ejemplo sería:</p>
+  <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Patrón predeterminado: &#039;{0, number} monos en {1, number} árboles&#039; 
+Resultado del formateo: 123 monos en 456 árboles 
+Patrón nuevo: &#039;{0, number} árboles alojan {1, number} monos&#039; 
+Número formateado: 123 árboles alojan 456 monos</pre>
+</div>
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-messageformatter.getpattern-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="messageformatter.create.html" class="function" rel="rdfs-seeAlso">msgfmt_create()</a> - Construir un nuevo Formateador de Mensajes</span></li>
+    <li><span class="function"><a href="messageformatter.setpattern.html" class="function" rel="rdfs-seeAlso">msgfmt_set_pattern()</a> - Establecer el patr&oacute;n usado por el formateador</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

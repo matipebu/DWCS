@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Importa los p&iacute;xeles de una imagen</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="imagick.implodeimage.html">« Imagick::implodeImage</a></li>
+      <li style="float: right;"><a href="imagick.inversefouriertransformimage.html">Imagick::inverseFourierTransformImage »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.imagick.html">Imagick</a></li>
+    <li>Importa los p&iacute;xeles de una imagen</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="imagick.importimagepixels" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Imagick::importImagePixels</h1>
+  <p class="verinfo">(PECL imagick 2 &gt;= 2.3.0, PECL imagick 3)</p><p class="refpurpose"><span class="refname">Imagick::importImagePixels</span> &mdash; <span class="dc-title">Importa los píxeles de una imagen</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-imagick.importimagepixels-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>Imagick::importImagePixels</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$x</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$y</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$width</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$height</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$map</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$storage</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$pixels</code></span><br>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Importa los píxeles desde una matriz a un imagen. El mapa <code class="parameter">map</code> normalmete es
+   &#039;RGB&#039;. Este método impone las siguientes limitaciones para los parámetros: la cantidad de píxeles
+   en la matriz debe coincidir con <code class="parameter">width</code> x <code class="parameter">height</code> x
+   longitud del mapa.
+   Este método está disponible si Imagick ha sido compilado con la versión 6.4.5 o superior de ImageMagick.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-imagick.importimagepixels-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">x</code></dt>
+     <dd>
+      <p class="para">
+       La posición x de la imagen
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">y</code></dt>
+     <dd>
+      <p class="para">
+       La posición y de la imagen
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">width</code></dt>
+     <dd>
+      <p class="para">
+       El ancho de la imagen
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">height</code></dt>
+     <dd>
+      <p class="para">
+       El alto de la imagen
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">map</code></dt>
+     <dd>
+      <p class="para">
+       Mapa de píxeles ordenados, como una cadena. Esto puede ser por ejemplo <code class="literal">RGB</code>.
+       El valor puede ser cualquier combinación u orden de R = rojo, G = verde, B = azul, A = alfa
+       (0 es transparente), O = opacidad (0 es opaco), C = cian, Y = amarillo, M = magenta, K = negro,
+       I = intensidad (para escala de grises), P = relleno.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">storage</code></dt>
+     <dd>
+      <p class="para">
+       El método de almacenamiento de los píxeles.
+       Consulte esta lista de <a href="imagick.constants.html#imagick.constants.pixel" class="link">constantes de píxel</a>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">pixels</code></dt>
+     <dd>
+      <p class="para">
+       La matriz de píxeles
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-imagick.importimagepixels-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-imagick.importimagepixels-errors">
+  <h3 class="title">Errores/Excepciones</h3>
+  <p class="para">
+   Lanza ImagickException en caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-imagick.importimagepixels-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-2806">
+    <p><strong>Ejemplo #1 Ejemplo de<span class="methodname"><strong>Imagick::importImagePixels()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/* Generar una matriz de píxeles. 2000 píxeles por raya de color */<br /></span><span style="color: #0000BB">$cuenta </span><span style="color: #007700">= </span><span style="color: #0000BB">2000 </span><span style="color: #007700">* </span><span style="color: #0000BB">3</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$píxeles </span><span style="color: #007700">= <br />   </span><span style="color: #0000BB">array_merge</span><span style="color: #007700">(</span><span style="color: #0000BB">array_pad</span><span style="color: #007700">(array(), </span><span style="color: #0000BB">$cuenta</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">),<br />               </span><span style="color: #0000BB">array_pad</span><span style="color: #007700">(array(), </span><span style="color: #0000BB">$cuenta</span><span style="color: #007700">, </span><span style="color: #0000BB">255</span><span style="color: #007700">), <br />               </span><span style="color: #0000BB">array_pad</span><span style="color: #007700">(array(), </span><span style="color: #0000BB">$cuenta</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">),<br />               </span><span style="color: #0000BB">array_pad</span><span style="color: #007700">(array(), </span><span style="color: #0000BB">$cuenta</span><span style="color: #007700">, </span><span style="color: #0000BB">255</span><span style="color: #007700">),<br />               </span><span style="color: #0000BB">array_pad</span><span style="color: #007700">(array(), </span><span style="color: #0000BB">$cuenta</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">/* Ancho y alto. El área es la cantidad de píxeles dividido<br />   por tres. Tres viene de 'RGB', tres valores por píxel */<br /></span><span style="color: #0000BB">$ancho </span><span style="color: #007700">= </span><span style="color: #0000BB">$alto </span><span style="color: #007700">= </span><span style="color: #0000BB">pow</span><span style="color: #007700">((</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$píxeles</span><span style="color: #007700">) / </span><span style="color: #0000BB">3</span><span style="color: #007700">), </span><span style="color: #0000BB">0.5</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* Crear una imagen vacía */<br /></span><span style="color: #0000BB">$im </span><span style="color: #007700">= new </span><span style="color: #0000BB">Imagick</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$im</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">newImage</span><span style="color: #007700">(</span><span style="color: #0000BB">$ancho</span><span style="color: #007700">, </span><span style="color: #0000BB">$alto</span><span style="color: #007700">, </span><span style="color: #DD0000">'gray'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* Importar los píxeles a la imagen.<br />   ancho * alto * strlen("RGB") debe coincidir con count($píxeles) */<br /></span><span style="color: #0000BB">$im</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">importImagePixels</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">$ancho</span><span style="color: #007700">, </span><span style="color: #0000BB">$alto</span><span style="color: #007700">, </span><span style="color: #DD0000">"RGB"</span><span style="color: #007700">, </span><span style="color: #0000BB">Imagick</span><span style="color: #007700">::</span><span style="color: #0000BB">PIXEL_CHAR</span><span style="color: #007700">, </span><span style="color: #0000BB">$píxeles</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* Imprimir como una imagen jpeg */<br /></span><span style="color: #0000BB">$im</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setImageFormat</span><span style="color: #007700">(</span><span style="color: #DD0000">'jpg'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">"Content-Type: image/jpg"</span><span style="color: #007700">);<br />echo </span><span style="color: #0000BB">$im</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+    <div class="mediaobject">
+     
+     <div class="imageobject">
+      <img src="images/c0d23d2d6769e53e24a1b3136c064577-importimagepixels.jpg" alt="Salida del ejemplo : Imagick::importImagePixels()" width="100" height="100" />
+     </div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+
+
+</div></div></div></body></html>

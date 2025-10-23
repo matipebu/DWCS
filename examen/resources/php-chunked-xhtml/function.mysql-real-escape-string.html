@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Escapa caracteres especiales en una cadena para su uso en una sentencia SQL</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.mysql-query.html">« mysql_query</a></li>
+      <li style="float: right;"><a href="function.mysql-result.html">mysql_result »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.mysql.html">Funciones de MySQL</a></li>
+    <li>Escapa caracteres especiales en una cadena para su uso en una sentencia SQL</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mysql-real-escape-string" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysql_real_escape_string</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5)</p><p class="refpurpose"><span class="refname">mysql_real_escape_string</span> &mdash; <span class="dc-title">Escapa caracteres especiales en una cadena para su uso en una sentencia SQL</span></p>
+
+ </div>
+
+ <div id="function.mysql-real-escape-string-refsynopsisdiv">
+  <div class="warning"><strong class="warning">Advertencia</strong>
+   <p class="para">Esta extensión fue declarada obsoleta en PHP 5.5.0 y eliminada en PHP 7.0.0.
+En su lugar debería utilzarse las extensiones <a href="book.mysqli.html" class="link">MySQLi</a> o <a href="ref.pdo-mysql.html" class="link">PDO_MySQL</a>.
+Véase también la guía <a href="mysqlinfo.api.choosing.html" class="link">MySQL: elegir una API</a>.
+Las alternativas a esta función son:</p>
+   <ul class="simplelist">
+    <li><span class="function"><a href="mysqli.real-escape-string.html" class="function">mysqli_real_escape_string()</a></span></li>
+    <li><span class="methodname"><a href="pdo.quote.html" class="methodname">PDO::quote()</a></span></li>
+   </ul>
+  </div>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.mysql-real-escape-string-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mysql_real_escape_string</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$unescaped_string</code></span>, <span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$link_identifier</code><span class="initializer"> = NULL</span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Escapa caracteres especiales en la cadena dada por <code class="parameter">unescaped_string</code>,
+   teniendo en cuenta el conjunto de caracteres en uso de la conexión, para que
+   sea seguro usarla en <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span>. Si se van a insertar
+   datos binarios, se ha de usar esta función.
+  </p>
+  <p class="para">
+   <span class="function"><strong>mysql_real_escape_string()</strong></span> llama a la función mysql_real_escape_string
+   de la biblioteca de MySQL, la cual antepone barras invertidas a los siguientes caracteres:
+   <code class="literal">\x00</code>, <code class="literal">\n</code>,
+   <code class="literal">\r</code>, <code class="literal">\</code>, <code class="literal">&#039;</code>,
+   <code class="literal">&quot;</code> y <code class="literal">\x1a</code>.
+  </p>
+  <p class="para">
+   Esta función siempre debe usarse (con pocas excepciones) para hacer seguros
+   los datos antes de enviar una consulta a MySQL.
+  </p>
+
+  <div class="caution"><strong class="caution">Precaución</strong>
+   <h1 class="title">Seguridad: el conjunto de caracters predeterminado</h1>
+   <p class="para">
+    El conjunto de caracteres debe ser establecido o bien a nivel del servidor, o bien con
+    la función <span class="function"><a href="function.mysql-set-charset.html" class="function">mysql_set_charset()</a></span> de la API para que afecte a
+    <span class="function"><strong>mysql_real_escape_string()</strong></span>. Véase la sección sobre los conceptos
+    de <a href="mysqlinfo.concepts.charset.html" class="link">conjuntos de caracters</a> para
+    más información.
+   </p>
+  </div>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mysql-real-escape-string-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">unescaped_string</code></dt>
+     <dd>
+      <p class="para">
+       La cadena a escapar.
+      </p>
+     </dd>
+    
+    <dt><code class="parameter">
+link_identifier</code></dt><dd><p class="para">La conexión MySQL. Si no
+se especifica el identificador de enlace, se asume el último enlace abierto
+por <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span>. Si no se encuentra este enlace, se
+intentará crear un nuevo enlace como si <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> hubiese sido invocada
+sin argumentos. Si no se encuentra o establece ninguna conexión, se genera un error
+de nivel <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong>.</p></dd>
+
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mysql-real-escape-string-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve la cadena escapada, o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.mysql-real-escape-string-errors">
+  <h3 class="title">Errores/Excepciones</h3>
+  <p class="para">
+   Ejecutar esta función sin una conexión de MySQL presente también
+   emitirá errores de nivel <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong> de PHP. Solo
+   se ha de ejecutar con una conexión de MySQL válida presente.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.mysql-real-escape-string-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-1776">
+    <p><strong>Ejemplo #1 Ejemplo sencillo de <span class="function"><strong>mysql_real_escape_string()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Conexión<br /></span><span style="color: #0000BB">$enlace </span><span style="color: #007700">= </span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'anfitrión_mysql'</span><span style="color: #007700">, </span><span style="color: #DD0000">'usuario_mysql'</span><span style="color: #007700">, </span><span style="color: #DD0000">'contraseña_mysql'</span><span style="color: #007700">)<br />    OR die(</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br /><br /></span><span style="color: #FF8000">// Consulta<br /></span><span style="color: #0000BB">$consulta </span><span style="color: #007700">= </span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT * FROM users WHERE user='%s' AND password='%s'"</span><span style="color: #007700">,<br />            </span><span style="color: #0000BB">mysql_real_escape_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$usuario</span><span style="color: #007700">),<br />            </span><span style="color: #0000BB">mysql_real_escape_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$contraseña</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-1777">
+    <p><strong>Ejemplo #2 <span class="function"><strong>mysql_real_escape_string()</strong></span> requiere una conexión</strong></p>
+    <div class="example-contents"><p>
+     Este ejemplo muestra lo que sucede si no hay presente una conexión
+     de MySQL al invocar a esta función.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// No nos hemos conectado a MySQL<br /><br /></span><span style="color: #0000BB">$apellido  </span><span style="color: #007700">= </span><span style="color: #DD0000">"O'Reilly"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$_apellido </span><span style="color: #007700">= </span><span style="color: #0000BB">mysql_real_escape_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$apellido</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$consulta </span><span style="color: #007700">= </span><span style="color: #DD0000">"SELECT * FROM actors WHERE last_name = '</span><span style="color: #0000BB">$_apellido</span><span style="color: #DD0000">'"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$_apellido</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$consulta</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Warning: mysql_real_escape_string(): No such file or directory in /this/test/script.php on line 5
+Warning: mysql_real_escape_string(): A link to the server could not be established in /this/test/script.php on line 5
+
+bool(false)
+string(41) &quot;SELECT * FROM actors WHERE last_name = &#039;&#039;&quot;</pre>
+</div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-1778">
+    <p><strong>Ejemplo #3 Un ejemplo de ataque de inyección de SQL</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// No hemos comprobado $_POST['password'], ¡podría ser cualquier cosa que el usuario quisiera! Por ejemplo:<br /></span><span style="color: #0000BB">$_POST</span><span style="color: #007700">[</span><span style="color: #DD0000">'username'</span><span style="color: #007700">] = </span><span style="color: #DD0000">'aidan'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$_POST</span><span style="color: #007700">[</span><span style="color: #DD0000">'password'</span><span style="color: #007700">] = </span><span style="color: #DD0000">"' OR ''='"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">// Consultar la base de datos para comprobar si existe algún usuario que coincida<br /></span><span style="color: #0000BB">$consulta </span><span style="color: #007700">= </span><span style="color: #DD0000">"SELECT * FROM users WHERE user='</span><span style="color: #007700">{</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">[</span><span style="color: #DD0000">'username'</span><span style="color: #007700">]}</span><span style="color: #DD0000">' AND password='</span><span style="color: #007700">{</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">[</span><span style="color: #DD0000">'password'</span><span style="color: #007700">]}</span><span style="color: #DD0000">'"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$consulta</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Esto significa que la consulta enviada a MySQL sería:<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">$consulta</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>
+     La consulta enviada a MySQL:
+    </p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">SELECT * FROM users WHERE user=&#039;aidan&#039; AND password=&#039;&#039; OR &#039;&#039;=&#039;&#039;</pre>
+</div>
+    </div>
+    <div class="example-contents"><p>
+     Esto permitiría a alguien acceder a una sesión sin una contraseña válida.
+    </p></div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.mysql-real-escape-string-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Se requiere una conexión a MySQL antes de usar
+    <span class="function"><strong>mysql_real_escape_string()</strong></span>, si no, se generará
+    un error de nivel <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong>, y se devolverá <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+    Si <code class="parameter">link_identifier</code> no está definido, se
+    usará la última conexión a MySQL.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Si esta función no se utiliza para escapar los datos, la consulta es vulnerable a
+    <a href="security.database.sql-injection.html" class="link">Ataques de inyección SQL</a>.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <span class="simpara">
+    <span class="function"><strong>mysql_real_escape_string()</strong></span> no escapa
+    <code class="literal">%</code> ni <code class="literal">_</code>. Estos son comodines en
+    MySQL si se combinan con <code class="literal">LIKE</code>, <code class="literal">GRANT</code>,
+    o <code class="literal">REVOKE</code>.
+   </span>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mysql-real-escape-string-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.mysql-set-charset.html" class="function" rel="rdfs-seeAlso">mysql_set_charset()</a> - Establece el conjunto de caracteres del cliente</span></li>
+    <li><span class="function"><a href="function.mysql-client-encoding.html" class="function" rel="rdfs-seeAlso">mysql_client_encoding()</a> - Devuelve el nombre del conjunto de caracteres</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

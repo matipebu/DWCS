@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Introducci&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="features.commandline.html">« Uso de la l&iacute;nea de comandos</a></li>
+      <li style="float: right;"><a href="features.commandline.differences.html">Diferencias respecto a otras SAPIs »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="features.commandline.html">Uso de la l&iacute;nea de comandos</a></li>
+    <li>Introducci&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="features.commandline.introduction" class="section">
+  <h2 class="title">Introducción</h2>
+
+  <p class="para">
+   El principal objetivo de la SAPI CLI
+   es el desarrollo de aplicaciones de consola con PHP. En
+   este capítulo se explican las diferencias que hay entre la SAPI CLI y otras
+   <abbr title="Server Application Programming Interface">SAPI</abbr>. Vale la pena aclarar que <abbr title="Command Line Interpreter/Interface">CLI</abbr> y <abbr title="Common Gateway Interface">CGI</abbr>
+   son <abbr title="Server Application Programming Interface">SAPI</abbr> diferentes pese a que comparten la mayoría de
+   características.
+  </p>
+
+  <p class="para">
+   La SAPI CLI se habilita por omisión con
+   <strong class="option configure">--enable-cli</strong>, aunque puede deshabilitarse usando
+   la opción <strong class="option configure">--disable-cli</strong> al ejecutar
+   <strong class="command">./configure</strong>.
+  </p>
+
+  <p class="para">
+   Tanto el nombre, ubicación y presencia de los binarios de <abbr title="Command Line Interpreter/Interface">CLI</abbr>/<abbr title="Common Gateway Interface">CGI</abbr>
+   diferirán dependiendo de cómo se instale PHP en el sistema. Al ejecutar
+   <strong class="command">make</strong> de manera predeterminada, <abbr title="Common Gateway Interface">CGI</abbr>
+   y <abbr title="Command Line Interpreter/Interface">CLI</abbr> se construyen y ubican como <var class="filename">sapi/cgi/php-cgi</var> y
+   <var class="filename">sapi/cli/php</var> respectivamente, en el directorio origen de PHP.
+   Debe tenerse en cuenta que las dos se llaman <var class="filename">php</var>. Lo que suceda durante
+   la ejecución de <strong class="command">make install</strong> dependerá de la línea de configuración.
+   Si durante la configuración se elige una <abbr title="Server Application Programming Interface">SAPI</abbr> de módulo, tal como apxs,
+   o bien se usa la opción <strong class="option configure">--disable-cgi</strong>, se copiará <abbr title="Command Line Interpreter/Interface">CLI</abbr>
+   a <var class="filename">{PREFIJO}/bin/php</var> al ejecutar
+   <strong class="command">make install</strong>; de lo contrario se colocará <abbr title="Common Gateway Interface">CGI</abbr>
+   ahí. Por ejemplo, si se utiliza  <strong class="option configure">--with-apxs </strong> en
+   la línea de configuración, <abbr title="Command Line Interpreter/Interface">CLI</abbr> se copiaría a <var class="filename">{PREFIJO}/bin/php
+   </var> durante <strong class="command">make install</strong>. Si se desea sobrescribir
+   la instalación del binario de <abbr title="Common Gateway Interface">CGI</abbr>, debe usarse <strong class="command">make
+   install-cli</strong> tras <strong class="command">make install</strong>. Alternativamente
+   se puede especificar <strong class="option configure">--disable-cgi</strong> en la línea de
+   configuración.
+  </p>
+
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Ya que tanto <strong class="option configure">--enable-cli</strong> como
+    <strong class="option configure">--enable-cgi</strong> están habilitadas predeterminadamente,
+    el simple hecho de tener <strong class="option configure">--enable-cli</strong> en la
+    línea de configuración no implica que <abbr title="Command Line Interpreter/Interface">CLI</abbr> se copie como
+    <var class="filename">{PREFIJO}/bin/php</var> durante <strong class="command">make install</strong>.
+   </p>
+  </p></blockquote>
+
+  <p class="para">
+   Desde PHP 5, en Windows el binario de <abbr title="Command Line Interpreter/Interface">CLI</abbr> se distribuye en la carpeta principal
+   con el nombre de <var class="filename">php.exe</var>. La versión <abbr title="Common Gateway Interface">CGI</abbr> se
+   distribuye como <var class="filename">php-cgi.exe</var>. Además, se distribuye
+   un fichero <var class="filename">php-win.exe</var> si PHP se configuró con
+   <strong class="option configure">--enable-cli-win32</strong>. Este funciona igual que
+   la versión <abbr title="Command Line Interpreter/Interface">CLI</abbr>, solo que no muestra ninguna salida y, por tanto, no proporciona
+   ninguna consola.
+  </p>
+
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <strong>¿Qué SAPI tengo?</strong><br />
+   <p class="para">
+    Desde la consola, al escribir <strong class="command">php -v</strong> sabremos si
+    <var class="filename">php</var> es <abbr title="Common Gateway Interface">CGI</abbr> o <abbr title="Command Line Interpreter/Interface">CLI</abbr>. Véase
+    también la función <span class="function"><a href="function.php-sapi-name.html" class="function">php_sapi_name()</a></span> y la constante
+    <strong><code><a href="reserved.constants.html#constant.php-sapi">PHP_SAPI</a></code></strong>.
+   </p>
+  </p></blockquote>
+
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    En Unix hay disponible una página del <code class="literal">man</code>ual escribiendo <strong class="command">man
+    php</strong> en la terminal.
+   </p>
+  </p></blockquote>
+ </div></div></div></body></html>

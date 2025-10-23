@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Ordenar un array usando cotejador especificado</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="collator.setstrength.html">« Collator::setStrength</a></li>
+      <li style="float: right;"><a href="collator.sortwithsortkeys.html">Collator::sortWithSortKeys »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.collator.html">Collator</a></li>
+    <li>Ordenar un array usando cotejador especificado</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="collator.sort" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Collator::sort</h1>
+  <h1 class="refname">collator_sort</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8, PECL intl &gt;= 1.0.0)</p><p class="refpurpose"><span class="refname">Collator::sort</span> -- <span class="refname">collator_sort</span> &mdash; <span class="dc-title">Ordenar un array usando cotejador especificado</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-collator.sort-description">
+  <h3 class="title">Descripción</h3>
+  <p class="para">
+   Estilo orientado a objetos
+  </p>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>Collator::sort</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter reference">&$array</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$flags</code><span class="initializer"> = Collator::SORT_REGULAR</span></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Estilo por procedimientos
+  </p>
+  <div class="methodsynopsis dc-description"><span class="methodname"><strong>collator_sort</strong></span>(<span class="methodparam"><span class="type"><a href="class.collator.html" class="type Collator">Collator</a></span> <code class="parameter">$object</code></span>, <span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter reference">&$array</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$flags</code><span class="initializer"> = Collator::SORT_REGULAR</span></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">Esta función ordena un array según las normal regionales actuales.</p>
+  <p class="para">
+   Es equivalente al estándar de PHP
+   <span class="function"><a href="function.sort.html" class="function">sort()</a></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-collator.sort-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">object</code></dt>
+     <dd>
+      <p class="para">
+       Un objeto <span class="classname"><a href="class.collator.html" class="classname">Collator</a></span>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">array</code></dt>
+     <dd>
+      <p class="para">El array de cadenas a ordenar.</p>
+     </dd>
+    
+    
+     <dt><code class="parameter">flags</code></dt>
+     <dd>
+      <p class="para">
+       El tipo de ordenación opcional, uno de los siguientes:
+      </p>
+      <p class="para">
+       <ul class="itemizedlist">
+        <li class="listitem">
+         <p class="para">
+          <strong><code>Collator::SORT_REGULAR</code></strong>
+          - comparar los elementos de forma normal (no cambia los tipos)
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          <strong><code>Collator::SORT_NUMERIC</code></strong>
+          - comparar los elementos de forma numérica
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          <strong><code>Collator::SORT_STRING</code></strong>
+          - comparar los elementos como cadenas
+         </p>
+        </li>
+       </ul>
+       El valor predeterminado de $sort_flag value es <strong><code>Collator::SORT_REGULAR</code></strong>.
+       También se utiliza si se ha especificado un valor no válido para <code class="parameter">flags</code>.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+
+ <div class="refsect1 returnvalues" id="refsect1-collator.sort-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-collator.sort-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-2298">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>collator_sort()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$coll </span><span style="color: #007700">= </span><span style="color: #0000BB">collator_create</span><span style="color: #007700">( </span><span style="color: #DD0000">'en_US' </span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$arr  </span><span style="color: #007700">= array( </span><span style="color: #DD0000">'at'</span><span style="color: #007700">, </span><span style="color: #DD0000">'às'</span><span style="color: #007700">, </span><span style="color: #DD0000">'as' </span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_export</span><span style="color: #007700">( </span><span style="color: #0000BB">$arr </span><span style="color: #007700">);<br /></span><span style="color: #0000BB">collator_sort</span><span style="color: #007700">( </span><span style="color: #0000BB">$coll</span><span style="color: #007700">, </span><span style="color: #0000BB">$arr </span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_export</span><span style="color: #007700">( </span><span style="color: #0000BB">$arr </span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">array (
+  0 =&gt; &#039;at&#039;,
+  1 =&gt; &#039;às&#039;,
+  2 =&gt; &#039;as&#039;,
+)array (
+  0 =&gt; &#039;as&#039;,
+  1 =&gt; &#039;às&#039;,
+  2 =&gt; &#039;at&#039;,
+)</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-collator.sort-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li>Las constantes de <a href="class.collator.html#intl.collator-constants" class="link"><span class="classname"><a href="class.collator.html" class="classname">Collator</a></span></a></li>
+    <li><span class="function"><a href="collator.asort.html" class="function" rel="rdfs-seeAlso">collator_asort()</a> - Ordenar un array manteniendo la relaci&oacute;n de &iacute;ndices</span></li>
+    <li><span class="function"><a href="collator.sortwithsortkeys.html" class="function" rel="rdfs-seeAlso">collator_sort_with_sort_keys()</a> - Ordenar un array usando el cotejador y las claves de ordenaci&oacute;n especificados</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

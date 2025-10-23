@@ -1,0 +1,94 @@
+   body {
+       font-family: Arial, sans-serif;
+       background: #f8f9fa;
+   }
+
+   h1 {
+       text-align: center;
+   }
+
+   fieldset {
+       width: 70%;
+       margin: 30px auto;
+       /* centrado */
+       padding: 20px;
+       border: 2px solid #0077cc;
+       border-radius: 10px;
+       background: #ffffff;
+       box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+   }
+
+   legend {
+       font-weight: bold;
+       color: #0077cc;
+       padding: 0 10px;
+   }
+
+   form {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       gap: 15px;
+   }
+
+   label {
+       font-weight: bold;
+   }
+
+   input[type="text"] {
+       padding: 8px;
+       border: 1px solid #ccc;
+       border-radius: 6px;
+       width: 200px;
+   }
+
+   button {
+       background-color: #0077cc;
+       color: white;
+       border: none;
+       padding: 8px 16px;
+       border-radius: 6px;
+       cursor: pointer;
+       font-weight: bold;
+   }
+
+   button:hover {
+       background-color: #005999;
+   }
+
+   table {
+       border-collapse: collapse;
+       margin: 40px auto;
+       width: 70%;
+       text-align: center;
+       font-family: Arial, sans-serif;
+   }
+
+   th,
+   td {
+       border: 1px solid #333;
+       padding: 10px;
+   }
+
+   th {
+       background-color: #444;
+       color: white;
+   }
+
+   tr:nth-child(even) {
+       background-color: #f2f2f2;
+   }
+
+   tr:hover {
+       background-color: #d1e7dd;
+   }
+
+   a {
+       text-decoration: none;
+       color: #0077cc;
+       font-weight: bold;
+   }
+
+   a:hover {
+       color: #005999;
+   }

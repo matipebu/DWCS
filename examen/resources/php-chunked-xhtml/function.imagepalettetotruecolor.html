@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Convierte una imagen basada en paleta a color verdadero</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.imagepalettecopy.html">« imagepalettecopy</a></li>
+      <li style="float: right;"><a href="function.imagepng.html">imagepng »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.image.html">Funciones de GD e Im&aacute;genes</a></li>
+    <li>Convierte una imagen basada en paleta a color verdadero</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.imagepalettetotruecolor" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">imagepalettetotruecolor</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.5.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">imagepalettetotruecolor</span> &mdash; <span class="dc-title">Convierte una imagen basada en paleta a color verdadero</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.imagepalettetotruecolor-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>imagepalettetotruecolor</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$src</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Convierte una imagen basada en paleta, creada por funciones como
+   <span class="function"><a href="function.imagecreate.html" class="function">imagecreate()</a></span>, a una imagen de color verdadero, como
+   <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.imagepalettetotruecolor-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    <dt><code class="parameter">
+image</code></dt><dd><p class="para">Un recurso image, es devuelto por una de las funciones de creación de imágenes,
+como <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>.</p></dd>
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.imagepalettetotruecolor-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> si la conversión se completó, o si la imagen origen ya era una
+   imagen de color verdadero; de otro modo devuelve <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.imagepalettetotruecolor-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-2707">
+    <p><strong>Ejemplo #1 
+     Convertir cualquier recurso de imagaen a color verdadero
+    </strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Retrocompatiblidad<br /></span><span style="color: #007700">if(!</span><span style="color: #0000BB">function_exists</span><span style="color: #007700">(</span><span style="color: #DD0000">'imagepalettetotruecolor'</span><span style="color: #007700">))<br />{<br />    function </span><span style="color: #0000BB">imagepalettetotruecolor</span><span style="color: #007700">(&amp;</span><span style="color: #0000BB">$src</span><span style="color: #007700">)<br />    {<br />        if(</span><span style="color: #0000BB">imageistruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">$src</span><span style="color: #007700">))<br />        {<br />            return(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br />        }<br /><br />        </span><span style="color: #0000BB">$dst </span><span style="color: #007700">= </span><span style="color: #0000BB">imagecreatetruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">imagesx</span><span style="color: #007700">(</span><span style="color: #0000BB">$src</span><span style="color: #007700">), </span><span style="color: #0000BB">imagesy</span><span style="color: #007700">(</span><span style="color: #0000BB">$src</span><span style="color: #007700">));<br /><br />        </span><span style="color: #0000BB">imagecopy</span><span style="color: #007700">(</span><span style="color: #0000BB">$dst</span><span style="color: #007700">, </span><span style="color: #0000BB">$src</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">imagesx</span><span style="color: #007700">(</span><span style="color: #0000BB">$src</span><span style="color: #007700">), </span><span style="color: #0000BB">imagesy</span><span style="color: #007700">(</span><span style="color: #0000BB">$src</span><span style="color: #007700">));<br />        </span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$src</span><span style="color: #007700">);<br /><br />        </span><span style="color: #0000BB">$src </span><span style="color: #007700">= </span><span style="color: #0000BB">$dst</span><span style="color: #007700">;<br /><br />        return(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br />    }<br />}<br /><br /></span><span style="color: #FF8000">// Cierre asistente<br /></span><span style="color: #0000BB">$typeof </span><span style="color: #007700">= function() use(</span><span style="color: #0000BB">$im</span><span style="color: #007700">)<br />{<br />    echo </span><span style="color: #DD0000">'typeof($im) = ' </span><span style="color: #007700">. (</span><span style="color: #0000BB">imageistruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">) ? </span><span style="color: #DD0000">'true color' </span><span style="color: #007700">: </span><span style="color: #DD0000">'palette'</span><span style="color: #007700">), </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />};<br /><br /></span><span style="color: #FF8000">// Crear una imagen basada en paleta<br /></span><span style="color: #0000BB">$im </span><span style="color: #007700">= </span><span style="color: #0000BB">imagecreate</span><span style="color: #007700">(</span><span style="color: #0000BB">100</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$typeof</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">// Convertirla a color verdadero<br /></span><span style="color: #0000BB">imagepalettetotruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$typeof</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">// Liberar la memoria<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">typeof($im) = palette
+typeof($im) = true color</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.imagepalettetotruecolor-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.imagecreatetruecolor.html" class="function" rel="rdfs-seeAlso">imagecreatetruecolor()</a> - Crear una nueva imagen de color verdadero</span></li>
+    <li><span class="function"><a href="function.imageistruecolor.html" class="function" rel="rdfs-seeAlso">imageistruecolor()</a> - Averiguar si una imagen es de color verdadero</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

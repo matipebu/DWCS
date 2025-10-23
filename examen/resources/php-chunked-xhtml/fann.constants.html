@@ -1,0 +1,624 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Constantes predefinidas</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="fann.resources.html">« Tipos de recursos</a></li>
+      <li style="float: right;"><a href="fann.examples.html">Ejemplos »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.fann.html">FANN</a></li>
+    <li>Constantes predefinidas</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="fann.constants" class="appendix">
+ <h1 class="title">Constantes predefinidas</h1>
+
+ <p class="simpara">
+Estas constantes están definidas por esta extensión y
+estarán disponibles sólo cuando la extensión haya sido
+compilada con PHP, o bien sea cargada dinámicamente en ejecución.
+</p>
+ <p class="para">
+  <dl id="constants.fann-train">
+   <strong class="title">Algoritmos de entrenamiento</strong>
+   
+    <dt id="constant.fann-train-incremental">
+     <strong><code><a href="fann.constants.html#constant.fann-train-incremental">FANN_TRAIN_INCREMENTAL</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Algoritmo de retropropagación estándar, donde los pesos se actualizan después de cada patrón de entrenamiento.
+      Esto significa que los pesos se actualizan muchas veces durante una única época. Por este motivo, algunos problemas
+      entrenarán muy rápido con este algoritmo, mientras que problemas más avanzados no entrenarán muy bien.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-train-batch">
+     <strong><code><a href="fann.constants.html#constant.fann-train-batch">FANN_TRAIN_BATCH</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Algoritmo de retropropagación estándar, donde los pesos se actualizan después de calcular el error cuadrático medio
+      para el conjunto de entrenamiento completo. Esto significa que los pesos solamente se actualizan una vez durante una época.
+      Por este motivo, algunos problemas entrenarán más lento con este algoritmo. Aunque debido a que el error
+      cuadrático medio se calcula más correctamente que en el entrenamiento incremental, algunos probleamas alcanzarán
+      soluciones mejores con este algoritmo.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-train-rprop">
+     <strong><code><a href="fann.constants.html#constant.fann-train-rprop">FANN_TRAIN_RPROP</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Un algoritmo de entrenamiento por lotes más avanzado que alcanza buenos resultados para muchos problemas. El
+      algoritmo de entrenamiento RPROP es adaptativo, por lo que no emplea learning_rate. Sin embargo, se pueden
+      establecer otros parámetros para cambiar la manera en que funciona el algoritmo RPROP, aunque solamente se recomienda
+      para usuarios que sepan cómo funciona el algoritmo de entrenamiento RPROP. El algoritmo de entrenamiento RPROP
+      está descrito por [Riedmiller y Braun, 1993], aunque el algoritmo real de aprendizaje utilizado aquí es
+      el algoritmo de entrenamiento iRPROP-, el cual está descrito por [Igel y Husken, 2000], y es una variedad
+      del algoritmo de entrenamiento RPROP estándar.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-train-quickprop">
+     <strong><code><a href="fann.constants.html#constant.fann-train-quickprop">FANN_TRAIN_QUICKPROP</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Un algoritmo de entrenamiento por lotes más avanzado que alcanza buenos resultados para muchos problemas.
+      El algoritmo de entrenamiento quickprop emplea el parámetro learning_rate junto con otros parámetros más avanzados,
+      aunque solamente se recomienda cambiar estos parámetros avanzados a usuarios  que sepan cómo funciona
+      el algoritmo de entrenamiento quickprop. El algoritmo de entrenamiento quickprop está descrito por [Fahlman, 1988].
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-train-sarprop">
+     <strong><code><a href="fann.constants.html#constant.fann-train-sarprop">FANN_TRAIN_SARPROP</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Algoritmo de entrenamiento más avanzado aún. Solamente para la versión 2.2
+     </span>
+    </dd>
+   
+  </dl>
+  <dl id="constants.fann-activation-funcs">
+   <strong class="title">Funciones de activación</strong>
+   
+    <dt id="constant.fann-linear">
+     <strong><code><a href="fann.constants.html#constant.fann-linear">FANN_LINEAR</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Función de activación lineal.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-threshold">
+     <strong><code><a href="fann.constants.html#constant.fann-threshold">FANN_THRESHOLD</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Función de activación de umbral.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-threshold-symmetric">
+     <strong><code><a href="fann.constants.html#constant.fann-threshold-symmetric">FANN_THRESHOLD_SYMMETRIC</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Función de activación de umbral.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-sigmoid">
+     <strong><code><a href="fann.constants.html#constant.fann-sigmoid">FANN_SIGMOID</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Función de activación sigmoide.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-sigmoid-stepwise">
+     <strong><code><a href="fann.constants.html#constant.fann-sigmoid-stepwise">FANN_SIGMOID_STEPWISE</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Aproximación lineal escalonada a la sigmoide.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-sigmoid-symmetric">
+     <strong><code><a href="fann.constants.html#constant.fann-sigmoid-symmetric">FANN_SIGMOID_SYMMETRIC</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Función de activación sigmoide simétrica, también conocida como tanh.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-sigmoid-symmetric-stepwise">
+     <strong><code><a href="fann.constants.html#constant.fann-sigmoid-symmetric-stepwise">FANN_SIGMOID_SYMMETRIC_STEPWISE</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Aproximación lineal escalonada a la sigmoide simétrica.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-gaussian">
+     <strong><code><a href="fann.constants.html#constant.fann-gaussian">FANN_GAUSSIAN</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Función de activación gaussiana.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-gaussian-symmetric">
+     <strong><code><a href="fann.constants.html#constant.fann-gaussian-symmetric">FANN_GAUSSIAN_SYMMETRIC</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Función de activación gaussiana simétrica.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-gaussian-stepwise">
+     <strong><code><a href="fann.constants.html#constant.fann-gaussian-stepwise">FANN_GAUSSIAN_STEPWISE</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Función de activación gaussiana escalonada.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-elliot">
+     <strong><code><a href="fann.constants.html#constant.fann-elliot">FANN_ELLIOT</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Función de activación rápida (igual que la sigmoide) definida por David Elliott.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-elliot-symmetric">
+     <strong><code><a href="fann.constants.html#constant.fann-elliot-symmetric">FANN_ELLIOT_SYMMETRIC</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Función de activación rápida (igual que la sigmoide simétrica) definida por David Elliott.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-linear-piece">
+     <strong><code><a href="fann.constants.html#constant.fann-linear-piece">FANN_LINEAR_PIECE</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Función de activación lineal acotada.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-linear-piece-symmetric">
+     <strong><code><a href="fann.constants.html#constant.fann-linear-piece-symmetric">FANN_LINEAR_PIECE_SYMMETRIC</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Función de activación lineal acotada.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-sin-symmetric">
+     <strong><code><a href="fann.constants.html#constant.fann-sin-symmetric">FANN_SIN_SYMMETRIC</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Función de activación sinusal periódica.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-cos-symmetric">
+     <strong><code><a href="fann.constants.html#constant.fann-cos-symmetric">FANN_COS_SYMMETRIC</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Función de activación cosinusal periódica.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-sin">
+     <strong><code><a href="fann.constants.html#constant.fann-sin">FANN_SIN</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Función de activación sinusal periódica.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-cos">
+     <strong><code><a href="fann.constants.html#constant.fann-cos">FANN_COS</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Función de activación cosinusal periódica.
+     </span>
+    </dd>
+   
+  </dl>
+  <dl id="constants.fann-errorfunc">
+   <strong class="title">Funciones de error utilizadas durante el entrenamiento</strong>
+   
+    <dt id="constant.fann-errorfunc-linear">
+     <strong><code><a href="fann.constants.html#constant.fann-errorfunc-linear">FANN_ERRORFUNC_LINEAR</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Función de error lineal estándar.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-errorfunc-tanh">
+     <strong><code><a href="fann.constants.html#constant.fann-errorfunc-tanh">FANN_ERRORFUNC_TANH</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Función de erorr tanh, normalmente mejor, aunque puede requerir un índice de aprendizaje menor. Esta función de error
+      dirige de forma agresiva las salidas que difieren mucho de las deseadas, mientras que no dirige las salidas que únicamente difieren más bien poco.
+      No se recomienda para el entrenamiento en cascada o incremental.
+     </span>
+    </dd>
+   
+  </dl>
+  <dl id="constants.fann-stopfunc">
+   <strong class="title">Criterios de parada utilizados durante el entrenamiento</strong>
+   
+    <dt id="constant.fann-stopfunc-mse">
+     <strong><code><a href="fann.constants.html#constant.fann-stopfunc-mse">FANN_STOPFUNC_MSE</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El criterio de parada el es valor del Error Cuadrático Medio (ECM - MSE por sus siglas en inglés).
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-stopfunc-bit">
+     <strong><code><a href="fann.constants.html#constant.fann-stopfunc-bit">FANN_STOPFUNC_BIT</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El criterio de parada es el número de bit que fallan. El número de bit significa el número de neuronas de salida
+      que difieren más del límite de fallo de bit (véanse fann_get_bit_fail_limit y fann_set_bit_fail_limit). Los bit se cuentan
+      en todos los datos de entrenamiento, por lo que este número puede ser mayor que el número de datos de entrenamiento.
+     </span>
+    </dd>
+   
+  </dl>
+  <dl id="constants.fann-nettype">
+   <strong class="title">Definición de los tipos de redes empleados por <span class="function"><a href="function.fann-get-network-type.html" class="function">fann_get_network_type()</a></span></strong>
+   
+    <dt id="constant.fann-nettype-layer">
+     <strong><code><a href="fann.constants.html#constant.fann-nettype-layer">FANN_NETTYPE_LAYER</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Cada capa únicamente posee conexiones a la siguiente capa.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-nettype-shortcut">
+     <strong><code><a href="fann.constants.html#constant.fann-nettype-shortcut">FANN_NETTYPE_SHORTCUT</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Cada capa posee conexiones a todas las capas siguientes.
+     </span>
+    </dd>
+   
+  </dl>
+  <dl id="constants.fann-e">
+   <strong class="title">Errores</strong>
+   
+    <dt id="constant.fann-e-no-error">
+     <strong><code><a href="fann.constants.html#constant.fann-e-no-error">FANN_E_NO_ERROR</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Sin errores.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-e-cant-open-config-r">
+     <strong><code><a href="fann.constants.html#constant.fann-e-cant-open-config-r">FANN_E_CANT_OPEN_CONFIG_R</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      No se puede abrir el fichero de configuración para lectura.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-e-cant-open-config-w">
+     <strong><code><a href="fann.constants.html#constant.fann-e-cant-open-config-w">FANN_E_CANT_OPEN_CONFIG_W</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      No se puede abrir el fichero de configuración para escritura.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-e-wrong-config-version">
+     <strong><code><a href="fann.constants.html#constant.fann-e-wrong-config-version">FANN_E_WRONG_CONFIG_VERSION</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Versión errónea del fichero de configuración.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-e-cant-read-config">
+     <strong><code><a href="fann.constants.html#constant.fann-e-cant-read-config">FANN_E_CANT_READ_CONFIG</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Error al leer información del fichero de configuración.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-e-cant-read-neuron">
+     <strong><code><a href="fann.constants.html#constant.fann-e-cant-read-neuron">FANN_E_CANT_READ_NEURON</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Error al leer información de neuronas desde el fichero de configuración.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-e-cant-read-connections">
+     <strong><code><a href="fann.constants.html#constant.fann-e-cant-read-connections">FANN_E_CANT_READ_CONNECTIONS</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Error al leer conexiones desde el fichero de configuración.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-e-wrong-num-connections">
+     <strong><code><a href="fann.constants.html#constant.fann-e-wrong-num-connections">FANN_E_WRONG_NUM_CONNECTIONS</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Número de conexiones diferente del esperado.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-e-cant-open-td-w">
+     <strong><code><a href="fann.constants.html#constant.fann-e-cant-open-td-w">FANN_E_CANT_OPEN_TD_W</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      No se puede abrir el fichero de datos de entrenamiento para escritura.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-e-cant-open-td-r">
+     <strong><code><a href="fann.constants.html#constant.fann-e-cant-open-td-r">FANN_E_CANT_OPEN_TD_R</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      No se puede abrir el fichero de datos de entrenamiento para lectura.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-e-cant-read-td">
+     <strong><code><a href="fann.constants.html#constant.fann-e-cant-read-td">FANN_E_CANT_READ_TD</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Error al leer datos de entrenamiento desde el fichero.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-e-cant-allocate-mem">
+     <strong><code><a href="fann.constants.html#constant.fann-e-cant-allocate-mem">FANN_E_CANT_ALLOCATE_MEM</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      No se puede asignar memoria.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-e-cant-train-activation">
+     <strong><code><a href="fann.constants.html#constant.fann-e-cant-train-activation">FANN_E_CANT_TRAIN_ACTIVATION</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      No se puede entrenar con la función de activación seleccionada.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-e-cant-use-activation">
+     <strong><code><a href="fann.constants.html#constant.fann-e-cant-use-activation">FANN_E_CANT_USE_ACTIVATION</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      No se puede utilizar la función de activación seleccionada.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-e-train-data-mismatch">
+     <strong><code><a href="fann.constants.html#constant.fann-e-train-data-mismatch">FANN_E_TRAIN_DATA_MISMATCH</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Diferencias irreconciliables entre dos estructuras fann_train_data.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-e-cant-use-train-alg">
+     <strong><code><a href="fann.constants.html#constant.fann-e-cant-use-train-alg">FANN_E_CANT_USE_TRAIN_ALG</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      No se puede utilizar el algoritmo de entrenamiento seleccionado.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-e-train-data-subset">
+     <strong><code><a href="fann.constants.html#constant.fann-e-train-data-subset">FANN_E_TRAIN_DATA_SUBSET</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Intento de tomar un subconjunto que no está dentro del conjunto de entrenamiento.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-e-index-out-of-bound">
+     <strong><code><a href="fann.constants.html#constant.fann-e-index-out-of-bound">FANN_E_INDEX_OUT_OF_BOUND</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Índice fuera de los límites.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-e-scale-not-present">
+     <strong><code><a href="fann.constants.html#constant.fann-e-scale-not-present">FANN_E_SCALE_NOT_PRESENT</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      No están presentes los parámetro de escala.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-e-input-no-match">
+     <strong><code><a href="fann.constants.html#constant.fann-e-input-no-match">FANN_E_INPUT_NO_MATCH</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El número de neuronas de entrada en los datos de la Red Neuronal Artificial (RNA - ANN por sus siglas en inglés) no coinciden.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.fann-e-output-no-match">
+     <strong><code><a href="fann.constants.html#constant.fann-e-output-no-match">FANN_E_OUTPUT_NO_MATCH</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El número de neuronas de salida en los datos de la Red Neuronal Artificial (RNA - ANN por sus siglas en inglés) no coinciden.
+     </span>
+    </dd>
+   
+  </dl>
+ </p>
+</div>
+</div></div></body></html>

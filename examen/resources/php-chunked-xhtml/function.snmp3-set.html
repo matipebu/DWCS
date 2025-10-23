@@ -1,0 +1,264 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Set the value of an SNMP object</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.snmp3-real-walk.html">« snmp3_real_walk</a></li>
+      <li style="float: right;"><a href="function.snmp3-walk.html">snmp3_walk »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.snmp.html">Funciones SNMP</a></li>
+    <li>Set the value of an SNMP object</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.snmp3-set" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">snmp3_set</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">snmp3_set</span> &mdash; <span class="dc-title">Set the value of an SNMP object</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.snmp3-set-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>snmp3_set</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$hostname</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$security_name</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$security_level</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$auth_protocol</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$auth_passphrase</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$privacy_protocol</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$privacy_passphrase</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type"><a href="language.types.array.html" class="type array">array</a></span>|<span class="type"><a href="language.types.string.html" class="type string">string</a></span></span> <code class="parameter">$object_id</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type"><a href="language.types.array.html" class="type array">array</a></span>|<span class="type"><a href="language.types.string.html" class="type string">string</a></span></span> <code class="parameter">$type</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type"><a href="language.types.array.html" class="type array">array</a></span>|<span class="type"><a href="language.types.string.html" class="type string">string</a></span></span> <code class="parameter">$value</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$timeout</code><span class="initializer"> = -1</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$retries</code><span class="initializer"> = -1</span></span><br>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>snmp3_set()</strong></span> is used to set the value of an <abbr title="Simple Network Management Protocol">SNMP</abbr> object
+   specified by the <code class="parameter">object_id</code>.
+  </p>
+  <p class="para">
+   Even if the security level does not use an auth or priv protocol/password valid values have to be specified.
+  </p>
+  
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.snmp3-set-parameters">
+  <h3 class="title">Parámetros</h3>
+  <dl>
+   
+    <dt><code class="parameter">hostname</code></dt>
+    <dd>
+     <p class="para">
+      The hostname of the SNMP agent (server).
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">security_name</code></dt>
+    <dd>
+     <p class="para">
+      the security name, usually some kind of username
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">security_level</code></dt>
+    <dd>
+     <p class="para">
+      the security level (noAuthNoPriv|authNoPriv|authPriv)
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">auth_protocol</code></dt>
+    <dd>
+     <p class="para">
+      the authentication protocol (MD5 or SHA)
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">auth_passphrase</code></dt>
+    <dd>
+     <p class="para">
+      the authentication pass phrase
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">privacy_protocol</code></dt>
+    <dd>
+     <p class="para">
+      the privacy protocol (DES or AES)
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">privacy_passphrase</code></dt>
+    <dd>
+     <p class="para">
+      the privacy pass phrase
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">object_id</code></dt>
+    <dd>
+     <p class="para">
+      The <abbr title="Simple Network Management Protocol">SNMP</abbr> object id.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">type</code></dt>
+    <dd>
+     <p class="para">
+<abbr>MIB</abbr> define el tipo de cada identificador de objeto. Debe indicarse con un único carácter de la siguiente lista.
+</p>
+<table class="doctable table">
+ <caption><strong>tipos</strong></caption>
+ 
+  <tbody class="tbody">
+   <tr><td>=</td><td>Tipo adquirido a partir de MIB</td></tr>
+
+   <tr><td>i</td><td>INTEGER</td> </tr>
+
+   <tr><td>u</td><td>INTEGER</td></tr>
+
+   <tr><td>s</td><td>STRING</td></tr>
+
+   <tr><td>x</td><td>HEX STRING</td></tr>
+
+   <tr><td>d</td><td>DECIMAL STRING</td></tr>
+
+   <tr><td>n</td><td>NULLOBJ</td></tr>
+
+   <tr><td>o</td><td>OBJID</td></tr>
+
+   <tr><td>t</td><td>TIMETICKS</td></tr>
+
+   <tr><td>a</td><td>IPADDRESS</td></tr>
+
+   <tr><td>b</td><td>BITS</td></tr>
+
+  </tbody>
+ 
+</table>
+
+<p class="para">
+ Si se definió <strong><code>OPAQUE_SPECIAL_TYPES</code></strong> al compilar la biblioteca <abbr title="Simple Network Management Protocol">SNMP</abbr>, los siguientes valores serán también válidos:
+</p>
+<table class="doctable table">
+ <caption><strong>tipos</strong></caption>
+ 
+  <tbody class="tbody">
+   <tr><td>U</td><td>int64 sin signo</td></tr>
+
+   <tr><td>I</td><td>int64 con signo</td></tr>
+
+   <tr><td>F</td><td>float</td></tr>
+
+   <tr><td>D</td><td>double</td></tr>
+
+  </tbody>
+ 
+</table>
+
+
+     <p class="para">
+La mayoría, utilizarán su correspondiente tipo ASN.1. &#039;s&#039;, &#039;x&#039;, &#039;d&#039; y &#039;b&#039; son diferentes formas de especificar un valor de OCTET STRING, y
+el tipo sin signo &#039;u&#039; se usa también para manejar valores Gauge32.
+</p>
+
+     <p class="para">
+Si se cargan los ficheros MIB en el árbol MIB con &quot;snmp_read_mib&quot; o con la configuración de libsnmp, se puede usar &#039;=&#039; como
+parámetro <code class="parameter">type</code> para todos los id de objetos, ya que se podrá leer automáticamente el tipo a partir del MIB.
+</p>
+
+     <p class="para">
+Tenga presente que hay dos formas de asigar a una variable los tipos BITS, como por ejemplo.
+&quot;SYNTAX    BITS {telnet(0), ftp(1), http(2), icmp(3), snmp(4), ssh(5), https(6)}&quot;:
+</p>
+<ul class="itemizedlist">
+ <li class="listitem">
+  <span class="simpara">
+   Usando el tipo &quot;b&quot; y una lista numérica de bits. No se recomienda usar este método, ya que una consulta GET para un mismo OID devolvería, por ejemplo 0xF8.
+  </span>
+ </li>
+ <li class="listitem">
+  <span class="simpara">
+   Usando el tipo &quot;x&quot; y un número hexadecimal, pero si el prefijo &quot;0x&quot;.
+  </span>
+ </li>
+</ul>
+<p class="para">
+ Revise el apartado de ejemplos para más detalles.
+</p>
+
+    </dd>
+   
+   
+    <dt><code class="parameter">value</code></dt>
+    <dd>
+     <p class="para">
+      The new value
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">timeout</code></dt>
+    <dd>
+     <p class="para">
+      The number of microseconds until the first timeout.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">retries</code></dt>
+    <dd>
+     <p class="para">
+      The number of times to retry if timeouts occur.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.snmp3-set-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+  <p class="para">
+   If the SNMP host rejects the data type, an E_WARNING message like &quot;Warning: Error in packet. Reason: (badValue) The value given has the wrong type or length.&quot; is shown.
+   If an unknown or invalid OID is specified the warning probably reads &quot;Could not add variable&quot;.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.snmp3-set-examples">
+  <h3 class="title">Ejemplos</h3>
+   <div class="example" id="example-4487">
+    <p><strong>Ejemplo #1 Using <span class="function"><strong>snmp3_set()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />  snmp3_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">, </span><span style="color: #DD0000">'james'</span><span style="color: #007700">, </span><span style="color: #DD0000">'authPriv'</span><span style="color: #007700">, </span><span style="color: #DD0000">'SHA'</span><span style="color: #007700">, </span><span style="color: #DD0000">'secret007'</span><span style="color: #007700">, </span><span style="color: #DD0000">'AES'</span><span style="color: #007700">, </span><span style="color: #DD0000">'secret007'</span><span style="color: #007700">, </span><span style="color: #DD0000">'IF-MIB::ifAlias.3'</span><span style="color: #007700">, </span><span style="color: #DD0000">'s'</span><span style="color: #007700">, </span><span style="color: #DD0000">"foo"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-4488">
+    <p><strong>Ejemplo #2 Using <span class="function"><strong>snmp3_set()</strong></span> for setting BITS <abbr title="Simple Network Management Protocol">SNMP</abbr> object id</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />  snmp3_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">, </span><span style="color: #DD0000">'james'</span><span style="color: #007700">, </span><span style="color: #DD0000">'authPriv'</span><span style="color: #007700">, </span><span style="color: #DD0000">'SHA'</span><span style="color: #007700">, </span><span style="color: #DD0000">'secret007'</span><span style="color: #007700">, </span><span style="color: #DD0000">'AES'</span><span style="color: #007700">, </span><span style="color: #DD0000">'secret007'</span><span style="color: #007700">, </span><span style="color: #DD0000">'FOO-MIB::bar.42'</span><span style="color: #007700">, </span><span style="color: #DD0000">'b'</span><span style="color: #007700">, </span><span style="color: #DD0000">'0 1 2 3 4'</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">// or<br />  </span><span style="color: #0000BB">snmp3_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">, </span><span style="color: #DD0000">'james'</span><span style="color: #007700">, </span><span style="color: #DD0000">'authPriv'</span><span style="color: #007700">, </span><span style="color: #DD0000">'SHA'</span><span style="color: #007700">, </span><span style="color: #DD0000">'secret007'</span><span style="color: #007700">, </span><span style="color: #DD0000">'AES'</span><span style="color: #007700">, </span><span style="color: #DD0000">'secret007'</span><span style="color: #007700">, </span><span style="color: #DD0000">'FOO-MIB::bar.42'</span><span style="color: #007700">, </span><span style="color: #DD0000">'x'</span><span style="color: #007700">, </span><span style="color: #DD0000">'F0'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+ </div>
+
+ 
+ 
+</div></div></div></body></html>

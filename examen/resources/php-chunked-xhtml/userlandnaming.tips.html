@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Tips</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="userlandnaming.rules.html">« Reglas</a></li>
+      <li style="float: right;"><a href="about.html">Acerca del manual »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="userlandnaming.html">Gu&iacute;a de entorno de usuario para nombres</a></li>
+    <li>Tips</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="userlandnaming.tips" class="section">
+  <h2 class="title">Tips</h2>
+  <p class="para">
+   Con el fin de escribir código que funcione en el futuro, se recomienda no
+   colocar muchas variables, funciones o clases en el espacio de nombres global. Esto
+   prevendrá de conflictos de nombres con código de terceros así como con posibles
+   adiciones futuras al lenguaje.
+  </p>
+  <p class="para">
+   Una manera común de evitar conflictos con nombres de funciones y clases es
+   añadirlos a su propio
+   <a href="language.namespaces.html" class="link">espacio de nombres</a> dedicado.
+  </p>
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">namespace </span><span style="color: #0000BB">MiProyecto</span><span style="color: #007700">;<br /><br />function </span><span style="color: #0000BB">mi_función</span><span style="color: #007700">() {<br />    return </span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">\MiProyecto\mi_función</span><span style="color: #007700">();</span></span></code></div>
+   </div>
+
+  </div>
+  <p class="para">
+   Esto todavía necesita que se mantenga la cuenta de los espacios de nombres ya utilizados, pero una vez
+   que se decido el espacio de nombres que se va a usar se pueden añadir todas las funciones y
+   clases e él sin tener que pensar más en conflictos.
+  </p>
+  <p class="para">
+   Es una buena práctica limitar el número de variables añadidas al
+   ámbito global para evitar conflictos de nombres con código
+   de terceros.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <strong>Ámbito de variables</strong><br />
+   <p class="para">
+    Debido a las <a href="language.variables.scope.html" class="link">reglas de ámbito</a> de PHP,
+    las variables definidas dentro de funciones y métodos no están en el ámbito global
+    y, por tanto, no pueden crear conflictos con otras variables definidas en el ámbito global.
+   </p>
+  </p></blockquote>
+ </div></div></div></body></html>

@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>La clase DOMNamedNodeMap</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="domimplementation.hasfeature.html">« DOMImplementation::hasFeature</a></li>
+      <li style="float: right;"><a href="domnamednodemap.count.html">DOMNamedNodeMap::count »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.dom.html">DOM</a></li>
+    <li>La clase DOMNamedNodeMap</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.domnamednodemap" class="reference">
+ <h1 class="title">La clase DOMNamedNodeMap</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PHP 5, PHP 7, PHP 8)</p>
+
+  
+  
+  
+
+  <div class="section" id="domnamednodemap.synopsis">
+   <h2 class="title">Sinopsis de la Clase</h2>
+
+   
+   <div class="classsynopsis"><div class="classsynopsisinfo">
+    
+     <span class="modifier">class</span> <strong class="classname"><strong class="classname">DOMNamedNodeMap</strong></strong>
+    
+
+    
+     <span class="modifier">implements</span>
+      <a href="class.iteratoraggregate.html" class="interfacename">IteratorAggregate</a>,
+
+     <a href="class.countable.html" class="interfacename">Countable</a> {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Propiedades */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="varname"><a href="class.domnamednodemap.html#domnamednodemap.props.length">$<var class="varname">length</var></a></var>;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Métodos */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="domnamednodemap.count.html" class="methodname">count</a></span>(): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="domnamednodemap.getiterator.html" class="methodname">getIterator</a></span>(): <span class="type"><a href="class.iterator.html" class="type Iterator">Iterator</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="domnamednodemap.getnameditem.html" class="methodname">getNamedItem</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$qualifiedName</code></span>): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="domnamednodemap.getnameditemns.html" class="methodname">getNamedItemNS</a></span>(<span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span> <code class="parameter">$namespace</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$localName</code></span>): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="domnamednodemap.item.html" class="methodname">item</a></span>(<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$index</code></span>): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span></span></div>
+
+   }</div>
+   
+
+  </div>
+
+  
+  <div class="section" id="domnamednodemap.props">
+   <h2 class="title">Propiedades</h2>
+   <dl>
+    
+     <dt id="domnamednodemap.props.length"><var class="varname">length</var></dt>
+     <dd>
+      <p class="para">
+       El número de nodos del mapa. El rango de los índice del nodo hijo
+       válido es de <code class="literal">0</code> a <code class="literal">length - 1</code> inclusive.
+      </p>
+     </dd>
+    
+   </dl>
+  </div>
+  
+
+  <div class="section">
+   <h2 class="title">Historial de cambios</h2>
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Versión</th>
+       <th>Descripción</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>8.0.0</td>
+       <td>
+        The unimplemented methods <span class="methodname"><strong>DOMNamedNodeMap::setNamedItem()</strong></span>,
+        <span class="methodname"><strong>DOMNamedNodeMap::removeNamedItem()</strong></span>,
+        <span class="methodname"><strong>DOMNamedNodeMap::setNamedItemNS()</strong></span> and
+        <span class="methodname"><strong>DOMNamedNodeMap::removeNamedItem()</strong></span> have been removed.
+       </td>
+      </tr>
+
+      <tr>
+       <td>8.0.0</td>
+       <td>
+        <span class="classname"><strong class="classname">DOMNamedNodeMap</strong></span> implements
+        <span class="interfacename"><a href="class.iteratoraggregate.html" class="interfacename">IteratorAggregate</a></span> now.
+        Previously, <span class="interfacename"><a href="class.traversable.html" class="interfacename">Traversable</a></span> was implemented instead.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </div>
+
+  
+  
+  
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Tabla de contenidos</h2><ul class="chunklist chunklist_reference"><li><a href="domnamednodemap.count.html">DOMNamedNodeMap::count</a> — Get number of nodes in the map</li><li><a href="domnamednodemap.getiterator.html">DOMNamedNodeMap::getIterator</a> — Retrieve an external iterator</li><li><a href="domnamednodemap.getnameditem.html">DOMNamedNodeMap::getNamedItem</a> — Recupera un nodo especificado por su nombre</li><li><a href="domnamednodemap.getnameditemns.html">DOMNamedNodeMap::getNamedItemNS</a> — Recupera un nodo especificado por el nombre local y la URI del espacio de nombres</li><li><a href="domnamednodemap.item.html">DOMNamedNodeMap::item</a> — Recupera un nodo especificado por su &iacute;ndice</li></ul>
+</div>
+</div></div></body></html>

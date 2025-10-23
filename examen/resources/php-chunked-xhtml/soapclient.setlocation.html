@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Define la localizaci&oacute;n del servicio Web a utilizar</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="soapclient.setcookie.html">« SoapClient::__setCookie</a></li>
+      <li style="float: right;"><a href="soapclient.setsoapheaders.html">SoapClient::__setSoapHeaders »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.soapclient.html">SoapClient</a></li>
+    <li>Define la localizaci&oacute;n del servicio Web a utilizar</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="soapclient.setlocation" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SoapClient::__setLocation</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.0.4, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">SoapClient::__setLocation</span> &mdash; <span class="dc-title">Define la localización del servicio Web a utilizar</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-soapclient.setlocation-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>SoapClient::__setLocation</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$new_location</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Define la URL de conexión que será usada por las siguientes peticiones SOAP. Esto es equivalente a 
+   especificar la opción <code class="literal">location</code> cuando se construye el SoapClient.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Llamar este método es opcional. El SoapClient utiliza la URL de conexión desde
+    el fichero WSDL por defecto.  
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-soapclient.setlocation-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">new_location</code></dt>
+     <dd>
+      <p class="para">
+       La nueva URL de conexión.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-soapclient.setlocation-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   La anterior URL de conexión.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-soapclient.setlocation-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-5327">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>SoapClient::__setLocation()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$client </span><span style="color: #007700">= new </span><span style="color: #0000BB">SoapClient</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://example.com/webservice.php?wsdl'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$client</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">__setLocation</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://www.somethirdparty.com'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$old_location </span><span style="color: #007700">= </span><span style="color: #0000BB">$client</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">__setLocation</span><span style="color: #007700">(); </span><span style="color: #FF8000">// Desactiva la opción location<br /><br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">$old_location</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">http://www.somethirdparty.com</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-soapclient.setlocation-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="methodname"><strong>SoapClient::SoapClient()</strong></span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

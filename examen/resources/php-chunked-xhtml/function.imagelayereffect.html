@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Establecer la bandera de mezcla alfa para usar los efectos de capa</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.imagejpeg.html">« imagejpeg</a></li>
+      <li style="float: right;"><a href="function.imageline.html">imageline »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.image.html">Funciones de GD e Im&aacute;genes</a></li>
+    <li>Establecer la bandera de mezcla alfa para usar los efectos de capa</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.imagelayereffect" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">imagelayereffect</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">imagelayereffect</span> &mdash; <span class="dc-title">Establecer la bandera de mezcla alfa para usar los efectos de capa</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.imagelayereffect-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>imagelayereffect</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$image</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$effect</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Establece la bandera de mezcla alfa para usar los efectos de capa.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.imagelayereffect-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    <dt><code class="parameter">
+image</code></dt><dd><p class="para">Un recurso image, es devuelto por una de las funciones de creación de imágenes,
+como <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>.</p></dd>
+    
+     <dt><code class="parameter">effect</code></dt>
+     <dd>
+      <p class="para">
+       Una de las siguientes constantes:
+       <dl>
+        
+         <dt><strong><code><a href="image.constants.html#constant.img-effect-replace">IMG_EFFECT_REPLACE</a></code></strong></dt>
+         <dd>
+          <span class="simpara">
+           Usar el píxel de sustitución (equivalente a pasar <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> a
+           <span class="function"><a href="function.imagealphablending.html" class="function">imagealphablending()</a></span>)
+          </span>
+         </dd>
+        
+        
+         <dt><strong><code><a href="image.constants.html#constant.img-effect-alphablend">IMG_EFFECT_ALPHABLEND</a></code></strong></dt>
+         <dd>
+          <span class="simpara">
+           Unsar la mezcla de píxel normal (equivalente a pasar <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> a
+           <span class="function"><a href="function.imagealphablending.html" class="function">imagealphablending()</a></span>)
+          </span>
+         </dd>
+        
+        
+         <dt><strong><code><a href="image.constants.html#constant.img-effect-normal">IMG_EFFECT_NORMAL</a></code></strong></dt>
+         <dd>
+          <span class="simpara">
+           Lo mismo que <strong><code><a href="image.constants.html#constant.img-effect-alphablend">IMG_EFFECT_ALPHABLEND</a></code></strong>.
+          </span>
+         </dd>
+        
+        
+         <dt><strong><code><a href="image.constants.html#constant.img-effect-overlay">IMG_EFFECT_OVERLAY</a></code></strong></dt>
+         <dd>
+          <span class="simpara">
+           La capa de revestimieto tiene el efecto de que los píxeles del fondo negro permanecerán
+           negros, los píxeles del fondo blanco permanecerán blancos, pero los
+           los píxeles del fondo gris tomarán el color del píxel del primer plano.
+          </span>
+         </dd>
+        
+       </dl>
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.imagelayereffect-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.imagelayereffect-examples">
+  <h3 class="title">Ejemplos</h3>
+  <div class="example" id="example-2702">
+   <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>imagelayereffect()</strong></span></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Establecer una imagen<br /></span><span style="color: #0000BB">$im </span><span style="color: #007700">= </span><span style="color: #0000BB">imagecreatetruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">100</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Establecer un fondo<br /></span><span style="color: #0000BB">imagefilledrectangle</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">, </span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">220</span><span style="color: #007700">, </span><span style="color: #0000BB">220</span><span style="color: #007700">, </span><span style="color: #0000BB">220</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">// Aplicar la bandera de la capa de revestimiento de la mezcla alfa<br /></span><span style="color: #0000BB">imagelayereffect</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">IMG_EFFECT_OVERLAY</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Dibujar dos elipses grises<br /></span><span style="color: #0000BB">imagefilledellipse</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">50</span><span style="color: #007700">, </span><span style="color: #0000BB">50</span><span style="color: #007700">, </span><span style="color: #0000BB">40</span><span style="color: #007700">, </span><span style="color: #0000BB">40</span><span style="color: #007700">, </span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">, </span><span style="color: #0000BB">255</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">imagefilledellipse</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">50</span><span style="color: #007700">, </span><span style="color: #0000BB">50</span><span style="color: #007700">, </span><span style="color: #0000BB">50</span><span style="color: #007700">, </span><span style="color: #0000BB">80</span><span style="color: #007700">, </span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">, </span><span style="color: #0000BB">255</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">imagefilledellipse</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">50</span><span style="color: #007700">, </span><span style="color: #0000BB">50</span><span style="color: #007700">, </span><span style="color: #0000BB">80</span><span style="color: #007700">, </span><span style="color: #0000BB">50</span><span style="color: #007700">, </span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">255</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">// Imprimir<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-type: image/png'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">imagepng</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+   <div class="mediaobject">
+    
+    <div class="imageobject">
+     <img src="images/21009b70229598c6a80eef8b45bf282b-imagelayereffect.png" alt="Salida del ejemplo : imagelayereffect()" width="100" height="100" />
+    </div>
+   </div>
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.imagelayereffect-notes">
+  <h3 class="title">Notas</h3>
+  <p class="simpara">
+   Antes de PHP 5.5.0, esta función solamente está disponible si PHP se compiló con la
+   versión integrada de la biblioteca GD.
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

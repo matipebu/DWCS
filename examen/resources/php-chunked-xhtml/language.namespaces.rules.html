@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Reglas de resoluci&oacute;n de nombres</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.namespaces.fallback.html">« Utilizar espacios de nombres: una alternativa a funciones/constantes globales</a></li>
+      <li style="float: right;"><a href="language.namespaces.faq.html">P+F: cosas que es necesario saber sobre los espacios de nombres »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.namespaces.html">Espacios de nombres</a></li>
+    <li>Reglas de resoluci&oacute;n de nombres</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.namespaces.rules" class="sect1">
+  <h2 class="title">Reglas de resolución de nombres</h2>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8)</p>
+  <p class="para">
+   A continuación se exponen unas definiciones importantes para estas reglas de resolución:
+   <dl>
+    <strong class="title">Definiciones de nombres de espacios de nombres</strong>
+    
+     <dt>Nombre no cualificado</dt>
+     <dd>
+      <p class="para">
+       Es un identificador sin un separador de espacios de nombres, como <code class="literal">Foo</code>
+      </p>
+     </dd>
+    
+    
+     <dt>Nombre cualificado</dt>
+     <dd>
+      <p class="para">
+       Es un identificador con un separador de espacios de nombres, como <code class="literal">Foo\Bar</code>
+      </p>
+     </dd>
+    
+    
+     <dt>Nombre completamente cualificado</dt>
+     <dd>
+      <p class="para">
+       Es un identificador con un separador de espacios de nombres que comienza con un separador
+       de espacios de nombres, como <code class="literal">\Foo\Bar</code>. <code class="literal">namespace\Foo</code>
+       también es un nombre completamente cualificado.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+  <p class="para">
+   Los nombres se resuelven siguiendo estas reglas de resolución:
+   <ol type="1">
+    <li class="listitem">
+     <span class="simpara">
+      Las llamadas a clases, funciones o constantes completamente cualificadas se resuelven durante la
+      compilación. Por ejemplo <code class="literal">new \A\B</code> se resuelve con la clase <code class="literal">A\B</code>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Todos los nombres no cualificados y cualificados (no los completamente cualificados) se traducen
+      durante la compilación según las reglas de
+      importación actuales. Por ejemplo, si el espacio de nombres <code class="literal">A\B\C</code> se importa como
+      <code class="literal">C</code>, una llamada a
+      <code class="literal">C\D\e()</code> se traduce como <code class="literal">A\B\C\D\e()</code>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Dentro de un espacio de nombres, todos los nombres cualificados no traducidos según la reglas
+      de importación llevan antepuesto el espacio de nombres actual. Por ejemplo, si una llamada
+      a <code class="literal">C\D\e()</code> se lleva a cabo dentro del espacio de nombres <code class="literal">A\B</code>,
+      se traduce como <code class="literal">A\B\C\D\e()</code>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Los nombres de clases no cualificados se traducen durante la compilación según las reglas de
+      importación actuales (el nombre completo sustituido por el nombre abreviado importado). Por ejemplo,
+      si el espacio de nombres <code class="literal">A\B\C</code> se importa como C, <code class="literal">new C()</code> se
+      traduce como <code class="literal">new A\B\C()</code>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Dentro de un espacio de nombres (digamos A\B), las llamadas a funciones no cualificadas se resuelven
+      durante la ejecución. Así se resuelve una llamada a la función
+      <code class="literal">foo()</code>:
+     </span>
+     <ol type="1">
+      <li class="listitem">
+       <span class="simpara">
+        Se busca una función del espacio de nombres actual:
+        <code class="literal">A\B\foo()</code>.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        Se intenta encontrar y llamar a la función <em>global</em>
+        <code class="literal">foo()</code>.
+       </span>
+      </li>
+     </ol>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Dentro de un espacio de nombres (digamos <code class="literal">A\B</code>), las llamadas a nombres de clases
+      no cualificados o cualificados (no los completamente cualificados) se resuelven durante la
+      ejecución. Así se resuelve una llamada a
+      <code class="literal">new C()</code> o a <code class="literal">new D\E()</code>.
+      Para <code class="literal"> new C()</code>:
+     </span>
+     <ol type="1">
+      <li class="listitem">
+       <span class="simpara">
+        Se busca una clase del espacio de nombres actual:
+        <code class="literal">A\B\C</code>.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        Se intenta autocargar <code class="literal">A\B\C</code>.
+       </span>
+      </li>
+     </ol>
+     <span class="simpara">
+      Para <code class="literal"> new D\E()</code>:
+     </span>
+     <ol type="1">
+      <li class="listitem">
+       <span class="simpara">
+        Se busca una clase anteponiendo el espacio de nombres actual:
+        <code class="literal">A\B\D\E</code>.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        Se intenta autocargar <code class="literal">A\B\D\E</code>.
+       </span>
+      </li>
+     </ol>
+     <span class="simpara">
+      Para referirse a cualquier clase global en el espacio de nombres global, 
+      se debe emplear su nombre completamente cualificado <code class="literal">new \C()</code>.
+     </span>
+    </li>
+   </ol>
+  </p>
+  <div class="example" id="example-327">
+   <p><strong>Ejemplo #1 Las resoluciones de nombres ilustradas</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">namespace </span><span style="color: #0000BB">A</span><span style="color: #007700">;<br />use </span><span style="color: #0000BB">B\D</span><span style="color: #007700">, </span><span style="color: #0000BB">C\E </span><span style="color: #007700">as </span><span style="color: #0000BB">F</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">// llamadas a funciones<br /><br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">();      </span><span style="color: #FF8000">// primero se intenta llamar a "foo" definida en el espacio de nombres "A"<br />            // después se llama a la función global "foo"<br /><br /></span><span style="color: #0000BB">\foo</span><span style="color: #007700">();     </span><span style="color: #FF8000">// se llama a la función "foo" definidia en el ámbito global<br /><br /></span><span style="color: #0000BB">mi\foo</span><span style="color: #007700">();   </span><span style="color: #FF8000">// se llama a la función "foo" definida en el espacio de nombres "A\mi"<br /><br /></span><span style="color: #0000BB">F</span><span style="color: #007700">();        </span><span style="color: #FF8000">// primero se intenta llamar a "F" definida en el espacio de nombres "A"<br />            // después se llama a la función global "F"<br /><br />// referecias a clases<br /><br /></span><span style="color: #007700">new </span><span style="color: #0000BB">B</span><span style="color: #007700">();    </span><span style="color: #FF8000">// crea un objeto de la clase "B" definida en el espacio de nombres "A"<br />            // si no se encuentra, se intenta autocargar la clase "A\B"<br /><br /></span><span style="color: #007700">new </span><span style="color: #0000BB">D</span><span style="color: #007700">();    </span><span style="color: #FF8000">// usando las reglas de importación, se crea un objeto de la clase "D" definida en el espacio de nombres "B"<br />            // si no se encuentra, se intenta autocargar la clase "B\D"<br /><br /></span><span style="color: #007700">new </span><span style="color: #0000BB">F</span><span style="color: #007700">();    </span><span style="color: #FF8000">// usando las reglas de importación, se crea un objeto de la clase "E" definida en el espacio de nombres "C"<br />            // si no se encuentra, se intenta autocargar la clase "C\E"<br /><br /></span><span style="color: #007700">new </span><span style="color: #0000BB">\B</span><span style="color: #007700">();   </span><span style="color: #FF8000">// crea un objeto de la clase "B" definida en el ámbito global<br />            // si no se encuentra, se intenta autocargar la clase "B"<br /><br /></span><span style="color: #007700">new </span><span style="color: #0000BB">\D</span><span style="color: #007700">();   </span><span style="color: #FF8000">// crea un objeto de la clase "D" definida en el ámbito global<br />            // si no se encuentra, se intenta autocargar la clase "D"<br /><br /></span><span style="color: #007700">new </span><span style="color: #0000BB">\F</span><span style="color: #007700">();   </span><span style="color: #FF8000">// crea un objeto de la clase "F" definida en el ámbito global<br />            // si no se encuentra, se intenta autocargar la clase "F"<br /><br />// métodos estáticos y funciones de un espacio de nombres desde otro espacio de nombres<br /><br /></span><span style="color: #0000BB">B\foo</span><span style="color: #007700">();    </span><span style="color: #FF8000">// se llama a la función "foo" desde el espacio de nombres "A\B"<br /><br /></span><span style="color: #0000BB">B</span><span style="color: #007700">::</span><span style="color: #0000BB">foo</span><span style="color: #007700">();   </span><span style="color: #FF8000">// se llama al método "foo" de la clase "B" definidia en el espacio de nombres "A"<br />            // si no se encuentra la clase "A\B", se intenta autocargar la clase "A\B"<br /><br /></span><span style="color: #0000BB">D</span><span style="color: #007700">::</span><span style="color: #0000BB">foo</span><span style="color: #007700">();   </span><span style="color: #FF8000">// usando las reglas de importación, se llama al método "foo" de la clase "D" definida en el espacio de nombres "B"<br />            // si no se encuentra la clase "B\D", se intenta autocargar la clase "B\D"<br /><br /></span><span style="color: #0000BB">\B\foo</span><span style="color: #007700">();   </span><span style="color: #FF8000">// se llama a la función "foo" desde el espacio de nombres "B"<br /><br /></span><span style="color: #0000BB">\B</span><span style="color: #007700">::</span><span style="color: #0000BB">foo</span><span style="color: #007700">();  </span><span style="color: #FF8000">// se llama al método "foo" de la clase "B" desde el ámbito global<br />            // si no es encuentra la clase "B", se intenta autocargar la clase "B"<br /><br />// métodos estáticos yfunciones de un espacio de nombres del espacio de nombres actual<br /><br /></span><span style="color: #0000BB">A\B</span><span style="color: #007700">::</span><span style="color: #0000BB">foo</span><span style="color: #007700">();   </span><span style="color: #FF8000">// se llama al método "foo" de la clase "B" desde el espacio de nombres "A\A"<br />              // si no se encuentra la clase "A\A\B", se intenta autocargar la clase "A\A\B"<br /><br /></span><span style="color: #0000BB">\A\B</span><span style="color: #007700">::</span><span style="color: #0000BB">foo</span><span style="color: #007700">();  </span><span style="color: #FF8000">// se llama al método "foo" de la clase "B" desde el espacio de nombres "A"<br />              // si no se encuentra la clase "A\B", se intenta autocargar la clase "A\B"<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </div></div></div></body></html>

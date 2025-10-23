@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Abrir un fichero de archivo en formato ZIP</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ziparchive.locatename.html">« ZipArchive::locateName</a></li>
+      <li style="float: right;"><a href="ziparchive.registercancelcallback.html">ZipArchive::registerCancelCallback »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.ziparchive.html">ZipArchive</a></li>
+    <li>Abrir un fichero de archivo en formato ZIP</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="ziparchive.open" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ZipArchive::open</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.2.0, PHP 7, PHP 8, PECL zip &gt;= 1.1.0)</p><p class="refpurpose"><span class="refname">ZipArchive::open</span> &mdash; <span class="dc-title">Abrir un fichero de archivo en formato ZIP</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-ziparchive.open-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>ZipArchive::open</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$filename</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span>): <span class="type"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span>|<span class="type"><a href="language.types.integer.html" class="type int">int</a></span></span></div>
+
+  <p class="para rdfs-comment">
+   Abre un archivo zip nuevo o existente para leer, escribir o modificar.
+  </p>
+  <p class="para">
+   Desde libzip 1.6.0, un archivo vacío ya no es un archivo válido.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-ziparchive.open-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">filename</code></dt>
+     <dd>
+      <p class="para">
+       El nombre del fichero del archivo ZIP para ser abierto.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">flags</code></dt>
+     <dd>
+      <p class="para">
+       El modo a utilizar para abrir el archivo.
+      <ul class="itemizedlist">
+        <li class="listitem">
+         <p class="para">
+          <strong><code><a href="zip.constants.html#ziparchive.constants.overwrite" class="link">ZipArchive::OVERWRITE</a></code></strong>
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          <strong><code><a href="zip.constants.html#ziparchive.constants.create" class="link">ZipArchive::CREATE</a></code></strong>
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          <strong><code><a href="zip.constants.html#ziparchive.constants.rdonly" class="link">ZipArchive::RDONLY</a></code></strong>
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          <strong><code><a href="zip.constants.html#ziparchive.constants.excl" class="link">ZipArchive::EXCL</a></code></strong>
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          <strong><code><a href="zip.constants.html#ziparchive.constants.checkcons" class="link">ZipArchive::CHECKCONS</a></code></strong>
+         </p>
+        </li>
+       </ul>
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-ziparchive.open-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito, <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> o uno de los siguientes códigos de error en caso de error:
+   <dl>
+    
+     <dt><strong><code><a href="zip.constants.html#ziparchive.constants.er-exists">ZipArchive::ER_EXISTS</a></code></strong></dt>
+     <dd>
+      <span class="simpara">El fichero ya existe.</span>
+     </dd>
+    
+    
+     <dt><strong><code><a href="zip.constants.html#ziparchive.constants.er-incons">ZipArchive::ER_INCONS</a></code></strong></dt>
+     <dd>
+      <span class="simpara">Archivo zip inconsistente.</span>
+     </dd>
+    
+    
+     <dt><strong><code><a href="zip.constants.html#ziparchive.constants.er-inval">ZipArchive::ER_INVAL</a></code></strong></dt>
+     <dd>
+      <span class="simpara">Argumento no válido.</span>
+     </dd>
+    
+    
+     <dt><strong><code><a href="zip.constants.html#ziparchive.constants.er-memory">ZipArchive::ER_MEMORY</a></code></strong></dt>
+     <dd>
+      <span class="simpara">Falló malloc.</span>
+     </dd>
+    
+    
+     <dt><strong><code><a href="zip.constants.html#ziparchive.constants.er-noent">ZipArchive::ER_NOENT</a></code></strong></dt>
+     <dd>
+      <span class="simpara">No existe el fichero.</span>
+     </dd>
+    
+    
+     <dt><strong><code><a href="zip.constants.html#ziparchive.constants.er-nozip">ZipArchive::ER_NOZIP</a></code></strong></dt>
+     <dd>
+      <span class="simpara">No es un archivo zip.</span>
+     </dd>
+    
+    
+     <dt><strong><code><a href="zip.constants.html#ziparchive.constants.er-open">ZipArchive::ER_OPEN</a></code></strong></dt>
+     <dd>
+      <span class="simpara">No se puede abrir el fichero.</span>
+     </dd>
+    
+    
+     <dt><strong><code><a href="zip.constants.html#ziparchive.constants.er-read">ZipArchive::ER_READ</a></code></strong></dt>
+     <dd>
+      <span class="simpara">Error de lectura.</span>
+     </dd>
+    
+    
+     <dt><strong><code><a href="zip.constants.html#ziparchive.constants.er-seek">ZipArchive::ER_SEEK</a></code></strong></dt>
+     <dd>
+      <span class="simpara">Error de búsqueda.</span>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-ziparchive.open-examples">
+  <h3 class="title">Ejemplos</h3>
+    <div class="example" id="example-854">
+   <p><strong>Ejemplo #1 Abrir y extraer</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$zip </span><span style="color: #007700">= new </span><span style="color: #0000BB">ZipArchive</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$res </span><span style="color: #007700">= </span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">open</span><span style="color: #007700">(</span><span style="color: #DD0000">'test.zip'</span><span style="color: #007700">);<br />if (</span><span style="color: #0000BB">$res </span><span style="color: #007700">=== </span><span style="color: #0000BB">TRUE</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">'ok'</span><span style="color: #007700">;<br />    </span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">extractTo</span><span style="color: #007700">(</span><span style="color: #DD0000">'test'</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br />} else {<br />    echo </span><span style="color: #DD0000">'falló, código:' </span><span style="color: #007700">. </span><span style="color: #0000BB">$res</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+  <div class="example" id="example-855">
+   <p><strong>Ejemplo #2 Crear un fichero</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$zip </span><span style="color: #007700">= new </span><span style="color: #0000BB">ZipArchive</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$res </span><span style="color: #007700">= </span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">open</span><span style="color: #007700">(</span><span style="color: #DD0000">'test.zip'</span><span style="color: #007700">, </span><span style="color: #0000BB">ZipArchive</span><span style="color: #007700">::</span><span style="color: #0000BB">CREATE</span><span style="color: #007700">);<br />if (</span><span style="color: #0000BB">$res </span><span style="color: #007700">=== </span><span style="color: #0000BB">TRUE</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addFromString</span><span style="color: #007700">(</span><span style="color: #DD0000">'test.txt'</span><span style="color: #007700">, </span><span style="color: #DD0000">'el contenido del fichero va aquí'</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addFile</span><span style="color: #007700">(</span><span style="color: #DD0000">'data.txt'</span><span style="color: #007700">, </span><span style="color: #DD0000">'entryname.txt'</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br />    echo </span><span style="color: #DD0000">'ok'</span><span style="color: #007700">;<br />} else {<br />    echo </span><span style="color: #DD0000">'falló'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ <div class="example" id="example-856">
+     <p><strong>Ejemplo #3 Crear un fichero temporal</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$name </span><span style="color: #007700">= </span><span style="color: #0000BB">tempnam</span><span style="color: #007700">(</span><span style="color: #0000BB">sys_get_temp_dir</span><span style="color: #007700">(), </span><span style="color: #DD0000">"FOO"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$zip </span><span style="color: #007700">= new </span><span style="color: #0000BB">ZipArchive</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$res </span><span style="color: #007700">= </span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">open</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">, </span><span style="color: #0000BB">ZipArchive</span><span style="color: #007700">::</span><span style="color: #0000BB">OVERWRITE</span><span style="color: #007700">); </span><span style="color: #FF8000">/* truncate as empty file is not valid */<br /></span><span style="color: #007700">if (</span><span style="color: #0000BB">$res </span><span style="color: #007700">=== </span><span style="color: #0000BB">TRUE</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addFile</span><span style="color: #007700">(</span><span style="color: #DD0000">'data.txt'</span><span style="color: #007700">, </span><span style="color: #DD0000">'entryname.txt'</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br />    echo </span><span style="color: #DD0000">'ok'</span><span style="color: #007700">;<br />} else {<br />    echo </span><span style="color: #DD0000">'failed'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+    </div>
+ </div>
+
+</div></div></div></body></html>

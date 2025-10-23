@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Remarcado de la sintaxis de un fichero</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.halt-compiler.html">« __halt_compiler</a></li>
+      <li style="float: right;"><a href="function.highlight-string.html">highlight_string »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.misc.html">Funciones Varias</a></li>
+    <li>Remarcado de la sintaxis de un fichero</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.highlight-file" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">highlight_file</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">highlight_file</span> &mdash; <span class="dc-title">Remarcado de la sintaxis de un fichero</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.highlight-file-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>highlight_file</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$filename</code></span>, <span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$return</code><span class="initializer"> = false</span></span>): <span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span></div>
+
+  <p class="para rdfs-comment">
+   Imprime o devuelve una versión con la sintaxis remarcada del código contenido en el fichero
+   dado por <code class="parameter">filename</code> usando los colores definidos en el
+   remarcador de sintaxis interno de PHP.
+  </p>
+  <p class="para">
+   Muchos servidores están configurados para remaracar automáticamente ficheros
+   con la extensión <em>phps</em>. Por ejemplo,
+   cuando se visione <var class="filename">example.phps</var> mostrará la
+   fuente con la sintaxis remarcada del fichero. Para habilitar esto, añada esta
+   línea a <var class="filename">httpd.conf</var>:
+  </p>
+  <div class="example-contents screen">
+<div class="descriptioncode"><pre class="descriptioncode">AddType application/x-httpd-php-source .phps</pre>
+</div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.highlight-file-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">filename</code></dt>
+     <dd>
+      <p class="para">
+       Ruta al fichero PHP a ser remarcado.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">return</code></dt>
+     <dd>
+      <p class="para">
+       Establecer este parámetro a <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para hacer que esta función devuelva el
+       código remarcado.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.highlight-file-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Si <code class="parameter">return</code> está establecido a <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>, devuelve el código
+   remarcado como string en vez de imprimirlo. De otro modo, devolverá
+   <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito, y <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.highlight-file-notes">
+  <h3 class="title">Notas</h3>
+  <div class="caution"><strong class="caution">Precaución</strong>
+   <p class="para">
+    Se debería tener cuidado al usar la función <span class="function"><strong>highlight_file()</strong></span>
+    para asegurarse de que no se revela inadvertidamente información
+    sensible como contraseñas o cualquier otro tipo de información que podría
+    crear un riesgo potencial de seguridad.
+   </p>
+  </div>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: <p class="para">Cuando el parámetro <code class="parameter">return</code>
+se usa, esta función utiliza el almacenamiento en búfer de salida interno, por lo que no puede usarse dentro de una
+función de llamada de retorno <span class="function"><a href="function.ob-start.html" class="function">ob_start()</a></span>.</p></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.highlight-file-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.highlight-string.html" class="function" rel="rdfs-seeAlso">highlight_string()</a> - Remarcado de sintaxis de una cadena</span></li>
+    <li><a href="misc.configuration.html#ini.syntax-highlighting" class="link">Directivas INI de resaltado</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Declara el atributo especificado por su nombre local y su URI del espacio de nombres como de tipo ID</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="domelement.setidattributenode.html">« DOMElement::setIdAttributeNode</a></li>
+      <li style="float: right;"><a href="domelement.toggleattribute.html">DOMElement::toggleAttribute »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.domelement.html">DOMElement</a></li>
+    <li>Declara el atributo especificado por su nombre local y su URI del espacio de nombres como de tipo ID</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="domelement.setidattributens" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DOMElement::setIdAttributeNS</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">DOMElement::setIdAttributeNS</span> &mdash; <span class="dc-title">Declara el atributo especificado por su nombre local y su URI del espacio de nombres como de tipo ID</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-domelement.setidattributens-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>DOMElement::setIdAttributeNS</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$namespace</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$qualifiedName</code></span>, <span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$isId</code></span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+
+  <p class="para rdfs-comment">
+   Declara el atributo especificado por <code class="parameter">qualifiedName</code> y
+   <code class="parameter">namespaceURI</code> como de tipo ID.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-domelement.setidattributens-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">namespaceURI</code></dt>
+     <dd>
+      <p class="para">
+       La URI del espacio de nombres del atributo.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">qualifiedName</code></dt>
+     <dd>
+      <p class="para">
+       El nombre local del atributo, como <code class="literal">prefijo:nombre_etiqueta</code>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">isId</code></dt>
+     <dd>
+      <p class="para">
+       Establecer a <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> si se quiere que <code class="parameter">name</code> sea de tipo
+       ID, <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si no.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-domelement.setidattributens-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   No devuelve ningún valor.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-domelement.setidattributens-errors">
+  <h3 class="title">Errores/Excepciones</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><strong><code><a href="dom.constants.html#constant.dom-no-modification-allowed-err">DOM_NO_MODIFICATION_ALLOWED_ERR</a></code></strong></dt>
+     <dd>
+      <p class="para">
+       Lanzado si el nodo es de sólo lectura.
+      </p>
+     </dd>
+    
+    
+     <dt><strong><code>DOM_NOT_FOUND</code></strong></dt>
+     <dd>
+      <p class="para">
+       Lanzado si <code class="parameter">name</code> no es un atributo de este elemento.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-domelement.setidattributens-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="methodname"><a href="domdocument.getelementbyid.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::getElementById()</a> - Busca un elemento con cierto id</span></li>
+    <li><span class="methodname"><a href="domelement.setidattribute.html" class="methodname" rel="rdfs-seeAlso">DOMElement::setIdAttribute()</a> - Declara el atributo especificado por su nombre como de tipo ID</span></li>
+    <li><span class="methodname"><a href="domelement.setidattributenode.html" class="methodname" rel="rdfs-seeAlso">DOMElement::setIdAttributeNode()</a> - Declara el atributo especificado por su nodo como de tipo ID</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

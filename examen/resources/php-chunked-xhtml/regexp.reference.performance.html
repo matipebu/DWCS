@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Rendimiento</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="regexp.reference.recursive.html">« Patrones recursivos</a></li>
+      <li style="float: right;"><a href="reference.pcre.pattern.modifiers.html">Posibles modificadores en patrones de expresiones regulares »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="reference.pcre.pattern.syntax.html">Sintaxis de expresiones regulares de PCRE</a></li>
+    <li>Rendimiento</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="regexp.reference.performance" class="section">
+  <h2 class="title">Rendimiento</h2>
+  <p class="para">
+   Ciertos elementos que pueden aparecer en patrones son más eficientes
+   que otros. Es más eficiente usar una clase carácter
+   como [aeiou] en vez de un conjunto de alternativas como (a|e|i|o|u).
+   En general, la construcción más simple que proporciona el
+   comportamiento requerido es normalmente la más eficiente. El libro
+   de Jeffrey Friedl contiene muchas discusiones sobre la optimización de
+   expresiones regulares para un rendimiento eficiente.
+  </p>
+  <p class="para">
+   Cuando un patrón comienza con .* y la opción <a href="reference.pcre.pattern.modifiers.html" class="link">PCRE_DOTALL</a> está
+   establecida, el patrón es anclado implícitamente por PCRE, ya que
+   sólo puede coincidir con el inicio de una cadena objetivo. Sin embargo, si
+   <a href="reference.pcre.pattern.modifiers.html" class="link">PCRE_DOTALL</a>   
+   no está establecido, PCRE no puede realizar esta optimización,
+   ya que el metacarácter . no coincide entonces con una nueva línea,
+   y si la cadena objetivo contine nuevas líneas, el patrón puede
+   coincidir con el carácter inmediatemente siguiente a ellas
+   en vez de con el inicio absoluto. Por ejemplo, el patrón
+   
+   <code class="literal">(.*) segundo</code>
+   
+   coincide con el sujeto &quot;primero\ny segundo&quot; (donde \n significa
+   un carácter de nueva línea), siendo &quot;y&quot; la primera subcadena capturada.
+   Para llevar a cabo esto, PCRE ha de re-intentar la comparación
+   comenzando después de cada nueva línea del sujeto.
+  </p>
+  <p class="para">
+   Si está usando un patrón similar con cadenas objetivo que no
+   contienen nuevas líneas, el mejor rendimiento se obtiene
+   estableciendo <a href="reference.pcre.pattern.modifiers.html" class="link">PCRE_DOTALL</a>,
+   o comenzando el patrón con ^.* para
+   indicar el anclado explícito. Esto salva a PCRE de tener que
+   escanear el sujeto buscando una nueva línea desde donde reiniciar.
+  </p>
+  <p class="para">
+   Tenga cuidado con los patrones que contienen repeticiones anidadas indefinidas.
+   Éstos pueden tomar mucho tiempo al ejecutarse cuando se aplican a cadenas
+   que no coinciden. Considere el fragmento de patrón
+   
+   <code class="literal">(a+)*</code>
+  </p>
+  <p class="para">
+   Esto puede coincidir con &quot;aaaa&quot; de 33 maneras diferentes, y este número
+   se incrementa muy rápidamente mientras la cadena se hace más larga. (La
+   repetición * puede coincidir 0, 1, 2, 3, o 4 veces, y para cada uno de
+   estos casos distintos de 0, las repeticiones de + pueden coincidir diferente
+   número de veces.) Cuando el resto del patrón es tal
+   que la comparación completa falla, PCRE tiene como principio
+   el intentar cada posible variación, y esto puede tomar un
+   tiempo extremadamente largo.
+  </p>
+  <p class="para">
+   Una optimización toma algunos de los casos más simples como
+   
+   <code class="literal">(a+)*b</code>
+   
+   donde sigue un carácter literal. Antes de emprender el
+   procedimiento de comparación estándar, PCRE verifica que hay una &quot;b&quot;
+   posterior en la cadena objetivo, y si no la hay, falla
+   la comparación inmediatamente. Sin embargo, cuando no hay un literal
+   siguiente, no se puede usar esta optimización. Puede ver la
+   diferencia comparando el comportamiento de
+   
+   <code class="literal">(a+)*\d</code>
+   
+   con el patrón anterior. El primero otorga un fallo casi
+   instantáneamente cuando se aplica a una línea llena de caracteres &quot;a&quot;,
+   mientras que el segundo toma un tiempo apreciable con cadenas
+   con más de de 20 caracteres.
+  </p>
+ </div></div></div></body></html>

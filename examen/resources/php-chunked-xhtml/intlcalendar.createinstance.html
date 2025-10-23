@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Crear un nuevo IntlCalendar</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="intlcalendar.construct.html">« IntlCalendar::__construct</a></li>
+      <li style="float: right;"><a href="intlcalendar.equals.html">IntlCalendar::equals »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.intlcalendar.html">IntlCalendar</a></li>
+    <li>Crear un nuevo IntlCalendar</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="intlcalendar.createinstance" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">IntlCalendar::createInstance</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.5.0, PHP 7, PHP 8, PECL &gt;= 3.0.0a1)</p><p class="refpurpose"><span class="refname">IntlCalendar::createInstance</span> &mdash; <span class="dc-title">Crear un nuevo IntlCalendar</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-intlcalendar.createinstance-description">
+  <h3 class="title">Descripción</h3>
+  <p class="para">
+   Estilo orientado a objetos
+  </p>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="methodname"><strong>IntlCalendar::createInstance</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$timeZone</code><span class="initializer"> = NULL</span></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$locale</code><span class="initializer"> = &quot;&quot;</span></span>): <span class="type"><a href="class.intlcalendar.html" class="type IntlCalendar">IntlCalendar</a></span></div>
+
+  <p class="para rdfs-comment">
+   Estilo por procedimientos
+  </p>
+  <div class="methodsynopsis dc-description"><span class="methodname"><strong>intlcal_create_instance</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$timeZone</code><span class="initializer"> = NULL</span></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$locale</code><span class="initializer"> = &quot;&quot;</span></span>): <span class="type"><a href="class.intlcalendar.html" class="type IntlCalendar">IntlCalendar</a></span></div>
+
+  <p class="para rdfs-comment">
+   Dados una zona horaria y configuración regional, este método creará un objeto
+   <span class="classname"><a href="class.intlcalendar.html" class="classname">IntlCalendar</a></span>. Este método de fábrica podría devolver
+   una subclase de <span class="classname"><a href="class.intlcalendar.html" class="classname">IntlCalendar</a></span>.
+  </p>
+  <p class="para">
+   El calendario creado representará la instancia del instante en que fue
+   creado, basándose en la hora del sistema. Todos los campos pueden ser limpiados llamando a
+   <span class="function"><strong>IntCalendar::clear()</strong></span> sin argumentos. Véase también
+   <span class="function"><strong>IntlGregorianCalendar::__construct()</strong></span>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-intlcalendar.createinstance-parameters">
+  <h3 class="title">Parámetros</h3>
+  <dl>
+   
+    <dt><code class="parameter">timeZone</code></dt>
+    <dd>
+     <p class="para">
+      La zona horaria a emplear.
+     </p>
+     
+
+
+
+<ul class="itemizedlist">
+ <li class="listitem">
+  <p class="para">
+   <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>, en cuyo caso se usará la zona horaria predeterminada, tal como está especificada
+   en el ajuste ini <a href="datetime.configuration.html#ini.date.timezone" class="link">date.timezone</a> o
+   a través de la función <span class="function"><a href="function.date-default-timezone-set.html" class="function">date_default_timezone_set()</a></span> y como
+   es devuelto por <span class="function"><a href="function.date-default-timezone-get.html" class="function">date_default_timezone_get()</a></span>.
+  </p>
+ </li>
+ <li class="listitem">
+  <p class="para">
+   Un <span class="classname"><a href="class.intltimezone.html" class="classname">IntlTimeZone</a></span>, que se usará directamente.
+  </p>
+ </li>
+ <li class="listitem">
+  <p class="para">
+   Un <span class="classname"><a href="class.datetimezone.html" class="classname">DateTimeZone</a></span>. Su identificador será extraido
+   y se creará un objeto de zona horaria de ICU; la zona horaria será proporcionada
+   por la base de datos de ICU, no por la de PHP.
+  </p>
+ </li>
+ <li class="listitem">
+  <p class="para">
+   Un <span class="type"><a href="language.types.string.html" class="type string">string</a></span>, que debería ser un identificador de zona horaria de ICU válido.
+   Véase <span class="function"><a href="intltimezone.createtimezoneidenumeration.html" class="function">IntlTimeZone::createTimeZoneIDEnumeration()</a></span>. Los índices
+   puros como <code class="literal">&quot;GMT+08:30&quot;</code> también se aceptan.
+  </p>
+ </li>
+</ul>
+
+    </dd>
+   
+   
+    <dt><code class="parameter">locale</code></dt>
+    <dd>
+     <p class="para">
+      Una configurazión regional a usar o <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> para utilizar <a href="intl.configuration.html#ini.intl.default-locale" class="link">la configuración regional predeterminada</a>.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-intlcalendar.createinstance-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   La instancia de <span class="classname"><a href="class.intlcalendar.html" class="classname">IntlCalendar</a></span> creada o <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> en
+   caso de error.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-intlcalendar.createinstance-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-2393">
+    <p><strong>Ejemplo #1 <span class="function"><strong>IntlCalendar::createInstance()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'intl.default_locale'</span><span style="color: #007700">, </span><span style="color: #DD0000">'es_ES'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'date.timezone'</span><span style="color: #007700">, </span><span style="color: #DD0000">'Europe/Madrid'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$cal </span><span style="color: #007700">= </span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">createInstance</span><span style="color: #007700">();<br />echo </span><span style="color: #DD0000">"Sin argumentos\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal</span><span style="color: #007700">),<br />        </span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">formatObject</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal</span><span style="color: #007700">, </span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">FULL</span><span style="color: #007700">));<br />echo </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br />echo </span><span style="color: #DD0000">"Zona horaria explícita\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$cal </span><span style="color: #007700">= </span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">createInstance</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlTimeZone</span><span style="color: #007700">::</span><span style="color: #0000BB">getGMT</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal</span><span style="color: #007700">),<br />        </span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">formatObject</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal</span><span style="color: #007700">, </span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">FULL</span><span style="color: #007700">));<br />echo </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br />echo </span><span style="color: #DD0000">"Configuración regional explícita (con calendario)\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$cal </span><span style="color: #007700">= </span><span style="color: #0000BB">IntlCalendar</span><span style="color: #007700">::</span><span style="color: #0000BB">createInstance</span><span style="color: #007700">(</span><span style="color: #0000BB">NULL</span><span style="color: #007700">, </span><span style="color: #DD0000">'es_ES@calendar=persian'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal</span><span style="color: #007700">),<br />        </span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">formatObject</span><span style="color: #007700">(</span><span style="color: #0000BB">$cal</span><span style="color: #007700">, </span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">FULL</span><span style="color: #007700">));</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Sin argumentos
+string(21) &quot;IntlGregorianCalendar&quot;
+string(68) &quot;martes 18 de junio de 2013 14:11:02 Hora de verano de Europa Central&quot;
+
+Zona horaria explícita
+string(21) &quot;IntlGregorianCalendar&quot;
+string(45) &quot;martes 18 de junio de 2013 12:11:02 GMT+00:00&quot;
+
+Configuración regional explícita (con calendario)
+string(12) &quot;IntlCalendar&quot;
+string(70) &quot;martes 28 de Khordad de 1392 14:11:02 Hora de verano de Europa Central&quot;</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-intlcalendar.createinstance-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="methodname"><strong>IntlGregorianCalendar::__construct()</strong></span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Llamar a una funci&oacute;n de cabecera</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.header.html">« header</a></li>
+      <li style="float: right;"><a href="function.header-remove.html">header_remove »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.network.html">Funciones de red</a></li>
+    <li>Llamar a una funci&oacute;n de cabecera</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.header-register-callback" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">header_register_callback</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.4.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">header_register_callback</span> &mdash; <span class="dc-title">Llamar a una función de cabecera</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.header-register-callback-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>header_register_callback</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$callback</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Registra una función que será llamada cuando PHP comienza a enviar la salida.
+  </p>
+  <p class="para">
+   El <code class="parameter">callback</code> se ejecuta inmediatamente después de PHP 
+   prepara todos los encabezados que van a ser enviados, y antes de cualquier otra salida es enviado, 
+   crea una ventana para manipular las cabeceras de salida antes de ser enviado.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.header-register-callback-parameters">
+  <h3 class="title">Parámetros</h3>
+  <dl>
+   
+    <dt><code class="parameter">callback</code></dt>
+    <dd>
+     <p class="para">
+      Función llamada justo antes de que se envíen los encabezados. 
+      No tiene parámetros y el valor de retorno se ignora.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.header-register-callback-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.header-register-callback-examples">
+  <h3 class="title">Ejemplos</h3>
+  <div class="example" id="header-register-callback.example.basic">
+   <p><strong>Ejemplo #1 <span class="function"><strong>header_register_callback()</strong></span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Type: text/plain'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'X-Test: foo'</span><span style="color: #007700">);<br /><br />function </span><span style="color: #0000BB">foo</span><span style="color: #007700">() {<br /> foreach (</span><span style="color: #0000BB">headers_list</span><span style="color: #007700">() as </span><span style="color: #0000BB">$header</span><span style="color: #007700">) {<br />   if (</span><span style="color: #0000BB">strpos</span><span style="color: #007700">(</span><span style="color: #0000BB">$header</span><span style="color: #007700">, </span><span style="color: #DD0000">'X-Powered-By:'</span><span style="color: #007700">) !== </span><span style="color: #0000BB">false</span><span style="color: #007700">) {<br />     </span><span style="color: #0000BB">header_remove</span><span style="color: #007700">(</span><span style="color: #DD0000">'X-Powered-By'</span><span style="color: #007700">);<br />   }<br />   </span><span style="color: #0000BB">header_remove</span><span style="color: #007700">(</span><span style="color: #DD0000">'X-Test'</span><span style="color: #007700">);<br /> }<br />}<br /><br /></span><span style="color: #0000BB">$result </span><span style="color: #007700">= </span><span style="color: #0000BB">header_register_callback</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">);<br />echo </span><span style="color: #DD0000">"a"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Content-Type: text/plain
+
+a</pre>
+</div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.header-register-callback-notes">
+  <h3 class="title">Notas</h3>
+  <p class="para">
+   La función <span class="function"><strong>header_register_callback()</strong></span> es ejecutada cuando las 
+   cabeceras están a punto de ser enviadas, por lo que cualquier salida de esta función 
+   puede romper de salida.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+<p class="para">
+ Las cabeceras sólo serán accesibles y mostradas si se utiliza un SAPI
+ que lo soporte.
+</p>
+</p></blockquote>
+
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.header-register-callback-seealso">
+  <h3 class="title">Ver también</h3>
+  <ul class="simplelist">
+   <li><span class="function"><a href="function.headers-list.html" class="function" rel="rdfs-seeAlso">headers_list()</a> - Devuelve una lista de encabezados de respuesta enviados (o listos para enviar)</span></li>
+   <li><span class="function"><a href="function.header-remove.html" class="function" rel="rdfs-seeAlso">header_remove()</a> - Elimina encabezados previamente establecidos</span></li>
+   <li><span class="function"><a href="function.header.html" class="function" rel="rdfs-seeAlso">header()</a> - Enviar encabezado sin formato HTTP</span></li>
+  </ul>
+ </div>
+
+
+</div></div></div></body></html>

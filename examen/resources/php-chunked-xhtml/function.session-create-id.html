@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Crear un nuevo ID de sesi&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.session-commit.html">« session_commit</a></li>
+      <li style="float: right;"><a href="function.session-decode.html">session_decode »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.session.html">Funciones de sesi&oacute;n</a></li>
+    <li>Crear un nuevo ID de sesi&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.session-create-id" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">session_create_id</h1>
+  <p class="verinfo">(PHP 7 &gt;= 7.1.0, PHP 8)</p><p class="refpurpose"><span class="refname">session_create_id</span> &mdash; <span class="dc-title">Crear un nuevo ID de sesión</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.session-create-id-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>session_create_id</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$prefix</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>session_create_id()</strong></span> se emplea para crear nuevos
+   ID de sesión para la sesión actual. Devuelve los ID de sesión
+   libres de colisiones.
+  </p>
+  <p class="para">
+   Si la sesión no está activa, la comprobación de colisiones se omite.
+  </p>
+  <p class="para">
+   El ID de sesión se crea de acuerdo a los ajustes de php.ini.
+  </p>
+  <p class="para">
+   Es importante utilizar el mismo ID de usuario del servidor web para las tareas
+   de recolección de basura. De lo contrario, se podrían tener problemas de permisos
+   especialmente con manejadores de guardado de ficheros.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.session-create-id-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">prefix</code></dt>
+     <dd>
+      <p class="para">
+       Si se especifica <code class="parameter">prefix</code>, el nuevo ID de sesión
+       se prefijará con <code class="parameter">prefix</code>. No todos los
+       caracteres están permitidos con el ID de sesión. Están permitidos
+       los caracteres del rango <code class="literal">a-z A-Z 0-9 , (coma) y -
+       (menos)</code>.
+      </p> 
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.session-create-id-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   <span class="function"><strong>session_create_id()</strong></span> devuelve el nuevo ID de sesión libre
+   de colisiones para la sesión actual. Si se emplea sin una sesión
+   activa, se omite la comprobación de colisiones.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.session-create-id-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4721">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>session_create_id()</strong></span> con <span class="function"><a href="function.session-regenerate-id.html" class="function">session_regenerate_id()</a></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Mi función de inicio de sesión admite la gestión de marcas de tiempo<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">mi_inicio_de_sesión</span><span style="color: #007700">() {<br />    </span><span style="color: #0000BB">session_start</span><span style="color: #007700">();<br />    </span><span style="color: #FF8000">// No permitir usar un ID de sesión demasiado antiguo<br />    </span><span style="color: #007700">if (!empty(</span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">'deleted_time'</span><span style="color: #007700">]) &amp;&amp; </span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">'deleted_time'</span><span style="color: #007700">] &lt; </span><span style="color: #0000BB">time</span><span style="color: #007700">() - </span><span style="color: #0000BB">180</span><span style="color: #007700">) {<br />        </span><span style="color: #0000BB">session_destroy</span><span style="color: #007700">();<br />        </span><span style="color: #0000BB">session_start</span><span style="color: #007700">();<br />    }<br />}<br /><br /></span><span style="color: #FF8000">// Mi función de regeneración de ID de sesión<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">mi_regeneración_de_id_de_sesión</span><span style="color: #007700">() {<br />    </span><span style="color: #FF8000">// Llamar a session_create_id() mientras la sesión está activa para <br />    // asegurarse de que no haya colisiones.<br />    </span><span style="color: #007700">if (</span><span style="color: #0000BB">session_status</span><span style="color: #007700">() != </span><span style="color: #0000BB">PHP_SESSION_ACTIVE</span><span style="color: #007700">) {<br />        </span><span style="color: #0000BB">session_start</span><span style="color: #007700">();<br />    }<br />    </span><span style="color: #FF8000">// ADVERTENCIA: ¡No utilizar nunca cadenas confidenciales para el prefijo!<br />    </span><span style="color: #0000BB">$nuevo_id </span><span style="color: #007700">= </span><span style="color: #0000BB">session_create_id</span><span style="color: #007700">(</span><span style="color: #DD0000">'miprefijo-'</span><span style="color: #007700">);<br />    </span><span style="color: #FF8000">// Establecer la marca de tiempo de borrado. Los datos de la sesión no deben eliminarse inmediatamente.<br />    </span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">'deleted_time'</span><span style="color: #007700">] = </span><span style="color: #0000BB">time</span><span style="color: #007700">();<br />    </span><span style="color: #FF8000">// Finalizar la sesión<br />    </span><span style="color: #0000BB">session_commit</span><span style="color: #007700">();<br />    </span><span style="color: #FF8000">// Asegurarse de aceptar ID de sesiones definidas por el usuario<br />    // NOTA: Se debe habilitar 'use_strict_mode' para operaciones normales.<br />    </span><span style="color: #0000BB">ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'session.use_strict_mode'</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">);<br />    </span><span style="color: #FF8000">// Establecer el nuevo ID de sesión personalizado<br />    </span><span style="color: #0000BB">session_id</span><span style="color: #007700">(</span><span style="color: #0000BB">$nuevo_id</span><span style="color: #007700">);<br />    </span><span style="color: #FF8000">// Empezar la sesión con el ID de sesión personalizado<br />    </span><span style="color: #0000BB">session_start</span><span style="color: #007700">();<br />}<br /><br /></span><span style="color: #FF8000">// Asegurarse de que 'use_strict_mode' está habilitado.<br />// 'use_strict_mode' es obligatorio por razones de seguridad.<br /></span><span style="color: #0000BB">ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'session.use_strict_mode'</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">mi_inicio_de_sesión</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">// EL ID de sesión debe regenerarse cuando<br />//  - El usuario inicia la sesión<br />//  - El usuario cierra la sesión<br />//  - Ha transcurrido un cierto perido de tiempo<br /></span><span style="color: #0000BB">mi_regeneración_de_id_de_sesión</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">// Escribir código útil<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.session-create-id-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.session-regenerate-id.html" class="function" rel="rdfs-seeAlso">session_regenerate_id()</a> - Actualiza el id de sesi&oacute;n actual con uno generado m&aacute;s reciente</span></li>
+    <li><span class="function"><a href="function.session-start.html" class="function" rel="rdfs-seeAlso">session_start()</a> - Iniciar una nueva sesi&oacute;n o reanudar la existente</span></li>
+    <li><a href="session.configuration.html#ini.session.use-strict-mode" class="link">session.use_strict_mode</a></li>
+    <li><span class="methodname"><a href="sessionhandler.create-sid.html" class="methodname" rel="rdfs-seeAlso">SessionHandler::create_sid()</a> - Devuelve un nuevo ID de sesi&oacute;n</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

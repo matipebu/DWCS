@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Uso de los espacios de nombres: lo b&aacute;sico</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.namespaces.definitionmultiple.html">« Definir varios espacios de nombres en un mismo fichero</a></li>
+      <li style="float: right;"><a href="language.namespaces.dynamic.html">Espacios de nombres y caracter&iacute;sticas din&aacute;micas del lenguaje »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.namespaces.html">Espacios de nombres</a></li>
+    <li>Uso de los espacios de nombres: lo b&aacute;sico</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.namespaces.basics" class="sect1">
+  <h2 class="title">Uso de los espacios de nombres: lo básico</h2>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8)</p>
+  <p class="para">
+   Antes de hablar del uso de los espacios de nombres es importante entender cómo sabe
+   PHP qué elemento del código del espacio de nombres se requiere. Se puede hacer una simple analogía
+   entre los espacios de nombres de PHP y el sistema de ficheros. Existen tres maneras de acceder a un
+   fichero en el sistema de ficheros:
+   <ol type="1">
+    <li class="listitem">
+     <span class="simpara">
+      Nombre de fichero relativo como <code class="literal">foo.txt</code>. Se resuelve con
+      <code class="literal">directorio_actual/foo.txt</code> donde directorio_actual es el
+      directorio actualmente ocupado. Así, si el directorio actual es
+      <code class="literal">/home/foo</code>, el nombre se resuelve con <code class="literal">/home/foo/foo.txt</code>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Nombre de ruta relativa como <code class="literal">subdirectorio/foo.txt</code>. Se resuelve
+      con <code class="literal">directorioactual/subdirectorio/foo.txt</code>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Nombre de ruta absoluta como <code class="literal">/main/foo.txt</code>. Se resuelve
+      con <code class="literal">/main/foo.txt</code>.
+     </span>
+    </li>
+   </ol>
+   Se puede aplicar el mismo principio a los elementos del espacio de nombres de PHP.
+   Por ejemplo, se puede hacer referencia a un nombre de una clase de tres maneras:
+   <ol type="1">
+    <li class="listitem">
+     <span class="simpara">
+      Nombre no cualificado, o nombre de clase sin prefijo como
+      <code class="literal">$a = new foo();</code> o
+      <code class="literal">foo::método_estático();</code>. Si el espacio de nombres actual es
+      <code class="literal">espacio_de_nombres_actual</code>, esto se resuelve con
+      <code class="literal">espacio_de_nombres_actual\foo</code>. Si
+      el código es global, es decir, no es de espacio de nombres, esto se resuelve con <code class="literal">foo</code>.
+     </span>
+     <span class="simpara">
+      Una advertencia: los nombres no cualificados para funciones y constantes se
+      resolverán con funciones y constantes globales si la función o la constante del espacio de nombres
+      no está definida. Véase <a href="language.namespaces.fallback.html" class="link">Utilizar espacios de nombres:
+      una alternativa a funciones/constantes globales</a> para más detalles.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Nombre cualificado, o un nombre de clase con prefijo como
+      <code class="literal">$a = new subespacio_de_nombres\foo();</code> o
+      <code class="literal">subespacio_de_nombres\foo::método_estático();</code>. Si el espacio de nombres actual es
+      <code class="literal">espacio_de_nombres_actual</code>, esto se resuelve con
+      <code class="literal">espacio_de_nombres_actual\subespacio_de_nombres\foo</code>. Si el código es global,
+      es decir, no es de espacio de nombres, esto se resuelve con <code class="literal">subespacio_de_nombres\foo</code>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Nombre completamente cualificado, o un nombre con prefijo con el operador de prefijo global como
+      <code class="literal">$a = new \espacio_de_nombres_actual\foo();</code> o
+      <code class="literal">\espacio_de_nombres_actual\foo::método_estático();</code>. Esto siempre se resuelve
+      con nombre literal especificado en el código, <code class="literal">espacio_de_nombres_actual\foo</code>.
+     </span>
+    </li>
+   </ol>
+  </p>
+  <p class="para">
+   Un ejemplo de los tres tipos de sintaxis en código real:
+   <div class="informalexample">
+    <p class="simpara">fichero1.php</p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">namespace </span><span style="color: #0000BB">Foo\Bar\subespacio_de_nombres</span><span style="color: #007700">;<br /><br />const </span><span style="color: #0000BB">FOO </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />function </span><span style="color: #0000BB">foo</span><span style="color: #007700">() {}<br />class </span><span style="color: #0000BB">foo<br /></span><span style="color: #007700">{<br />    static function </span><span style="color: #0000BB">método_estático</span><span style="color: #007700">() {}<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <p class="simpara">fichero2.php</p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">namespace </span><span style="color: #0000BB">Foo\Bar</span><span style="color: #007700">;<br />include </span><span style="color: #DD0000">'fichero1.php'</span><span style="color: #007700">;<br /><br />const </span><span style="color: #0000BB">FOO </span><span style="color: #007700">= </span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />function </span><span style="color: #0000BB">foo</span><span style="color: #007700">() {}<br />class </span><span style="color: #0000BB">foo<br /></span><span style="color: #007700">{<br />    static function </span><span style="color: #0000BB">método_estático</span><span style="color: #007700">() {}<br />}<br /><br /></span><span style="color: #FF8000">/* Nombre no cualificado */<br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">(); </span><span style="color: #FF8000">// se resuelve con la función Foo\Bar\foo<br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">::</span><span style="color: #0000BB">método_estático</span><span style="color: #007700">(); </span><span style="color: #FF8000">// se resuelve con la clase Foo\Bar\foo, método método_estático<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">FOO</span><span style="color: #007700">; </span><span style="color: #FF8000">// se resuelve con la constante Foo\Bar\FOO<br /><br />/* Nombre cualificado */<br /></span><span style="color: #0000BB">subespacio_de_nombres\foo</span><span style="color: #007700">(); </span><span style="color: #FF8000">// se resuelve con la función Foo\Bar\subespacio_de_nombres\foo<br /></span><span style="color: #0000BB">subespacio_de_nombres\foo</span><span style="color: #007700">::</span><span style="color: #0000BB">método_estático</span><span style="color: #007700">(); </span><span style="color: #FF8000">// se resuelve con la clase Foo\Bar\subespacio_de_nombres\foo,<br />                                              // método método_estático<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">subespacio_de_nombres\FOO</span><span style="color: #007700">; </span><span style="color: #FF8000">// se resuelve con la constante Foo\Bar\subespacio_de_nombres\FOO<br />                                  <br />/* Nombre conmpletamente cualificado */<br /></span><span style="color: #0000BB">\Foo\Bar\foo</span><span style="color: #007700">(); </span><span style="color: #FF8000">// se resuelve con la función Foo\Bar\foo<br /></span><span style="color: #0000BB">\Foo\Bar\foo</span><span style="color: #007700">::</span><span style="color: #0000BB">método_estático</span><span style="color: #007700">(); </span><span style="color: #FF8000">// se resuelve con la clase Foo\Bar\foo, método método_estático<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">\Foo\Bar\FOO</span><span style="color: #007700">; </span><span style="color: #FF8000">// se resuelve con la constante Foo\Bar\FOO<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Observe que para acceder a cualquier clase,
+   función o constante globales, se puede utilizar un nombre completamente cualificado, como
+   <span class="function"><strong>\strlen()</strong></span> o <span class="classname"><strong class="classname">\Exception</strong></span> o
+   \<strong><code><a href="info.constants.html#constant.ini-all">INI_ALL</a></code></strong>.
+   <div class="example" id="example-311">
+    <p><strong>Ejemplo #1 Acceder a clases, funciones y constantes globales desde un espacio de nombres</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">namespace </span><span style="color: #0000BB">Foo</span><span style="color: #007700">;<br /><br />function </span><span style="color: #0000BB">strlen</span><span style="color: #007700">() {}<br />const </span><span style="color: #0000BB">INI_ALL </span><span style="color: #007700">= </span><span style="color: #0000BB">3</span><span style="color: #007700">;<br />class </span><span style="color: #0000BB">Exception </span><span style="color: #007700">{}<br /><br /></span><span style="color: #0000BB">$a </span><span style="color: #007700">= </span><span style="color: #0000BB">\strlen</span><span style="color: #007700">(</span><span style="color: #DD0000">'hola'</span><span style="color: #007700">); </span><span style="color: #FF8000">// llama a la función global strlen<br /></span><span style="color: #0000BB">$b </span><span style="color: #007700">= </span><span style="color: #0000BB">\INI_ALL</span><span style="color: #007700">; </span><span style="color: #FF8000">// accede a la constante global INI_ALL<br /></span><span style="color: #0000BB">$c </span><span style="color: #007700">= new </span><span style="color: #0000BB">\Exception</span><span style="color: #007700">(</span><span style="color: #DD0000">'error'</span><span style="color: #007700">); </span><span style="color: #FF8000">// instancia a la clase global Exception<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div></div></div></body></html>

@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Determinar el tipo de una imagen</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ref.exif.html">« Funciones de Exif</a></li>
+      <li style="float: right;"><a href="function.exif-read-data.html">exif_read_data »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.exif.html">Funciones de Exif</a></li>
+    <li>Determinar el tipo de una imagen</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.exif-imagetype" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">exif_imagetype</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">exif_imagetype</span> &mdash; <span class="dc-title">Determinar el tipo de una imagen</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.exif-imagetype-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>exif_imagetype</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$filename</code></span>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>exif_imagetype()</strong></span> lee los primeros bytes de una imagen y
+   comprueba su firma.
+  </p>
+  <p class="para">
+   <span class="function"><strong>exif_imagetype()</strong></span> se puede usar para evitar llamar a otras
+   funciones <a href="ref.exif.html" class="link">exif</a> con tipos de archivos no soportados
+   o junto con <var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER['HTTP_ACCEPT']</a></var> para verificar
+   si el visionador es capaz o no de ver una imagen específica en el navegador.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.exif-imagetype-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">filename</code></dt>
+     <dd>
+      <span class="simpara">
+       La imagen que va a ser comprobada.
+      </span>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.exif-imagetype-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Cuando se encuentra una firma correcta, se devolverá el valor de la constante
+   apropiada o, de otro modo, el valor devuelto será <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>. El valor devuelto es el
+   mismo valor que devuelve <span class="function"><a href="function.getimagesize.html" class="function">getimagesize()</a></span> en el índice 2, pero
+   <span class="function"><strong>exif_imagetype()</strong></span> es mucho más rápida.
+  </p>
+  
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    <span class="function"><strong>exif_imagetype()</strong></span> emitirá un mensaje <strong><code><a href="errorfunc.constants.html#constant.e-notice">E_NOTICE</a></code></strong>
+    y devolverá <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si no es capaz de leer suficientes bytes del archivo como para
+    determinar el tipo de la imagen.
+    
+   </p>
+  </p></blockquote>
+ </div>
+
+ <div class="refsect1 changelog" id="refsect1-function.exif-imagetype-changelog">
+  <h3 class="title">Historial de cambios</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Versión</th>
+       <th>Descripción</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.3.0</td>
+       <td>
+        Se añadió soporte para iconos.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ <div class="refsect1 constants" id="refsect1-function.exif-imagetype-constants">
+  <h3 class="title">Constantes predefinidas</h3>
+  <p class="para">
+   Las siguientes constantes están definidas y representan los valores
+   posibles que devuelve <span class="function"><strong>exif_imagetype()</strong></span>:
+   <table class="doctable table">
+    <caption><strong>Imagetype Constants</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>Valor</th>
+       <th>Constante</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>1</td>
+       <td><strong><code><a href="image.constants.html#constant.imagetype-gif">IMAGETYPE_GIF</a></code></strong></td>
+      </tr>
+
+      <tr>
+       <td>2</td>
+       <td><strong><code><a href="image.constants.html#constant.imagetype-jpeg">IMAGETYPE_JPEG</a></code></strong></td>
+      </tr>
+
+      <tr>
+       <td>3</td>
+       <td><strong><code><a href="image.constants.html#constant.imagetype-png">IMAGETYPE_PNG</a></code></strong></td>
+      </tr>
+
+      <tr>
+       <td>4</td>
+       <td><strong><code><a href="image.constants.html#constant.imagetype-swf">IMAGETYPE_SWF</a></code></strong></td>
+      </tr>
+        
+      <tr>
+       <td>5</td>
+       <td><strong><code><a href="image.constants.html#constant.imagetype-psd">IMAGETYPE_PSD</a></code></strong></td>
+      </tr>
+        
+      <tr>
+       <td>6</td>
+       <td><strong><code><a href="image.constants.html#constant.imagetype-bmp">IMAGETYPE_BMP</a></code></strong></td>
+      </tr>
+        
+      <tr>
+       <td>7</td>
+       <td><strong><code><a href="image.constants.html#constant.imagetype-tiff-ii">IMAGETYPE_TIFF_II</a></code></strong> (orden de byte intel)</td>
+      </tr>
+        
+      <tr>
+       <td>8</td>
+       <td>
+        <strong><code><a href="image.constants.html#constant.imagetype-tiff-mm">IMAGETYPE_TIFF_MM</a></code></strong> (orden de byte motorola)
+       </td>
+      </tr>
+      
+      <tr>
+       <td>9</td>
+       <td><strong><code><a href="image.constants.html#constant.imagetype-jpc">IMAGETYPE_JPC</a></code></strong></td>
+      </tr>
+      
+      <tr>
+       <td>10</td>
+       <td><strong><code><a href="image.constants.html#constant.imagetype-jp2">IMAGETYPE_JP2</a></code></strong></td>
+      </tr>
+      
+      <tr>
+       <td>11</td>
+       <td><strong><code><a href="image.constants.html#constant.imagetype-jpx">IMAGETYPE_JPX</a></code></strong></td>
+      </tr>
+
+      <tr>
+       <td>12</td>
+       <td><strong><code><a href="image.constants.html#constant.imagetype-jb2">IMAGETYPE_JB2</a></code></strong></td>
+      </tr>
+
+      <tr>
+       <td>13</td>
+       <td><strong><code><a href="image.constants.html#constant.imagetype-swc">IMAGETYPE_SWC</a></code></strong></td>
+      </tr>
+
+      <tr>
+       <td>14</td>
+       <td><strong><code><a href="image.constants.html#constant.imagetype-iff">IMAGETYPE_IFF</a></code></strong></td>
+      </tr>
+
+      <tr>
+       <td>15</td>
+       <td><strong><code><a href="image.constants.html#constant.imagetype-wbmp">IMAGETYPE_WBMP</a></code></strong></td>
+      </tr>
+
+      <tr> 
+       <td>16</td>
+       <td><strong><code><a href="image.constants.html#constant.imagetype-xbm">IMAGETYPE_XBM</a></code></strong></td>
+      </tr>
+
+      <tr>
+       <td>17</td>
+       <td><strong><code><a href="image.constants.html#constant.imagetype-ico">IMAGETYPE_ICO</a></code></strong></td>
+      </tr>
+
+     </tbody>
+         
+   </table>
+       
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.exif-imagetype-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-2603">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>exif_imagetype()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if (</span><span style="color: #0000BB">exif_imagetype</span><span style="color: #007700">(</span><span style="color: #DD0000">'imagen.gif'</span><span style="color: #007700">) != </span><span style="color: #0000BB">IMAGETYPE_GIF</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">'La imagen no es gif'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>  
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.exif-imagetype-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.image-type-to-mime-type.html" class="function" rel="rdfs-seeAlso">image_type_to_mime_type()</a> - Obtiene el tipo Mime de un tipo de imagen devuelto por getimagesize,
+   exif_read_data, exif_thumbnail, exif_imagetype</span></li>
+    <li><span class="function"><a href="function.getimagesize.html" class="function" rel="rdfs-seeAlso">getimagesize()</a> - Obtener el tama&ntilde;o de una imagen</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

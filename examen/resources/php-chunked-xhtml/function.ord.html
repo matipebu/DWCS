@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Convierte el primer byte de un string a un valor entre 0 y 255</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.number-format.html">« number_format</a></li>
+      <li style="float: right;"><a href="function.parse-str.html">parse_str »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.strings.html">Funciones de strings</a></li>
+    <li>Convierte el primer byte de un string a un valor entre 0 y 255</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.ord" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ord</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">ord</span> &mdash; <span class="dc-title">Convierte el primer byte de un string a un valor entre 0 y 255</span></p>
+
+  </div>
+  
+  <div class="refsect1 description" id="refsect1-function.ord-description">
+   <h3 class="title">Descripción</h3>
+   <div class="methodsynopsis dc-description">
+    <span class="methodname"><strong>ord</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$string</code></span>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+   <p class="para rdfs-comment">
+    Interpreta el valor binario del primer byte de
+    <code class="parameter">string</code> como un entero sin signo entre 0 y 255.
+   </p>
+   <p class="para">
+    Si el string está en codificación de byte único, como ASCII, ISO-8859 o Windows 1252, esto es equivalente a devolver la posición del carácter de la tabla de correspondencia del conjunto de caracteres. Sin embargo, observe que esta función no conoce la codificación del string, por lo que nunca identificará un punto de código Unicode en una codificación multibyte tal como UTF-8 o UTF-16.
+   </p>
+   <p class="para">
+    Esta función complementa a <span class="function"><a href="function.chr.html" class="function">chr()</a></span>.
+   </p>
+  </div>
+
+  
+  <div class="refsect1 parameters" id="refsect1-function.ord-parameters"> <h3 class="title">Parámetros</h3> <p class="para">
+   <dl>
+    
+     <dt>
+      <code class="parameter">string</code>
+     </dt>
+     <dd>
+      <p class="para">
+       Un carácter.
+      </p>
+     </dd>
+    
+  </dl>
+  </p>
+  </div>
+
+  
+  <div class="refsect1 returnvalues" id="refsect1-function.ord-returnvalues">
+   <h3 class="title">Valores devueltos</h3>
+   <p class="para">
+    Un entero entre 0 y 255.
+   </p>
+  </div>
+
+  
+  <div class="refsect1 examples" id="refsect1-function.ord-examples">
+   <h3 class="title">Ejemplos</h3>
+   <p class="para">
+    <div class="example" id="example-4804">
+     <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>ord()</strong></span></strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$str </span><span style="color: #007700">= </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />if (</span><span style="color: #0000BB">ord</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">) == </span><span style="color: #0000BB">10</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">"El primer caracter de \$str es un salto de linea.\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para"> 
+    <div class="example" id="example-4805">
+     <p><strong>Ejemplo #2 Examinar los bytes individuales de un string UTF-8</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">declare(</span><span style="color: #0000BB">encoding</span><span style="color: #007700">=</span><span style="color: #DD0000">'UTF-8'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$str </span><span style="color: #007700">= </span><span style="color: #DD0000">"🐘"</span><span style="color: #007700">;<br />for ( </span><span style="color: #0000BB">$pos</span><span style="color: #007700">=</span><span style="color: #0000BB">0</span><span style="color: #007700">; </span><span style="color: #0000BB">$pos </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">); </span><span style="color: #0000BB">$pos </span><span style="color: #007700">++ ) {<br /> </span><span style="color: #0000BB">$byte </span><span style="color: #007700">= </span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">, </span><span style="color: #0000BB">$pos</span><span style="color: #007700">);<br /> echo </span><span style="color: #DD0000">'El byte ' </span><span style="color: #007700">. </span><span style="color: #0000BB">$pos </span><span style="color: #007700">. </span><span style="color: #DD0000">' de $str tiene el valor ' </span><span style="color: #007700">. </span><span style="color: #0000BB">ord</span><span style="color: #007700">(</span><span style="color: #0000BB">$byte</span><span style="color: #007700">) . </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+     <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+     <div class="example-contents screen"><br />
+      El byte 0 de $str tiene el valor 240<br />
+      El byte 1 de $str tiene el valor 159<br />
+      El byte 2 de $str tiene el valor 144<br />
+      El byte 3 de $str tiene el valor 152<br />
+     </div>
+    </div>
+   </p>
+  </div>
+
+  
+  <div class="refsect1 seealso" id="refsect1-function.ord-seealso">
+   <h3 class="title">Ver también</h3>
+   <p class="para">
+    <ul class="simplelist">
+     <li><span class="function"><a href="function.chr.html" class="function" rel="rdfs-seeAlso">chr()</a> - Devuelve un caracter espec&iacute;fico</span></li>
+     <li>An <a href="https://www.man7.org/linux/man-pages/man7/ascii.7.html" class="link external">&raquo;&nbsp;ASCII-table</a></li>
+     <li><span class="function"><a href="function.mb-ord.html" class="function" rel="rdfs-seeAlso">mb_ord()</a> - Get Unicode code point of character</span></li>
+    </ul>
+   </p>
+  </div>
+
+  
+</div></div></div></body></html>

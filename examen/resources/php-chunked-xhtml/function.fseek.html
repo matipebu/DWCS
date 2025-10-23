@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Busca sobre un puntero a un fichero</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.fscanf.html">« fscanf</a></li>
+      <li style="float: right;"><a href="function.fstat.html">fstat »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.filesystem.html">Funciones del Sistema de Archivos</a></li>
+    <li>Busca sobre un puntero a un fichero</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.fseek" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">fseek</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">fseek</span> &mdash; <span class="dc-title">Busca sobre un puntero a un fichero</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.fseek-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>fseek</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$handle</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$offset</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$whence</code><span class="initializer"> = SEEK_SET</span></span>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="para rdfs-comment">
+   Establece el indicador de posición de fichero para el fichero referenciado por
+   <code class="parameter">handle</code>. La nueva posición, medida en bytes
+   desde el inicio del fichero, se obtiene añadiendo
+   <code class="parameter">offset</code> a la posición especificada por
+   <code class="parameter">whence</code>.
+  </p>
+  <p class="para">
+   En general, se permite la búsqueda pasada la marca de fin de fichero; si entonces se escribe
+   información, las lecturas en cualquier región no escrita entre la marca de fin del fichero y la
+   posición buscada producirán bytes con valor 0. Sin embargo, ciertos flujos
+   no pueden soportar este comportamiento, especialmente cuando tienen un tamaño de almacenamiento
+   fijo subyacente.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.fseek-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">handle</code></dt>
+     <dd>
+      <p class="para"><span class="type"><a href="language.types.resource.html" class="type Resource">Resource</a></span> que apunta a un fichero del sitema que
+normalmente es creado usando <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>.</p>
+     </dd>
+    
+    
+     <dt><code class="parameter">offset</code></dt>
+     <dd>
+      <p class="para">
+       El índice.
+      </p>
+      <p class="para">
+       Para moverse a una posición anterior a la marca de fin del fichero, necesita pasar
+       un valor negativo a <code class="parameter">offset</code> y
+       establecer <code class="parameter">whence</code>
+       a <strong><code><a href="filesystem.constants.html#constant.seek-end">SEEK_END</a></code></strong>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">whence</code></dt>
+     <dd>
+      <p class="para">
+       Los valores de <code class="parameter">whence</code> son:
+       <ul class="simplelist">
+        <li><strong><code><a href="filesystem.constants.html#constant.seek-set">SEEK_SET</a></code></strong> - Establece la posición igual a <code class="parameter">offset</code> bytes.</li>
+        <li><strong><code><a href="filesystem.constants.html#constant.seek-cur">SEEK_CUR</a></code></strong> - Establece la posición a la ubicación actual más <code class="parameter">offset</code>.</li>
+        <li><strong><code><a href="filesystem.constants.html#constant.seek-end">SEEK_END</a></code></strong> - Establece la posición a la marca de final de fichero más <code class="parameter">offset</code>.</li>
+       </ul>
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.fseek-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Si tiene éxito, devuelve 0; de otro modo, devuelve -1.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.fseek-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-2190">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>fseek()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$fp </span><span style="color: #007700">= </span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'fichero.txt'</span><span style="color: #007700">, </span><span style="color: #DD0000">'r'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// leer alguna información<br /></span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">fgets</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">, </span><span style="color: #0000BB">4096</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// volver al principio del fichero<br />// igual que rewind($fp);<br /></span><span style="color: #0000BB">fseek</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.fseek-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Si se ha abierto un fichero en modo de adición (<code class="literal">a</code> o
+    <code class="literal">a+</code>), cualquier información que se escriba en el fichero será siempre
+    añadida, sin importar la posición, y el resutado de llamar a
+    <span class="function"><strong>fseek()</strong></span> será indefinido.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    No todos los flujos soportan búsqueda. Para esos que no soportan búsqueda,
+    la búsqueda hacia adelante desde la posición actual se lleva a cabo leyendo
+    y descartando información; otras formas de búsqueda fallarán.
+   </p>
+  </p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.fseek-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.ftell.html" class="function" rel="rdfs-seeAlso">ftell()</a> - Devuelve la posici&oacute;n de lectura/escritura actual del puntero a un fichero</span></li>
+    <li><span class="function"><a href="function.rewind.html" class="function" rel="rdfs-seeAlso">rewind()</a> - Rebobina la posici&oacute;n de un puntero a un archivo</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

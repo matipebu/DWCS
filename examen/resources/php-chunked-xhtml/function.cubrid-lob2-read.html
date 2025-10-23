@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Lee desde datos BLOB/CLOB</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.cubrid-lob2-new.html">« cubrid_lob2_new</a></li>
+      <li style="float: right;"><a href="function.cubrid-lob2-seek.html">cubrid_lob2_seek »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.cubrid.html">Funciones de CUBRID</a></li>
+    <li>Lee desde datos BLOB/CLOB</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.cubrid-lob2-read" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">cubrid_lob2_read</h1>
+  <p class="verinfo">(PECL CUBRID &gt;= 8.4.1)</p><p class="refpurpose"><span class="refname">cubrid_lob2_read</span> &mdash; <span class="dc-title">Lee desde datos BLOB/CLOB</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.cubrid-lob2-read-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>cubrid_lob2_read</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$lob_identifier</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$len</code></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   La función <span class="function"><strong>cubrid_lob2_read()</strong></span> lee <code class="parameter">len</code> bytes
+   desde los datos LOB y devuelve los biytes leídos.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.cubrid-lob2-read-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">lob_identifier</code></dt>
+     <dd>
+      <p class="para">Un identificador de LOB, como un resultado de <span class="function"><a href="function.cubrid-lob2-new.html" class="function">cubrid_lob2_new()</a></span> u obtenido de un conjunto de resultados.</p>
+     </dd>
+    
+    
+     <dt><code class="parameter">len</code></dt>
+     <dd>
+      <p class="para">La longitud del búfer del cual se quieren leer los datos LOB.</p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.cubrid-lob2-read-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el contenido, en forma de string.
+  </p>
+  <p class="para">
+   <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> cuando no hay más datos.
+  </p>
+  <p class="para">
+   NULL en caso de error.
+  </p>
+  <p class="para">
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.cubrid-lob2-read-examples">
+  <h3 class="title">Ejemplos</h3>
+  <div class="example" id="example-1141">
+   <p><strong>Ejemplo #1 Ejemplo 1 de <span class="function"><strong>cubrid_lob2_read()</strong></span></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// test_lob (id INT, contents CLOB)<br /><br /></span><span style="color: #0000BB">$conexión </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">, </span><span style="color: #0000BB">33000</span><span style="color: #007700">, </span><span style="color: #DD0000">"demodb"</span><span style="color: #007700">, </span><span style="color: #DD0000">"public"</span><span style="color: #007700">, </span><span style="color: #DD0000">""</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$petición </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conexión</span><span style="color: #007700">, </span><span style="color: #DD0000">"select * from test_lob"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$fila </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_fetch_row</span><span style="color: #007700">(</span><span style="color: #0000BB">$petición</span><span style="color: #007700">, </span><span style="color: #0000BB">CUBRID_LOB</span><span style="color: #007700">);<br /><br />print </span><span style="color: #DD0000">"La posción ahora es " </span><span style="color: #007700">. </span><span style="color: #0000BB">cubrid_lob2_tell</span><span style="color: #007700">(</span><span style="color: #0000BB">$fila</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]) . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">cubrid_lob2_seek</span><span style="color: #007700">(</span><span style="color: #0000BB">$fila</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">], </span><span style="color: #0000BB">10</span><span style="color: #007700">, </span><span style="color: #0000BB">CUBRID_CURSOR_FIRST</span><span style="color: #007700">);<br /><br />print </span><span style="color: #DD0000">"\nLa posición después de avanzar es " </span><span style="color: #007700">. </span><span style="color: #0000BB">cubrid_lob2_tell</span><span style="color: #007700">(</span><span style="color: #0000BB">$fila</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]) . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$datos </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_lob2_read</span><span style="color: #007700">(</span><span style="color: #0000BB">$fila</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">], </span><span style="color: #0000BB">12</span><span style="color: #007700">);<br /><br />print </span><span style="color: #DD0000">"\nLa posición después de leer es " </span><span style="color: #007700">. </span><span style="color: #0000BB">cubrid_lob2_tell</span><span style="color: #007700">(</span><span style="color: #0000BB">$fila</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]) . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br />print </span><span style="color: #0000BB">$datos </span><span style="color: #007700">. </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">cubrid_lob2_seek</span><span style="color: #007700">(</span><span style="color: #0000BB">$fila</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">], </span><span style="color: #0000BB">5</span><span style="color: #007700">, </span><span style="color: #0000BB">CUBRID_CURSOR_CURRENT</span><span style="color: #007700">);<br /><br />print </span><span style="color: #DD0000">"\nLa posición después de mover de nuevo es " </span><span style="color: #007700">. </span><span style="color: #0000BB">cubrid_lob2_tell</span><span style="color: #007700">(</span><span style="color: #0000BB">$fila</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]) . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$datos </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_lob2_read</span><span style="color: #007700">(</span><span style="color: #0000BB">$fila</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">], </span><span style="color: #0000BB">20</span><span style="color: #007700">);<br />print </span><span style="color: #0000BB">$datos </span><span style="color: #007700">. </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">cubrid_disconnect</span><span style="color: #007700">(</span><span style="color: #0000BB">$conexión</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+  
+  <div class="example" id="example-1142">
+   <p><strong>Ejemplo #2 Ejemplo 2 <span class="function"><strong>cubrid_lob2_read()</strong></span></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// test_lob (id INT, contents CLOB)<br /><br /></span><span style="color: #0000BB">$conexión </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">, </span><span style="color: #0000BB">33000</span><span style="color: #007700">, </span><span style="color: #DD0000">"demodb"</span><span style="color: #007700">, </span><span style="color: #DD0000">"dba"</span><span style="color: #007700">, </span><span style="color: #DD0000">""</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$petición </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conexión</span><span style="color: #007700">, </span><span style="color: #DD0000">"select * from test_lob"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$fila </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_fetch_row</span><span style="color: #007700">(</span><span style="color: #0000BB">$petición</span><span style="color: #007700">, </span><span style="color: #0000BB">CUBRID_LOB</span><span style="color: #007700">);<br /><br />while (</span><span style="color: #0000BB">true</span><span style="color: #007700">) {<br /> if (</span><span style="color: #0000BB">$datos </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_lob2_read</span><span style="color: #007700">(</span><span style="color: #0000BB">$fila</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">], </span><span style="color: #0000BB">1024</span><span style="color: #007700">)) {<br />  print </span><span style="color: #0000BB">$datos </span><span style="color: #007700">. </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /> }<br /> elseif (</span><span style="color: #0000BB">$datos </span><span style="color: #007700">=== </span><span style="color: #0000BB">false</span><span style="color: #007700">) {<br />  print </span><span style="color: #DD0000">"No hay más datos\n"</span><span style="color: #007700">;<br />  break;<br /> }<br /> else {<br />  print </span><span style="color: #DD0000">"Debe haber algún error\n"</span><span style="color: #007700">;<br />  break;<br /> }<br />}<br /><br /></span><span style="color: #0000BB">cubrid_disconnect</span><span style="color: #007700">(</span><span style="color: #0000BB">$conexión</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.cubrid-lob2-read-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.cubrid-lob2-write.html" class="function" rel="rdfs-seeAlso">cubrid_lob2_write()</a> - Escribe en un objeto LOB</span></li>
+    <li><span class="function"><a href="function.cubrid-lob2-seek.html" class="function" rel="rdfs-seeAlso">cubrid_lob2_seek()</a> - Mover el cursor de un objeto LOB</span></li>
+    <li><span class="function"><a href="function.cubrid-lob2-seek64.html" class="function" rel="rdfs-seeAlso">cubrid_lob2_seek64()</a> - Mover el cursor de un objeto LOB</span></li>
+    <li><span class="function"><a href="function.cubrid-lob2-tell.html" class="function" rel="rdfs-seeAlso">cubrid_lob2_tell()</a> - Indica la posici&oacute;n del cursor de un objeto LOB</span></li>
+    <li><span class="function"><a href="function.cubrid-lob2-tell64.html" class="function" rel="rdfs-seeAlso">cubrid_lob2_tell64()</a> - Indica la posici&oacute;n del cursor de un objeto LOB</span></li>
+    <li><span class="function"><a href="function.cubrid-lob2-size.html" class="function" rel="rdfs-seeAlso">cubrid_lob2_size()</a> - Obtiene el tama&ntilde;o de un objeto LOB</span></li>
+    <li><span class="function"><a href="function.cubrid-lob2-size64.html" class="function" rel="rdfs-seeAlso">cubrid_lob2_size64()</a> - Obtiene el tama&ntilde;o de un objeto LOB</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>for</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="control-structures.do.while.html">« do-while</a></li>
+      <li style="float: right;"><a href="control-structures.foreach.html">foreach »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.control-structures.html">Estructuras de Control</a></li>
+    <li>for</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="control-structures.for" class="sect1">
+ <h2 class="title"><code class="literal">for</code></h2>
+ <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p>
+ <p class="para">
+  Los bucles <code class="literal">for</code> son los más complejos en PHP.
+  Se comportan como sus homólogos en C. La sintaxis de un bucle
+  <code class="literal">for</code> es:
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="cdata"><pre>
+for (expr1; expr2; expr3)
+    sentencia
+</pre></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+  La primera expresión (<var class="varname">expr1</var>) es
+  evaluada (ejecutada) una vez incondicionalmente al comienzo del
+  bucle.
+ </p>
+ <p class="simpara">
+  En el comienzo de cada iteración,
+  se evalúa <var class="varname">expr2</var>. Si se evalúa como
+  <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>, el bucle continúa y se ejecutan la/sy
+  sentencia/s anidada/s. Si se evalúa como
+  <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>, finaliza la ejecución del bucle.
+ </p>
+ <p class="simpara">
+  Al final de cada iteración, se evalúa (ejecuta)
+  <var class="varname">expr3</var>.
+ </p>
+ <p class="simpara">
+  Cada una de las expresiones puede estar vacía o contener múltiples
+  expresiones separadas por comas. En <var class="varname">expr2</var>, todas
+  las expresiones separadas por una coma son evaluadas, pero el resultado se toma
+  de la última parte.
+  Que <var class="varname">expr2</var> esté vacía significa que el bucle debería
+  ser corrido indefinidamente (PHP implícitamente lo considera como
+  <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>, como en C). Esto puede no ser tan inútil como se 
+  pudiera pensar, ya que muchas veces se debe terminar el bucle usando
+  una sentencia condicional <a href="control-structures.break.html" class="link"><code class="literal">break</code></a>
+  en lugar de utilizar la expresión verdadera del
+  <code class="literal">for</code>.
+ </p>
+ <p class="para">
+  Considere los siguientes ejemplos. Todos ellos muestran los números
+  del 1 al 10: 
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/* ejemplo 1 */<br /><br /></span><span style="color: #007700">for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt;= </span><span style="color: #0000BB">10</span><span style="color: #007700">; </span><span style="color: #0000BB">$i</span><span style="color: #007700">++) {<br />    echo </span><span style="color: #0000BB">$i</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">/* ejemplo 2 */<br /><br /></span><span style="color: #007700">for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">; ; </span><span style="color: #0000BB">$i</span><span style="color: #007700">++) {<br />    if (</span><span style="color: #0000BB">$i </span><span style="color: #007700">&gt; </span><span style="color: #0000BB">10</span><span style="color: #007700">) {<br />        break;<br />    }<br />    echo </span><span style="color: #0000BB">$i</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">/* ejemplo 3 */<br /><br /></span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />for (; ; ) {<br />    if (</span><span style="color: #0000BB">$i </span><span style="color: #007700">&gt; </span><span style="color: #0000BB">10</span><span style="color: #007700">) {<br />        break;<br />    }<br />    echo </span><span style="color: #0000BB">$i</span><span style="color: #007700">;<br />    </span><span style="color: #0000BB">$i</span><span style="color: #007700">++;<br />}<br /><br /></span><span style="color: #FF8000">/* ejemplo 4 */<br /><br /></span><span style="color: #007700">for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">$j </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt;= </span><span style="color: #0000BB">10</span><span style="color: #007700">; </span><span style="color: #0000BB">$j </span><span style="color: #007700">+= </span><span style="color: #0000BB">$i</span><span style="color: #007700">, print </span><span style="color: #0000BB">$i</span><span style="color: #007700">, </span><span style="color: #0000BB">$i</span><span style="color: #007700">++);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+  Por supuesto, el primer ejemplo parece ser el mejor (o 
+  quizás el cuarto), pero se puede observar que la posibilidad de usar expresiones
+  vacías en los bucles <code class="literal">for</code> resulta útil en muchas
+  ocasiones.
+ </p>
+ <p class="para">
+  PHP también admite la sintaxis alternativa de los dos puntos para
+  bucles <code class="literal">for</code>.
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="cdata"><pre>
+for (expr1; expr2; expr3):
+    sentencia
+    ...
+endfor;
+</pre></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+  Es una cosa común a muchos usuarios iterar por medio de arrays como en el
+  siguiente ejemplo.
+ </p>
+ <p class="para">
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*<br />* Este es un array con algunos datos que se quieren modificar<br />* cuando se recorra el bucle for.<br />*/<br /></span><span style="color: #0000BB">$people </span><span style="color: #007700">= array(<br />    array(</span><span style="color: #DD0000">'name' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Kalle'</span><span style="color: #007700">, </span><span style="color: #DD0000">'salt' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">856412</span><span style="color: #007700">),<br />    array(</span><span style="color: #DD0000">'name' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Pierre'</span><span style="color: #007700">, </span><span style="color: #DD0000">'salt' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">215863</span><span style="color: #007700">)<br />);<br /><br />for(</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$people</span><span style="color: #007700">); ++</span><span style="color: #0000BB">$i</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">$people</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">][</span><span style="color: #DD0000">'salt'</span><span style="color: #007700">] = </span><span style="color: #0000BB">mt_rand</span><span style="color: #007700">(</span><span style="color: #0000BB">000000</span><span style="color: #007700">, </span><span style="color: #0000BB">999999</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+  El código anterior puede ser lento, debido a que el tamaño del array se capta en
+  cada iteración. Dado que el tamaño nunca cambia, el bucle puede ser fácilmente
+  optimizado mediante el uso de una variable intermedia para almacenar el tamaño en lugar
+  de llamar repetidamente a <span class="function"><a href="function.count.html" class="function">count()</a></span>:
+ </p>
+ <p class="para">
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$people </span><span style="color: #007700">= array(<br />    array(</span><span style="color: #DD0000">'name' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Kalle'</span><span style="color: #007700">, </span><span style="color: #DD0000">'salt' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">856412</span><span style="color: #007700">),<br />    array(</span><span style="color: #DD0000">'name' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Pierre'</span><span style="color: #007700">, </span><span style="color: #DD0000">'salt' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">215863</span><span style="color: #007700">)<br />);<br /><br />for(</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">$size </span><span style="color: #007700">= </span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$people</span><span style="color: #007700">); </span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">$size</span><span style="color: #007700">; ++</span><span style="color: #0000BB">$i</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">$people</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">][</span><span style="color: #DD0000">'salt'</span><span style="color: #007700">] = </span><span style="color: #0000BB">mt_rand</span><span style="color: #007700">(</span><span style="color: #0000BB">000000</span><span style="color: #007700">, </span><span style="color: #0000BB">999999</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </p>
+</div></div></div></body></html>

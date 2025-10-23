@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Establece un atributo</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="pdo.rollback.html">« PDO::rollBack</a></li>
+      <li style="float: right;"><a href="class.pdostatement.html">PDOStatement »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.pdo.html">PDO</a></li>
+    <li>Establece un atributo</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="pdo.setattribute" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PDO::setAttribute</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8, PECL pdo &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">PDO::setAttribute</span> &mdash; <span class="dc-title">
+   Establece un atributo
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-pdo.setattribute-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>PDO::setAttribute</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$attribute</code></span>, <span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$value</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+
+  <p class="para rdfs-comment">
+   Establece un atributo en el manejador de la base de datos. Algunos de los
+   atributos genéricos disponibles están listados a continuación; algunos drivers
+   pueden hacer uso de atributos adicionales específicos.
+   <ul class="itemizedlist">
+    <li class="listitem"><p class="para">
+     <strong><code><a href="pdo.constants.html#pdo.constants.attr-case">PDO::ATTR_CASE</a></code></strong>: Fuerza a los nombres de columnas a una capitalización específica.
+     <ul class="itemizedlist">
+      <li class="listitem"><p class="para">
+       <strong><code><a href="pdo.constants.html#pdo.constants.case-lower">PDO::CASE_LOWER</a></code></strong>: Fuerza a los nombres de columnas a minúsculas.
+       </p></li>
+      <li class="listitem"><p class="para">
+       <strong><code><a href="pdo.constants.html#pdo.constants.case-natural">PDO::CASE_NATURAL</a></code></strong>: Deja los nombres de columnas como son devueltas por el driver de
+       la base de datos.
+       </p></li>
+      <li class="listitem"><p class="para">
+       <strong><code><a href="pdo.constants.html#pdo.constants.case-upper">PDO::CASE_UPPER</a></code></strong>: Fuerza a los nombres de columnas a mayúsculas.
+       </p></li>
+     </ul>
+     </p></li>
+    <li class="listitem"><p class="para"><strong><code><a href="pdo.constants.html#pdo.constants.attr-errmode">PDO::ATTR_ERRMODE</a></code></strong>: Reporte de errores.
+     <ul class="itemizedlist">
+      <li class="listitem"><p class="para"><strong><code><a href="pdo.constants.html#pdo.constants.errmode-silent">PDO::ERRMODE_SILENT</a></code></strong>:
+       Establece los códigos de error.</p></li>
+      <li class="listitem"><p class="para"><strong><code><a href="pdo.constants.html#pdo.constants.errmode-warning">PDO::ERRMODE_WARNING</a></code></strong>:
+       Eleva <a href="errorfunc.constants.html#constant.e-warning" class="link">E_WARNING</a>.</p></li>
+      <li class="listitem"><p class="para"><strong><code><a href="pdo.constants.html#pdo.constants.errmode-exception">PDO::ERRMODE_EXCEPTION</a></code></strong>:
+       Lanza <a href="class.pdoexception.html" class="link">exceptions</a>.</p></li>
+     </ul>
+     </p></li>
+    <li class="listitem"><p class="para"><strong><code><a href="pdo.constants.html#pdo.constants.attr-oracle-nulls">PDO::ATTR_ORACLE_NULLS</a></code></strong>
+     (disponible para todos los drivers, no sólo Oracle):
+     Conversión de NULL y cadenas vacías.
+     <ul class="itemizedlist">
+      <li class="listitem"><p class="para"><strong><code><a href="pdo.constants.html#pdo.constants.null-natural">PDO::NULL_NATURAL</a></code></strong>:
+       Sin conversión.</p></li>
+      <li class="listitem"><p class="para"><strong><code><a href="pdo.constants.html#pdo.constants.null-empty-string">PDO::NULL_EMPTY_STRING</a></code></strong>:
+       Las cadenas vacías son convertidas a <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>.</p></li>
+      <li class="listitem"><p class="para"><strong><code><a href="pdo.constants.html#pdo.constants.null-to-string">PDO::NULL_TO_STRING</a></code></strong>:
+       NULL se convierte a cadenas vacías.</p></li>
+     </ul>
+     </p></li>
+    <li class="listitem"><p class="para"><strong><code><a href="pdo.constants.html#pdo.constants.attr-stringify-fetches">PDO::ATTR_STRINGIFY_FETCHES</a></code></strong>:
+     Convierte los valores numéricos a cadenas cuando se buscan.
+     Requiere <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span>.
+     </p></li>
+    <li class="listitem"><p class="para"><strong><code><a href="pdo.constants.html#pdo.constants.attr-statement-class">PDO::ATTR_STATEMENT_CLASS</a></code></strong>:
+     Establece la clase de sentencia proporcionada por el usuario derivada de PDOStatement.
+     No puede ser usado con instancias PDO persistentes.
+     Requiere <code class="literal">array(string classname, array(mixed constructor_args))</code>.
+     </p></li>
+    <li class="listitem"><p class="para"><strong><code><a href="pdo.constants.html#pdo.constants.attr-timeout">PDO::ATTR_TIMEOUT</a></code></strong>:
+     Especifica la duración del tiempo de espera en segundos
+     Specifies the timeout duration in seconds.  Not all drivers support this option,
+     and it&#039;s meaning may differ from driver to driver.  For example, sqlite will wait
+     for up to this time value before giving up on obtaining an writable lock, but
+     other drivers may interpret this as a connect or a read timeout interval.
+     Requires <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>.
+     </p></li>
+    <li class="listitem"><p class="para"><strong><code><a href="pdo.constants.html#pdo.constants.attr-autocommit">PDO::ATTR_AUTOCOMMIT</a></code></strong>
+     (available in OCI, Firebird and MySQL):
+     Whether to autocommit every single statement.
+     </p></li>
+    <li class="listitem"><p class="para"><strong><code><a href="pdo.constants.html#pdo.constants.attr-emulate-prepares">PDO::ATTR_EMULATE_PREPARES</a></code></strong>
+     Enables or disables emulation of prepared statements.  Some drivers do
+     not support native prepared statements or have limited support for them.
+     Use this setting to force PDO to either always emulate prepared
+     statements (if <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>), or to try to use native prepared statements (if
+     <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>).  It will always fall back to emulating the prepared statement
+     if the driver cannot successfully prepare the current query.
+     Requires <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span>.
+     </p></li>
+    <li class="listitem"><p class="para"><strong><code><a href="ref.pdo-mysql.html#pdo.constants.mysql-attr-use-buffered-query">PDO::MYSQL_ATTR_USE_BUFFERED_QUERY</a></code></strong>
+     (available in MySQL):
+     Use buffered queries.
+     </p></li>
+    <li class="listitem"><p class="para"><strong><code><a href="pdo.constants.html#pdo.constants.attr-default-fetch-mode">PDO::ATTR_DEFAULT_FETCH_MODE</a></code></strong>:
+     Set default fetch mode. Description of modes is available in
+     <span class="function"><a href="pdostatement.fetch.html" class="function">PDOStatement::fetch()</a></span> documentation.
+     </p></li>
+   </ul>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-pdo.setattribute-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

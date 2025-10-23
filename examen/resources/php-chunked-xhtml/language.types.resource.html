@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Recursos</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.types.enumerations.html">« Enumerations</a></li>
+      <li style="float: right;"><a href="language.types.callable.html">Llamadas de retorno (Callbacks / Callables) »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.types.html">Tipos</a></li>
+    <li>Recursos</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.types.resource" class="sect1">
+ <h2 class="title">Recursos</h2>
+
+ <p class="para">
+  Un valor tipo <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> es una variable especial, que contiene
+  una referencia a un recurso externo. Los recursos son creados y usados por
+  funciones especiales. Vea el <a href="resource.html" class="link">apéndice</a> para
+  un listado de todas estas funciones y los tipos <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>
+  correspondientes.
+ </p>
+
+ <p class="para">
+  Vea también la función <span class="function"><a href="function.get-resource-type.html" class="function">get_resource_type()</a></span>.
+ </p>
+
+ <div class="sect2" id="language.types.resource.casting">
+  <h3 class="title">Conversión a recurso</h3>
+
+  <p class="para">
+   Dado que las variables <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> contienen gestores
+   especiales a archivos abiertos, conexiones con bases de datos, áreas de
+   pintura de imágenes y cosas por el estilo, la conversión a tipo
+   <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> carece de sentido.
+  </p>
+ </div>
+
+ <div class="sect2" id="language.types.resource.self-destruct">
+  <h3 class="title">Liberación de recursos</h3>
+
+  <p class="para">
+   Gracias al sistema de conteo de referencias introducido con el Motor 
+   Zend, un recurso que ya no es referenciado es detectado
+   automáticamente, y es liberado por el recolector de basura.  Por esta
+   razón, rara vez se necesita liberar la memoria manualmente.
+  </p>
+
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <span class="simpara">
+    Los enlaces persistentes con bases de datos son una excepción a esta
+    regla. Ellos <em>no</em> son destruidos por el recolector de
+    basura. Vea también la sección sobre <a href="features.persistent-connections.html" class="link">conexiones persistentes</a>
+    para más información.
+   </span>
+  </p></blockquote>
+
+ </div>
+</div></div></div></body></html>

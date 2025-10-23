@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Cerrar la conexi&oacute;n de CUBRID</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.cubrid-client-encoding.html">« cubrid_client_encoding</a></li>
+      <li style="float: right;"><a href="function.cubrid-data-seek.html">cubrid_data_seek »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="cubridmysql.cubrid.html">Funciones de compatibilidad CUBRID MySQL</a></li>
+    <li>Cerrar la conexi&oacute;n de CUBRID</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.cubrid-close" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">cubrid_close</h1>
+  <p class="verinfo">(PECL CUBRID &gt;= 8.3.1)</p><p class="refpurpose"><span class="refname">cubrid_close</span> &mdash; <span class="dc-title">Cerrar la conexión de CUBRID</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.cubrid-close-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>cubrid_close</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$conn_identifier</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   La función <span class="function"><strong>cubrid_close()</strong></span> termina la transacción
+   en proceso actual, cierra el gestor de conexión y se desconecta del
+   servidor. Si existe cualquier gestor de petición que no se haya cerrado todavía em este punto,
+   éste se cerrará. Es similar a la función de CUBRID
+   <span class="function"><a href="function.cubrid-disconnect.html" class="function">cubrid_disconnect()</a></span>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.cubrid-close-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">conn_identifier</code></dt>
+     <dd><p class="para">El identificador de conexión de CUBRID. Si no se especifica el identificador de conexión, se asume la última conexión abierta por <span class="function"><a href="function.cubrid-connect.html" class="function">cubrid_connect()</a></span>.</p></dd>
+   
+  </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.cubrid-close-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>, cuando el proceso es satisfactorio.
+  </p>
+  <p class="para">
+   <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>, cuando el proceso es insatisfactorio.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.cubrid-close-examples">
+  <h3 class="title">Ejemplos</h3>
+  <div class="example" id="example-1169">
+   <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>cubrid_close()</strong></span></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$con </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_connect </span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">, </span><span style="color: #0000BB">33000</span><span style="color: #007700">, </span><span style="color: #DD0000">"demodb"</span><span style="color: #007700">);<br />if (</span><span style="color: #0000BB">$con</span><span style="color: #007700">) {<br />   echo </span><span style="color: #DD0000">"conectado satisfactoriamente"</span><span style="color: #007700">;<br />   </span><span style="color: #0000BB">$req </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_execute </span><span style="color: #007700">( </span><span style="color: #0000BB">$con</span><span style="color: #007700">, </span><span style="color: #DD0000">"insert into person values(1,'James')"</span><span style="color: #007700">);<br />   if (</span><span style="color: #0000BB">$req</span><span style="color: #007700">) {<br />      </span><span style="color: #0000BB">cubrid_close_request </span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);<br />      </span><span style="color: #0000BB">cubrid_commit </span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">);<br />   } else {<br />      </span><span style="color: #0000BB">cubrid_rollback </span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">);<br />   }<br />   </span><span style="color: #0000BB">cubrid_close </span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.cubrid-close-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.cubrid-disconnect.html" class="function" rel="rdfs-seeAlso">cubrid_disconnect()</a> - Cerrar una conexi&oacute;n a una base de datos</span></li>
+    <li><span class="function"><a href="function.cubrid-connect.html" class="function" rel="rdfs-seeAlso">cubrid_connect()</a> - Abrir una conexi&oacute;n al servidor CUBRID</span></li>
+    <li><span class="function"><a href="function.cubrid-connect-with-url.html" class="function" rel="rdfs-seeAlso">cubrid_connect_with_url()</a> - Establecer el entorno para la conexi&oacute;n al servidor de CUBRID</span></li> 
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

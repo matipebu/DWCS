@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Variables de entorno</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="reserved.variables.session.html">« $_SESSION</a></li>
+      <li style="float: right;"><a href="reserved.variables.cookies.html">$_COOKIE »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="reserved.variables.html">Variables predefinidas</a></li>
+    <li>Variables de entorno</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="reserved.variables.environment" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">$_ENV</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.1.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">$_ENV</span> &mdash; <span class="dc-title">Variables de entorno</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-reserved.variables.environment-description">
+  <h3 class="title">Descripción</h3>
+  <p class="para">
+   Una variable tipo <span class="type"><a href="language.types.array.html" class="type array">array</a></span> asociativo de variables pasadas al
+   script actual a través del método del entorno.
+  </p>
+
+  <p class="simpara">
+   Estas variables son importadas en el espacio de nombres global de PHP
+   desde el entorno bajo el que está siendo ejecutado el intérprete PHP.
+   Muchas son entregadas por el intérprete de comandos bajo el que PHP está
+   corriendo y diferentes sistemas suelen tener diferentes tipos de
+   intérpretes de comandos, una lista definitiva es imposible. Por favor
+   consulte la documentación de su intérprete de comandos para una lista de
+   las variables de entorno que se definen.
+  </p>
+
+  <p class="simpara">
+   Otras variables de entorno incluyen las variables CGI, colocadas allí
+   independientemente de que PHP esté siendo ejecutado como módulo del
+   servidor o procesador CGI.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-reserved.variables.environment-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="variable.env.basic">
+    <p><strong>Ejemplo #1 Ejemplo de <var class="varname">$_ENV</var></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo </span><span style="color: #DD0000">'¡Mi nombre de usuario es ' </span><span style="color: #007700">. </span><span style="color: #0000BB">$_ENV</span><span style="color: #007700">[</span><span style="color: #DD0000">"USER"</span><span style="color: #007700">] . </span><span style="color: #DD0000">'!'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>
+     Asumiendo que &quot;bjori&quot; ejecuta este script
+    </p></div>
+    <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">¡Mi nombre de usuario es bjori!</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-reserved.variables.environment-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: <p class="para">Esta es una &#039;superglobal&#039; o
+una variable automatic global. Significa simplemente que es una variable que está disponible en cualquier parte
+del script. No hace falta hacer
+<strong class="command">global $variable;</strong> para acceder a la misma desde funciones o métodos.
+</p></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-reserved.variables.environment-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.getenv.html" class="function" rel="rdfs-seeAlso">getenv()</a> - Obtiene el valor de una variable de entorno</span></li>
+    <li><a href="book.filter.html" class="link">La extensión filter</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Funci&oacute;n URL que codifica el string dado</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.curl-error.html">« curl_error</a></li>
+      <li style="float: right;"><a href="function.curl-exec.html">curl_exec »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.curl.html">Funciones de cURL</a></li>
+    <li>Funci&oacute;n URL que codifica el string dado</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.curl-escape" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">curl_escape</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.5.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">curl_escape</span> &mdash; <span class="dc-title">Función URL que codifica el string dado</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.curl-escape-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>curl_escape</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$ch</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$str</code></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Esta función URL, codifica el string dado de acuerdo con <a href="http://www.faqs.org/rfcs/rfc3986" class="link external">&raquo;&nbsp;RFC 3986</a>.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.curl-escape-parameters">
+  <h3 class="title">Parámetros</h3>
+  <dl>
+   <dt><code class="parameter">ch</code>
+</dt><dd><p class="para">El recurso cURL devuelto por
+<span class="function"><a href="function.curl-init.html" class="function">curl_init()</a></span>.</p></dd>
+   
+    <dt><code class="parameter">str</code></dt>
+    <dd>
+     <p class="para">
+      El string a ser codificado.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.curl-escape-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve la cadena codificada o  o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error en caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.curl-escape-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4216">
+    <p><strong>Ejemplo #1 Ejemplo con <span class="function"><strong>curl_escape()</strong></span> </strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Crea un gestor curl<br /></span><span style="color: #0000BB">$ch </span><span style="color: #007700">= </span><span style="color: #0000BB">curl_init</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">// Codifica un string con caracteres de control utilizado como un parámetro GET<br /></span><span style="color: #0000BB">$location </span><span style="color: #007700">= </span><span style="color: #0000BB">curl_escape</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">, </span><span style="color: #DD0000">'Hofbräuhaus / München'</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">// Result: Hofbr%C3%A4uhaus%20%2F%20M%C3%BCnchen<br /><br />// Compone una URL con el string codificado<br /></span><span style="color: #0000BB">$url </span><span style="color: #007700">= </span><span style="color: #DD0000">"http://example.com/add_location.php?location=</span><span style="color: #007700">{</span><span style="color: #0000BB">$location</span><span style="color: #007700">}</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">// Result: http://example.com/add_location.php?location=Hofbr%C3%A4uhaus%20%2F%20M%C3%BCnchen<br /><br />// Envia la solicitud HTTP y cierra el gestor<br /></span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">, </span><span style="color: #0000BB">CURLOPT_URL</span><span style="color: #007700">, </span><span style="color: #0000BB">$url</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">, </span><span style="color: #0000BB">CURLOPT_RETURNTRANSFER</span><span style="color: #007700">, </span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">curl_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">curl_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.curl-escape-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.curl-unescape.html" class="function" rel="rdfs-seeAlso">curl_unescape()</a> - Descodifica un string codificado de URL</span></li>
+    <li><span class="function"><a href="function.urlencode.html" class="function" rel="rdfs-seeAlso">urlencode()</a> - Codifica como URL una cadena</span></li>
+    <li><span class="function"><a href="function.rawurlencode.html" class="function" rel="rdfs-seeAlso">rawurlencode()</a> - Codificar estilo URL de acuerdo al RFC 3986</span></li>
+    <li><a href="http://www.faqs.org/rfcs/rfc3986" class="link external">&raquo;&nbsp;RFC 3986</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Instalaci&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mbstring.requirements.html">« Requerimientos</a></li>
+      <li style="float: right;"><a href="mbstring.configuration.html">Configuraci&oacute;n en tiempo de ejecuci&oacute;n »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="mbstring.setup.html">Instalaci&oacute;n/Configuraci&oacute;n</a></li>
+    <li>Instalaci&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mbstring.installation" class="section">
+ <h2 class="title">Instalación</h2>
+ <p class="para">
+  <code class="literal">mbstring</code> es un extensión no predeterminada. Esto significa que 
+  no viene habilitada por defecto. Se debe habilitar específicamente el módulo con
+  la opción <code class="literal">configure</code> durante la compilación. Véase la sección de 
+  <a href="install.html" class="link">Instalación</a> para más información.
+ </p>
+ <p class="simpara">
+  Las siguientes opciones de configuración se refieren al módulo
+  <code class="literal">mbstring</code>.
+ </p>
+ <p class="para">
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="para">
+     <strong class="option configure">--enable-mbstring</strong>: Habilita las funciones de 
+     <code class="literal">mbstring</code>. Esta opción es obligatoria para poder usar las funciones de 
+     <code class="literal">mbstring</code>.
+    </p>
+    <p class="para">
+     La biblioteca <span class="productname">libmbfl</span> es necesaria para <code class="literal">mbstring</code>.
+     La biblioteca <span class="productname">libmbfl</span> está incluída con <code class="literal">mbstring</code>.
+     Si <span class="productname">libmbfl</span> ya está instalada en el sistema,
+     se puede especificar la ruta mediante la opción
+     <strong class="option configure">--with-libmbfl[=DIR]</strong>.
+    </p>
+    <p class="para">
+     Desde PHP 4.3.0, la extensión <code class="literal">mbstring</code> provee
+     soporte para chino simplificado, chino tradicional, 
+     coreano, ruso y japonés.
+    </p>
+    <p class="para">
+     En versiones PHP 4.3.3 o anteriores,
+     para habilitar esta característica, habrá que añadir una de las
+     siguientes opciones al parámetro <code class="literal">LANG</code>
+     de <strong class="option configure">--enable-mbstring=LANG</strong>; 
+     <strong class="option configure">--enable-mbstring=cn</strong> para dar soporte a chino simplificado,
+     <strong class="option configure">--enable-mbstring=tw</strong> para dar soporte a chino tradicional, 
+     <strong class="option configure">--enable-mbstring=kr</strong> para dar soporte a coreano, 
+     <strong class="option configure">--enable-mbstring=ru</strong> para dar Soporte a ruso, y
+     <strong class="option configure">--enable-mbstring=ja</strong> para dar soporte a japonés (por defecto).
+     Para habilitar todas las codificaciones admitidas, se ha de usar <strong class="option configure">--enable-mbstring=all</strong>.
+    </p>
+    <blockquote class="note"><p><strong class="note">Nota</strong>: 
+     <p class="para">
+      A Partir de PHP 4.3.4, 
+      todas las codificaciones admitidas por <span class="productname">libmbfl</span> se habilitan
+      con <strong class="option configure">--enable-mbstring</strong>.
+     </p>
+    </p></blockquote>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <strong class="option configure">--enable-mbstr-enc-trans</strong> :
+     Habilita la conversión de codificaciones de caracteres introducidos a través de HTTP utilizando 
+     el motor de conversión de <code class="literal">mbstring</code>. Si se habilita esta
+     característica, la codificación de los caracteres introducidos a través de HTTP puede ser
+     convertida a <code class="literal">mbstring.internal_encoding</code>
+     automáticamente.
+    </p>
+    <blockquote class="note"><p><strong class="note">Nota</strong>: 
+     <p class="para">
+      A partir de PHP 4.3.0, la opción 
+      <strong class="option configure">--enable-mbstr-enc-trans</strong>
+      fue eliminada y reemplazada con el ajuste en tiempo de ejecución
+      <code class="literal">mbstring.encoding_translation</code>.
+      La conversión de las codificaciones de caracteres vía HTTP se habilita
+      cuando se establece a <code class="literal">On</code>
+      (por defecto es <code class="literal">Off</code>).
+     </p>
+    </p></blockquote>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <strong class="option configure">--disable-mbregex</strong>: Deshabilita
+     las funciones de expresiones regulares con soporte a caracteres multibyte.
+    </p>
+   </li>
+  </ul>
+ </p>
+</div></div></div></body></html>

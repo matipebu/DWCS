@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Devuelve el siguiente recurso de sentencia hija desde un recurso de sentencia padre que posee Conjuntos de resultados impl&iacute;citos de Oracle Database 12c</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.oci-free-statement.html">« oci_free_statement</a></li>
+      <li style="float: right;"><a href="function.oci-lob-copy.html">oci_lob_copy »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.oci8.html">Funciones de OCI8</a></li>
+    <li>Devuelve el siguiente recurso de sentencia hija desde un recurso de sentencia padre que posee Conjuntos de resultados impl&iacute;citos de Oracle Database 12c</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.oci-get-implicit-resultset" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">oci_get_implicit_resultset</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.6.0, PHP 7, PHP 8, PECL OCI8 &gt;= 2.0.0)</p><p class="refpurpose"><span class="refname">oci_get_implicit_resultset</span> &mdash; <span class="dc-title">Devuelve el siguiente recurso de sentencia hija desde un recurso de sentencia padre que posee Conjuntos de resultados implícitos de Oracle Database 12c
+  </span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.oci-get-implicit-resultset-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>oci_get_implicit_resultset</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$statement</code></span>): <span class="type">resource </span></div>
+
+  <p class="para rdfs-comment">
+   Usado para obtener conjuntos consecutivos de resultados de consultas destpués de la
+   ejecución de un bloque almacenado o anónimo de PL/SQL de  Oracle cuando dicho
+   bloque devuelve resultados de consultas con la
+   función de PL/SQL
+   <em>DBMS_SQL.RETURN_RESULT</em> de
+   Oracle. Esto permite a los bloques de PL/SQL devolver fácilmente resultados
+   de consultas.
+  </p>
+  <p class="para">
+   La sentencia hija puede usarse con cualquier función de obtención
+   de OCI8: <span class="function"><a href="function.oci-fetch.html" class="function">oci_fetch()</a></span>, <span class="function"><a href="function.oci-fetch-all.html" class="function">oci_fetch_all()</a></span>,
+   <span class="function"><a href="function.oci-fetch-array.html" class="function">oci_fetch_array()</a></span>, <span class="function"><a href="function.oci-fetch-object.html" class="function">oci_fetch_object()</a></span>,
+   <span class="function"><a href="function.oci-fetch-assoc.html" class="function">oci_fetch_assoc()</a></span> or <span class="function"><a href="function.oci-fetch-row.html" class="function">oci_fetch_row()</a></span>
+  </p>
+  <p class="para">
+   Las sentencias hijas heredan el valor de precarga de sus sentencias padres,
+   o se puede establecer explícitamente con <span class="function"><a href="function.oci-set-prefetch.html" class="function">oci_set_prefetch()</a></span>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.oci-get-implicit-resultset-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">statement</code></dt>
+     <dd>
+      <p class="para">Un identificador de sentencia OCI8 válido creado
+       mediante <span class="function"><a href="function.oci-parse.html" class="function">oci_parse()</a></span> y ejecutada
+       por <span class="function"><a href="function.oci-execute.html" class="function">oci_execute()</a></span>. El identificador
+       de sentencia podría o no estar asociado con una sentencia SQL
+       que devuelva Conjuntos de resultados implícitos.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.oci-get-implicit-resultset-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve un gestor de sentencia para la siguiente sentencia hija disponible
+   en <code class="parameter">statement</code>. Devuelve <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> cuando no existan
+   sentencias hijas, o todas las sentencia hijas han sido devueltas
+   por llamadas anteriores
+   a <span class="function"><strong>oci_get_implicit_resultset()</strong></span>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.oci-get-implicit-resultset-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-1858">
+    <p><strong>Ejemplo #1 Obtener Conjuntos de resultados implícitos en un blucle</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$conn </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'hr'</span><span style="color: #007700">, </span><span style="color: #DD0000">'welcome'</span><span style="color: #007700">, </span><span style="color: #DD0000">'localhost/pdborcl'</span><span style="color: #007700">);<br />if (!</span><span style="color: #0000BB">$conn</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">$e </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_error</span><span style="color: #007700">();<br />    </span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">], </span><span style="color: #0000BB">ENT_QUOTES</span><span style="color: #007700">), </span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$sql </span><span style="color: #007700">= </span><span style="color: #DD0000">'DECLARE<br />            c1 SYS_REFCURSOR;<br />        BEGIN<br />           OPEN c1 FOR SELECT city, postal_code FROM locations WHERE ROWNUM &lt; 4 ORDER BY city;<br />           DBMS_SQL.RETURN_RESULT(c1);<br />           OPEN c1 FOR SELECT country_id FROM locations WHERE ROWNUM &lt; 4 ORDER BY city;<br />           DBMS_SQL.RETURN_RESULT(c1);<br />        END;'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$stid </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$sql</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /><br />while ((</span><span style="color: #0000BB">$stid_c </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_get_implicit_resultset</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">))) {<br />    echo </span><span style="color: #DD0000">"&lt;h2&gt;Nuevo Conjunto de resultados implícitos:&lt;/h2&gt;\n"</span><span style="color: #007700">;<br />    echo </span><span style="color: #DD0000">"&lt;table&gt;\n"</span><span style="color: #007700">;<br />    while ((</span><span style="color: #0000BB">$row </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid_c</span><span style="color: #007700">, </span><span style="color: #0000BB">OCI_ASSOC</span><span style="color: #007700">+</span><span style="color: #0000BB">OCI_RETURN_NULLS</span><span style="color: #007700">)) != </span><span style="color: #0000BB">false</span><span style="color: #007700">) {<br />        echo </span><span style="color: #DD0000">"&lt;tr&gt;\n"</span><span style="color: #007700">;<br />        foreach (</span><span style="color: #0000BB">$row </span><span style="color: #007700">as </span><span style="color: #0000BB">$item</span><span style="color: #007700">) {<br />            echo </span><span style="color: #DD0000">"  &lt;td&gt;"</span><span style="color: #007700">.(</span><span style="color: #0000BB">$item</span><span style="color: #007700">!==</span><span style="color: #0000BB">null</span><span style="color: #007700">?</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$item</span><span style="color: #007700">, </span><span style="color: #0000BB">ENT_QUOTES</span><span style="color: #007700">|</span><span style="color: #0000BB">ENT_SUBSTITUTE</span><span style="color: #007700">):</span><span style="color: #DD0000">""</span><span style="color: #007700">).</span><span style="color: #DD0000">"&lt;/td&gt;\n"</span><span style="color: #007700">;<br />        }<br />        echo </span><span style="color: #DD0000">"&lt;/tr&gt;\n"</span><span style="color: #007700">;<br />    }<br />    echo </span><span style="color: #DD0000">"&lt;/table&gt;\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">// La salida es:<br />//    Nuevo Conjunto de resultados implícitos:<br />//     Beijing 190518<br />//     Bern    3095<br />//     Bombay  490231<br />//    Nuevo Conjunto de resultados implícitos:<br />//     CN<br />//     CH<br />//     IN<br /><br /></span><span style="color: #0000BB">oci_free_statement</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  
+  <p class="para">
+   <div class="example" id="example-1859">
+    <p><strong>Ejemplo #2 Obtener gestores de sentencias hijas individualemente</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$conn </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'hr'</span><span style="color: #007700">, </span><span style="color: #DD0000">'welcome'</span><span style="color: #007700">, </span><span style="color: #DD0000">'localhost/pdborcl'</span><span style="color: #007700">);<br />if (!</span><span style="color: #0000BB">$conn</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">$e </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_error</span><span style="color: #007700">();<br />    </span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">], </span><span style="color: #0000BB">ENT_QUOTES</span><span style="color: #007700">), </span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$sql </span><span style="color: #007700">= </span><span style="color: #DD0000">'DECLARE<br />            c1 SYS_REFCURSOR;<br />        BEGIN<br />           OPEN c1 FOR SELECT city, postal_code FROM locations WHERE ROWNUM &lt; 4 ORDER BY city;<br />           DBMS_SQL.RETURN_RESULT(c1);<br />           OPEN c1 FOR SELECT country_id FROM locations WHERE ROWNUM &lt; 4 ORDER BY city;<br />           DBMS_SQL.RETURN_RESULT(c1);<br />        END;'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$stid </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$sql</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$stid_1 </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_get_implicit_resultset</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$stid_2 </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_get_implicit_resultset</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$row </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid_1</span><span style="color: #007700">, </span><span style="color: #0000BB">OCI_ASSOC</span><span style="color: #007700">+</span><span style="color: #0000BB">OCI_RETURN_NULLS</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$row</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$row </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid_2</span><span style="color: #007700">, </span><span style="color: #0000BB">OCI_ASSOC</span><span style="color: #007700">+</span><span style="color: #0000BB">OCI_RETURN_NULLS</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$row</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$row </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid_1</span><span style="color: #007700">, </span><span style="color: #0000BB">OCI_ASSOC</span><span style="color: #007700">+</span><span style="color: #0000BB">OCI_RETURN_NULLS</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$row</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$row </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid_2</span><span style="color: #007700">, </span><span style="color: #0000BB">OCI_ASSOC</span><span style="color: #007700">+</span><span style="color: #0000BB">OCI_RETURN_NULLS</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$row</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// La salida es:<br />//    array(2) {<br />//      ["CITY"]=&gt;<br />//      string(7) "Beijing"<br />//      ["POSTAL_CODE"]=&gt;<br />//      string(6) "190518"<br />//    }<br />//    array(1) {<br />//      ["COUNTRY_ID"]=&gt;<br />//      string(2) "CN"<br />//    }<br />//    array(2) {<br />//      ["CITY"]=&gt;<br />//      string(4) "Bern"<br />//      ["POSTAL_CODE"]=&gt;<br />//      string(4) "3095"<br />//    }<br />//    array(1) {<br />//      ["COUNTRY_ID"]=&gt;<br />//      string(2) "CH"<br />//    }<br /><br /></span><span style="color: #0000BB">oci_free_statement</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  
+  <p class="para">
+   <div class="example" id="example-1860">
+    <p><strong>Ejemplo #3 Establecer explícitamente la Cuenta de precarga</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$conn </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'hr'</span><span style="color: #007700">, </span><span style="color: #DD0000">'welcome'</span><span style="color: #007700">, </span><span style="color: #DD0000">'localhost/pdborcl'</span><span style="color: #007700">);<br />if (!</span><span style="color: #0000BB">$conn</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">$e </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_error</span><span style="color: #007700">();<br />    </span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">], </span><span style="color: #0000BB">ENT_QUOTES</span><span style="color: #007700">), </span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$sql </span><span style="color: #007700">= </span><span style="color: #DD0000">'DECLARE<br />            c1 SYS_REFCURSOR;<br />        BEGIN<br />           OPEN c1 FOR SELECT city, postal_code FROM locations ORDER BY city;<br />           DBMS_SQL.RETURN_RESULT(c1);<br />        END;'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$stid </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$sql</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$stid_c </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_get_implicit_resultset</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_set_prefetch</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid_c</span><span style="color: #007700">, </span><span style="color: #0000BB">200</span><span style="color: #007700">);   </span><span style="color: #FF8000">// Set the prefetch before fetching from the child statement<br /></span><span style="color: #007700">echo </span><span style="color: #DD0000">"&lt;table&gt;\n"</span><span style="color: #007700">;<br />while ((</span><span style="color: #0000BB">$row </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid_c</span><span style="color: #007700">, </span><span style="color: #0000BB">OCI_ASSOC</span><span style="color: #007700">+</span><span style="color: #0000BB">OCI_RETURN_NULLS</span><span style="color: #007700">)) != </span><span style="color: #0000BB">false</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">"&lt;tr&gt;\n"</span><span style="color: #007700">;<br />    foreach (</span><span style="color: #0000BB">$row </span><span style="color: #007700">as </span><span style="color: #0000BB">$item</span><span style="color: #007700">) {<br />        echo </span><span style="color: #DD0000">"  &lt;td&gt;"</span><span style="color: #007700">.(</span><span style="color: #0000BB">$item</span><span style="color: #007700">!==</span><span style="color: #0000BB">null</span><span style="color: #007700">?</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$item</span><span style="color: #007700">, </span><span style="color: #0000BB">ENT_QUOTES</span><span style="color: #007700">|</span><span style="color: #0000BB">ENT_SUBSTITUTE</span><span style="color: #007700">):</span><span style="color: #DD0000">""</span><span style="color: #007700">).</span><span style="color: #DD0000">"&lt;/td&gt;\n"</span><span style="color: #007700">;<br />    }<br />    echo </span><span style="color: #DD0000">"&lt;/tr&gt;\n"</span><span style="color: #007700">;<br />}<br />echo </span><span style="color: #DD0000">"&lt;/table&gt;\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">oci_free_statement</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  
+  <p class="para">
+   <div class="example" id="example-1861">
+    <p><strong>Ejemplo #4 Ejemplo de Conjunto de resultados implícitos sin usar <span class="function"><strong>oci_get_implicit_resultset()</strong></span></strong></p>
+    <div class="example-contents"><p>
+     Todos los resultados de todas las consultas son devueltas consecutivamente.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$conn </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'hr'</span><span style="color: #007700">, </span><span style="color: #DD0000">'welcome'</span><span style="color: #007700">, </span><span style="color: #DD0000">'localhost/pdborcl'</span><span style="color: #007700">);<br />if (!</span><span style="color: #0000BB">$conn</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">$e </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_error</span><span style="color: #007700">();<br />    </span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">], </span><span style="color: #0000BB">ENT_QUOTES</span><span style="color: #007700">), </span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$sql </span><span style="color: #007700">= </span><span style="color: #DD0000">'DECLARE<br />            c1 SYS_REFCURSOR;<br />        BEGIN<br />           OPEN c1 FOR SELECT city, postal_code FROM locations WHERE ROWNUM &lt; 4 ORDER BY city;<br />           DBMS_SQL.RETURN_RESULT(c1);<br />           OPEN c1 FOR SELECT country_id FROM locations WHERE ROWNUM &lt; 4 ORDER BY city;<br />           DBMS_SQL.RETURN_RESULT(c1);<br />        END;'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$stid </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$sql</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Note: oci_fetch_all y oci_fetch() no se pueden usar de esta manera<br /></span><span style="color: #007700">echo </span><span style="color: #DD0000">"&lt;table&gt;\n"</span><span style="color: #007700">;<br />while ((</span><span style="color: #0000BB">$row </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">, </span><span style="color: #0000BB">OCI_ASSOC</span><span style="color: #007700">+</span><span style="color: #0000BB">OCI_RETURN_NULLS</span><span style="color: #007700">)) != </span><span style="color: #0000BB">false</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">"&lt;tr&gt;\n"</span><span style="color: #007700">;<br />    foreach (</span><span style="color: #0000BB">$row </span><span style="color: #007700">as </span><span style="color: #0000BB">$item</span><span style="color: #007700">) {<br />        echo </span><span style="color: #DD0000">"  &lt;td&gt;"</span><span style="color: #007700">.(</span><span style="color: #0000BB">$item</span><span style="color: #007700">!==</span><span style="color: #0000BB">null</span><span style="color: #007700">?</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$item</span><span style="color: #007700">, </span><span style="color: #0000BB">ENT_QUOTES</span><span style="color: #007700">|</span><span style="color: #0000BB">ENT_SUBSTITUTE</span><span style="color: #007700">):</span><span style="color: #DD0000">""</span><span style="color: #007700">).</span><span style="color: #DD0000">"&lt;/td&gt;\n"</span><span style="color: #007700">;<br />    }<br />    echo </span><span style="color: #DD0000">"&lt;/tr&gt;\n"</span><span style="color: #007700">;<br />}<br />echo </span><span style="color: #DD0000">"&lt;/table&gt;\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">// La salida es:<br />//    Beijing 190518<br />//    Bern 3095<br />//    Bombay 490231<br />//    CN<br />//    CH<br />//    IN<br /><br /></span><span style="color: #0000BB">oci_free_statement</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.oci-get-implicit-resultset-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">Para
+consultas que devuelven un gran número de filas, se puede mejorar el
+rendimiento significativamente
+incrementando <a href="oci8.configuration.html#ini.oci8.default-prefetch" class="link">oci8.default_prefetch</a>
+o utilizando <span class="function"><a href="function.oci-set-prefetch.html" class="function">oci_set_prefetch()</a></span>.
+</p>
+  </p></blockquote>
+ </div>
+
+ 
+</div></div></div></body></html>

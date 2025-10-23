@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Escucha una conexi&oacute;n sobre un socket</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.socket-last-error.html">« socket_last_error</a></li>
+      <li style="float: right;"><a href="function.socket-read.html">socket_read »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.sockets.html">Funciones de Socket</a></li>
+    <li>Escucha una conexi&oacute;n sobre un socket</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.socket-listen" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">socket_listen</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.1.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">socket_listen</span> &mdash; <span class="dc-title">Escucha una conexión sobre un socket</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.socket-listen-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>socket_listen</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$socket</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$backlog</code><span class="initializer"> = 0</span></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Después de que el socket <code class="parameter">socket</code> haya sido creado
+   usando <span class="function"><a href="function.socket-create.html" class="function">socket_create()</a></span> y vinculado a un nombre con
+   <span class="function"><a href="function.socket-bind.html" class="function">socket_bind()</a></span>, se le puede indicar que escuche conexiones
+   entrantes sobre <code class="parameter">socket</code>.
+  </p>
+  <p class="para">
+   <span class="function"><strong>socket_listen()</strong></span> sólo es aplicable a sockets de
+   tipo <strong><code><a href="sockets.constants.html#constant.sock-stream">SOCK_STREAM</a></code></strong> o
+   <strong><code><a href="sockets.constants.html#constant.sock-seqpacket">SOCK_SEQPACKET</a></code></strong>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.socket-listen-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">socket</code></dt>
+     <dd>
+      <p class="para">
+       Un recurso socket creado con <span class="function"><a href="function.socket-create.html" class="function">socket_create()</a></span>
+       o <span class="function"><a href="function.socket-addrinfo-bind.html" class="function">socket_addrinfo_bind()</a></span>
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">backlog</code></dt>
+     <dd>
+      <p class="para">
+       Se pondrán en cola un máximo de conexiones entrantes <code class="parameter">backlog</code>
+       para su procesamiento. Si una petición de conexión llega con la cola
+       llena, el cliente puede recibir un error con una indicación de
+       <code class="literal">ECONNREFUSED</code>, o, si el protocolo subyacente soporta
+       retransmisiones, la petición puede ser ignorada, por lo que este reintento puede surtir efecto.
+      </p>
+      <blockquote class="note"><p><strong class="note">Nota</strong>: 
+       <p class="para">
+        El número máximo pasado al parámtro <code class="parameter">backlog</code>
+        depende mayormente en la plataforma subyacente. En Linux, se
+        trunca de forma silenciosa a <strong><code>SOMAXCONN</code></strong>. En win32, Si
+        se pasó <strong><code>SOMAXCONN</code></strong>, el proveedor del servicio
+        responsable del socket establecerá el backlog a un valor
+        máximo <em>razonable</em>. No existe una disposicón estándar para
+        encontrar el valor del backlog real en esta plataforma.
+       </p>
+      </p></blockquote>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.socket-listen-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error. El código de error real se puede recuperar
+   llamando a <span class="function"><a href="function.socket-last-error.html" class="function">socket_last_error()</a></span>. Este código se puede
+   pasar a <span class="function"><a href="function.socket-strerror.html" class="function">socket_strerror()</a></span> para obtener una explicación textual del
+   error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.socket-listen-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.socket-accept.html" class="function" rel="rdfs-seeAlso">socket_accept()</a> - Acepta una conexi&oacute;n de un socket</span></li>
+    <li><span class="function"><a href="function.socket-bind.html" class="function" rel="rdfs-seeAlso">socket_bind()</a> - Vincula un nombre a un socket</span></li>
+    <li><span class="function"><a href="function.socket-connect.html" class="function" rel="rdfs-seeAlso">socket_connect()</a> - Inicia una conexi&oacute;n sobre un socket</span></li>
+    <li><span class="function"><a href="function.socket-create.html" class="function" rel="rdfs-seeAlso">socket_create()</a> - Crear un socket (extremo de comunicaci&oacute;n)</span></li>
+    <li><span class="function"><a href="function.socket-strerror.html" class="function" rel="rdfs-seeAlso">socket_strerror()</a> - Devuelve una cadena que describe un error de socket</span></li>
+    <li><span class="function"><a href="function.socket-addrinfo-bind.html" class="function" rel="rdfs-seeAlso">socket_addrinfo_bind()</a> - Create and bind to a socket from a given addrinfo</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

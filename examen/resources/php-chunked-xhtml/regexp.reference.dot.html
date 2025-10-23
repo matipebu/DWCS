@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Punto</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="regexp.reference.anchors.html">« Anclas</a></li>
+      <li style="float: right;"><a href="regexp.reference.character-classes.html">Clases car&aacute;cter »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="reference.pcre.pattern.syntax.html">Sintaxis de expresiones regulares de PCRE</a></li>
+    <li>Punto</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="regexp.reference.dot" class="section">
+  <h2 class="title">Punto</h2>
+  <p class="para">
+   Fuera de una clase carácter, un punto en el patrón coincide con
+   un carácter en el sujeto, incluyendo un carácter no imprimible,
+   pero no (por defecto) con una nueva línea. Si la opción
+   <a href="reference.pcre.pattern.modifiers.html" class="link">PCRE_DOTALL</a> 
+   está establecida, entonces los puntos coinciden con nuevas líneas tambíen. El
+   manejo del punto es totalmente independiente del manejo de
+   circunflejo y dólar, la única relación existente es que ambos
+   implican caracteres de nueva línea. El punto no tiene un significado especial
+   en una clase carácter.
+  </p>
+  <p class="para">
+   <em>\C</em> se puede usar para comparar un único byte. Tiene sentido
+   en <em>modo UTF-8</em> donde el punto coincide con el carácter
+   entero, el cual puede consistir en múltiples bytes.
+  </p>
+ </div></div></div></body></html>

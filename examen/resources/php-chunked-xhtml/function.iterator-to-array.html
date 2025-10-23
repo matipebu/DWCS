@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Copiar el iterador a un array</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.iterator-count.html">« iterator_count</a></li>
+      <li style="float: right;"><a href="function.spl-autoload.html">spl_autoload »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.spl.html">Funciones SPL</a></li>
+    <li>Copiar el iterador a un array</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.iterator-to-array" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">iterator_to_array</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">iterator_to_array</span> &mdash; <span class="dc-title">Copiar el iterador a un array</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.iterator-to-array-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>iterator_to_array</strong></span>(<span class="methodparam"><span class="type"><a href="class.traversable.html" class="type Traversable">Traversable</a></span> <code class="parameter">$iterator</code></span>, <span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$use_keys</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></span></span>): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+
+  <p class="para rdfs-comment">
+   Copia los elementos de un iterador a un array.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.iterator-to-array-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">iterator</code></dt>
+     <dd>
+      <p class="para">
+       El iterador a copiar.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">use_keys</code></dt>
+     <dd>
+      <p class="para">
+       Si usar las claves del elemento iterador como índice.
+      </p>
+      <p class="para">
+       En PHP 5.5 y posterior, si una clave es un <span class="type"><a href="language.types.array.html" class="type array">array</a></span> u
+       <span class="type"><a href="language.types.object.html" class="type object">object</a></span>, se generará una advertencia. Las claves <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> serán
+       convertidas a un string vacío, las claves <span class="type"><a href="language.types.float.html" class="type float">float</a></span> serán
+       truncadas a su equivalente <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>,
+       las claves <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> generarán una advertencia y serán convertidas a
+       sus ID de recurso, y las claves <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span> serán convertidas a
+       enteros.
+      </p>
+      <blockquote class="note"><p><strong class="note">Nota</strong>: 
+       <p class="para">
+        Si no se establece este parámetro o se establece a <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>, las claves duplicadas serán
+        sobrescritas. El último valor con una clave dada estará en el <span class="type"><a href="language.types.array.html" class="type array">array</a></span>
+        devuelto. Para obtener todos los valores en cualquier caso, se ha de establecer
+        este parámetro a <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+       </p>
+      </p></blockquote>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.iterator-to-array-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Un <span class="type"><a href="language.types.array.html" class="type array">array</a></span> que contiene los elementos del <code class="parameter">iterator</code>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 changelog" id="refsect1-function.iterator-to-array-changelog">
+  <h3 class="title">Historial de cambios</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Versión</th>
+       <th>Descripción</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.5.0</td>
+       <td>
+        <span class="function"><strong>iterator_to_array()</strong></span> da soporte a tipos de claves
+        diferentes a <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> y <span class="type"><a href="language.types.string.html" class="type string">string</a></span> cuando el
+        parámetro <code class="parameter">use_keys</code> está habilitado.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.2.1</td>
+       <td>
+        Añadido el parámetro <code class="parameter">use_keys</code>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.iterator-to-array-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-3678">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>iterator_to_array()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$iterator </span><span style="color: #007700">= new </span><span style="color: #0000BB">ArrayIterator</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'recipe'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'panqueques'</span><span style="color: #007700">, </span><span style="color: #DD0000">'huevo'</span><span style="color: #007700">, </span><span style="color: #DD0000">'leche'</span><span style="color: #007700">, </span><span style="color: #DD0000">'harina'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">iterator_to_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$iterator</span><span style="color: #007700">, </span><span style="color: #0000BB">true</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">iterator_to_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$iterator</span><span style="color: #007700">, </span><span style="color: #0000BB">false</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">array(4) {
+  [&quot;recipe&quot;]=&gt;
+  string(10) &quot;panqueques&quot;
+  [0]=&gt;
+  string(5) &quot;huevo&quot;
+  [1]=&gt;
+  string(5) &quot;leche&quot;
+  [2]=&gt;
+  string(6) &quot;harina&quot;
+}
+array(4) {
+  [0]=&gt;
+  string(10) &quot;panqueques&quot;
+  [1]=&gt;
+  string(5) &quot;huevo&quot;
+  [2]=&gt;
+  string(5) &quot;leche&quot;
+  [3]=&gt;
+  string(6) &quot;harina&quot;
+}</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

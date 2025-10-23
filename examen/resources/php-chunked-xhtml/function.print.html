@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Mostrar una cadena</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.parse-str.html">« parse_str</a></li>
+      <li style="float: right;"><a href="function.printf.html">printf »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.strings.html">Funciones de strings</a></li>
+    <li>Mostrar una cadena</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.print" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">print</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">print</span> &mdash; <span class="dc-title">Mostrar una cadena</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.print-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>print</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$arg</code></span>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="para rdfs-comment">
+   Muestra el parámetro <code class="parameter">arg</code>.
+  </p>
+  <p class="para">
+   <code class="literal">print</code> no es realmente una función (es un constructor de lenguaje) 
+   por lo tanto no es necesario usar paréntesis
+   para indicar su lista de argumentos.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.print-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">arg</code></dt>
+     <dd>
+      <p class="para">
+       Los datos de entrada.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.print-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Siempre devuelve <code class="literal">1</code>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.print-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4808">
+    <p><strong>Ejemplo #1 Ejemplos de <code class="literal">print</code></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">print(</span><span style="color: #DD0000">"Hola mundo"</span><span style="color: #007700">);<br /><br />print </span><span style="color: #DD0000">"print() también funciona sin paréntesis."</span><span style="color: #007700">;<br /><br />print </span><span style="color: #DD0000">"Esto separa<br />múltiples líneas. Los saltos de línea también<br />se mostrarán"</span><span style="color: #007700">;<br /><br />print </span><span style="color: #DD0000">"Esto separa\nmúltiples líneas. Los salos de línea también\nse mostrarán."</span><span style="color: #007700">;<br /><br />print </span><span style="color: #DD0000">"para escapar caracteres se \"hace así\"."</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">// También se puede usar variables usando print<br /></span><span style="color: #0000BB">$foo </span><span style="color: #007700">= </span><span style="color: #DD0000">"foobar"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$bar </span><span style="color: #007700">= </span><span style="color: #DD0000">"barbaz"</span><span style="color: #007700">;<br /><br />print </span><span style="color: #DD0000">"foo es </span><span style="color: #0000BB">$foo</span><span style="color: #DD0000">"</span><span style="color: #007700">; </span><span style="color: #FF8000">// foo es foobar<br /><br />// También se pueden usar arrays<br /></span><span style="color: #0000BB">$bar </span><span style="color: #007700">= array(</span><span style="color: #DD0000">"value" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"foo"</span><span style="color: #007700">);<br /><br />print </span><span style="color: #DD0000">"Esto es </span><span style="color: #007700">{</span><span style="color: #0000BB">$bar</span><span style="color: #007700">[</span><span style="color: #DD0000">'value'</span><span style="color: #007700">]}</span><span style="color: #DD0000"> !"</span><span style="color: #007700">; </span><span style="color: #FF8000">// Esto es foo !<br /><br />// Al usar comillas simples se mostrará el nombre de la variable, no su valor<br /></span><span style="color: #007700">print </span><span style="color: #DD0000">'foo is $foo'</span><span style="color: #007700">; </span><span style="color: #FF8000">// foo is $foo<br /><br />// Si no se necesita mostrar otros caracteres, se puede simplemente mostrar variables<br /></span><span style="color: #007700">print </span><span style="color: #0000BB">$foo</span><span style="color: #007700">;          </span><span style="color: #FF8000">// foobar<br /><br /></span><span style="color: #007700">print &lt;&lt;&lt;END<br /></span><span style="color: #DD0000">Este párrafo utiliza la sintaxis "here document" para mostrar<br />múltiples líneas con la interpolación de </span><span style="color: #0000BB">$variable</span><span style="color: #DD0000">. Nótese<br />que el terminador de here document debe aparecer al final<br />de la línea con punto y coma y ¡ningún espacio en blanco extra!<br /></span><span style="color: #007700">END;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.print-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: <span class="simpara">Puesto que esto es
+una construcción del lenguaje y no una función, no puede ser llamada usando
+<a href="functions.variable-functions.html" class="link">funciones variables</a>.</span>
+</p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.print-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.echo.html" class="function" rel="rdfs-seeAlso">echo</a> - Muestra una o m&aacute;s cadenas</span></li>
+    <li><span class="function"><a href="function.printf.html" class="function" rel="rdfs-seeAlso">printf()</a> - Imprimir una cadena con formato</span></li>
+    <li><span class="function"><a href="function.flush.html" class="function" rel="rdfs-seeAlso">flush()</a> - Vaciar el b&uacute;fer de salida del sistema</span></li>
+    <li><a href="language.types.string.html#language.types.string.syntax.heredoc" class="link">Sintaxis de Heredoc</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

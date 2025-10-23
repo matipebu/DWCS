@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Obtener ciertos par&aacute;metros</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.ps-get-buffer.html">« ps_get_buffer</a></li>
+      <li style="float: right;"><a href="function.ps-get-value.html">ps_get_value »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.ps.html">Funciones de PS</a></li>
+    <li>Obtener ciertos par&aacute;metros</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.ps-get-parameter" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ps_get_parameter</h1>
+  <p class="verinfo">(PECL ps &gt;= 1.1.0)</p><p class="refpurpose"><span class="refname">ps_get_parameter</span> &mdash; <span class="dc-title">Obtener ciertos parámetros</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ps-get-parameter-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>ps_get_parameter</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$psdoc</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$name</code></span>, <span class="methodparam"><span class="type"><a href="language.types.float.html" class="type float">float</a></span> <code class="parameter">$modifier</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Obtiene varios parámetros que se establecieron directamente con la función
+   <span class="function"><a href="function.ps-set-parameter.html" class="function">ps_set_parameter()</a></span> o indirectamente por alguna de las otras
+   funciones. Los parámetros son por definición valores de tipo
+   string. Esta función no se puede usar para recuperar recursos que también fueron
+   establecidos con la función <span class="function"><a href="function.ps-set-parameter.html" class="function">ps_set_parameter()</a></span>.
+  </p>
+  <p class="para">
+   El parámetro <code class="parameter">name</code> puede tener los siguientes valores:
+  </p>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="literal">fontname</code></dt>
+     <dd>
+      <p class="para">
+       El nombre de la fuente activa o la fuente cuyo
+       identificador es pasado al parámetro <code class="parameter">modifier</code>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">fontencoding</code></dt>
+     <dd>
+      <p class="para">
+       La codificación de la fuente activa.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">dottedversion</code></dt>
+     <dd>
+      <p class="para">
+       La versión de la biblioteca pslib subyacente con el formato
+       &lt;mayor&gt;.&lt;menor&gt;.&lt;submenor&gt;
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">scope</code></dt>
+     <dd>
+      <p class="para">
+       El ámbito de dibujo actual. Puede ser un objeto, un documento, null, una página,
+       un patrón, un trazado, una plantilla, un prólogo, una fuente, un glifo.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">ligaturedisolvechar</code></dt>
+     <dd>
+      <p class="para">
+       El carácter que disuelve una ligadura. Si se está utilizando una fuente
+       que contiene la ligadura &#039;ff&#039; y &#039;|&#039; es el carácter para disolver la
+       ligadura, &#039;f|f&#039; resultará en dos &#039;f&#039; en lugar de la ligadura &#039;ff&#039;.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">imageencoding</code></dt>
+     <dd>
+      <p class="para">
+       La codificación utilizada para codificar imágenes. Puede ser
+       <code class="literal">hex</code> o <code class="literal">85</code>. La codificación hex
+       usa dos bytes en el fichero postscript por cada byte de la imagen.
+       85 representa la codificación Ascii85.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">linenumbermode</code></dt>
+     <dd>
+      <p class="para">
+       Establecer a <code class="literal">paragraph</code> si las líneas están numeradas
+       dentro de un párrafo, o <code class="literal">box</code> si están
+       numeradas dentro de una caja circundante.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">linebreak</code></dt>
+     <dd>
+      <p class="para">
+       Se usa solamente si el texto se imprime con la función <span class="function"><a href="function.ps-show-boxed.html" class="function">ps_show_boxed()</a></span>.
+       Si se establece a <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> un retorno de carro añadirá un salto
+       de línea.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">parbreak</code></dt>
+     <dd>
+      <p class="para">
+       Se usa solamente si el texto se imprime con la función <span class="function"><a href="function.ps-show-boxed.html" class="function">ps_show_boxed()</a></span>.
+       Si se establece a <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> un retorno de carro iniciará
+       un nuevo párrafo.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">hyphenation</code></dt>
+     <dd>
+      <p class="para">
+       Se usa solamente si el texto se imprime con la función <span class="function"><a href="function.ps-show-boxed.html" class="function">ps_show_boxed()</a></span>.
+       Si se establece a <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> el párrafo será dividido mediante guiones
+       si está establecido y existe un diccionario de partición silábica.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="literal">hyphendict</code></dt>
+     <dd>
+      <p class="para">
+       Nombre de fichero del diccionario usado como patrón de partición silábica.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.ps-get-parameter-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">psdoc</code></dt>
+     <dd>
+      <p class="para">
+       El identificador de recursos del fichero postscript,
+       como el devuelto por la función <span class="function"><a href="function.ps-new.html" class="function">ps_new()</a></span>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">name</code></dt>
+     <dd>
+      <p class="para">
+       El nombre del parámetro.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">modifier</code></dt>
+     <dd>
+      <p class="para">
+       Un identificador necesario si se solicita un parámetro de un recurso,
+       p.ej. el tamaño de una imagen. En tal caso se pasa el ID del
+       recurso.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.ps-get-parameter-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el valor del parámetro  o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.ps-get-parameter-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.ps-set-parameter.html" class="function" rel="rdfs-seeAlso">ps_set_parameter()</a> - Establecer ciertos par&aacute;metros</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

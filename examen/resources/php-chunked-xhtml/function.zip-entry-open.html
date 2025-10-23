@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Abrir una entrada de directorio para lectura</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.zip-entry-name.html">« zip_entry_name</a></li>
+      <li style="float: right;"><a href="function.zip-entry-read.html">zip_entry_read »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.zip.html">Funciones Zip</a></li>
+    <li>Abrir una entrada de directorio para lectura</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.zip-entry-open" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">zip_entry_open</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.1.0, PHP 5 &gt;= 5.2.0, PHP 7, PHP 8, PECL zip &gt;= 1.0.0)</p><p class="refpurpose"><span class="refname">zip_entry_open</span> &mdash; <span class="dc-title">Abrir una entrada de directorio para lectura</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.zip-entry-open-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>zip_entry_open</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$zip</code></span>, <span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$zip_entry</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$mode</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Abre una entrada de directorio en un fichero zip para lectura.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.zip-entry-open-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">zip</code></dt>
+     <dd>
+      <p class="para">
+       Un válido controlador de recurso es devuelto por <span class="function"><a href="function.zip-open.html" class="function">zip_open()</a></span>.
+
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">zip_entry</code></dt>
+     <dd>
+      <p class="para">
+       Una entrada de directorio es devuelta por <span class="function"><a href="function.zip-read.html" class="function">zip_read()</a></span>.
+
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">mode</code></dt>
+     <dd>
+      <p class="para">
+       Cualquiera de los modos especificados en la documentación de
+       <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>.
+      </p>
+      <blockquote class="note"><p><strong class="note">Nota</strong>: 
+       <p class="para">
+        Actualmente, el <code class="parameter">mode</code> es ignorado y es siempre
+        <code class="literal">&quot;rb&quot;</code>. Esto es debido al hecho que el soporte zip en 
+        PHP es solamente de acceso lectura.
+       </p>
+      </p></blockquote>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.zip-entry-open-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    A diferencia de <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> y otras funciones similares,
+    el valor devuelto por <span class="function"><strong>zip_entry_open()</strong></span> solo
+    indica el resultado de la operación y no es necesario para
+    la lectura o cerrado de la entrada de directorio.
+   </p>
+  </p></blockquote>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.zip-entry-open-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.zip-entry-close.html" class="function" rel="rdfs-seeAlso">zip_entry_close()</a> - Cierra la entrada a un directorio</span></li>
+    <li><span class="function"><a href="function.zip-entry-read.html" class="function" rel="rdfs-seeAlso">zip_entry_read()</a> - Leer desde una entrada de directorio abierta</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

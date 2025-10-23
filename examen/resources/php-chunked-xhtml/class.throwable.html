@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Throwable</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="internaliterator.valid.html">« InternalIterator::valid</a></li>
+      <li style="float: right;"><a href="throwable.getmessage.html">Throwable::getMessage »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="reserved.interfaces.html">Interfaces y clases predefinidas</a></li>
+    <li>Throwable</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.throwable" class="reference">
+
+ <h1 class="title">Throwable</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PHP 7, PHP 8)</p>
+
+  
+  <div class="section" id="throwable.intro">
+   <h2 class="title">Introducción</h2>
+   <p class="para">
+    <span class="classname"><strong class="classname">Throwable</strong></span> es la interfaz base para cualquier objeto que
+    pueda ser lanzado mediante una sentencia <a href="language.exceptions.html" class="link"><code class="literal">throw</code></a>, incluyendo
+    <span class="classname"><a href="class.error.html" class="classname">Error</a></span> y <span class="classname"><a href="class.exception.html" class="classname">Exception</a></span>.
+   </p>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     Las clases de PHP no pueden implementar la interfaz <span class="classname"><strong class="classname">Throwable</strong></span>
+     directamente, por lo que deben extender en su lugar
+     <span class="classname"><a href="class.exception.html" class="classname">Exception</a></span>.
+    </p>
+   </p></blockquote>
+  </div>
+  
+
+  <div class="section" id="throwable.synopsis">
+   <h2 class="title">Sinopsis de la Interfaz</h2>
+
+   
+   <div class="classsynopsis"><div class="classsynopsisinfo">
+    
+     <span class="modifier">interface</span> <strong class="interfacename"><strong class="interfacename">Throwable</strong></strong>
+
+    <span class="modifier">extends</span>
+      <a href="class.stringable.html" class="interfacename">Stringable</a> {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Métodos */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="throwable.getmessage.html" class="methodname">getMessage</a></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="throwable.getcode.html" class="methodname">getCode</a></span>(): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="throwable.getfile.html" class="methodname">getFile</a></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="throwable.getline.html" class="methodname">getLine</a></span>(): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="throwable.gettrace.html" class="methodname">getTrace</a></span>(): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="throwable.gettraceasstring.html" class="methodname">getTraceAsString</a></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="throwable.getprevious.html" class="methodname">getPrevious</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="class.throwable.html" class="type Throwable">Throwable</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="throwable.tostring.html" class="methodname">__toString</a></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Métodos heredados */</div>
+    <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="stringable.tostring.html" class="methodname">Stringable::__toString</a></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+   }</div>
+   
+
+  </div>
+
+  <div class="section">
+   <h2 class="title">Historial de cambios</h2>
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Versión</th>
+       <th>Descripción</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>8.0.0</td>
+       <td>
+        <span class="classname"><strong class="classname">Throwable</strong></span> implementa
+        <span class="interfacename"><a href="class.stringable.html" class="interfacename">Stringable</a></span> ahora.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+<h2>Tabla de contenidos</h2><ul class="chunklist chunklist_reference"><li><a href="throwable.getmessage.html">Throwable::getMessage</a> — Obtiene el mensaje</li><li><a href="throwable.getcode.html">Throwable::getCode</a> — Obtener el c&oacute;digo de la excepci&oacute;n</li><li><a href="throwable.getfile.html">Throwable::getFile</a> — Obtiene el fichero en el que se cre&oacute; el objeto</li><li><a href="throwable.getline.html">Throwable::getLine</a> — Obtiene la l&iacute;nea en la que el objeto fue instanciado</li><li><a href="throwable.gettrace.html">Throwable::getTrace</a> — Obtener la traza de la pila</li><li><a href="throwable.gettraceasstring.html">Throwable::getTraceAsString</a> — Obtener la traza de la pila como un string</li><li><a href="throwable.getprevious.html">Throwable::getPrevious</a> — Devuelve el objeto Throwable previo</li><li><a href="throwable.tostring.html">Throwable::__toString</a> — Obtiene un representaci&oacute;n de string del objeto lanzado</li></ul>
+</div>
+</div></div></body></html>

@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Revierte la transacci&oacute;n pendiente de la base de datos</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.oci-result.html">« oci_result</a></li>
+      <li style="float: right;"><a href="function.oci-server-version.html">oci_server_version »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.oci8.html">Funciones de OCI8</a></li>
+    <li>Revierte la transacci&oacute;n pendiente de la base de datos</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.oci-rollback" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">oci_rollback</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8, PECL OCI8 &gt;= 1.1.0)</p><p class="refpurpose"><span class="refname">oci_rollback</span> &mdash; <span class="dc-title">Revierte la transacción pendiente de la base de datos</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.oci-rollback-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>oci_rollback</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$connection</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Revierte todos los cambios no consignados para la conexión de Oracle dada por
+   <code class="parameter">connection</code> y finaliza la transacción.
+   Libera todos los bloqueos existentes. Todos los <code class="literal">SAVEPOINT</code>
+   de Oracle se eliminan.
+  </p>
+  <p class="para">
+   Una transacción comienza cuando la primera sentencia SQL que modifica datos
+   es ejecutada con <span class="function"><a href="function.oci-execute.html" class="function">oci_execute()</a></span> usando
+   la bandera <strong><code><a href="oci8.constants.html#constant.oci-no-auto-commit">OCI_NO_AUTO_COMMIT</a></code></strong>. Las modificaciones 
+   posteriores a datos realizadas por otras sentencias se convierten en parte de la misma
+   transacción. Las modificaciones a datos hechas en una transacción son temporales
+   hasta que ésta se consigna o revierte. Los demás usuarios de
+   la base de datos no verán los cambios hasta que sean consignados.
+  </p>
+  <p class="para">
+   Cuando se insertan o actualizan datos, se recomienda usar transacciones
+   para mantener la consistencia de datos relacional y por razones rendimiento.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.oci-rollback-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">connection</code></dt>
+     <dd>
+      <p class="para">
+       Un identificador de conexión de Oracle, devuelto por
+       <span class="function"><a href="function.oci-connect.html" class="function">oci_connect()</a></span>, <span class="function"><a href="function.oci-pconnect.html" class="function">oci_pconnect()</a></span>
+       o <span class="function"><a href="function.oci-new-connect.html" class="function">oci_new_connect()</a></span>.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.oci-rollback-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.oci-rollback-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-1874">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>oci_rollback()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">// Insertar en varias tablas, revirtiendo los cambios si ocurriera un error<br /><br /></span><span style="color: #0000BB">$conn </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'hr'</span><span style="color: #007700">, </span><span style="color: #DD0000">'welcome'</span><span style="color: #007700">, </span><span style="color: #DD0000">'localhost/XE'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$stid </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #DD0000">"INSERT INTO mysalary (id, name) VALUES (1, 'Chris')"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// La bandera OCI_NO_AUTO_COMMIT le indica a Oracle que no consigne el INSERT inmediatamente<br />// Use OCI_DEFAULT como bandera para PHP &lt;= 5.3.1. Las dos banderas son equivalentes<br /></span><span style="color: #0000BB">$r </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">, </span><span style="color: #0000BB">OCI_NO_AUTO_COMMIT</span><span style="color: #007700">);<br />if (!</span><span style="color: #0000BB">$r</span><span style="color: #007700">) {    <br />    </span><span style="color: #0000BB">$e </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">]), </span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$stid </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #DD0000">'INSERT INTO myschedule (startday) VALUES (12)'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$r </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">, </span><span style="color: #0000BB">OCI_NO_AUTO_COMMIT</span><span style="color: #007700">);<br />if (!</span><span style="color: #0000BB">$r</span><span style="color: #007700">) {    <br />    </span><span style="color: #0000BB">$e </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">oci_rollback</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);  </span><span style="color: #FF8000">// revertir los cambios de ambas tablas<br />    </span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">]), </span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">// Consignar los cambios de ambas tablas<br /></span><span style="color: #0000BB">$r </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_commit</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br />if (!</span><span style="color: #0000BB">r</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">$e </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">]), </span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-1875">
+    <p><strong>Ejemplo #2 Ejemplo de reversión a un <code class="literal">SAVEPOINT</code></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$stid </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #DD0000">'UPDATE mytab SET id = 1111'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">, </span><span style="color: #0000BB">OCI_NO_AUTO_COMMIT</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Crear el punto de prevención<br /></span><span style="color: #0000BB">$stid </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #DD0000">'SAVEPOINT mysavepoint'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">, </span><span style="color: #0000BB">OCI_NO_AUTO_COMMIT</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$stid </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #DD0000">'UPDATE mytab SET id = 2222'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">, </span><span style="color: #0000BB">OCI_NO_AUTO_COMMIT</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Usar una sentencia SQL explícita para volver al punto de prevención<br /></span><span style="color: #0000BB">$stid </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #DD0000">'ROLLBACK TO SAVEPOINT mysavepoint'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">, </span><span style="color: #0000BB">OCI_NO_AUTO_COMMIT</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">oci_commit</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);  </span><span style="color: #FF8000">// mytab ahora tiene el id 1111<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.oci-rollback-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Las transacciones son automáticamente revertidas cuando se cierra la
+    conexión o cuando finaliza el script, lo que ocurra antes. Es
+    necesario llamar explícitamente a <span class="function"><a href="function.oci-commit.html" class="function">oci_commit()</a></span> para consignar
+    la transacción.
+   </p>
+   <p class="para">
+    Cualquier llamada a <span class="function"><a href="function.oci-execute.html" class="function">oci_execute()</a></span> que use el modo
+    <strong><code><a href="oci8.constants.html#constant.oci-commit-on-success">OCI_COMMIT_ON_SUCCESS</a></code></strong>, explícitamente o por
+    omisión, consignará cualquier transacción no consignada anteriormente.
+   </p>
+   <p class="para">
+    Cualquier sentencia DDL de Oracle como <code class="literal">CREATE</code>
+    o <code class="literal">DROP</code> consignará automáticamente cualquier
+    transacción no consignada.
+   </p>
+  </p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.oci-rollback-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.oci-commit.html" class="function" rel="rdfs-seeAlso">oci_commit()</a> - Consigna la transacci&oacute;n pendiente de la base de datos</span></li>
+    <li><span class="function"><a href="function.oci-execute.html" class="function" rel="rdfs-seeAlso">oci_execute()</a> - Ejecuta una sentencia</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

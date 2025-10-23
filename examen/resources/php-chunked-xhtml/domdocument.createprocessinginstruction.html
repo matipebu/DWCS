@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Crea un nuevo nodo PI</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="domdocument.createentityreference.html">« DOMDocument::createEntityReference</a></li>
+      <li style="float: right;"><a href="domdocument.createtextnode.html">DOMDocument::createTextNode »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.domdocument.html">DOMDocument</a></li>
+    <li>Crea un nuevo nodo PI</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="domdocument.createprocessinginstruction" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DOMDocument::createProcessingInstruction</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">DOMDocument::createProcessingInstruction</span> &mdash; <span class="dc-title">Crea un nuevo nodo PI</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-domdocument.createprocessinginstruction-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>DOMDocument::createProcessingInstruction</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$target</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$data</code><span class="initializer"> = &quot;&quot;</span></span>): <span class="type"><span class="type"><a href="class.domprocessinginstruction.html" class="type DOMProcessingInstruction">DOMProcessingInstruction</a></span>|<span class="type"><a href="language.types.value.html" class="type false">false</a></span></span></div>
+
+  <p class="para rdfs-comment">
+   Esta función crea una nueva instancia de la clase
+   <span class="classname"><a href="class.domprocessinginstruction.html" class="classname">DOMProcessingInstruction</a></span>. Este nodo no se mostrará en el documento a no ser que
+sea insertado con (p.e.j.) <span class="function"><a href="domnode.appendchild.html" class="function">DOMNode::appendChild()</a></span>.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-domdocument.createprocessinginstruction-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">target</code></dt>
+     <dd>
+      <p class="para">
+       El objetivo de la instrucción de procesamiento.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">data</code></dt>
+     <dd>
+      <p class="para">
+       El contenido de la instrucción de procesamiento.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-domdocument.createprocessinginstruction-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   El nuevo <span class="classname"><a href="class.domprocessinginstruction.html" class="classname">DOMProcessingInstruction</a></span> o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si ha ocurrido un error.
+  </p>
+ </div>
+
+ <div class="refsect1 errors" id="refsect1-domdocument.createprocessinginstruction-errors">
+  <h3 class="title">Errores/Excepciones</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><strong><code><a href="dom.constants.html#constant.dom-invalid-character-err">DOM_INVALID_CHARACTER_ERR</a></code></strong></dt>
+     <dd>
+      <p class="para">
+       Lanzado si <code class="parameter">target</code> contiene un carácter inválido.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-domdocument.createprocessinginstruction-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="methodname"><a href="domnode.appendchild.html" class="methodname" rel="rdfs-seeAlso">DOMNode::appendChild()</a> - A&ntilde;ade un nuevo hijo al final de los hijos</span></li>
+    <li><span class="methodname"><a href="domdocument.createattribute.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::createAttribute()</a> - Crear nuevo attribute</span></li>
+    <li><span class="methodname"><a href="domdocument.createattributens.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::createAttributeNS()</a> - Crea un nuevo nodo atributo con un namespace asociado.</span></li>
+    <li><span class="methodname"><a href="domdocument.createcdatasection.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::createCDATASection()</a> - Crea un nuevo nodo cdata</span></li>
+    <li><span class="methodname"><a href="domdocument.createcomment.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::createComment()</a> - Crea un nuevo nodo de comentario</span></li>
+    <li><span class="methodname"><a href="domdocument.createdocumentfragment.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::createDocumentFragment()</a> - Crea un nuevo fragmento de documento</span></li>
+    <li><span class="methodname"><a href="domdocument.createelement.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::createElement()</a> - Crea un nuevo nodo elemento</span></li>
+    <li><span class="methodname"><a href="domdocument.createelementns.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::createElementNS()</a> - Crea un nuevo nodo elemento con el nombre de espacio asociado</span></li>
+    <li><span class="methodname"><a href="domdocument.createentityreference.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::createEntityReference()</a> - Create new entity reference node</span></li>
+    <li><span class="methodname"><a href="domdocument.createtextnode.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::createTextNode()</a> - Crea un nuevo nodo de texto</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

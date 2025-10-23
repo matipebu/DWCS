@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Escribir informaci&oacute;n de sesi&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="sessionhandlerinterface.read.html">« SessionHandlerInterface::read</a></li>
+      <li style="float: right;"><a href="class.sessionidinterface.html">SessionIdInterface »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.sessionhandlerinterface.html">SessionHandlerInterface</a></li>
+    <li>Escribir informaci&oacute;n de sesi&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="sessionhandlerinterface.write" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SessionHandlerInterface::write</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.4.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">SessionHandlerInterface::write</span> &mdash; <span class="dc-title">Escribir información de sesión</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-sessionhandlerinterface.write-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="methodname"><strong>SessionHandlerInterface::write</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$session_id</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$session_data</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Escribe información de sesión al almacenamiento de sesiones. Llamado por
+   <span class="function"><a href="function.session-write-close.html" class="function">session_write_close()</a></span>, cuando <span class="function"><a href="function.session-register-shutdown.html" class="function">session_register_shutdown()</a></span> falla, o durante un cierre normal.
+   Nota: <span class="function"><a href="sessionhandlerinterface.close.html" class="function">SessionHandlerInterface::close()</a></span> es llamado inmediantamente después de esta función.
+  </p>
+  <p class="para">
+   PHP llamará a este método cuando la sesión esté lista para ser almacenada y cerrada. Codifica
+   la información de sesión desde la variable superglobal <var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var> a una cadena serializada y la pasa
+   junto con el ID de sersión a este método para el almacenamiento. El método de serialización usado
+   está especificado en la configuración <a href="session.configuration.html#ini.session.serialize-handler" class="link">session.serialize_handler</a>.
+  </p>
+  <p class="para">
+   Observe que este método normalmente es llamado por PHP después de que los buffers de salida hayan sido cerrados a menos que se llame
+   explícitamente a <span class="function"><a href="function.session-write-close.html" class="function">session_write_close()</a></span>
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-sessionhandlerinterface.write-parameters">
+  <h3 class="title">Parámetros</h3>
+  <dl>
+   
+    <dt><code class="parameter">session_id</code></dt>
+    <dd>
+     <p class="para">
+      El ID de sesión.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">session_data</code></dt>
+    <dd>
+     <p class="para">
+      La información de sesión codificada. Esta información es el resultado de que PHP codifique internamente la variable supergobal <var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var> a una cadena
+      serializada y pasarla a este parámetro. Observe que las sesiones usan un método de serialización alternativo.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-sessionhandlerinterface.write-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   El valor devuelto (normalmente <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito, <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error). Observe que este valor es devuelto internamente a PHP para su procesamiento.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-sessionhandlerinterface.write-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li>
+     La directiva de configuración
+     <a href="session.configuration.html#ini.session.serialize-handler" class="link">session.serialize_handler</a>.
+    </li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

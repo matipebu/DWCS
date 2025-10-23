@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Ejecutar una declaraci&oacute;n preparada</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.odbc-exec.html">« odbc_exec</a></li>
+      <li style="float: right;"><a href="function.odbc-fetch-array.html">odbc_fetch_array »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.uodbc.html">Funciones ODBC</a></li>
+    <li>Ejecutar una declaraci&oacute;n preparada</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.odbc-execute" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">odbc_execute</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">odbc_execute</span> &mdash; <span class="dc-title">Ejecutar una declaración preparada</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.odbc-execute-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>odbc_execute</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$result_id</code></span>, <span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$parameters_array</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Ejecuta una declaración preparado con <span class="function"><a href="function.odbc-prepare.html" class="function">odbc_prepare()</a></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.odbc-execute-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">result_id</code></dt>
+     <dd>
+      <p class="para">
+       El <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> de identificación de resultado, desde <span class="function"><a href="function.odbc-prepare.html" class="function">odbc_prepare()</a></span>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">parameters_array</code></dt>
+     <dd>
+      <p class="para">
+       Los parámetros en <code class="parameter">parameter_array</code> serán
+       sustituidoss por parámetros de sustitución en la declaración preparada en orden.
+       Los elementos de este array serán convertidos a cadenas al llamar a esta
+       función.
+      </p>
+      <p class="para">
+       Cualquier parámetro de <code class="parameter">parameter_array</code> que
+       comience y finalice con comillas simples se tomará como el nombre de un
+       archivo para leer y enviar al servor de la base de datos como la información para el
+       parámetro de sustitución apropiado.
+      </p>
+      <span class="simpara">
+       Si desea almacenar una cadena que comienza y finaliza con
+       comillas simples, debe añadir un espacio u otro carácter distinto de las comillas simples
+       al inicio o final del parámetro, lo que prevendrá al
+       parámetro de ser tomado como un nombre de archivo. Si esto no es una opción,
+       entonces debe usar otro mecanismo para almacenar la cadena, tal como
+       ejecutar la consulta directamente con <span class="function"><a href="function.odbc-exec.html" class="function">odbc_exec()</a></span>).
+      </span>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.odbc-execute-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.odbc-execute-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-998">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>odbc_execute()</strong></span> y <span class="function"><a href="function.odbc-prepare.html" class="function">odbc_prepare()</a></span></strong></p>
+    <div class="example-contents"><p>
+     En el código siguiente, <var class="varname">$éxito</var> solamente será
+     <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> si los tres parámetros de myproc son parámetros IN:
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$a </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b </span><span style="color: #007700">= </span><span style="color: #0000BB">2</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$c </span><span style="color: #007700">= </span><span style="color: #0000BB">3</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$declaración    </span><span style="color: #007700">= </span><span style="color: #0000BB">odbc_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$conexión</span><span style="color: #007700">, </span><span style="color: #DD0000">'CALL myproc(?,?,?)'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$éxito </span><span style="color: #007700">= </span><span style="color: #0000BB">odbc_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$declaración</span><span style="color: #007700">, array(</span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$c</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Si se necesita llamar a procedimientos almacendos usando parámetros INOUT o OUT,
+   una solución recomendada es usar una extensión nativa para la base de datos
+   (por ejemplo, <a href="ref.oci8.html" class="link">oci8</a> para Oracle).
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.odbc-execute-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.odbc-prepare.html" class="function" rel="rdfs-seeAlso">odbc_prepare()</a> - Prepara una declaraci&oacute;n para su ejecuci&oacute;n</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

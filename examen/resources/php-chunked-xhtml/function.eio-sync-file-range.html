@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Sincornizar un segmento de fichero con el disco</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.eio-sync.html">« eio_sync</a></li>
+      <li style="float: right;"><a href="function.eio-syncfs.html">eio_syncfs »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.eio.html">Funciones Eio</a></li>
+    <li>Sincornizar un segmento de fichero con el disco</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.eio-sync-file-range" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">eio_sync_file_range</h1>
+  <p class="verinfo">(PECL eio &gt;= 0.0.1dev)</p><p class="refpurpose"><span class="refname">eio_sync_file_range</span> &mdash; <span class="dc-title">Sincornizar un segmento de fichero con el disco</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.eio-sync-file-range-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>eio_sync_file_range</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$fd</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$offset</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$nbytes</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$flags</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$pri</code><span class="initializer"> = EIO_PRI_DEFAULT</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$callback</code><span class="initializer"> = NULL</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$data</code><span class="initializer"> = NULL</span></span><br>): <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>eio_sync_file_range()</strong></span> permite un control preciso al sincronizar el fichero abierto mencionado por el descriptor
+   de fichero <code class="parameter">fd</code> con el disco.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.eio-sync-file-range-parameters">
+  <h3 class="title">Parámetros</h3>
+  <dl>
+   
+    <dt><code class="parameter">fd</code></dt>
+    <dd>
+     <p class="para">
+      El descriptor de fichero
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">offset</code></dt>
+    <dd>
+     <p class="para">
+      El byte de inicio del rango del archivo a ser sincronizado
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">nbytes</code></dt>
+    <dd>
+     <p class="para">
+      Especifica la longitud del rango a ser sincronizado, en bytes. Si
+      <code class="parameter">nbytes</code> es cero, son sicronizados todos los bytes desde
+      <code class="parameter">offset</code> hasta el final del fichero.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">flags</code></dt>
+    <dd>
+     <p class="para">
+      Una máscara de bits. Puede incluir cualquiera de los siguientes valores:
+      <strong><code><a href="eio.constants.html#constant.eio-sync-file-range-wait-before">EIO_SYNC_FILE_RANGE_WAIT_BEFORE</a></code></strong>,
+      <strong><code><a href="eio.constants.html#constant.eio-sync-file-range-write">EIO_SYNC_FILE_RANGE_WRITE</a></code></strong>,
+      <strong><code><a href="eio.constants.html#constant.eio-sync-file-range-wait-after">EIO_SYNC_FILE_RANGE_WAIT_AFTER</a></code></strong>. Estas banderas tienen
+      el mismo significado que sus homónimas <em>SYNC_FILE_RANGE_*</em>
+      (véase la página del manual <code class="literal">SYNC_FILE_RANGE(2)</code>).
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">pri</code></dt>
+    <dd>
+     <p class="para">La prioridad de petición: <strong><code><a href="eio.constants.html#constant.eio-pri-default">EIO_PRI_DEFAULT</a></code></strong>, <strong><code><a href="eio.constants.html#constant.eio-pri-min">EIO_PRI_MIN</a></code></strong>, <strong><code><a href="eio.constants.html#constant.eio-pri-max">EIO_PRI_MAX</a></code></strong>, o <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>.
+Si se pasa <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>, <code class="parameter">pri</code> es establecido internamente a
+<strong><code><a href="eio.constants.html#constant.eio-pri-default">EIO_PRI_DEFAULT</a></code></strong>.
+</p>
+
+    </dd>
+   
+   
+    <dt><code class="parameter">callback</code></dt>
+    <dd>
+     <p class="para">
+La función <code class="parameter">callback</code> es llamada cuando la petición está hecha.
+Debería seguir el siguiente prototipo: <div class="example-contents"><div class="phpcode"><code><span style="color: #000000">void callback(mixed $data, int $result[, resource $req]);</span></code></div></div>
+
+<dl>
+ 
+  <dt><code class="parameter">data</code></dt>
+  <dd><p class="para">son datos personalizados pasados a la petición.</p></dd>
+ 
+ 
+  <dt><code class="parameter">result</code></dt>
+  <dd><p class="para">es el valor del resultado específico de la petición; básicamente, el valor devuelto por la correspondiente
+   llamada al sistema.</p></dd>
+ 
+ 
+  <dt><code class="parameter">req</code></dt>
+  <dd><p class="para">es el recurso de petición opcional que puede usarse con funciones como <span class="function"><a href="function.eio-get-last-error.html" class="function">eio_get_last_error()</a></span></p></dd>
+ 
+</dl>
+</p>
+
+    </dd>
+   
+   
+    <dt><code class="parameter">data</code></dt>
+    <dd>
+     <p class="para">
+      Variable arbitraria pasada a <code class="parameter">callback</code>.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.eio-sync-file-range-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   <span class="function"><strong>eio_sync_file_range()</strong></span> devuelve un recurso de petición en caso de éxito, o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

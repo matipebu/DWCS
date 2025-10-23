@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Caso 4: El analizador de PHP fuera del &aacute;rbol de la web</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="security.cgi-bin.doc-root.html">« Caso 3: Configurando doc_root o user_dir</a></li>
+      <li style="float: right;"><a href="security.apache.html">Instalado como m&oacute;dulo de Apache »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="security.cgi-bin.html">Instalado como CGI binario</a></li>
+    <li>Caso 4: El analizador de PHP fuera del &aacute;rbol de la web</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="security.cgi-bin.shell" class="sect1">
+    <h2 class="title">Caso 4: El analizador de PHP fuera del árbol de la web</h2>
+    <p class="para">
+     Una opción muy segura es poner el binario analizador de PHP en algún lugar
+     fuera del árbol de ficheros de la web.  En <var class="filename">/usr/local/bin</var>, por ejemplo.  El único inconveniente
+     real con esta opción es que ahora tendrá que poner una línea similar a:
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="cdata"><pre>
+#!/usr/local/bin/php
+</pre></div>
+      </div>
+
+     </div>
+     como la primera línea de cualquier fichero que contenga etiquetas de PHP.  También
+     necesitará hacer que el fichero sea ejecutable.  Eso significa, tratarlo exactamente
+     como trataría cualquier otro script de CGI escrito en Perl, sh, bash, o cualquier
+     otro lenguaje común de script el cual utilice <code class="literal">#!</code> como mecanismo
+     de ejecución de si mismo.
+    </p>
+    <p class="para">
+     Para que PHP maneje la información correctamente de <var class="envar">PATH_INFO</var> y
+     <var class="envar">PATH_TRANSLATED</var> con esta configuración, La directiva ini <a href="ini.core.html#ini.cgi.discard-path" class="link">cgi.discard_path</a> debe estar habilitada..
+    </p>
+   </div></div></div></body></html>

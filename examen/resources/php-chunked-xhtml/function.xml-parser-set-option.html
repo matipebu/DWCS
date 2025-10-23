@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Configura las opciones en un int&eacute;rprete XML</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.xml-parser-get-option.html">« xml_parser_get_option</a></li>
+      <li style="float: right;"><a href="function.xml-set-character-data-handler.html">xml_set_character_data_handler »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.xml.html">Funciones del Int&eacute;rprete XML</a></li>
+    <li>Configura las opciones en un int&eacute;rprete XML</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.xml-parser-set-option" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">xml_parser_set_option</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">xml_parser_set_option</span> &mdash; <span class="dc-title">Configura las opciones en un intérprete XML</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.xml-parser-set-option-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>xml_parser_set_option</strong></span>(<span class="methodparam"><span class="type"><a href="class.xmlparser.html" class="type XMLParser">XMLParser</a></span> <code class="parameter">$parser</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$option</code></span>, <span class="methodparam"><span class="type"><span class="type"><a href="language.types.string.html" class="type string">string</a></span>|<span class="type"><a href="language.types.integer.html" class="type int">int</a></span></span> <code class="parameter">$value</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+Configura una opción en un intérprete XML.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.xml-parser-set-option-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">parser</code></dt>
+     <dd>
+      <p class="para">
+Identificador del recurso del intérprete XML sobre el que se va a configurar el valor de la opción.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">option</code></dt>
+     <dd>
+      <p class="para">
+Cual es la opción para configurar. Véase más abajo.
+      </p>
+      <p class="para">
+Estan disponibles las siguientes opciones:
+       <table class="doctable table">
+        <caption><strong>Opciones del intérprete XML</strong></caption>
+        
+         <thead>
+          <tr>
+           <th>Option constant</th>
+           <th>Data type</th>
+           <th>Description</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td><strong><code><a href="xml.constants.html#constant.xml-option-case-folding">XML_OPTION_CASE_FOLDING</a></code></strong></td>
+           <td>integer</td>
+           <td>
+Controla si  <a href="xml.case-folding.html" class="link">case-folding</a> está activada para este intérprete XML. Por defecto activado.
+
+           </td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="xml.constants.html#constant.xml-option-skip-tagstart">XML_OPTION_SKIP_TAGSTART</a></code></strong></td>
+           <td>integer</td>
+           <td>
+Especifica el número de caracteres que seran omitidos al principio del nombre de una etiqueta.
+           </td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="xml.constants.html#constant.xml-option-skip-white">XML_OPTION_SKIP_WHITE</a></code></strong></td>
+           <td>integer</td>
+           <td>
+Especifica si hay que omitir los valores que consistan en espacios en blanco.
+           </td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="xml.constants.html#constant.xml-option-target-encoding">XML_OPTION_TARGET_ENCODING</a></code></strong></td>
+           <td>string</td>
+           <td>
+Configura cual será el <a href="xml.encoding.html" class="link">target encoding</a> (codificación de caracteres de salida) para usar en este intérprete XML. Por defecto se establece la misma codificación de la fuente fuente usada por <span class="function"><a href="function.xml-parser-create.html" class="function">xml_parser_create()</a></span>. Las codificaciones de destino soportadas son <code class="literal">ISO-8859-1</code>, <code class="literal">US-ASCII</code> y <code class="literal">UTF-8</code>.
+           </td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">value</code></dt>
+     <dd>
+      <p class="para">
+El nuevo valor para la opción.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.xml-parser-set-option-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> si se ha establecido el nuevo valor para la opción. Puede devolver <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si: <code class="parameter">parser</code> no se refiere a un intérprete válido, o si la opción no se ha podido configurar.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.xml-parser-set-option-changelog">
+  <h3 class="title">Historial de cambios</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>Versión</th>
+      <th>Descripción</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+      <tr>
+ <td>8.0.0</td>
+ <td>
+  <code class="parameter">parser</code> expects an <span class="classname"><a href="class.xmlparser.html" class="classname">XMLParser</a></span>
+  instance now; previously, a valid <code class="literal">xml</code> <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> was expected.
+ </td>
+</tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+</div></div></div></body></html>

@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Obtener el nombre Unicode para un valor de una propiedad</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="intlchar.getpropertyvalueenum.html">« IntlChar::getPropertyValueEnum</a></li>
+      <li style="float: right;"><a href="intlchar.getunicodeversion.html">IntlChar::getUnicodeVersion »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.intlchar.html">IntlChar</a></li>
+    <li>Obtener el nombre Unicode para un valor de una propiedad</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="intlchar.getpropertyvaluename" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">IntlChar::getPropertyValueName</h1>
+  <p class="verinfo">(PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">IntlChar::getPropertyValueName</span> &mdash; <span class="dc-title">Obtener el nombre Unicode para un valor de una propiedad</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-intlchar.getpropertyvaluename-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="methodname"><strong>IntlChar::getPropertyValueName</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$property</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$value</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$nameChoice</code><span class="initializer"> = <strong><code><a href="class.intlchar.html#intlchar.constants.long-property-name">IntlChar::LONG_PROPERTY_NAME</a></code></strong></span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Devuelve el nombre Unicode para un valor de una propiedad dado, como se da en el fichero de la base de datos de Unicode PropertyValueAliases.txt.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Algunos de los nombres en PropertyValueAliases.txt solamente se pueden obtener con
+    <strong><code><a href="class.intlchar.html#intlchar.constants.property-general-category-mask">IntlChar::PROPERTY_GENERAL_CATEGORY_MASK</a></code></strong>, no con
+    <strong><code><a href="class.intlchar.html#intlchar.constants.property-general-category">IntlChar::PROPERTY_GENERAL_CATEGORY</a></code></strong>.
+    Estos son:
+    <ul class="simplelist">
+     <li>"C" / "Other"</li>
+     <li>"L" / "Letter"</li>
+     <li>"LC" / "Cased_Letter"</li>
+     <li>"M" / "Mark"</li>
+     <li>"N" / "Number"</li>
+     <li>"P" / "Punctuation"</li>
+     <li>"S" / "Symbol"</li>
+     <li> "Z" / "Separator"</li>
+    </ul>
+   </p>
+  </p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-intlchar.getpropertyvaluename-parameters">
+  <h3 class="title">Parámetros</h3>
+  <dl>
+   
+    <dt><code class="parameter">property</code></dt>
+    <dd>
+     <p class="para">La propiedad de Unicode a consultar (véanse las constantes <strong><code>IntlChar::PROPERTY_*</code></strong>).</p>
+     <p class="para">
+      Si está fuera de rango o si el método no funciona con el valor dado, devuelve <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">value</code></dt>
+    <dd>
+     <p class="para">
+      El selector para un valor de la propiedad dada. Si está fuera de rango, devuelve <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+     </p>
+     <p class="para">
+      En general, los valores válidos de rangos van de <code class="literal">0</code> a un máximo. Existen un par de excepciones:
+      <ul class="simplelist">
+       <li>
+        Los valores <strong><code><a href="class.intlchar.html#intlchar.constants.property-block">IntlChar::PROPERTY_BLOCK</a></code></strong> comienzan en el valor <strong><code><a href="class.intlchar.html#intlchar.constants.block-code-basic-latin">IntlChar::BLOCK_CODE_BASIC_LATIN</a></code></strong> distinto de cero.
+       </li>
+       <li>
+        Los valores <strong><code><a href="class.intlchar.html#intlchar.constants.property-canonical-combining-class">IntlChar::PROPERTY_CANONICAL_COMBINING_CLASS</a></code></strong> no son contiguos y su rango es 0..240.
+       </li>
+      </ul>
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">nameChoice</code></dt>
+    <dd>
+     <p class="para">
+      El selector a obtener por su nombre. Si está fuera de rango, devuelve <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+     </p>
+     <p class="para">     
+      Todas las propiedades tienen un nombre largo. La mayoría tienen un nombre corto, otras no. Unicode tiene en cuenta nombres adicionales;
+      si están presentes, serán devueltos añadiendo 1, 2, etc., a <strong><code><a href="class.intlchar.html#intlchar.constants.long-property-name">IntlChar::LONG_PROPERTY_NAME</a></code></strong>.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-intlchar.getpropertyvaluename-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el nombre, o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si <code class="parameter">property</code> o <code class="parameter">nameChoice</code>
+   están fuera de rango.
+  </p>
+  <p class="para">
+   Si un <code class="parameter">nameChoice</code> dado devuelve <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>, todos los valores mayores que <code class="parameter">nameChoice</code>
+   devolverán <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>, con una excepción: si se devuelve <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> para <strong><code><a href="class.intlchar.html#intlchar.constants.short-property-name">IntlChar::SHORT_PROPERTY_NAME</a></code></strong>,
+   entonces <strong><code><a href="class.intlchar.html#intlchar.constants.long-property-name">IntlChar::LONG_PROPERTY_NAME</a></code></strong> (y mayores) podrían aún devolver un valor distinto de <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-intlchar.getpropertyvaluename-examples">
+  <h3 class="title">Ejemplos</h3>
+  <div class="example" id="example-2511">
+   <p><strong>Ejemplo #1 Probar diferentes propiedades</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">getPropertyValueName</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">PROPERTY_BLOCK</span><span style="color: #007700">, </span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">BLOCK_CODE_GREEK</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">getPropertyValueName</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">PROPERTY_BLOCK</span><span style="color: #007700">, </span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">BLOCK_CODE_GREEK</span><span style="color: #007700">, </span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">SHORT_PROPERTY_NAME</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">getPropertyValueName</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">PROPERTY_BLOCK</span><span style="color: #007700">, </span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">BLOCK_CODE_GREEK</span><span style="color: #007700">, </span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">LONG_PROPERTY_NAME</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">getPropertyValueName</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">PROPERTY_BLOCK</span><span style="color: #007700">, </span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">BLOCK_CODE_GREEK</span><span style="color: #007700">, </span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">LONG_PROPERTY_NAME </span><span style="color: #007700">+ </span><span style="color: #0000BB">1</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">string(16) &quot;Greek_And_Coptic&quot;
+string(5) &quot;Greek&quot;
+string(16) &quot;Greek_And_Coptic&quot;
+bool(false)</pre>
+</div>
+   </div>
+  </div>
+ </div>
+
+ 
+</div></div></div></body></html>

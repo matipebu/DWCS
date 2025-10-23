@@ -1,0 +1,688 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Constantes predefinidas</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="eio.resources.html">« Tipos de recursos</a></li>
+      <li style="float: right;"><a href="eio.examples.html">Ejemplos »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.eio.html">Eio</a></li>
+    <li>Constantes predefinidas</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="eio.constants" class="appendix">
+ <h1 class="title">Constantes predefinidas</h1>
+
+ <p class="simpara">
+Estas constantes están definidas por esta extensión y
+estarán disponibles sólo cuando la extensión haya sido
+compilada con PHP, o bien sea cargada dinámicamente en ejecución.
+</p>
+ <p class="para">Constantes de prioridad de petición:
+  <dl>
+
+   
+   
+    <dt id="constant.eio-pri-min">
+     <strong><code><a href="eio.constants.html#constant.eio-pri-min">EIO_PRI_MIN</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Prioridad de petición mínima
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-pri-default">
+     <strong><code><a href="eio.constants.html#constant.eio-pri-default">EIO_PRI_DEFAULT</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Prioridad de petición predeterminada
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-pri-max">
+     <strong><code><a href="eio.constants.html#constant.eio-pri-max">EIO_PRI_MAX</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Prioridad de petición máxima
+     </span>
+    </dd>
+   
+   
+  </dl>
+ </p>
+
+ <p class="para">El argumento <code class="parameter">whence</code> de <span class="function"><a href="function.eio-seek.html" class="function">eio_seek()</a></span>:
+  <dl>
+   
+    <dt id="constant.eio-seek-set">
+     <strong><code><a href="eio.constants.html#constant.eio-seek-set">EIO_SEEK_SET</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El índice es establecido para espcificar el número de bytes (<code class="parameter">offset</code>).
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-seek-cur">
+     <strong><code><a href="eio.constants.html#constant.eio-seek-cur">EIO_SEEK_CUR</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El índice es establecido a su ubicación actual más <code class="parameter">offset</code> bytes.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-seek-end">
+     <strong><code><a href="eio.constants.html#constant.eio-seek-end">EIO_SEEK_END</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El índice es establecido a el tamaño del fichero más <code class="parameter">offset</code> bytes.
+     </span>
+    </dd>
+   
+  </dl>
+ </p>
+
+ <p class="para">
+  Banderas usadas con <span class="function"><a href="function.eio-readdir.html" class="function">eio_readdir()</a></span>:
+  <dl>
+
+   
+   
+    <dt id="constant.eio-readdir-dents">
+     <strong><code><a href="eio.constants.html#constant.eio-readdir-dents">EIO_READDIR_DENTS</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Bandera <span class="function"><a href="function.eio-readdir.html" class="function">eio_readdir()</a></span>. Si se especifica, el argumento resultante de la llamada de retorno
+      se convierte en un array con las siguientes claves:
+      <code class="literal">&#039;names&#039;</code> - array de nombres de directorios
+      <code class="literal">&#039;dents&#039;</code> - array de <code class="literal">structura eio_dirent</code>-como
+      los arrays pero teniendo las siguientes claves:
+      <code class="literal">&#039;name&#039;</code> - el nombre del directorio;
+      <code class="literal">&#039;type&#039;</code> - una de las constantes
+      <em>EIO_DT_*</em>;
+      <code class="literal">&#039;inode&#039;</code> - el número de inodo, si está disponible, de otro modo
+      sin especificar;
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-readdir-dirs-first">
+     <strong><code><a href="eio.constants.html#constant.eio-readdir-dirs-first">EIO_READDIR_DIRS_FIRST</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Cuando se especifica esta bandera, los nombres serán devueltos en un orden
+      donde probablemente los directorios vallan primero, en un orden de estadísticas óptimo.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-readdir-stat-order">
+     <strong><code><a href="eio.constants.html#constant.eio-readdir-stat-order">EIO_READDIR_STAT_ORDER</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Cuando se especifica esta bandera, los nombres serán devueltos en un orden
+      apropiado para realizar estadísticas (<code class="literal">stat</code>) con cada uno. Cuando se planea usar
+      la función <span class="function"><a href="function.stat.html" class="function">stat()</a></span> para realizar estadísticas de todos los archivos del directorio dado, el
+      orden devuelto probablemente sea
+      más rápido.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-readdir-found-unknown">
+     <strong><code><a href="eio.constants.html#constant.eio-readdir-found-unknown">EIO_READDIR_FOUND_UNKNOWN</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+
+     </span>
+    </dd>
+   
+   
+
+   
+   
+    <dt id="constant.eio-dt-unknown">
+     <strong><code><a href="eio.constants.html#constant.eio-dt-unknown">EIO_DT_UNKNOWN</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Tipo de nodo desconocido(muy común). Se necistan más estadísticas (<span class="function"><a href="function.stat.html" class="function">stat()</a></span>).
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-dt-fifo">
+     <strong><code><a href="eio.constants.html#constant.eio-dt-fifo">EIO_DT_FIFO</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Tipo de nodo FIFO
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-dt-chr">
+     <strong><code><a href="eio.constants.html#constant.eio-dt-chr">EIO_DT_CHR</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Tipo de nodo
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-dt-mpc">
+     <strong><code><a href="eio.constants.html#constant.eio-dt-mpc">EIO_DT_MPC</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Tipo de nodo de dispositivo de caracteres multiplexado (v7+coherent)
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-dt-dir">
+     <strong><code><a href="eio.constants.html#constant.eio-dt-dir">EIO_DT_DIR</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Tipo de nodo de directorio
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-dt-nam">
+     <strong><code><a href="eio.constants.html#constant.eio-dt-nam">EIO_DT_NAM</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Tipo de nodo de fichero Xenix nominado especial
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-dt-blk">
+     <strong><code><a href="eio.constants.html#constant.eio-dt-blk">EIO_DT_BLK</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Tipo de nodo
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-dt-mpb">
+     <strong><code><a href="eio.constants.html#constant.eio-dt-mpb">EIO_DT_MPB</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Dispositivo de bloqueo multiplexado (v7+coherent)
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-dt-reg">
+     <strong><code><a href="eio.constants.html#constant.eio-dt-reg">EIO_DT_REG</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Tipo de nodo
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-dt-nwk">
+     <strong><code><a href="eio.constants.html#constant.eio-dt-nwk">EIO_DT_NWK</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-dt-cmp">
+     <strong><code><a href="eio.constants.html#constant.eio-dt-cmp">EIO_DT_CMP</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Tipo de noto especial de red HP-UX
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-dt-lnk">
+     <strong><code><a href="eio.constants.html#constant.eio-dt-lnk">EIO_DT_LNK</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Tipo de nodo de vínculo
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-dt-sock">
+     <strong><code><a href="eio.constants.html#constant.eio-dt-sock">EIO_DT_SOCK</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Tipo de nodo socket
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-dt-door">
+     <strong><code><a href="eio.constants.html#constant.eio-dt-door">EIO_DT_DOOR</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Tipo de nodo de puerta de Solaris
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-dt-wht">
+     <strong><code><a href="eio.constants.html#constant.eio-dt-wht">EIO_DT_WHT</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Tipo de nodo
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-dt-max">
+     <strong><code><a href="eio.constants.html#constant.eio-dt-max">EIO_DT_MAX</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Valor de tipo de nodo más alto
+     </span>
+    </dd>
+   
+
+   
+
+  </dl>
+ </p>
+ <p class="para">
+  Modo de acceso para el argumento <code class="parameter">flags</code> de
+  <span class="function"><a href="function.eio-open.html" class="function">eio_open()</a></span>:
+  <dl>
+
+   
+   
+    <dt id="constant.eio-o-rdonly">
+     <strong><code><a href="eio.constants.html#constant.eio-o-rdonly">EIO_O_RDONLY</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-o-wronly">
+     <strong><code><a href="eio.constants.html#constant.eio-o-wronly">EIO_O_WRONLY</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-o-rdwr">
+     <strong><code><a href="eio.constants.html#constant.eio-o-rdwr">EIO_O_RDWR</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-o-nonblock">
+     <strong><code><a href="eio.constants.html#constant.eio-o-nonblock">EIO_O_NONBLOCK</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-o-append">
+     <strong><code><a href="eio.constants.html#constant.eio-o-append">EIO_O_APPEND</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-o-creat">
+     <strong><code><a href="eio.constants.html#constant.eio-o-creat">EIO_O_CREAT</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-o-trunc">
+     <strong><code><a href="eio.constants.html#constant.eio-o-trunc">EIO_O_TRUNC</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-o-excl">
+     <strong><code><a href="eio.constants.html#constant.eio-o-excl">EIO_O_EXCL</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-o-fsync">
+     <strong><code><a href="eio.constants.html#constant.eio-o-fsync">EIO_O_FSYNC</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+
+  </dl>
+ </p>
+ <p class="para">
+  Banderas del argumento <code class="parameter">mode</code> de <span class="function"><a href="function.eio-open.html" class="function">eio_open()</a></span>:
+  <dl>
+
+   
+   
+    <dt id="constant.eio-s-irusr">
+     <strong><code><a href="eio.constants.html#constant.eio-s-irusr">EIO_S_IRUSR</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-s-iwusr">
+     <strong><code><a href="eio.constants.html#constant.eio-s-iwusr">EIO_S_IWUSR</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-s-ixusr">
+     <strong><code><a href="eio.constants.html#constant.eio-s-ixusr">EIO_S_IXUSR</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-s-irgrp">
+     <strong><code><a href="eio.constants.html#constant.eio-s-irgrp">EIO_S_IRGRP</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-s-iwgrp">
+     <strong><code><a href="eio.constants.html#constant.eio-s-iwgrp">EIO_S_IWGRP</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-s-ixgrp">
+     <strong><code><a href="eio.constants.html#constant.eio-s-ixgrp">EIO_S_IXGRP</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-s-iroth">
+     <strong><code><a href="eio.constants.html#constant.eio-s-iroth">EIO_S_IROTH</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-s-iwoth">
+     <strong><code><a href="eio.constants.html#constant.eio-s-iwoth">EIO_S_IWOTH</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-s-ixoth">
+     <strong><code><a href="eio.constants.html#constant.eio-s-ixoth">EIO_S_IXOTH</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-s-ifreg">
+     <strong><code><a href="eio.constants.html#constant.eio-s-ifreg">EIO_S_IFREG</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-s-ifchr">
+     <strong><code><a href="eio.constants.html#constant.eio-s-ifchr">EIO_S_IFCHR</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-s-ifblk">
+     <strong><code><a href="eio.constants.html#constant.eio-s-ifblk">EIO_S_IFBLK</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-s-ififo">
+     <strong><code><a href="eio.constants.html#constant.eio-s-ififo">EIO_S_IFIFO</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-s-ifsock">
+     <strong><code><a href="eio.constants.html#constant.eio-s-ifsock">EIO_S_IFSOCK</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+
+
+  </dl>
+ </p>
+ <p class="para">
+  Banderas de <span class="function"><a href="function.eio-sync-file-range.html" class="function">eio_sync_file_range()</a></span>:
+  <dl>
+
+   
+   
+    <dt id="constant.eio-sync-file-range-wait-before">
+     <strong><code><a href="eio.constants.html#constant.eio-sync-file-range-wait-before">EIO_SYNC_FILE_RANGE_WAIT_BEFORE</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-sync-file-range-write">
+     <strong><code><a href="eio.constants.html#constant.eio-sync-file-range-write">EIO_SYNC_FILE_RANGE_WRITE</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.eio-sync-file-range-wait-after">
+     <strong><code><a href="eio.constants.html#constant.eio-sync-file-range-wait-after">EIO_SYNC_FILE_RANGE_WAIT_AFTER</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+   
+
+
+  </dl>
+ </p>
+ <p class="para">
+  Banderas de <span class="function"><a href="function.eio-fallocate.html" class="function">eio_fallocate()</a></span>:
+  <dl>
+
+   
+    <dt id="constant.eio-falloc-fl-keep-size">
+     <strong><code><a href="eio.constants.html#constant.eio-falloc-fl-keep-size">EIO_FALLOC_FL_KEEP_SIZE</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+     </span>
+    </dd>
+   
+
+  </dl>
+ </p>
+
+ <blockquote class="note"><p><strong class="note">Nota</strong>: 
+  <p class="para">
+   Las constantes <em>EIO_S_I*</em> tienen el mismo significado que sus
+   homónimos <em>S_I*</em> de POSIX.
+  </p>
+ </p></blockquote>
+
+ <blockquote class="note"><p><strong class="note">Nota</strong>: 
+  <p class="para">
+   <em>EIO_SYNC_FILE_*</em>tienen el mismo significado que sus
+   homónimos <em>SYNC_FILE_**</em>.
+  </p>
+ </p></blockquote>
+
+ <blockquote class="note"><p><strong class="note">Nota</strong>: 
+  <p class="para">
+   <em>EIO_O_*</em>tienen el mismo significado que sus
+   homónimos <em>O_*</em>de POSIX.
+  </p>
+ </p></blockquote>
+</div>
+</div></div></body></html>

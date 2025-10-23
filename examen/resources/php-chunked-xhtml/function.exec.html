@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Ejecutar un programa externo</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.escapeshellcmd.html">« escapeshellcmd</a></li>
+      <li style="float: right;"><a href="function.passthru.html">passthru »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.exec.html">Funciones de ejecuci&oacute;n de programas</a></li>
+    <li>Ejecutar un programa externo</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.exec" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">exec</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">exec</span> &mdash; <span class="dc-title">Ejecutar un programa externo</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.exec-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>exec</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$command</code></span>, <span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter reference">&$output</code><span class="initializer"> = ?</span></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter reference">&$return_var</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>exec()</strong></span> ejecuta el <code class="parameter">comando</code>
+   dado.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.exec-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">command</code></dt>
+     <dd>
+      <p class="para">
+       El comando que será ejecutado.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">output</code></dt>
+     <dd>
+      <p class="para">
+       Si el argumento <code class="parameter">output</code> está presente, entonces
+       el array especificado será llenado con cada línea de la salida del
+       comando. El espacio en blanco extra, como <code class="literal">\n</code>, no
+       es incluido en este array. Note que si el array ya contiene algunos
+       elementos, <span class="function"><strong>exec()</strong></span> anexará sus resultados al final
+       del array. Si no desea que la función anexe los elementos, use
+       <span class="function"><a href="function.unset.html" class="function">unset()</a></span> sobre el array antes de pasarla a
+       <span class="function"><strong>exec()</strong></span>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">return_var</code></dt>
+     <dd>
+      <p class="para">
+       Si el argumento <code class="parameter">return_var</code> está presente
+       junto con el argumento <code class="parameter">output</code>, entonces el
+       status de retorno del comando ejecutado será escrito en esta
+       variable.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.exec-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   La última línea de los resultados del comando. Si necesita ejecutar un
+   comando y tener todos los datos desde el comando pasados directamente de
+   vuelta sin interferencia alguna, use la función
+   <span class="function"><a href="function.passthru.html" class="function">passthru()</a></span>.
+  </p>
+  <p class="para">
+   Para obtener la salida del comando ejecutado, asegúrese de definir y usar
+   el parámetro <code class="parameter">output</code>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.exec-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-3335">
+    <p><strong>Ejemplo #1 Un ejemplo de <span class="function"><strong>exec()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// imprime el nombre de usuario que tiene control del proceso php/httpd activo<br />// (en un sistema con el ejecutable "whoami" disponible en la ruta)<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">exec</span><span style="color: #007700">(</span><span style="color: #DD0000">'whoami'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.exec-notes">
+  <h3 class="title">Notas</h3>
+  <div class="warning"><strong class="warning">Advertencia</strong><p class="para">Si se va a permitir que
+datos provenientes del usuario sean enviados a esta función, habría
+que utilizar <span class="function"><a href="function.escapeshellarg.html" class="function">escapeshellarg()</a></span> o <span class="function"><a href="function.escapeshellcmd.html" class="function">escapeshellcmd()</a></span>
+para asegurarse que el usuario no intenta engañar al sistema para que ejecute
+comandos arbitrarios.</p></div>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: <p class="para">Si ejecutamos un programa con esta
+función y queremos dejarlo ejecutándose en segundo plano, hay que asegurarse que la salida del mismo
+es redireccionada a un fichero u otro flujo de salida o PHP
+se quedará esperando hasta que la ejecución del programa termine.</p></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.exec-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.system.html" class="function" rel="rdfs-seeAlso">system()</a> - Ejecutar un programa externo y mostrar su salida</span></li>
+    <li><span class="function"><a href="function.passthru.html" class="function" rel="rdfs-seeAlso">passthru()</a> - Ejecuta un programa externo y muestra la salida en bruto</span></li>
+    <li><span class="function"><a href="function.escapeshellcmd.html" class="function" rel="rdfs-seeAlso">escapeshellcmd()</a> - Escapar meta-caracteres del int&eacute;rprete de comandos</span></li>
+    <li><span class="function"><a href="function.pcntl-exec.html" class="function" rel="rdfs-seeAlso">pcntl_exec()</a> - Executes specified program in current process space</span></li>
+    <li><a href="language.operators.execution.html" class="link">operador de
+    comilla invertida</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

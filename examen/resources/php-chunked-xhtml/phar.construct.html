@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Construir un objeto de archivo Phar</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="phar.compressfiles.html">« Phar::compressFiles</a></li>
+      <li style="float: right;"><a href="phar.converttodata.html">Phar::convertToData »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.phar.html">Phar</a></li>
+    <li>Construir un objeto de archivo Phar</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="phar.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Phar::__construct</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8, PECL phar &gt;= 1.0.0)</p><p class="refpurpose"><span class="refname">Phar::__construct</span> &mdash; <span class="dc-title">Construir un objeto de archivo Phar</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-phar.construct-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>Phar::__construct</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$fname</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$flags</code><span class="initializer"> = ?</span></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$alias</code><span class="initializer"> = ?</span></span>)</div>
+
+  
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-phar.construct-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">fname</code></dt>
+     <dd>
+      <p class="para">
+       Ruta a un archivo Phar existente o para ser creado La extensión del nombre
+       del fichero debe contener .phar.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">flags</code></dt>
+     <dd>
+      <p class="para">
+       Banderas a pasar a la clase padre <span class="classname"><a href="class.recursivedirectoryiterator.html" class="classname">RecursiveDirectoryIterator</a></span>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">alias</code></dt>
+     <dd>
+      <p class="para">
+       Alias con el que referirse al archivo Phar en las llamadas a funcionalidades
+       de flujos.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 errors" id="refsect1-phar.construct-errors">
+  <h3 class="title">Errores/Excepciones</h3>
+  <p class="para">
+   Lanza una excepción de tipo <span class="classname"><a href="class.badmethodcallexception.html" class="classname">BadMethodCallException</a></span> si se llama dos veces,
+   o una excepción de tipo <span class="classname"><a href="class.unexpectedvalueexception.html" class="classname">UnexpectedValueException</a></span> si no se puede abrir el archivo phar.
+  </p>
+ </div>
+
+ 
+ 
+ <div class="refsect1 examples" id="refsect1-phar.construct-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-724">
+    <p><strong>Ejemplo #1 Un ejemplo de <span class="function"><strong>Phar::__construct()</strong></span></strong></p>
+    <div class="example-contents"><p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">try {<br />    </span><span style="color: #0000BB">$p </span><span style="color: #007700">= new </span><span style="color: #0000BB">Phar</span><span style="color: #007700">(</span><span style="color: #DD0000">'/ruta/a/mi.phar'</span><span style="color: #007700">, </span><span style="color: #0000BB">FilesystemIterator</span><span style="color: #007700">::</span><span style="color: #0000BB">CURRENT_AS_FILEINFO </span><span style="color: #007700">| </span><span style="color: #0000BB">FilesystemIterator</span><span style="color: #007700">::</span><span style="color: #0000BB">KEY_AS_FILENAME</span><span style="color: #007700">,<br />                  </span><span style="color: #DD0000">'mi.phar'</span><span style="color: #007700">);<br />} catch (</span><span style="color: #0000BB">UnexpectedValueException $e</span><span style="color: #007700">) {<br />    die(</span><span style="color: #DD0000">'No se pudo abrir mi.phar'</span><span style="color: #007700">);<br />} catch (</span><span style="color: #0000BB">BadMethodCallException $e</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">'Técnicamente esto no puede suceder'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #FF8000">// esto funciona ahora<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'phar://mi.phar/ejemplo.txt'</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">// y funciona si hemos escrito<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'phar:///ruta/a/mi.phar/ejemplo.txt'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+    </p></div>
+   </div>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

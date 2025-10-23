@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Convertir un archivo phar en un fichero tar o zip no ejecutable</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="phardata.construct.html">« PharData::__construct</a></li>
+      <li style="float: right;"><a href="phardata.converttoexecutable.html">PharData::convertToExecutable »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.phardata.html">PharData</a></li>
+    <li>Convertir un archivo phar en un fichero tar o zip no ejecutable</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="phardata.converttodata" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PharData::convertToData</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8, PECL phar &gt;= 2.0.0)</p><p class="refpurpose"><span class="refname">PharData::convertToData</span> &mdash; <span class="dc-title">Convertir un archivo phar en un fichero tar o zip no ejecutable</span></p>
+
+ </div>
+
+
+ <div class="refsect1 description" id="refsect1-phardata.converttodata-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>PharData::convertToData</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$format</code><span class="initializer"> = ?</span></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$compression</code><span class="initializer"> = ?</span></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$extension</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="class.phardata.html" class="type PharData">PharData</a></span></div>
+
+
+  <p class="para rdfs-comment">
+   Este método se usa para convertir un archivo tar o zip no ejecutable a otro
+   formato no ejecutable.
+  </p>
+  <p class="para">
+   Si no se especifica ningún cambio, este método lanza una excepción de tipo <span class="classname"><a href="class.badmethodcallexception.html" class="classname">BadMethodCallException</a></span>
+   Este método debería usarse para convertir un archivo tar a formato zip o viceversa. Aunque
+   es posible cambiar la compresión de un archivo tar simplemente usando este método,
+   es mejor utilizad el método <span class="function"><a href="phardata.compress.html" class="function">PharData::compress()</a></span> para una consistencia
+   lógica.
+  </p>
+  <p class="para">
+   En caso de éxito, el metodo crea un nuevo archivo en disco y devuelve un objeto de la clase
+   <span class="classname"><a href="class.phardata.html" class="classname">PharData</a></span>. El archivo antiguo no se elimina del disco, y debería hacerse manualmente después
+   de que el proceso haya finalizado.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-phardata.converttodata-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">format</code></dt>
+     <dd>
+      <p class="para">
+       Este parámetro debería ser <strong><code><a href="phar.constants.html#phar.constants.tar">Phar::TAR</a></code></strong>
+       o <strong><code><a href="phar.constants.html#phar.constants.zip">Phar::ZIP</a></code></strong>. Si se establece a <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>, se conservará el
+       formato de fichero existente.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">compression</code></dt>
+     <dd>
+      <p class="para">
+       Este parámetro debería ser <strong><code><a href="phar.constants.html#phar.constants.none">Phar::NONE</a></code></strong> para no comprimir el archivo
+       completo, <strong><code><a href="phar.constants.html#phar.constants.gz">Phar::GZ</a></code></strong> para la compresión basada en zlib, y
+       <strong><code><a href="phar.constants.html#phar.constants.bz2">Phar::BZ2</a></code></strong> para la compresión basada en bzip.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">extension</code></dt>
+     <dd>
+      <p class="para">
+       Este parámetro se utiliza para sobrescribir la extensión de fichero predeterminada de un
+       archivo convertido. Observe que <code class="literal">.phar</code> no puede ser usado
+       en ningún lugar del nombre de fichero de un archivo tar o zip no ejecutable.
+      </p>
+      <p class="para">
+       Si se convierte a un archivo basado en tar, las
+       extensiones predeterminadas son <code class="literal">.tar</code>, <code class="literal">.tar.gz</code>,
+       y <code class="literal">.tar.bz2</code> dependiendo de la compresión especificada.
+       Para archivos basados en zip, la
+       extensión predetermianda es <code class="literal">.zip</code>.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-phardata.converttodata-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   El método devuelve un objeto <span class="classname"><a href="class.phardata.html" class="classname">PharData</a></span> en caso de éxito, y lanza una
+   excepción en caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-phardata.converttodata-errors">
+  <h3 class="title">Errores/Excepciones</h3>
+  <p class="para">
+   Este método lanza una excepción de tipo <span class="classname"><a href="class.badmethodcallexception.html" class="classname">BadMethodCallException</a></span> cuando no se
+   puede comprimir, se ha especificado un método de compresión desconocido, el archivo
+   solicitado está almacenado en buffer con <span class="function"><a href="phar.startbuffering.html" class="function">Phar::startBuffering()</a></span> y
+   no se ha cerrado con <span class="function"><a href="phar.stopbuffering.html" class="function">Phar::stopBuffering()</a></span>,
+   y una excepción de tipo <span class="classname"><a href="class.pharexception.html" class="classname">PharException</a></span> si se encontró algún problema
+   durante el proceso de la creación de phar.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-phardata.converttodata-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-768">
+    <p><strong>Ejemplo #1 Un ejemplo de <span class="function"><strong>PharData::convertToData()</strong></span></strong></p>
+    <div class="example-contents"><p>
+     Utilizar PharData::convertToData():
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">try {<br />    </span><span style="color: #0000BB">$tarphar </span><span style="color: #007700">= new </span><span style="color: #0000BB">PharData</span><span style="color: #007700">(</span><span style="color: #DD0000">'miphar.tar'</span><span style="color: #007700">);<br />    </span><span style="color: #FF8000">// observe que miphar.phar.tar *no* está desvinculado.<br />    // convertirlo a un formato de fichero tar no ejecutable,<br />    // se crea miphar.zip<br />    </span><span style="color: #0000BB">$zip </span><span style="color: #007700">= </span><span style="color: #0000BB">$tarphar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">convertToData</span><span style="color: #007700">(</span><span style="color: #0000BB">Phar</span><span style="color: #007700">::</span><span style="color: #0000BB">ZIP</span><span style="color: #007700">);<br />    </span><span style="color: #FF8000">// crear miphar.tbz<br />    </span><span style="color: #0000BB">$tgz </span><span style="color: #007700">= </span><span style="color: #0000BB">$tarphar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">convertToData</span><span style="color: #007700">(</span><span style="color: #0000BB">Phar</span><span style="color: #007700">::</span><span style="color: #0000BB">TAR</span><span style="color: #007700">, </span><span style="color: #0000BB">Phar</span><span style="color: #007700">::</span><span style="color: #0000BB">BZ2</span><span style="color: #007700">, </span><span style="color: #DD0000">'.tbz'</span><span style="color: #007700">);<br />    </span><span style="color: #FF8000">// crear miphar.phar.tgz<br />    </span><span style="color: #0000BB">$phar </span><span style="color: #007700">= </span><span style="color: #0000BB">$tarphar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">convertToData</span><span style="color: #007700">(</span><span style="color: #0000BB">Phar</span><span style="color: #007700">::</span><span style="color: #0000BB">PHAR</span><span style="color: #007700">); </span><span style="color: #FF8000">// lanza una excepción<br /></span><span style="color: #007700">} catch (</span><span style="color: #0000BB">Exception $e</span><span style="color: #007700">) {<br />    </span><span style="color: #FF8000">// manejar el error aquí<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-phardata.converttodata-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="phar.converttoexecutable.html" class="function" rel="rdfs-seeAlso">Phar::convertToExecutable()</a> - Convertir un archivo phar en otro formato de archivo phar ejecutable</span></li>
+    <li><span class="function"><a href="phar.converttodata.html" class="function" rel="rdfs-seeAlso">Phar::convertToData()</a> - Convertir un archivo phar en un fichero tar o zip no ejecutable</span></li>
+    <li><span class="function"><a href="phardata.converttoexecutable.html" class="function" rel="rdfs-seeAlso">PharData::convertToExecutable()</a> - Convertir un archivo tar/zip no ejecutable en un archivo phar ejecutable</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

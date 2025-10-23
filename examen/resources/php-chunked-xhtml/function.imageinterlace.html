@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Habilitar o deshabilitar en entrelazamiento</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.imagegrabwindow.html">« imagegrabwindow</a></li>
+      <li style="float: right;"><a href="function.imageistruecolor.html">imageistruecolor »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.image.html">Funciones de GD e Im&aacute;genes</a></li>
+    <li>Habilitar o deshabilitar en entrelazamiento</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.imageinterlace" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">imageinterlace</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">imageinterlace</span> &mdash; <span class="dc-title">Habilitar o deshabilitar en entrelazamiento</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.imageinterlace-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>imageinterlace</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$image</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$interlace</code><span class="initializer"> = 0</span></span>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>imageinterlace()</strong></span> activa o desactiva el bit de entrelazamiento.
+  </p>
+  <p class="para">
+   Si el bit de entrelazamiento está establecido y la imagen es usada como una imagen
+   <abbr title="Joint Photographic Experts Group">JPEG</abbr>, la imagen es creada como un <abbr title="Joint Photographic Experts Group">JPEG</abbr> progresivo.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.imageinterlace-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    <dt><code class="parameter">
+image</code></dt><dd><p class="para">Un recurso image, es devuelto por una de las funciones de creación de imágenes,
+como <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>.</p></dd>
+    
+     <dt><code class="parameter">interlace</code></dt>
+     <dd>
+      <p class="para">
+       Si no es cero, la imagen será entrelazada, si no, el bit de entrelazamiento será desactivado.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.imageinterlace-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve 1 si el bit de entrelazamiento está establecido para la imagen, 0 si no.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.imageinterlace-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-2697">
+    <p><strong>Ejemplo #1 Activar el entrelazamiento usando <span class="function"><strong>imageinterlace()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Crear una instancia de imagen<br /></span><span style="color: #0000BB">$im </span><span style="color: #007700">= </span><span style="color: #0000BB">imagecreatefromgif</span><span style="color: #007700">(</span><span style="color: #DD0000">'php.gif'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Habilitar el entrelazamiento<br /></span><span style="color: #0000BB">imageinterlace</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Guardar la imagen entrelazada<br /></span><span style="color: #0000BB">imagegif</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #DD0000">'./php_entrelazada.gif'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+</div></div></div></body></html>

@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Formatea una fecha/hora local como un entero</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.gmstrftime.html">« gmstrftime</a></li>
+      <li style="float: right;"><a href="function.localtime.html">localtime »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.datetime.html">Funciones de Fecha/Hora</a></li>
+    <li>Formatea una fecha/hora local como un entero</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.idate" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">idate</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">idate</span> &mdash; <span class="dc-title">Formatea una fecha/hora local como un entero</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.idate-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>idate</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$format</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$timestamp</code><span class="initializer"> = time()</span></span>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="para rdfs-comment">
+   Devuelve un número formateado según la cadena de formato dada usando la marca de
+   tiempo <code class="parameter">timestamp</code> de tipo entero dado o el momento local actual
+   si no se da la marca de tiempo. En otras palabras, <code class="parameter">timestamp</code>
+   es opcional y su valor por defecto es el de <span class="function"><a href="function.time.html" class="function">time()</a></span>.
+  </p>
+  <p class="para">
+   A diferencia de <span class="function"><a href="function.date.html" class="function">date()</a></span>, <span class="function"><strong>idate()</strong></span>
+   acepta un sólo carácter en el parámetro <code class="parameter">format</code>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.idate-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">format</code></dt>
+     <dd>
+      <p class="para">
+       <table class="doctable table">
+        <caption><strong>Los siguientes caracteres son reconocidos por el
+        parámetro de cadena <code class="parameter">format</code></strong></caption>
+        
+         <thead>
+          <tr>
+           <th>Caracter <code class="parameter">format</code></th>
+           <th>Descripción</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td><code class="literal">B</code></td>
+           <td>Swatch Beat/Hora Internet</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">d</code></td>
+           <td>Día del mes</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">h</code></td>
+           <td>Hora (formato de 12 horas)</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">H</code></td>
+           <td>Hora (formato de 24 horas)</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">i</code></td>
+           <td>Minutos</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">I</code> (i mayúscula)</td>
+           <td>devuelve <code class="literal">1</code> si el horario de verano (DST) está activado,
+            <code class="literal">0</code> si no</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">L</code> (l mayúscula)</td>
+           <td>devuelve <code class="literal">1</code> para años bisiestos,
+            <code class="literal">0</code> si no</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">m</code></td>
+           <td>Número de mes</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">s</code></td>
+           <td>Segundos</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">t</code></td>
+           <td>Días en el mes actual</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">U</code></td>
+           <td>Segundos desde la Época Unix - 1 de enero de 1970 00:00:00 UTC -
+            esto es lo mismo que en <span class="function"><a href="function.time.html" class="function">time()</a></span></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">w</code></td>
+           <td>Día de la semana (<code class="literal">0</code> para Domingo)</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">W</code></td>
+           <td>Número del mes del año ISO-8601, las semanas comienzan en
+            Lunes</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">y</code></td>
+           <td>Año (1 ó 2 dígitos - comprobar la anotación de abajo)</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">Y</code></td>
+           <td>Año (4 dígitos)</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">z</code></td>
+           <td>Día del año</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">Z</code></td>
+           <td>Ínidce de la zona horaria en segundos</td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+     </dd>
+    
+    
+    
+<dt><code class="parameter">timestamp</code></dt><dd><p class="para">
+ El parámetro opcional <code class="parameter">timestamp</code> es una marca temporal de Unix de tipo
+ <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> que por defecto es la hora local si no se proporciona
+ ningún valor a <code class="parameter">timestamp</code>. En otras palabras,
+ es de forma predeterminada el valor de la función <span class="function"><a href="function.time.html" class="function">time()</a></span>.
+ </p></dd>
+      
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.idate-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve un <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>.
+  </p>
+  <p class="para">
+   Ya que <span class="function"><strong>idate()</strong></span> devuelve siempre un <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> y
+   como éste nunca puede empezar por un &quot;0&quot;, <span class="function"><strong>idate()</strong></span> puede devolver
+   menos dígitos de los que se esperarían. Vea el ejemplo de abajo.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.idate-errors">
+  <h3 class="title">Errores/Excepciones</h3>
+   
+   <p class="para">
+Cada vez que se llame a una función de fecha/hora se generará un <strong><code><a href="errorfunc.constants.html#constant.e-notice">E_NOTICE</a></code></strong>
+si la zona horaria no es válida, y/o un mensaje <strong><code><a href="errorfunc.constants.html#constant.e-strict">E_STRICT</a></code></strong>
+o <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong>
+si se emplea la configuración del sistema o la variable global
+<var class="varname">TZ</var>. Véase también <span class="function"><a href="function.date-default-timezone-set.html" class="function">date_default_timezone_set()</a></span></p>
+ 
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.idate-changelog">
+  <h3 class="title">Historial de cambios</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Versión</th>
+       <th>Descripción</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      
+      <tr><td>5.1.0</td><td><p class="para">
+Ahora muestra un error <strong><code><a href="errorfunc.constants.html#constant.e-strict">E_STRICT</a></code></strong> y <strong><code><a href="errorfunc.constants.html#constant.e-notice">E_NOTICE</a></code></strong>
+cuando ocurren errores con zonas horarias.</p></td></tr>
+
+     
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.idate-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-2106">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>idate()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$timestamp </span><span style="color: #007700">= </span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">'1st January 2004'</span><span style="color: #007700">); </span><span style="color: #FF8000">//1072915200<br /><br />// esto imprime el año en un formato de dos dígitos<br />// sin embargo, ya que éste podría empezar con un "0",<br />// sólo se imprime "4"<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">idate</span><span style="color: #007700">(</span><span style="color: #DD0000">'y'</span><span style="color: #007700">, </span><span style="color: #0000BB">$timestamp</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.idate-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.date.html" class="function" rel="rdfs-seeAlso">date()</a> - Dar formato a la fecha/hora local</span></li>
+    <li><span class="function"><a href="function.getdate.html" class="function" rel="rdfs-seeAlso">getdate()</a> - Obtener informaci&oacute;n de la fecha/hora</span></li>
+    <li><span class="function"><a href="function.time.html" class="function" rel="rdfs-seeAlso">time()</a> - Devuelve la fecha Unix actual</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

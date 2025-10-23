@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Cierra la conexi&oacute;n al servidor memcached</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="memcache.addserver.html">« Memcache::addServer</a></li>
+      <li style="float: right;"><a href="memcache.connect.html">Memcache::connect »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.memcache.html">Memcache</a></li>
+    <li>Cierra la conexi&oacute;n al servidor memcached</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="memcache.close" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Memcache::close</h1>
+  <p class="verinfo">(PECL memcache &gt;= 0.4.0)</p><p class="refpurpose"><span class="refname">Memcache::close</span> &mdash; <span class="dc-title">Cierra la conexión al servidor memcached</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-memcache.close-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>Memcache::close</strong></span>(): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>Memcache::close()</strong></span> cierra la conexión al servidor
+   memcached. Esta función no cierra conexiones persistentes, que solo son
+   cerradas durante apagado/reinicio del servidor web.
+   También se puede usar la función <span class="function"><strong>memcache_close()</strong></span>.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-memcache.close-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-memcache.close-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4377">
+    <p><strong>Ejemplo #1 Ejemplo <span class="function"><strong>Memcache::close()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/* procedural API */<br /></span><span style="color: #0000BB">$memcache_obj </span><span style="color: #007700">= </span><span style="color: #0000BB">memcache_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'memcache_host'</span><span style="color: #007700">, </span><span style="color: #0000BB">11211</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">/* <br />Algo aquí ....<br />*/<br /></span><span style="color: #0000BB">memcache_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$memcache_obj</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* OO API */<br /></span><span style="color: #0000BB">$memcache_obj </span><span style="color: #007700">= new </span><span style="color: #0000BB">Memcache</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$memcache_obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'memcache_host'</span><span style="color: #007700">, </span><span style="color: #0000BB">11211</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">/* <br />Algo aquí..<br />*/<br /></span><span style="color: #0000BB">$memcache_obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-memcache.close-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="memcache.connect.html" class="function" rel="rdfs-seeAlso">Memcache::connect()</a> - Abre una conexi&oacute;n al servidor memcached</span></li>
+    <li><span class="function"><a href="memcache.pconnect.html" class="function" rel="rdfs-seeAlso">Memcache::pconnect()</a> - Abre una conexi&oacute;n persistente a memcached</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

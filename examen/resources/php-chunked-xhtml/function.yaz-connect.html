@@ -1,0 +1,227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Prepara una conexi&oacute;n a un servidor Z39.50</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.yaz-close.html">« yaz_close</a></li>
+      <li style="float: right;"><a href="function.yaz-database.html">yaz_database »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.yaz.html">Funciones de YAZ</a></li>
+    <li>Prepara una conexi&oacute;n a un servidor Z39.50</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.yaz-connect" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">yaz_connect</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.1, PECL yaz &gt;= 0.9.0)</p><p class="refpurpose"><span class="refname">yaz_connect</span> &mdash; <span class="dc-title">
+   Prepara una conexión a un servidor Z39.50
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.yaz-connect-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>yaz_connect</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$zurl</code></span>, <span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$options</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span></div>
+
+  <p class="para rdfs-comment">
+   Esta función devuelve un recurso de conexión en caso de éxito, cero en caso
+   de fallo.
+  </p>
+  <p class="para">
+   <span class="function"><strong>yaz_connect()</strong></span> prepara una conexión a un servidor
+   Z39.50.
+   Esta función es no bloqueante y no intenta establecer
+   una conexión - únicamente prepara la conexión para que pueda ser realizada posteriormente cuando
+   se llame a la función <span class="function"><a href="function.yaz-wait.html" class="function">yaz_wait()</a></span>.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    El proxy <a href="http://www.indexdata.dk/yazproxy/" class="link external">&raquo;&nbsp;YAZ </a> es un proxy
+    Z39.50 disponible gratuitamente.
+   </p>
+  </p></blockquote>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.yaz-connect-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">zurl</code></dt>
+     <dd>
+      <p class="para">
+       Un string que toma la forma <code class="literal">host[:port][/database]</code>.
+       Si se omite el port, se utilizará el port 210. Si se omite database
+       se utilizará <code class="literal">Default</code> .
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">options</code></dt>
+     <dd>
+      <p class="para">
+       Si se trata de un string, éste se trata como el string de autenticación Z39.50 V2
+       (OpenAuth).
+      </p>
+      <p class="para">
+       Si se trata de un array, el contenido del array sirve como opciones.
+       <dl>
+        
+         <dt>user</dt>
+         <dd>
+          <p class="para">
+           Nombre de usuario para la autenticación.
+          </p>
+         </dd>
+        
+        
+         <dt>group</dt>
+         <dd>
+          <p class="para">
+           Grupo para la autenticación.
+          </p>
+         </dd>
+        
+        
+         <dt>password</dt>
+          <dd>
+           <p class="para">
+            Contraseña para la autenticación.
+           </p>
+          </dd>
+        
+        
+         <dt>cookie</dt>
+         <dd>
+          <p class="para">
+           Cookie para la sesión (proxy YAZ).
+          </p>
+         </dd>
+        
+        
+         <dt>proxy</dt>
+         <dd>
+          <p class="para">
+           Proxy para la conexión (proxy YAZ).
+          </p>
+         </dd>
+        
+        
+         <dt>persistent</dt>
+         <dd>
+          <p class="para">
+           Un booleano. Si es <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> la conexión es persistente; Si es <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> la
+           conexión no es persistente. Por defecto las conexiones son persistentes.
+          </p>
+          <blockquote class="note"><p><strong class="note">Nota</strong>: 
+           <p class="para">
+            Si se abre una conexión persistente, no se podrá cerrar
+            posteriormente con la función <span class="function"><a href="function.yaz-close.html" class="function">yaz_close()</a></span>.
+           </p>
+          </p></blockquote>
+         </dd>
+        
+        
+         <dt>piggyback</dt>
+         <dd>
+          <p class="para">
+           Un booleano. Si es <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> piggyback está activado para las búsquedas; Si es <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>
+           piggyback está desactivado. Por defecto piggyback está activado.
+          </p>
+          <p class="para">
+           Activar piggyback es más eficiente y normalmente ahorra
+           una ruta de ida y vuelta en la red para las cargas de los registros por primera vez. Sin embargo, unos
+           pocos servidores Z39.50 no soportan piggyback o ignoran los
+           nombres de los elementos configurados. Para ellos, se debe desactivar piggyback.
+          </p>
+         </dd>
+        
+        
+         <dt>charset</dt>
+         <dd>
+          <p class="para">
+           Un string que especifica el mapa de caracteres que será utilizado como
+           lenguaje y mapa de caracteres en la negociación Z39.50. Utilizar strings como:
+           <code class="literal">ISO-8859-1</code>, <code class="literal">UTF-8</code>,
+           <code class="literal">UTF-16</code>.
+          </p>
+          <p class="para">
+           Muchos servidores Z39.50 no soportan esta funcionalidad (y por ello, ésta es
+           ignorada). Muchos servidores utilizan la codificación ISO-8859-1 para consultas y
+           mensajes. Los registros MARC21/USMARC no están afectados por este parámetro
+          </p>
+         </dd>
+        
+
+        
+         <dt>preferredMessageSize</dt>
+         <dd>
+          <p class="para">
+           Un entero que especifica el tamaño máximo de byte para todos los registros
+           que se devolverán por el objetivo durante la recuperación. Ver el
+           estandard <a href="http://www.loc.gov/z3950/agency/markup/04.html#3.2.1.1.4" class="link external">&raquo;&nbsp;Z39.50</a> para más
+           información.
+          </p>
+          <blockquote class="note"><p><strong class="note">Nota</strong>: 
+           <p class="para">
+            Esta opción está soportada en PECL YAZ 1.0.5 o posteriores.
+           </p>
+          </p></blockquote>
+         </dd>
+        
+
+        
+         <dt>maximumRecordSize</dt>
+         <dd>
+          <p class="para">
+           Un entero que especifica el tamaño máximo de byte de un único registro
+           a ser devuelto por un objetivo durante la recuperación. Esta
+           entidad se denomina como un Exceptional-record-size en el
+          standard <a href="http://www.loc.gov/z3950/agency/markup/04.html#3.2.1.1.4" class="link external">&raquo;&nbsp;Z39.50</a>.
+          </p>
+          <blockquote class="note"><p><strong class="note">Nota</strong>: 
+           <p class="para">
+            Esta opción está soportada en PECL YAZ 1.0.5 o posteriores.
+           </p>
+          </p></blockquote>
+         </dd>
+        
+
+       </dl>
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.yaz-connect-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Un recurso de conexión en caso de éxito, <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.yaz-connect-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.yaz-close.html" class="function" rel="rdfs-seeAlso">yaz_close()</a> - Close YAZ connection</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

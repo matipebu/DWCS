@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>La clase ResourceBundle</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="intldateformatter.settimezone.html">« IntlDateFormatter::setTimeZone</a></li>
+      <li style="float: right;"><a href="resourcebundle.count.html">ResourceBundle::count »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.intl.html">intl</a></li>
+    <li>La clase ResourceBundle</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.resourcebundle" class="reference">
+ <h1 class="title">La clase ResourceBundle</h1>
+ 
+ 
+ <div class="partintro"><p class="verinfo">(PHP 5 &gt;= 5.3.2, PHP 7, PHP 8, PECL intl &gt;= 2.0.0)</p>
+  
+  
+  <div class="section" id="resourcebundle.intro">
+   <h2 class="title">Introducción</h2>
+   <p class="simpara">
+    Los productos de software regionalizados a menudo requieren conjuntos de datos que necesitan ser personalizados
+    dependiendo de la configuración regional actual, p.ej: mensajes, etiquetas, patrones de formateo. El
+    mecanismo de recursos de ICU permite definir conjuntos de recursos que la aplicación puede
+    cargar basándose en la configuración regional, mientras que accede a ellos de una manera unificada independiente de la configuración regional.
+   </p>
+   <p class="simpara">
+    Esta clase implementa el acceso a los ficheros de datos de recursos de ICU. Estos ficheros son arrays de información
+    binaria que ICU utiliza para almacenar la información regional.
+   </p>
+   <p class="simpara">
+    El paquete de recursos de ICU puede contener recursos simples y recursos complejos. Los recursos complejos
+    son contenedores que pueden tener sus índices de tipo into o string (al igual que los arrays de PHP).
+    Los recursos simples pueden ser de los siguientes tipos: string, integer, campos de datos binarios
+    o array de enteros
+   </p>
+   <p class="simpara">
+    <span class="classname"><strong class="classname">ResourceBundle</strong></span> soporta el acceso directo a la información a través de patrones
+    de acceso al array, y la iteración mediante <a href="control-structures.foreach.html" class="link">foreach</a>,
+    así como el acceso mediante métodos de clase. El resultado será un valor de PHP para recursos simples y
+    un objeto <span class="classname"><strong class="classname">ResourceBundle</strong></span> para los complejos. Todos los recursos son de sólo lectura.
+   </p>
+  </div>
+  
+  
+  <div class="section" id="resourcebundle.synopsis">
+   <h2 class="title">Sinopsis de la Clase</h2>
+   
+   
+   <div class="classsynopsis">
+    <span class="ooclass">
+     <strong class="classname"></strong>
+    </span>
+    
+    
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">class</span> <strong class="classname">ResourceBundle</strong>
+     </span>
+     {</div>
+    
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Métodos */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="methodname"><a href="resourcebundle.create.html" class="methodname">__construct</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$locale</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$bundlename</code></span>, <span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$fallback</code><span class="initializer"> = ?</span></span>)</div>
+
+    <div class="methodsynopsis dc-description"><span class="modifier">public</span>
+   <span class="methodname"><a href="resourcebundle.count.html" class="methodname">count</a></span>(): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="methodname"><a href="resourcebundle.create.html" class="methodname">create</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$locale</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$bundlename</code></span>, <span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$fallback</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="class.resourcebundle.html" class="type ResourceBundle">ResourceBundle</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span>
+   <span class="methodname"><a href="resourcebundle.get.html" class="methodname">get</a></span>(<span class="methodparam"><span class="type">string|int</span> <code class="parameter">$index</code></span>): <span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span>
+   <span class="methodname"><a href="resourcebundle.geterrorcode.html" class="methodname">getErrorCode</a></span>(): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span>
+   <span class="methodname"><a href="resourcebundle.geterrormessage.html" class="methodname">getErrorMessage</a></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span>
+   <span class="methodname"><a href="resourcebundle.locales.html" class="methodname">getLocales</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$bundlename</code></span>): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+
+    
+   }</div>
+   
+   
+  </div>
+  
+  
+  
+  <div class="section" id="resourcebundle.seealso">
+   <h2 class="title">Ver también</h2>
+   <p class="para">
+    <ul class="simplelist">
+     <li>
+      <a href="https://unicode-org.github.io/icu/userguide/locale/resources.html" class="link external">&raquo;&nbsp;
+       Gestor de recursos de ICU
+      </a>
+     </li>
+     <li>
+      <a href="https://unicode-org.github.io/icu/userguide/icu_data/" class="link external">&raquo;&nbsp;Datos de ICU</a>
+     </li>
+    </ul>
+   </p>
+  </div>
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+<h2>Tabla de contenidos</h2><ul class="chunklist chunklist_reference"><li><a href="resourcebundle.count.html">ResourceBundle::count</a> — Obtener el n&uacute;mero de elementos de un paquete</li><li><a href="resourcebundle.create.html">ResourceBundle::create</a> — Crear un paquete de recursos</li><li><a href="resourcebundle.get.html">ResourceBundle::get</a> — Obtener datos de un paquete</li><li><a href="resourcebundle.geterrorcode.html">ResourceBundle::getErrorCode</a> — Obtener el c&oacute;dido del &uacute;ltimo error del paquete</li><li><a href="resourcebundle.geterrormessage.html">ResourceBundle::getErrorMessage</a> — Obtener el mensaje del &uacute;ltimo error del paquete</li><li><a href="resourcebundle.locales.html">ResourceBundle::getLocales</a> — Obtener las configuraciones regionales soportadas</li></ul>
+</div>
+</div></div></body></html>

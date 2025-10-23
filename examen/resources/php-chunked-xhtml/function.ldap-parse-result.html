@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Extraer informaci&oacute;n del resultado</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.ldap-parse-reference.html">« ldap_parse_reference</a></li>
+      <li style="float: right;"><a href="function.ldap-read.html">ldap_read »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.ldap.html">LDAP Funciones</a></li>
+    <li>Extraer informaci&oacute;n del resultado</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.ldap-parse-result" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ldap_parse_result</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.5, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">ldap_parse_result</span> &mdash; <span class="dc-title">Extraer información del resultado</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ldap-parse-result-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>ldap_parse_result</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$link</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$result</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter reference">&$errcode</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter reference">&$matcheddn</code><span class="initializer"> = ?</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter reference">&$errmsg</code><span class="initializer"> = ?</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter reference">&$referrals</code><span class="initializer"> = ?</span></span><br>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Analiza un resultado de búsqueda de LDAP.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.ldap-parse-result-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">link</code></dt>
+     <dd>
+      <p class="para">
+       Un identificador de enlace de LDAP, devuelto por <span class="function"><a href="function.ldap-connect.html" class="function">ldap_connect()</a></span>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">result_identifier</code></dt>
+     <dd>
+      <p class="para">
+       Es un recurso de resultado de LDAP, devuelto por <span class="function"><a href="function.ldap-list.html" class="function">ldap_list()</a></span> o
+       <span class="function"><a href="function.ldap-search.html" class="function">ldap_search()</a></span>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">errcode</code></dt>
+     <dd>
+      <p class="para">
+       Es una referencia a una variable que será establecida en el código de error de LDAP en
+       el resultado, o <code class="literal">0</code> si no hubo un error.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">matcheddn</code></dt>
+     <dd>
+      <p class="para">
+       Es una referencia a una variable que será establecida a un DN que coincidió si alguno fue
+       reconocido dentro de la solicitud, de otro modo este será establecido a <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">errmsg</code></dt>
+     <dd>
+      <p class="para">
+       Es una referencia a una variable que será establecida al mensaje de error de LDAP en
+       el resultado, o será una cadena vacía si no hubo error.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">referrals</code></dt>
+     <dd>
+      <p class="para">
+       Es una referencia a una variable que será establecida a un conjunto de <span class="type"><a href="language.types.array.html" class="type array">array</a></span> para
+       todas las cadenas de referencia en el resultado, o un array vacío si no
+       se devuelven referencias.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.ldap-parse-result-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.ldap-parse-result-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4368">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>ldap_parse_result()</strong></span></strong></p>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$result </span><span style="color: #007700">= </span><span style="color: #0000BB">ldap_search</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">, </span><span style="color: #DD0000">"cn=userref,dc=my-domain,dc=com"</span><span style="color: #007700">, </span><span style="color: #DD0000">"(cn=user*)"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$errcode </span><span style="color: #007700">= </span><span style="color: #0000BB">$dn </span><span style="color: #007700">= </span><span style="color: #0000BB">$errmsg </span><span style="color: #007700">= </span><span style="color: #0000BB">$refs </span><span style="color: #007700">=  </span><span style="color: #0000BB">null</span><span style="color: #007700">;<br />if (</span><span style="color: #0000BB">ldap_parse_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">, </span><span style="color: #0000BB">$result</span><span style="color: #007700">, </span><span style="color: #0000BB">$errcode</span><span style="color: #007700">, </span><span style="color: #0000BB">$dn</span><span style="color: #007700">, </span><span style="color: #0000BB">$errmsg</span><span style="color: #007700">, </span><span style="color: #0000BB">$refs</span><span style="color: #007700">)) {<br />    </span><span style="color: #FF8000">// hacer algo con $errcode, $dn, $errmsg y $refs<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

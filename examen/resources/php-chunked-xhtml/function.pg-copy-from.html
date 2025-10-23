@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Insertar registros dentro de una tabla desde un array</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.pg-convert.html">« pg_convert</a></li>
+      <li style="float: right;"><a href="function.pg-copy-to.html">pg_copy_to »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.pgsql.html">Funciones de PostgreSQL</a></li>
+    <li>Insertar registros dentro de una tabla desde un array</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.pg-copy-from" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">pg_copy_from</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">pg_copy_from</span> &mdash; <span class="dc-title">
+   Insertar registros dentro de una tabla desde un array
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.pg-copy-from-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>pg_copy_from</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$connection</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$table_name</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$rows</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$delimiter</code><span class="initializer"> = ?</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$null_as</code><span class="initializer"> = ?</span></span><br>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   La función <span class="function"><strong>pg_copy_from()</strong></span> inserta registros dentro de una tabla desde 
+   el parámetro <code class="parameter">rows</code>. Esta realiza internamente un comando SQL <code class="literal">COPY FROM</code>
+   para insertar registros.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.pg-copy-from-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">connection</code></dt>
+     <dd>
+      <p class="para">
+       Recurso de conexión a la base de datos PostgreSQL.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">table_name</code></dt>
+     <dd>
+      <p class="para">
+       Nombre de la tabla en la cual se copiará lo que provenga de <code class="parameter">rows</code>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">rows</code></dt>
+     <dd>
+      <p class="para">
+       Un <span class="type"><a href="language.types.array.html" class="type array">array</a></span> de datos a ser copiados dentro de <code class="parameter">table_name</code>.
+       Cada valor en el parámetro <code class="parameter">rows</code> se convierte en una fila en <code class="parameter">table_name</code>.
+       Cada valor en el parámetro <code class="parameter">rows</code> debe ser una cadena delimitada de los valores
+       a insertar en cada campo.  Los valores deben ser terminados con un salto de línea.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">delimiter</code></dt>
+     <dd>
+      <p class="para">
+       Símbolo que serpara valores por cada campo en cada elemento del parámetro
+       <code class="parameter">rows</code>.  El predeterminado es <code class="literal">TAB</code>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">null_as</code></dt>
+     <dd>
+      <p class="para">
+       Es como SQL <code class="literal">NULL</code> (anula) los valores que son representados en el
+       parámetro <code class="parameter">rows</code>.  El predeterminado es \N (&quot;\\N&quot;).
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.pg-copy-from-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+   <p class="para">
+    Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+   </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.pg-copy-from-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-1899">
+    <p><strong>Ejemplo #1 Ejemplo de la función <span class="function"><strong>pg_copy_from()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />   $db </span><span style="color: #007700">= </span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=publisher"</span><span style="color: #007700">) or die(</span><span style="color: #DD0000">"No se pudo conectar"</span><span style="color: #007700">);<br />   <br />   </span><span style="color: #0000BB">$rows </span><span style="color: #007700">= </span><span style="color: #0000BB">pg_copy_to</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">, </span><span style="color: #0000BB">$table_name</span><span style="color: #007700">);<br />   <br />   </span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">, </span><span style="color: #DD0000">"DELETE FROM </span><span style="color: #0000BB">$table_name</span><span style="color: #DD0000">"</span><span style="color: #007700">);<br />   <br />   </span><span style="color: #0000BB">pg_copy_from</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">, </span><span style="color: #0000BB">$table_name</span><span style="color: #007700">, </span><span style="color: #0000BB">$rows</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div> 
+  </p>
+ </div>
+
+  
+ <div class="refsect1 seealso" id="refsect1-function.pg-copy-from-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.pg-copy-to.html" class="function" rel="rdfs-seeAlso">pg_copy_to()</a> - Copiar una tabla a un array</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

@@ -1,0 +1,314 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Obtener el tama&ntilde;o de una imagen</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.gd-info.html">« gd_info</a></li>
+      <li style="float: right;"><a href="function.getimagesizefromstring.html">getimagesizefromstring »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.image.html">Funciones de GD e Im&aacute;genes</a></li>
+    <li>Obtener el tama&ntilde;o de una imagen</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.getimagesize" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">getimagesize</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">getimagesize</span> &mdash; <span class="dc-title">Obtener el tamaño de una imagen</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.getimagesize-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>getimagesize</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$filename</code></span>, <span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter reference">&$imageinfo</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+
+  <p class="para rdfs-comment">
+   La función <span class="function"><strong>getimagesize()</strong></span> determinará el tamaño
+   de un fichero de imagen dado y devolverá las dimensiones junto con
+   el tipo de fichero, una cadena de texto con el <code class="literal">alto/ancho</code> para
+   utilizarla dentro una etiqueta <code class="tag">IMG</code> de <abbr title="Hyper Text Markup Language">HTML</abbr>, y el
+   tipo de contenido <abbr title="Hypertext Transfer Protocol">HTTP</abbr> correspondiente.
+  </p>
+  <p class="para">
+   <span class="function"><strong>getimagesize()</strong></span> también puede devolver alguna información más
+   con el parámetro <code class="parameter">imageinfo</code>.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <span class="simpara">
+    Observe que JPC y JP2 pueden tener componentes con diferente profundidad
+    de bit. En tal caso, el valor  para &quot;bits&quot; es la mayor profundidad de bit encontrada. También,
+    los ficheros JP2 pueden contener <code class="literal">múltiples flujos de código JPEG 2000</code>.
+    En este caso, <span class="function"><strong>getimagesize()</strong></span> devuelve los valores del primer
+    flujo de código que encuentre en la raíz del fichero.
+   </span>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <span class="simpara">
+    La información sobre iconos se recupera desde el icono con la mayor
+    tasa de bit.
+   </span>
+  </p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.getimagesize-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">filename</code></dt>
+     <dd>
+      <p class="para">
+       Este parámetro especifica el fichero del cual recuperar información.
+       Puede hacer referencia a un fichero local o (si la configuración lo permite) a un
+       fichero remoto usando uno de los flujos soportados. 
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">imageinfo</code></dt>
+     <dd>
+      <p class="para">
+       Este parámetro opcional permite extraer alguna información ampliada
+       del fichero de imagen. Actualmente, devolverá los diferentes
+       marcadores APP de <abbr>JPG</abbr> como un array asociativo.
+       Algunos programas usan estos marcadores APP para incluir información de texto en
+       imágenes. Un uso muy común es incluir información
+       <a href="http://www.iptc.org/" class="link external">&raquo;&nbsp;IPTC</a> en el marcador APP13.
+       Se puede usar la función <span class="function"><a href="function.iptcparse.html" class="function">iptcparse()</a></span> para convertir el
+       marcador binario APP13 en algo que sea legible.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.getimagesize-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve un array de hasta 7 elementos. No todos los tipos de imagen incluirán
+   los elementos <code class="literal">channels</code> y <code class="literal">bits</code>.
+  </p>
+  <p class="para">
+   Los índices 0 y 1 contienen el ancho y el alto de la imagen, respectivamente.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Algunos formatos podrían no contener imágenes o contener múltiples imágenes. En estos
+    casos, <span class="function"><strong>getimagesize()</strong></span> no será capaz de determinar
+    apropiadamente el tamaño de la imagen. <span class="function"><strong>getimagesize()</strong></span> devolverá
+    cero para el ancho y el alto en estos casos.
+   </p>
+  </p></blockquote>
+  <p class="para">
+   El índice 2 es una de las <a href="image.constants.html" class="link">constantes IMAGETYPE_XXX</a> que indican
+   el tipo de imagen.
+  </p>
+  <p class="para">
+   El índice 3 es una cadena de texto con el string correcot
+   <code class="literal">height=&quot;yyy&quot; width=&quot;xxx&quot;</code> que puede ser usada
+   dierectamente en una etiqueta <abbr>IMG</abbr>.
+  </p>
+  <p class="para">
+   <code class="literal">mime</code> es el tipo MIME correspondiente de la imagen.
+   Esta información se puede usar para emitir imágenes con la cabecera HTTP 
+   <code class="literal">Content-type</code> correcta:
+   <div class="example" id="example-2611">
+    <p><strong>Ejemplo #1 <span class="function"><strong>getimagesize()</strong></span> y tipos MIME</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$tamaño </span><span style="color: #007700">= </span><span style="color: #0000BB">getimagesize</span><span style="color: #007700">(</span><span style="color: #0000BB">$nombre_fichero</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$fp </span><span style="color: #007700">= </span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$nombre_fichero</span><span style="color: #007700">, </span><span style="color: #DD0000">"rb"</span><span style="color: #007700">);<br />if (</span><span style="color: #0000BB">$tamaño </span><span style="color: #007700">&amp;&amp; </span><span style="color: #0000BB">$fp</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">"Content-type: </span><span style="color: #007700">{</span><span style="color: #0000BB">$tamaño</span><span style="color: #007700">[</span><span style="color: #DD0000">'mime'</span><span style="color: #007700">]}</span><span style="color: #DD0000">"</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">fpassthru</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br />    exit;<br />} else {<br />    </span><span style="color: #FF8000">// error<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Los <code class="literal">channels</code> serán 3 para ímagenes RGB y 4 para ímagenes
+   CMYK.
+  </p>
+  <p class="para">
+   <code class="literal">bits</code> es el número de bits de cada color.
+  </p>
+  <p class="para">
+   Para algunos tipos de imagen, la presencia de los valores <code class="literal">channels</code> y
+   <code class="literal">bits</code> pueden ser un poco confusos. Como
+   ejemplo, <abbr title="Graphic Interchange Format">GIF</abbr> siempre usa 3 canales
+   por píxel, pero el número de bits por pixel no puede ser calculado para un
+   <abbr title="Graphic Interchange Format">GIF</abbr> animado con una tabla de colores global.
+  </p>
+  <p class="para">
+   En caso de error devuelve <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 errors" id="refsect1-function.getimagesize-errors">
+  <h3 class="title">Errores/Excepciones</h3>
+  <p class="para">
+   Si el acceso a la imagen <code class="parameter">filename</code> es imposible,
+   <span class="function"><strong>getimagesize()</strong></span> generará un error de nivel
+   <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong>. Si se produce un error de lectura,
+   <span class="function"><strong>getimagesize()</strong></span> generará un error de nivel
+   <strong><code><a href="errorfunc.constants.html#constant.e-notice">E_NOTICE</a></code></strong>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 changelog" id="refsect1-function.getimagesize-changelog">
+  <h3 class="title">Historial de cambios</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Versión</th>
+       <th>Descripción</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.3.0</td>
+       <td>
+        Se añadió el soporte para iconos.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.2.3</td>
+       <td>
+        Los errores de lectura generados por esta función se degradaron desde
+        <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong> a <strong><code><a href="errorfunc.constants.html#constant.e-notice">E_NOTICE</a></code></strong>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>4.3.2</td>
+       <td>
+        Se añadió el soporte para <abbr title="Japan Picture">JPC</abbr>, <abbr title="JPEG-2000">JP2</abbr>,
+        <abbr>JPX</abbr>, <abbr title="Joint Bilevel Image Experts Group">JB2</abbr>, 
+        <abbr title="X Bitmap">XBM</abbr> y <abbr title="Wireless Bitmap">WBMP</abbr>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>4.3.2</td>
+       <td>
+        Se añadió el soporte para JPEG 2000 para el parámetro
+        <code class="parameter">imageinfo</code>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>4.3.0</td>
+       <td>
+        <code class="literal">bits</code> y <code class="literal">channels</code> están presentes
+        para otro tipo de imágenes también.
+       </td>
+      </tr>
+
+      <tr>
+       <td>4.3.0</td>
+       <td>
+        Se añadió el soporte para <abbr>SWC</abbr> y
+        <abbr title="Interchange File Format">IFF</abbr>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>4.2.0</td>
+       <td>
+        Se añadió el soporte para <abbr title="Tagged Image File Format">TIFF</abbr>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>4.0.6</td>
+       <td>
+        Se añadió el soporte para <abbr title="Bitmap">BMP</abbr> y
+        <abbr title="Photoshop Document">PSD</abbr>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.getimagesize-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-2612">
+    <p><strong>Ejemplo #2 Ejemplo de<span class="function"><strong>getimagesize()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">list(</span><span style="color: #0000BB">$ancho</span><span style="color: #007700">, </span><span style="color: #0000BB">$alto</span><span style="color: #007700">, </span><span style="color: #0000BB">$tipo</span><span style="color: #007700">, </span><span style="color: #0000BB">$atributos</span><span style="color: #007700">) = </span><span style="color: #0000BB">getimagesize</span><span style="color: #007700">(</span><span style="color: #DD0000">"img/flag.jpg"</span><span style="color: #007700">);<br />echo </span><span style="color: #DD0000">"&lt;img src=\"img/flag.jpg\" </span><span style="color: #0000BB">$atributos</span><span style="color: #DD0000"> alt=\"Ejemplo de getimagesize()\" /&gt;"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-2613">
+    <p><strong>Ejemplo #3 getimagesize (URL)</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$tamaño </span><span style="color: #007700">= </span><span style="color: #0000BB">getimagesize</span><span style="color: #007700">(</span><span style="color: #DD0000">"http://www.example.com/gifs/logo.gif"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// si el nombre de fichero contiene espacios, codifíquelo apropiadamente<br /></span><span style="color: #0000BB">$tamaño </span><span style="color: #007700">= </span><span style="color: #0000BB">getimagesize</span><span style="color: #007700">(</span><span style="color: #DD0000">"http://www.example.com/gifs/lo%20go.gif"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-2614">
+    <p><strong>Ejemplo #4 getimagesize() devolviendo IPTC</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$tamaño </span><span style="color: #007700">= </span><span style="color: #0000BB">getimagesize</span><span style="color: #007700">(</span><span style="color: #DD0000">"prueba.jpg"</span><span style="color: #007700">, </span><span style="color: #0000BB">$info</span><span style="color: #007700">);<br />if (isset(</span><span style="color: #0000BB">$info</span><span style="color: #007700">[</span><span style="color: #DD0000">"APP13"</span><span style="color: #007700">])) {<br />    </span><span style="color: #0000BB">$iptc </span><span style="color: #007700">= </span><span style="color: #0000BB">iptcparse</span><span style="color: #007700">(</span><span style="color: #0000BB">$info</span><span style="color: #007700">[</span><span style="color: #DD0000">"APP13"</span><span style="color: #007700">]);<br />    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$iptc</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.getimagesize-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: <p class="para">Esta función no requiere la librería GD image.</p></p></blockquote>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Esta función requiere que <code class="parameter">filename</code> sea un fichero
+    de imagen válido. Si se proporciona un fichero que no sea imagen, este podría ser
+    detectado incorrectamente como una imagen y la función devolver como éxito.
+   </p>
+   <p class="para">
+    No de debe usar <span class="function"><strong>getimagesize()</strong></span> para comprobar que una fichero
+    dado es una imagen válida. Use una solución a propósito tal como la
+    extensión <a href="book.fileinfo.html" class="link">Fileinfo</a> en su lugar.
+   </p>
+  </p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.getimagesize-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.image-type-to-mime-type.html" class="function" rel="rdfs-seeAlso">image_type_to_mime_type()</a> - Obtiene el tipo Mime de un tipo de imagen devuelto por getimagesize,
+   exif_read_data, exif_thumbnail, exif_imagetype</span></li>
+    <li><span class="function"><a href="function.exif-imagetype.html" class="function" rel="rdfs-seeAlso">exif_imagetype()</a> - Determinar el tipo de una imagen</span></li>
+    <li><span class="function"><a href="function.exif-read-data.html" class="function" rel="rdfs-seeAlso">exif_read_data()</a> - Lee las cabeceras EXIF desde un JPEG o un TIFF</span></li>
+    <li><span class="function"><a href="function.exif-thumbnail.html" class="function" rel="rdfs-seeAlso">exif_thumbnail()</a> - Recuperar la miniatura embebida de una imagen TIFF o JPEG</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

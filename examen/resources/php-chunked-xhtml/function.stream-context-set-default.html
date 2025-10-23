@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Establecer el contexto de flujo predeterminado</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.stream-context-get-params.html">« stream_context_get_params</a></li>
+      <li style="float: right;"><a href="function.stream-context-set-option.html">stream_context_set_option »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.stream.html">Funciones de Flujos</a></li>
+    <li>Establecer el contexto de flujo predeterminado</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.stream-context-set-default" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">stream_context_set_default</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">stream_context_set_default</span> &mdash; <span class="dc-title">Establecer el contexto de flujo predeterminado</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.stream-context-set-default-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>stream_context_set_default</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$options</code></span>): <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span></div>
+
+  <p class="simpara">
+   Establece el contexto de flujo predeterminado que será usado siempre que la operaciones de archivos
+   (<span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>, <span class="function"><a href="function.file-get-contents.html" class="function">file_get_contents()</a></span>, etc...)
+   sean llamadas sin un parámetro de contexto. Usa la misma sintaxis que
+   <span class="function"><a href="function.stream-context-create.html" class="function">stream_context_create()</a></span>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.stream-context-set-default-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">options</code></dt>
+     <dd>
+      <p class="para">
+       Las opciones a establecer para el contexto predeterminado.
+      </p>
+      <blockquote class="note"><p><strong class="note">Nota</strong>: 
+       <p class="para">
+        <code class="parameter">options</code> debe ser una matriz
+        asociativa de matrices asociativas con el formato
+        <code class="literal">$matriz[&#039;envoltura&#039;][&#039;opción&#039;] = $valor</code>.
+       </p>
+      </p></blockquote>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.stream-context-set-default-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el contexto de flujo predeterminado.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.stream-context-set-default-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="stream-context-set-default.example.basic">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>stream_context_set_default()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$opcs_pred </span><span style="color: #007700">= array(<br />  </span><span style="color: #DD0000">'http'</span><span style="color: #007700">=&gt;array(<br />    </span><span style="color: #DD0000">'método'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"GET"</span><span style="color: #007700">,<br />    </span><span style="color: #DD0000">'cabecera'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"Accept-language: en\r\n" </span><span style="color: #007700">.<br />              </span><span style="color: #DD0000">"Cookie: foo=bar"</span><span style="color: #007700">,<br />    </span><span style="color: #DD0000">'proxy'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"tcp://10.54.1.39:8000"<br />  </span><span style="color: #007700">)<br />);<br /><br /></span><span style="color: #0000BB">$predeterminado </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_set_default</span><span style="color: #007700">(</span><span style="color: #0000BB">$opcs_pred</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* Envía una petición GET normal al servidor proxy en 10.54.1.39<br /> * Para www.example.com usar opciones de contexto especificadas en $opcs_pred<br /> */<br /></span><span style="color: #0000BB">readfile</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://www.example.com'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.stream-context-set-default-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.stream-context-create.html" class="function" rel="rdfs-seeAlso">stream_context_create()</a> - Crear un contexto de flujo</span></li>
+    <li><span class="function"><a href="function.stream-context-get-default.html" class="function" rel="rdfs-seeAlso">stream_context_get_default()</a> - Recuperar el contexto de flujo predeterminado</span></li>
+    <li>Listado de las envolturas soportadas con opciones de contexto (<a href="wrappers.html" class="xref">Protocolos y Envolturas soportados</a>).</li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

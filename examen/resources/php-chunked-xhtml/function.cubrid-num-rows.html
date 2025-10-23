@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Obtener el n&uacute;mero de filas del conjunto de resultados</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.cubrid-num-cols.html">« cubrid_num_cols</a></li>
+      <li style="float: right;"><a href="function.cubrid-pconnect.html">cubrid_pconnect »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.cubrid.html">Funciones de CUBRID</a></li>
+    <li>Obtener el n&uacute;mero de filas del conjunto de resultados</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.cubrid-num-rows" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">cubrid_num_rows</h1>
+  <p class="verinfo">(PECL CUBRID &gt;= 8.3.0)</p><p class="refpurpose"><span class="refname">cubrid_num_rows</span> &mdash; <span class="dc-title">Obtener el número de filas del conjunto de resultados</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.cubrid-num-rows-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>cubrid_num_rows</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$result</code></span>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="para rdfs-comment">
+   La función <span class="function"><strong>cubrid_num_rows()</strong></span> se usa para obtener el
+   número de filas del resultado de la consulta. Se puede usar sólo cuando la consulta
+   ejecutada es una sentencia SELECT. Cuando se quiere conocer dicho valor para
+   consultas INSERT, UPDATE, o DELETE, se tiene que usar la
+   función <span class="function"><a href="function.cubrid-affected-rows.html" class="function">cubrid_affected_rows()</a></span>.
+  </p>
+  <p class="para">
+   Nota: La función <span class="function"><strong>cubrid_num_rows()</strong></span> sólo puede ser usada
+   para consultas síncronas; devuelve 0 cuando se usa para consultas asíncronas.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.cubrid-num-rows-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">result</code></dt>
+     <dd><p class="para"><code class="parameter">result</code> viene de una llamada a
+    <span class="function"><a href="function.cubrid-execute.html" class="function">cubrid_execute()</a></span>, <span class="function"><a href="function.cubrid-query.html" class="function">cubrid_query()</a></span> y
+    <span class="function"><a href="function.cubrid-prepare.html" class="function">cubrid_prepare()</a></span></p></dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.cubrid-num-rows-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   El número de filas, cuando el proceso tiene éxito.
+  </p>
+  <p class="para">
+   0 cuando la consulta fue hecha en modo asíncrono.
+  </p>
+  <p class="para">
+   -1, si la sentencia SQL no es SELECT.
+  </p>
+  <p class="para">
+   <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> cuando el proceso no tiene éxito.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.cubrid-num-rows-examples">
+  <h3 class="title">Ejemplos</h3>
+  <div class="example" id="example-1152">
+   <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>cubrid_num_rows()</strong></span></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$conn </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">, </span><span style="color: #0000BB">33000</span><span style="color: #007700">, </span><span style="color: #DD0000">"demodb"</span><span style="color: #007700">, </span><span style="color: #DD0000">"dba"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$req </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #DD0000">"SELECT * FROM code"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$row_num </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_num_rows</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$col_num </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_num_cols</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Row Num: %d\nColumn Num: %d\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$row_num</span><span style="color: #007700">, </span><span style="color: #0000BB">$col_num</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">cubrid_disconnect</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Row Num: 6
+Column Num: 2</pre>
+</div>
+   </div>
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.cubrid-num-rows-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.cubrid-execute.html" class="function" rel="rdfs-seeAlso">cubrid_execute()</a> - Ejecutar una sentencia SQL preparada</span></li>  
+    <li><span class="function"><a href="function.cubrid-num-cols.html" class="function" rel="rdfs-seeAlso">cubrid_num_cols()</a> - Devolver el n&uacute;mero de columnas del conjunto de resultados</span></li>  
+    <li><span class="function"><a href="function.cubrid-affected-rows.html" class="function" rel="rdfs-seeAlso">cubrid_affected_rows()</a> - Devolver el n&uacute;mero de filas afectadas por la &uacute;ltima sentencia SQL</span></li>  
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

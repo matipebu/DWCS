@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Retroreferencias</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="regexp.reference.repetition.html">« Repetici&oacute;n</a></li>
+      <li style="float: right;"><a href="regexp.reference.assertions.html">Declaraciones »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="reference.pcre.pattern.syntax.html">Sintaxis de expresiones regulares de PCRE</a></li>
+    <li>Retroreferencias</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="regexp.reference.back-references" class="section">
+  <h2 class="title">Retroreferencias</h2>
+  <p class="para">
+   Fuera de una clase carácter, una barra invertida seguida por un dígito
+   mayor que 0 (y posiblemente más dígitos) es una retroreferencia
+   a un sub-patrón de captura anterior (esto es a su izquierda)
+   del patrón, siempre que hayan habido tantas capturas entre
+   paréntesis previas a la izquierda.
+  </p>
+  <p class="para">
+   Sin embargo, si el número decimal que sigue a la barra invertida es
+   menor que 10, siempre es tomado como una retroreferencia, y
+   produce un error sólo si no hay tantas capturas
+   anteriores entre paréntesis en el patrón completo. En otras palabras, los
+   paréntesis que son referenciados no necesitan estar a la izquierda de
+   la referencia para números menores que 10.
+   Una &quot;retroreferencia hacia adelante&quot; puede tener sentido cuando está involucrada
+   una repetición y el sub-patrón de la derecha ha participado
+   en una iteración anterior. Véase la sección anterior
+   titulada &quot;Barra invertida&quot; para más detalles acerca del manejo de
+   los dígitos que siguen a una barra invertida.
+  </p>
+  <p class="para">
+   Una retroreferencia coincide con cualquier cosa que en realidad haya coincidido
+   con el sub-patrón de captura en la cadena objetivo actual, más que con
+   cualquier cosa que coincida en el sub-patrón mismo. Así, el patrón
+   
+   <code class="literal">(abraz|apreci)o de un \1ador</code>
+   
+   coindice con &quot;abrazo de un abrazador&quot; y con &quot;aprecio de un apreciador&quot;,
+   pero no con &quot;abrazo de un apreciador&quot;. Si la coincidencia sensible a
+   mayúsculas-minúsculas está en vigor en el momento de la retroreferencia,
+   la distinción de letras es relevante. Por ejemplo,
+   
+   <code class="literal">((?i)bla)\s+\1</code>
+   
+   coincide con &quot;bla bla&quot; y &quot;BLA BLA&quot;, pero no con &quot;BLA bla&quot;, incluso
+   si el patrón de captura original es comparado de forma insensible a
+   mayúsculas-minúsculas.
+  </p>
+  <p class="para">
+   Puede haber más de una retroreferencia hacia el mismo sub-patrón.
+   Si un sub-patrón no ha sido usado en realidad en una
+   coincidencia en particular, cualquier retroreferencia a él siempre
+   falla. Por ejemplo, el patrón
+   
+   <code class="literal">(a|(bc))\2</code>
+   
+   siempre falla si comienza coincidiendo con &quot;a&quot; en vez de con &quot;bc&quot;.
+   Ya que puede haber hasta 99 retroreferencias, todos los dígitos
+   que siguen a la barra invertida se toman como parte de un número
+   posible de retroreferencias. Si el patrón continúa con un carácter
+   dígito, entonces se deben usar algunos delimitadores para finalizar la
+   retroreferencia. Si la opción <a href="reference.pcre.pattern.modifiers.html" class="link">PCRE_EXTENDED</a> está
+   establecida, éste puede ser un espacio en blanco. De otra manera se puede usar un comentario vacío.
+  </p>
+  <p class="para">
+   Una retroreferencia que sucede dentro de los paréntesis a los cuales
+   se refiere, falla cuando el sub-patrón se usa primero, así, por
+   ejemplo, (a\1) nunca coincide. Sin embargo, tales referencias pueden
+   ser útiles dentro de sub-patrones repetidos. Por ejemplo, el patrón
+   
+   <code class="literal">(a|b\1)+</code>
+   
+   coincide con cualquier número de &quot;a&quot;es y tambíen con &quot;aba&quot;, &quot;ababba&quot;, etc. En
+   cada iteración del subpatrón, la retroreferencia coincide con
+   el cadena correspondiente a la iteración anterior.
+   Para que esto funcione, el patrón debe ser tal
+   que la primera iteración no necesite coincidir con la retroreferencia.
+   Esto se puede lograr usando alternancia, como en el
+   ejemplo anterior, o mediante un cuantificador con un mínimo de cero.
+  </p>
+  <p class="para">
+   A partir de PHP 5.2.2, la secuencia de escape <code class="literal">\g</code> se puede
+   usar para referenciar subpatrones de forma absoluta y relativa.
+   Esta secuencia de escape debe estar seguida por un número sin signo o un número
+   negativo, opcionalmente encerrado entre llaves. Las secuencias <code class="literal">\1</code>,
+   <code class="literal">\g1</code> y <code class="literal">\g{1}</code> son sinónimas
+   unas de otras. El uso de este patrón con un número sin signo puede
+   ayudar a eliminar la ambigüedad inherente al usar dígitos seguidos de una
+   barra invertida. La secuencia ayuda a distinguir retroreferencias de caracteres
+   octales y también hace más fácil tener una retroreferencia seguida
+   por un número literal, p.ej. <code class="literal">\g{2}1</code>.
+  </p>
+  <p class="para">
+   El uso de la secuencia <code class="literal">\g</code> con un número negativo
+   significa una referencia relativa. Por ejemplo, <code class="literal">(foo)(bar)\g{-1}</code>
+   coincidiría con la secuencia &quot;foobarbar&quot; y <code class="literal">(foo)(bar)\g{-2}</code>
+   coincidiría con &quot;foobarfoo&quot;. Esto puede ser útil en patrones largos como una alternativa
+   de seguir la pista del número de subpatrones para referenciar
+   un subpatrón previo específico.
+  </p>
+  <p class="para">
+   Las retroreferencias a sub-patrones nominados se pueden lograr mediante
+   <code class="literal">(?P=nombre)</code> o, desde PHP 5.2.2, también mediante
+   <code class="literal">\k&lt;nombre&gt;</code> o <code class="literal">\k&#039;nombre&#039;</code>.
+   Además, PHP 5.2.4 añadió soporte para <code class="literal">\k{nombre}</code>
+   y <code class="literal">\g{nombre}</code>, y PHP 5.2.7 para
+   <code class="literal">\g&lt;name&gt;</code> y <code class="literal">\g&#039;name&#039;</code>.
+  </p>
+ </div></div></div></body></html>

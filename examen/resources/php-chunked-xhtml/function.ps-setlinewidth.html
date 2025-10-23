@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Establecer el ancho de una l&iacute;nea</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.ps-setlinejoin.html">« ps_setlinejoin</a></li>
+      <li style="float: right;"><a href="function.ps-setmiterlimit.html">ps_setmiterlimit »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.ps.html">Funciones de PS</a></li>
+    <li>Establecer el ancho de una l&iacute;nea</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.ps-setlinewidth" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ps_setlinewidth</h1>
+  <p class="verinfo">(PECL ps &gt;= 1.1.0)</p><p class="refpurpose"><span class="refname">ps_setlinewidth</span> &mdash; <span class="dc-title">Establecer el ancho de una línea</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ps-setlinewidth-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>ps_setlinewidth</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$psdoc</code></span>, <span class="methodparam"><span class="type"><a href="language.types.float.html" class="type float">float</a></span> <code class="parameter">$width</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Esteblece el ancho de línea para todas las operaciones de dibujo siguientes.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.ps-setlinewidth-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">psdoc</code></dt>
+     <dd>
+      <p class="para">
+       El identificador de recursos del fichero postscript,
+       como el devuelto por la función <span class="function"><a href="function.ps-new.html" class="function">ps_new()</a></span>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">width</code></dt>
+     <dd>
+      <p class="para">
+       El ancho de las líneas en puntos.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.ps-setlinewidth-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.ps-setlinewidth-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.ps-setlinecap.html" class="function" rel="rdfs-seeAlso">ps_setlinecap()</a> - Establecer la apariencia de los extremos de l&iacute;nea</span></li>
+    <li><span class="function"><a href="function.ps-setlinejoin.html" class="function" rel="rdfs-seeAlso">ps_setlinejoin()</a> - Establecer c&oacute;mo est&aacute;n unidas las l&iacute;neas conectadas</span></li>
+    <li><span class="function"><a href="function.ps-setmiterlimit.html" class="function" rel="rdfs-seeAlso">ps_setmiterlimit()</a> - Establecer el l&iacute;mite del inglete</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

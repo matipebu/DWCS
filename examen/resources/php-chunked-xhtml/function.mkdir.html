@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Crea un directorio</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.lstat.html">« lstat</a></li>
+      <li style="float: right;"><a href="function.move-uploaded-file.html">move_uploaded_file »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.filesystem.html">Funciones del Sistema de Archivos</a></li>
+    <li>Crea un directorio</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mkdir" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mkdir</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mkdir</span> &mdash; <span class="dc-title">Crea un directorio</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.mkdir-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mkdir</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$pathname</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$mode</code><span class="initializer"> = 0777</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$recursive</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$context</code><span class="initializer"> = ?</span></span><br>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Intenta crear el directorio especificado por pathname.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mkdir-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">pathname</code></dt>
+     <dd>
+      <p class="para">
+       La ruta del directorio.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">mode</code></dt>
+     <dd>
+      <p class="para">
+       El modo predeterminado es 0777, lo que significa el acceso más amplio
+       posible. Para más información sobre los modos, lea los detalles
+       en la página de <span class="function"><a href="function.chmod.html" class="function">chmod()</a></span>.
+      </p>
+      <blockquote class="note"><p><strong class="note">Nota</strong>: 
+       <p class="para">
+        <code class="parameter">mode</code> es ignorado en Windows.
+       </p>
+      </p></blockquote>
+      <p class="para">
+       Observe que probablemente se quiera especificar el modo como un número octal,
+       lo que significa que debería de haber un cero inicial. El modo es modificado también
+       por la actual máscara de usuario, la cual se puede cambiar usando
+       <span class="function"><a href="function.umask.html" class="function">umask()</a></span>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">recursive</code></dt>
+     <dd>
+      <p class="para">
+       Permite la creación de directorios anidados especificado en el
+       parámetro <code class="parameter">pathname</code>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">context</code></dt>
+     <dd>
+      <blockquote class="note"><p><strong class="note">Nota</strong>: <span class="simpara">Soporte para context fue
+añadido en PHP 5.0.0. Para una descripción de <code class="literal">contexts</code>, refiérase a
+<a href="book.stream.html" class="xref">Flujos</a>.</span></p></blockquote>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mkdir-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.mkdir-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-2209">
+    <p><strong>Ejemplo #1 Ejmplo de <span class="function"><strong>mkdir()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />mkdir</span><span style="color: #007700">(</span><span style="color: #DD0000">"/ruta/a/mi/directorio"</span><span style="color: #007700">, </span><span style="color: #0000BB">0700</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-2210">
+    <p><strong>Ejemplo #2 <span class="function"><strong>mkdir()</strong></span> usando el parámetro <code class="parameter">recursive</code></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Estructura de la carpeta deseada<br /></span><span style="color: #0000BB">$estructura </span><span style="color: #007700">= </span><span style="color: #DD0000">'./nivel1/nivel2/nivel3/'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">// Para crear una estructura anidada se debe especificar<br />// el parámetro $recursive en mkdir().<br /><br /></span><span style="color: #007700">if(!</span><span style="color: #0000BB">mkdir</span><span style="color: #007700">(</span><span style="color: #0000BB">$estructura</span><span style="color: #007700">, </span><span style="color: #0000BB">0777</span><span style="color: #007700">, </span><span style="color: #0000BB">true</span><span style="color: #007700">)) {<br />    die(</span><span style="color: #DD0000">'Fallo al crear las carpetas...'</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">// ...<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.mkdir-errors">
+  <h3 class="title">Errores/Excepciones</h3>
+  <p class="para">
+   Emite un error de nivel <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong> si el directorio
+   ya existe.
+  </p>
+  <p class="para">
+   Emite un error de nivel <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong> si los permisos
+   relevantes impiden crear el directorio.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.mkdir-notes">
+  <h3 class="title">Notas</h3>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mkdir-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.is-dir.html" class="function" rel="rdfs-seeAlso">is_dir()</a> - Indica si el nombre de archivo es un directorio</span></li>
+    <li><span class="function"><a href="function.rmdir.html" class="function" rel="rdfs-seeAlso">rmdir()</a> - Elimina un directorio</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

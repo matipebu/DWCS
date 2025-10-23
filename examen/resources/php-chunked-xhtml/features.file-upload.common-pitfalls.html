@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Dificultades comunes</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="features.file-upload.errors.html">« Explicaci&oacute;n de los mensajes de error</a></li>
+      <li style="float: right;"><a href="features.file-upload.multiple.html">Subida de varios ficheros »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="features.file-upload.html">Subida de ficheros</a></li>
+    <li>Dificultades comunes</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="features.file-upload.common-pitfalls" class="sect1">
+  <h2 class="title">Dificultades comunes</h2>
+  <p class="simpara">
+   El elemento <code class="literal">MAX_FILE_SIZE</code> no puede especificar un tamaño de fichero
+   mayor que el establecido en la directiva <a href="ini.core.html#ini.upload-max-filesize" class="link">upload_max_filesize</a>
+   del fichero <var class="filename">php.ini</var>. Por defecto es 2 megabytes.
+  </p>
+  <p class="simpara">
+   Si hay un límite de memoria habilitado, podría ser necesario un valor
+   de <a href="ini.core.html#ini.memory-limit" class="link">memory_limit</a> más grande. Asegúrese
+   de establecer un valor de <a href="ini.core.html#ini.memory-limit" class="link">memory_limit</a>
+   lo suficientemente grande.
+  </p>
+  <p class="simpara">
+   Si el valor de <a href="info.configuration.html#ini.max-execution-time" class="link">max_execution_time</a>
+   es demasiado pequeño, la ejecución del script podría exceder este valor. Asegúrese
+   de establecer un valor de <code class="literal">max_execution_time</code> lo suficientemente grande.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <span class="simpara">
+    <a href="info.configuration.html#ini.max-execution-time" class="link">max_execution_time</a> solo
+    afecta al tiempo de ejecución del propio script. Todo tiempo empleado
+    en actividades externas a la ejecución del script,
+    tales como las llamadas al sistema con <span class="function"><a href="function.system.html" class="function">system()</a></span>, la
+    función <span class="function"><a href="function.sleep.html" class="function">sleep()</a></span>, las consultas a base de datos, el tiempo que tarda
+    el proceso de subida de ficheros, etc., no se incluye para determinar el tiempo
+    máximo que el script ha estado en ejecución.
+   </span>
+  </p></blockquote>
+  <div class="warning"><strong class="warning">Advertencia</strong>
+   <p class="simpara">
+    <a href="info.configuration.html#ini.max-input-time" class="link">max_input_time</a> establece el tiempo
+    máximo, en segundos, que al script se le permite recibir información; esto incluye
+    la subida de ficheros. Para ficheros grandes o varios ficheros, o usuarios con conexiones más lentas,
+    podría excederse el valor predeterminado de <code class="literal">60 segundos</code>.
+   </p>
+  </div>
+  <p class="simpara">
+   Si el valor de <a href="ini.core.html#ini.post-max-size" class="link">post_max_size</a> se establece demasiado
+   pequeño, los ficheros grandes no podrán ser subidos. Asegúrese de establecer
+   <code class="literal">post_max_size</code> lo suficientemente grande.
+  </p>
+  <p class="simpara">
+   El ajuste de configuración <a href="ini.core.html#ini.max-file-uploads" class="link">max_file_uploads</a>
+   controla el número máximo de ficheros que se pueden subir en una
+   petición. Si se suben más ficheros que el límite establecido,
+   <var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES</a></var> parará de procesar ficheros una vez se alcance
+   este límite. Por ejemplo, si
+   <a href="ini.core.html#ini.max-file-uploads" class="link">max_file_uploads</a> se establece a
+   <code class="literal">10</code>, <var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES</a></var> nunca contendrá
+   más de 10 elementos.
+  </p>
+  <p class="simpara">
+   No validar sobre qué fichero se opera podría significar que los usuarios pueden acceder
+   a información delicada de otros directorios.
+  </p>
+  <p class="simpara">
+   Por favor, observe que el <span class="productname">CERN httpd</span> parece quitar todo
+   lo que empieza con primer espacio en blanco en la cabecera de tipo de contenido MIME
+   que recibe desde el cliente. Mientras este sea el caso, el <span class="productname">CERN httpd</span>
+   no tendrá soporte para la funcionalidad de subida de ficheros.
+  </p>
+  <p class="simpara">
+   Debido a la gran cantidad de estilos de listados de directorios, no podemos garantizar
+   que los ficheros con nombres exóticos (como el que contiene espacios en blanco) se manejen adecuadamente.
+  </p>
+  <p class="simpara">
+   Los desarrolladores no deben mezclar los campos <code class="literal">input</code> normales con los de subida de ficheros en la misma
+   variable de formulario (mediante un nombre de <code class="literal">input</code> como <code class="literal">foo[]</code>).
+  </p>
+ </div></div></div></body></html>

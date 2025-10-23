@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Devolver una cadena que ha sido debidamente escapada</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="sqlite3.enableexceptions.html">« SQLite3::enableExceptions</a></li>
+      <li style="float: right;"><a href="sqlite3.exec.html">SQLite3::exec »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.sqlite3.html">SQLite3</a></li>
+    <li>Devolver una cadena que ha sido debidamente escapada</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="sqlite3.escapestring" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SQLite3::escapeString</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">SQLite3::escapeString</span> &mdash; <span class="dc-title">Devolver una cadena que ha sido debidamente escapada</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-sqlite3.escapestring-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="methodname"><strong>SQLite3::escapeString</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$value</code></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Devuelve una cadena que ha sido debidamente escapada para una inclusión segura en una
+   sentencia SQL.
+  </p>
+  <div class="warning"><strong class="warning">Advertencia</strong><p class="simpara">Esta función
+no es (todavía) segura binariamente</p></div>
+  <p class="para">
+   Para manejar adecuadamente campos BLOB que puedan contener caracteres NUL, use
+   <span class="function"><a href="sqlite3stmt.bindparam.html" class="function">SQLite3Stmt::bindParam()</a></span> en su lugar.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-sqlite3.escapestring-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">value</code></dt>
+     <dd>
+      <p class="para">
+       La cadena a ser escapada.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+  
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-sqlite3.escapestring-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve una cadena debidamente escapada que puede ser usada de forma segura en una sentencia
+   SQL.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-sqlite3.escapestring-notes">
+  <h3 class="title">Notas</h3>
+  <div class="warning"><strong class="warning">Advertencia</strong>
+   <p class="simpara">
+    <span class="function"><a href="function.addslashes.html" class="function">addslashes()</a></span> <em>NO</em> debería usarse para
+    entrecomillar las cadenas de consulta de SQLite; conducirá a resultados extraños
+    al recuperar la información.
+   </p>
+  </div>
+ </div>
+
+ 
+</div></div></div></body></html>

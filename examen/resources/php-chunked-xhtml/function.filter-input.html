@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Toma una variable externa concreta por su nombre y opcionalmente la filtra</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.filter-id.html">« filter_id</a></li>
+      <li style="float: right;"><a href="function.filter-input-array.html">filter_input_array »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.filter.html">Funciones de Filter</a></li>
+    <li>Toma una variable externa concreta por su nombre y opcionalmente la filtra</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.filter-input" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">filter_input</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.2.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">filter_input</span> &mdash; <span class="dc-title">Toma una variable externa concreta por su nombre y opcionalmente la filtra</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.filter-input-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>filter_input</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$type</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$variable_name</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$filter</code><span class="initializer"> = FILTER_DEFAULT</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$options</code><span class="initializer"> = ?</span></span><br>): <span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span></div>
+
+  
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.filter-input-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">type</code></dt>
+     <dd>
+      <p class="para">
+       Uno de los siguientes: <strong><code><a href="filter.constants.html#constant.input-get">INPUT_GET</a></code></strong>, <strong><code><a href="filter.constants.html#constant.input-post">INPUT_POST</a></code></strong>,
+       <strong><code><a href="filter.constants.html#constant.input-cookie">INPUT_COOKIE</a></code></strong>, <strong><code><a href="filter.constants.html#constant.input-server">INPUT_SERVER</a></code></strong> o
+       <strong><code><a href="filter.constants.html#constant.input-env">INPUT_ENV</a></code></strong>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">variable_name</code></dt>
+     <dd>
+      <p class="para">
+       Nombre de la variable a escoger.
+      </p>
+     </dd>
+    
+    
+
+ <dt><code class="parameter">filter</code></dt>
+ <dd>
+  <p class="para">
+   El ID del filtro a aplicar. La página <a href="filter.filters.html" class="xref">Tipos de filtros</a>
+   del manual enumera los filtros disponibles.
+  </p>
+  <p class="para">
+   Si se omite, se utilizará <strong><code><a href="filter.constants.html#constant.filter-default">FILTER_DEFAULT</a></code></strong>, que es
+   equivalente a
+   <a href="filter.filters.sanitize.html" class="link"><strong><code><a href="filter.constants.html#constant.filter-unsafe-raw">FILTER_UNSAFE_RAW</a></code></strong></a>.
+   Esto resultará en que no se realice ningún tipo de filtro de forma predeterminada.
+  </p>
+ </dd>
+
+
+    
+     <dt><code class="parameter">options</code></dt>
+     <dd>
+      <p class="para">
+       Array asociativo de opciones o disyunción lógica de flags. Si el filtro
+       acepta opciones, se pueden añadir flags en el array asociativo bajo la
+       clave &quot;flags&quot;.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.filter-input-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   En caso de éxito, valor de la variable pedida, <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si el filtro falla o
+   <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> si la variable <code class="parameter">variable_name</code> no está
+   definida. Si se usa el flag <strong><code><a href="filter.constants.html#constant.filter-null-on-failure">FILTER_NULL_ON_FAILURE</a></code></strong>,
+   retorna <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si la variable no está definida y <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> si el filtro
+   falla.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.filter-input-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-5058">
+    <p><strong>Ejemplo #1 Un ejemplo de <span class="function"><strong>filter_input()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$buscar_html </span><span style="color: #007700">= </span><span style="color: #0000BB">filter_input</span><span style="color: #007700">(</span><span style="color: #0000BB">INPUT_GET</span><span style="color: #007700">, </span><span style="color: #DD0000">'buscar'</span><span style="color: #007700">, </span><span style="color: #0000BB">FILTER_SANITIZE_SPECIAL_CHARS</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$buscar_url </span><span style="color: #007700">= </span><span style="color: #0000BB">filter_input</span><span style="color: #007700">(</span><span style="color: #0000BB">INPUT_GET</span><span style="color: #007700">, </span><span style="color: #DD0000">'buscar'</span><span style="color: #007700">, </span><span style="color: #0000BB">FILTER_SANITIZE_ENCODED</span><span style="color: #007700">);<br />echo </span><span style="color: #DD0000">"Has buscado </span><span style="color: #0000BB">$buscar_html</span><span style="color: #DD0000">.\n"</span><span style="color: #007700">;<br />echo </span><span style="color: #DD0000">"&lt;a href='?buscar=</span><span style="color: #0000BB">$buscar_url</span><span style="color: #DD0000">'&gt;Buscar de nuevo&lt;/a&gt;"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Has buscado Yo &amp; hijo.
+&lt;a href=&#039;?buscar=Yo%20%26%20hijo&#039;&gt;Buscar de nuevo&lt;/a&gt;</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.filter-input-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.filter-var.html" class="function" rel="rdfs-seeAlso">filter_var()</a> - Filtra una variable con el filtro que se indique</span></li>
+    <li><span class="function"><a href="function.filter-input-array.html" class="function" rel="rdfs-seeAlso">filter_input_array()</a> - Obtiene variables externas y opcionalmente las filtra</span></li>
+    <li><span class="function"><a href="function.filter-var-array.html" class="function" rel="rdfs-seeAlso">filter_var_array()</a> - Retorna m&uacute;ltiple variables y opcionalmente las filtra</span></li>
+    <li><a href="filter.filters.html" class="xref">Tipos de filtros</a></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

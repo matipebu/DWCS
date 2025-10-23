@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Activa el comportamiento autom&aacute;tico de env&iacute;o</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ref.uodbc.html">« Funciones ODBC</a></li>
+      <li style="float: right;"><a href="function.odbc-binmode.html">odbc_binmode »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.uodbc.html">Funciones ODBC</a></li>
+    <li>Activa el comportamiento autom&aacute;tico de env&iacute;o</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.odbc-autocommit" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">odbc_autocommit</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">odbc_autocommit</span> &mdash; <span class="dc-title">Activa el comportamiento automático de envío</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.odbc-autocommit-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>odbc_autocommit</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$connection_id</code></span>, <span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$OnOff</code><span class="initializer"> = false</span></span>): <span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span></div>
+
+  <p class="para rdfs-comment">
+   Activa el comportamiento automático de envío.
+  </p>
+  <p class="para">
+   Por defecto, el auto envío está activado en una conexión. Deshabilitar
+   el auto envío es equivalente a iniciar una transacción.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.odbc-autocommit-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">connection_id</code></dt>
+     <dd>
+      <p class="para">El conector identificador ODBC,
+ver <span class="function"><a href="function.odbc-connect.html" class="function">odbc_connect()</a></span> para más información.</p>
+     </dd>
+    
+    
+     <dt><code class="parameter">OnOff</code></dt>
+     <dd>
+      <p class="para">
+       Si <code class="parameter">OnOff</code> es <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>, el auto envío está habilitado, si
+       es <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> el auto envío está deshabilitado.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.odbc-autocommit-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Sin el parámetro <code class="parameter">OnOff</code>, está función devuelve
+   el estado de auto envío para <code class="parameter">connection_id</code>. Se devuelve
+   un valor distinto de cero si el auto envío está activado, 0 si está desactivado, o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si se
+   produjo un error.
+  </p>
+  <p class="para">
+   Si está establecido <code class="parameter">OnOff</code>, esta función devolverá <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> si
+   se tuvo éxito y <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si falló.
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.odbc-autocommit-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.odbc-commit.html" class="function" rel="rdfs-seeAlso">odbc_commit()</a> - Env&iacute;a una transacci&oacute;n ODBC</span></li>
+    <li><span class="function"><a href="function.odbc-rollback.html" class="function" rel="rdfs-seeAlso">odbc_rollback()</a> - Revertir una transacci&oacute;n</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

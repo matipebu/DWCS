@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Comprobar si existe la instancia apuntada por OID</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.cubrid-insert-id.html">« cubrid_insert_id</a></li>
+      <li style="float: right;"><a href="function.cubrid-lob-close.html">cubrid_lob_close »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.cubrid.html">Funciones de CUBRID</a></li>
+    <li>Comprobar si existe la instancia apuntada por OID</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.cubrid-is-instance" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">cubrid_is_instance</h1>
+  <p class="verinfo">(PECL CUBRID &gt;= 8.3.0)</p><p class="refpurpose"><span class="refname">cubrid_is_instance</span> &mdash; <span class="dc-title">Comprobar si existe la instancia apuntada por OID</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.cubrid-is-instance-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>cubrid_is_instance</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$conn_identifier</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$oid</code></span>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="para rdfs-comment">
+   La función <span class="function"><strong>cubrid_is_instance()</strong></span> se usa para comprobar
+   si existe la instancia apuntada por el <code class="parameter">oid</code> dado
+   o no.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.cubrid-is-instance-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">conn_identifier</code></dt>
+     <dd><p class="para">Identificador de conexión.</p></dd>
+    
+    
+     <dt><code class="parameter">oid</code></dt>
+     <dd><p class="para">OID de la instancia que se quiere comprobar su existencia.</p></dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.cubrid-is-instance-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   1, si tal instancia existe; 
+  </p>
+  <p class="para">
+   0, si tal instancia no existe;
+  </p>
+  <p class="para">
+   -1, en caso de error
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.cubrid-is-instance-examples">
+  <h3 class="title">Ejemplos</h3>
+  <div class="example" id="example-1132">
+   <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>cubrid_is_instance()</strong></span></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$conn </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">, </span><span style="color: #0000BB">33000</span><span style="color: #007700">, </span><span style="color: #DD0000">"demodb"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$sql </span><span style="color: #007700">= &lt;&lt;&lt;EOD<br /></span><span style="color: #DD0000">SELECT host_year, medal, game_date <br />FROM game <br />WHERE athlete_code IN <br />    (SELECT code FROM athlete WHERE name='Thorpe Ian');<br /></span><span style="color: #007700">EOD;<br /><br /></span><span style="color: #0000BB">$req </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$sql</span><span style="color: #007700">, </span><span style="color: #0000BB">CUBRID_INCLUDE_OID</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$oid </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_current_oid</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$res </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_is_instance </span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$oid</span><span style="color: #007700">);<br />if (</span><span style="color: #0000BB">$res </span><span style="color: #007700">== </span><span style="color: #0000BB">1</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">"La instancia a puntada por </span><span style="color: #0000BB">$oid</span><span style="color: #DD0000"> existe.\n"</span><span style="color: #007700">;<br />} else if (</span><span style="color: #0000BB">$res </span><span style="color: #007700">== </span><span style="color: #0000BB">0</span><span style="color: #007700">){<br />    echo </span><span style="color: #DD0000">"La instancia a puntada por </span><span style="color: #0000BB">$oid</span><span style="color: #DD0000"> no existe.\n"</span><span style="color: #007700">;<br />} else {<br />    echo </span><span style="color: #DD0000">"error\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">cubrid_disconnect</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">La instancia apuntada por @0|0|0 no existe.</pre>
+</div>
+   </div>
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.cubrid-is-instance-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.cubrid-drop.html" class="function" rel="rdfs-seeAlso">cubrid_drop()</a> - Borrar una instancia usando OID</span></li>   
+    <li><span class="function"><a href="function.cubrid-get-class-name.html" class="function" rel="rdfs-seeAlso">cubrid_get_class_name()</a> - Obtener el nombre de la clase usando OID</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

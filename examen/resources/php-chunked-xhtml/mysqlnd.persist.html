@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Conexiones persistentes</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqlnd.incompatibilities.html">« Incompatibilidades</a></li>
+      <li style="float: right;"><a href="mysqlnd.stats.html">Estad&iacute;sticas »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.mysqlnd.html">Mysqlnd</a></li>
+    <li>Conexiones persistentes</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqlnd.persist" class="chapter">
+ <h1 class="title">Conexiones persistentes</h1>
+
+ <p class="para">
+  <strong>Utilizar conexiones persistentes</strong>
+ </p>
+ <p class="para">
+  Si <code class="literal">mysqli</code> se utiliza con <code class="literal">mysqlnd</code>,
+  cuando se crea una conexión persistente, se genera una llamada
+  <code class="literal">COM_CHANGE_USER</code>
+  (<code class="literal">mysql_change_user()</code>) en el servidor. Esto
+  asegura que la re-autenticación de la conexión se lleva a cabo.
+ </p>
+ <p class="para">
+  Dado que hay una cierta sobrecarga asociada con la llamada
+  <code class="literal">COM_CHANGE_USER</code>, es posible apagar
+  esto en el tiempo de compilado. La reutilización de una conexión persistente entonces
+  generará una llamada <code class="literal">COM_PING</code> (<code class="literal">mysql_ping</code>)
+  para simplemente probar si la conexión es reusable.
+ </p>
+ <p class="para">
+  La generación de <code class="literal">COM_CHANGE_USER</code> se puede apagar
+  con el marcador de compilación
+  <code class="literal">MYSQLI_NO_CHANGE_USER_ON_PCONNECT</code>. Por ejemplo:
+ </p>
+<div class="example-contents">
+<div class="cdata"><pre>
+shell# CFLAGS=&quot;-DMYSQLI_NO_CHANGE_USER_ON_PCONNECT&quot; ./configure --with-mysql=/usr/local/mysql/ --with-mysqli=/usr/local/mysql/bin/mysql_config --with-pdo-mysql=/usr/local/mysql/bin/mysql_config --enable-debug &amp;&amp; make clean &amp;&amp; make -j6
+</pre></div>
+</div>
+
+ <p class="para">
+  O, alternativamente:
+ </p>
+<div class="example-contents">
+<div class="cdata"><pre>
+shell# export CFLAGS=&quot;-DMYSQLI_NO_CHANGE_USER_ON_PCONNECT&quot;
+shell# configure --whatever-option
+shell# make clean
+shell# make
+</pre></div>
+</div>
+
+ <p class="para">
+  Observe que solamente <code class="literal">mysqli</code> sobre <code class="literal">mysqlnd</code>
+  utiliza <code class="literal">COM_CHANGE_USER</code>. Otra combinación de
+  extensión-controlador emplea <code class="literal">COM_PING</code> en el uso inicial de una
+  conexión persistente.
+ </p>
+</div>
+</div></div></body></html>

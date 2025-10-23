@@ -1,0 +1,407 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Constantes predefinidas</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="json.resources.html">« Tipos de recursos</a></li>
+      <li style="float: right;"><a href="class.jsonserializable.html">JsonSerializable »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.json.html">JSON</a></li>
+    <li>Constantes predefinidas</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="json.constants" class="appendix">
+ <h1 class="title">Constantes predefinidas</h1>
+
+ <p class="simpara">
+Estas constantes están definidas por esta extensión y
+estarán disponibles sólo cuando la extensión haya sido
+compilada con PHP, o bien sea cargada dinámicamente en ejecución.
+</p>
+ <p class="para">
+  Las siguientes constantes indican el tipo de error retornado por
+  <span class="function"><a href="function.json-last-error.html" class="function">json_last_error()</a></span>.
+ </p>
+ <dl>
+  
+   <dt id="constant.json-error-none">
+    <strong><code><a href="json.constants.html#constant.json-error-none">JSON_ERROR_NONE</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     No ha ocurrido ningún error.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.json-error-depth">
+    <strong><code><a href="json.constants.html#constant.json-error-depth">JSON_ERROR_DEPTH</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Se ha excedido la profundidad máxima de la pila.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.json-error-state-mismatch">
+    <strong><code><a href="json.constants.html#constant.json-error-state-mismatch">JSON_ERROR_STATE_MISMATCH</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Por desbordamiento de buffer o cuando los modos no coinciden.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.json-error-ctrl-char">
+    <strong><code><a href="json.constants.html#constant.json-error-ctrl-char">JSON_ERROR_CTRL_CHAR</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Error del carácter de control, posiblemente se ha codificado de forma incorrecta.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.json-error-syntax">
+    <strong><code><a href="json.constants.html#constant.json-error-syntax">JSON_ERROR_SYNTAX</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Error de sintaxis.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.json-error-utf8">
+    <strong><code><a href="json.constants.html#constant.json-error-utf8">JSON_ERROR_UTF8</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Caracteres UTF-8 mal formados, posiblemente codificados incorrectamente.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.json-error-recursion">
+    <strong><code><a href="json.constants.html#constant.json-error-recursion">JSON_ERROR_RECURSION</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <p class="para">
+     El objeto o array pasado a <span class="function"><a href="function.json-encode.html" class="function">json_encode()</a></span> incluye
+     referencias recursivas y no se puede codificar.
+     Si se proporcionó la opción <strong><code><a href="json.constants.html#constant.json-partial-output-on-error">JSON_PARTIAL_OUTPUT_ON_ERROR</a></code></strong>,
+     se codificará <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> en el lugar de la referencia recursiva.
+    </p>
+   </dd>
+  
+  
+   <dt id="constant.json-error-inf-or-nan">
+    <strong><code><a href="json.constants.html#constant.json-error-inf-or-nan">JSON_ERROR_INF_OR_NAN</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <p class="para">
+     El valor pasado a <span class="function"><a href="function.json-encode.html" class="function">json_encode()</a></span> incluye
+     <a href="language.types.float.html#language.types.float.nan" class="link"><strong><code><a href="math.constants.html#constant.nan">NAN</a></code></strong></a>
+     o <a href="function.is-infinite.html" class="link"><strong><code><a href="math.constants.html#constant.inf">INF</a></code></strong></a>.
+     Si se proporcionó la opción <strong><code><a href="json.constants.html#constant.json-partial-output-on-error">JSON_PARTIAL_OUTPUT_ON_ERROR</a></code></strong>,
+     se codificará <code class="literal">0</code> en el lugar de estos números
+     especiales.
+    </p>
+   </dd>
+  
+  
+   <dt id="constant.json-error-unsupported-type">
+    <strong><code><a href="json.constants.html#constant.json-error-unsupported-type">JSON_ERROR_UNSUPPORTED_TYPE</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <p class="para">
+     Se proporcionó un valor de un tipo no admitido para
+     <span class="function"><a href="function.json-encode.html" class="function">json_encode()</a></span>, tal como un <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>.
+     Si se proporcionó la opción <strong><code><a href="json.constants.html#constant.json-partial-output-on-error">JSON_PARTIAL_OUTPUT_ON_ERROR</a></code></strong>,
+     se codificará <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> en el lugar del valor no admitido.
+    </p>
+   </dd>
+  
+  
+   <dt id="constant.json-error-invalid-property-name">
+    <strong><code><a href="json.constants.html#constant.json-error-invalid-property-name">JSON_ERROR_INVALID_PROPERTY_NAME</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <p class="para">
+     Se ha usado una clave que empieza con el caracter \u0000 en la cadena
+     de texto pasada a <span class="function"><a href="function.json-encode.html" class="function">json_encode()</a></span> al decodificar
+     un objeto JSON en un objeto PHP.
+    </p>
+   </dd>
+  
+  
+   <dt id="constant.json-error-utf16">
+    <strong><code><a href="json.constants.html#constant.json-error-utf16">JSON_ERROR_UTF16</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <p class="para">
+     Un único sustituto UTF-16 no emparejado en una secuencia de escape
+     unicode contenida en la cadena JSON pasada a
+     <span class="function"><a href="function.json-encode.html" class="function">json_encode()</a></span>.
+    </p>
+   </dd>
+  
+ </dl>
+ 
+ <p class="para">
+  Las siguientes constantes se pueden combinar para obtener opciones para
+  <span class="function"><a href="function.json-encode.html" class="function">json_encode()</a></span>.
+ </p>
+ <dl>
+  
+   <dt id="constant.json-hex-tag">
+    <strong><code><a href="json.constants.html#constant.json-hex-tag">JSON_HEX_TAG</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Todos los &lt; y &gt; se convierten a \u003C y \u003E.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.json-hex-amp">
+    <strong><code><a href="json.constants.html#constant.json-hex-amp">JSON_HEX_AMP</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Todos los &amp; se convierten a \u0026.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.json-hex-apos">
+    <strong><code><a href="json.constants.html#constant.json-hex-apos">JSON_HEX_APOS</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Todas las &#039; se convierten a \u0027.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.json-hex-quot">
+    <strong><code><a href="json.constants.html#constant.json-hex-quot">JSON_HEX_QUOT</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Todas las &quot; se convierten a \u0022.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.json-force-object">
+    <strong><code><a href="json.constants.html#constant.json-force-object">JSON_FORCE_OBJECT</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Devuelve un objeto en vez de un array cuando se usa un array no
+     asociativo. Especialmente útil cuando el destinatario del resultado espera
+     un objeto y el array está vacío.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.json-numeric-check">
+    <strong><code><a href="json.constants.html#constant.json-numeric-check">JSON_NUMERIC_CHECK</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Codifica textos numéricos como números.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.json-bigint-as-string">
+    <strong><code><a href="json.constants.html#constant.json-bigint-as-string">JSON_BIGINT_AS_STRING</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Codifica integer grandes como su valor del string original.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.json-object-as-array">
+    <strong><code><a href="json.constants.html#constant.json-object-as-array">JSON_OBJECT_AS_ARRAY</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Decodifica objetos JSON como arrays de PHP. Esta opción se puede
+     añadir automáticamente llamando a <span class="function"><a href="function.json-decode.html" class="function">json_decode()</a></span> con el segundo
+     parámetro igual a <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.json-pretty-print">
+    <strong><code><a href="json.constants.html#constant.json-pretty-print">JSON_PRETTY_PRINT</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Utiliza espacios en blanco para formatear los datos devueltos.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.json-unescaped-slashes">
+    <strong><code><a href="json.constants.html#constant.json-unescaped-slashes">JSON_UNESCAPED_SLASHES</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     No escapar <code class="literal">/</code>.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.json-unescaped-unicode">
+    <strong><code><a href="json.constants.html#constant.json-unescaped-unicode">JSON_UNESCAPED_UNICODE</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Codificar caracteres Unicode multibyte literalmente (por defecto es escapado como \uXXXX).
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.json-partial-output-on-error">
+    <strong><code><a href="json.constants.html#constant.json-partial-output-on-error">JSON_PARTIAL_OUTPUT_ON_ERROR</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Sustituir algunos valores no codificables en lugar de fallar.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.json-preserve-zero-fraction">
+    <strong><code><a href="json.constants.html#constant.json-preserve-zero-fraction">JSON_PRESERVE_ZERO_FRACTION</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Se asegura de que los valores <span class="type"><a href="language.types.float.html" class="type float">float</a></span> son siempre codificados como valores de punto flotante.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.json-unescaped-line-terminators">
+    <strong><code><a href="json.constants.html#constant.json-unescaped-line-terminators">JSON_UNESCAPED_LINE_TERMINATORS</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     La finalización de línea se mantienen sin escapar
+     cuando se indica <strong><code><a href="json.constants.html#constant.json-unescaped-unicode">JSON_UNESCAPED_UNICODE</a></code></strong>.
+     Utiliza el mismo comportamiento que tenía antes de PHP 7.1 sin
+     esta constante. Disponible desde PHP 7.1.0.
+    </span>
+   </dd>
+  
+ </dl>
+
+ <p class="para">
+  Las siguientes constantes pueden combinarse para formar opciones para
+  <span class="function"><a href="function.json-decode.html" class="function">json_decode()</a></span> y <span class="function"><a href="function.json-encode.html" class="function">json_encode()</a></span>.
+ </p>
+
+ <dl>
+  
+   <dt id="constant.json-invalid-utf8-ignore">
+    <strong><code><a href="json.constants.html#constant.json-invalid-utf8-ignore">JSON_INVALID_UTF8_IGNORE</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Ignorar caracteres UTF-8 inválidos.
+     Disponible desde PHP 7.2.0.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.json-invalid-utf8-substitute">
+    <strong><code><a href="json.constants.html#constant.json-invalid-utf8-substitute">JSON_INVALID_UTF8_SUBSTITUTE</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Convertir caracteres UTF-8 inválidos a \0xfffd
+     (Carácter Unicode &#039;CARÁCTER DE SUSTITUCIÓN&#039;)
+     Disponible desde PHP 7.2.0.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.json-throw-on-error">
+    <strong><code><a href="json.constants.html#constant.json-throw-on-error">JSON_THROW_ON_ERROR</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Lanza <span class="classname"><strong class="classname">JsonException</strong></span> si ocurre un error en lugar de
+     establecer el estado global de error que se recupera con
+     <span class="function"><a href="function.json-last-error.html" class="function">json_last_error()</a></span> y <span class="function"><a href="function.json-last-error-msg.html" class="function">json_last_error_msg()</a></span>.
+     <strong><code><a href="json.constants.html#constant.json-partial-output-on-error">JSON_PARTIAL_OUTPUT_ON_ERROR</a></code></strong> tiene prioridad sobre
+     <strong><code><a href="json.constants.html#constant.json-throw-on-error">JSON_THROW_ON_ERROR</a></code></strong>.
+     Disponible desde PHP 7.3.0.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.json-error-non-backed-enum">
+    <strong><code><a href="json.constants.html#constant.json-error-non-backed-enum">JSON_ERROR_NON_BACKED_ENUM</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     El valor pasado a <span class="function"><a href="function.json-encode.html" class="function">json_encode()</a></span> incluye un enum
+     no respaldado que no se puede serializar. Disponible desde PHP 8.1.0.
+    </span>
+   </dd>
+  
+ </dl>
+
+</div>
+</div></div></body></html>

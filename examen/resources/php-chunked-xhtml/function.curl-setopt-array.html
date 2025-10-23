@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Configura m&uacute;ltiples opciones para una transferencia cURL</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.curl-setopt.html">« curl_setopt</a></li>
+      <li style="float: right;"><a href="function.curl-share-close.html">curl_share_close »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.curl.html">Funciones de cURL</a></li>
+    <li>Configura m&uacute;ltiples opciones para una transferencia cURL</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.curl-setopt-array" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">curl_setopt_array</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.3, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">curl_setopt_array</span> &mdash; <span class="dc-title">Configura múltiples opciones para una transferencia cURL</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.curl-setopt-array-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>curl_setopt_array</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$ch</code></span>, <span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$options</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Configura multiples opciones para una sesión cURL. Esta función
+   es muy útil para configurar gran cantidad de opciones cURL sin tener
+   que llamar cada vez <span class="function"><a href="function.curl-setopt.html" class="function">curl_setopt()</a></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.curl-setopt-array-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    <dt><code class="parameter">ch</code>
+</dt><dd><p class="para">El recurso cURL devuelto por
+<span class="function"><a href="function.curl-init.html" class="function">curl_init()</a></span>.</p></dd>
+    
+     <dt><code class="parameter">opciones</code></dt>
+     <dd>
+      <p class="para">
+       Un <span class="type"><a href="language.types.array.html" class="type array">array</a></span> especificando que opciones a configurar y con que valores.
+       Las keys deben contener constantes <span class="function"><a href="function.curl-setopt.html" class="function">curl_setopt()</a></span> válidas o 
+       sus integer equivalentes.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.curl-setopt-array-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> si todas las opciones se configuraron satisfactoriamente. Si una
+   opción no se pudo configurar devolverá <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> inmediatamente. Ignorando cualquier
+   otra opción en el array de <code class="parameter">opciones</code>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.curl-setopt-array-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4230">
+    <p><strong>Ejemplo #1 
+     Iniciando una nueva sesión cURL y capturando una página web
+    </strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Crea un nuevo recurso cURL<br /></span><span style="color: #0000BB">$ch </span><span style="color: #007700">= </span><span style="color: #0000BB">curl_init</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">// set URL and other appropriate options<br /></span><span style="color: #0000BB">$options </span><span style="color: #007700">= array(</span><span style="color: #0000BB">CURLOPT_URL </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'http://www.example.com/'</span><span style="color: #007700">,<br />                 </span><span style="color: #0000BB">CURLOPT_HEADER </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">false<br />                </span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">curl_setopt_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">, </span><span style="color: #0000BB">$options</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// grab URL and pass it to the browser<br /></span><span style="color: #0000BB">curl_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// close cURL resource, and free up system resources<br /></span><span style="color: #0000BB">curl_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Anterior a PHP 5.1.3 esta función puede ser simulada con:
+  </p>
+  <p class="para">
+   <div class="example" id="example-4231">
+    <p><strong>Ejemplo #2 O nuestra implementación de <span class="function"><strong>curl_setopt_array()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if (!</span><span style="color: #0000BB">function_exists</span><span style="color: #007700">(</span><span style="color: #DD0000">'curl_setopt_array'</span><span style="color: #007700">)) {<br />   function </span><span style="color: #0000BB">curl_setopt_array</span><span style="color: #007700">(&amp;</span><span style="color: #0000BB">$ch</span><span style="color: #007700">, </span><span style="color: #0000BB">$curl_options</span><span style="color: #007700">)<br />   {<br />       foreach (</span><span style="color: #0000BB">$curl_options </span><span style="color: #007700">as </span><span style="color: #0000BB">$option </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$value</span><span style="color: #007700">) {<br />           if (!</span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">, </span><span style="color: #0000BB">$option</span><span style="color: #007700">, </span><span style="color: #0000BB">$value</span><span style="color: #007700">)) {<br />               return </span><span style="color: #0000BB">false</span><span style="color: #007700">;<br />           } <br />       }<br />       return </span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />   }<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.curl-setopt-array-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Igual que <span class="function"><a href="function.curl-setopt.html" class="function">curl_setopt()</a></span>, si se pasa un array a 
+    <strong><code><a href="curl.constants.html#constant.curlopt-post">CURLOPT_POST</a></code></strong> codificará los datos como 
+    <em>multipart/form-data</em>, mientras que si pasa una 
+    cadena URL-encoded codificará los datos como 
+    <em>application/x-www-form-urlencoded</em>.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.curl-setopt-array-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.curl-setopt.html" class="function" rel="rdfs-seeAlso">curl_setopt()</a> - Configura una opci&oacute;n para una transferencia cURL</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

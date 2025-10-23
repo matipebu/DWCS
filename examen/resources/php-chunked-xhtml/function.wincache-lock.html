@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Obtiene un bloqueo exclusivo en una clave dada</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.wincache-fcache-meminfo.html">« wincache_fcache_meminfo</a></li>
+      <li style="float: right;"><a href="function.wincache-ocache-fileinfo.html">wincache_ocache_fileinfo »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.wincache.html">Funciones de WinCache</a></li>
+    <li>Obtiene un bloqueo exclusivo en una clave dada</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.wincache-lock" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">wincache_lock</h1>
+  <p class="verinfo">(PECL wincache &gt;= 1.1.0)</p><p class="refpurpose"><span class="refname">wincache_lock</span> &mdash; <span class="dc-title">
+   Obtiene un bloqueo exclusivo en una clave dada
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.wincache-lock-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>wincache_lock</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$key</code></span>, <span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$isglobal</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></span></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Obtiene un bloqueo exclusivo sobre una clave dada. La ejecución del script actual quedará en espera que
+   se pueda obtener el bloqueo. Una vez obtenido el bloqueo, el otro script que intente solicitar dicho bloqueo utilizando la misma
+   clave quedará en espera, hasta que el script actual libere el bloqueo con <span class="function"><a href="function.wincache-unlock.html" class="function">wincache_unlock()</a></span>.
+  </p>
+  <div class="warning"><strong class="warning">Advertencia</strong>
+   <p class="simpara">
+    El uso de <span class="function"><strong>wincache_lock()</strong></span> y <span class="function"><a href="function.wincache-unlock.html" class="function">wincache_unlock()</a></span> puede causar bloqueos de punto muerto al
+    ejecutar scripts de PHP en un entorno multiproceso como FastCGI. No emplear estas funciones a menos que se esté
+    absolutamente seguro de que son necesarias. Para la mayoría de las operaciones en la caché de usuario no es necesario
+    usar esar estas funciones.
+   </p>
+  </div>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.wincache-lock-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">key</code></dt>
+     <dd>
+      <p class="para">
+       Nombre de la clave en la cahcé para adquirir el bloqueo.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">isglobal</code></dt>
+     <dd>
+      <p class="para">
+       Controla si el ámbito del bloqueo es a nivel de sistema o local. Los bloqueos locales tienen alcance para la «pool» de la aplicación 
+       en el caso de FastCGI de IIS o a todos los procesos de php que tengan el mismo identificador de proceso padre.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.wincache-lock-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.wincache-lock-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-654">
+    <p><strong>Ejemplo #1 Empleo de <span class="function"><strong>wincache_lock()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$fp </span><span style="color: #007700">= </span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"/tmp/lock.txt"</span><span style="color: #007700">, </span><span style="color: #DD0000">"r+"</span><span style="color: #007700">);<br />if (</span><span style="color: #0000BB">wincache_lock</span><span style="color: #007700">(</span><span style="color: #0000BB">“lock_txt_lock”</span><span style="color: #007700">)) { </span><span style="color: #FF8000">// realizar un bloqueo exclusivo<br />    </span><span style="color: #0000BB">ftruncate</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">); </span><span style="color: #FF8000">// truncate file<br />    </span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">, </span><span style="color: #DD0000">"Write something here\n"</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">wincache_unlock</span><span style="color: #007700">(</span><span style="color: #0000BB">“lock_txt_lock”</span><span style="color: #007700">); </span><span style="color: #FF8000">// liberar el bloqueo<br /></span><span style="color: #007700">} else {<br />    echo </span><span style="color: #DD0000">"No se pudo obtener el bloqueo"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.wincache-lock-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.wincache-unlock.html" class="function" rel="rdfs-seeAlso">wincache_unlock()</a> - Libera un bloqueo exclusivo sobre una clave dada</span></li>
+    <li><span class="function"><a href="function.wincache-ucache-set.html" class="function" rel="rdfs-seeAlso">wincache_ucache_set()</a> - Adds a variable in user cache and overwrites a variable if it already exists in the cache</span></li>
+    <li><span class="function"><a href="function.wincache-ucache-get.html" class="function" rel="rdfs-seeAlso">wincache_ucache_get()</a> - Obtiene una variable almacenada en la cach&eacute; del usuario</span></li>
+    <li><span class="function"><a href="function.wincache-ucache-delete.html" class="function" rel="rdfs-seeAlso">wincache_ucache_delete()</a> - Elimina las variables de la memoria cach&eacute; del usuario</span></li>
+    <li><span class="function"><a href="function.wincache-ucache-clear.html" class="function" rel="rdfs-seeAlso">wincache_ucache_clear()</a> - Elimina todo el contenido de la cach&eacute; del usuario</span></li>
+    <li><span class="function"><a href="function.wincache-ucache-exists.html" class="function" rel="rdfs-seeAlso">wincache_ucache_exists()</a> - Comprueba si una variable existe en la cach&eacute; del usuario</span></li>
+    <li><span class="function"><a href="function.wincache-ucache-meminfo.html" class="function" rel="rdfs-seeAlso">wincache_ucache_meminfo()</a> - Recupera informaci&oacute;n sobre el uso de memoria cach&eacute; de usuario</span></li>
+    <li><span class="function"><a href="function.wincache-ucache-info.html" class="function" rel="rdfs-seeAlso">wincache_ucache_info()</a> - Recupera informaci&oacute;n sobre los datos almacenados en la cach&eacute; del usuario</span></li>
+    <li><span class="function"><a href="function.wincache-scache-info.html" class="function" rel="rdfs-seeAlso">wincache_scache_info()</a> - Retrieves information about files cached in the session cache</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

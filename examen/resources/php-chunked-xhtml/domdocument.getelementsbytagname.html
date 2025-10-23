@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Busca todos los elementos con el nombre de etiqueta local dado</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="domdocument.getelementbyid.html">« DOMDocument::getElementById</a></li>
+      <li style="float: right;"><a href="domdocument.getelementsbytagnamens.html">DOMDocument::getElementsByTagNameNS »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.domdocument.html">DOMDocument</a></li>
+    <li>Busca todos los elementos con el nombre de etiqueta local dado</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="domdocument.getelementsbytagname" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DOMDocument::getElementsByTagName</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">DOMDocument::getElementsByTagName</span> &mdash; <span class="dc-title">Busca todos los elementos con el nombre de etiqueta local dado</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-domdocument.getelementsbytagname-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>DOMDocument::getElementsByTagName</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$qualifiedName</code></span>): <span class="type"><a href="class.domnodelist.html" class="type DOMNodeList">DOMNodeList</a></span></div>
+
+  <p class="para rdfs-comment">
+   Esta función devuelve una nueva instancia de la clase
+   <span class="classname"><a href="class.domnodelist.html" class="classname">DOMNodeList</a></span> que contiene los elementos con el nombre de
+   etiqueta local buscado.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-domdocument.getelementsbytagname-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">qualifiedName</code></dt>
+     <dd>
+      <p class="para">
+       El nombre local (sin namespace) de la etiqueta con el cual se hará comparación. El valor especial <code class="literal">*</code>
+       coincindirá con todas las etiquetas.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-domdocument.getelementsbytagname-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Un nuevo objeto <span class="classname"><a href="class.domnodelist.html" class="classname">DOMNodeList</a></span> que contiene todos los elementos coincidentes.
+  </p>
+ </div>
+
+  <div class="refsect1 examples" id="refsect1-domdocument.getelementsbytagname-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="domdocument.getelementsbytagname.example.basic">
+    <p><strong>Ejemplo #1 Ejemplo de uso básico</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$xml </span><span style="color: #007700">= &lt;&lt;&lt; XML<br /></span><span style="color: #DD0000">&lt;?xml version="1.0" encoding="utf-8"?&gt;<br />&lt;books&gt;<br /> &lt;book&gt;Patrones de Arquitectura de Aplicaciones Empresariales&lt;/book&gt;<br /> &lt;book&gt;Patrones de diseño: elementos de diseño de software reutilizable&lt;/book&gt;<br /> &lt;book&gt;Código limpio&lt;/book&gt;<br />&lt;/books&gt;<br /></span><span style="color: #007700">XML;<br /><br /></span><span style="color: #0000BB">$dom </span><span style="color: #007700">= new </span><span style="color: #0000BB">DOMDocument</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$dom</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">loadXML</span><span style="color: #007700">(</span><span style="color: #0000BB">$xml</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$books </span><span style="color: #007700">= </span><span style="color: #0000BB">$dom</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getElementsByTagName</span><span style="color: #007700">(</span><span style="color: #DD0000">'book'</span><span style="color: #007700">);<br />foreach (</span><span style="color: #0000BB">$books </span><span style="color: #007700">as </span><span style="color: #0000BB">$book</span><span style="color: #007700">) {<br />    echo </span><span style="color: #0000BB">$book</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">nodeValue</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Patrones de Arquitectura de Aplicaciones Empresariales
+Patrones de diseño: elementos de diseño de software reutilizable
+Código limpio</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-domdocument.getelementsbytagname-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="methodname"><a href="domdocument.getelementsbytagnamens.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::getElementsByTagNameNS()</a> - Busca todos los elementos con el nombre de etiqueta dado en el espacio de nombre especificado.</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

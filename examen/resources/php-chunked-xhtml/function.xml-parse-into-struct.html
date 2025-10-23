@@ -1,0 +1,240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Interpreta datos XML en una estructura de array</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.xml-parse.html">« xml_parse</a></li>
+      <li style="float: right;"><a href="function.xml-parser-create.html">xml_parser_create »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.xml.html">Funciones del Int&eacute;rprete XML</a></li>
+    <li>Interpreta datos XML en una estructura de array</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.xml-parse-into-struct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">xml_parse_into_struct</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">xml_parse_into_struct</span> &mdash; <span class="dc-title">Interpreta datos XML en una estructura de array</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.xml-parse-into-struct-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>xml_parse_into_struct</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$parser</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$data</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter reference">&$values</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter reference">&$index</code><span class="initializer"> = ?</span></span><br>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="para rdfs-comment">
+   Esta función interpreta una cadena XML en dos estructuras paralelas de array, una
+   (<code class="parameter">index</code>) que contiene punteros a la ubicación de los
+   valores adecuados en el array <code class="parameter">values</code>. Estos dos últimos
+   parámetros deben ser pasados por referencia.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.xml-parse-into-struct-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">parser</code></dt>
+     <dd>
+      <p class="para">
+       Una referencia para el interprete de XML.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">data</code></dt>
+     <dd>
+      <p class="para">
+       Una cadena que contiene los datos XML.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">values</code></dt>
+     <dd>
+      <p class="para">
+       Un array que contiene los valores de los datos XML.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">index</code></dt>
+     <dd>
+      <p class="para">
+       Un array que contiene apuntadores hacia la ubicación de los valores apropiados en $values.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.xml-parse-into-struct-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   <span class="function"><strong>xml_parse_into_struct()</strong></span> retorna 0 cuando falla y 1 si es
+   exitoso. Esto no es lo mismo que <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> y <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>, tener cuidado con
+   operadores tales como ===.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.xml-parse-into-struct-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   A continuación se muestra un ejemplo que ilustra la estructura interna de
+   los arrays que se generan por la función. Se usa una etiqueta simple
+   <code class="literal">note</code> incrustada dentro de una etiqueta
+   <code class="literal">para</code> y entonces esto se interpreta y se muestran
+   las estructuras generadas:
+   <div class="example" id="example-5495">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>xml_parse_into_struct()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$simple </span><span style="color: #007700">= </span><span style="color: #DD0000">"&lt;para&gt;&lt;note&gt;Nota Simple&lt;/note&gt;&lt;/para&gt;"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$p </span><span style="color: #007700">= </span><span style="color: #0000BB">xml_parser_create</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">xml_parse_into_struct</span><span style="color: #007700">(</span><span style="color: #0000BB">$p</span><span style="color: #007700">, </span><span style="color: #0000BB">$simple</span><span style="color: #007700">, </span><span style="color: #0000BB">$vals</span><span style="color: #007700">, </span><span style="color: #0000BB">$index</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">xml_parser_free</span><span style="color: #007700">(</span><span style="color: #0000BB">$p</span><span style="color: #007700">);<br />echo </span><span style="color: #DD0000">"Index array\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$index</span><span style="color: #007700">);<br />echo </span><span style="color: #DD0000">"\nVals array\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$vals</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>
+     Cuando se ejecuta este código, la salida será:
+    </p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Index array
+Array
+(
+    [PARA] =&gt; Array
+        (
+            [0] =&gt; 0
+            [1] =&gt; 2
+        )
+
+    [NOTE] =&gt; Array
+        (
+            [0] =&gt; 1
+        )
+
+)
+
+Vals array
+Array
+(
+    [0] =&gt; Array
+        (
+            [tag] =&gt; PARA
+            [type] =&gt; open
+            [level] =&gt; 1
+        )
+
+    [1] =&gt; Array
+        (
+            [tag] =&gt; NOTE
+            [type] =&gt; complete
+            [level] =&gt; 2
+            [value] =&gt; simple note
+        )
+
+    [2] =&gt; Array
+        (
+            [tag] =&gt; PARA
+            [type] =&gt; close
+            [level] =&gt; 1
+        )
+
+)</pre>
+</div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   El análisis por eventos (basado en la biblioteca expat) puede ser más 
+   complicado cuando se tiene un documento XML que es complejo.
+   Esta función no produce un objeto de estilo DOM, pero
+   genera estructuras susceptibles de ser transversionadas en forma
+   de árbol. Por lo tanto, se pueden crear objetos que representan los datos
+   en el archivo XML con facilidad. Considere el siguiente archivo XML
+   que representa una pequeña base de datos con información de aminoácidos:
+   <div class="example" id="example-5496">
+    <p><strong>Ejemplo #2 moldb.xml - pequeña base de datos de información molecular</strong></p>
+    <div class="example-contents">
+<div class="xmlcode"><pre class="xmlcode">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;moldb&gt;
+
+  &lt;molecule&gt;
+      &lt;name&gt;Alanine&lt;/name&gt;
+      &lt;symbol&gt;ala&lt;/symbol&gt;
+      &lt;code&gt;A&lt;/code&gt;
+      &lt;type&gt;hydrophobic&lt;/type&gt;
+  &lt;/molecule&gt;
+
+  &lt;molecule&gt;
+      &lt;name&gt;Lysine&lt;/name&gt;
+      &lt;symbol&gt;lys&lt;/symbol&gt;
+      &lt;code&gt;K&lt;/code&gt;
+      &lt;type&gt;charged&lt;/type&gt;
+  &lt;/molecule&gt;
+
+&lt;/moldb&gt;</pre>
+</div>
+    </div>
+
+   </div>
+   Y algo de código para interpretar el documento y generar los objetos
+   adecuados:
+   <div class="example" id="example-5497">
+    <p><strong>Ejemplo #3 
+     parsemoldb.php - interpreta moldb.xml dentro de un array de
+     objetos moleculares
+    </strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class </span><span style="color: #0000BB">AminoAcid </span><span style="color: #007700">{<br />    var </span><span style="color: #0000BB">$name</span><span style="color: #007700">;  </span><span style="color: #FF8000">// nombre aa <br />    </span><span style="color: #007700">var </span><span style="color: #0000BB">$symbol</span><span style="color: #007700">;    </span><span style="color: #FF8000">// símbolo de tres letras<br />    </span><span style="color: #007700">var </span><span style="color: #0000BB">$code</span><span style="color: #007700">;  </span><span style="color: #FF8000">// código de una letra<br />    </span><span style="color: #007700">var </span><span style="color: #0000BB">$type</span><span style="color: #007700">;  </span><span style="color: #FF8000">// hidrofóbico, cargado or neutral<br />    <br />    </span><span style="color: #007700">function </span><span style="color: #0000BB">AminoAcid </span><span style="color: #007700">(</span><span style="color: #0000BB">$aa</span><span style="color: #007700">)<br />    {<br />        foreach (</span><span style="color: #0000BB">$aa </span><span style="color: #007700">as </span><span style="color: #0000BB">$k</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$v</span><span style="color: #007700">)<br />            </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">$k </span><span style="color: #007700">= </span><span style="color: #0000BB">$aa</span><span style="color: #007700">[</span><span style="color: #0000BB">$k</span><span style="color: #007700">];<br />    }<br />}<br /><br />function </span><span style="color: #0000BB">readDatabase</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">)<br />{<br />    </span><span style="color: #FF8000">// read the XML database of aminoacids<br />    </span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">implode</span><span style="color: #007700">(</span><span style="color: #DD0000">""</span><span style="color: #007700">, </span><span style="color: #0000BB">file</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">));<br />    </span><span style="color: #0000BB">$parser </span><span style="color: #007700">= </span><span style="color: #0000BB">xml_parser_create</span><span style="color: #007700">();<br />    </span><span style="color: #0000BB">xml_parser_set_option</span><span style="color: #007700">(</span><span style="color: #0000BB">$parser</span><span style="color: #007700">, </span><span style="color: #0000BB">XML_OPTION_CASE_FOLDING</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">xml_parser_set_option</span><span style="color: #007700">(</span><span style="color: #0000BB">$parser</span><span style="color: #007700">, </span><span style="color: #0000BB">XML_OPTION_SKIP_WHITE</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">xml_parse_into_struct</span><span style="color: #007700">(</span><span style="color: #0000BB">$parser</span><span style="color: #007700">, </span><span style="color: #0000BB">$data</span><span style="color: #007700">, </span><span style="color: #0000BB">$values</span><span style="color: #007700">, </span><span style="color: #0000BB">$tags</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">xml_parser_free</span><span style="color: #007700">(</span><span style="color: #0000BB">$parser</span><span style="color: #007700">);<br /><br />    </span><span style="color: #FF8000">// repetir a través de las extructuras<br />    </span><span style="color: #007700">foreach (</span><span style="color: #0000BB">$tags </span><span style="color: #007700">as </span><span style="color: #0000BB">$key</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$val</span><span style="color: #007700">) {<br />        if (</span><span style="color: #0000BB">$key </span><span style="color: #007700">== </span><span style="color: #DD0000">"molecule"</span><span style="color: #007700">) {<br />            </span><span style="color: #0000BB">$molranges </span><span style="color: #007700">= </span><span style="color: #0000BB">$val</span><span style="color: #007700">;<br />            </span><span style="color: #FF8000">// cada par contiguo de netradas de array son los <br />            // rangos altos y bajos para cada definición de molécula<br />            </span><span style="color: #007700">for (</span><span style="color: #0000BB">$i</span><span style="color: #007700">=</span><span style="color: #0000BB">0</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$molranges</span><span style="color: #007700">); </span><span style="color: #0000BB">$i</span><span style="color: #007700">+=</span><span style="color: #0000BB">2</span><span style="color: #007700">) {<br />                </span><span style="color: #0000BB">$offset </span><span style="color: #007700">= </span><span style="color: #0000BB">$molranges</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">] + </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />                </span><span style="color: #0000BB">$len </span><span style="color: #007700">= </span><span style="color: #0000BB">$molranges</span><span style="color: #007700">[</span><span style="color: #0000BB">$i </span><span style="color: #007700">+ </span><span style="color: #0000BB">1</span><span style="color: #007700">] - </span><span style="color: #0000BB">$offset</span><span style="color: #007700">;<br />                </span><span style="color: #0000BB">$tdb</span><span style="color: #007700">[] = </span><span style="color: #0000BB">parseMol</span><span style="color: #007700">(</span><span style="color: #0000BB">array_slice</span><span style="color: #007700">(</span><span style="color: #0000BB">$values</span><span style="color: #007700">, </span><span style="color: #0000BB">$offset</span><span style="color: #007700">, </span><span style="color: #0000BB">$len</span><span style="color: #007700">));<br />            }<br />        } else {<br />            continue;<br />        }<br />    }<br />    return </span><span style="color: #0000BB">$tdb</span><span style="color: #007700">;<br />}<br /><br />function </span><span style="color: #0000BB">parseMol</span><span style="color: #007700">(</span><span style="color: #0000BB">$mvalues</span><span style="color: #007700">)<br />{<br />    for (</span><span style="color: #0000BB">$i</span><span style="color: #007700">=</span><span style="color: #0000BB">0</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$mvalues</span><span style="color: #007700">); </span><span style="color: #0000BB">$i</span><span style="color: #007700">++) {<br />        </span><span style="color: #0000BB">$mol</span><span style="color: #007700">[</span><span style="color: #0000BB">$mvalues</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">][</span><span style="color: #DD0000">"tag"</span><span style="color: #007700">]] = </span><span style="color: #0000BB">$mvalues</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">][</span><span style="color: #DD0000">"value"</span><span style="color: #007700">];<br />    }<br />    return new </span><span style="color: #0000BB">AminoAcid</span><span style="color: #007700">(</span><span style="color: #0000BB">$mol</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$db </span><span style="color: #007700">= </span><span style="color: #0000BB">readDatabase</span><span style="color: #007700">(</span><span style="color: #DD0000">"moldb.xml"</span><span style="color: #007700">);<br />echo </span><span style="color: #DD0000">"** Database of AminoAcid objects:\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+   Después de ejecutar <var class="filename">parsemoldb.php</var>, la variable
+   <var class="varname">$db</var> contiene un array de
+   objetos de <span class="classname"><strong class="classname">AminoAcid</strong></span> y la salida del
+   script confirma que:
+   <div class="informalexample">
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">** Base de datos de objetos AminoÁcidos:
+Array
+(
+    [0] =&gt; Objeto aminoácido
+        (
+            [name] =&gt; Alanine
+            [symbol] =&gt; ala
+            [code] =&gt; A
+            [type] =&gt; hydrophobic
+        )
+
+    [1] =&gt; Objeto aminoácido
+        (
+            [name] =&gt; Lysine
+            [symbol] =&gt; lys
+            [code] =&gt; K
+            [type] =&gt; charged
+        )
+
+)</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Libera todas las variables de sesi&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.session-status.html">« session_status</a></li>
+      <li style="float: right;"><a href="function.session-write-close.html">session_write_close »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.session.html">Funciones de sesi&oacute;n</a></li>
+    <li>Libera todas las variables de sesi&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.session-unset" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">session_unset</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">session_unset</span> &mdash; <span class="dc-title">Libera todas las variables de sesión</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.session-unset-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>session_unset</strong></span>(): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+
+  <p class="para rdfs-comment">
+   La función <span class="function"><strong>session_unset()</strong></span> libera todas las variables de sesión
+   actualmente registradas.
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.session-unset-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   No devuelve ningún valor.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.session-unset-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Si se usa <var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var> (o <var class="varname">$HTTP_SESSION_VARS</var>
+    para PHP 4.0.6 o anterior), utilice <span class="function"><a href="function.unset.html" class="function">unset()</a></span> para
+    dejar de registrar una variable de sesión, esto es,
+    <code class="literal">unset ($_SESSION[&#039;nombre_variable&#039;]);</code>.
+   </p>
+  </p></blockquote>
+  <div class="caution"><strong class="caution">Precaución</strong>
+   <p class="para">
+    NO destruya completamente <var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var> con
+    <code class="literal">unset($_SESSION)</code> ya que esto deshabilitará el registro
+    de variables de sesión a través del array superglobal <var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var>.
+   </p>
+  </div>
+ </div>
+
+
+</div></div></div></body></html>

@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Introducci&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="book.stream.html">« Flujos</a></li>
+      <li style="float: right;"><a href="stream.setup.html">Instalaci&oacute;n/Configuraci&oacute;n »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.stream.html">Flujos</a></li>
+    <li>Introducci&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="intro.stream" class="preface">
+  <h1 class="title">Introducción</h1>
+  <p class="simpara">
+   Los flujos fueron introducidos en PHP 4.3.0 como
+   una manera de generalizar operaciones con ficheros, redes, compresión de datos, y otras
+   operaciones que comparten un conjunto común de funciones y usos. En
+   su definición más simple, un <code class="literal">flujo</code> es un
+   objeto de tipo <code class="literal">resource</code> que exhibe un comportamiento
+   similar al de un flujo. Esto es, puede ser leído o escrito de una manera
+   lineal, y puede usar la función <span class="function"><a href="function.fseek.html" class="function">fseek()</a></span> para buscar
+   posiciones arbitrarias dentro del flujo.
+  </p>
+  <p class="simpara">
+   Una <code class="literal">envoltura</code> es un código adicional que le indica al flujo cómo
+   manejar protocolos/codificaciones específicos. Por ejemplo, la envoltura <code class="literal">http</code>
+   sabe cómo traducir un URL a una petición <code class="literal">HTTP/1.0</code>
+   para un fichero en un servidor remoto. Existen muchas envolturas
+   incluidas en PHP de manera predeterminada (véase <a href="wrappers.html" class="xref">Protocolos y Envolturas soportados</a>),
+   y también se pueden añadir envolturas personalizadas a un
+   script de PHP usando <span class="function"><a href="function.stream-wrapper-register.html" class="function">stream_wrapper_register()</a></span>, o
+   directamente desde una extensión.
+   Ya que se puede añadir cualquier clase de envoltura a PHP,
+   no existe un límite establecido sobre lo que se puede hacer con ellas. Para acceder a la lista
+   de las envolturas actualmente registradas, use <span class="function"><a href="function.stream-get-wrappers.html" class="function">stream_get_wrappers()</a></span>.
+  </p>
+  <p class="para">
+   Un flujo está descrito como: <code class="parameter">esquema</code>://<code class="parameter">objetivo</code>
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      <code class="parameter">esquema</code>(string) -
+      El nombre de la envoltura que se va a usar. Algunos ejemplos incluyen: file,
+      http, https, ftp, ftps, compress.zlib, compress.bz2, y php. Una lista con las
+      envolturas incluidas en PHP puede verse en la sección <a href="wrappers.html" class="xref">Protocolos y Envolturas soportados</a>. Si
+      no se especifica una envoltura, se usará la función predeterminada (normalmente
+      <code class="literal">file</code>://).
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <code class="parameter">objetivo</code> -
+      Depende de la envoltura usada. Para flujos relacionados con el sistema de ficheros,
+      nomrmalmente es una ruta y un nombre de fichero. Para flujos relacionados con
+      redes, normalmente es un nombre de host, a menudo con una ruta añadida al final. Se puede encontrar
+      una descripción de los objetivos para los flujos incluidos en PHP en la sección <a href="wrappers.html" class="xref">Protocolos y Envolturas soportados</a>.
+     </span>
+    </li>
+   </ul>
+  </p>
+ </div></div></div></body></html>

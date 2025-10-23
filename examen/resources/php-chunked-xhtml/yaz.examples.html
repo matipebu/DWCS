@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Ejemplos</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="yaz.installation.html">« Instalaci&oacute;n</a></li>
+      <li style="float: right;"><a href="ref.yaz.html">Funciones de YAZ »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.yaz.html">YAZ</a></li>
+    <li>Ejemplos</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="yaz.examples" class="chapter">
+ <h1 class="title">Ejemplos</h1>
+
+ <p class="para">
+  PHP/YAZ mantiene la vía de conexión con los objetivos de
+  las (Asociaciones-Z). Un recurso representa una conexión a
+  objetivo.
+ </p>
+ <p class="para">
+  El código debajo demuestra las características de la búsqueda en paralelo
+  del API. Cuando se invoca sin argumentos imprime una consulta de formulario; sino
+  (los argumentos son suministrados) busca los objetivos como son dados en el arreglo del
+  <code class="literal">anfitrión</code>.
+ </p>
+ <p class="para">
+  <div class="example" id="example-4603">
+   <p><strong>Ejemplo #1 Busqueda Paralela usando YAZ</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$host</span><span style="color: #007700">=</span><span style="color: #0000BB">$_REQUEST</span><span style="color: #007700">[</span><span style="color: #0000BB">anfitrion</span><span style="color: #007700">];<br /></span><span style="color: #0000BB">$query</span><span style="color: #007700">=</span><span style="color: #0000BB">$_REQUEST</span><span style="color: #007700">[</span><span style="color: #0000BB">consulta</span><span style="color: #007700">];<br /></span><span style="color: #0000BB">$num_hosts </span><span style="color: #007700">= </span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$host</span><span style="color: #007700">);<br />if (empty(</span><span style="color: #0000BB">$query</span><span style="color: #007700">) || </span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$host</span><span style="color: #007700">) == </span><span style="color: #0000BB">0</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">'&lt;form method="get"&gt;<br />    &lt;input type="checkbox"<br />    name="host[]" value="bagel.indexdata.dk/gils" /&gt;<br />        Prueba GILS<br />    &lt;input type="checkbox"<br />    name="host[]" value="localhost:9999/Default" /&gt;<br />        Prueba local<br />    &lt;input type="checkbox" checked="checked"<br />    name="host[]" value="z3950.loc.gov:7090/voyager" /&gt;<br />        Congresos de librería<br />    &lt;br /&gt;<br />    RPN Query:<br />    &lt;input type="text" size="30" name="query" /&gt;<br />    &lt;input type="submit" name="action" value="Buscar" /&gt;<br />    &lt;/form&gt;<br />    '</span><span style="color: #007700">;        <br />} else {<br />    echo </span><span style="color: #DD0000">'Se encontro para ' </span><span style="color: #007700">. </span><span style="color: #0000BB">htmlspecialchars</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">) . </span><span style="color: #DD0000">'&lt;br /&gt;'</span><span style="color: #007700">;<br />    for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">$num_hosts</span><span style="color: #007700">; </span><span style="color: #0000BB">$i</span><span style="color: #007700">++) {<br />        </span><span style="color: #0000BB">$id</span><span style="color: #007700">[] = </span><span style="color: #0000BB">yaz_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$host</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">]);<br />        </span><span style="color: #0000BB">yaz_syntax</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">], </span><span style="color: #DD0000">"usmarc"</span><span style="color: #007700">);<br />        </span><span style="color: #0000BB">yaz_range</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">], </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">10</span><span style="color: #007700">);<br />        </span><span style="color: #0000BB">yaz_search</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">], </span><span style="color: #DD0000">"rpn"</span><span style="color: #007700">, </span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br />    }<br />    </span><span style="color: #0000BB">yaz_wait</span><span style="color: #007700">();<br />    for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">$num_hosts</span><span style="color: #007700">; </span><span style="color: #0000BB">$i</span><span style="color: #007700">++) {<br />        echo </span><span style="color: #DD0000">'&lt;hr /&gt;' </span><span style="color: #007700">. </span><span style="color: #0000BB">$host</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">] . </span><span style="color: #DD0000">':'</span><span style="color: #007700">;<br />        </span><span style="color: #0000BB">$error </span><span style="color: #007700">= </span><span style="color: #0000BB">yaz_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">]);<br />        if (!empty(</span><span style="color: #0000BB">$error</span><span style="color: #007700">)) {<br />            echo </span><span style="color: #DD0000">"Error: </span><span style="color: #0000BB">$error</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br />        } else {<br />            </span><span style="color: #0000BB">$hits </span><span style="color: #007700">= </span><span style="color: #0000BB">yaz_hits</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">]);<br />            echo </span><span style="color: #DD0000">"Conteo de Resultado </span><span style="color: #0000BB">$hits</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br />        }<br />        echo </span><span style="color: #DD0000">'&lt;dl&gt;'</span><span style="color: #007700">;<br />        for (</span><span style="color: #0000BB">$p </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">; </span><span style="color: #0000BB">$p </span><span style="color: #007700">&lt;= </span><span style="color: #0000BB">10</span><span style="color: #007700">; </span><span style="color: #0000BB">$p</span><span style="color: #007700">++) {<br />            </span><span style="color: #0000BB">$rec </span><span style="color: #007700">= </span><span style="color: #0000BB">yaz_record</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">], </span><span style="color: #0000BB">$p</span><span style="color: #007700">, </span><span style="color: #DD0000">"string"</span><span style="color: #007700">);<br />            if (empty(</span><span style="color: #0000BB">$rec</span><span style="color: #007700">)) continue;<br />            echo </span><span style="color: #DD0000">"&lt;dt&gt;&lt;b&gt;</span><span style="color: #0000BB">$p</span><span style="color: #DD0000">&lt;/b&gt;&lt;/dt&gt;&lt;dd&gt;"</span><span style="color: #007700">;<br />            echo </span><span style="color: #0000BB">nl2br</span><span style="color: #007700">(</span><span style="color: #0000BB">$rec</span><span style="color: #007700">);<br />            echo </span><span style="color: #DD0000">"&lt;/dd&gt;"</span><span style="color: #007700">;<br />        }<br />        echo </span><span style="color: #DD0000">'&lt;/dl&gt;'</span><span style="color: #007700">;<br />    }<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </p>
+</div>
+</div></div></body></html>

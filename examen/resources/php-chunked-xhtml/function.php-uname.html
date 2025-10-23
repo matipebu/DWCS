@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Devuelve informaci&oacute;n sobre el sistema operativo en que se est&aacute; ejecutando PHP</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.php-sapi-name.html">« php_sapi_name</a></li>
+      <li style="float: right;"><a href="function.phpcredits.html">phpcredits »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.info.html">Funciones de Opciones/Info de PHP</a></li>
+    <li>Devuelve informaci&oacute;n sobre el sistema operativo en que se est&aacute; ejecutando PHP</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.php-uname" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">php_uname</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.2, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">php_uname</span> &mdash; <span class="dc-title">Devuelve información sobre el sistema operativo en que se está ejecutando PHP</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.php-uname-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>php_uname</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$mode</code><span class="initializer"> = &quot;a&quot;</span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>php_uname()</strong></span> devuelve una descripción del sistema
+   operativo en que se está ejecutando PHP. Esta misma información se muestra en la parte 
+   superior de <span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span>. Para obtener solamente el nombre
+   del sistema operativo, considere el uso de la constante <strong><code><a href="reserved.constants.html#constant.php-os">PHP_OS</a></code></strong>,
+   pero tenga en mente que la constante contendrá el sistema operativo
+   en que PHP fue <em>compilado</em>.
+  </p>
+  <p class="para">
+   En algunos sistemas más antigos de UNIX, es posible que no se pueda determinar
+   la información del SO actual en cuyo caso se revertirá mostrando el SO en que PHP
+   fue compilado. Esto solo sucederá si la llamada a la libreria uname() 
+   no existe o no funciona.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.php-uname-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">mode</code></dt>
+     <dd>
+      <p class="para">
+       <code class="parameter">mode</code> es un caracter simple que define
+       qué información es devuelta:
+       <ul class="itemizedlist">
+        <li class="listitem">
+         <span class="simpara">
+          <code class="literal">&#039;a&#039;</code>: Elegida por defecto. Contiene todos los modos en 
+          la secuencia <code class="literal">&quot;s n r v m&quot;</code>.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <code class="literal">&#039;s&#039;</code>: Nombre del sistema operativo. ej.
+           <code class="literal">FreeBSD</code>.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <code class="literal">&#039;n&#039;</code>: Nombre del Host. ej. 
+          <code class="literal">localhost.example.com</code>.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <code class="literal">&#039;r&#039;</code>: Nombre de la versión liberada. ej. 
+          <code class="literal">5.1.2-RELEASE</code>.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <code class="literal">&#039;v&#039;</code>: Información de la versión. Varia mucho entre los
+          sistemas operativos.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <code class="literal">&#039;m&#039;</code>: Tipo de máquina. ej. <code class="literal">i386</code>.
+         </span>
+        </li>
+       </ul>
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.php-uname-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve la descripción, como una cadena de texto.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.php-uname-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-582">
+    <p><strong>Ejemplo #1 Algúnos ejemplos de <span class="function"><strong>php_uname()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">php_uname</span><span style="color: #007700">();<br />echo </span><span style="color: #0000BB">PHP_OS</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">/* Algúnos posibles resultados:<br />Linux localhost 2.4.21-0.13mdk #1 Fri Mar 14 15:08:06 EST 2003 i686<br />Linux<br /><br />FreeBSD localhost 3.2-RELEASE #15: Mon Dec 17 08:46:02 GMT 2001<br />FreeBSD<br /><br />Windows NT XN1 5.1 build 2600<br />WINNT<br />*/<br /><br /></span><span style="color: #007700">if (</span><span style="color: #0000BB">strtoupper</span><span style="color: #007700">(</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">PHP_OS</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">)) === </span><span style="color: #DD0000">'WIN'</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">'Este un servidor usando Windows!'</span><span style="color: #007700">;<br />} else {<br />    echo </span><span style="color: #DD0000">'Este es un servidor que no usa Windows!'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   También existen algunas <a href="language.constants.predefined.html" class="link">
+   constantes PHP predefinidas</a> que pueden ser útiles, por ejemplo:
+   <div class="example" id="example-583">
+    <p><strong>Ejemplo #2 Algunos ejemplos de las constantes relacionadas al SO</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// *nix<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">DIRECTORY_SEPARATOR</span><span style="color: #007700">; </span><span style="color: #FF8000">// /<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">PHP_SHLIB_SUFFIX</span><span style="color: #007700">;    </span><span style="color: #FF8000">// so<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">PATH_SEPARATOR</span><span style="color: #007700">;      </span><span style="color: #FF8000">// :<br /><br />// Win*<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">DIRECTORY_SEPARATOR</span><span style="color: #007700">; </span><span style="color: #FF8000">// \<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">PHP_SHLIB_SUFFIX</span><span style="color: #007700">;    </span><span style="color: #FF8000">// dll<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">PATH_SEPARATOR</span><span style="color: #007700">;      </span><span style="color: #FF8000">// ;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.php-uname-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.phpversion.html" class="function" rel="rdfs-seeAlso">phpversion()</a> - Obtiene la versi&oacute;n de PHP</span></li>
+    <li><span class="function"><a href="function.php-sapi-name.html" class="function" rel="rdfs-seeAlso">php_sapi_name()</a> - Devuelve el tipo de interfaz que hay entre PHP y el servidor</span></li>
+    <li><span class="function"><a href="function.phpinfo.html" class="function" rel="rdfs-seeAlso">phpinfo()</a> - Muestra informaci&oacute;n sobre la configuraci&oacute;n de PHP</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

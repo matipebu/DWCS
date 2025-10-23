@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Calcula el 'hash' md5 de un string</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.ltrim.html">« ltrim</a></li>
+      <li style="float: right;"><a href="function.md5-file.html">md5_file »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.strings.html">Funciones de strings</a></li>
+    <li>Calcula el 'hash' md5 de un string</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.md5" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">md5</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">md5</span> &mdash; <span class="dc-title">Calcula el &#039;hash&#039; md5 de un string</span></p>
+
+ </div>
+ 
+ <div id="function.md5-refsynopsisdiv">
+  
+<div class="warning"><strong class="warning">Advertencia</strong>
+ <p class="para">
+  No se recomienda utilizar esta función para contraseñas seguras
+  debido a la naturaleza rápida de este algoritmo de «hashing». Véase las
+  <a href="faq.passwords.html#faq.passwords.fasthash" class="link">Preguntas más frecuentes de «hash» de contraseñas</a>
+  para más detalles y el empleo de mejores prácticas.
+ </p>
+</div>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.md5-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>md5</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$str</code></span>, <span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$raw_output</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Calcula el hash MD5 de <code class="parameter">str</code> utilizando el
+   <a href="http://www.faqs.org/rfcs/rfc1321" class="link external">&raquo;&nbsp;Algoritmo MD5 Message-Digest
+    de RSA Data Security, Inc.</a> y devuelve ese hash.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.md5-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">str</code></dt>
+     <dd>
+      <p class="para">
+       El string.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">raw_output</code></dt>
+     <dd>
+      <p class="para">
+       Si se establece el <code class="parameter">raw_output</code> opcional en <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>,
+       el resumen md5 será devuelto en formato binario sin tratar con una
+       longitud de 16.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.md5-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el hash como un número hexadecimal de 32 caracteres.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.md5-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4795">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>md5()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$str </span><span style="color: #007700">= </span><span style="color: #DD0000">'apple'</span><span style="color: #007700">;<br /><br />if (</span><span style="color: #0000BB">md5</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">) === </span><span style="color: #DD0000">'1f3870be274f6c49b3e31a0c6728957f'</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">"Would you like a green or red apple?"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.md5-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.md5-file.html" class="function" rel="rdfs-seeAlso">md5_file()</a> - Calcula el resumen criptogr&aacute;fico md5 de un archivo dado</span></li>
+    <li><span class="function"><a href="function.sha1-file.html" class="function" rel="rdfs-seeAlso">sha1_file()</a> - Calcula el hash sha1 de un archivo</span></li>
+    <li><span class="function"><a href="function.crc32.html" class="function" rel="rdfs-seeAlso">crc32()</a> - Calcula el polinomio crc32 de una cadena</span></li>
+    <li><span class="function"><a href="function.sha1.html" class="function" rel="rdfs-seeAlso">sha1()</a> - Calcula el 'hash' sha1 de un string</span></li>
+    <li><span class="function"><a href="function.hash.html" class="function" rel="rdfs-seeAlso">hash()</a> - Generar un valor hash (resumen de mensaje)</span></li>
+    <li><span class="function"><a href="function.crypt.html" class="function" rel="rdfs-seeAlso">crypt()</a> - Hash de cadenas de un s&oacute;lo sentido</span></li>
+    <li><span class="function"><a href="function.password-hash.html" class="function" rel="rdfs-seeAlso">password_hash()</a> - Crea un hash de contrase&ntilde;a</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

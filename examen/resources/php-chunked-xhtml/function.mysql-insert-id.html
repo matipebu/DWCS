@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Obtiene el ID generado en la &uacute;ltima consulta</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.mysql-info.html">« mysql_info</a></li>
+      <li style="float: right;"><a href="function.mysql-list-dbs.html">mysql_list_dbs »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.mysql.html">Funciones de MySQL</a></li>
+    <li>Obtiene el ID generado en la &uacute;ltima consulta</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mysql-insert-id" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysql_insert_id</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">mysql_insert_id</span> &mdash; <span class="dc-title">Obtiene el ID generado en la última consulta</span></p>
+
+ </div>
+
+ <div id="function.mysql-insert-id-refsynopsisdiv">
+  <div class="warning"><strong class="warning">Advertencia</strong>
+   <p class="para">Esta extensión fue declarada obsoleta en PHP 5.5.0 y eliminada en PHP 7.0.0.
+En su lugar debería utilzarse las extensiones <a href="book.mysqli.html" class="link">MySQLi</a> o <a href="ref.pdo-mysql.html" class="link">PDO_MySQL</a>.
+Véase también la guía <a href="mysqlinfo.api.choosing.html" class="link">MySQL: elegir una API</a>.
+Las alternativas a esta función son:</p>
+   <ul class="simplelist">
+    <li><span class="function"><a href="mysqli.insert-id.html" class="function">mysqli_insert_id()</a></span></li>
+    <li><span class="methodname"><a href="pdo.lastinsertid.html" class="methodname">PDO::lastInsertId()</a></span></li>
+   </ul>
+  </div>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.mysql-insert-id-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mysql_insert_id</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$link_identifier</code><span class="initializer"> = NULL</span></span>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="para rdfs-comment">
+   Recupera el ID generado por la consulta anterior (normalmente INSERT) para
+   una columna AUTO_INCREMENT.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mysql-insert-id-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    <dt><code class="parameter">
+link_identifier</code></dt><dd><p class="para">La conexión MySQL. Si no
+se especifica el identificador de enlace, se asume el último enlace abierto
+por <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span>. Si no se encuentra este enlace, se
+intentará crear un nuevo enlace como si <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> hubiese sido invocada
+sin argumentos. Si no se encuentra o establece ninguna conexión, se genera un error
+de nivel <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong>.</p></dd>
+
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mysql-insert-id-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   El ID generado por la consulta anterior para una columna AUTO_INCREMENT
+   en caso de éxito, <code class="literal">0</code> si la consulta
+   anterior no genera un valor AUTO_INCREMENT, o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si
+   no se estableció una conexión MySQL.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.mysql-insert-id-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-1766">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>mysql_insert_id()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$enlace </span><span style="color: #007700">= </span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">, </span><span style="color: #DD0000">'usuario_mysql'</span><span style="color: #007700">, </span><span style="color: #DD0000">'contraseña_mysql'</span><span style="color: #007700">);<br />if (!</span><span style="color: #0000BB">$enlace</span><span style="color: #007700">) {<br />    die(</span><span style="color: #DD0000">'No se pudo conectar: ' </span><span style="color: #007700">. </span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br />}<br /></span><span style="color: #0000BB">mysql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">'mibd'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"INSERT INTO mitabla (producto) values ('kossu')"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"El último registro insertado tiene el id %d\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">mysql_insert_id</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.mysql-insert-id-notes">
+  <h3 class="title">Notas</h3>
+  <div class="caution"><strong class="caution">Precaución</strong>
+   <p class="para">
+    <span class="function"><strong>mysql_insert_id()</strong></span> convertirá el tipo devuelto de la
+    función nativa <code class="literal">mysql_insert_id()</code> de la API de C de MySQL a un tipo
+    <code class="literal">long</code> (llamado <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> en PHP). Si la
+    columna AUTO_INCREMENT tiene un tipo BIGINT (64 bits) la
+    conversión puede resultar en un valor incorrecto. En su lugar, use la función de SQL
+    interna LAST_INSERT_ID() de MySQL en una consulta SQL. Para más información
+    sobre los valores máximos de tipo integer, por favor vea la documentación de
+    <a href="language.types.integer.html" class="link">integer</a>.
+   </p>
+  </div>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Como <span class="function"><strong>mysql_insert_id()</strong></span> actúa en la última consulta realizada,
+    asegúrese de llamar a <span class="function"><strong>mysql_insert_id()</strong></span> inmediatamente
+    después de la consulta que genera el valor.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    El valor de la función de SQL <code class="literal">LAST_INSERT_ID()</code>
+    de MySQL siempre contiene el valor AUTO_INCREMENT generado más
+    recientientemente, y no se restablece
+    entre consultas.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mysql-insert-id-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.mysql-query.html" class="function" rel="rdfs-seeAlso">mysql_query()</a> - Enviar una consulta MySQL</span></li>
+    <li><span class="function"><a href="function.mysql-info.html" class="function" rel="rdfs-seeAlso">mysql_info()</a> - Obtiene informaci&oacute;n sobre la consulta m&aacute;s reciente</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

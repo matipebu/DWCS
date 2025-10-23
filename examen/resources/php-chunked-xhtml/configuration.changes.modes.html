@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>D&oacute;nde se puede realizar un ajuste de configuraci&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="configuration.file.per-user.html">« Ficheros .user.ini</a></li>
+      <li style="float: right;"><a href="configuration.changes.html">C&oacute;mo cambiar los ajustes de configuraci&oacute;n »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="configuration.html">Configuraci&oacute;n en tiempo de ejecuci&oacute;n</a></li>
+    <li>D&oacute;nde se puede realizar un ajuste de configuraci&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="configuration.changes.modes" class="sect1">
+  <h2 class="title">Dónde se puede realizar un ajuste de configuración</h2>
+
+  <p class="para">
+   Estos modos determinan cuándo y dónde se debe o no asignar una directiva
+   de PHP, y cada directiva del manual hace referencia a uno de estos
+   modos. Por ejemplo, algunos ajustes pueden establecerse en scripts de PHP
+   usando <span class="function"><a href="function.ini-set.html" class="function">ini_set()</a></span>, mientras que otros requieren hacerlo en
+   <var class="filename">php.ini</var> o en <var class="filename">httpd.conf</var>.
+  </p>
+
+  <p class="para">
+   Por ejemplo, el ajuste
+   <a href="outcontrol.configuration.html#ini.output-buffering" class="link">output_buffering</a>
+   es <strong><code><a href="info.constants.html#constant.ini-perdir">INI_PERDIR</a></code></strong> por tanto no puede establecerse usando
+   <span class="function"><a href="function.ini-set.html" class="function">ini_set()</a></span>. Sin embargo, la directiva
+   <a href="errorfunc.configuration.html#ini.display-errors" class="link">display_errors</a> es
+   <strong><code><a href="info.constants.html#constant.ini-all">INI_ALL</a></code></strong> por tanto se puede establecer en cualquier lugar,
+   incluso con <span class="function"><a href="function.ini-set.html" class="function">ini_set()</a></span>.
+  </p>
+
+  <p class="para">
+   <table class="doctable table">
+    <caption><strong>Definición de los modos INI_*</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>Modo</th>
+       <th>Significado</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td><strong><code><a href="info.constants.html#constant.ini-user">INI_USER</a></code></strong></td>
+       <td>
+        La entrada se puede establecer en scripts de usuario (como con <span class="function"><a href="function.ini-set.html" class="function">ini_set()</a></span>)
+        o en el <a href="configuration.changes.html#configuration.changes.windows" class="link">registro de Windows</a>.
+        Desde PHP 5.3, la entrada puede ser establecida en <var class="filename">.user.ini</var>
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="info.constants.html#constant.ini-perdir">INI_PERDIR</a></code></strong></td>
+       <td>
+        La entrada se puede establecer en <var class="filename">php.ini</var>, <var class="filename">.htaccess</var>, <var class="filename">httpd.conf</var> o <var class="filename">.user.ini</var>
+        (desde PHP 5.3)
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="info.constants.html#constant.ini-system">INI_SYSTEM</a></code></strong></td>
+       <td>La entrada se puede establecer en <var class="filename">php.ini</var> o en <var class="filename">httpd.conf</var></td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="info.constants.html#constant.ini-all">INI_ALL</a></code></strong></td>
+       <td>La entrada se puede establecer en cualquier lugar</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div></div></div></body></html>

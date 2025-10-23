@@ -1,0 +1,294 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Filtros de validaci&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="filter.filters.html">« Tipos de filtros</a></li>
+      <li style="float: right;"><a href="filter.filters.sanitize.html">Filtros de saneamiento »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="filter.filters.html">Tipos de filtros</a></li>
+    <li>Filtros de validaci&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="filter.filters.validate" class="section">
+  <h2 class="title">Filtros de validación</h2>
+  <p class="para">
+   <table class="doctable table">
+    <caption><strong>Listado de filtros para validación</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>ID</th>
+       <th>Nombre</th>
+       <th>Opciones</th>
+       <th>Banderas</th>
+       <th>Descripción</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+        <td>
+         <strong><code><a href="filter.constants.html#constant.filter-validate-boolean">FILTER_VALIDATE_BOOLEAN</a></code></strong>,
+         <strong><code>FILTER_VALIDATE_BOOL</code></strong>
+        </td>
+       <td>&quot;boolean&quot;</td>
+       <td>
+        <code class="parameter">default</code>
+       </td>
+       <td>
+        <strong><code><a href="filter.constants.html#constant.filter-null-on-failure">FILTER_NULL_ON_FAILURE</a></code></strong>
+       </td>
+       <td>
+        <p class="para">
+         Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para &quot;1&quot;, &quot;true&quot;, &quot;on&quot; y &quot;yes&quot;.
+         Devuelve <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso contrario.
+        </p>
+        <p class="para">
+         Si <strong><code><a href="filter.constants.html#constant.filter-null-on-failure">FILTER_NULL_ON_FAILURE</a></code></strong> está declarado, se
+         devolverá <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> sólo para &quot;0&quot;, &quot;false&quot;, &quot;off&quot;, &quot;no&quot;, y &quot;&quot;, y <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>
+         para cualquier valor no booleano.
+        </p>
+         <p class="para">
+          Los valores String se recortan utilizando <span class="function"><a href="function.trim.html" class="function">trim()</a></span> antes de la comparación.
+         </p>
+       </td>
+       </tr>
+
+       <tr>
+        <td><strong><code>FILTER_VALIDATE_DOMAIN</code></strong></td>
+        <td>&quot;validate_domain&quot;</td>
+        <td>
+         <code class="parameter">default</code>
+        </td>
+        <td>
+         <strong><code>FILTER_FLAG_HOSTNAME</code></strong>,
+         <strong><code><a href="filter.constants.html#constant.filter-null-on-failure">FILTER_NULL_ON_FAILURE</a></code></strong>
+        </td>
+        <td>
+         <p class="para">
+          Valida si las longitudes de las etiquetas de los nombres de dominio son válidas.
+         </p>
+         <p class="para">
+          Valida los nombres de dominio según el RFC 1034, RFC 1035, RFC 952,
+          RFC 1123, RFC 2732, RFC 2181, y RFC 1123. Bandera opcional
+          <strong><code>FILTER_FLAG_HOSTNAME</code></strong> añade la capacidad de
+          validar específicamente los nombres de host (deben comenzar con un
+          alfanumérico y contener sólo caracteres alfanuméricos o
+          guiones).
+         </p>
+        </td>
+       </tr>
+
+       <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-validate-email">FILTER_VALIDATE_EMAIL</a></code></strong></td>
+       <td>&quot;validate_email&quot;</td>
+       <td>
+        <code class="parameter">default</code>
+       </td>
+        <td>
+         <strong><code>FILTER_FLAG_EMAIL_UNICODE</code></strong>,
+         <strong><code><a href="filter.constants.html#constant.filter-null-on-failure">FILTER_NULL_ON_FAILURE</a></code></strong>
+        </td>
+       <td>
+        <p class="para">
+         Valida una dirección de correo electrónico.
+        </p>
+        <p class="para">
+         En general, se validan direcciones de correo electrónico con la sintaxis <code class="literal">addr-spec</code> del
+         <a href="http://www.faqs.org/rfcs/rfc822" class="link external">&raquo;&nbsp;RFC 822</a>, con la excepción de no admitir el plegamiento de comentarios
+         y dominios con espacios en blanco
+         no son compatibles.
+        </p>
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-validate-float">FILTER_VALIDATE_FLOAT</a></code></strong></td>
+       <td>&quot;float&quot;</td>
+       <td>
+         <code class="parameter">default</code>,
+         <code class="parameter">decimal</code>,
+         <code class="parameter">min_range</code>,
+         <code class="parameter">max_range</code>
+       </td>
+       <td>
+         <strong><code><a href="filter.constants.html#constant.filter-flag-allow-thousand">FILTER_FLAG_ALLOW_THOUSAND</a></code></strong>,
+         <strong><code><a href="filter.constants.html#constant.filter-null-on-failure">FILTER_NULL_ON_FAILURE</a></code></strong>
+       </td>
+        <td>
+         <p class="para">
+         Valida si el valor es un float, opcionalmente del rango especificado, y lo convierte a float si tiene éxito.
+         </p>
+         <p class="para">
+          Los valores de los string se recortan con usando <span class="function"><a href="function.trim.html" class="function">trim()</a></span> antes de la comparación.
+         </p>
+        </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-validate-int">FILTER_VALIDATE_INT</a></code></strong></td>
+       <td>&quot;int&quot;</td>
+       <td>
+        <code class="parameter">default</code>,
+        <code class="parameter">min_range</code>,
+        <code class="parameter">max_range</code>
+       </td>
+       <td>
+         <strong><code><a href="filter.constants.html#constant.filter-flag-allow-octal">FILTER_FLAG_ALLOW_OCTAL</a></code></strong>,
+         <strong><code><a href="filter.constants.html#constant.filter-flag-allow-hex">FILTER_FLAG_ALLOW_HEX</a></code></strong>,
+         <strong><code><a href="filter.constants.html#constant.filter-null-on-failure">FILTER_NULL_ON_FAILURE</a></code></strong>
+       </td>
+        <td>
+         <p class="para">
+          Valida un valor como integer, opcionalmente desde el rango especificado, y lo convierte a int en caso de éxito.
+         </p>
+         <p class="para">
+          Los valores de los string se recortan con usando <span class="function"><a href="function.trim.html" class="function">trim()</a></span> antes de la comparación.
+         </p>
+        </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-validate-ip">FILTER_VALIDATE_IP</a></code></strong></td>
+       <td>&quot;validate_ip&quot;</td>
+       <td>
+        <code class="parameter">default</code>
+       </td>
+       <td>
+         <strong><code><a href="filter.constants.html#constant.filter-flag-ipv4">FILTER_FLAG_IPV4</a></code></strong>,
+         <strong><code><a href="filter.constants.html#constant.filter-flag-ipv6">FILTER_FLAG_IPV6</a></code></strong>,
+         <strong><code><a href="filter.constants.html#constant.filter-flag-no-priv-range">FILTER_FLAG_NO_PRIV_RANGE</a></code></strong>,
+         <strong><code><a href="filter.constants.html#constant.filter-flag-no-res-range">FILTER_FLAG_NO_RES_RANGE</a></code></strong>,
+         <strong><code><a href="filter.constants.html#constant.filter-null-on-failure">FILTER_NULL_ON_FAILURE</a></code></strong>
+       </td>
+       <td>
+        Valida si es valor es una dirección IP, opcionalmente se puede indicar que sea sólo IPv4 o IPv6 o que no
+        sea de rangos privados o reservados.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-validate-mac">FILTER_VALIDATE_MAC</a></code></strong></td>
+       <td>&quot;validate_mac_address&quot;</td>
+       <td>
+        <code class="parameter">default</code>
+       </td>
+        <td>
+         <strong><code><a href="filter.constants.html#constant.filter-null-on-failure">FILTER_NULL_ON_FAILURE</a></code></strong>
+        </td>
+       <td>Valida una dirección MAC.</td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-validate-regexp">FILTER_VALIDATE_REGEXP</a></code></strong></td>
+       <td>&quot;validate_regexp&quot;</td>
+       <td>
+        <code class="parameter">default</code>,
+        <code class="parameter">regexp</code>
+       </td>
+        <td>
+         <strong><code><a href="filter.constants.html#constant.filter-null-on-failure">FILTER_NULL_ON_FAILURE</a></code></strong>
+        </td>
+       <td>
+        Valida el valor contra <code class="parameter">regexp</code>, una
+        expresión regular <a href="book.pcre.html" class="link">Perl-compatible</a>.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code><a href="filter.constants.html#constant.filter-validate-url">FILTER_VALIDATE_URL</a></code></strong></td>
+       <td>&quot;validate_url&quot;</td>
+       <td>
+        <code class="parameter">default</code>
+       </td>
+       <td>
+         <strong><code>FILTER_FLAG_SCHEME_REQUIRED</code></strong>,
+         <strong><code>FILTER_FLAG_HOST_REQUIRED</code></strong>,
+         <strong><code><a href="filter.constants.html#constant.filter-flag-path-required">FILTER_FLAG_PATH_REQUIRED</a></code></strong>,
+         <strong><code><a href="filter.constants.html#constant.filter-flag-query-required">FILTER_FLAG_QUERY_REQUIRED</a></code></strong>,
+         <strong><code><a href="filter.constants.html#constant.filter-null-on-failure">FILTER_NULL_ON_FAILURE</a></code></strong>
+       </td>
+       <td>Valida si su valor es una URL (de acuerdo con <a href="http://www.faqs.org/rfcs/rfc2396" class="link external">&raquo;&nbsp;http://www.faqs.org/rfcs/rfc2396</a>), opcionalmente con componentes necesarios. Se ha de tener cuidado ya que un URL válida podría no especificar el protocolo HTTP <code class="literal">http://</code>, por lo que podrían ser necesarias validaciones posteriores para determinar que el URL utiliza un protocolo esperado, p.ej., <code class="literal">ssh://</code> o <code class="literal">mailto:</code>. Nótese que esta función sólo buscará para ser validadas URLs ASCII; los nombres de dominio internacionales (que contienen no-ASCII caracteres) fallarán en la validación.</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Cuando <code class="parameter">default</code> está establecido a option, se utilizará el valor de <code class="parameter">default</code> si el valor no es validado.
+   </p>
+  </p></blockquote>
+
+  <div class="simplesect">
+   <h3 class="title">Historial de cambios</h3>
+   <p class="para">
+    <table class="doctable informaltable">
+     
+      <thead>
+       <tr>
+        <th>Versión</th>
+        <th>Descripción</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td>8.0.0</td>
+        <td>
+         The <strong><code>FILTER_FLAG_SCHEME_REQUIRED</code></strong> and
+         <strong><code>FILTER_FLAG_HOST_REQUIRED</code></strong> flags for the
+         <strong><code><a href="filter.constants.html#constant.filter-validate-url">FILTER_VALIDATE_URL</a></code></strong> filter have been removed.
+         The <code class="literal">scheme</code> and <code class="literal">host</code> are (and have been) always required.
+        </td>
+       </tr>
+
+       <tr>
+        <td>8.0.0</td>
+        <td>
+         Added <strong><code>FILTER_VALIDATE_BOOL</code></strong> as an alias for <strong><code><a href="filter.constants.html#constant.filter-validate-boolean">FILTER_VALIDATE_BOOLEAN</a></code></strong>.
+         Using <strong><code>FILTER_VALIDATE_BOOL</code></strong> is preferred.
+        </td>
+       </tr>
+
+       <tr>
+        <td>7.4.0</td>
+        <td>
+         Added <code class="parameter">min_range</code> and <code class="parameter">max_range</code>
+         options for <strong><code><a href="filter.constants.html#constant.filter-validate-float">FILTER_VALIDATE_FLOAT</a></code></strong>.
+        </td>
+       </tr>
+
+       <tr>
+        <td>7.0.0</td>
+        <td>
+         Added <strong><code>FILTER_FLAG_HOSTNAME</code></strong> and <strong><code>FILTER_VALIDATE_DOMAIN</code></strong>.
+        </td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+  </div>
+
+ </div></div></div></body></html>

@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Comprueba si una clase est&aacute; definida internamente por una extensi&oacute;n o por el n&uacute;cleo</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="reflectionclass.isinterface.html">« ReflectionClass::isInterface</a></li>
+      <li style="float: right;"><a href="reflectionclass.isiterable.html">ReflectionClass::isIterable »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.reflectionclass.html">ReflectionClass</a></li>
+    <li>Comprueba si una clase est&aacute; definida internamente por una extensi&oacute;n o por el n&uacute;cleo</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="reflectionclass.isinternal" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ReflectionClass::isInternal</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">ReflectionClass::isInternal</span> &mdash; <span class="dc-title">Comprueba si una clase está definida internamente por una extensión o por el núcleo</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-reflectionclass.isinternal-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>ReflectionClass::isInternal</strong></span>(): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Comprueba si una clase está definida internamente por una extensión o por el núcleo, en oposición a estar definida por el usuario.
+  </p>
+  
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-reflectionclass.isinternal-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">Esta función no tiene parámetros.</p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-reflectionclass.isinternal-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-reflectionclass.isinternal-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-5175">
+    <p><strong>Ejemplo #1 Uso básico de <span class="methodname"><strong>ReflectionClass::isInternal()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$claseInterna </span><span style="color: #007700">= new </span><span style="color: #0000BB">ReflectionClass</span><span style="color: #007700">(</span><span style="color: #DD0000">'ReflectionClass'</span><span style="color: #007700">);<br /><br />class </span><span style="color: #0000BB">Apple </span><span style="color: #007700">{}<br /></span><span style="color: #0000BB">$claseDeUsuario </span><span style="color: #007700">= new </span><span style="color: #0000BB">ReflectionClass</span><span style="color: #007700">(</span><span style="color: #DD0000">'Apple'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$claseInterna</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isInternal</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$claseDeUsuario</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isInternal</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">bool(true)
+bool(false)</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-reflectionclass.isinternal-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="methodname"><a href="reflectionclass.isuserdefined.html" class="methodname" rel="rdfs-seeAlso">ReflectionClass::isUserDefined()</a> - Comprueba si es una clase definida por el usuario</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

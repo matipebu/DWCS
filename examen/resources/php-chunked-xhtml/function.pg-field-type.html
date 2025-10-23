@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Devuelve el nombre de tipo para el n&uacute;mero de campo correspondiente</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.pg-field-table.html">« pg_field_table</a></li>
+      <li style="float: right;"><a href="function.pg-field-type-oid.html">pg_field_type_oid »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.pgsql.html">Funciones de PostgreSQL</a></li>
+    <li>Devuelve el nombre de tipo para el n&uacute;mero de campo correspondiente</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.pg-field-type" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">pg_field_type</h1> 
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">pg_field_type</span> &mdash; <span class="dc-title">
+   Devuelve el nombre de tipo para el número de campo correspondiente   
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.pg-field-type-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>pg_field_type</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$result</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$field_number</code></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>pg_field_type()</strong></span> Devuelve un string que contiene el 
+   nombre del tipo base para el <code class="parameter">field_number</code> en el resultado de consulta  
+   <code class="parameter">result</code> dado de PostgreSQL.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Si el campo utiliza un dominio PostgreSQL (en lugar de un tipo básico),
+    es el nombre del tipo subyacente del dominio el que se devuelve,
+    en lugar del nombre del propio dominio.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Esta función solía llamarse <span class="function"><strong>pg_fieldtype()</strong></span>.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.pg-field-type-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">result</code></dt>
+     <dd>
+      <p class="para">
+       Resultado de consulta de PostgreSQL, devuelto por <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span>,
+       <span class="function"><a href="function.pg-query-params.html" class="function">pg_query_params()</a></span> o <span class="function"><a href="function.pg-execute.html" class="function">pg_execute()</a></span>
+       (entre otros).
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">field_number</code></dt>
+      <dd>
+       <p class="para">
+        Número de campo, a partir de 0.        
+       </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.pg-field-type-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Un <span class="type"><a href="language.types.string.html" class="type string">string</a></span> que contiene el nombre base del tipo del campo, o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>
+   En caso de Fallo.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.pg-field-type-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-1922">
+    <p><strong>Ejemplo #1 Obtención de información sobre los campos</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />  $dbconn </span><span style="color: #007700">= </span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=publisher"</span><span style="color: #007700">) or die(</span><span style="color: #DD0000">"Could not connect"</span><span style="color: #007700">);<br /><br />  </span><span style="color: #FF8000">// Assume 'title' is a varchar type<br />  </span><span style="color: #0000BB">$res </span><span style="color: #007700">= </span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">, </span><span style="color: #DD0000">"select title from authors where author = 'Orwell'"</span><span style="color: #007700">);<br /><br />  echo </span><span style="color: #DD0000">"Campo title de tipo: "</span><span style="color: #007700">, </span><span style="color: #0000BB">pg_field_type</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Title field type: varchar</pre>
+</div>
+    </div>
+   </div> 
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.pg-field-type-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.pg-field-prtlen.html" class="function" rel="rdfs-seeAlso">pg_field_prtlen()</a> - Returns the printed length</span></li>
+    <li><span class="function"><a href="function.pg-field-name.html" class="function" rel="rdfs-seeAlso">pg_field_name()</a> - Returns the name of a field</span></li>
+    <li><span class="function"><a href="function.pg-field-type-oid.html" class="function" rel="rdfs-seeAlso">pg_field_type_oid()</a> - Returns the type ID (OID) for the corresponding field number</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

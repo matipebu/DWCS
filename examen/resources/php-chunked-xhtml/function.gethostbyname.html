@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Obtener la direcci&oacute;n IPv4 que corresponde a un nombre de host de Internet dado</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.gethostbyaddr.html">« gethostbyaddr</a></li>
+      <li style="float: right;"><a href="function.gethostbynamel.html">gethostbynamel »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.network.html">Funciones de red</a></li>
+    <li>Obtener la direcci&oacute;n IPv4 que corresponde a un nombre de host de Internet dado</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.gethostbyname" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">gethostbyname</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">gethostbyname</span> &mdash; <span class="dc-title">
+   Obtener la dirección IPv4 que corresponde a un nombre de host de Internet dado
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.gethostbyname-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>gethostbyname</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$hostname</code></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+  Devuelve la dirección IPv4 del host de Internet especificado por 
+   <code class="parameter">hostname</code>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.gethostbyname-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">hostname</code></dt>
+     <dd>
+      <p class="para">
+       El nombre de host.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.gethostbyname-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve la dirección IPv4 o un string que contiene el <code class="parameter">hostname</code> 
+   sin modificar en caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.gethostbyname-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4442">
+    <p><strong>Ejemplo #1 Ejemplo simple de <span class="function"><strong>gethostbyname()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$ip </span><span style="color: #007700">= </span><span style="color: #0000BB">gethostbyname</span><span style="color: #007700">(</span><span style="color: #DD0000">'www.example.com'</span><span style="color: #007700">);<br /><br />echo </span><span style="color: #0000BB">$ip</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.gethostbyname-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.gethostbyaddr.html" class="function" rel="rdfs-seeAlso">gethostbyaddr()</a> - Obtener el nombre del host de Internet correspondiente a una direcci&oacute;n IP
+   dada</span></li>
+    <li><span class="function"><a href="function.gethostbynamel.html" class="function" rel="rdfs-seeAlso">gethostbynamel()</a> - Obtener una lista de direcciones IPv4 que corresponde a un nombre de host de Internet dado</span></li>
+    <li><span class="function"><a href="function.inet-pton.html" class="function" rel="rdfs-seeAlso">inet_pton()</a> - Convertir una direcci&oacute;n IP legible por humanos a su representaci&oacute;n in_addr empaquetada</span></li>
+    <li><span class="function"><a href="function.inet-ntop.html" class="function" rel="rdfs-seeAlso">inet_ntop()</a> - Convertir una direcci&oacute;n de internet empaquetada en una representaci&oacute;n legible por humanos</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Comparar el valor del atributo encontrado en la entrada que se especific&oacute; con un DN</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.ldap-close.html">« ldap_close</a></li>
+      <li style="float: right;"><a href="function.ldap-connect.html">ldap_connect »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.ldap.html">LDAP Funciones</a></li>
+    <li>Comparar el valor del atributo encontrado en la entrada que se especific&oacute; con un DN</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.ldap-compare" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ldap_compare</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.2, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">ldap_compare</span> &mdash; <span class="dc-title">Comparar el valor del atributo encontrado en la entrada que se especificó con un DN</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ldap-compare-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>ldap_compare</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$link_identifier</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$dn</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$attribute</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$value</code></span><br>): <span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span></div>
+
+  <p class="para rdfs-comment">
+   Comparar el <code class="parameter">value</code> del <code class="parameter">attribute</code>
+   con el valor del mismo atributo en una entrada del directorio de LDAP.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.ldap-compare-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">link_identifier</code></dt>
+     <dd>
+      <p class="para">
+       Un enlace identificador de LDAP, devuelto por <span class="function"><a href="function.ldap-connect.html" class="function">ldap_connect()</a></span>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">dn</code></dt>
+     <dd>
+      <p class="para">
+       El nombre distinguido de una entidad de LDAP.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">attribute</code></dt>
+     <dd>
+      <p class="para">
+       El nombre del atributo.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">value</code></dt>
+     <dd>
+      <p class="para">
+       El valor comparado.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.ldap-compare-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> si <code class="parameter">value</code> es similar de otra forma devuelve
+   <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>. Devuelve -1 en caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.ldap-compare-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   El siguiente ejemplo demuestra como revisar si una contraseña proporcionada es igual o no
+   a la que está definida en una entrada DN específica.
+  </p>
+  <p class="para">
+   <div class="example" id="example-4349">
+    <p><strong>Ejemplo #1 Ejemplo completo de revisión de contraseña</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$ds</span><span style="color: #007700">=</span><span style="color: #0000BB">ldap_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">);  </span><span style="color: #FF8000">// Asumiendo que el servidor de LDAP está en este mismo ordenador<br /><br /></span><span style="color: #007700">if (</span><span style="color: #0000BB">$ds</span><span style="color: #007700">) {<br /><br />    </span><span style="color: #FF8000">// enlazar<br />    </span><span style="color: #007700">if (</span><span style="color: #0000BB">ldap_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$ds</span><span style="color: #007700">)) {<br /><br />        </span><span style="color: #FF8000">// preparar los datos<br />        </span><span style="color: #0000BB">$dn </span><span style="color: #007700">= </span><span style="color: #DD0000">"cn=Matti Meikku, ou=Mi Departamento, o=Mi Compañía, c=FI"</span><span style="color: #007700">;<br />        </span><span style="color: #0000BB">$value </span><span style="color: #007700">= </span><span style="color: #DD0000">"contraseñasecreta"</span><span style="color: #007700">;<br />        </span><span style="color: #0000BB">$attr </span><span style="color: #007700">= </span><span style="color: #DD0000">"contraseña"</span><span style="color: #007700">;<br /><br />        </span><span style="color: #FF8000">// comparar el valor<br />        </span><span style="color: #0000BB">$r</span><span style="color: #007700">=</span><span style="color: #0000BB">ldap_compare</span><span style="color: #007700">(</span><span style="color: #0000BB">$ds</span><span style="color: #007700">, </span><span style="color: #0000BB">$dn</span><span style="color: #007700">, </span><span style="color: #0000BB">$attr</span><span style="color: #007700">, </span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br /><br />        if (</span><span style="color: #0000BB">$r </span><span style="color: #007700">=== -</span><span style="color: #0000BB">1</span><span style="color: #007700">) {<br />            echo </span><span style="color: #DD0000">"Error: " </span><span style="color: #007700">. </span><span style="color: #0000BB">ldap_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$ds</span><span style="color: #007700">);<br />        } elseif (</span><span style="color: #0000BB">$r </span><span style="color: #007700">=== </span><span style="color: #0000BB">true</span><span style="color: #007700">) {<br />            echo </span><span style="color: #DD0000">"Contraseña correcta."</span><span style="color: #007700">;<br />        } elseif (</span><span style="color: #0000BB">$r </span><span style="color: #007700">=== </span><span style="color: #0000BB">false</span><span style="color: #007700">) {<br />            echo </span><span style="color: #DD0000">"Supongo que falló! Contraseña incorrecta."</span><span style="color: #007700">;<br />        }<br /><br />    } else {<br />        echo </span><span style="color: #DD0000">"No se puede enlazar al servidor de LDAP."</span><span style="color: #007700">;<br />    }<br /><br />    </span><span style="color: #0000BB">ldap_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$ds</span><span style="color: #007700">);<br /><br />} else {<br />    echo </span><span style="color: #DD0000">"No se puede conectar al servidor de LDAP."</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.ldap-compare-notes">
+  <h3 class="title">Notas</h3>
+  <div class="warning"><strong class="warning">Advertencia</strong>
+   <p class="para">
+    <span class="function"><strong>ldap_compare()</strong></span> NO puede ser utilizado para comparar valores BINARIOS!
+   </p>
+  </div>
+ </div>
+
+
+</div></div></div></body></html>

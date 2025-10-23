@@ -1,0 +1,349 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Precedencia de operadores</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.operators.html">« Operadores</a></li>
+      <li style="float: right;"><a href="language.operators.arithmetic.html">Operadores aritm&eacute;ticos »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.operators.html">Operadores</a></li>
+    <li>Precedencia de operadores</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.operators.precedence" class="sect1">
+  <h2 class="title">Precedencia de operadores</h2>
+  <p class="para">
+   La precedencia de un operador indica qué tan &quot;estrechamente&quot; se unen dos
+   expresiones juntas. Por ejemplo, en la expresión <code class="literal">1 +
+   5 * 3 </code>, la respuesta es <code class="literal">16</code> y no
+   <code class="literal">18</code> porque el operador de multiplicación (&quot;*&quot;)
+   tiene una precedencia mayor que el operador de adición (&quot;+&quot;).
+   Los paréntesis pueden ser usados para forzar la precedencia, si es necesario. Por
+   ejemplo: <code class="literal">(1 + 5) * 3</code> se evalúa como
+   <code class="literal">18</code>.
+  </p>
+  <p class="para">
+   Cuando los operadores tienen igual precedencia su asociatividad decide
+   cómo se agrupan. Por ejemplo &quot;-&quot; tiene asociatividad a izquierda, así
+   <code class="literal">1 - 2 - 3</code> se agrupa como <code class="literal">(1 - 2) - 3</code>
+   y se evalúa a <code class="literal">-4</code>. &quot;=&quot;, por otra parte, tiene
+   asociatividad a derecha, así <code class="literal">$a = $b = $c</code> se agrupa como
+   <code class="literal">$a = ($b = $c)</code>.
+  </p>
+  <p class="para">
+   Los operadores de igual precedencia que no son asociativos no pueden usarse
+   unos junto a otros, por ejemplo, <code class="literal">1 &lt; 2 &gt; 1</code> es
+   ilegal en PHP. La expresión <code class="literal">1 &lt;= 1 == 1</code>, por otro
+   lado, es legal, ya que el operador <code class="literal">==</code> tiene menos
+   precedencia que el operador <code class="literal">&lt;=</code>.
+  </p>
+  <p class="para">
+   El uso de paréntesis, incluso cuando no es estrictamente necesario, a menudo puede
+   aumentar la legibilidad del código haciendo grupos explícitamente en lugar de confiar
+   en la precedencia y asociatividad implícitas del operador.
+  </p>
+  <p class="para">
+   La siguiente tabla enumera los operadores en orden de precedencia, con
+   los de más alta precedencia al inicio. Los operadores en la misma línea
+   tienen igual precedencia, en cuyo caso la asociatividad decide el agrupamiento.
+   <table class="doctable table">
+    <caption><strong>Precedencia de operadores</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>Asociatividad</th>
+       <th>Operadores</th>
+       <th>Información adicional</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>no asociativo</td>
+       <td>
+        <code class="literal">clone</code>
+        <code class="literal">new</code>
+       </td>
+       <td><a href="language.oop5.cloning.html" class="link">clone</a> and <a href="language.oop5.basic.html#language.oop5.basic.new" class="link">new</a></td>
+      </tr>
+
+      <tr>
+       <td>izquierda</td>
+       <td><code class="literal">[</code></td>
+       <td><span class="function"><a href="function.array.html" class="function">array()</a></span></td>
+      </tr>
+
+      <tr>
+       <td>derecha</td>
+       <td><code class="literal">**</code></td>
+       <td><a href="language.operators.arithmetic.html" class="link">aritmética</a></td>
+      </tr>
+
+      <tr>
+       <td>derecha</td>
+       <td>
+        <code class="literal">++</code>
+        <code class="literal">--</code>
+        <code class="literal">~</code>
+        <code class="literal">(int)</code>
+        <code class="literal">(float)</code>
+        <code class="literal">(string)</code>
+        <code class="literal">(array)</code>
+        <code class="literal">(object)</code>
+        <code class="literal">(bool)</code>
+        <code class="literal">@</code>
+       </td>
+       <td>
+        <a href="language.types.html" class="link">tipos</a> e <a href="language.operators.increment.html" class="link">incremento/decremento</a>
+       </td>
+      </tr>
+
+      <tr>
+       <td>no asociativo</td>
+       <td><code class="literal">instanceof</code></td>
+       <td>
+        <a href="language.types.html" class="link">tipos</a>
+       </td>
+      </tr>
+
+      <tr>
+       <td>derecha</td>
+       <td><code class="literal">!</code></td>
+       <td>
+        <a href="language.operators.logical.html" class="link">lógico</a>
+       </td>
+      </tr>
+
+      <tr>
+       <td>izquierda</td>
+       <td>
+        <code class="literal">*</code>
+        <code class="literal">/</code>
+        <code class="literal">%</code>
+       </td>
+       <td>
+        <a href="language.operators.arithmetic.html" class="link">aritmética</a>
+       </td>
+      </tr>
+
+      <tr>
+       <td>izquierda</td>
+       <td>
+        <code class="literal">+</code>
+        <code class="literal">-</code>
+        <code class="literal">.</code>
+       </td>
+       <td>
+        <a href="language.operators.arithmetic.html" class="link">aritmética</a> y
+        <a href="language.operators.string.html" class="link">string</a></td>
+      </tr>
+
+      <tr>
+       <td>izquierda</td>
+       <td>
+        <code class="literal">&lt;&lt;</code>
+        <code class="literal">&gt;&gt;</code>
+       </td>
+       <td>
+        <a href="language.operators.bitwise.html" class="link">bit a bit</a>
+       </td>
+      </tr>
+
+      <tr>
+       <td>no asociativo</td>
+       <td>
+        <code class="literal">&lt;</code>
+        <code class="literal">&lt;=</code>
+        <code class="literal">&gt;</code>
+        <code class="literal">&gt;=</code>
+       </td>
+       <td>
+        <a href="language.operators.comparison.html" class="link">comparación</a>
+       </td>
+      </tr>
+
+      <tr>
+       <td>no asociativo</td>
+       <td>
+        <code class="literal">==</code>
+        <code class="literal">!=</code>
+        <code class="literal">===</code>
+        <code class="literal">!==</code>
+        <code class="literal">&lt;&gt;</code>
+        <code class="literal">&lt;=&gt;</code>
+       </td>
+       <td>
+        <a href="language.operators.comparison.html" class="link">comparación</a>
+       </td>
+      </tr>
+
+      <tr>
+       <td>izquierda</td>
+       <td><code class="literal">&amp;</code></td>
+       <td>
+        <a href="language.operators.bitwise.html" class="link">bit a bit</a> y
+        <a href="language.references.html" class="link">referencias</a></td>
+      </tr>
+
+      <tr>
+       <td>izquierda</td>
+       <td><code class="literal">^</code></td>
+       <td>
+        <a href="language.operators.bitwise.html" class="link">bit a bit</a>
+       </td>
+      </tr>
+
+      <tr>
+       <td>izquierda</td>
+       <td><code class="literal">|</code></td>
+       <td>
+        <a href="language.operators.bitwise.html" class="link">bit a bit</a>
+       </td>
+      </tr>
+
+      <tr>
+       <td>izquierda</td>
+       <td><code class="literal">&amp;&amp;</code></td>
+       <td>
+        <a href="language.operators.logical.html" class="link">lógico</a>
+       </td>
+      </tr>
+
+      <tr>
+       <td>izquierda</td>
+       <td><code class="literal">||</code></td>
+       <td>
+        <a href="language.operators.logical.html" class="link">lógico</a>
+       </td>
+      </tr>
+
+      <tr>
+       <td>derecha</td>
+       <td><code class="literal">??</code></td>
+       <td>
+        <a href="language.operators.comparison.html" class="link">comparación</a>
+       </td>
+      </tr>
+
+      <tr>
+       <td>izquierda</td>
+       <td><code class="literal">? :</code></td>
+       <td>
+        <a href="language.operators.comparison.html#language.operators.comparison.ternary" class="link">ternario</a>
+       </td>
+      </tr>
+
+      <tr>
+       <td>derecha</td>
+       <td>
+        <code class="literal">=</code>
+        <code class="literal">+=</code>
+        <code class="literal">-=</code>
+        <code class="literal">*=</code>
+        <code class="literal">**=</code>
+        <code class="literal">/=</code>
+        <code class="literal">.=</code>
+        <code class="literal">%=</code>
+        <code class="literal">&amp;=</code>
+        <code class="literal">|=</code>
+        <code class="literal">^=</code>
+        <code class="literal">&lt;&lt;=</code>
+        <code class="literal">&gt;&gt;=</code>
+       </td>
+       <td>
+        <a href="language.operators.assignment.html" class="link">asignación</a>
+       </td>
+      </tr>
+
+      <tr>
+       <td>izquierda</td>
+       <td><code class="literal">and</code></td>
+       <td>
+        <a href="language.operators.logical.html" class="link">lógico</a>
+       </td>
+      </tr>
+
+      <tr>
+       <td>izquierda</td>
+       <td><code class="literal">xor</code></td>
+       <td>
+        <a href="language.operators.logical.html" class="link">lógico</a>
+       </td>
+      </tr>
+
+      <tr>
+       <td>izquierda</td>
+       <td><code class="literal">or</code></td>
+       <td>
+        <a href="language.operators.logical.html" class="link">lógico</a>
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+  <p class="para">
+   <div class="example" id="example-113">
+    <p><strong>Ejemplo #1 Asociatividad</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$a </span><span style="color: #007700">= </span><span style="color: #0000BB">3 </span><span style="color: #007700">* </span><span style="color: #0000BB">3 </span><span style="color: #007700">% </span><span style="color: #0000BB">5</span><span style="color: #007700">; </span><span style="color: #FF8000">// (3 * 3) % 5 = 4<br />// la asociatividad del operador ternario difiere de C/C++<br /></span><span style="color: #0000BB">$a </span><span style="color: #007700">= </span><span style="color: #0000BB">true </span><span style="color: #007700">? </span><span style="color: #0000BB">0 </span><span style="color: #007700">: </span><span style="color: #0000BB">true </span><span style="color: #007700">? </span><span style="color: #0000BB">1 </span><span style="color: #007700">: </span><span style="color: #0000BB">2</span><span style="color: #007700">; </span><span style="color: #FF8000">// (true ? 0 : true) ? 1 : 2 = 2<br /><br /></span><span style="color: #0000BB">$a </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b </span><span style="color: #007700">= </span><span style="color: #0000BB">2</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$a </span><span style="color: #007700">= </span><span style="color: #0000BB">$b </span><span style="color: #007700">+= </span><span style="color: #0000BB">3</span><span style="color: #007700">; </span><span style="color: #FF8000">// $a = ($b += 3) -&gt; $a = 5, $b = 5<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   La precedencia y asociatividad de los operadores solamente determinan cómo
+   se agrupan las expresiones, no especifican un orden de evaluación. PHP no
+   especifica (en general) el orden en que se evalúa una expresión
+   y se debería evitar el código que se asume un orden específico de evaluación,
+   ya que el comportamiento puede cambiar entre versiones de PHP o dependiendo de
+   código circundante.
+   <div class="example" id="example-114">
+    <p><strong>Ejemplo #2 Orden de evaluación no definido</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$a </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />echo </span><span style="color: #0000BB">$a </span><span style="color: #007700">+ </span><span style="color: #0000BB">$a</span><span style="color: #007700">++; </span><span style="color: #FF8000">// podría mostrar 2 o 3<br /><br /></span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">] = </span><span style="color: #0000BB">$i</span><span style="color: #007700">++; </span><span style="color: #FF8000">// podría establecer el índice a 1 o 2<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-115">
+    <p><strong>Ejemplo #3 <code class="literal">+</code>, <code class="literal">-</code> y <code class="literal">.</code> tienen la misma precedencia</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$x </span><span style="color: #007700">= </span><span style="color: #0000BB">4</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">// esta línea podría resultar en una salida inesperada:<br /></span><span style="color: #007700">echo </span><span style="color: #DD0000">"x menos uno igual a " </span><span style="color: #007700">. </span><span style="color: #0000BB">$x</span><span style="color: #007700">-</span><span style="color: #0000BB">1 </span><span style="color: #007700">. </span><span style="color: #DD0000">", o eso espero\n"</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">// ya que se evalúa como esta línea:<br /></span><span style="color: #007700">echo ((</span><span style="color: #DD0000">"x menos uno igual a " </span><span style="color: #007700">. </span><span style="color: #0000BB">$x</span><span style="color: #007700">) - </span><span style="color: #0000BB">1</span><span style="color: #007700">) . </span><span style="color: #DD0000">", o eso espero\n"</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">// la precedencia deseada se puede forzar con paréntesis:<br /></span><span style="color: #007700">echo </span><span style="color: #DD0000">"x menos uno igual a " </span><span style="color: #007700">. (</span><span style="color: #0000BB">$x</span><span style="color: #007700">-</span><span style="color: #0000BB">1</span><span style="color: #007700">) . </span><span style="color: #DD0000">", o eso espero\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+-1, o eso espero
+-1, o eso espero
+x menos uno igual a 3, o eso espero
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Aunque <code class="literal">=</code> tiene una precedencia menor que
+    la mayoría de los demás operadores, PHP aun permitirá expresiones
+    similares a lo siguiente: <code class="literal">if (!$a = foo())</code>,
+    en cuyo caso el valor devuelto de <code class="literal">foo()</code> es
+    puesto en <var class="varname">$a</var>.
+   </p>
+  </p></blockquote>
+ </div></div></div></body></html>

@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Constantes predefinidas</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="changelog.mysql.html">« Registro de cambios</a></li>
+      <li style="float: right;"><a href="mysql.examples.html">Ejemplos »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.mysql.html">MySQL (Original)</a></li>
+    <li>Constantes predefinidas</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysql.constants" class="appendix">
+ <h1 class="title">Constantes predefinidas</h1>
+
+ <p class="simpara">
+Estas constantes están definidas por esta extensión y
+estarán disponibles sólo cuando la extensión haya sido
+compilada con PHP, o bien sea cargada dinámicamente en ejecución.
+</p>
+ <p class="para">
+  Es posible especificar flags adicionales para el cliente en las funciones
+  <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> y <span class="function"><a href="function.mysql-pconnect.html" class="function">mysql_pconnect()</a></span>.
+  Están definidas las siguientes constantes:
+  <table id="mysql.client-flags" class="doctable table">
+   <caption><strong>Constantes del cliente MySQL</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Constante</th>
+      <th>Descripción</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr id="constant.mysql-client-compress">
+      <td><strong><code><a href="mysql.constants.html#constant.mysql-client-compress">MYSQL_CLIENT_COMPRESS</a></code></strong></td>
+      <td>Usar el procolo de compresión</td>
+     </tr>
+
+     <tr id="constant.mysql-client-ignore-space">
+      <td><strong><code><a href="mysql.constants.html#constant.mysql-client-ignore-space">MYSQL_CLIENT_IGNORE_SPACE</a></code></strong></td>
+      <td>Permitir espacios despues de los nombres de función</td>
+     </tr>
+
+     <tr id="constant.mysql-client-interactive">
+      <td><strong><code><a href="mysql.constants.html#constant.mysql-client-interactive">MYSQL_CLIENT_INTERACTIVE</a></code></strong></td>
+      <td>Permitir unos segundos interactive_timeout seconds (en vez de <strong class="option unknown">wait_timeout</strong>) de inactividad antes del cierre de la conexión.</td>
+     </tr>
+
+     <tr id="constant.mysql-client-ssl">
+      <td><strong><code><a href="mysql.constants.html#constant.mysql-client-ssl">MYSQL_CLIENT_SSL</a></code></strong></td>
+      <td>
+       Usar encriptación SSL. Este flag solo esta disponible con la versión de la libreria
+       de cliente de MySQL 4.x o superior. La versión 3.23.x se incluye tanto con PHP 4 como
+       con los binarios para Windows de PHP 5.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </p>
+
+ <p class="para">
+  La función <span class="function"><a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a></span> utiliza una constante para los diferentes tipos de arrays resultantes. Estan definidas las siguientes constantes:
+  <table id="mysql.constants.fetch" class="doctable table">
+   <caption><strong>MySQL fetch constantes</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Constante</th>
+      <th>Descripción</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr id="constant.mysql-assoc">
+      <td><strong><code><a href="mysql.constants.html#constant.mysql-assoc">MYSQL_ASSOC</a></code></strong></td>
+      <td>
+       Las columnas son devueltas en un array que tiene los nombres de los campos como los índices del array.
+      </td>
+     </tr>
+
+     <tr id="constant.mysql-both">
+      <td><strong><code><a href="mysql.constants.html#constant.mysql-both">MYSQL_BOTH</a></code></strong></td>
+      <td>
+       Las columnas son devueltas en un array que tiene tanto índice numérico como un índice con los nombres de los campos.
+      </td>
+     </tr>
+
+     <tr id="constant.mysql-num">
+      <td><strong><code><a href="mysql.constants.html#constant.mysql-num">MYSQL_NUM</a></code></strong></td>
+      <td>
+       Las columnas son devueltas en un array que tiene un índice numérico para los campos. Este índice empieza con 0, con el primer campo en el resultado.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </p>
+</div>
+</div></div></body></html>

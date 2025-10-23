@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Configura una opci&oacute;n para un manejador cURL compartido</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.curl-share-init.html">« curl_share_init</a></li>
+      <li style="float: right;"><a href="function.curl-share-strerror.html">curl_share_strerror »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.curl.html">Funciones de cURL</a></li>
+    <li>Configura una opci&oacute;n para un manejador cURL compartido</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.curl-share-setopt" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">curl_share_setopt</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.5.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">curl_share_setopt</span> &mdash; <span class="dc-title">Configura una opción para un manejador cURL compartido </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.curl-share-setopt-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>curl_share_setopt</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$sh</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$option</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$value</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Configura una opción en el manejador cURL compartido dado.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.curl-share-setopt-parameters">
+  <h3 class="title">Parámetros</h3>
+  <dl>
+   
+    <dt><code class="parameter">sh</code></dt>
+    <dd>
+     <p class="para">
+      Un manejador cURL compartido devuelto por <span class="function"><a href="function.curl-share-init.html" class="function">curl_share_init()</a></span>.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">option</code></dt>
+    <dd>
+     <p class="para">
+      <table class="doctable informaltable">
+        
+         <thead>
+          <tr>
+           <th>Opción</th>
+           <th>Descripción</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlshopt-share">CURLSHOPT_SHARE</a></code></strong></td>
+           <td style="vertical-align: top;">
+               Especifica un tipo de datos que debe ser compartido.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlshopt-unshare">CURLSHOPT_UNSHARE</a></code></strong></td>
+           <td style="vertical-align: top;">
+               Especifica un tipo de datos que no debe ser compartido.
+           </td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">value</code></dt>
+    <dd>
+     <p class="para">
+      <table class="doctable informaltable">
+        
+         <thead>
+          <tr>
+           <th>Valor</th>
+           <th>Descripción</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curl-lock-data-cookie">CURL_LOCK_DATA_COOKIE</a></code></strong></td>
+           <td style="vertical-align: top;">
+               Comparte cookies.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curl-lock-data-dns">CURL_LOCK_DATA_DNS</a></code></strong></td>
+           <td style="vertical-align: top;">
+               Comparte la caché DNS. Tener en cuenta que cuando se usan multimanejadores cURL ,
+               todos los manejadores añadidos al mismo multimanejador compartirán la caché DNS
+               por defecto.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curl-lock-data-ssl-session">CURL_LOCK_DATA_SSL_SESSION</a></code></strong></td>
+           <td style="vertical-align: top;">
+               Comparte IDs de sesiones SSL session, reduciendo el tiempo gastado en la negociación SSL
+               cuando se reconecta al mismo servidor. Notar que los IDs de sesión
+               SSL se reutilizan por defecto dentro del mismo manejador.
+           </td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.curl-share-setopt-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ 
+<div class="refsect1 examples" id="refsect1-function.curl-share-setopt-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4234">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>curl_share_setopt()</strong></span> </strong></p>
+    <div class="example-contents"><p>
+     Este ejemplo creará un manejador cURL compartido, añade dos manejadores cURL en él,
+     y los ejecuta con compartición de datos con cookie.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Crea un manejador cURL compartido y lo configura para compartir cookies<br /></span><span style="color: #0000BB">$sh </span><span style="color: #007700">= </span><span style="color: #0000BB">curl_share_init</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">curl_share_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$sh</span><span style="color: #007700">, </span><span style="color: #0000BB">CURLSHOPT_SHARE</span><span style="color: #007700">, </span><span style="color: #0000BB">CURL_LOCK_DATA_COOKIE</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Inicializa el primer manejador cURL y lo asigna el manejador compartido<br /></span><span style="color: #0000BB">$ch1 </span><span style="color: #007700">= </span><span style="color: #0000BB">curl_init</span><span style="color: #007700">(</span><span style="color: #DD0000">"http://example.com/"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch1</span><span style="color: #007700">, </span><span style="color: #0000BB">CURLOPT_SHARE</span><span style="color: #007700">, </span><span style="color: #0000BB">$sh</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Ejecuta el primer manejador cURL<br /></span><span style="color: #0000BB">curl_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch1</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Inicializa el segundo manejador cURL y lo asigna al manejador compartido<br /></span><span style="color: #0000BB">$ch2 </span><span style="color: #007700">= </span><span style="color: #0000BB">curl_init</span><span style="color: #007700">(</span><span style="color: #DD0000">"http://php.net/"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch2</span><span style="color: #007700">, </span><span style="color: #0000BB">CURLOPT_SHARE</span><span style="color: #007700">, </span><span style="color: #0000BB">$sh</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Ejecuta el segundo manejador cURL<br />// todas las cookies del manejador $ch1 se comparten con el manejador $ch2<br /></span><span style="color: #0000BB">curl_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch2</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Cierra el manejador compartido cURL<br /></span><span style="color: #0000BB">curl_share_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$sh</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Cierra los manejadores cURL<br /></span><span style="color: #0000BB">curl_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">curl_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch2</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

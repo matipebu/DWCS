@@ -1,0 +1,245 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>match</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="control-structures.switch.html">« switch</a></li>
+      <li style="float: right;"><a href="control-structures.declare.html">declare »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.control-structures.html">Estructuras de Control</a></li>
+    <li>match</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="control-structures.match" class="sect1">
+ <h2 class="title">match</h2>
+ <p class="verinfo">(PHP 8)</p>
+ <p class="para">
+  La expresión <code class="literal">match</code> ramifica la evaluación basada en una
+  comprobación de identidad de un valor.
+  De forma similar a una sentencia <code class="literal">switch</code>, una
+  expresión <code class="literal">match</code> tiene una expresión de sujeto que se
+  compara con múltiples alternativas. A diferencia de <code class="literal">switch</code>,
+  se evaluará a un valor muy parecido al de las expresiones ternarias.
+  A diferencia de <code class="literal">switch</code>, la comparación es una comprobación de identidad
+  (<code class="code">===</code>) en lugar de una comprobación de igualdad débil (<code class="code">==</code>).
+  Las expresiones match están disponibles a partir de PHP 8.0.0.
+ </p>
+
+ <p class="para">
+  <div class="example" id="example-138">
+   <p><strong>Ejemplo #1 Estructura de una expresión <code class="literal">match</code></strong></p>
+   <div class="example-contents">
+ <div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /> $return_value </span><span style="color: #007700">= match (</span><span style="color: #0000BB">subject_expression</span><span style="color: #007700">) {<br />     </span><span style="color: #0000BB">single_conditional_expression </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">return_expression</span><span style="color: #007700">,<br />     </span><span style="color: #0000BB">conditional_expression1</span><span style="color: #007700">, </span><span style="color: #0000BB">conditional_expression2 </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">return_expression</span><span style="color: #007700">,<br /> };<br /> </span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+
+  </div>
+ </p>
+
+ <p class="para">
+  <div class="example" id="example-139">
+   <p><strong>Ejemplo #2 Ejemplo básico de uso de <code class="literal">match</code></strong></p>
+   <div class="example-contents">
+ <div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /> $comida </span><span style="color: #007700">= </span><span style="color: #DD0000">'pastel'</span><span style="color: #007700">;<br /><br /> </span><span style="color: #0000BB">$valor_devuelto </span><span style="color: #007700">= match (</span><span style="color: #0000BB">$comida</span><span style="color: #007700">) {<br />     </span><span style="color: #DD0000">'manzana' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Esta comida es una manzana'</span><span style="color: #007700">,<br />     </span><span style="color: #DD0000">'barra' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Esta comida es una barra'</span><span style="color: #007700">,<br />     </span><span style="color: #DD0000">'pastel' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Esta comida es un pastel'</span><span style="color: #007700">,<br /> };<br /><br /> </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$valor_devuelto</span><span style="color: #007700">);<br /> </span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+string(24) &quot;Esta comida es un pastel&quot;
+</pre></div>
+   </div>
+  </div>
+ </p>
+
+ <p class="para">
+  <div class="example" id="example-140">
+   <p><strong>Ejemplo #3 Ejemplo de uso de <code class="literal">match</code> con operadores de comparación</strong></p>
+   <div class="example-contents">
+ <div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /> $age </span><span style="color: #007700">= </span><span style="color: #0000BB">18</span><span style="color: #007700">;<br /><br /> </span><span style="color: #0000BB">$output </span><span style="color: #007700">= match (</span><span style="color: #0000BB">true</span><span style="color: #007700">) {<br />     </span><span style="color: #0000BB">$age </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">2 </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Eres un bebé'</span><span style="color: #007700">,<br />     </span><span style="color: #0000BB">$age </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">10 </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Eres un niño'</span><span style="color: #007700">,<br />     </span><span style="color: #0000BB">$age </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">18 </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Eres un adolescente'</span><span style="color: #007700">,<br />     </span><span style="color: #0000BB">$age </span><span style="color: #007700">&gt;= </span><span style="color: #0000BB">18 </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Eres mayor de edad'</span><span style="color: #007700">,<br />     </span><span style="color: #0000BB">$age </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">40 </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Eres un adulto joven'</span><span style="color: #007700">,<br />     </span><span style="color: #0000BB">$age </span><span style="color: #007700">&gt;= </span><span style="color: #0000BB">40 </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Eres un adulto viejo'<br /> </span><span style="color: #007700">};<br /><br /> </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$output</span><span style="color: #007700">);<br /> </span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+string(18) &quot;Eres mayor de edad&quot;
+</pre></div>
+   </div>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <span class="simpara">
+     El resultado de una expresión <code class="literal">match</code> no necesita ser utilizado.
+    </span>
+   </p></blockquote>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <span class="simpara">
+     Una expresión <code class="literal">match</code> <em>debe</em> 
+     terminar con un punto y coma <code class="literal">;</code>.
+    </span>
+   </p></blockquote>
+  </div>
+ </p>
+
+ <p class="para">
+  La expresión <code class="literal">match</code> es similar a una
+  sentencia <code class="literal">switch</code> pero tiene algunas diferencias clave:
+  
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     Un brazo de <code class="literal">match</code> compara los valores estrictamente (<code class="code">===</code>) en lugar
+     de hacerlo de forma suelta como lo hace la sentencia switch.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Una expresión <code class="literal">match</code> retorna un valor.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Los brazos de <code class="literal">Match</code> no pasan a casos posteriores
+     como lo hacen las sentencias <code class="literal">switch</code>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Una expresión <code class="literal">match</code> debe ser completa.
+    </span>
+   </li>
+  </ul>
+ </p>
+
+ <p class="para">
+  Como las expresiones <code class="literal">switch</code>, las expresiones <code class="literal">match</code>
+  se ejecutan de brazo a brazo.
+  Al principio, no se ejecuta ningún código.
+  Las expresiones condicionales sólo se evalúan si todas las anteriores
+  no coinciden con la expresión del sujeto.
+  Sólo se evaluará la expresión de retorno correspondiente
+  a la expresión condicional que coincida.
+  Por ejemplo:
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$result </span><span style="color: #007700">= match (</span><span style="color: #0000BB">$x</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">foo</span><span style="color: #007700">() =&gt; ...,<br />    </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bar</span><span style="color: #007700">() =&gt; ..., </span><span style="color: #FF8000">// bar() no se llama si foo() === $x<br />    </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">baz </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">beep</span><span style="color: #007700">(), </span><span style="color: #FF8000">// beep() no se llama a menos que $x === $this-&gt;baz<br />    // etc.<br /></span><span style="color: #007700">};<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </p>
+
+ <p class="para">
+  Los brazos de la expresión <code class="literal">match</code> pueden contener varias expresiones
+  separadas por una coma.  Se trata de un OR lógico, y es una abreviatura de múltiples
+  brazos match con el mismo lado derecho.
+ </p>
+ <p class="para">
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$result </span><span style="color: #007700">= match (</span><span style="color: #0000BB">$x</span><span style="color: #007700">) {<br />    </span><span style="color: #FF8000">// Este brazo match:<br />    </span><span style="color: #0000BB">$a</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$c </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">5</span><span style="color: #007700">,<br />    </span><span style="color: #FF8000">// Es equivalente a estos tres:<br />    </span><span style="color: #0000BB">$a </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">5</span><span style="color: #007700">,<br />    </span><span style="color: #0000BB">$b </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">5</span><span style="color: #007700">,<br />    </span><span style="color: #0000BB">$c </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">5</span><span style="color: #007700">,<br />};<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="para">
+  Un caso especial es el patrón <code class="literal">default</code>.
+  Este patrón permite hacer coincidir cualquier cosa que no se haya hecho coincidir previamente.
+  Por ejemplo:
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$expressionResult </span><span style="color: #007700">= match (</span><span style="color: #0000BB">$condition</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2 </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">foo</span><span style="color: #007700">(),<br />    </span><span style="color: #0000BB">3</span><span style="color: #007700">, </span><span style="color: #0000BB">4 </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">bar</span><span style="color: #007700">(),<br />    default =&gt; </span><span style="color: #0000BB">baz</span><span style="color: #007700">(),<br />};<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <span class="simpara">
+    Múltiples patrones default lanzarán un
+    error <strong><code>E_FATAL_ERROR</code></strong>.
+   </span>
+  </p></blockquote>
+ </p>
+
+ <p class="para">
+  Una expresión <code class="literal">match</code> debe ser completa.  Si la
+  expresión del sujeto no es manejada por ningún brazo match
+  se lanza un <span class="classname"><a href="class.unhandledmatcherror.html" class="classname">UnhandledMatchError</a></span>.
+ </p>
+
+ <div class="example" id="example-141">
+  <p><strong>Ejemplo #4 Ejemplo de una expresión match no controlada</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$condition </span><span style="color: #007700">= </span><span style="color: #0000BB">5</span><span style="color: #007700">;<br /><br />try {<br />    match (</span><span style="color: #0000BB">$condition</span><span style="color: #007700">) {<br />        </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2 </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">foo</span><span style="color: #007700">(),<br />        </span><span style="color: #0000BB">3</span><span style="color: #007700">, </span><span style="color: #0000BB">4 </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">bar</span><span style="color: #007700">(),<br />    };<br />} catch (</span><span style="color: #0000BB">\UnhandledMatchError $e</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+  </div>
+
+  <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+object(UnhandledMatchError)#1 (7) {
+  [&quot;message&quot;:protected]=&gt;
+  string(33) &quot;Unhandled match value of type int&quot;
+  [&quot;string&quot;:&quot;Error&quot;:private]=&gt;
+  string(0) &quot;&quot;
+  [&quot;code&quot;:protected]=&gt;
+  int(0)
+  [&quot;file&quot;:protected]=&gt;
+  string(9) &quot;/in/ICgGK&quot;
+  [&quot;line&quot;:protected]=&gt;
+  int(6)
+  [&quot;trace&quot;:&quot;Error&quot;:private]=&gt;
+  array(0) {
+  }
+  [&quot;previous&quot;:&quot;Error&quot;:private]=&gt;
+  NULL
+}
+</pre></div>
+  </div>
+ </div>
+
+ <div class="sect2">
+  <h3 class="title">Usando expresiones match para manejar comprobaciones de no identidad</h3>
+  <p class="para">
+   Es posible utilizar un expresión <code class="literal">match</code> para manejar
+   casos de condicionales de no identidad usando <code class="code">true</code> como expresión
+   del sujeto.
+  </p>
+
+  <div class="example" id="example-142">
+   <p><strong>Ejemplo #5 Uso de expresiones match generalizadas para ramificar en rangos de integers</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$age </span><span style="color: #007700">= </span><span style="color: #0000BB">23</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$result </span><span style="color: #007700">= match (</span><span style="color: #0000BB">true</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">$age </span><span style="color: #007700">&gt;= </span><span style="color: #0000BB">65 </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'senior'</span><span style="color: #007700">,<br />    </span><span style="color: #0000BB">$age </span><span style="color: #007700">&gt;= </span><span style="color: #0000BB">25 </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'adult'</span><span style="color: #007700">,<br />    </span><span style="color: #0000BB">$age </span><span style="color: #007700">&gt;= </span><span style="color: #0000BB">18 </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'young adult'</span><span style="color: #007700">,<br />    default =&gt; </span><span style="color: #DD0000">'kid'</span><span style="color: #007700">,<br />};<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+string(11) &quot;young adult&quot;
+</pre></div>
+   </div>
+  </div>
+
+  <div class="example" id="example-143">
+   <p><strong>Ejemplo #6 Uso de expresiones match generalizadas para ramificar el contenido de strings.</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$text </span><span style="color: #007700">= </span><span style="color: #DD0000">'Bienvenue chez nous'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$result </span><span style="color: #007700">= match (</span><span style="color: #0000BB">true</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">str_contains</span><span style="color: #007700">(</span><span style="color: #0000BB">$text</span><span style="color: #007700">, </span><span style="color: #DD0000">'Welcome'</span><span style="color: #007700">) || </span><span style="color: #0000BB">str_contains</span><span style="color: #007700">(</span><span style="color: #0000BB">$text</span><span style="color: #007700">, </span><span style="color: #DD0000">'Hello'</span><span style="color: #007700">) =&gt; </span><span style="color: #DD0000">'en'</span><span style="color: #007700">,<br />    </span><span style="color: #0000BB">str_contains</span><span style="color: #007700">(</span><span style="color: #0000BB">$text</span><span style="color: #007700">, </span><span style="color: #DD0000">'Bienvenue'</span><span style="color: #007700">) || </span><span style="color: #0000BB">str_contains</span><span style="color: #007700">(</span><span style="color: #0000BB">$text</span><span style="color: #007700">, </span><span style="color: #DD0000">'Bonjour'</span><span style="color: #007700">) =&gt; </span><span style="color: #DD0000">'fr'</span><span style="color: #007700">,<br />    </span><span style="color: #FF8000">// ...<br /></span><span style="color: #007700">};<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+string(2) &quot;fr&quot;
+</pre></div>
+   </div>
+  </div>
+ </div>
+</div></div></div></body></html>

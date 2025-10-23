@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Errores de Socket</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="sockets.examples.html">« Ejemplos</a></li>
+      <li style="float: right;"><a href="ref.sockets.html">Funciones de Socket »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.sockets.html">Sockets</a></li>
+    <li>Errores de Socket</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="sockets.errors" class="chapter">
+ <h1 class="title">Errores de Socket</h1>
+
+ <p class="para">
+  La extensión socket fue escrita para proporcionar una interfaz utilizable para los
+  poderosos sockets de BSD. Se ha tenido cuidado en hacer que las funciones trabajen igualmente
+  bien en implementaciones de Win32 y Unix. Casi todas las funciones de
+  sockets pueden fallar bajo ciertas condiciones y por lo tanto emitir un
+  mensaje <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong> describiendo el error. Algunas veces esto
+  no ocurre para los deseos del desarrollador. Por ejemplo, la función
+  <span class="function"><a href="function.socket-read.html" class="function">socket_read()</a></span> puede de pronto emitir un
+  mensaje <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong> porque la conexión se quebró
+  de improvisto. Es común suprimir la advertencia con el
+  operador <code class="literal">@</code> y capturar el código de error dentro de la
+  aplicación con la función <span class="function"><a href="function.socket-last-error.html" class="function">socket_last_error()</a></span>.
+  Se puede llamar a la función <span class="function"><a href="function.socket-strerror.html" class="function">socket_strerror()</a></span> con este código de
+  error para recuperar una cadena describiendo el error. Vea su descripción para
+  más información.
+ </p>
+ <blockquote class="note"><p><strong class="note">Nota</strong>: 
+  <p class="para">
+   Los mensajes <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong> generados por la extensión
+   socket están en inglés aunque el mensaje de error recuperado aparecéra
+   según la configuración regional actual (<strong><code><a href="string.constants.html#constant.lc-messages">LC_MESSAGES</a></code></strong>):
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Warning - socket_bind() unable to bind address [98]: Die Adresse wird bereits verwendet
+</pre></div>
+   </div>
+  </p>
+ </p></blockquote>
+</div>
+</div></div></body></html>

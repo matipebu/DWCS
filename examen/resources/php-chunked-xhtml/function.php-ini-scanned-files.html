@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Devuelve una lista de ficheros .ini procesados del directorio adicional ini</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.php-ini-loaded-file.html">« php_ini_loaded_file</a></li>
+      <li style="float: right;"><a href="function.php-sapi-name.html">php_sapi_name »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.info.html">Funciones de Opciones/Info de PHP</a></li>
+    <li>Devuelve una lista de ficheros .ini procesados del directorio adicional ini</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.php-ini-scanned-files" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">php_ini_scanned_files</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">php_ini_scanned_files</span> &mdash; <span class="dc-title">Devuelve una lista de ficheros .ini procesados del directorio adicional ini</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.php-ini-scanned-files-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>php_ini_scanned_files</strong></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>php_ini_scanned_files()</strong></span> devuelve una lista separada
+   por comas de los ficheros de configuración procesados por <var class="filename">php.ini</var>. Los directorios
+   buscados se establecen por una opción de tiempo de compilación y, opcionalmente, por una
+   variable de entorno en tiempo de ejecución: se puede encontrar más información en la
+   <a href="configuration.file.html#configuration.file.scan" class="link">guía de instalación</a>.
+  </p>
+  <p class="para">
+   Los archivos de configuración devueltos incluyen la ruta completa.
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.php-ini-scanned-files-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve un string de archivos .ini separados por comas en caso de éxito. Cada coma
+   va seguida por una nueva línea. Si la directiva de configuración <strong class="option configure">--with-config-file-scan-dir</strong> no fué establecida y la
+   variable de entorno <var class="varname">PHP_INI_SCAN_DIR</var> no es establecida, <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>
+   es retornado. Si estaba configurado y el directorio está vacío, un string vacío es
+   retornado.  Si un archivo es irreconocible, el archivo todavía se convertirá en
+   el string retornado pero un error de PHP también resultará. Este error de PHP
+   puede ser visto en tiempo de compilación como mientras se usa
+   <span class="function"><strong>php_ini_scanned_files()</strong></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.php-ini-scanned-files-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-580">
+    <p><strong>Ejemplo #1 Un ejemplo simple para enumerar los archivos ini devueltos</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if (</span><span style="color: #0000BB">$filelist </span><span style="color: #007700">= </span><span style="color: #0000BB">php_ini_scanned_files</span><span style="color: #007700">()) {<br />    if (</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$filelist</span><span style="color: #007700">) &gt; </span><span style="color: #0000BB">0</span><span style="color: #007700">) {<br />        </span><span style="color: #0000BB">$files </span><span style="color: #007700">= </span><span style="color: #0000BB">explode</span><span style="color: #007700">(</span><span style="color: #DD0000">','</span><span style="color: #007700">, </span><span style="color: #0000BB">$filelist</span><span style="color: #007700">);<br /><br />        foreach (</span><span style="color: #0000BB">$files </span><span style="color: #007700">as </span><span style="color: #0000BB">$file</span><span style="color: #007700">) {<br />            echo </span><span style="color: #DD0000">"&lt;li&gt;" </span><span style="color: #007700">. </span><span style="color: #0000BB">trim</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">) . </span><span style="color: #DD0000">"&lt;/li&gt;\n"</span><span style="color: #007700">;<br />        }<br />    }<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.php-ini-scanned-files-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.ini-set.html" class="function" rel="rdfs-seeAlso">ini_set()</a> - Establece el valor de una directiva de configuraci&oacute;n</span></li>
+    <li><span class="function"><a href="function.phpinfo.html" class="function" rel="rdfs-seeAlso">phpinfo()</a> - Muestra informaci&oacute;n sobre la configuraci&oacute;n de PHP</span></li>
+    <li><span class="function"><a href="function.php-ini-loaded-file.html" class="function" rel="rdfs-seeAlso">php_ini_loaded_file()</a> - Recupera la ruta de acceso al archivo php.ini cargado</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

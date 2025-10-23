@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Configuraci&oacute;n en tiempo de ejecuci&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="imagick.installation.html">« Instalaci&oacute;n</a></li>
+      <li style="float: right;"><a href="imagick.resources.html">Tipos de recursos »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="imagick.setup.html">Instalaci&oacute;n/Configuraci&oacute;n</a></li>
+    <li>Configuraci&oacute;n en tiempo de ejecuci&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="imagick.configuration" class="section">
+ <h2 class="title">Configuración en tiempo de ejecución</h2>
+ <p class="simpara">
+El comportamiento de estas funciones se ve afectado por la configuración de <var class="filename">php.ini</var>.
+</p>
+ <p class="para">
+  <table class="doctable table">
+   <caption><strong>Opciones de configuración de Imagick</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Nombre</th>
+      <th>Por defecto</th>
+      <th>Cambiable</th>
+      <th>Historial de cambios</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><a href="imagick.configuration.html#ini.imagick.locale-fix" class="link">imagick.locale_fix</a></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="info.constants.html#constant.ini-all">INI_ALL</a></code></strong></td>
+      <td>Disponible desde Imagick 2.1.0</td>
+     </tr>
+
+     <tr>
+      <td><a href="imagick.configuration.html#ini.imagick.progress-monitor" class="link">imagick.progress_monitor</a></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="info.constants.html#constant.ini-system">INI_SYSTEM</a></code></strong></td>
+      <td>Disponible desde Imagick 2.2.2</td>
+     </tr>
+
+     <tr>
+      <td><a href="imagick.configuration.html#ini.imagick.skip-version-check" class="link">imagick.skip_version_check</a></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="info.constants.html#constant.ini-system">INI_SYSTEM</a></code></strong></td>
+      <td>Disponible desde Imagick 3.3.0</td>
+     </tr>
+    
+    </tbody>
+   
+  </table>
+
+  Para más detalles y definiciones de los modos de
+INI_*, vea <a href="configuration.changes.modes.html" class="xref">D&oacute;nde se puede realizar un ajuste de configuraci&oacute;n</a>.
+ </p>
+ 
+ <p class="para">He aquí una breve explicación de
+las directivas de configuración.</p>
+ 
+ <p class="para">
+  <dl>
+   
+    <dt id="ini.imagick.locale-fix">
+     <code class="parameter">imagick.locale_fix</code>
+     <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    </dt>
+    <dd>
+     <p class="para">
+      Corrige un error de dibujo con localismos que emplean &#039;<code class="literal">,</code>&#039; como
+      separadores decimales.
+     </p>
+    </dd>
+   
+   
+   
+    <dt id="ini.imagick.progress-monitor">
+     <code class="parameter">imagick.progress_monitor</code>
+     <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    </dt>
+    <dd>
+     <p class="para">
+      Usado para habilitar el monitor de progreso de imagen.
+      
+     </p>
+    </dd>
+   
+   
+   
+    <dt id="ini.imagick.skip-version-check">
+     <code class="parameter">imagick.skip_version_check</code>
+     <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    </dt>
+    <dd>
+     <p class="para">
+      Cuando Imagick se carga, se comprueba el número de versión de ImageMagick con el que se compiló con el número de verisón que se está utilizando actualmente, produciendo una advertencia si no coinciden. Esta advertencia se puede omitir habilitando esta opción.
+     </p>
+     <p class="para">No se recomienda utilizar una versión de compilación de Imagick diferente a la versión de ImageMagick que se esté empleado. Aunque pueda parecer que funciona, puede conducir a fallos aleatorios u otro tipo de comportamiento no definido. 
+     </p>
+    </dd>
+   
+  </dl>
+  
+ </p>
+</div></div></div></body></html>

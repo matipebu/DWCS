@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Enviar una consulta MySQL</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.mysql-ping.html">« mysql_ping</a></li>
+      <li style="float: right;"><a href="function.mysql-real-escape-string.html">mysql_real_escape_string »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.mysql.html">Funciones de MySQL</a></li>
+    <li>Enviar una consulta MySQL</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mysql-query" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysql_query</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">mysql_query</span> &mdash; <span class="dc-title">Enviar una consulta MySQL</span></p>
+
+ </div>
+ 
+ <div id="function.mysql-query-refsynopsisdiv">
+  <div class="warning"><strong class="warning">Advertencia</strong>
+   <p class="para">Esta extensión fue declarada obsoleta en PHP 5.5.0 y eliminada en PHP 7.0.0.
+En su lugar debería utilzarse las extensiones <a href="book.mysqli.html" class="link">MySQLi</a> o <a href="ref.pdo-mysql.html" class="link">PDO_MySQL</a>.
+Véase también la guía <a href="mysqlinfo.api.choosing.html" class="link">MySQL: elegir una API</a>.
+Las alternativas a esta función son:</p>
+   <ul class="simplelist">
+    <li><span class="function"><a href="mysqli.query.html" class="function">mysqli_query()</a></span></li>
+    <li><span class="methodname"><a href="pdo.query.html" class="methodname">PDO::query()</a></span></li>
+   </ul>
+  </div>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.mysql-query-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mysql_query</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$query</code></span>, <span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$link_identifier</code><span class="initializer"> = NULL</span></span>): <span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>mysql_query()</strong></span> envía una única consulta (no hay soporte para
+   múltiples consultas) a la base de datos
+   actualmente activa en el servidor asociado con el
+   identificador de enlace especificado por <code class="parameter">link_identifier</code>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.mysql-query-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">query</code></dt>
+     <dd>
+      <p class="para">
+       Una consulta SQL
+      </p>
+      <p class="para">
+       El string de la consulta no debería terminar con un punto y coma.
+       Los datos insertados en la consulta deberían estar <a href="function.mysql-real-escape-string.html" class="link">correctamente escapados</a>.
+      </p>
+     </dd>
+    
+    <dt><code class="parameter">
+link_identifier</code></dt><dd><p class="para">La conexión MySQL. Si no
+se especifica el identificador de enlace, se asume el último enlace abierto
+por <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span>. Si no se encuentra este enlace, se
+intentará crear un nuevo enlace como si <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> hubiese sido invocada
+sin argumentos. Si no se encuentra o establece ninguna conexión, se genera un error
+de nivel <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong>.</p></dd>
+
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.mysql-query-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Para SELECT, SHOW, DESCRIBE, EXPLAIN y otras sentencias que retornan un conjunto de resultados,
+   <span class="function"><strong>mysql_query()</strong></span> 
+   devuelve un <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> en caso de éxito, o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de
+   error.
+  </p>
+  <p class="para">
+   Para otros tipos de sentencias SQL, tales como INSERT, UPDATE, DELETE, DROP, etc,
+   <span class="function"><strong>mysql_query()</strong></span> devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito
+   o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+  <p class="para">
+   El conjunto de resultados devuelto debería ser pasado a 
+   <span class="function"><a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a></span>, y otras
+   funciones para manejar las tablas del resultado, para acceder a los datos retornados.
+  </p>
+  <p class="para">
+   Use <span class="function"><a href="function.mysql-num-rows.html" class="function">mysql_num_rows()</a></span> para averiguar cuántas filas
+   fueron devueltas por la sentencia SELECT, o 
+   <span class="function"><a href="function.mysql-affected-rows.html" class="function">mysql_affected_rows()</a></span> para averiguar cuántas
+   filas fueron afectadas por las sentencias DELETE, INSERT, REPLACE,
+   o UPDATE.
+  </p>
+  <p class="para">
+   <span class="function"><strong>mysql_query()</strong></span> también fallará y retornará <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>
+   si el usuario no está autorizado para acceder a la/s tabla/s a la/s que hace
+   referencia la consulta.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.mysql-query-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-1774">
+    <p><strong>Ejemplo #1 Consulta inválida</strong></p>
+    <div class="example-contents"><p>
+     La siguiente consulta no es sintácticamente válida, por lo que
+     <span class="function"><strong>mysql_query()</strong></span> fallará y retornará <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$resultado </span><span style="color: #007700">= </span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT * WHERE 1=1'</span><span style="color: #007700">);<br />if (!</span><span style="color: #0000BB">$resultado</span><span style="color: #007700">) {<br />    die(</span><span style="color: #DD0000">'Consulta no válida: ' </span><span style="color: #007700">. </span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-1775">
+    <p><strong>Ejemplo #2 Consulta válida</strong></p>
+    <div class="example-contents"><p>
+     La siguiente consulta es válida, por lo que <span class="function"><strong>mysql_query()</strong></span>
+     retornará un <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Lo siguiente podría ser proporcionado por un usuario, como por ejemplo<br /></span><span style="color: #0000BB">$nombre </span><span style="color: #007700">= </span><span style="color: #DD0000">'fred'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$apellido  </span><span style="color: #007700">= </span><span style="color: #DD0000">'fox'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">// Formular la consulta<br />// Este es el mejor método para formular una consulta SQL<br />// Para más ejemplos, consulte mysql_real_escape_string()<br /></span><span style="color: #0000BB">$consulta </span><span style="color: #007700">= </span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT nombre, apellido, direccion, edad FROM amigos <br />    WHERE nombre='%s' AND apellido='%s'"</span><span style="color: #007700">,<br />    </span><span style="color: #0000BB">mysql_real_escape_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$nombre</span><span style="color: #007700">),<br />    </span><span style="color: #0000BB">mysql_real_escape_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$apellido</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">// Ejecutar la consulta<br /></span><span style="color: #0000BB">$resultado </span><span style="color: #007700">= </span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$consulta</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Comprobar el resultado<br />// Lo siguiente muestra la consulta real enviada a MySQL, y el error ocurrido. Útil para depuración.<br /></span><span style="color: #007700">if (!</span><span style="color: #0000BB">$resultado</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">$mensaje  </span><span style="color: #007700">= </span><span style="color: #DD0000">'Consulta no válida: ' </span><span style="color: #007700">. </span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">() . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />    </span><span style="color: #0000BB">$mensaje </span><span style="color: #007700">.= </span><span style="color: #DD0000">'Consulta completa: ' </span><span style="color: #007700">. </span><span style="color: #0000BB">$consulta</span><span style="color: #007700">;<br />    die(</span><span style="color: #0000BB">$mensaje</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">// Usar el resultado<br />// Si se intenta imprimir $resultado no será posible acceder a la información del recurso<br />// Se debe usar una de las funciones de resultados de mysql<br />// Consulte también mysql_result(), mysql_fetch_array(), mysql_fetch_row(), etc.<br /></span><span style="color: #007700">while (</span><span style="color: #0000BB">$fila </span><span style="color: #007700">= </span><span style="color: #0000BB">mysql_fetch_assoc</span><span style="color: #007700">(</span><span style="color: #0000BB">$resultado</span><span style="color: #007700">)) {<br />    echo </span><span style="color: #0000BB">$fila</span><span style="color: #007700">[</span><span style="color: #DD0000">'nombre'</span><span style="color: #007700">];<br />    echo </span><span style="color: #0000BB">$fila</span><span style="color: #007700">[</span><span style="color: #DD0000">'apellido'</span><span style="color: #007700">];<br />    echo </span><span style="color: #0000BB">$fila</span><span style="color: #007700">[</span><span style="color: #DD0000">'direccion'</span><span style="color: #007700">];<br />    echo </span><span style="color: #0000BB">$fila</span><span style="color: #007700">[</span><span style="color: #DD0000">'edad'</span><span style="color: #007700">];<br />}<br /><br /></span><span style="color: #FF8000">// Liberar los recursos asociados con el conjunto de resultados<br />// Esto se ejecutado automáticamente al finalizar el script.<br /></span><span style="color: #0000BB">mysql_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$resultado</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.mysql-query-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.mysql-connect.html" class="function" rel="rdfs-seeAlso">mysql_connect()</a> - Abre una conexi&oacute;n al servidor MySQL</span></li>
+    <li><span class="function"><a href="function.mysql-error.html" class="function" rel="rdfs-seeAlso">mysql_error()</a> - Devuelve el texto del mensaje de error de la operaci&oacute;n MySQL anterior</span></li>
+    <li><span class="function"><a href="function.mysql-real-escape-string.html" class="function" rel="rdfs-seeAlso">mysql_real_escape_string()</a> - Escapa caracteres especiales en una cadena para su uso en una sentencia SQL</span></li>
+    <li><span class="function"><a href="function.mysql-result.html" class="function" rel="rdfs-seeAlso">mysql_result()</a> - Obtener datos de resultado</span></li>
+    <li><span class="function"><a href="function.mysql-fetch-assoc.html" class="function" rel="rdfs-seeAlso">mysql_fetch_assoc()</a> - Recupera una fila de resultados como un array asociativo</span></li>
+    <li><span class="function"><a href="function.mysql-unbuffered-query.html" class="function" rel="rdfs-seeAlso">mysql_unbuffered_query()</a> - Env&iacute;a una consulta SQL a MySQL, sin recuperar ni almacenar en b&uacute;fer las filas de resultados</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

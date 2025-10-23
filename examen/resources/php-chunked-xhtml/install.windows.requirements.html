@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Requisitos de instalaci&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="install.windows.html">« Instalaci&oacute;n en sistemas Windows</a></li>
+      <li style="float: right;"><a href="install.windows.pecl.html">PECL »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="install.windows.html">Instalaci&oacute;n en sistemas Windows</a></li>
+    <li>Requisitos de instalaci&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="install.windows.requirements" class="sect1">
+  <h2 class="title">Requisitos de instalación</h2>
+
+  <p class="para">
+   PHP requiere al menos Windows 2008/Vista.
+   Ya sea 32 bits o 64 bits (<abbr title="Also Known As">AKA</abbr> X86 o X64. PHP no se ejecuta en Windows RT/WOA/ARM).
+   A partir de PHP 7.2.0 Windows 2008 y Vista ya no son soportados.
+  </p>
+
+  <p class="para">
+   PHP requiere Visual C runtime (CRT). Muchas aplicaciones lo requieren por lo que ya esté instalado.
+  </p>
+
+  <p class="para">
+   El Microsoft Visual C++ Redistributable para Visual Studio 2019 es adecuado
+   para todas las versiones de PHP, véase
+   <a href="https://visualstudio.microsoft.com/downloads/" class="link external">&raquo;&nbsp;https://visualstudio.microsoft.com/downloads/</a>.
+  </p>
+
+  <p class="para">
+   Debes descargar la biblioteca x86 CRT para compilar PHP para arquitecturas x86 y x64 CRT para compilar de PHP x64.
+  </p>
+
+  <p class="para">
+   Si CRT ya está instalado, el instalador te lo dirá y no cambiará nada.
+  </p>
+
+  <p class="para">
+   El instalador de CRT admite los modificadores de línea de comandos /quiet y /norestart, por lo que puede ejecutar un script.
+  </p>
+ </div></div></div></body></html>

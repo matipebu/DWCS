@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Obtiene la versi&oacute;n de PHP</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.phpinfo.html">« phpinfo</a></li>
+      <li style="float: right;"><a href="function.putenv.html">putenv »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.info.html">Funciones de Opciones/Info de PHP</a></li>
+    <li>Obtiene la versi&oacute;n de PHP</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.phpversion" class="refentry">
+ <div class="refnamediv"> 
+  <h1 class="refname">phpversion</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">phpversion</span> &mdash; <span class="dc-title">Obtiene la versión de PHP</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.phpversion-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>phpversion</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$extension</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Devuelve una cadena que contiene la versión del analizador de PHP en ejecución 
+   o extensión.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.phpversion-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">extension</code></dt>
+     <dd>
+      <p class="para">
+       Un nombre de extensión opcional.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.phpversion-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Si el parámetro opcional <code class="parameter">extension</code> ha sido 
+   especificado, <span class="function"><strong>phpversion()</strong></span> devuelve la versión de la
+   extensión, o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si no hay información de versión asociada o la extensión 
+   no está habilitada.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.phpversion-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-588">
+    <p><strong>Ejemplo #1 <span class="function"><strong>phpversion()</strong></span> Ejemplo básico</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Imprime ejemplo 'Versión actual de PHP: 5.3.8'<br /></span><span style="color: #007700">echo </span><span style="color: #DD0000">'Versión actual de PHP: ' </span><span style="color: #007700">. </span><span style="color: #0000BB">phpversion</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">// Imprime ejemplo '2.0' o nada si la extensión no está habilitada<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">phpversion</span><span style="color: #007700">(</span><span style="color: #DD0000">'tidy'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-589">
+    <p><strong>Ejemplo #2 <strong><code><a href="reserved.constants.html#constant.php-version-id">PHP_VERSION_ID</a></code></strong> Ejemplo y uso</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// PHP_VERSION_ID está disponible a partir de PHP 5.2.7, si nuestra <br />// versión es inferior a eso, entonces emular<br /></span><span style="color: #007700">if (!</span><span style="color: #0000BB">defined</span><span style="color: #007700">(</span><span style="color: #DD0000">'PHP_VERSION_ID'</span><span style="color: #007700">)) {<br />    </span><span style="color: #0000BB">$version </span><span style="color: #007700">= </span><span style="color: #0000BB">explode</span><span style="color: #007700">(</span><span style="color: #DD0000">'.'</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_VERSION</span><span style="color: #007700">);<br /><br />    </span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'PHP_VERSION_ID'</span><span style="color: #007700">, (</span><span style="color: #0000BB">$version</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">] * </span><span style="color: #0000BB">10000 </span><span style="color: #007700">+ </span><span style="color: #0000BB">$version</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">] * </span><span style="color: #0000BB">100 </span><span style="color: #007700">+ </span><span style="color: #0000BB">$version</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">]));<br />}<br /><br /></span><span style="color: #FF8000">// PHP_VERSION_ID se define como un número, donde el mayor número, <br />// es la versión más reciente de PHP usada. Se define tal como se utiliza la<br />// expresión anterior.<br />//<br />// $version_id = $major_version * 10000 + $minor_version * 100 + $release_version;<br />//<br />// Ahora, con PHP_VERSION_ID podemos comprobar las características que la versión de <br />// PHP pueda tener, esto no requiere el uso version_compare () cada vez que compruebe si la <br />// versión de PHP no es compatible con una característica.<br />//<br />// Por ejemplo, aquí podemos definir las constantes PHP_VERSION_ * que <br />// no están disponibles en las versiones anteriores a 5.2.7<br /><br /></span><span style="color: #007700">if (</span><span style="color: #0000BB">PHP_VERSION_ID </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">50207</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'PHP_MAJOR_VERSION'</span><span style="color: #007700">,   </span><span style="color: #0000BB">$version</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]);<br />    </span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'PHP_MINOR_VERSION'</span><span style="color: #007700">,   </span><span style="color: #0000BB">$version</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]);<br />    </span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'PHP_RELEASE_VERSION'</span><span style="color: #007700">, </span><span style="color: #0000BB">$version</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">]);<br /><br />    </span><span style="color: #FF8000">// Y así sucesivamente, ...<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.phpversion-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Esta información también está disponible en la constante predefinida 
+    <strong><code><a href="reserved.constants.html#constant.php-version">PHP_VERSION</a></code></strong>. Más información de versión 
+    está disponible utilizando las constantes <strong><code>PHP_VERSION_*</code></strong> 
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.phpversion-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><a href="reserved.constants.html#reserved.constants.core" class="link">constantes predefinidas</a></li>
+    <li><span class="function"><a href="function.version-compare.html" class="function" rel="rdfs-seeAlso">version_compare()</a> - Compara dos n&uacute;meros de versiones estandarizados de PHP</span></li>
+    <li><span class="function"><a href="function.phpinfo.html" class="function" rel="rdfs-seeAlso">phpinfo()</a> - Muestra informaci&oacute;n sobre la configuraci&oacute;n de PHP</span></li>
+    <li><span class="function"><a href="function.phpcredits.html" class="function" rel="rdfs-seeAlso">phpcredits()</a> - Imprime los cr&eacute;ditos de PHP</span></li>
+    <li><span class="function"><strong>php_logo_guid()</strong></span></li>
+    <li><span class="function"><a href="function.zend-version.html" class="function" rel="rdfs-seeAlso">zend_version()</a> - Obtiene la versi&oacute;n del motor Zend actual</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

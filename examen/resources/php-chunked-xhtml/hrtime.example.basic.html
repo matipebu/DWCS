@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Uso b&aacute;sico</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="hrtime.examples.html">« Ejemplos</a></li>
+      <li style="float: right;"><a href="class.hrtime-performancecounter.html">HRTime\PerformanceCounter »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="hrtime.examples.html">Ejemplos</a></li>
+    <li>Uso b&aacute;sico</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="hrtime.example.basic" class="section">
+  <h2 class="title">Uso básico</h2>
+  <p class="para">
+   El ejemplo muestra el uso básico de la clase StopWatch
+  </p>
+  <div class="example" id="example-2124">
+   <p><strong>Ejemplo #1 Medir la ejecución de varios bloques de código y obtener el total</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$c </span><span style="color: #007700">= new </span><span style="color: #0000BB">HRTime\StopWatch</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$c</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">start</span><span style="color: #007700">();<br /></span><span style="color: #FF8000">/* medir la ejecución de este bloque de código */<br /></span><span style="color: #007700">for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">1024</span><span style="color: #007700">*</span><span style="color: #0000BB">1024</span><span style="color: #007700">; </span><span style="color: #0000BB">$i</span><span style="color: #007700">++);<br /></span><span style="color: #0000BB">$c</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">stop</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$transcurrido0 </span><span style="color: #007700">= </span><span style="color: #0000BB">$c</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getLastElapsedTime</span><span style="color: #007700">(</span><span style="color: #0000BB">HRTime\Unit</span><span style="color: #007700">::</span><span style="color: #0000BB">NANOSECOND</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* la medición no se ejecuta aquí */<br /></span><span style="color: #007700">for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">1024</span><span style="color: #007700">*</span><span style="color: #0000BB">1024</span><span style="color: #007700">; </span><span style="color: #0000BB">$i</span><span style="color: #007700">++);<br /><br /></span><span style="color: #0000BB">$c</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">start</span><span style="color: #007700">();<br /></span><span style="color: #FF8000">/* medir la ejecución de este bloque de código */<br /></span><span style="color: #007700">for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">1024</span><span style="color: #007700">*</span><span style="color: #0000BB">1024</span><span style="color: #007700">; </span><span style="color: #0000BB">$i</span><span style="color: #007700">++);<br /></span><span style="color: #0000BB">$c</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">stop</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$transcurrido1 </span><span style="color: #007700">= </span><span style="color: #0000BB">$c</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getLastElapsedTime</span><span style="color: #007700">(</span><span style="color: #0000BB">HRTime\Unit</span><span style="color: #007700">::</span><span style="color: #0000BB">NANOSECOND</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$total_transcurrido </span><span style="color: #007700">= </span><span style="color: #0000BB">$c</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getElapsedTime</span><span style="color: #007700">(</span><span style="color: #0000BB">HRTime\Unit</span><span style="color: #007700">::</span><span style="color: #0000BB">NANOSECOND</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </div></div></div></body></html>

@@ -1,0 +1,300 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Constantes predefinidas</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="inotify.resources.html">« Tipos de recursos</a></li>
+      <li style="float: right;"><a href="ref.inotify.html">Funciones Inotify »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.inotify.html">Inotify</a></li>
+    <li>Constantes predefinidas</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="inotify.constants" class="appendix">
+  <h1 class="title">Constantes predefinidas</h1>
+
+  <p class="simpara">
+Estas constantes están definidas por esta extensión y
+estarán disponibles sólo cuando la extensión haya sido
+compilada con PHP, o bien sea cargada dinámicamente en ejecución.
+</p>
+  <dl id="inotify.constants.events">
+   <strong class="title">Constantes Inotify utilizables con <span class="function"><a href="function.inotify-add-watch.html" class="function">inotify_add_watch()</a></span> y/o devueltos por <span class="function"><a href="function.inotify-read.html" class="function">inotify_read()</a></span></strong>
+   
+    <dt id="constant.in-access">
+     <strong><code><a href="inotify.constants.html#constant.in-access">IN_ACCESS</a></code></strong>
+      (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El fichero fue accedido (lectura) (*)
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.in-modify">
+     <strong><code><a href="inotify.constants.html#constant.in-modify">IN_MODIFY</a></code></strong>
+      (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El fichero fue modificado (*)
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.in-attrib">
+     <strong><code><a href="inotify.constants.html#constant.in-attrib">IN_ATTRIB</a></code></strong>
+      (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Metadatos cambiados (por ejemplo: permisos, mtime, etc) (*)
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.in-close-write">
+     <strong><code><a href="inotify.constants.html#constant.in-close-write">IN_CLOSE_WRITE</a></code></strong>
+      (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El fichero, previamente abierto para escritura, fue cerrado (*)
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.in-close-nowrite">
+     <strong><code><a href="inotify.constants.html#constant.in-close-nowrite">IN_CLOSE_NOWRITE</a></code></strong>
+      (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El fichero, no abierto para escritura, fue cerrado (*)
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.in-open">
+     <strong><code><a href="inotify.constants.html#constant.in-open">IN_OPEN</a></code></strong>
+      (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El fichero fue abierto (*)
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.in-moved-to">
+     <strong><code><a href="inotify.constants.html#constant.in-moved-to">IN_MOVED_TO</a></code></strong>
+      (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Un fichero fue movido dentro del directorio observado (*)
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.in-moved-from">
+     <strong><code><a href="inotify.constants.html#constant.in-moved-from">IN_MOVED_FROM</a></code></strong>
+      (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Un fichero fue movido fuera del directorio observado (*)
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.in-create">
+     <strong><code><a href="inotify.constants.html#constant.in-create">IN_CREATE</a></code></strong>
+      (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Un fichero o directorio fue creado en el directorio observado (*)
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.in-delete">
+     <strong><code><a href="inotify.constants.html#constant.in-delete">IN_DELETE</a></code></strong>
+      (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Fichero o directorio borrado en el directorio observado (*)
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.in-delete-self">
+     <strong><code><a href="inotify.constants.html#constant.in-delete-self">IN_DELETE_SELF</a></code></strong>
+      (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El fichero o directorio observado fue borrado
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.in-move-self">
+     <strong><code><a href="inotify.constants.html#constant.in-move-self">IN_MOVE_SELF</a></code></strong>
+      (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El fichero o directorio observado fue movido
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.in-close">
+     <strong><code><a href="inotify.constants.html#constant.in-close">IN_CLOSE</a></code></strong>
+      (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Similar a IN_CLOSE_WRITE | IN_CLOSE_NOWRITE
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.in-move">
+     <strong><code><a href="inotify.constants.html#constant.in-move">IN_MOVE</a></code></strong>
+      (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Similar a IN_MOVED_FROM | IN_MOVED_TO
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.in-all-events">
+     <strong><code><a href="inotify.constants.html#constant.in-all-events">IN_ALL_EVENTS</a></code></strong>
+      (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Máscara de bits de todas las constantes anteriores
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.in-unmount">
+     <strong><code><a href="inotify.constants.html#constant.in-unmount">IN_UNMOUNT</a></code></strong>
+      (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Sistema de ficheros que contiene objetos observados fue desmontado
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.in-q-overflow">
+     <strong><code><a href="inotify.constants.html#constant.in-q-overflow">IN_Q_OVERFLOW</a></code></strong>
+      (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Cola de eventos desbordada (wd es -1 para este evento)
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.in-ignored">
+     <strong><code><a href="inotify.constants.html#constant.in-ignored">IN_IGNORED</a></code></strong>
+      (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Seguimiento borrado (explicitamente indicado por <span class="function"><a href="function.inotify-rm-watch.html" class="function">inotify_rm_watch()</a></span>
+      o debido a que el fichero fue eliminado o el sistema de ficheros desmontado)
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.in-isdir">
+     <strong><code><a href="inotify.constants.html#constant.in-isdir">IN_ISDIR</a></code></strong>
+      (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El sujeto del evento es un directorio
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.in-onlydir">
+     <strong><code><a href="inotify.constants.html#constant.in-onlydir">IN_ONLYDIR</a></code></strong>
+      (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Observar la ruta solamente si se trata de un directorio (A partir de Linux 2.6.15)
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.in-dont-follow">
+     <strong><code><a href="inotify.constants.html#constant.in-dont-follow">IN_DONT_FOLLOW</a></code></strong>
+      (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      No eliminar la ruta de referencia si es un enlace simbólico (A partir de Linux 2.6.15).
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.in-mask-add">
+     <strong><code><a href="inotify.constants.html#constant.in-mask-add">IN_MASK_ADD</a></code></strong>
+      (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Agregar eventos para observar la máscara de esta ruta de acceso si ya existe
+      (en lugar de reemplazar la máscara).
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.in-oneshot">
+     <strong><code><a href="inotify.constants.html#constant.in-oneshot">IN_ONESHOT</a></code></strong>
+      (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Monitorea una ruta para un evento, a continuación elimina de la lista de
+      vigilancia.
+     </span>
+    </dd>
+   
+  </dl>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <span class="simpara">
+    Los eventos más arriba marcados con un asterisco (*) pueden producirse para
+    ficheros en directorios observados.
+   </span>
+  </p></blockquote>
+</div>
+</div></div></body></html>

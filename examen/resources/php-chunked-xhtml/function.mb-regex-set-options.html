@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Establece/obtiene las opciones predeterminadas para las funciones mbregex</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.mb-regex-encoding.html">« mb_regex_encoding</a></li>
+      <li style="float: right;"><a href="function.mb-rtrim.html">mb_rtrim »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.mbstring.html">Funciones de cadenas de caracteres multibyte</a></li>
+    <li>Establece/obtiene las opciones predeterminadas para las funciones mbregex</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mb-regex-set-options" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mb_regex_set_options</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mb_regex_set_options</span> &mdash; <span class="dc-title">Establece/obtiene las opciones predeterminadas para las funciones mbregex</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.mb-regex-set-options-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mb_regex_set_options</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$options</code><span class="initializer"> = mb_regex_set_options()</span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="simpara">
+   Establece las opciones predeterminadas descritas por <code class="parameter">options</code> 
+   para las funciones de expresiones regulares multibyte.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.mb-regex-set-options-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">options</code></dt>
+     <dd>
+      <p class="para">
+       Las opciones a establecer. Es un estring donde cada
+       carácter es una opción. Para establecer un modo, el carácter
+       de dicho modo debe ser el último en establecerse, ya que solamente
+       puede ser establecdio un modo, aunque múltiples opciones.
+      </p>
+      
+      <table class="doctable table">
+       <caption><strong>Opciones de expresiones regulares</strong></caption>
+       
+        <thead>
+         <tr>
+          <th>Opción</th>
+          <th>Significado</th>
+         </tr>
+
+        </thead>
+
+        <tbody class="tbody">
+         <tr>
+          <td>i</td>
+          <td>Comparación ambigua activada</td>
+         </tr>
+
+         <tr>
+          <td>x</td>
+          <td>Habilita la forma de patrones extendidos</td>
+         </tr>
+
+         <tr>
+          <td>m</td>
+          <td><code class="literal">&#039;.&#039;</code> coincide con nuevas líneas</td>
+         </tr>
+
+         <tr>
+          <td>s</td>
+          <td><code class="literal">&#039;^&#039;</code> -&gt; <code class="literal">&#039;\A&#039;</code>, <code class="literal">&#039;$&#039;</code> -&gt; <code class="literal">&#039;\Z&#039;</code></td>
+         </tr>
+
+         <tr>
+          <td>p</td>
+          <td>Lo mismo que las opciones <code class="literal">m</code> y <code class="literal">s</code> juntas</td>
+         </tr>
+
+         <tr>
+          <td>l</td>
+          <td>Busca las coincidencias más largas</td>
+         </tr>
+
+         <tr>
+          <td>n</td>
+          <td>Ignora las coincidencias vacías</td>
+         </tr>
+
+         <tr>
+          <td>e</td>
+          <td>Utiliza <span class="function"><a href="function.eval.html" class="function">eval()</a></span> con el código resultante</td>
+         </tr>
+
+        </tbody>
+       
+      </table>
+
+      <table class="doctable table">
+       <caption><strong>Modos de sintaxis de expresiones regulares</strong></caption>
+       
+        <thead>
+         <tr>
+          <th>Modo</th>
+          <th>Significado</th>
+         </tr>
+
+        </thead>
+
+        <tbody class="tbody">
+         <tr>
+          <td>j</td>
+          <td>Java (Sun java.util.regex)</td>
+         </tr>
+
+         <tr>
+          <td>u</td>
+          <td>Expresión regular GNU</td>
+         </tr>
+
+         <tr>
+          <td>g</td>
+          <td>grep</td>
+         </tr>
+
+         <tr>
+          <td>c</td>
+          <td>Emacs</td>
+         </tr>
+
+         <tr>
+          <td>r</td>
+          <td>Ruby</td>
+         </tr>
+
+         <tr>
+          <td>z</td>
+          <td>Perl</td>
+         </tr>
+
+         <tr>
+          <td>b</td>
+          <td>Expresión regular POSIX Básica</td>
+         </tr>
+
+         <tr>
+          <td>d</td>
+          <td>Expresión regular POSIX Extendida</td>
+         </tr>
+
+        </tbody>
+       
+      </table>
+
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.mb-regex-set-options-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Las opciones anteriores. Si se omite <code class="parameter">options</code>, 
+   devuelve el <span class="type"><a href="language.types.string.html" class="type string">string</a></span> que describe las opciones actuales.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.mb-regex-set-options-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.mb-split.html" class="function" rel="rdfs-seeAlso">mb_split()</a> - Divide cadenas de caracteres multibyte usando una expresi&oacute;n regular</span></li>
+    <li><span class="function"><a href="function.mb-ereg.html" class="function" rel="rdfs-seeAlso">mb_ereg()</a> - Comparaci&oacute;n de expresiones regulares con soporte multibyte</span></li>
+    <li><span class="function"><a href="function.mb-eregi.html" class="function" rel="rdfs-seeAlso">mb_eregi()</a> - Comparaci&oacute;n de expresiones regulares ignorando may&uacute;sculas/min&uacute;sculas con soporte multibyte</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

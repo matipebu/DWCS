@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Recursos ddisponibles asignados para esta base de eventos</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="eventbase.exit.html">« EventBase::exit</a></li>
+      <li style="float: right;"><a href="eventbase.getfeatures.html">EventBase::getFeatures »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.eventbase.html">EventBase</a></li>
+    <li>Recursos ddisponibles asignados para esta base de eventos</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="eventbase.free" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">EventBase::free</h1>
+  <p class="verinfo">(PECL event &gt;= 1.10.0)</p><p class="refpurpose"><span class="refname">EventBase::free</span> &mdash; <span class="dc-title">Recursos ddisponibles asignados para esta base de eventos</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-eventbase.free-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="methodname"><strong>EventBase::free</strong></span>(): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+
+  <p class="para rdfs-comment">
+   Desasigna los recursos asignados por libevent para el objeto <span class="classname"><a href="class.eventbase.html" class="classname">EventBase</a></span>.
+  </p>
+  <div class="warning"><strong class="warning">Advertencia</strong>
+   <p class="para">
+    El método
+    <span class="methodname"><strong>EventBase::free()</strong></span>
+    no destruye el objeto en sí. Para destruir el objeto
+    completamente llame a
+    <span class="function"><a href="function.unset.html" class="function">unset()</a></span>
+    , o asigne <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>.
+   </p>
+   <p class="para">
+    Este método no desasigna ni separa ninguno de los eventos que están
+    actualmente asociados al objeto <span class="classname"><a href="class.eventbase.html" class="classname">EventBase</a></span>, ni
+    EventBase, ni cierra ninguno de sus sockets - cuidado.
+   </p>
+  </div>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-eventbase.free-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">Esta función no tiene parámetros.</p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-eventbase.free-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   No devuelve ningún valor.
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-eventbase.free-seealso">
+  <h3 class="title">Ver también</h3>
+  <ul class="simplelist">
+   <li>
+    <span class="methodname"><a href="eventbase.construct.html" class="methodname" rel="rdfs-seeAlso">EventBase::__construct()</a> - Constructs EventBase object</span>
+   </li>
+  </ul>
+ </div>
+
+</div></div></div></body></html>

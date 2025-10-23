@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Incompatibilidades</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqlnd.config.html">« Configuraci&oacute;n en tiempo de ejecuci&oacute;n</a></li>
+      <li style="float: right;"><a href="mysqlnd.persist.html">Conexiones persistentes »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.mysqlnd.html">Mysqlnd</a></li>
+    <li>Incompatibilidades</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqlnd.incompatibilities" class="chapter">
+ <h1 class="title">Incompatibilidades</h1>
+
+ <p class="para">
+  El Driver MySQL Native es compatible en muchos casos con la librería MySQL Client
+  (<code class="literal">libmysql</code>). Esta sección documenta las incompatibilidades
+  entre estas librerías.
+ </p>
+ <ul class="itemizedlist">
+  <li class="listitem">
+   <p class="para">
+    Los valores de tipo <code class="literal">bit</code> son devueltos como strings binarios
+    (p.e. &quot;\0&quot; o &quot;\x1F&quot;) con <code class="literal">libmysql</code> y como strings
+    decimales (p.e. &quot;0&quot; o &quot;31&quot;) con <code class="literal">mysqlnd</code>. Si se desea que el código
+    sea compatible con ambas librerías entonces siempre se deberá devolver campos de tipo bit como
+    números desde MySQL con una consulta como la siguiente:
+    <code class="literal">SELECT bit + 0 FROM table</code>.
+   </p>
+  </li>
+ </ul>
+</div>
+</div></div></body></html>

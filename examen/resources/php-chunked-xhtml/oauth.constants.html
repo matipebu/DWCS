@@ -1,0 +1,358 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Constantes predefinidas</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="oauth.resources.html">« Tipos de recursos</a></li>
+      <li style="float: right;"><a href="oauth.examples.html">Ejemplos »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.oauth.html">OAuth</a></li>
+    <li>Constantes predefinidas</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="oauth.constants" class="appendix">
+ <h1 class="title">Constantes predefinidas</h1>
+
+ <p class="simpara">
+Estas constantes están definidas por esta extensión y
+estarán disponibles sólo cuando la extensión haya sido
+compilada con PHP, o bien sea cargada dinámicamente en ejecución.
+</p>
+ <p class="para">
+  La mayoría de estas constantes involucran problemas, los cuales son descritos en la documentación oficial de  
+  OAuth <a href="http://wiki.oauth.net/ProblemReporting" class="link external">&raquo;&nbsp;Problem Reporting</a>. 
+  Note sin embargo, que estos nombres de constantes son específicos para PHP, aunque 
+  el nombre sea similar.
+ </p>
+ <p class="para">
+  <dl>
+   
+   
+    <dt id="constant.oauth-sig-method-rsasha1">
+     <strong><code><a href="oauth.constants.html#constant.oauth-sig-method-rsasha1">OAUTH_SIG_METHOD_RSASHA1</a></code></strong>
+     (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Método de firma OAuth <em>RSA-SHA1</em>.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.oauth-sig-method-hmacsha1">
+     <strong><code><a href="oauth.constants.html#constant.oauth-sig-method-hmacsha1">OAUTH_SIG_METHOD_HMACSHA1</a></code></strong>
+     (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+    </dt>
+    <dd>
+     <p class="para">
+      Método de firma OAuth <em>HMAC-SHA1</em>.
+     </p>
+    </dd>
+   
+   
+    <dt id="constant.oauth-sig-method-hmacsha256">
+     <strong><code><a href="oauth.constants.html#constant.oauth-sig-method-hmacsha256">OAUTH_SIG_METHOD_HMACSHA256</a></code></strong>
+     (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Método de firma OAuth <em>HMAC-SHA256</em> signature method.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.oauth-auth-type-authorization">
+     <strong><code><a href="oauth.constants.html#constant.oauth-auth-type-authorization">OAUTH_AUTH_TYPE_AUTHORIZATION</a></code></strong>
+     (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+    </dt>
+    <dd>
+     <p class="para">
+      Esta constante representa los parámetros OAuth en la cabecera de  
+      <code class="literal">Authorization</code>.
+     </p>
+    </dd>
+   
+   
+    <dt id="constant.oauth-auth-type-none">
+     <strong><code><a href="oauth.constants.html#constant.oauth-auth-type-none">OAUTH_AUTH_TYPE_NONE</a></code></strong>
+     (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+    </dt>
+    <dd>
+     <p class="para">
+      Esta constante indica una petición NoAuth  OAuth.
+     </p>
+    </dd>
+   
+   
+    <dt id="constant.oauth-auth-type-uri">
+     <strong><code><a href="oauth.constants.html#constant.oauth-auth-type-uri">OAUTH_AUTH_TYPE_URI</a></code></strong>
+     (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+    </dt>
+    <dd>
+     <p class="para">
+      Esta constante representa los parámetros OAuth en la  
+      <abbr title="Uniform Resource Identifier">URI</abbr> de petición.
+     </p>
+    </dd>
+   
+   
+    <dt id="constant.oauth-auth-type-form">
+     <strong><code><a href="oauth.constants.html#constant.oauth-auth-type-form">OAUTH_AUTH_TYPE_FORM</a></code></strong>
+     (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+    </dt>
+    <dd>
+     <p class="para">
+      Esta constante representa los parámetros OAuth como una parte del cuerpo 
+      HTTP POST.
+     </p>
+    </dd>
+   
+   
+    <dt id="constant.oauth-http-method-get">
+     <strong><code><a href="oauth.constants.html#constant.oauth-http-method-get">OAUTH_HTTP_METHOD_GET</a></code></strong>
+     (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+    </dt>
+    <dd>
+     <p class="para">
+      Usa el método <em>GET</em> para la petición OAuth.
+     </p>
+    </dd>
+   
+   
+    <dt id="constant.oauth-http-method-post">
+     <strong><code><a href="oauth.constants.html#constant.oauth-http-method-post">OAUTH_HTTP_METHOD_POST</a></code></strong>
+     (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+    </dt>
+    <dd>
+     <p class="para">
+      Usa el método <em>POST</em> para la petición OAuth.
+     </p>
+    </dd>
+   
+   
+    <dt id="constant.oauth-http-method-put">
+     <strong><code><a href="oauth.constants.html#constant.oauth-http-method-put">OAUTH_HTTP_METHOD_PUT</a></code></strong>
+     (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+    </dt>
+    <dd>
+     <p class="para">
+      Usa el método <em>PUT</em> para la petición OAuth.
+     </p>
+    </dd>
+   
+   
+    <dt id="constant.oauth-http-method-head">
+     <strong><code><a href="oauth.constants.html#constant.oauth-http-method-head">OAUTH_HTTP_METHOD_HEAD</a></code></strong>
+     (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+    </dt>
+    <dd>
+     <p class="para">
+      Usa el método <em>HEAD</em> para la petición OAuth.
+     </p>
+    </dd>
+   
+   
+    <dt id="constant.oauth-http-method-delete">
+     <strong><code><a href="oauth.constants.html#constant.oauth-http-method-delete">OAUTH_HTTP_METHOD_DELETE</a></code></strong>
+     (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Usa el método <em>DELETE</em> para la petición OAuth.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.oauth-reqengine-streams">
+     <strong><code><a href="oauth.constants.html#constant.oauth-reqengine-streams">OAUTH_REQENGINE_STREAMS</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Utiliza el método <span class="methodname"><a href="oauth.setrequestengine.html" class="methodname">OAuth::setRequestEngine()</a></span> para definir el motor de 
+      <a href="book.stream.html" class="link">PHP streams</a>,
+      en lugar de  <strong><code><a href="oauth.constants.html#constant.oauth-reqengine-curl">OAUTH_REQENGINE_CURL</a></code></strong> para 
+      <a href="book.curl.html" class="link">Curl</a>.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.oauth-reqengine-curl">
+     <strong><code><a href="oauth.constants.html#constant.oauth-reqengine-curl">OAUTH_REQENGINE_CURL</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Utiliza el método <span class="methodname"><a href="oauth.setrequestengine.html" class="methodname">OAuth::setRequestEngine()</a></span> para definir el motor de 
+      <a href="book.curl.html" class="link">Curl</a>, en lugar de 
+      <strong><code><a href="oauth.constants.html#constant.oauth-reqengine-streams">OAUTH_REQENGINE_STREAMS</a></code></strong> para <a href="book.stream.html" class="link">PHP streams</a>.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.oauth-ok">
+     <strong><code><a href="oauth.constants.html#constant.oauth-ok">OAUTH_OK</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      La vida es bella.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.oauth-bad-nonce">
+     <strong><code><a href="oauth.constants.html#constant.oauth-bad-nonce">OAUTH_BAD_NONCE</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El valor <em>oauth_nonce</em> que fue usado en una anterior petición,
+      y no se puede utilizar ahora.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.oauth-bad-timestamp">
+     <strong><code><a href="oauth.constants.html#constant.oauth-bad-timestamp">OAUTH_BAD_TIMESTAMP</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El valor <em>oauth_timestamp</em> que no fue aceptado por el proveedor de servicio. 
+      En este caso, la respuesta deberá estar también contenida en el parámetro <em>oauth_acceptable_timestamps</em>.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.oauth-consumer-key-unknown">
+     <strong><code><a href="oauth.constants.html#constant.oauth-consumer-key-unknown">OAUTH_CONSUMER_KEY_UNKNOWN</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      <em>oauth_consumer_key</em> es temporalmehte inaceptable para el proveedor de servicio.
+      Por ejemplo, el proveedor de servicio se ha sobrecargado.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.oauth-consumer-key-refused">
+     <strong><code><a href="oauth.constants.html#constant.oauth-consumer-key-refused">OAUTH_CONSUMER_KEY_REFUSED</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      La clave de cliente ha sido rechazada.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.oauth-invalid-signature">
+     <strong><code><a href="oauth.constants.html#constant.oauth-invalid-signature">OAUTH_INVALID_SIGNATURE</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      La firma <em>oauth_signature</em> es inválida, no coincide la firma del cliente con la del proveedor.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.oauth-token-used">
+     <strong><code><a href="oauth.constants.html#constant.oauth-token-used">OAUTH_TOKEN_USED</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El <em>oauth_token</em> ha sido consumido. No se puede utilizar más 
+      debido a que ya había sido usada en la/s petición/peticiones anterior/es.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.oauth-token-expired">
+     <strong><code><a href="oauth.constants.html#constant.oauth-token-expired">OAUTH_TOKEN_EXPIRED</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El <em>oauth_token</em> ha expirado. 
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.oauth-token-revoked">
+     <strong><code><a href="oauth.constants.html#constant.oauth-token-revoked">OAUTH_TOKEN_REVOKED</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El <em>oauth_token</em> ha sido revocado, y no será aceptado nunca más.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.oauth-token-rejected">
+     <strong><code><a href="oauth.constants.html#constant.oauth-token-rejected">OAUTH_TOKEN_REJECTED</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El <em>oauth_token</em> no fue aceptado por el proveedor de servicio.
+      La razón es desconocida, pero puede deberse a que el token nunca fue usado,
+      ya había sido consumido, ya había expirado, y/o olvidado por el proveedor de servicio.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.oauth-verifier-invalid">
+     <strong><code><a href="oauth.constants.html#constant.oauth-verifier-invalid">OAUTH_VERIFIER_INVALID</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El <em>oauth_verifier</em> es incorrecto.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.oauth-parameter-absent">
+     <strong><code><a href="oauth.constants.html#constant.oauth-parameter-absent">OAUTH_PARAMETER_ABSENT</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Un parámetro no fue recibido. En ese caso, la respuesta debe también 
+      contener el parámetro <em>oauth_parameters_absent</em>.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.oauth-signature-method-rejected">
+     <strong><code><a href="oauth.constants.html#constant.oauth-signature-method-rejected">OAUTH_SIGNATURE_METHOD_REJECTED</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El método <em>oauth_signature_method</em> no fue aceptado por el proveedor de servicio.
+     </span>
+    </dd>
+   
+  </dl>
+ </p>
+</div>
+</div></div></body></html>

@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Escapa una cadena al estilo de C</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ref.strings.html">« Funciones de strings</a></li>
+      <li style="float: right;"><a href="function.addslashes.html">addslashes »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.strings.html">Funciones de strings</a></li>
+    <li>Escapa una cadena al estilo de C</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.addcslashes" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">addcslashes</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">addcslashes</span> &mdash; <span class="dc-title">Escapa una cadena al estilo de C</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.addcslashes-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>addcslashes</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$string</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$characters</code></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Devuelve un string con barras invertidas antes de los caracteres que
+   aparecen en el parámetro <code class="parameter">characters</code>
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.addcslashes-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">string</code></dt>
+     <dd>
+      <p class="para">
+       El string a escapar.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">characters</code></dt>
+     <dd>
+      <p class="para">
+       Una lista de caracteres que serán escapados. Si
+       <code class="parameter">characters</code> contiene caracteres como
+       <code class="literal">\n</code>, <code class="literal">\r</code> etc., serán
+       convertidos al estilo de C, mientras que otros caracteres no alfanuméricos
+       con código ASCII inferior a 32 y superior a 126 serán convertidos a
+       representación octal.
+      </p>
+      <p class="para">
+       Cuando se defina una secuencia de caracteres en el argumento <code class="parameter">characters</code>,
+       asegúrese de conocer los caracteres que hay entre los caracteres
+       de inicio y final del rango establecido.
+       <div class="informalexample">
+        <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">addcslashes</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo[ ]'</span><span style="color: #007700">, </span><span style="color: #DD0000">'A..z'</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">// salida:  \f\o\o\[ \]<br />// Serán escapadas todas las letras mayúsculas y minúsculas<br />// ... pero también [\]^_`<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+        </div>
+
+       </div>
+       Además, si el primer carácter del rango tiene un valor
+       ASCII superior al segundo carácter del rango, este no se podrá
+       construir. Solamente serán escapados los caracteres de inicio, fin
+       y el punto. Use la función <span class="function"><a href="function.ord.html" class="function">ord()</a></span> para encontrar el
+       valor ASCII de un carácter.
+       <div class="informalexample">
+        <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">addcslashes</span><span style="color: #007700">(</span><span style="color: #DD0000">"zoo['.']"</span><span style="color: #007700">, </span><span style="color: #DD0000">'z..A'</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">// salida:  \zoo['\.']<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+        </div>
+
+       </div>
+      </p>
+      <p class="para">
+       Ojo si se opta por escapar los caracteres 0, a, b, f, n, r, t y
+       v. Estos se convertirán en \0, \a, \b, \f, \n, \r, \t and \v, que son todos
+       secuencias de escape predefinidas en C. Muchas de estas secuencias tambíen
+       están definidas en otros lenguajes derivados de C, incluyendo PHP, lo que significa
+       que no se podría obtener el resultado deseado si se usa la salida de
+       <span class="function"><strong>addcslashes()</strong></span> para generar código en tales lenguajes
+       con los caracteres definidos en <code class="parameter">characters</code>.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.addcslashes-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el string escapado.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.addcslashes-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   Un rango en <code class="parameter">characters</code> como &quot;\0..\37&quot;, escaparía a todos los
+   caracteres con código ASCII entre 0 y 31.
+   <div class="example" id="example-4766">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>addcslashes()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$escapado </span><span style="color: #007700">= </span><span style="color: #0000BB">addcslashes</span><span style="color: #007700">(</span><span style="color: #0000BB">$no_escapado</span><span style="color: #007700">, </span><span style="color: #DD0000">"\0..\37!@\177..\377"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.addcslashes-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.stripcslashes.html" class="function" rel="rdfs-seeAlso">stripcslashes()</a> - Desmarca la cadena marcada con  addcslashes</span></li>
+    <li><span class="function"><a href="function.stripslashes.html" class="function" rel="rdfs-seeAlso">stripslashes()</a> - Quita las barras de un string con comillas escapadas</span></li>
+    <li><span class="function"><a href="function.addslashes.html" class="function" rel="rdfs-seeAlso">addslashes()</a> - Quote string with slashes</span></li>
+    <li><span class="function"><a href="function.htmlspecialchars.html" class="function" rel="rdfs-seeAlso">htmlspecialchars()</a> - Convierte caracteres especiales en entidades HTML</span></li>
+    <li><span class="function"><a href="function.quotemeta.html" class="function" rel="rdfs-seeAlso">quotemeta()</a> - Escapa meta caracteres</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

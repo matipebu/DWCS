@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Devolver un nombre manifiesto debidamente localizado de las variantes de la configuraci&oacute;n regional de entrada</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="locale.getdisplayscript.html">« Locale::getDisplayScript</a></li>
+      <li style="float: right;"><a href="locale.getkeywords.html">Locale::getKeywords »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.locale.html">Locale</a></li>
+    <li>Devolver un nombre manifiesto debidamente localizado de las variantes de la configuraci&oacute;n regional de entrada</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="locale.getdisplayvariant" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Locale::getDisplayVariant</h1>
+  <h1 class="refname">locale_get_display_variant</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8, PECL intl &gt;= 1.0.0)</p><p class="refpurpose"><span class="refname">Locale::getDisplayVariant</span> -- <span class="refname">locale_get_display_variant</span> &mdash; <span class="dc-title">Devolver un nombre manifiesto debidamente localizado de las variantes de la configuración regional de entrada</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-locale.getdisplayvariant-description">
+  <h3 class="title">Descripción</h3>
+  <p class="para">
+   Estilo orientado a objetos
+  </p>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="methodname"><strong>Locale::getDisplayVariant</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$locale</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$in_locale</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Estilo por procedimientos
+  </p>
+  <div class="methodsynopsis dc-description"><span class="methodname"><strong>locale_get_display_variant</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$locale</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$in_locale</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Devuelve un nombre manifiesto debidamente localizado de las variantes de la configuración regional
+   de entrada. Si es <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> se utiliza la configuración regional predeterminada.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-locale.getdisplayvariant-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">locale</code></dt>
+     <dd>
+      <p class="para">
+       La configuración regional de la que devolver una variante manifiesta.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">in_locale</code></dt>
+     <dd>
+      <p class="para">
+       El formato regional opcional a usar para mostrar el nombre de la variante
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ 
+ <div class="refsect1 returnvalues" id="refsect1-locale.getdisplayvariant-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   El nombre manifiesto de la variante de la configuración regional dada por $locale en el formato apropiado dado por
+   $in_locale.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-locale.getdisplayvariant-examples">
+  <h3 class="title">Ejemplos</h3>
+  <div class="example" id="example-2349">
+   <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>locale_get_display_variant()</strong></span></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">locale_get_display_variant</span><span style="color: #007700">(</span><span style="color: #DD0000">'sl-Latn-IT-nedis'</span><span style="color: #007700">, </span><span style="color: #DD0000">'en'</span><span style="color: #007700">);<br />echo </span><span style="color: #DD0000">";\n"</span><span style="color: #007700">;<br />echo </span><span style="color: #0000BB">locale_get_display_variant</span><span style="color: #007700">(</span><span style="color: #DD0000">'sl-Latn-IT-nedis'</span><span style="color: #007700">, </span><span style="color: #DD0000">'fr'</span><span style="color: #007700">);<br />echo </span><span style="color: #DD0000">";\n"</span><span style="color: #007700">;<br />echo </span><span style="color: #0000BB">locale_get_display_variant</span><span style="color: #007700">(</span><span style="color: #DD0000">'sl-Latn-IT-nedis'</span><span style="color: #007700">, </span><span style="color: #DD0000">'de'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+  <div class="example" id="example-2350">
+   <p><strong>Ejemplo #2 Ejemplo orientado a objetos</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">Locale</span><span style="color: #007700">::</span><span style="color: #0000BB">getDisplayVariant</span><span style="color: #007700">(</span><span style="color: #DD0000">'sl-Latn-IT-nedis'</span><span style="color: #007700">, </span><span style="color: #DD0000">'en'</span><span style="color: #007700">);<br />echo </span><span style="color: #DD0000">";\n"</span><span style="color: #007700">;<br />echo </span><span style="color: #0000BB">Locale</span><span style="color: #007700">::</span><span style="color: #0000BB">getDisplayVariant</span><span style="color: #007700">(</span><span style="color: #DD0000">'sl-Latn-IT-nedis'</span><span style="color: #007700">, </span><span style="color: #DD0000">'fr'</span><span style="color: #007700">);<br />echo </span><span style="color: #DD0000">";\n"</span><span style="color: #007700">;<br />echo </span><span style="color: #0000BB">Locale</span><span style="color: #007700">::</span><span style="color: #0000BB">getDisplayVariant</span><span style="color: #007700">(</span><span style="color: #DD0000">'sl-Latn-IT-nedis'</span><span style="color: #007700">, </span><span style="color: #DD0000">'de'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+  <p class="para">El resultado del ejemplo sería:</p>
+  <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Natisone dialect;
+dialecte de Natisone;
+NEDIS</pre>
+</div>
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-locale.getdisplayvariant-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="locale.getdisplayname.html" class="function" rel="rdfs-seeAlso">locale_get_display_name()</a> - Devolver un nombre manifiesto debidamente localizado de la configuraci&oacute;n regional de entrada</span></li>
+    <li><span class="function"><a href="locale.getdisplaylanguage.html" class="function" rel="rdfs-seeAlso">locale_get_display_language()</a> - Devolver un nombre manifiesto debidamente localizado del lenguaje de la configuraci&oacute;n regional de entrada</span></li>
+    <li><span class="function"><a href="locale.getdisplayscript.html" class="function" rel="rdfs-seeAlso">locale_get_display_script()</a> - Devolver un nombre manifiesto debidamente localizado de la escritura de la configuraci&oacute;n regional de entrada</span></li>
+    <li><span class="function"><a href="locale.getdisplayregion.html" class="function" rel="rdfs-seeAlso">locale_get_display_region()</a> - Devolver un nombre manifiesto debidamente localizado de la regi&oacute;n de la configuraci&oacute;n regional de entrada</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

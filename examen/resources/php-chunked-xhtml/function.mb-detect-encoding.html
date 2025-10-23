@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Detecta la codificaci&oacute;n de caracteres</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.mb-decode-numericentity.html">« mb_decode_numericentity</a></li>
+      <li style="float: right;"><a href="function.mb-detect-order.html">mb_detect_order »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.mbstring.html">Funciones de cadenas de caracteres multibyte</a></li>
+    <li>Detecta la codificaci&oacute;n de caracteres</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mb-detect-encoding" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mb_detect_encoding</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mb_detect_encoding</span> &mdash; <span class="dc-title">Detecta la codificación de caracteres</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.mb-detect-encoding-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mb_detect_encoding</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$str</code></span>, <span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$encoding_list</code><span class="initializer"> = mb_detect_order()</span></span>, <span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$strict</code><span class="initializer"> = false</span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Detecta la codificación de caracteres del <span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">str</code>. 
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.mb-detect-encoding-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">str</code></dt>
+     <dd>
+      <p class="para">
+       El <span class="type"><a href="language.types.string.html" class="type string">string</a></span> en el que detectar la codificación.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">encoding_list</code></dt>
+     <dd>
+      <p class="para">
+       <code class="parameter">encoding_list</code> es una lista de codificaciones de
+       caracteres. El orden de codificaciones puede ser especificado por un array o una
+       lista de string separados por comas.
+      </p>
+      <p class="para">
+       Si se omite <code class="parameter">encoding_list</code>,
+       se usará detect_order.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">strict</code></dt>
+     <dd>
+      <p class="para">
+       <code class="parameter">strict</code> especifica si usar
+       la detección de codificación estricta o no.
+       El valor predeterminado es <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.mb-detect-encoding-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   La codificación de caracteres detectada, o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si la codificación no se pudo
+   detectar en el string dado.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.mb-detect-encoding-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-2564">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>mb_detect_encoding()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/* Detectar la codificación de caracteres con el detect_order en uso */<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">mb_detect_encoding</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* "auto" se desarrolla según mbstring.language */<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">mb_detect_encoding</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">, </span><span style="color: #DD0000">"auto"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* Especificar la codificación de caracteres encoding_list mediante una lista separada por comas */<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">mb_detect_encoding</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">, </span><span style="color: #DD0000">"JIS, eucjp-win, sjis-win"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* Usar un array para especificar encoding_list  */<br /></span><span style="color: #0000BB">$ary</span><span style="color: #007700">[] = </span><span style="color: #DD0000">"ASCII"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$ary</span><span style="color: #007700">[] = </span><span style="color: #DD0000">"JIS"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$ary</span><span style="color: #007700">[] = </span><span style="color: #DD0000">"EUC-JP"</span><span style="color: #007700">;<br />echo </span><span style="color: #0000BB">mb_detect_encoding</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">, </span><span style="color: #0000BB">$ary</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.mb-detect-encoding-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.mb-detect-order.html" class="function" rel="rdfs-seeAlso">mb_detect_order()</a> - Establece/obtiene el orden de detecci&oacute;n de codificaciones de caracteres</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

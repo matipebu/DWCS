@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Cambiar din&aacute;micamente el c&oacute;digo del m&eacute;todo dado</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.runkit-method-copy.html">« runkit_method_copy</a></li>
+      <li style="float: right;"><a href="function.runkit-method-remove.html">runkit_method_remove »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.runkit7.html">Funciones de runkit</a></li>
+    <li>Cambiar din&aacute;micamente el c&oacute;digo del m&eacute;todo dado</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.runkit-method-redefine" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">runkit_method_redefine</h1>
+  <p class="verinfo">(No version information available, might only be in Git)</p><p class="refpurpose"><span class="refname">runkit_method_redefine</span> &mdash; <span class="dc-title">Cambiar dinámicamente el código del método dado</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.runkit-method-redefine-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>runkit_method_redefine</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$classname</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$methodname</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$args</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$code</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$flags</code><span class="initializer"> = RUNKIT_ACC_PUBLIC</span></span><br>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <blockquote class="note"><p><strong class="note">Nota</strong>: <span class="simpara">Esta función no puede
+ser utilizada para manipular el actual método en ejecución (o extendido).</span>
+</p></blockquote>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.runkit-method-redefine-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">classname</code></dt>
+     <dd>
+      <p class="para">
+       La clase en la que se va a redefinir el método
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">methodname</code></dt>
+     <dd>
+      <p class="para">
+       El nombre del método a redefinir
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">args</code></dt>
+     <dd>
+      <p class="para">
+       Lista de argumentos delimitados por coma para el método redefinido
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">code</code></dt>
+     <dd>
+      <p class="para">
+       El nuevo código a ser evaluado cuando <code class="parameter">methodname</code>
+       sea llamado
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">flags</code></dt>
+     <dd>
+      <p class="para">
+       El método redefinido puede ser
+       <strong><code><a href="runkit.constants.html#constant.runkit-acc-public">RUNKIT_ACC_PUBLIC</a></code></strong>,
+       <strong><code><a href="runkit.constants.html#constant.runkit-acc-protected">RUNKIT_ACC_PROTECTED</a></code></strong> o
+       <strong><code><a href="runkit.constants.html#constant.runkit-acc-private">RUNKIT_ACC_PRIVATE</a></code></strong> opcionalmente combinado mediante OR de bits con
+       <strong><code><a href="runkit.constants.html#constant.runkit-acc-static">RUNKIT_ACC_STATIC</a></code></strong> (desde 1.0.1)
+      </p>
+      <blockquote class="note"><p><strong class="note">Nota</strong>: 
+       <p class="para">
+        Este parámetro sólo se usa a partir de PHP 5, ya que, antes de esta versión,
+        todos los métodos eran públicos.
+       </p>
+      </p></blockquote>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.runkit-method-redefine-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.runkit-method-redefine-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-605">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>runkit_method_redefine()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">Ejemplo </span><span style="color: #007700">{<br />    function </span><span style="color: #0000BB">foo</span><span style="color: #007700">() {<br />        return </span><span style="color: #DD0000">"foo!\n"</span><span style="color: #007700">;<br />    }<br />}<br /><br /></span><span style="color: #FF8000">// crear un objeto de Ejemplo<br /></span><span style="color: #0000BB">$e </span><span style="color: #007700">= new </span><span style="color: #0000BB">Ejemplo</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">// imprimir Ejemplo::foo() (antes de redefinir)<br /></span><span style="color: #007700">echo </span><span style="color: #DD0000">"Antes: " </span><span style="color: #007700">. </span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">// Redefinir el método 'foo'<br /></span><span style="color: #0000BB">runkit_method_redefine</span><span style="color: #007700">(<br />    </span><span style="color: #DD0000">'Ejemplo'</span><span style="color: #007700">,<br />    </span><span style="color: #DD0000">'foo'</span><span style="color: #007700">,<br />    </span><span style="color: #DD0000">''</span><span style="color: #007700">,<br />    </span><span style="color: #DD0000">'return "bar!\n";'</span><span style="color: #007700">,<br />    </span><span style="color: #0000BB">RUNKIT_ACC_PUBLIC<br /></span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// imprimir Ejemplo::foo() (después de redefinir)<br /></span><span style="color: #007700">echo </span><span style="color: #DD0000">"Después: " </span><span style="color: #007700">. </span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Antes: foo!
+Después: bar!</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.runkit-method-redefine-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.runkit-method-add.html" class="function" rel="rdfs-seeAlso">runkit_method_add()</a> - A&ntilde;adir din&aacute;micamente un nuevo m&eacute;todo a una clase dada</span></li>
+    <li><span class="function"><a href="function.runkit-method-copy.html" class="function" rel="rdfs-seeAlso">runkit_method_copy()</a> - Copia un m&eacute;todo de una clase a otra</span></li>
+    <li><span class="function"><a href="function.runkit-method-remove.html" class="function" rel="rdfs-seeAlso">runkit_method_remove()</a> - Eliminar din&aacute;micamente el m&eacute;todo dado</span></li>
+    <li><span class="function"><a href="function.runkit-method-rename.html" class="function" rel="rdfs-seeAlso">runkit_method_rename()</a> - Cambiar din&aacute;micamente el nombre del m&eacute;todo dado</span></li>
+    <li><span class="function"><a href="function.runkit-function-redefine.html" class="function" rel="rdfs-seeAlso">runkit_function_redefine()</a> - Reemplazar una definici&oacute;n de funci&oacute;n con una nueva implementaci&oacute;n</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

@@ -1,0 +1,701 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Tablas de comparaci&oacute;n de tipos de PHP</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="transports.unix.html">« Dominio Unix: Unix y UDG</a></li>
+      <li style="float: right;"><a href="tokens.html">Lista de componentes l&eacute;xicos del analizador »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="appendices.html">Ap&eacute;ndices</a></li>
+    <li>Tablas de comparaci&oacute;n de tipos de PHP</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="types.comparisons" class="appendix">
+ <h1 class="title">Tablas de comparación de tipos de PHP</h1>
+
+ <p class="para">
+  Las siguientes tablas demuestran el comportamiento de los
+  <a href="language.types.html" class="link">tipos</a> de PHP y los
+  <a href="language.operators.comparison.html" class="link">operadores de comparación</a>,
+  tanto para comparaciones flexibles como estrictas. Este
+  suplemento está relacionado también con la sección del manual sobre
+  <a href="language.types.type-juggling.html" class="link">manipulación de tipos</a>.
+  La inspiración proviene de varios comentarios de usuarios y del trabajo
+  realizado en <a href="http://www.blueshoes.org/en/developer/php_cheat_sheet/" class="link external">&raquo;&nbsp;BlueShoes</a>.
+ </p>
+ <p class="para">
+  Antes de usar estas tablas, es importante entender los tipos y sus
+  significados. Por ejemplo, <code class="literal">&quot;42&quot;</code> es un <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+  mientras que <code class="literal">42</code> es un <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>. <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> es
+  un <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> mientras <code class="literal">&quot;false&quot;</code> es un
+  <span class="type"><a href="language.types.string.html" class="type string">string</a></span>.
+ </p>
+ <blockquote class="note"><p><strong class="note">Nota</strong>: 
+  <p class="para">
+   Los formularios HTML no pasan enteros, reales, o booleanos; solo pasan cadenas.
+   Para saber si una cadena es numérica, se puede usar
+   <span class="function"><a href="function.is-numeric.html" class="function">is_numeric()</a></span>.
+  </p>
+ </p></blockquote>
+ <blockquote class="note"><p><strong class="note">Nota</strong>: 
+  <p class="para">
+   Hacer un simple <code class="literal">if ($x)</code> mientras que <var class="varname">$x</var>
+   no esté definido, generará un error de nivel <strong><code><a href="errorfunc.constants.html#constant.e-notice">E_NOTICE</a></code></strong>.
+   En lugar de esto, considere el uso de <span class="function"><a href="function.empty.html" class="function">empty()</a></span> o
+   <span class="function"><a href="function.isset.html" class="function">isset()</a></span>, y/o inicialice sus variables.
+  </p>
+ </p></blockquote>
+ <blockquote class="note"><p><strong class="note">Nota</strong>: 
+  <p class="para">
+   Algunas representaciones numéricas pueden resultar en un valor representado por la constante
+   <strong><code><a href="math.constants.html#constant.nan">NAN</a></code></strong>. Cualquier comparación flexible o estricta de este valor
+   con cualquier otro valor, incluyendo a sí mismo, excepto <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>, tendrá un resultado <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>,
+   (esto es, <code class="literal">NAN != NAN</code> y <code class="literal">NAN !== NAN</code>).
+   Algunos ejemplos de operaciones que producen <strong><code><a href="math.constants.html#constant.nan">NAN</a></code></strong> son
+   <code class="literal">sqrt(-1)</code>, <code class="literal">asin(2)</code>, y
+   <code class="literal">acosh(0)</code>.
+  </p>
+ </p></blockquote>
+ <p class="para">
+  <table class="doctable table">
+   <caption><strong>Comparaciones de <var class="varname">$x</var> con funciones PHP</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Expresión</th>
+      <th><span class="function"><a href="function.gettype.html" class="function">gettype()</a></span></th>
+      <th><span class="function"><a href="function.empty.html" class="function">empty()</a></span></th>
+      <th><span class="function"><a href="function.is-null.html" class="function">is_null()</a></span></th>
+      <th><span class="function"><a href="function.isset.html" class="function">isset()</a></span></th>
+      <th><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> : <code class="literal">if($x)</code></th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><code class="literal">$x = &quot;&quot;;</code></td>
+      <td><span class="type"><a href="language.types.string.html" class="type string">string</a></span></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = null;</code></td>
+      <td><span class="type"><a href="language.types.null.html" class="type NULL">NULL</a></span></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">var $x;</code></td>
+      <td><span class="type"><a href="language.types.null.html" class="type NULL">NULL</a></span></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><var class="varname">$x</var> no está definido</td>
+      <td><span class="type"><a href="language.types.null.html" class="type NULL">NULL</a></span></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = array();</code></td>
+      <td><span class="type"><a href="language.types.array.html" class="type array">array</a></span></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = array(&#039;a&#039;, &#039;b&#039;);</code></td>
+      <td><span class="type"><a href="language.types.array.html" class="type array">array</a></span></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = false;</code></td>
+      <td><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = true;</code></td>
+      <td><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = 1;</code></td>
+      <td><span class="type"><a href="language.types.integer.html" class="type int">int</a></span></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = 42;</code></td>
+      <td><span class="type"><a href="language.types.integer.html" class="type int">int</a></span></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = 0;</code></td>
+      <td><span class="type"><a href="language.types.integer.html" class="type int">int</a></span></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = -1;</code></td>
+      <td><span class="type"><a href="language.types.integer.html" class="type int">int</a></span></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = &quot;1&quot;;</code></td>
+      <td><span class="type"><a href="language.types.string.html" class="type string">string</a></span></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = &quot;0&quot;;</code></td>
+      <td><span class="type"><a href="language.types.string.html" class="type string">string</a></span></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = &quot;-1&quot;;</code></td>
+      <td><span class="type"><a href="language.types.string.html" class="type string">string</a></span></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = &quot;php&quot;;</code></td>
+      <td><span class="type"><a href="language.types.string.html" class="type string">string</a></span></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = &quot;true&quot;;</code></td>
+      <td><span class="type"><a href="language.types.string.html" class="type string">string</a></span></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = &quot;false&quot;;</code></td>
+      <td><span class="type"><a href="language.types.string.html" class="type string">string</a></span></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </p>
+
+ <p class="para">
+  <table id="types.comparisions-loose" class="doctable table">
+   <caption><strong>Comparaciones flexibles con <code class="literal">==</code></strong></caption>
+   
+    <thead>
+     <tr>
+      <th> </th>
+      <th><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></th>
+      <th><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></th>
+      <th><code class="literal">1</code></th>
+      <th><code class="literal">0</code></th>
+      <th><code class="literal">-1</code></th>
+      <th><code class="literal">&quot;1&quot;</code></th>
+      <th><code class="literal">&quot;0&quot;</code></th>
+      <th><code class="literal">&quot;-1&quot;</code></th>
+      <th><strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong></th>
+      <th><code class="literal">array()</code></th>
+      <th><code class="literal">&quot;php&quot;</code></th>
+      <th><code class="literal">&quot;&quot;</code></th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">1</code></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">0</code></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">-1</code></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">&quot;1&quot;</code></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">&quot;0&quot;</code></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">&quot;-1&quot;</code></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">array()</code></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">&quot;php&quot;</code></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">&quot;&quot;</code></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </p>
+
+ <p class="para">
+  <table id="type.comparisons-strict" class="doctable table">
+   <caption><strong>Comparaciones estrictas con <code class="literal">===</code></strong></caption>
+   
+    <thead>
+     <tr>
+      <th> </th>
+      <th><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></th>
+      <th><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></th>
+      <th><code class="literal">1</code></th>
+      <th><code class="literal">0</code></th>
+      <th><code class="literal">-1</code></th>
+      <th><code class="literal">&quot;1&quot;</code></th>
+      <th><code class="literal">&quot;0&quot;</code></th>
+      <th><code class="literal">&quot;-1&quot;</code></th>
+      <th><strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong></th>
+      <th><code class="literal">array()</code></th>
+      <th><code class="literal">&quot;php&quot;</code></th>
+      <th><code class="literal">&quot;&quot;</code></th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">1</code></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">0</code></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">-1</code></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">&quot;1&quot;</code></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">&quot;0&quot;</code></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">&quot;-1&quot;</code></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">array()</code></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">&quot;php&quot;</code></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">&quot;&quot;</code></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></td>
+      <td><strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </p>
+</div>
+</div></div></body></html>

@@ -1,0 +1,379 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Listado de opciones de contexto de HTTP</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="context.socket.html">« Opciones de contexto de sockets</a></li>
+      <li style="float: right;"><a href="context.ftp.html">Opciones de contexto para FTP »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="context.html">Opciones y par&aacute;metros de contexto</a></li>
+    <li>Listado de opciones de contexto de HTTP</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="context.http" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Opciones de contexto de HTTP</h1>
+  <p class="refpurpose"><span class="refname">Opciones de contexto de HTTP</span> &mdash; <span class="dc-title">Listado de opciones de contexto de HTTP</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-context.http-description">
+  <h3 class="title">Descripción</h3>
+  <p class="para">
+   Opciones de contexto para los transportes <code class="literal">http://</code> y
+   <code class="literal">https://</code>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 options" id="refsect1-context.http-options">
+  <h3 class="title">Opciones</h3>
+  <p class="para">
+   <dl>
+    
+     <dt id="context.http.method">
+      <code class="parameter">method</code>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       <strong><code>GET</code></strong>, <strong><code>POST</code></strong>, o
+       cualquier otro método HTTP que admita el servidor remoto.
+      </p>
+      <p class="para">
+       Por omisión, <strong><code>GET</code></strong>.
+      </p>
+     </dd>
+    
+    
+     <dt id="context.http.header">
+      <code class="parameter">header</code>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       Las cabeceras adicionales que se envían en la petición. Los valores
+       de esta opción sobrescribirán los existentes (tales como
+       <code class="literal">User-agent:</code>, <code class="literal">Host:</code>,
+       o <code class="literal">Authentication:</code>).
+      </p>
+     </dd>
+    
+    
+     <dt id="context.http.user-agent">
+      <code class="parameter">user_agent</code>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       Valor de la cabecera <code class="literal">User-Agent:</code>. Solo se utilizará
+       si el agente <em>no</em> se ha especificado en
+       la opción de contexto <code class="literal">header</code> vista arriba.
+      </p>
+      <p class="para">
+       Por omisión, se utiliza el valor del ajuste
+       <a href="filesystem.configuration.html#ini.user-agent" class="link">user_agent</a>
+       de <var class="filename">php.ini</var>.
+      </p>
+     </dd>
+    
+    
+     <dt id="context.http.content">
+      <code class="parameter">content</code>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       Datos adicionales a enviar tras las cabeceras. Típicamente se
+       utiliza con peticiones POST o PUT.
+      </p>
+     </dd>
+    
+    
+     <dt id="context.http.proxy">
+      <code class="parameter">proxy</code>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       El URI que define la dirección de un servidor proxy (p.ej.
+       <code class="literal">tcp://proxy.example.com:5100</code>).
+      </p>
+     </dd>
+    
+    
+     <dt id="context.http.request-fulluri">
+      <code class="parameter">request_fulluri</code>
+      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       Cuando se establece a <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>, se utilizará todo el URI para
+       construir la petición, (es decir,
+       <code class="literal">GET http://www.example.com/path/to/file.html HTTP/1.0</code>).
+       A pesar de que es un formato de petición no estándar, algunos
+       servidores proxy requieren que sea así.
+      </p>
+      <p class="para">
+       Por omisión es <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+      </p>
+     </dd>
+    
+    
+     <dt id="context.http.follow-location">
+      <code class="parameter">follow_location</code>
+      <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       Seguir las redirecciones de las cabeceras <code class="literal">Location</code>. Establecer a
+       <code class="literal">0</code> para deshabilitarlo.
+      </p>
+      <p class="para">
+       Por omisión es <code class="literal">1</code>.
+      </p>
+     </dd>
+    
+    
+     <dt id="context.http.max-redirects">
+      <code class="parameter">max_redirects</code>
+      <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       El número máximo de redirecciones a seguir. Un valor igual o menor a <code class="literal">1</code>
+       indica que no se siga ninguna redirección.
+      </p>
+      <p class="para">
+       Por omisión es <code class="literal">20</code>.
+      </p>
+     </dd>
+    
+    
+     <dt id="context.http.protocol-version">
+      <code class="parameter">protocol_version</code>
+      <span class="type"><a href="language.types.float.html" class="type float">float</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       La versión del protocolo HTTP.
+      </p>
+      <p class="para">
+       Por omisión es <code class="literal">1.0</code>.
+      </p>
+      <blockquote class="note"><p><strong class="note">Nota</strong>: 
+       <p class="para">
+        Las versiónes de PHP anteriores a la 5.3.0 no implementan la decodificación de
+        transferencias fragmentadas. Si este valor es <code class="literal">1.1</code>, es
+        responsabilidad del programador cumplir con la versión <code class="literal">1.1</code>.
+       </p>
+      </p></blockquote>
+     </dd>
+    
+    
+     <dt id="context.http.timeout">
+      <code class="parameter">timeout</code>
+      <span class="type"><a href="language.types.float.html" class="type float">float</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       El tiempo de espera de lectura en segundos, especificado por un <span class="type"><a href="language.types.float.html" class="type float">float</a></span>
+       (p.ej. <code class="literal">10.5</code>).
+      </p>
+      <p class="para">
+       Por omisión, se utiliza el valor del ajuste
+       <a href="filesystem.configuration.html#ini.default-socket-timeout" class="link">default_socket_timeout</a>
+       de <var class="filename">php.ini</var>.
+      </p>
+     </dd>
+    
+    
+     <dt id="context.http.ignore-errors">
+      <code class="parameter">ignore_errors</code>
+      <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+     </dt>
+     <dd>
+      <p class="para">
+       Obtener el contenido incluso con códigos de estado de error.
+      </p>
+      <p class="para">
+       Por omisión es <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-context.http-changelog">
+  <h3 class="title">Historial de cambios</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Versión</th>
+       <th>Descripción</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.3.4</td>
+       <td>
+        Se añadió <code class="parameter">follow_location</code>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.3.0</td>
+       <td>
+        La opción <code class="parameter">protocol_version</code> admite la decodificación de
+        transferencias fragmentadas en caso de valer <code class="literal">1.1</code>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.2.10</td>
+       <td>
+        Se añadió <code class="parameter">ignore_errors</code>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.2.10</td>
+       <td>
+        El parámetro <code class="parameter">header</code> ahora puede ser un <span class="type"><a href="language.types.array.html" class="type array">array</a></span> de índices numéricos.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.2.1</td>
+       <td>
+        Se añadió <code class="parameter">timeout</code>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.1.0</td>
+       <td>
+        Se añadió el soporte de HTTPS mediante proxies HTTP.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.1.0</td>
+       <td>
+        Se añadió <code class="parameter">max_redirects</code>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.1.0</td>
+       <td>
+        Se añadió <code class="parameter">protocol_version</code>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-context.http-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="context.http.example-post">
+    <p><strong>Ejemplo #1 Obtener una página y enviar datos POST</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$datos_post </span><span style="color: #007700">= </span><span style="color: #0000BB">http_build_query</span><span style="color: #007700">(<br />    array(<br />        </span><span style="color: #DD0000">'var1' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'contenido'</span><span style="color: #007700">,<br />        </span><span style="color: #DD0000">'var2' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'doh'<br />    </span><span style="color: #007700">)<br />);<br /><br /></span><span style="color: #0000BB">$opciones </span><span style="color: #007700">= array(</span><span style="color: #DD0000">'http' </span><span style="color: #007700">=&gt;<br />    array(<br />        </span><span style="color: #DD0000">'method'  </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'POST'</span><span style="color: #007700">,<br />        </span><span style="color: #DD0000">'header'  </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Content-type: application/x-www-form-urlencoded'</span><span style="color: #007700">,<br />        </span><span style="color: #DD0000">'content' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$datos_post<br />    </span><span style="color: #007700">)<br />);<br /><br /></span><span style="color: #0000BB">$contexto </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">(</span><span style="color: #0000BB">$opciones</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$resultado </span><span style="color: #007700">= </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://example.com/submit.php'</span><span style="color: #007700">, </span><span style="color: #0000BB">false</span><span style="color: #007700">, </span><span style="color: #0000BB">$contexto</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="context.http.example-fetch-ignore-redirect">
+    <p><strong>Ejemplo #2 Ignorar las redirecciones, aunque obtener las cabeceras y el contenido</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$url </span><span style="color: #007700">= </span><span style="color: #DD0000">"http://www.example.org/header.php"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$opciones </span><span style="color: #007700">= array(</span><span style="color: #DD0000">'http' </span><span style="color: #007700">=&gt;<br />    array(<br />        </span><span style="color: #DD0000">'method' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'GET'</span><span style="color: #007700">,<br />        </span><span style="color: #DD0000">'max_redirects' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'0'</span><span style="color: #007700">,<br />        </span><span style="color: #DD0000">'ignore_errors' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'1'<br />    </span><span style="color: #007700">)<br />);<br /><br /></span><span style="color: #0000BB">$contexto </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">(</span><span style="color: #0000BB">$opciones</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$flujo </span><span style="color: #007700">= </span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$url</span><span style="color: #007700">, </span><span style="color: #DD0000">'r'</span><span style="color: #007700">, </span><span style="color: #0000BB">false</span><span style="color: #007700">, </span><span style="color: #0000BB">$contexto</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// información de cabeceras y meta datos<br />// sobre el flujo<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">stream_get_meta_data</span><span style="color: #007700">(</span><span style="color: #0000BB">$flujo</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">// datos reales en $url<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">stream_get_contents</span><span style="color: #007700">(</span><span style="color: #0000BB">$flujo</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$flujo</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-context.http-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <strong>Opciones de contexto del flujo de socket subyacente</strong><br />
+   <span class="simpara">
+    Se pueden admitir opciones de contexto adicionales mediante el
+    <a href="transports.inet.html" class="link">transporte subyacente</a>.
+    Para flujos <code class="literal">http://</code>, deben consultarse las opciones
+    de contexto del transporte <code class="literal">tcp://</code>. Para flujos
+    <code class="literal">https://</code>, deben consultarse las opciones de
+    contexto del transporte <code class="literal">ssl://</code>.
+   </span>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <strong>Línea de estado HTTP</strong><br />
+   <span class="simpara">
+    Cuando esta envultura de flujo sigue una redirección, los
+    datos en <code class="literal">wrapper_data</code> devueltos por
+    <span class="function"><a href="function.stream-get-meta-data.html" class="function">stream_get_meta_data()</a></span> podrían no contener necesariamente
+    la línea de estado HTTP que realmente se aplica a los datos del contenido del índice
+    <code class="literal">0</code>.
+   </span>
+   <div class="example-contents screen">
+<div class="notescode"><pre class="notescode">array (
+  &#039;wrapper_data&#039; =&gt;
+  array (
+    0 =&gt; &#039;HTTP/1.0 301 Moved Permantenly&#039;,
+    1 =&gt; &#039;Cache-Control: no-cache&#039;,
+    2 =&gt; &#039;Connection: close&#039;,
+    3 =&gt; &#039;Location: http://example.com/foo.jpg&#039;,
+    4 =&gt; &#039;HTTP/1.1 200 OK&#039;,
+    ...</pre>
+</div>
+   </div>
+   <span class="simpara">
+    La primera petición devolvió un <code class="literal">301</code> (redirección permanente),
+    de manera que la envoltura del flujo sigue automáticamente la redirección para obtener una
+    respuesta de código <code class="literal">200</code> (índice = <code class="literal">4</code>).
+   </span>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-context.http-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><a href="wrappers.http.html" class="xref">http://</a></li>
+    <li><a href="context.socket.html" class="xref">Opciones de contexto de sockets</a></li>
+    <li><a href="context.ssl.html" class="xref">Opciones de contexto para SSL</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

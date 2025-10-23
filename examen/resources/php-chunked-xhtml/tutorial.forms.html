@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Tratar con formularios</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="tutorial.useful.html">« Algo &uacute;til</a></li>
+      <li style="float: right;"><a href="tutorial.whatsnext.html">&iquest;Y ahora qu&eacute;? »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="tutorial.html">Un tutorial sencillo</a></li>
+    <li>Tratar con formularios</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="tutorial.forms" class="section">
+  <div class="info"><h1 class="title">Tratar con formularios</h1></div>
+  <p class="para">
+   Otra de las características más potentes de PHP es la forma de gestionar
+   formularios HTML. El concepto básico que es importante entender es que cualquier
+   elemento de un formulario estará disponible automáticamente en sus scripts
+   de PHP. Por favor, lea la sección del manual sobre <a href="language.variables.external.html" class="link">Variables desde fuentes externas</a>
+   para obtener más información y ejemplos sobre cómo usar formularios
+   con PHP. Observemos un ejemplo:
+  </p>
+  <p class="para">
+   <div class="example" id="example-7">
+    <div class="info"><p><strong>Ejemplo #1 Un formulario HTML sencillo</strong></p></div>
+    <div class="example-contents">
+<div class="htmlcode"><pre class="htmlcode">&lt;form action=&quot;accion.php&quot; method=&quot;post&quot;&gt;
+ &lt;p&gt;Su nombre: &lt;input type=&quot;text&quot; name=&quot;nombre&quot; /&gt;&lt;/p&gt;
+ &lt;p&gt;Su edad: &lt;input type=&quot;text&quot; name=&quot;edad&quot; /&gt;&lt;/p&gt;
+ &lt;p&gt;&lt;input type=&quot;submit&quot; /&gt;&lt;/p&gt;
+&lt;/form&gt;</pre>
+</div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   No hay nada especial en este formulario. Es solamente un formulario HTML
+   sin ninguna clase de etiqueta especial. Cuando el usuario rellena este formulario
+   y oprime el botón de envío, se llama a la página
+   <var class="filename">accion.php</var>. En este fichero se podría escribir algo así:
+  </p>
+  <p class="para">
+   <div class="example" id="example-8">
+    <div class="info"><p><strong>Ejemplo #2 Mostrar información de nuestro formulario</strong></p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">Hola <span style="color: #0000BB">&lt;?php </span><span style="color: #007700">echo </span><span style="color: #0000BB">htmlspecialchars</span><span style="color: #007700">(</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">[</span><span style="color: #DD0000">'nombre'</span><span style="color: #007700">]); </span><span style="color: #0000BB">?&gt;</span>.<br />Usted tiene <span style="color: #0000BB">&lt;?php </span><span style="color: #007700">echo (int)</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">[</span><span style="color: #DD0000">'edad'</span><span style="color: #007700">]; </span><span style="color: #0000BB">?&gt;</span> años.</span></code></div>
+    </div>
+
+    <div class="example-contents"><p>
+     Un ejemplo del resultado de este script podría ser:
+    </p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Hola José. Usted tiene 22 años.
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   Excepto las partes de <span class="function"><a href="function.htmlspecialchars.html" class="function">htmlspecialchars()</a></span> y de
+   <code class="literal">(int)</code>, debería ser obvio qué es lo que hace el código.
+   <span class="function"><a href="function.htmlspecialchars.html" class="function">htmlspecialchars()</a></span> garantiza que cualquier carácter que sea
+   especial en html se codifique adecuadamente, de manera que nadie pueda inyectar etiquetas
+   HTML o Javascript en la página. El campo edad, ya que sabemos que es un número, podemos
+   <a href="language.types.type-juggling.html#language.types.typecasting" class="link">convertirlo</a> a un valor de tipo
+   <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> que automáticamente se deshará de cualquier
+   carácter no numérico. También se puede hacer lo mismo con PHP con la
+   extensión <a href="ref.filter.html" class="link">filter</a>.
+   Las variables <var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST['nombre']</a></var> y <var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST['edad']</a></var>
+   son establecidas automáticamente por PHP. Anteriormente hemos usado
+   la superglobal <var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER</a></var>; arriba introdujimos
+   la superglobal <var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var>,
+   la cual contiene todos los datos de POST. Observe que el
+   <em>método</em> de nuestro formulario es POST. Si hubiésemos usado
+   el método <em>GET</em>, nuestra información estaría en su lugar
+   en la superglobal <var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET</a></var>.
+   También se podría usar la superglobal <var class="varname"><a href="reserved.variables.request.html" class="classname">$_REQUEST</a></var>,
+   si no le preocupa la fuente de los datos solicitados. Contiene
+   toda la información de los datos de GET, POST y COOKIE mezclada.
+  </p>
+ </div></div></div></body></html>

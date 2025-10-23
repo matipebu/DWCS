@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Devolver Referencias</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.references.pass.html">« Pasar por Referencia</a></li>
+      <li style="float: right;"><a href="language.references.unset.html">Destruir Referencias »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.references.html">Explicaci&oacute;n de las Referencias</a></li>
+    <li>Devolver Referencias</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.references.return" class="sect1">
+  <h2 class="title">Devolver Referencias</h2>
+  <p class="para">
+   Devolver por referencia es útil cuando se quiere usar una función
+   para encontrar a qué variable debería estar vinculada una referencia.
+   <em>No</em> use devolver por referencia para aumentar el rendimiento.
+   El motor optimizará automáticamente esto por sí mismo. Hay que devolver
+   referencias sólo cuando se tenga una razón técnicamente válida para hacerlo. Para
+   devolver referencias use esta sintaxis:
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br />    public </span><span style="color: #0000BB">$valor </span><span style="color: #007700">= </span><span style="color: #0000BB">42</span><span style="color: #007700">;<br /><br />    public function &amp;</span><span style="color: #0000BB">obtenerValor</span><span style="color: #007700">() {<br />        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">valor</span><span style="color: #007700">;<br />    }<br />}<br /><br /></span><span style="color: #0000BB">$obj </span><span style="color: #007700">= new </span><span style="color: #0000BB">foo</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$miValor </span><span style="color: #007700">= &amp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">obtenerValor</span><span style="color: #007700">(); </span><span style="color: #FF8000">// $miValor es una referencia a $obj-&gt;valor, que es 42.<br /></span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">valor </span><span style="color: #007700">= </span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />echo </span><span style="color: #0000BB">$miValor</span><span style="color: #007700">;                </span><span style="color: #FF8000">// imprime el nuevo valor de $obj-&gt;valor, esto es, 2.<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+   En este ejemplo, la propiedad del objeto devuelto por la
+   función <var class="varname">obtenerValor</var> debería estar establecida, no la
+   copia, como si estuviera sin usar la sintaxis de referencia.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <span class="simpara">
+    A diferencia de pasar un parámetro, aquí se tiene que usar
+    <code class="literal">&amp;</code> en ambos lugares - para indicar que se
+    quiere devolver por referencia, no una copia, y para indicar que
+    la vinculación por referencia, en vez de la asignación normal, debería ser hecha
+    para <var class="varname">$miValor</var>.
+   </span>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <span class="simpara">
+    Si se intenta devolver una referencia desde una función con la sintaxis:
+    <code class="literal">return ($this-&gt;valor);</code>, <em>no</em>
+    funcionará ya que se está intentando devolver el resultado de una
+    <em>expresión</em>, y no de una variable, por referencia. Sólo se
+    puede devolver variables por referencia desde una función - nada más.
+    Desde PHP 5.1.0, se
+    emite un error <strong><code><a href="errorfunc.constants.html#constant.e-notice">E_NOTICE</a></code></strong> si el código intenta devolver
+    una expresión dinámica o un resultado del operador <code class="literal">new</code>.
+   </span>
+  </p></blockquote>
+  <p class="para">
+   Para usar la referencia retornada, se debe usar la asignación por referencia:
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function &amp;</span><span style="color: #0000BB">collector</span><span style="color: #007700">() {<br />  static </span><span style="color: #0000BB">$collection </span><span style="color: #007700">= array();<br />  return </span><span style="color: #0000BB">$collection</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">$collection </span><span style="color: #007700">= &amp;</span><span style="color: #0000BB">collector</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$collection</span><span style="color: #007700">[] = </span><span style="color: #DD0000">'foo'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+   Para pasar la referencia retornada a otra función que espera una referencia
+   se puede usar la siguiente sintaxis:
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function &amp;</span><span style="color: #0000BB">collector</span><span style="color: #007700">() {<br />  static </span><span style="color: #0000BB">$collection </span><span style="color: #007700">= array();<br />  return </span><span style="color: #0000BB">$collection</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">array_push</span><span style="color: #007700">(</span><span style="color: #0000BB">collector</span><span style="color: #007700">(), </span><span style="color: #DD0000">'foo'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <span class="simpara">
+    Observe que <code class="literal">array_push(&amp;collector(), &#039;foo&#039;);</code>
+    <em>no</em> funcionará, resultará en un error fatal.
+   </span>
+  </p></blockquote>
+ </div></div></div></body></html>

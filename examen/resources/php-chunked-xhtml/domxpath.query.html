@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Eval&uacute;a la expresi&oacute;n XPath dada</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="domxpath.evaluate.html">« DOMXPath::evaluate</a></li>
+      <li style="float: right;"><a href="domxpath.quote.html">DOMXPath::quote »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.domxpath.html">DOMXPath</a></li>
+    <li>Eval&uacute;a la expresi&oacute;n XPath dada</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="domxpath.query" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DOMXPath::query</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">DOMXPath::query</span> &mdash; <span class="dc-title">
+   Evalúa la expresión XPath dada
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-domxpath.query-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>DOMXPath::query</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$expression</code></span>, <span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="class.domnode.html" class="type DOMNode">DOMNode</a></span></span> <code class="parameter">$contextNode</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong></span></span>, <span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$registerNodeNS</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong></span></span>): <span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span></div>
+
+  <p class="para rdfs-comment">
+   Ejecuta la expresión XPath dada por <code class="parameter">expression</code>.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-domxpath.query-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">expression</code></dt>
+     <dd>
+      <p class="para">
+       La expresión XPath a ejecutar.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">contextNode</code></dt>
+     <dd>
+      <p class="para">
+       El parámetro opcional <code class="parameter">contextNode</code> se puede especificar para
+       hacer consultas XPath relativas. Por omisión, las consultas son relativas al
+       elemento raíz.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">registerNodeNS</code></dt>
+     <dd>
+      <p class="para">
+       El parámetro opcional <code class="parameter">registerNodeNS</code> puede ser especificado para
+       deshabilitar el registro automático del nodo de contexto.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-domxpath.query-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve un objeto <span class="classname"><a href="class.domnodelist.html" class="classname">DOMNodeList</a></span> que contiene todos los nodos coincidentes
+   con la expresión XPath dada por <code class="parameter">expression</code>. Cualquier expresión que no
+   devuelva nodos devolverá un objeto <span class="classname"><a href="class.domnodelist.html" class="classname">DOMNodeList</a></span> vacío.
+  </p>
+  <p class="para">
+   Si el parámetro <code class="parameter">expression</code> está malformado
+   o el parámetro <code class="parameter">contextNode</code> es inválido,
+   <span class="methodname"><strong>DOMXPath::query()</strong></span> devuelve <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-domxpath.query-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-5438">
+    <p><strong>Ejemplo #1 Obtener todos los libros en inglés</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$doc </span><span style="color: #007700">= new </span><span style="color: #0000BB">DOMDocument</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">// No queremos molestar con espacios en blanco<br /></span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">preserveWhiteSpace </span><span style="color: #007700">= </span><span style="color: #0000BB">false</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">load</span><span style="color: #007700">(</span><span style="color: #DD0000">'book.xml'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$xpath </span><span style="color: #007700">= new </span><span style="color: #0000BB">DOMXPath</span><span style="color: #007700">(</span><span style="color: #0000BB">$doc</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Empezamos desde el elemento root<br /></span><span style="color: #0000BB">$consulta </span><span style="color: #007700">= </span><span style="color: #DD0000">'//book/chapter/para/informaltable/tgroup/tbody/row/entry[. = "en"]'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$entradas </span><span style="color: #007700">= </span><span style="color: #0000BB">$xpath</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #0000BB">$consulta</span><span style="color: #007700">);<br /><br />foreach (</span><span style="color: #0000BB">$entradas </span><span style="color: #007700">as </span><span style="color: #0000BB">$entrada</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">"Se encotró </span><span style="color: #007700">{</span><span style="color: #0000BB">$entrada</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">previousSibling</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">previousSibling</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">nodeValue</span><span style="color: #007700">}</span><span style="color: #DD0000">," </span><span style="color: #007700">.<br />         </span><span style="color: #DD0000">" por </span><span style="color: #007700">{</span><span style="color: #0000BB">$entrada</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">previousSibling</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">nodeValue</span><span style="color: #007700">}</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Se encontró The Grapes of Wrath, por John Steinbeck
+Se encontró The Pearl, por John Steinbeck</pre>
+</div>
+    </div>
+    <div class="example-contents"><p>
+     También podemos usar el parámetro <code class="parameter">contextNode</code> para acortar
+     nuestra expresión:
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$doc </span><span style="color: #007700">= new </span><span style="color: #0000BB">DOMDocument</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">preserveWhiteSpace </span><span style="color: #007700">= </span><span style="color: #0000BB">false</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">load</span><span style="color: #007700">(</span><span style="color: #DD0000">'book.xml'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$xpath </span><span style="color: #007700">= new </span><span style="color: #0000BB">DOMXPath</span><span style="color: #007700">(</span><span style="color: #0000BB">$doc</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$tbody </span><span style="color: #007700">= </span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getElementsByTagName</span><span style="color: #007700">(</span><span style="color: #DD0000">'tbody'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">item</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// nuestra consulta es relativa al nodo tbody<br /></span><span style="color: #0000BB">$consulta </span><span style="color: #007700">= </span><span style="color: #DD0000">'row/entry[. = "en"]'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$entradas </span><span style="color: #007700">= </span><span style="color: #0000BB">$xpath</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #0000BB">$consulta</span><span style="color: #007700">, </span><span style="color: #0000BB">$tbody</span><span style="color: #007700">);<br /><br />foreach (</span><span style="color: #0000BB">$entradas </span><span style="color: #007700">as </span><span style="color: #0000BB">$entrada</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">"Se encontró </span><span style="color: #007700">{</span><span style="color: #0000BB">$entrada</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">previousSibling</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">previousSibling</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">nodeValue</span><span style="color: #007700">}</span><span style="color: #DD0000">," </span><span style="color: #007700">.<br />         </span><span style="color: #DD0000">" por </span><span style="color: #007700">{</span><span style="color: #0000BB">$entrada</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">previousSibling</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">nodeValue</span><span style="color: #007700">}</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-domxpath.query-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="methodname"><a href="domxpath.evaluate.html" class="methodname" rel="rdfs-seeAlso">DOMXPath::evaluate()</a> - Eval&uacute;a la expresi&oacute;n XPath dada y devuelve un resultado escrito si es posible</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Connection handling and persistence</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mongodb.overview.html">« Arquitectura</a></li>
+      <li style="float: right;"><a href="mongodb.persistence.html">Persistencia de datos »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="mongodb.architecture.html">Arquitectura del controlador y sus entresijos</a></li>
+    <li>Connection handling and persistence</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mongodb.connection-handling" class="section">
+  
+  <h2 class="title">Connection handling and persistence</h2>
+
+  
+<blockquote class="note"><p><strong class="note">Nota</strong>: 
+ <span class="simpara">
+  En plataformas Unix, el controlador de MongoDB es susceptible a scripts que utilizan la
+  llamada al sistema fork() sin llamar también a exec(). Los usuarios están advertidos de no
+  reusar instancias de <span class="classname"><a href="class.mongodb-driver-manager.html" class="classname">MongoDB\Driver\Manager</a></span> en un proceso
+  hijo bifurcado («forked»).
+    </span>
+</p></blockquote>
+
+
+  <div class="section">
+   <h2 class="title">Persistencia de conexión y topología (PHP y HHVM desde versión 1.2.0)</h2>
+
+   <p class="para">
+    Todas las versiones del controlador desde la 1.2.0 hacen persistente el
+    objeto cliente <a href="https://github.com/mongodb/mongo-c-driver/tree/master/src/libbson" class="link external">&raquo;&nbsp;libmongoc</a> del
+    proceso trabajador de PHP, lo que le permite reutilizar conexiones a bases de datos,
+    estadod de autenticación, <em>e</em> información de topología entre
+    varias peticiiones.
+   </p>
+
+   <p class="para">
+    Cuando <span class="methodname"><a href="mongodb-driver-manager.construct.html" class="methodname">MongoDB\Driver\Manager::__construct()</a></span> se
+    invoca, se crea un hash con sus argumentos (esto es, cadena de URI y opciones
+    de array). El controlador intentará encontrar un objeto cliente
+    <a href="https://github.com/mongodb/mongo-c-driver/tree/master/src/libbson" class="link external">&raquo;&nbsp;libmongoc</a> persistente anterior par
+    tal hash. Si no se puede encontrar un cliente existente  para el hash, se creará
+    un nuevo cliente (y se hará persistente para un uso futuro).
+   </p>
+
+   <p class="para">
+    Cada cliente contiene su propia conexión a una base de datos y una vista de la topología
+    del servidor (p.ej., independiente, conjunto réplica, &#039;clúster&#039; fragmentado). Haciendo persistente
+    el cliente entre peticiones de PHP, el controlador es capaz de reutilizar conexiones de bases
+    de datos establecidas y eliminar la necesidad de
+    <a href="https://github.com/mongodb/specifications/blob/master/source/server-discovery-and-monitoring/server-discovery-and-monitoring.md" class="link external">&raquo;&nbsp;descubrir la topología del servidor</a>
+    en cada petición.
+   </p>
+
+   <p class="para">
+    Considere el siguiente ejemplo:
+   </p>
+
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$managers </span><span style="color: #007700">= [<br />    new </span><span style="color: #0000BB">MongoDB\Driver\Manager</span><span style="color: #007700">(</span><span style="color: #DD0000">'mongodb://127.0.0.1'</span><span style="color: #007700">),<br />    new </span><span style="color: #0000BB">MongoDB\Driver\Manager</span><span style="color: #007700">(</span><span style="color: #DD0000">'mongodb://127.0.0.1'</span><span style="color: #007700">),<br />    new </span><span style="color: #0000BB">MongoDB\Driver\Manager</span><span style="color: #007700">(</span><span style="color: #DD0000">'mongodb://127.0.0.1:27017'</span><span style="color: #007700">),<br />    new </span><span style="color: #0000BB">MongoDB\Driver\Manager</span><span style="color: #007700">(</span><span style="color: #DD0000">'mongodb://rs1.example.com,rs2.example.com/'</span><span style="color: #007700">, [</span><span style="color: #DD0000">'replicaSet' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'myReplicaSet'</span><span style="color: #007700">]),<br />];<br /><br />foreach (</span><span style="color: #0000BB">$managers </span><span style="color: #007700">as </span><span style="color: #0000BB">$manager</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">$manager</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">executeCommand</span><span style="color: #007700">(</span><span style="color: #DD0000">'test'</span><span style="color: #007700">, new </span><span style="color: #0000BB">MongoDB\Driver\Command</span><span style="color: #007700">([</span><span style="color: #DD0000">'ping' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1</span><span style="color: #007700">]));<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+
+   <p class="para">
+    Los primeros dos objetos Manager compartirán el mismo cliente
+    <a href="https://github.com/mongodb/mongo-c-driver/tree/master/src/libbson" class="link external">&raquo;&nbsp;libmongoc</a> ya que
+    los argumentos de sus constructores son idénticos. El tercer y cuarto objetos
+    utilizarán cada un su propio cliente. En total, se crearán tres clientes y el
+    trabajador de PHP que ejecute este script abrirá dos conexiones a
+    <code class="literal">127.0.0.1</code> y una conexión a
+    <code class="literal">rs1.example.com</code> y otra a <code class="literal">rs2.example.com</code>.
+    Si el controlador descubre miembros adicionales de un conjunto réplica después de emitir
+    comandos <code class="literal">isMaster</code>, abrirá conexiones adicionales también
+    para esos servidores.
+   </p>
+
+   <p class="para">
+    Si el mismo trabajador ejecuta el script de nuevo en una segunda petición, los tres
+    clientes serán reutilizados y no deberían hacerse nuevas conexiones. Dependiendo del
+    hace cuánto tiempo se sirvió la petición anteriior, el controlador podría necesitar emitir
+    comandos <code class="literal">isMaster</code> adicionales para actualizar su vista de las
+    topologías.
+   </p>
+  </div>
+
+  <div class="section">
+   <h2 class="title">Persistencia de socket (PHP versiones anteriores a la 1.2.0)</h2>
+
+   <p class="para">
+    Las versiones del controlador de PHP anteriores a la 1.2.0 utilizan la API de Flujos de PHP para
+    conexiones a bases de datos, empleando una API dentro de
+    <a href="https://github.com/mongodb/mongo-c-driver/tree/master/src/libbson" class="link external">&raquo;&nbsp;libmongoc</a> para designar
+    manejadores propios para la comunicación de sockets. Sin embargo, se crea un nuevo cliente
+    libmongoc para cada <span class="classname"><a href="class.mongodb-driver-manager.html" class="classname">MongoDB\Driver\Manager</a></span>. Como resultado,
+    el controlador hace persistir conexiones a bases de datos individuales, aunque no el estado
+    de autenticación o la información de la topología. Esto sifgnifica que el controlador necesita emitir
+    comandos al inicio de cada petición para autenticar y
+    <a href="https://github.com/mongodb/specifications/blob/master/source/server-discovery-and-monitoring/server-discovery-and-monitoring.md" class="link external">&raquo;&nbsp;descubrir la topología del servidor</a>.
+   </p>
+
+   <p class="para">
+    Las conexiones a bases de datos son persistentes mediante un hash derivador del puerto,
+    host y cadena URI del servidor empleados para construit el
+    <span class="classname"><a href="class.mongodb-driver-manager.html" class="classname">MongoDB\Driver\Manager</a></span>. Las opciones de array del
+    constructor no estan incluidas en este hash.
+   </p>
+
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <span class="simpara">
+     Las versiones del controlador &gt;= 1.1.8 y &lt; 1.2.0 no hacen persistentes sockets
+     para conexinoes SSL. Véase
+     <a href="https://jira.mongodb.org/browse/PHPC-720" class="link external">&raquo;&nbsp;PHPC-720</a> para
+     más información.
+    </span>
+   </p></blockquote>
+
+   <p class="para">
+    A pesar de sus deficiencias con conexiones SSL persistentes e información de
+    topología, esta versioón del controlador admite todas las
+    <a href="context.ssl.html" class="link">opciones de contexto SSL</a> debido a que utiliza
+    la API de Flujos de PHP.
+   </p>
+  </div>
+
+  <div class="section">
+   <h2 class="title">Sin persistencia (versiones de HHVM anteriores a la 1.2.0)</h2>
+
+   <p class="para">
+    Las versiones del controlador HHVM anteriores a la 1.2.0 no hacen persistentes sockets,
+    estados de autenticación o información de topología, La comunicación de socket emplea
+    <a href="https://github.com/mongodb/mongo-c-driver/tree/master/src/libbson" class="link external">&raquo;&nbsp;libmongoc</a> completamente.
+   </p>
+  </div>
+ </div></div></div></body></html>

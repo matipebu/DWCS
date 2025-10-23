@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Filtros de compresi&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="filters.convert.html">« Filtros de conversi&oacute;n</a></li>
+      <li style="float: right;"><a href="filters.encryption.html">Filtros de encriptaci&oacute;n »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="filters.html">Lista de filtros disponibles</a></li>
+    <li>Filtros de compresi&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="filters.compression" class="section">
+  <h2 class="title">Filtros de compresión</h2>
+
+  <p class="simpara">
+   Mientras que los <a href="wrappers.compression.html" class="link">Envoltorios de compresión</a>
+   proporcionan una forma de crear
+   ficheros gzip y bz2 compatibles con el sistema de archivos local, no proporcionan un
+   medio para la compresión generalizada sobre los flujos de la red, ni proporcionan un medio
+   para comenzar con un flujo no comprimido y la transición a uno comprimido.
+   Para ello, se puede aplicar un filtro de compresión a cualquier recurso de flujo en cualquier momento.
+  </p>
+
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <span class="simpara">
+    Los filtros de compresión <em>no</em> generan cabeceras y avances
+    utilizadas por las utilidades de línea de comando como <code class="literal">gzip</code>. Sólo comprimen
+    y descomprimen las porciones de carga útil de los flujos de datos comprimidos.
+   </span>
+  </p></blockquote>
+
+  <div class="section" id="filters.compression.zlib">
+   <h2 class="title">zlib.deflate y zlib.inflate</h2>
+   <p class="simpara">
+    <code class="literal">zlib.deflate</code> (compresión) y
+    <code class="literal">zlib.inflate</code> (descompresión) son implementaciones de
+    los métodos de compresión descritos en <a href="http://www.faqs.org/rfcs/rfc1951" class="link external">&raquo;&nbsp;RFC 1951</a>.
+    Los filtros <code class="literal">deflate</code> toma hasta tres parámetros pasados como
+    un array asociativo.
+
+   <code class="parameter">level</code> describe la intensidad de compresión (1-9).
+   Números más grandes producen, por lo general, resultados más pequeños, al
+   costo de tiempo de procesamiento adicional. Dos niveles de compresión
+   especiales existen también: 0 (para no-compresión), y -1 (el valor
+   predeterminado de zlib -- actualmente 6).
+
+   <code class="parameter">window</code> es el registro en base-2 del tamaño de
+   ventana del circuito cerrado de compresión. Valores más altos (de hasta
+   15 -- 32768 bytes) producen mejor compresión al costo de más memoria,
+   mientras valores más bajos (alrededor de 9 -- 512 bytes) producen una
+   compresión inferior en un espacio de memoria más pequeño. El tamaño de
+   <code class="parameter">window</code> es actualmente <strong><code>15</code></strong>.
+
+   <code class="parameter">memory</code> es una escala que indica cuánta memoria
+   debería ser reservada. Los valores válidos están en el rango de 1
+   (reserva mínima) a 9 (reserva máxima). Esta reserva de memoria afecta
+   únicamente la repidez y no tiene impacto en el tamaño del resultado
+   generado.
+   </p>
+
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <span class="simpara">
+     Debido a que el nivel de compresión es el parámetro más comúnmente usado, puede ser alternativamente
+     proporcionado como un valor entero simple (en lugar de un elemento de array).
+    </span>
+   </p></blockquote>
+
+  <p class="simpara">
+    Los filtros de compresión zlib.* están disponibles si
+    eaaqyhfgrtl soporte de <a href="ref.zlib.html" class="link">zlib</a> se encuentra habilitado.
+  </p>
+
+   <div class="example" id="example-5538">
+    <p><strong>Ejemplo #1 
+     <code class="literal">zlib.deflate</code> y
+     <code class="literal">zlib.inflate</code>
+    </strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$params </span><span style="color: #007700">= array(</span><span style="color: #DD0000">'level' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">6</span><span style="color: #007700">, </span><span style="color: #DD0000">'window' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">15</span><span style="color: #007700">, </span><span style="color: #DD0000">'memory' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">9</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$texto_original </span><span style="color: #007700">= </span><span style="color: #DD0000">"Esto es una prueba.\nEsto es solo una prueba.\nEsta no es una cadena importante.\n"</span><span style="color: #007700">;<br />echo </span><span style="color: #DD0000">"El texto original tiene " </span><span style="color: #007700">. </span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$texto_original</span><span style="color: #007700">) . </span><span style="color: #DD0000">" caracteres.\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$da </span><span style="color: #007700">= </span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'test.deflated'</span><span style="color: #007700">, </span><span style="color: #DD0000">'w'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">stream_filter_append</span><span style="color: #007700">(</span><span style="color: #0000BB">$da</span><span style="color: #007700">, </span><span style="color: #DD0000">'zlib.deflate'</span><span style="color: #007700">, </span><span style="color: #0000BB">STREAM_FILTER_WRITE</span><span style="color: #007700">, </span><span style="color: #0000BB">$params</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$da</span><span style="color: #007700">, </span><span style="color: #0000BB">$texto_original</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$da</span><span style="color: #007700">);<br /><br />echo </span><span style="color: #DD0000">"El archivo comprimido tiene " </span><span style="color: #007700">. </span><span style="color: #0000BB">filesize</span><span style="color: #007700">(</span><span style="color: #DD0000">'test.deflated'</span><span style="color: #007700">) . </span><span style="color: #DD0000">" bytes.\n"</span><span style="color: #007700">;<br />echo </span><span style="color: #DD0000">"El texto original era:\n"</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">/* Use readfile y zlib.inflate para descomprimir al vuelo */<br /></span><span style="color: #0000BB">readfile</span><span style="color: #007700">(</span><span style="color: #DD0000">'php://filter/zlib.inflate/resource=test.deflated'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* Genera la salida:<br /><br />El texto original tiene 79 caracteres.<br />El archivo comprimido tiene 59 bytes.<br />El texto original era:<br />Esto es una prueba.<br />Esto es solo una prueba.<br />Esta no es una cadena importante.<br /><br /> */<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+
+   <div class="example" id="example-5539">
+    <p><strong>Ejemplo #2 
+     <code class="literal">zlib.deflate</code> simple
+    </strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$texto_original </span><span style="color: #007700">= </span><span style="color: #DD0000">"Esto es una prueba.\nEsto es solo una prueba.\nEsta no es una cadena importante.\n"</span><span style="color: #007700">;<br />echo </span><span style="color: #DD0000">"El texto original tiene " </span><span style="color: #007700">. </span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$texto_original</span><span style="color: #007700">) . </span><span style="color: #DD0000">" caracteres.\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$da </span><span style="color: #007700">= </span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'test.deflated'</span><span style="color: #007700">, </span><span style="color: #DD0000">'w'</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">/* Aqui "6" indica el nivel 6 de compresion */<br /></span><span style="color: #0000BB">stream_filter_append</span><span style="color: #007700">(</span><span style="color: #0000BB">$da</span><span style="color: #007700">, </span><span style="color: #DD0000">'zlib.deflate'</span><span style="color: #007700">, </span><span style="color: #0000BB">STREAM_FILTER_WRITE</span><span style="color: #007700">, </span><span style="color: #0000BB">6</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$da</span><span style="color: #007700">, </span><span style="color: #0000BB">$texto_original</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$da</span><span style="color: #007700">);<br /><br />echo </span><span style="color: #DD0000">"El archivo comprimido tiene " </span><span style="color: #007700">. </span><span style="color: #0000BB">filesize</span><span style="color: #007700">(</span><span style="color: #DD0000">'test.deflated'</span><span style="color: #007700">) . </span><span style="color: #DD0000">" bytes.\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">/* Genera la salida:<br /><br />El texto original tiene 79 caracteres.<br />El archivo comprimido tiene 53 bytes.<br /><br /> */<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </div>
+
+  <div class="section" id="filters.compression.bzip2">
+   <h2 class="title">bzip2.compress y bzip2.decompress</h2>
+  <p class="simpara">
+   <code class="literal">bzip2.compress</code> y <code class="literal">bzip2.decompress</code>
+   funcionan de la misma forma que los filtros zlib descritos anteriormente.
+   El filtro <code class="literal">bzip2.compress</code> acepta hasta dos parámetros
+   dados como elementos de una matriz asociativa:
+
+   <code class="parameter">blocks</code> es un valor entero desde 1 hasta 9 que
+   indica el número de bloques de 100kbytes de memoria a reservar para el
+   espacio de trabajo.
+
+   <code class="parameter">work</code> es también un valor entero que va desde 0 a
+   250, e indica cuánto esfuerzo debe invertirse para expandir usando el
+   método de compresión normal antes de caer en un método más lento pero más
+   confiable. Modificar este parámetro afecta únicamente la rapidez de
+   compresién. Ni el tamaño de la salida comprimida ni el uso de memoria se
+   modifican por este valor. Un factor de trabajo de 0 le indica a la
+   biblioteca bzip que debe usar el valor interno predeterminado.
+
+   El filtro <code class="literal">bzip2.decompress</code> sólo acepta un parámetro,
+   el cual puede ser pasado como un valor booleano ordinario, o como el
+   elemento <code class="parameter">small</code> de una matriz asociativa.
+
+   <code class="parameter">small</code>, cuando se define a un valor <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>, le
+   indica a la biblioteca bzip de realice una descompresión con una cantidad
+   de memoria mínima, al costo de la rapidez.
+  </p>
+
+  <p class="simpara">
+    Las filtros de compresión bzip2.* se encuentran disponibles si
+    el soporte de <a href="ref.bzip2.html" class="link">bz2</a> se encuentra habilitado.
+  </p>
+
+   <div class="example" id="example-5540">
+    <p><strong>Ejemplo #3 
+     <code class="literal">bzip2.compress</code> y
+     <code class="literal">bzip2.decompress</code>
+    </strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$param </span><span style="color: #007700">= array(</span><span style="color: #DD0000">'blocks' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">9</span><span style="color: #007700">, </span><span style="color: #DD0000">'work' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br />echo </span><span style="color: #DD0000">"El archivo original tiene " </span><span style="color: #007700">. </span><span style="color: #0000BB">filesize</span><span style="color: #007700">(</span><span style="color: #DD0000">'LICENSE'</span><span style="color: #007700">) . </span><span style="color: #DD0000">" bytes.\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$da </span><span style="color: #007700">= </span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'LICENSE.compressed'</span><span style="color: #007700">, </span><span style="color: #DD0000">'w'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">stream_filter_append</span><span style="color: #007700">(</span><span style="color: #0000BB">$da</span><span style="color: #007700">, </span><span style="color: #DD0000">'bzip2.compress'</span><span style="color: #007700">, </span><span style="color: #0000BB">STREAM_FILTER_WRITE</span><span style="color: #007700">, </span><span style="color: #0000BB">$param</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$da</span><span style="color: #007700">, </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'LICENSE'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$da</span><span style="color: #007700">);<br /><br />echo </span><span style="color: #DD0000">"El archivo comprimido tiene " </span><span style="color: #007700">. </span><span style="color: #0000BB">filesize</span><span style="color: #007700">(</span><span style="color: #DD0000">'LICENSE.compressed'</span><span style="color: #007700">) . </span><span style="color: #DD0000">" bytes.\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">/* Genera la salida:<br /><br />El archivo original tiene 3288 bytes.<br />El archivo comprimido tiene 1488 bytes.<br /><br /> */<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </div>
+  </div></div></div></body></html>

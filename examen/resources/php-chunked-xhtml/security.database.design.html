@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Dise&ntilde;o de bases de datos</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="security.database.html">« Seguridad en bases de datos</a></li>
+      <li style="float: right;"><a href="security.database.connection.html">Conexi&oacute;n a una base de datos »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="security.database.html">Seguridad en bases de datos</a></li>
+    <li>Dise&ntilde;o de bases de datos</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="security.database.design" class="sect1">
+  <h2 class="title">Diseño de bases de datos</h2>
+  <p class="simpara">
+   El primer paso es siempre crear una base de datos, a menos que se quiera utilizar
+   una de un tercero. Cuando se crea una base de datos, esta es
+   asignada a un propietario, aquel que ejecutó la sentencia de creación. Usualmente, sólo
+   el propietario (o un superusuario) puede hacer cualquier cosa con los objetos de esa
+   base de datos. Para que otros usuarios puedan utilizarla, se les deben conceder
+   privilegios.
+  </p>
+  <p class="simpara">
+   Las aplicaciones nunca deberían conectarse a la base de datos como su propietario o como
+   un superusuario, porque estos usuarios pueden ejecutar cualquier consulta a su antojo; por
+   ejemplo, modificar el esquema (p.ej., eliminar tablas) o borrar su contenido
+   por completo.
+  </p>
+  <p class="simpara">
+   Se pueden crear distintos usuarios de una base de datos para cada aspecto de la
+   aplicación con permisos muy limitados a los objetos de dicha base de datos. Solamente
+   deberían otorgarse los privilegios necesarios, evitando así que el mismo usuario
+   pueda interactuar con la base de datos en diferentes casos y uso. Esto significa que si
+   un intruso obtiene acceso a una base de datos utilizando las credenciales de la aplicación,
+   solamente puede efectuar los cambios que la aplicación permita.
+  </p>
+ </div></div></div></body></html>

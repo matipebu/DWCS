@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Convierte una fecha del Calendario Juliano a una Fecha Juliana</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.jewishtojd.html">« jewishtojd</a></li>
+      <li style="float: right;"><a href="function.unixtojd.html">unixtojd »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.calendar.html">Funciones de Calendario</a></li>
+    <li>Convierte una fecha del Calendario Juliano a una Fecha Juliana</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.juliantojd" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">juliantojd</h1> 
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">juliantojd</span> &mdash; <span class="dc-title">Convierte una fecha del Calendario Juliano a una Fecha Juliana</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.juliantojd-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>juliantojd</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$month</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$day</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$year</code></span>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="para rdfs-comment">
+   El rango válido para el Calendario Juliano es desde 4713 A.C. a 9999 D.C.
+  </p>
+  <p class="para">
+   Aunque esta función puede manejar fechas que se remontan hasta 4713
+   A.C., tal uso puede no ser significativo. El calendario fue creado en el
+   46 A.C., pero los detalles no se estabilizaron hasta al menos el 8 D.C.,
+   y quizás hasta el siglo IV tardío. También, el comienzo de un
+   año variaba de una cultura a otra - no todas aceptaron
+   enero como el primer mes.
+  </p>
+  <div class="caution"><strong class="caution">Precaución</strong>
+   <p class="para">
+    Recuerde, el sistema de calendario actual que se usa mundialmente es el
+    Calendario Gregoriano. <span class="function"><a href="function.gregoriantojd.html" class="function">gregoriantojd()</a></span> se puede usar para
+    convertir tales fechas a sus Fechas Julianas.
+   </p>
+  </div>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.juliantojd-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">month</code></dt>
+     <dd>
+      <p class="para">
+       El mes como un número de 1 (para enero) a 12 (para diecienbre)
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">day</code></dt>
+     <dd>
+      <p class="para">
+       El día como un número de 1 a 31
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">year</code></dt>
+     <dd>
+      <p class="para">
+       El año como un número entre -4713 y 9999
+      </p>
+     </dd>
+      
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.juliantojd-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   La Fecha Juliana para la fecha del Calendario Juliano dado como un entero.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.juliantojd-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.jdtojulian.html" class="function" rel="rdfs-seeAlso">jdtojulian()</a> - Convierte una Fecha Juliana a una fecha del Calendario Juliano</span></li> 
+    <li><span class="function"><a href="function.cal-to-jd.html" class="function" rel="rdfs-seeAlso">cal_to_jd()</a> - Convertir un calendario soportado a la Fecha Juliana</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

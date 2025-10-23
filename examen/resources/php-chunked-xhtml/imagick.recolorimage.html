@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Re-colorea una imagen</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="imagick.readimages.html">« Imagick::readimages</a></li>
+      <li style="float: right;"><a href="imagick.reducenoiseimage.html">Imagick::reduceNoiseImage »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.imagick.html">Imagick</a></li>
+    <li>Re-colorea una imagen</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="imagick.recolorimage" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Imagick::recolorImage</h1>
+  <p class="verinfo">(PECL imagick 2 &gt;= 2.3.0, PECL imagick 3)</p><p class="refpurpose"><span class="refname">Imagick::recolorImage</span> &mdash; <span class="dc-title">Re-colorea una imagen</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-imagick.recolorimage-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>Imagick::recolorImage</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$matrix</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  
+  <p class="para rdfs-comment">
+   Traslada, escala, recorta, o rota colores de imagen. Este método soporta matrices de tamaño
+   variable pero normalmente se usa una matriz de 5x5 para RGBA y de 6x6 para CMYK.
+   La última fila debería contener los valores normalizados.
+   Este método está disponible si Imagick ha sido compilado con la versión 6.3.6 o superior de ImageMagick.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-imagick.recolorimage-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">matrix</code></dt>
+     <dd>
+      <p class="para">
+       La matriz que contiene los valores de los colores
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+  
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-imagick.recolorimage-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-imagick.recolorimage-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="imagick.displayimage.html" class="function" rel="rdfs-seeAlso">Imagick::displayImage()</a> - Muestra una imagen</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+
+
+ <div class="refsect1 examples" id="refsect1-imagick.recolorimage-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+    <div class="example" id="example-2859">
+      <p><strong>Ejemplo #1  <span class="function"><strong>Imagick::recolorImage()</strong></span></strong></p>
+      <div class="example-contents">
+      <div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">recolorImage</span><span style="color: #007700">(</span><span style="color: #0000BB">$imagePath</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">$imagick </span><span style="color: #007700">= new </span><span style="color: #0000BB">\Imagick</span><span style="color: #007700">(</span><span style="color: #0000BB">realpath</span><span style="color: #007700">(</span><span style="color: #0000BB">$imagePath</span><span style="color: #007700">));<br />    </span><span style="color: #0000BB">$remapColor </span><span style="color: #007700">= [ </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">,<br />        </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">,<br />        </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">,];<br /><br /></span><span style="color: #FF8000">//$remapColor = [<br />//    1.438, -0.122, -0.016,  0, 0, -0.03,<br />//    -0.062,  1.378, -0.016,  0, 0,  0.05,<br />//    -0.062, -0.122, 1.483,   0, 0, -0.02,<br />//];<br /><br />    </span><span style="color: #007700">@</span><span style="color: #0000BB">$imagick</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">recolorImage</span><span style="color: #007700">(</span><span style="color: #0000BB">$remapColor</span><span style="color: #007700">);<br /><br />    </span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">"Content-Type: image/jpg"</span><span style="color: #007700">);<br />    echo </span><span style="color: #0000BB">$imagick</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getImageBlob</span><span style="color: #007700">();<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+      </div>
+
+    </div>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

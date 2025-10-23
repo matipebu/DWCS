@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Dibuja un arco el&iacute;ptico</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="imagickdraw.pathellipticarcabsolute.html">« ImagickDraw::pathEllipticArcAbsolute</a></li>
+      <li style="float: right;"><a href="imagickdraw.pathfinish.html">ImagickDraw::pathFinish »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.imagickdraw.html">ImagickDraw</a></li>
+    <li>Dibuja un arco el&iacute;ptico</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="imagickdraw.pathellipticarcrelative" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ImagickDraw::pathEllipticArcRelative</h1>
+  <p class="verinfo">(PECL imagick 2, PECL imagick 3)</p><p class="refpurpose"><span class="refname">ImagickDraw::pathEllipticArcRelative</span> &mdash; <span class="dc-title">Dibuja un arco elíptico</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-imagickdraw.pathellipticarcrelative-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>ImagickDraw::pathEllipticArcRelative</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.float.html" class="type float">float</a></span> <code class="parameter">$rx</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.float.html" class="type float">float</a></span> <code class="parameter">$ry</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.float.html" class="type float">float</a></span> <code class="parameter">$x_axis_rotation</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$large_arc_flag</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$sweep_flag</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.float.html" class="type float">float</a></span> <code class="parameter">$x</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.float.html" class="type float">float</a></span> <code class="parameter">$y</code></span><br>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <div class="warning"><strong class="warning">Advertencia</strong><p class="simpara">Esta función
+no está documentada actualmente, solamente se encuentra disponible la lista de parámetros.
+</p></div>
+  <p class="para">
+   Dibuja un arco elíptico desde el punto actual a (x, y) usando coordenadas
+   relativas. El tamaño y la orientación de la elipse están definidos por dos
+   radios (rx, ry) y xAxisRotation, que indica cómo rota la elipse completa
+   en relación al sistema de coordenadas actual. El centro
+   (cx, cy) de la elipse se calcula automáticamente para satisfacer las
+   limitaciones impuestas por otros parámetros. largeArcFlag y sweepFlag
+   contribuyen al cálculo automático y ayudan a determinar cómo se dibuja
+   el arco. Si <code class="parameter">large_arc_flag</code> es <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> entonces se dibuja el arco más largo
+   disponible. Si <code class="parameter">sweep_flag</code> es true, entonces se dibuja el arco que coincida con una
+   rotación en sentido de las agujas del reloj.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-imagickdraw.pathellipticarcrelative-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">rx</code></dt>
+     <dd>
+      <p class="para">
+       radio x
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">ry</code></dt>
+     <dd>
+      <p class="para">
+       radio y
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">x_axis_rotation</code></dt>
+     <dd>
+      <p class="para">
+       eje de rotación x
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">large_arc_flag</code></dt>
+     <dd>
+      <p class="para">
+       bandera de arco largo
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">sweep_flag</code></dt>
+     <dd>
+      <p class="para">
+       bandera de barrido
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">x</code></dt>
+     <dd>
+      <p class="para">
+       coordenada x
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">y</code></dt>
+     <dd>
+      <p class="para">
+       coordenada y
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-imagickdraw.pathellipticarcrelative-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   No devuelve ningún valor.
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

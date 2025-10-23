@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Establece las flags de comportamiento</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="arrayobject.serialize.html">« ArrayObject::serialize</a></li>
+      <li style="float: right;"><a href="arrayobject.setiteratorclass.html">ArrayObject::setIteratorClass »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.arrayobject.html">ArrayObject</a></li>
+    <li>Establece las flags de comportamiento</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="arrayobject.setflags" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ArrayObject::setFlags</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">ArrayObject::setFlags</span> &mdash; <span class="dc-title">Establece las flags de comportamiento</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-arrayobject.setflags-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>ArrayObject::setFlags</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$flags</code></span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+
+  <p class="para rdfs-comment">
+   Establecer las flags que cambian el comportamiento de la clase ArrayObject.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-arrayobject.setflags-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">flags</code></dt>
+     <dd>
+      <p class="para">
+       El nuevo comportamiento de ArrayObject.
+       Se necesita una máscara de bits, o constantes con nombre. El uso 
+       de constantes con nombre es bastante recomendable para asegurar la 
+       compatibilidad con versiones futuras.
+      </p>
+      <p class="para">
+       Las flags de comportamiento disponibles se enumeran a continuación. 
+       El significado de estos parámetros están descritos en las 
+       <a href="class.arrayobject.html#arrayobject.constants" class="link">constantes predefinidas</a>.
+       <table class="doctable table">
+        <caption><strong>Flags de comportamiento de ArrayObject</strong></caption>
+        
+         <thead>
+          <tr>
+           <th>value</th>
+           <th>constant</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td>1</td>
+           <td>
+            <a href="class.arrayobject.html#arrayobject.constants.std-prop-list" class="link">ArrayObject::STD_PROP_LIST</a>
+           </td>
+          </tr>
+
+          <tr>
+           <td>2</td>
+           <td>
+            <a href="class.arrayobject.html#arrayobject.constants.array-as-props" class="link">ArrayObject::ARRAY_AS_PROPS</a>
+           </td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-arrayobject.setflags-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   No devuelve ningún valor.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-arrayobject.setflags-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-3761">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>ArrayObject::setFlags()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Array de frutas<br /></span><span style="color: #0000BB">$fruits </span><span style="color: #007700">= array(</span><span style="color: #DD0000">"limones" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #DD0000">"naranjas" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">4</span><span style="color: #007700">, </span><span style="color: #DD0000">"bananas" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">5</span><span style="color: #007700">, </span><span style="color: #DD0000">"manzanas" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">10</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$fruitsArrayObject </span><span style="color: #007700">= new </span><span style="color: #0000BB">ArrayObject</span><span style="color: #007700">(</span><span style="color: #0000BB">$fruits</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Intento de usar una clave de array como propiedad<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$fruitsArrayObject</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">limones</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">// Establecer que las claves del array puedan ser usadas como propiedades<br /></span><span style="color: #0000BB">$fruitsArrayObject</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setFlags</span><span style="color: #007700">(</span><span style="color: #0000BB">ArrayObject</span><span style="color: #007700">::</span><span style="color: #0000BB">ARRAY_AS_PROPS</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">// Vuelva a intentarlo<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$fruitsArrayObject</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">limones</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">NULL
+int(1)</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

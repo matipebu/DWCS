@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Variables variables</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.variables.scope.html">« &Aacute;mbito de las variables</a></li>
+      <li style="float: right;"><a href="language.variables.external.html">Variables desde fuentes externas »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.variables.html">Variables</a></li>
+    <li>Variables variables</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.variables.variable" class="sect1">
+  <h2 class="title">Variables variables</h2>
+
+  <p class="simpara">
+   A veces es conveniente tener nombres de variables variables. Dicho de
+   otro modo, son nombres de variables que se pueden definir y usar
+   dinámicamente. Una variable normal se establece con una sentencia como:
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$a </span><span style="color: #007700">= </span><span style="color: #DD0000">'hola'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+
+  <p class="simpara">
+   Una variable variable toma el valor de una variable y lo trata como el
+   nombre de una variable. En el ejemplo anterior,
+   <em>hola</em>, se puede usar como el nombre de una variable
+   utilizando dos signos de dólar. Es decir:
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">$</span><span style="color: #0000BB">$a </span><span style="color: #007700">= </span><span style="color: #DD0000">'mundo'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+
+  <p class="simpara">
+   En este momento se han definido y almacenado dos variables en el árbol de
+   símbolos de PHP: <var class="varname">$a</var>, que contiene &quot;hola&quot;, y
+   <var class="varname">$hola</var>, que contiene &quot;mundo&quot;. Es más, esta
+   sentencia:
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo </span><span style="color: #DD0000">"</span><span style="color: #0000BB">$a</span><span style="color: #DD0000"> </span><span style="color: #007700">${</span><span style="color: #0000BB">$a</span><span style="color: #007700">}</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+
+  <p class="simpara">
+   produce el mismo resultado que:
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo </span><span style="color: #DD0000">"</span><span style="color: #0000BB">$a</span><span style="color: #DD0000"> </span><span style="color: #0000BB">$hola</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+
+  <p class="simpara">
+   esto quiere decir que ambas producen el resultado: <span class="computeroutput">hola mundo</span>.
+  </p>
+
+  <p class="simpara">
+   Para usar variables variables con arrays hay que
+   resolver un problema de ambigüedad. Si se escribe
+   <var class="varname">$$a[1]</var>, el intérprete necesita saber si nos
+   referimos a utilizar <var class="varname">$a[1]</var> como una variable, o si
+   se pretendía utilizar <var class="varname">$$a</var> como variable y el índice [1]
+   como índice de dicha variable. La sintaxis para resolver esta ambigüedad
+   es: <var class="varname">${$a[1]}</var> para el primer caso y
+   <var class="varname">${$a}[1]</var> para el segundo.
+  </p>
+
+  <p class="simpara">
+   También se puede acceder a las propiedades de una clase usando el nombre de propiedad variable.
+   Este será resuelto dentro del ámbito del cual se hizo
+   la llamada. Por ejemplo, en la expresión
+   <var class="varname">$foo->$bar</var>, se buscará <var class="varname">$bar</var> en el ámibto
+   local y se empleará su valor será como el nombre de la propiedad
+   de <var class="varname">$foo</var>. Esto también es cierto
+   si <var class="varname">$bar</var> es un acceso a un array.
+  </p>
+
+  <div class="caution"><strong class="caution">Precaución</strong>
+   <p class="simpara">
+    Además, derreferenciar una propiedad variable que es un array tiene diferente
+    semántica entre PHP 5 y PHP 7. La
+    <a href="migration70.incompatible.html#migration70.incompatible.variable-handling.indirect" class="link">guías de migración de PHP 7.0</a>
+    incluye más detalles sobre los tipos de expresiones que han cambiado,
+    y cómo colocar llaves para evitar ambigüedades.
+   </p>
+  </div>
+
+  <p class="simpara">
+   También se pueden usar llaves para delimitar de forma clara el nombre de la
+   propiedad. Son muy útila al acceder a valores dentro una propiedad que
+   contiene un array, cuando el nombre de la propiedad está compuesto de múltiples partes,
+   o cuando el nombre de la propiedad contiene caracteres que de otro modo no son
+   válidos (p.ej. desde <span class="function"><a href="function.json-decode.html" class="function">json_decode()</a></span>
+   o <a href="book.simplexml.html" class="link">SimpleXML</a>).
+  </p>
+
+  <p class="para">
+   <div class="example" id="example-104">
+    <p><strong>Ejemplo #1 Ejemplo de propiedad variable</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">foo </span><span style="color: #007700">{<br />    var </span><span style="color: #0000BB">$bar </span><span style="color: #007700">= </span><span style="color: #DD0000">'Soy bar.'</span><span style="color: #007700">;<br />    var </span><span style="color: #0000BB">$arr </span><span style="color: #007700">= array(</span><span style="color: #DD0000">'Soy A.'</span><span style="color: #007700">, </span><span style="color: #DD0000">'Soy B.'</span><span style="color: #007700">, </span><span style="color: #DD0000">'Soy C.'</span><span style="color: #007700">);<br />    var </span><span style="color: #0000BB">$r   </span><span style="color: #007700">= </span><span style="color: #DD0000">'Soy r.'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$foo </span><span style="color: #007700">= new </span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$bar </span><span style="color: #007700">= </span><span style="color: #DD0000">'bar'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$baz </span><span style="color: #007700">= array(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">, </span><span style="color: #DD0000">'bar'</span><span style="color: #007700">, </span><span style="color: #DD0000">'baz'</span><span style="color: #007700">, </span><span style="color: #DD0000">'quux'</span><span style="color: #007700">);<br />echo </span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">$bar </span><span style="color: #007700">. </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo </span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;{</span><span style="color: #0000BB">$baz</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]} . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$start </span><span style="color: #007700">= </span><span style="color: #DD0000">'b'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$end   </span><span style="color: #007700">= </span><span style="color: #DD0000">'ar'</span><span style="color: #007700">;<br />echo </span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;{</span><span style="color: #0000BB">$start </span><span style="color: #007700">. </span><span style="color: #0000BB">$end</span><span style="color: #007700">} . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$arr </span><span style="color: #007700">= </span><span style="color: #DD0000">'arr'</span><span style="color: #007700">;<br />echo </span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">] . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo </span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;{</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]} . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen"><br />
+     Soy bar.<br />
+     Soy bar.<br />
+     Soy bar.<br />
+     Soy r.<br />
+    </div>
+   </div>
+  </p>
+
+  <div class="warning"><strong class="warning">Advertencia</strong>
+   <p class="simpara">
+    Por favor tenga en cuenta que las variables variables no pueden usarse
+    con los <a href="language.variables.superglobals.html" class="link">Arrays
+    superglobales</a> de PHP al interior de funciones o métodos de
+    clase. La variable <code class="literal">$this</code> es también una variable
+    especial que no puede ser referenciada dinámicamente.
+   </p>
+  </div>
+
+ </div></div></div></body></html>

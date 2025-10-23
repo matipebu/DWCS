@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Crear un directorio</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="streamwrapper.dir-rewinddir.html">« streamWrapper::dir_rewinddir</a></li>
+      <li style="float: right;"><a href="streamwrapper.rename.html">streamWrapper::rename »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.streamwrapper.html">streamWrapper</a></li>
+    <li>Crear un directorio</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="streamwrapper.mkdir" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">streamWrapper::mkdir</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">streamWrapper::mkdir</span> &mdash; <span class="dc-title">Crear un directorio</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-streamwrapper.mkdir-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>streamWrapper::mkdir</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$path</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$mode</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$options</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Este método es llamado en respuesta a <span class="function"><a href="function.mkdir.html" class="function">mkdir()</a></span>.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Para que el mensaje de error apropiado sea devuelto, este método
+    <em>no</em> debería ser definido si la envoltura no soporta
+    la creación de directorios.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-streamwrapper.mkdir-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">path</code></dt>
+     <dd>
+      <p class="para">
+       El directorio que debería ser creado.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">mode</code></dt>
+     <dd>
+      <p class="para">
+       El valor pasdo a <span class="function"><a href="function.mkdir.html" class="function">mkdir()</a></span>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">options</code></dt>
+     <dd>
+      <p class="para">
+       Una máscara a nivel de bits de valores, como <strong><code>STREAM_MKDIR_RECURSIVE</code></strong>.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-streamwrapper.mkdir-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-streamwrapper.mkdir-errors">
+  <h3 class="title">Errores/Excepciones</h3>
+  <p class="para">Emite un
+<strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong> si la llamada a este método falla
+(por ej., por no estar implementado).</p>
+ </div>
+
+ 
+
+
+ <div class="refsect1 notes" id="refsect1-streamwrapper.mkdir-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: <p class="para">La propiedad
+<var class="varname">streamWrapper::$context</var>
+es actualizada si se pasa un contexto válido en la función invocante.</p></p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-streamwrapper.mkdir-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.mkdir.html" class="function" rel="rdfs-seeAlso">mkdir()</a> - Crea un directorio</span></li>
+    <li><span class="methodname"><a href="streamwrapper.rmdir.html" class="methodname" rel="rdfs-seeAlso">streamwrapper::rmdir()</a> - Elimina un directorio</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

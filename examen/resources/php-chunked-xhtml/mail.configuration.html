@@ -1,0 +1,229 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Configuraci&oacute;n en tiempo de ejecuci&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mail.installation.html">« Instalaci&oacute;n</a></li>
+      <li style="float: right;"><a href="mail.resources.html">Tipos de recursos »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="mail.setup.html">Instalaci&oacute;n/Configuraci&oacute;n</a></li>
+    <li>Configuraci&oacute;n en tiempo de ejecuci&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mail.configuration" class="section">
+ <h2 class="title">Configuración en tiempo de ejecución</h2>
+ <p class="simpara">
+El comportamiento de estas funciones se ve afectado por la configuración de <var class="filename">php.ini</var>.
+</p>
+ <p class="para">
+  <table class="doctable table">
+   <caption><strong>Opciones de configuración de Mail</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Nombre</th>
+      <th>Por defecto</th>
+      <th>Cambiable</th>
+      <th>Historial de cambios</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><a href="mail.configuration.html#ini.mail.add-x-header" class="link">mail.add_x_header</a></td>
+      <td>&quot;0&quot;</td>
+      <td><strong><code><a href="info.constants.html#constant.ini-perdir">INI_PERDIR</a></code></strong></td>
+      <td>Disponible a partir de PHP 5.3.0.</td>
+     </tr>
+
+     <tr>
+      <td><a href="mail.configuration.html#ini.mail.log" class="link">mail.log</a></td>
+      <td>NULL</td>
+      <td><strong><code><a href="info.constants.html#constant.ini-perdir">INI_PERDIR</a></code></strong></td>
+      <td>Disponible a partir de PHP 5.3.0. (<strong><code><a href="info.constants.html#constant.ini-system">INI_SYSTEM</a></code></strong>|<strong><code><a href="info.constants.html#constant.ini-perdir">INI_PERDIR</a></code></strong>)</td>
+     </tr>
+
+     <tr>
+      <td><a href="mail.configuration.html#ini.mail.force_extra_parameters" class="link">mail.force_extra_parameters</a></td>
+      <td>NULL</td>
+      <td><strong><code><a href="info.constants.html#constant.ini-perdir">INI_PERDIR</a></code></strong></td>
+      <td>Disponible a partir de PHP 5.0.0. (<strong><code><a href="info.constants.html#constant.ini-system">INI_SYSTEM</a></code></strong>|<strong><code><a href="info.constants.html#constant.ini-perdir">INI_PERDIR</a></code></strong>)</td>
+     </tr>
+
+     <tr>
+      <td><a href="mail.configuration.html#ini.smtp" class="link">SMTP</a></td>
+      <td>&quot;localhost&quot;</td>
+      <td><strong><code><a href="info.constants.html#constant.ini-all">INI_ALL</a></code></strong></td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr>
+      <td><a href="mail.configuration.html#ini.smtp-port" class="link">smtp_port</a></td>
+      <td>&quot;25&quot;</td>
+      <td><strong><code><a href="info.constants.html#constant.ini-all">INI_ALL</a></code></strong></td>
+      <td>Disponible a partir de PHP 4.3.0.</td>
+     </tr>
+
+     <tr>
+      <td><a href="mail.configuration.html#ini.sendmail-from" class="link">sendmail_from</a></td>
+      <td>NULL</td>
+      <td><strong><code><a href="info.constants.html#constant.ini-all">INI_ALL</a></code></strong></td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr>
+      <td><a href="mail.configuration.html#ini.sendmail-path" class="link">sendmail_path</a></td>
+      <td>&quot;/usr/sbin/sendmail -t -i&quot;</td>
+      <td><strong><code><a href="info.constants.html#constant.ini-system">INI_SYSTEM</a></code></strong></td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+  Para más detalles y definiciones de los modos de
+INI_*, vea <a href="configuration.changes.modes.html" class="xref">D&oacute;nde se puede realizar un ajuste de configuraci&oacute;n</a>.
+ </p>
+ 
+ <p class="para">He aquí una breve explicación de
+las directivas de configuración.</p>
+ 
+ <p class="para">
+  <dl>
+   
+    <dt id="ini.mail.add-x-header">
+     <code class="parameter">mail.add_x_header</code>
+     <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span>
+    </dt>
+    <dd>
+     <p class="para">
+      Añade <code class="literal">X-PHP-Originating-Script</code> que incluirá el UID del
+      script seguido por el nombre del fichero.
+     </p>
+    </dd>
+   
+   
+   
+    <dt id="ini.mail.log">
+     <code class="parameter">mail.log</code>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </dt>
+    <dd>
+     <p class="para">
+      La ruta al archivo log que registrará todos los llamados a la función <span class="function"><a href="function.mail.html" class="function">mail()</a></span>.
+      Las entradas de registro incluyen la ruta completa al script, número de línea, dirección 
+      <code class="literal">To</code> y cabeceras.
+     </p>
+    </dd>
+   
+   
+   
+    <dt id="ini.mail.force_extra_parameters">
+     <code class="parameter">mail.force_extra_parameters</code>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </dt>
+    <dd>
+     <p class="para">
+      Fuerza la adición de los parámetros especificados a ser pasados como parámetros
+      extra al binario de sendmail. Estos parámetros siempre remplazarán
+      el valor del 5º parámetro a <span class="function"><a href="function.mail.html" class="function">mail()</a></span>, incluso en
+      el modo seguro.
+     </p>
+    </dd>
+   
+   
+   
+    <dt id="ini.smtp">
+     <code class="parameter">SMTP</code>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </dt>
+    <dd>
+     <p class="para">
+      Únicamente bajo Windows: nombre del servidor o dirección IP del servidor
+      SMTP que debe usar PHP para enviar los correos con la función
+      <span class="function"><a href="function.mail.html" class="function">mail()</a></span>.
+     </p>
+    </dd>
+   
+   
+   
+    <dt id="ini.smtp-port">
+     <code class="parameter">smtp_port</code>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+    </dt>
+    <dd>
+     <p class="para">
+      Únicamente bajo Windows: número del puerto al que conectar en el servidor
+      especificado en las opciones <code class="literal">SMTP</code> cuando se envíe un
+      correo con <span class="function"><a href="function.mail.html" class="function">mail()</a></span>; por defecto 25. Disponible desde
+      PHP 4.3.0.
+     </p>
+    </dd>
+   
+   
+   
+    <dt id="ini.sendmail-from">
+     <code class="parameter">sendmail_from</code>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </dt>
+    <dd>
+     <p class="para">
+      Cual dirección de correo <code class="literal">&quot;From:&quot;</code> debe ser
+      usada como remitente del correo enviado por PHP bajo Windows.
+      Esta directiva también establece el valor de la cabecera <code class="literal">&quot;Return-Path:&quot;</code>.
+     </p>
+    </dd>
+   
+   
+   
+    <dt id="ini.sendmail-path">
+     <code class="parameter">sendmail_path</code>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </dt>
+    <dd>
+     <p class="para">
+      Ruta donde puede encontrarse el programa <strong class="command">sendmail</strong>,
+      generalmente <var class="filename">/usr/sbin/sendmail</var> o
+      <var class="filename">/usr/lib/sendmail</var>.
+      <strong class="command">configure</strong> intenta localizarlo para establecerlo por
+      defecto, pero si falla, se usa esta variable.
+     </p>
+     <p class="para">
+      Los sistemas que no usen <strong class="command">sendmail</strong> deberían establecer
+      esta directiva al wrapper o sistema alternativo que ofrezca el sistema de
+      correo, si tiene.
+      Por ejemplo, usuarios de <a href="http://cr.yp.to/qmail.html" class="link external">&raquo;&nbsp;Qmail</a>
+      pueden fijar como valor <var class="filename">/var/qmail/bin/sendmail</var> o
+      <var class="filename">/var/qmail/bin/qmail-inject</var>.
+     </p>
+     <p class="para">
+      <strong class="command">qmail-inject</strong> no requiere ninguna opción para procesar
+      correo correctamente.
+     </p>
+     <p class="para">
+      Esta directiva funciona también bajo Windows. Si se le da un valor,
+      <var class="varname">smtp</var>, <var class="varname">smtp_port</var> y
+      <var class="varname">sendmail_from</var> son ignorados y se ejecuta el comando
+      especificado.
+     </p>
+    </dd>
+   
+  </dl>
+  
+ </p>
+</div></div></div></body></html>

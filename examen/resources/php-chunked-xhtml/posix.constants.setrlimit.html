@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Constantes para posix_setrlimit</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="posix.constants.mknod.html">« Constantes para posix_mknod</a></li>
+      <li style="float: right;"><a href="ref.posix.html">Funciones POSIX »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="posix.constants.html">Constantes predefinidas</a></li>
+    <li>Constantes para posix_setrlimit</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="posix.constants.setrlimit" class="section">
+  <h2 class="title">Constantes para <span class="function"><a href="function.posix-setrlimit.html" class="function">posix_setrlimit()</a></span></h2>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Estas constantes están disponibles desde PHP 7.0.0. Observe que
+    algunas de ellas podrían no estar disponibles en su sistema.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Sería conveniente leer las notas de abajo junto con la página principal de
+    <span class="function"><strong>setrlimit()</strong></span> de su sistema operativo específico, ya que hay
+    diferencia en cómo estos límites son interpretados, incluso entre sistema
+    operativos que aseguran implementar POSIX por completo.
+   </p>
+  </p></blockquote>
+  <dl>
+   
+    <dt id="constant.posix-rlimit-as">
+     <strong><code><a href="posix.constants.setrlimit.html#constant.posix-rlimit-as">POSIX_RLIMIT_AS</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El tamaño máximo del espacio de direcciones del proceso en bytes. Véase también
+      la directiva de configuración <a href="ini.core.html#ini.memory-limit" class="link">memory_limit</a>
+      de PHP.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.posix-rlimit-core">
+     <strong><code><a href="posix.constants.setrlimit.html#constant.posix-rlimit-core">POSIX_RLIMIT_CORE</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El tamaño máximo de un fichero de núcleo. Si el límite se establece a 0, no se generará
+      ningún fichero de núcleo.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.posix-rlimit-cpu">
+     <strong><code><a href="posix.constants.setrlimit.html#constant.posix-rlimit-cpu">POSIX_RLIMIT_CPU</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      La cantidad máxima de tiempo de CPU que puede usar el proceso, en segundos.
+      Cuando se alcanza el límite blando, se envia una señal <code class="literal">SIGXCPU</code>,
+      la cual puede ser capturada con <span class="function"><a href="function.pcntl-signal.html" class="function">pcntl_signal()</a></span>.
+      Dependiendo del sistema operativo, se podrían enviar señales <code class="literal">SIGXCPU</code>
+      adicionales cada segundo hasta alcanzar el límite duro, en cuyo
+      punto se envía una señal <code class="literal">SIGKILL</code> no capturable.
+     </span>
+     <span class="simpara">
+      Véase también <span class="function"><a href="function.set-time-limit.html" class="function">set_time_limit()</a></span>.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.posix-rlimit-data">
+     <strong><code><a href="posix.constants.setrlimit.html#constant.posix-rlimit-data">POSIX_RLIMIT_DATA</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El tamaño máximo del segmento de datos del proceso, en bytes. Es
+      extremadamente improbable que este límite tenga efecto en la ejecución de
+      PHP a menos que una extensión utilice las llamadas <span class="function"><strong>brk()</strong></span> o
+      <span class="function"><strong>sbrk()</strong></span>.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.posix-rlimit-fsize">
+     <strong><code><a href="posix.constants.setrlimit.html#constant.posix-rlimit-fsize">POSIX_RLIMIT_FSIZE</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El tamaño máximo de ficheros que puede crear un proceso, en bytes.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.posix-rlimit-locks">
+     <strong><code><a href="posix.constants.setrlimit.html#constant.posix-rlimit-locks">POSIX_RLIMIT_LOCKS</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El número máximo de bloqueos que puede crear un proceso. Solamente está
+      soportado en núcleos de Linux extremadamente antiguos.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.posix-rlimit-memlock">
+     <strong><code><a href="posix.constants.setrlimit.html#constant.posix-rlimit-memlock">POSIX_RLIMIT_MEMLOCK</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El número máximo de bytes que pueden estar bloqueados en memoria.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.posix-rlimit-msgqueue">
+     <strong><code><a href="posix.constants.setrlimit.html#constant.posix-rlimit-msgqueue">POSIX_RLIMIT_MSGQUEUE</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El número máximo de bytes que pueden ser asignados a colas de mensajes
+      de POSIX. PHP no viene con soporte para colas de mensajes de POSIX, por lo que este
+      límite no tendrá ningún efecto a menos que se utilice una extensión que
+      implemente dicho soporte.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.posix-rlimit-nice">
+     <strong><code><a href="posix.constants.setrlimit.html#constant.posix-rlimit-nice">POSIX_RLIMIT_NICE</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El valor máximo en el cual el proceso puede ser
+      «<a href="function.pcntl-setpriority.html" class="link">reniced</a>». El valor
+      que se empleará será <code class="literal">20 - límite</code>, ya que los valores
+      límite de recursos no pueden ser negativos.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.posix-rlimit-nofile">
+     <strong><code><a href="posix.constants.setrlimit.html#constant.posix-rlimit-nofile">POSIX_RLIMIT_NOFILE</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Un valor uno mayor que el número máximo  de descriptor de fichero que puede ser
+      abierto por este proceso.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.posix-rlimit-nproc">
+     <strong><code><a href="posix.constants.setrlimit.html#constant.posix-rlimit-nproc">POSIX_RLIMIT_NPROC</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El número máximo de procesos (y/o hilos, en algunos sistemas
+      operativos) que pueden ser creado por el ID de usuario resal del proceso.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.posix-rlimit-rss">
+     <strong><code><a href="posix.constants.setrlimit.html#constant.posix-rlimit-rss">POSIX_RLIMIT_RSS</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El tamaño máximo del conjunto de residentes del proceso, en páginas.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.posix-rlimit-rtprio">
+     <strong><code><a href="posix.constants.setrlimit.html#constant.posix-rlimit-rtprio">POSIX_RLIMIT_RTPRIO</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El prioridad de tiempo real qeu se puede establecer mediante
+      las llamadas <span class="function"><strong>sched_setscheduler()</strong></span> y
+      <span class="function"><strong>sched_setparam()</strong></span> al sistema.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.posix-rlimit-rttime">
+     <strong><code><a href="posix.constants.setrlimit.html#constant.posix-rlimit-rttime">POSIX_RLIMIT_RTTIME</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      La cantidad máxima de tiempo de  CPU, en microsegundos, que el proceso puede
+      consumir sin hacer una llamada bloqueanta al sistema si emplea una programación
+      de tiempo real.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.posix-rlimit-sigpending">
+     <strong><code><a href="posix.constants.setrlimit.html#constant.posix-rlimit-sigpending">POSIX_RLIMIT_SIGPENDING</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El número máximo de señales que se pueden poner en cola para el ID de usuario real
+      del proceso.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.posix-rlimit-stack">
+     <strong><code><a href="posix.constants.setrlimit.html#constant.posix-rlimit-stack">POSIX_RLIMIT_STACK</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      El tamaño máximo de la pila de procesos, en bytes.
+     </span>
+    </dd>
+   
+   
+    <dt id="constant.posix-rlimit-infinity">
+     <strong><code><a href="posix.constants.setrlimit.html#constant.posix-rlimit-infinity">POSIX_RLIMIT_INFINITY</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </dt>
+    <dd>
+     <span class="simpara">
+      Empleada para indicar un valor infinito para un límite de recurso.
+     </span>
+    </dd>
+   
+  </dl>
+ </div></div></div></body></html>

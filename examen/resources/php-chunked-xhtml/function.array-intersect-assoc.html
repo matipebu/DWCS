@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Calcula la intersecci&oacute;n de arrays con un chequeo adicional de &iacute;ndices</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.array-intersect.html">« array_intersect</a></li>
+      <li style="float: right;"><a href="function.array-intersect-key.html">array_intersect_key »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.array.html">Funciones de Arrays</a></li>
+    <li>Calcula la intersecci&oacute;n de arrays con un chequeo adicional de &iacute;ndices</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.array-intersect-assoc" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">array_intersect_assoc</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">array_intersect_assoc</span> &mdash; <span class="dc-title">Calcula la intersección de arrays con un chequeo adicional de índices</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.array-intersect-assoc-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>array_intersect_assoc</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$array1</code></span>, <span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$array2</code></span>, <span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$...</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+
+  <p class="simpara">
+   <span class="function"><strong>array_intersect_assoc()</strong></span> devuelve un array
+   que contiene todos los valores de <code class="parameter">array1</code>
+   que están presentes en todos los arguementos. Nótese que las claves también se usan
+   en la comparación, a diferencia de <span class="function"><a href="function.array-intersect.html" class="function">array_intersect()</a></span>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.array-intersect-assoc-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">array1</code></dt>
+     <dd>
+      <p class="para">
+       Array con los valores maestros para verificar.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">array2</code></dt>
+     <dd>
+      <p class="para">
+       Un array con el que comparar los valores.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">...</code></dt>
+     <dd>
+      <p class="para">
+       Una lista variable de arrays para comparar.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.array-intersect-assoc-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve un array asociativo que contiene todos los valores de
+   <code class="parameter">array1</code> que están presentes en todos los argumentos.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.array-intersect-assoc-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4925">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>array_intersect_assoc()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$array1 </span><span style="color: #007700">= array(</span><span style="color: #DD0000">"a" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"green"</span><span style="color: #007700">, </span><span style="color: #DD0000">"b" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"brown"</span><span style="color: #007700">, </span><span style="color: #DD0000">"c" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"blue"</span><span style="color: #007700">, </span><span style="color: #DD0000">"red"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$array2 </span><span style="color: #007700">= array(</span><span style="color: #DD0000">"a" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"green"</span><span style="color: #007700">, </span><span style="color: #DD0000">"b" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"yellow"</span><span style="color: #007700">, </span><span style="color: #DD0000">"blue"</span><span style="color: #007700">, </span><span style="color: #DD0000">"red"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$result_array </span><span style="color: #007700">= </span><span style="color: #0000BB">array_intersect_assoc</span><span style="color: #007700">(</span><span style="color: #0000BB">$array1</span><span style="color: #007700">, </span><span style="color: #0000BB">$array2</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$result_array</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Array
+(
+    [a] =&gt; green
+)</pre>
+</div>
+    </div>
+   </div>
+  </p>
+  <p class="simpara">
+   En el ejemplo se ve que sólo el par <code class="literal">&quot;a&quot; =&gt;
+   &quot;green&quot;</code> está presente en ambos arrays, por lo que es devuelto.
+   El valor <code class="literal">&quot;red&quot;</code> no es devuelto porque en
+   <var class="varname">$array1</var> su clave es <code class="literal">0</code> mientras que
+   la clave de &quot;red&quot; en <var class="varname">$array2</var> es
+   <code class="literal">1</code>; la clave <code class="literal">&quot;b&quot;</code> no es devuelta
+   debido a que sus valores son diferentes en cada array. 
+  </p>
+  <p class="simpara">
+   Los dos valores del par <code class="literal">clave =&gt; valor</code> son
+   considerados iguales sólo si
+   <code class="literal">(string) $elem1 === (string) $elem2 </code>. En otras palabras,
+   se ejecuta una verificación estricta de tipos, por lo que la representación del
+   string debe ser la misma.
+   
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.array-intersect-assoc-seealso">
+  <h3 class="title">Ver también</h3>
+  <ul class="simplelist">
+   <li><span class="function"><a href="function.array-intersect.html" class="function" rel="rdfs-seeAlso">array_intersect()</a> - Calcula la intersecci&oacute;n de arrays</span></li>
+   <li><span class="function"><a href="function.array-uintersect-assoc.html" class="function" rel="rdfs-seeAlso">array_uintersect_assoc()</a> - Calcula la intersecci&oacute;n de arrays con una comprobaci&oacute;n de &iacute;ndices adicional, compara la informaci&oacute;n mediante una funci&oacute;n de retrollamada</span></li>
+   <li><span class="function"><a href="function.array-intersect-uassoc.html" class="function" rel="rdfs-seeAlso">array_intersect_uassoc()</a> - Calcula la intersecci&oacute;n de arrays con una comprobaci&oacute;n adicional de &iacute;ndices, los cuales se comparan con una funci&oacute;n de retrollamada</span></li>
+   <li><span class="function"><a href="function.array-uintersect-uassoc.html" class="function" rel="rdfs-seeAlso">array_uintersect_uassoc()</a> - Calcula la intersecci&oacute;n de arrays con una comprobaci&oacute;n de &iacute;ndices adicional, compara la informaci&oacute;n y los &iacute;ndices mediante funciones de retrollamada por separado</span></li>
+   <li><span class="function"><a href="function.array-diff.html" class="function" rel="rdfs-seeAlso">array_diff()</a> - Calcula la diferencia entre arrays</span></li>
+   <li><span class="function"><a href="function.array-diff-assoc.html" class="function" rel="rdfs-seeAlso">array_diff_assoc()</a> - Calcula la diferencia entre arrays con un chequeo adicional de &iacute;ndices</span></li>
+  </ul>
+ </div>
+
+</div></div></div></body></html>

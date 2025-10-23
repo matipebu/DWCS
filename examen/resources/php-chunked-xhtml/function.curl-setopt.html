@@ -1,0 +1,2176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Configura una opci&oacute;n para una transferencia cURL</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.curl-reset.html">« curl_reset</a></li>
+      <li style="float: right;"><a href="function.curl-setopt-array.html">curl_setopt_array »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.curl.html">Funciones de cURL</a></li>
+    <li>Configura una opci&oacute;n para una transferencia cURL</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.curl-setopt" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">curl_setopt</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.2, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">curl_setopt</span> &mdash; <span class="dc-title">Configura una opción para una transferencia cURL</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.curl-setopt-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>curl_setopt</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$ch</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$option</code></span>, <span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$value</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Establece una opción en la sesión del recurso cURL.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.curl-setopt-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    <dt><code class="parameter">ch</code>
+</dt><dd><p class="para">El recurso cURL devuelto por
+<span class="function"><a href="function.curl-init.html" class="function">curl_init()</a></span>.</p></dd>
+    
+     <dt><code class="parameter">option</code></dt>
+     <dd>
+      <p class="para">
+       La opción <code class="literal">CURLOPT_XXX</code> a configurar.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">value</code></dt>
+     <dd>
+      <p class="para">
+       Valor a configurar en la <code class="parameter">option</code>.
+      </p>
+      <p class="para">
+       <code class="parameter">value</code> debe ser un <code class="parameter">bool</code> para los
+       siguientes valores del parámetro <code class="parameter">option</code>:
+       <table class="doctable informaltable">
+        
+         <thead>
+          <tr>
+           <th>Opción</th>
+           <th>Establecer <code class="parameter">value</code> a</th>
+           <th>Notas</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-autoreferer">CURLOPT_AUTOREFERER</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para automáticamente establecer el valor del campo <code class="literal">Referer:</code>
+            en peticiones que siguen una redireción <code class="literal">Location:</code>.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-binarytransfer">CURLOPT_BINARYTRANSFER</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para devolver el resultado sin tratar
+            <strong><code><a href="curl.constants.html#constant.curlopt-returntransfer">CURLOPT_RETURNTRANSFER</a></code></strong> está activado.
+           </td>
+           <td style="vertical-align: top;">
+            Desde PHP 5.1.3, esta opción no tiene efecto: el resultado sin tratar será
+            siempre retornado cuando
+            <strong><code><a href="curl.constants.html#constant.curlopt-returntransfer">CURLOPT_RETURNTRANSFER</a></code></strong> sea usado.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-cookiesession">CURLOPT_COOKIESESSION</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para usarse como una nueva cookie de &quot;sesión&quot;. Forzará libcurl
+            a ignorar todas las cookies, se trata de cargar estas &quot;cookies de sesión&quot;
+            de la sesión anterior. Por defecto, libcurl siempre guarda y carga todas
+            las cookies, independientemente si hay cookies de sesión o no. Las cookies
+            de sesión son cookies sin fecha de caducidad y estan pensadas para
+            mantenerse activas y solo existir para esta &quot;sesión&quot;.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-certinfo">CURLOPT_CERTINFO</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para mostrar información sobre certificación SSL al <code class="literal">STDERR</code>
+            en transferencias seguras.
+           </td>
+           <td style="vertical-align: top;">
+            Añadido en cURL 7.19.1
+            Disponible desde PHP 5.3.2.
+            Requiere <strong><code><a href="curl.constants.html#constant.curlopt-verbose">CURLOPT_VERBOSE</a></code></strong> activado para que tenga efecto.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-connect-only">CURLOPT_CONNECT_ONLY</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> le dice a la biblioteca que realice todas las autenticaciones de proxy requeridas
+            y la configuración de la conexión, pero no la transferencia de datos. Esta opción se
+            implementa para HTTP, SMTP y POP3.
+           </td>
+           <td style="vertical-align: top;">
+            Aladida en 7.15.2.
+            Disponbible desde PHP 5.5.0.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-crlf">CURLOPT_CRLF</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para convertir nuevas líneas Unix a nuevas líneas CRLF
+            en transferencias.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-dns-use-global-cache">CURLOPT_DNS_USE_GLOBAL_CACHE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para usar caché DNS global. Esta opción no es
+            thread-safe y está activada por defecto.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-failonerror">CURLOPT_FAILONERROR</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para fallar con verbosidad si el código HTTP devuelto
+            es mayor o igual que 400. El comportamiento por defecto es devolver
+            la página normalmente, ignornado el código.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-ssl-falsestart">CURLOPT_SSL_FALSESTART</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para habilitar el inicio falso de TLS.
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.42.0. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-filetime">CURLOPT_FILETIME</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para intentar obtener la fecha de modificación del
+            documento. Este valor puede obtenerse usando la opción
+            <code class="parameter">CURLINFO_FILETIME</code> con
+            <span class="function"><a href="function.curl-getinfo.html" class="function">curl_getinfo()</a></span>.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-followlocation">CURLOPT_FOLLOWLOCATION</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para seguir cualquier encabezado
+            <code class="literal">&quot;Location: &quot;</code> que el servidor envíe como
+            parte del encabezado HTTP (observe la recursividad, PHP seguirá
+            tantos header <code class="literal">&quot;Location: &quot;</code> como se envíen,
+            a no ser que la opción <strong><code><a href="curl.constants.html#constant.curlopt-maxredirs">CURLOPT_MAXREDIRS</a></code></strong> esté establecida).
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-forbid-reuse">CURLOPT_FORBID_REUSE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para forzar a cerrar explicitamente la conexión cuando
+            se finalice el proceso y no guardarla para su reuso.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-fresh-connect">CURLOPT_FRESH_CONNECT</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para forzar el uso de una nueva conexión en lugar
+            de usar una en caché.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-ftp-use-eprt">CURLOPT_FTP_USE_EPRT</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para usar EPRT (y LPRT) cuando se hacen descargas FTP
+            activas. Use <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> para desactivar EPRT y LPRT y usar
+            PORT solamente.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-ftp-use-epsv">CURLOPT_FTP_USE_EPSV</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para probar primero el comando EPSV para transferencias
+            FTP antes de volver a PASV. Establezca la opción a <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>
+            para desactivar EPSV.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-ftp-create-missing-dirs">CURLOPT_FTP_CREATE_MISSING_DIRS</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para crear directorios faltantes cuando una operación 
+            se encuentra con una ruta que actualmente no existe.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-ftpappend">CURLOPT_FTPAPPEND</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para añadir al fichero remoto en lugar de
+            sobreescribirlo.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-tcp-nodelay">CURLOPT_TCP_NODELAY</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para deshabilitar el algoritmo de TCP de Nagle, el cual intenta minimizar
+            el número de paquetes pequeños en la red.
+           </td>
+           <td style="vertical-align: top;">
+            Disponible desde PHP 5.2.1 para versiones compiladas con libcurl 7.11.2 o
+            superior.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-ftpascii">CURLOPT_FTPASCII</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Un alias de
+            <strong><code><a href="curl.constants.html#constant.curlopt-transfertext">CURLOPT_TRANSFERTEXT</a></code></strong>. Para usar en su lugar.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-ftplistonly">CURLOPT_FTPLISTONLY</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para solo listar los nombres de un directorio FTP
+            directorio.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-header">CURLOPT_HEADER</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para incluir el header en el output.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="curl.constants.html#constant.curlinfo-header-out">CURLINFO_HEADER_OUT</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para seguir la cadena de la petición del recurso.
+           </td>
+           <td style="vertical-align: top;">
+            Disponible desde PHP 5.1.3. El prefijo <strong><code>CURLINFO_</code></strong>
+            es intencionado.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-httpget">CURLOPT_HTTPGET</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para resetear la petición HTTP a GET.
+            Puesto que GET es el método por defecto, solo es necesario si
+            el método fue cambiado.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-httpproxytunnel">CURLOPT_HTTPPROXYTUNNEL</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para usar un tunel a través de un proxy HTTP.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-mute">CURLOPT_MUTE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para completar silenciosamente en lo que se refiere
+            a las funciones cURL.
+           </td>
+           <td style="vertical-align: top;">
+            Eliminado en cURL 7.15.5 (Se puede usar CURLOPT_RETURNTRANSFER en su lugar)
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-netrc">CURLOPT_NETRC</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para escanear el fichero <var class="filename">~/.netrc</var>
+            y buscar un usuario y contraseña para establecer una conexión
+            con el sitio remoto.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-nobody">CURLOPT_NOBODY</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para excluir el body del output.
+            El método de petición es establecido a HEAD. Si se cambia a <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>
+            no cambia el método a GET.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-noprogress">CURLOPT_NOPROGRESS</a></code></strong></td>
+           <td style="vertical-align: top;"><p class="para">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para desactivar medidor de progreso para transferencias cURL.
+            <blockquote class="note"><p><strong class="note">Nota</strong>: 
+             <p class="para">
+              PHP automáticamente establece esta opción a <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>, solo debería
+              cambiarse para razones de testing.
+             </p>
+            </p></blockquote>
+            </p></td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-nosignal">CURLOPT_NOSIGNAL</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para ignorar cualquier función cURL que cause una
+            señal a ser enviada al proceso PHP. Esta opción está activada por
+            defecto en multi-hilo SAPI, entonces las opciones de timeout pueden ser usadas.
+           </td>
+           <td style="vertical-align: top;">
+            Añadido en cURL 7.10.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-path-as-is">CURLOPT_PATH_AS_IS</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para no manejar secuencias de puntos.
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.42.0. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-pipewait">CURLOPT_PIPEWAIT</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para esperar por &#039;pipelining&#039;/multiplexación.
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.43.0. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-post">CURLOPT_POST</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para hacer un HTTP POST normal. Este POST del tipo
+            <code class="literal">application/x-www-form-urlencoded</code>,
+            el más común en formularios HTML.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-put">CURLOPT_PUT</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para hacer un HTTP PUT de un fichero. El fichero a subir debe
+            establecerse en <strong><code><a href="curl.constants.html#constant.curlopt-infile">CURLOPT_INFILE</a></code></strong> y
+            <strong><code><a href="curl.constants.html#constant.curlopt-infilesize">CURLOPT_INFILESIZE</a></code></strong>.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-returntransfer">CURLOPT_RETURNTRANSFER</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para devolver el resultado de la transferencia como string
+            del valor de <span class="function"><a href="function.curl-exec.html" class="function">curl_exec()</a></span> en lugar de mostrarlo
+            directamente.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-safe-upload">CURLOPT_SAFE_UPLOAD</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para deshabilitar el soporta para el prefijo <code class="literal">@</code> para
+            cargar ficheros en <strong><code><a href="curl.constants.html#constant.curlopt-postfields">CURLOPT_POSTFIELDS</a></code></strong>, lo que
+            significa que los valores que empiecen por <code class="literal">@</code> pueden ser pasados
+            de forma segura como campos. Se podría usar <span class="classname"><a href="class.curlfile.html" class="classname">CURLFile</a></span>
+            en su lugar para las cargas.
+           </td>
+           <td style="vertical-align: top;">
+            Añadido en PHP 5.5.0 con <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> como valor predeterminado. PHP 5.6.0
+            cabia este valor predeterminado a <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>. PHP 7 elimina esta opción;
+            la interfaz de CURLFile debe emplearse para subir ficheros.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-sasl-ir">CURLOPT_SASL_IR</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para habilitar el envío de la respuesta inicial en el primer paquete.
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.31.10. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-ssl-enable-alpn">CURLOPT_SSL_ENABLE_ALPN</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> para inhabilitar ALPN en la negociación de SSL (si libcurl del
+            «backend» de SSL está construido para admitirla), lo cual se puede usar para
+            negiaciar http2.
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.36.0. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-ssl-enable-npn">CURLOPT_SSL_ENABLE_NPN</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> para inhabilitar NPN en la negociación de SSL (si libcurl del
+            «backend» de SSL está construido para admitirla), lo cual se puede usar para
+            negiaciar http2.
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.36.0. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-ssl-verifypeer">CURLOPT_SSL_VERIFYPEER</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> para que cURL no verifique el peer del certificado.
+            Para usar diferentes certificados para la verificación se
+            pueden especificar con la opción <strong><code><a href="curl.constants.html#constant.curlopt-cainfo">CURLOPT_CAINFO</a></code></strong>
+            o se puede especificar el directorio donde se encuentra
+            el certificado con la opción <strong><code><a href="curl.constants.html#constant.curlopt-capath">CURLOPT_CAPATH</a></code></strong>.
+           </td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> por omisión desde cURL 7.10. Paquete instalado por defecto en la versión 
+            CURL 7.10.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-ssl-verifystatus">CURLOPT_SSL_VERIFYSTATUS</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para verificar el estado del certificado.
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.41.0. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-tcp-fastopen">CURLOPT_TCP_FASTOPEN</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> Para habilitar la Apertura Rápida de TCP (TCP Fast Open).
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.49.0. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-tftp-no-options">CURLOPT_TFTP_NO_OPTIONS</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para no enviar peticiones de opciones de TFTP.
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.48.0. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-transfertext">CURLOPT_TRANSFERTEXT</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para usar modo ASCII para transferencias FTP.
+            En LDAP, obtiene los datos en texto plano en lugar de HTML. En
+            sistemas Windows, no estabecerá <code class="literal">STDOUT</code> en
+            modo binario.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-unrestricted-auth">CURLOPT_UNRESTRICTED_AUTH</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para prevenir el envio de usuario y contraseña cuando
+            se siguen locations (usando
+            <strong><code><a href="curl.constants.html#constant.curlopt-followlocation">CURLOPT_FOLLOWLOCATION</a></code></strong>), incluso cuando
+            el hostname es diferente.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-upload">CURLOPT_UPLOAD</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> preparar cURL para subir un fichero.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-verbose">CURLOPT_VERBOSE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para mostrar información verbose. Escribe la
+            salida en <code class="literal">STDERR</code>, o el fichero especificado usando
+            <strong><code><a href="curl.constants.html#constant.curlopt-stderr">CURLOPT_STDERR</a></code></strong>.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+      <p class="para">
+       <code class="parameter">value</code> debe ser un <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> para los
+       siguientes valores del parámetro <code class="parameter">option</code>:
+       <table class="doctable informaltable">
+        
+         <thead>
+          <tr>
+           <th>Opción</th>
+           <th>Establecer <code class="parameter">value</code> a</th>
+           <th>Notas</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-buffersize">CURLOPT_BUFFERSIZE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Tamaño del búfer a usar por cada lectura. De todas formas, no hay
+            ninguna garantía de que la petición usará todo el búfer.
+           </td>
+           <td style="vertical-align: top;">
+            Añadido en cURL 7.10.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code>CURLOPT_CLOSEPOLICY</code></strong></td>
+           <td style="vertical-align: top;">
+            Uno de los valores de <strong><code>CURLCLOSEPOLICY_*</code></strong>.
+            <blockquote class="note"><p><strong class="note">Nota</strong>: 
+             <p class="para">
+              Esta opción está obsoleta, ya que nunca se ha implementado en cURL,
+              por lo que nunca ha tenido ningún efecto.
+             </p>
+            </p></blockquote>
+           </td>
+           <td style="vertical-align: top;">
+            Eliminada en PHP 5.6.0.
+           </td>
+          </tr>
+
+          <tr>
+           <td><strong><code><a href="curl.constants.html#constant.curlopt-connecttimeout">CURLOPT_CONNECTTIMEOUT</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Número de segundos a esperar cuando se está intentado conectar. Use
+            0 para esperar indefinidamente.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-connecttimeout-ms">CURLOPT_CONNECTTIMEOUT_MS</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Número de milisegundos a esperar cuando se está intentado conectar. Use
+            0 para esperar indefinidamente.
+            
+            Si se ha compilado libcurl para utilizar el sistema estándar de resolución de nombres, esta
+            porción de conexión utilizará una resolución completa de un segundo en
+            tiempos de expiración, con un mínimo permitido de un segundo.
+           </td>
+           <td style="vertical-align: top;">
+            Añadido en cURL 7.16.2. Disponible desde PHP 5.2.3.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-dns-cache-timeout">CURLOPT_DNS_CACHE_TIMEOUT</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Número de segundos a mantener las entradas DNS en memoria. Esta
+            opción está establecida a 120 (2 minutos) por defecto.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-expect-100-timeout-ms">CURLOPT_EXPECT_100_TIMEOUT_MS</a></code></strong></td>
+           <td style="vertical-align: top;">
+            El tiempo de espera para respuestas «Expect: 100-continue», en milisegundos.
+            El valor predeterminado es 1000 milisegundos.
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.36.0. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-ftpsslauth">CURLOPT_FTPSSLAUTH</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Método de autenticación FTP (cuando está activado):
+            <code class="literal">CURLFTPAUTH_SSL</code> (prueba SSL primero),
+            <code class="literal">CURLFTPAUTH_TLS</code> (prueba TLS primero), o
+            <code class="literal">CURLFTPAUTH_DEFAULT</code> (hacer que cURL decida).
+           </td>
+           <td style="vertical-align: top;">
+            Añadido en cURL 7.12.2.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-headeropt">CURLOPT_HEADEROPT</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Cómo tratar con cabeceras. una de las siguientes constantes:
+            <span class="simpara">
+             <strong><code><a href="curl.constants.html#constant.curlheader-unified">CURLHEADER_UNIFIED</a></code></strong>: las cabeceras especificadas en
+             <strong><code><a href="curl.constants.html#constant.curlopt-httpheader">CURLOPT_HTTPHEADER</a></code></strong> se usarán en peticiones
+             tanto a servidores como a proxies. Con esta opción habilitada, 
+             <strong><code><a href="curl.constants.html#constant.curlopt-proxyheader">CURLOPT_PROXYHEADER</a></code></strong> no tendrá efecto.
+            </span>
+            <span class="simpara">
+             <strong><code><a href="curl.constants.html#constant.curlheader-separate">CURLHEADER_SEPARATE</a></code></strong>: hace que las
+             cabeceras <strong><code><a href="curl.constants.html#constant.curlopt-httpheader">CURLOPT_HTTPHEADER</a></code></strong> solamente sean enviadas a
+             un servidor y no a un proxy. Las cabeceras de proxies deben establecerse con
+             <strong><code><a href="curl.constants.html#constant.curlopt-proxyheader">CURLOPT_PROXYHEADER</a></code></strong> para poder usarlas. Observe que si
+             se envía una petición no CONNECT a un proxy, libcurl enviará tanto
+             las cabeceras de servidor como del proxy. Al realizar CONNECT, libcurl
+             enviará cabeceras <strong><code><a href="curl.constants.html#constant.curlopt-proxyheader">CURLOPT_PROXYHEADER</a></code></strong> solamente al
+             proxy y luego cabeceeras <strong><code><a href="curl.constants.html#constant.curlopt-httpheader">CURLOPT_HTTPHEADER</a></code></strong>
+             solamente al servidor.
+            </span>
+            <span class="simpara">
+             Lo predeterminado es <strong><code><a href="curl.constants.html#constant.curlheader-separate">CURLHEADER_SEPARATE</a></code></strong> a partir de cURL
+             7.42.1, y <strong><code><a href="curl.constants.html#constant.curlheader-unified">CURLHEADER_UNIFIED</a></code></strong> anteriormente.
+            </span>
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.37.0. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-http-version">CURLOPT_HTTP_VERSION</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <code class="parameter">CURL_HTTP_VERSION_NONE</code> (por defecto, hacer que CURL
+            decida que versión a usar),
+            <code class="parameter">CURL_HTTP_VERSION_1_0</code> (fuerza HTTP/1.0),
+            or <code class="parameter">CURL_HTTP_VERSION_1_1</code> (fuerza HTTP/1.1).
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-httpauth">CURLOPT_HTTPAUTH</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <p class="para">
+             Los métodos de autenticación HTTP. Las opciones son:
+             <code class="parameter">CURLAUTH_BASIC</code>,
+             <code class="parameter">CURLAUTH_DIGEST</code>,
+             <code class="parameter">CURLAUTH_GSSNEGOTIATE</code>,
+             <code class="parameter">CURLAUTH_NTLM</code>,
+             <code class="parameter">CURLAUTH_ANY</code>, y
+             <code class="parameter">CURLAUTH_ANYSAFE</code>.
+            </p>
+            <p class="para">
+             El separador <code class="literal">|</code> o operador puede ser usado para combinar
+             más de un método. Si se utiliza, cURL comprobará en el servidor remoto que
+             métodos soporta y utilizará el más adecuado.
+            </p>
+            <p class="para">
+             <code class="parameter">CURLAUTH_ANY</code> es un alias para
+             <code class="literal">CURLAUTH_BASIC | CURLAUTH_DIGEST | CURLAUTH_GSSNEGOTIATE | CURLAUTH_NTLM</code>.
+            </p>
+            <p class="para">
+             <code class="parameter">CURLAUTH_ANYSAFE</code> es un alias para
+             <code class="literal">CURLAUTH_DIGEST | CURLAUTH_GSSNEGOTIATE | CURLAUTH_NTLM</code>.
+            </p>
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-infilesize">CURLOPT_INFILESIZE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            El tamaño esperado en bytes, del fichero cuando se está subiendo un
+            fichero al sitio remoto. Téngase en cuenta que el uso de esta opción no detendrá libcurl
+            a la hora de enviar más datos, exactamente lo que se envía depende de
+            <strong><code><a href="curl.constants.html#constant.curlopt-readfunction">CURLOPT_READFUNCTION</a></code></strong>.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-low-speed-limit">CURLOPT_LOW_SPEED_LIMIT</a></code></strong></td>
+           <td style="vertical-align: top;">
+            La velocidad de transferencia, en bytes por segundo, que la transferencia debería
+            estar por debajo durante <strong><code><a href="curl.constants.html#constant.curlopt-low-speed-time">CURLOPT_LOW_SPEED_TIME</a></code></strong>
+            segundos para PHP a considerar que la transferencia es demasiado lenta y debe abortarse.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-low-speed-time">CURLOPT_LOW_SPEED_TIME</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Número en segundos en que la velocidad de transferencia debería estar debajo de
+            <strong><code><a href="curl.constants.html#constant.curlopt-low-speed-limit">CURLOPT_LOW_SPEED_LIMIT</a></code></strong> antes que PHP considere
+            que la transferencia es demasiado lenta y debe abortarse.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-maxconnects">CURLOPT_MAXCONNECTS</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Número máximo de conexiones persistentes que están permitidas.
+            Cuando se llega al límite, se utiliza
+            <strong><code>CURLOPT_CLOSEPOLICY</code></strong> para determinar que
+            conexión debe cerrarse.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-maxredirs">CURLOPT_MAXREDIRS</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Número máximo de redirecciones HTTP a seguir. Use esta opción
+            con <strong><code><a href="curl.constants.html#constant.curlopt-followlocation">CURLOPT_FOLLOWLOCATION</a></code></strong>.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-port">CURLOPT_PORT</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Puerto alternativo a conectarse.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-postredir">CURLOPT_POSTREDIR</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Una máscara de bit de 1 (301 Movido permanentemente), 2 (302 Encontrado)
+            y 4 (303 Ver otro) si el método POST de HTTP debería ser mantenido
+            cuando <strong><code><a href="curl.constants.html#constant.curlopt-followlocation">CURLOPT_FOLLOWLOCATION</a></code></strong> está establecido y
+            ocurre un tipo específico o una redirección.
+           </td>
+           <td style="vertical-align: top;">
+            Añadido en cURL 7.19.1. Disponible des PHP 5.3.2.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-protocols">CURLOPT_PROTOCOLS</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <p class="para">
+             Máscara de los valores <strong><code>CURLPROTO_*</code></strong>. Si se utiliza, esta
+             máscara limitará que protocolos utilizará libcurl en transferencias. Permite
+             que libcurl utilice cualquiera de los protocolos pero limita que grupo de
+             protocolos a usar en específicas transferencias. Por defecto libcurl acepta
+             todos los protocolos. Vea también: <strong><code><a href="curl.constants.html#constant.curlopt-redir-protocols">CURLOPT_REDIR_PROTOCOLS</a></code></strong>.
+            </p>
+            <p class="para">
+             Las opciones para válidos procolos son:
+             <code class="parameter">CURLPROTO_HTTP</code>,
+             <code class="parameter">CURLPROTO_HTTPS</code>,
+             <code class="parameter">CURLPROTO_FTP</code>,
+             <code class="parameter">CURLPROTO_FTPS</code>,
+             <code class="parameter">CURLPROTO_SCP</code>,
+             <code class="parameter">CURLPROTO_SFTP</code>,
+             <code class="parameter">CURLPROTO_TELNET</code>,
+             <code class="parameter">CURLPROTO_LDAP</code>,
+             <code class="parameter">CURLPROTO_LDAPS</code>,
+             <code class="parameter">CURLPROTO_DICT</code>,
+             <code class="parameter">CURLPROTO_FILE</code>,
+             <code class="parameter">CURLPROTO_TFTP</code>,
+             <code class="parameter">CURLPROTO_ALL</code>
+            </p>
+           </td>
+           <td style="vertical-align: top;">
+            Añadido en cURL 7.19.4.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-proxyauth">CURLOPT_PROXYAUTH</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Método de autenticación HTTP para usar conexiones vía proxy.
+            Usa el mismo tipo de máscaras descritas en
+            <strong><code><a href="curl.constants.html#constant.curlopt-httpauth">CURLOPT_HTTPAUTH</a></code></strong>. Para autenticación proxy,
+            solamente <code class="parameter">CURLAUTH_BASIC</code> y
+            <code class="parameter">CURLAUTH_NTLM</code> están actualmente soportadas.
+           </td>
+           <td style="vertical-align: top;">
+            Añadido en cURL 7.10.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-proxyport">CURLOPT_PROXYPORT</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Número del puerto para usar en la conexión proxy. Este puerto también                    
+            puede configurase en <strong><code><a href="curl.constants.html#constant.curlopt-proxy">CURLOPT_PROXY</a></code></strong>.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-proxytype">CURLOPT_PROXYTYPE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Puede ser <strong><code><a href="curl.constants.html#constant.curlproxy-http">CURLPROXY_HTTP</a></code></strong> (por defecto),
+            <strong><code><a href="curl.constants.html#constant.curlproxy-socks4">CURLPROXY_SOCKS4</a></code></strong>,
+            <strong><code><a href="curl.constants.html#constant.curlproxy-socks5">CURLPROXY_SOCKS5</a></code></strong>,
+            <strong><code><a href="curl.constants.html#constant.curlproxy-socks4a">CURLPROXY_SOCKS4A</a></code></strong> o
+            <strong><code><a href="curl.constants.html#constant.curlproxy-socks5-hostname">CURLPROXY_SOCKS5_HOSTNAME</a></code></strong>.
+           </td>
+           <td style="vertical-align: top;">
+            Añadido en cURL 7.10.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-redir-protocols">CURLOPT_REDIR_PROTOCOLS</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Máscara de valores <strong><code>CURLPROTO_*</code></strong>. Si se usa, esta máscara
+            limitará que protocolos usará libcurl en una transferencia que sigue una
+            redireción cuando <strong><code><a href="curl.constants.html#constant.curlopt-followlocation">CURLOPT_FOLLOWLOCATION</a></code></strong> está activado.
+            Esto permite limitar a específicas transferencias que grupo de protocolos
+            utilizar en redireciones. Por defecto libcurl aceptará todos los protocolos
+            excepto FILE y SCP. Esto es nuevo si se compara con versiones anteriores a
+            7.19.4 donde se seguían incodicionalmente todos los protocolos soportados.
+            Vea también <strong><code><a href="curl.constants.html#constant.curlopt-protocols">CURLOPT_PROTOCOLS</a></code></strong> para los valores de las
+            constantes.
+           </td>
+           <td style="vertical-align: top;">
+            Añadido en cURL 7.19.4.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-resume-from">CURLOPT_RESUME_FROM</a></code></strong></td>
+           <td style="vertical-align: top;">
+            El punto, en bytes desde donde continuar una transferencia.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-ssl-options">CURLOPT_SSL_OPTIONS</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Establecer las opciones de funcionamento de SSL, las cuales son una máscara de bits de las siguientes constantes:
+            <span class="simpara">
+             <strong><code><a href="curl.constants.html#constant.curlsslopt-allow-beast">CURLSSLOPT_ALLOW_BEAST</a></code></strong>: no intentar usar
+             ningún método alternativo para defectos de seguridad en los protocolos SSL3 y TLS1.0.
+            </span>
+            <span class="simpara">
+             <strong><code><a href="curl.constants.html#constant.curlsslopt-no-revoke">CURLSSLOPT_NO_REVOKE</a></code></strong>: inhabilitar la comprobación
+             de revocación de certificados para aquellos «backends» de SSL donde tal funcionamiento
+             está presente.
+            </span>
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.25.0. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-ssl-verifyhost">CURLOPT_SSL_VERIFYHOST</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <code class="literal">1</code> para comprobar que existe un nombre común en el peer del
+            certificado SSL. <code class="literal">2</code> para comprobar que existe un nombre común
+            y también para verificar que el hostname coinicide con el
+            proporcionado. <code class="literal">0</code> para no comprobar nombres. En entornos de producción el valor de esta opción 
+            debe mantenerse a <code class="literal">2</code> (valor predeterminado).
+           </td>
+           <td style="vertical-align: top;">
+            Soporte para el valor <code class="literal">1</code> eliminado en cURL 7.28.1
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-sslversion">CURLOPT_SSLVERSION</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Una de las constantes <strong><code><a href="curl.constants.html#constant.curl-sslversion-default">CURL_SSLVERSION_DEFAULT</a></code></strong> (0),
+            <strong><code><a href="curl.constants.html#constant.curl-sslversion-tlsv1">CURL_SSLVERSION_TLSv1</a></code></strong> (1),
+            <strong><code><a href="curl.constants.html#constant.curl-sslversion-sslv2">CURL_SSLVERSION_SSLv2</a></code></strong> (2),
+            <strong><code><a href="curl.constants.html#constant.curl-sslversion-sslv3">CURL_SSLVERSION_SSLv3</a></code></strong> (3),
+            <strong><code><a href="curl.constants.html#constant.curl-sslversion-tlsv1-0">CURL_SSLVERSION_TLSv1_0</a></code></strong> (4),
+            <strong><code><a href="curl.constants.html#constant.curl-sslversion-tlsv1-1">CURL_SSLVERSION_TLSv1_1</a></code></strong> (5) o
+            <strong><code><a href="curl.constants.html#constant.curl-sslversion-tlsv1-2">CURL_SSLVERSION_TLSv1_2</a></code></strong> (6).
+            <blockquote class="note"><p><strong class="note">Nota</strong>: 
+             <p class="para">
+              Lo mejor es no establecerlo y dejar el valor predeterminado.
+              Establecerlo a 2 o 3 es muy peligroso dadas las vulnerabilidades
+              conocidas en SSLv2 y SSLv3.
+             </p>
+            </p></blockquote>
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-stream-weight">CURLOPT_STREAM_WEIGHT</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Establecer el peso del flujo numérico (un número entre 1 y 256).
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.46.0. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-timecondition">CURLOPT_TIMECONDITION</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Como se trata <strong><code><a href="curl.constants.html#constant.curlopt-timevalue">CURLOPT_TIMEVALUE</a></code></strong>.
+            Utilice <code class="parameter">CURL_TIMECOND_IFMODSINCE</code> para devolver
+            la página solamente si fue modificada desde el tiempo especificado en
+            <strong><code><a href="curl.constants.html#constant.curlopt-timevalue">CURLOPT_TIMEVALUE</a></code></strong>. Si no fué modificada, se
+            devolverá <code class="literal">&quot;304 Not Modified&quot;</code> en el header asumiendo
+            que <strong><code><a href="curl.constants.html#constant.curlopt-header">CURLOPT_HEADER</a></code></strong> es <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>.
+            Utilice <code class="parameter">CURL_TIMECOND_IFUNMODSINCE</code> para el efecto
+            contrario. <code class="parameter">CURL_TIMECOND_IFMODSINCE</code> está activado
+            por defecto.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-timeout">CURLOPT_TIMEOUT</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Número máximo de segundos permitido para ejectuar funciones cURL.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-timeout-ms">CURLOPT_TIMEOUT_MS</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Número máximo en milisegundos permitido para ejecutar funciones
+            cURL.
+            
+            Si se ha compilado libcurl para utilizar el sistema estándar de resolución de nombres, esta
+            porción de conexión utilizará una resolución completa de un segundo en
+            tiempos de expiración, con un mínimo permitido de un segundo.
+           </td>
+           <td style="vertical-align: top;">
+            Añadido en cURL 7.16.2. Disponible desde PHP 5.2.3.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-timevalue">CURLOPT_TIMEVALUE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Tiempo en segundos desde el 1 de enero de 1970. El tiempo será usado
+            por <strong><code><a href="curl.constants.html#constant.curlopt-timecondition">CURLOPT_TIMECONDITION</a></code></strong>. Por defecto,
+            se utiliza <code class="parameter">CURL_TIMECOND_IFMODSINCE</code>.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-max-recv-speed-large">CURLOPT_MAX_RECV_SPEED_LARGE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Si una descarga supera esta velocidad (en bytes por segundo) en su tasa
+            media de transferencia, ésta se detendrá temporalmente para mantener la media igual o
+            inferior al valor del parámetro. Por omisión, la velocidad es
+            ilimitada.
+           </td>
+           <td style="vertical-align: top;">
+            Añadido en cURL 7.15.5. Disponible desde PHP 5.4.0.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-max-send-speed-large">CURLOPT_MAX_SEND_SPEED_LARGE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Si una subida supera esta velocidad (en bytes por segundo) en su tasa
+            media de transferencia, ésta se detendrá temporalmente para mantener la media igual
+            o inferior al valor del parámetro. Por omisión, la velocidad es
+            ilimitada.
+           </td>
+           <td style="vertical-align: top;">
+            Añadido en cURL 7.15.5. Disponible desde PHP 5.4.0.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-ssh-auth-types">CURLOPT_SSH_AUTH_TYPES</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Una máscara de bits que consta de una o más de
+            <strong><code><a href="curl.constants.html#constant.curlssh-auth-publickey">CURLSSH_AUTH_PUBLICKEY</a></code></strong>, 
+            <strong><code><a href="curl.constants.html#constant.curlssh-auth-password">CURLSSH_AUTH_PASSWORD</a></code></strong>, 
+            <strong><code><a href="curl.constants.html#constant.curlssh-auth-host">CURLSSH_AUTH_HOST</a></code></strong>, 
+            <strong><code><a href="curl.constants.html#constant.curlssh-auth-keyboard">CURLSSH_AUTH_KEYBOARD</a></code></strong>. Establece a 
+            <strong><code><a href="curl.constants.html#constant.curlssh-auth-any">CURLSSH_AUTH_ANY</a></code></strong> para que libcurl elija uno.
+           </td>
+           <td style="vertical-align: top;">
+            Añadido en cURL 7.16.1. 
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-ipresolve">CURLOPT_IPRESOLVE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Permite a una aplicación seleccionar el tipo de dirección IP a usar cuando
+            se resuelven nombres de host. Esto es interesante solamente al usar nombres de host que
+            resuelven direcciones usando más de una versión de IP. Los valores posibles son
+            <strong><code><a href="curl.constants.html#constant.curl-ipresolve-whatever">CURL_IPRESOLVE_WHATEVER</a></code></strong>, 
+            <strong><code><a href="curl.constants.html#constant.curl-ipresolve-v4">CURL_IPRESOLVE_V4</a></code></strong>, 
+            <strong><code><a href="curl.constants.html#constant.curl-ipresolve-v6">CURL_IPRESOLVE_V6</a></code></strong>; el predeterminado es
+            <strong><code><a href="curl.constants.html#constant.curl-ipresolve-whatever">CURL_IPRESOLVE_WHATEVER</a></code></strong>.
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.10.8.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-ftp-filemethod">CURLOPT_FTP_FILEMETHOD</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Indicar a curl qué método empelar para alcanzar un fichero en un servidor FTP(S). Los valores posibles son
+            <strong><code><a href="curl.constants.html#constant.curlftpmethod-multicwd">CURLFTPMETHOD_MULTICWD</a></code></strong>, 
+            <strong><code><a href="curl.constants.html#constant.curlftpmethod-nocwd">CURLFTPMETHOD_NOCWD</a></code></strong> y  
+            <strong><code><a href="curl.constants.html#constant.curlftpmethod-singlecwd">CURLFTPMETHOD_SINGLECWD</a></code></strong>.
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.15.1. Disponible desde PHP 5.3.0.
+           </td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+      <p class="para">
+       El <code class="parameter">value</code> debe ser una <span class="type"><a href="language.types.string.html" class="type string">string</a></span> para los
+       siguientes valores del parámetro <code class="parameter">option</code>:
+       <table class="doctable informaltable">
+        
+         <thead>
+          <tr>
+           <th>Opción</th>
+           <th>Configurar <code class="parameter">value</code> a</th>
+           <th>Notas</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-cainfo">CURLOPT_CAINFO</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Nombre del fichero que contiene uno o más certificados para verificar
+            el peer. Solo tiene sentido cuando se utiliza en combinación de
+            <strong><code><a href="curl.constants.html#constant.curlopt-ssl-verifypeer">CURLOPT_SSL_VERIFYPEER</a></code></strong>.
+           </td>
+           <td style="vertical-align: top;">
+            Podría requerir una ruta absoluta.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-capath">CURLOPT_CAPATH</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Directorio que contiene múltiple certificados CA. Utilice esta opción
+            junto con <strong><code><a href="curl.constants.html#constant.curlopt-ssl-verifypeer">CURLOPT_SSL_VERIFYPEER</a></code></strong>.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-cookie">CURLOPT_COOKIE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Contenido de <code class="literal">&quot;Cookie: &quot;</code> del header para ser usado
+            en la petición HTTP.
+            Observe que múltiples cookies van separadas con punto y coma seguidas
+            por un espacio (ej., &quot;<code class="literal">fruit=apple; colour=red</code>&quot;)
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-cookiefile">CURLOPT_COOKIEFILE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Nombre del fichero que contiene datos de las cookies. El fichero de
+            cookies puede estar en formato Netscape, o simplemente tipo HTTP
+            plano dentro de un fichero.
+            Si el nombre es una cadena vacía, no se cargarán cookies, aunque el manejo de
+            cookies aún está habilitado.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-cookiejar">CURLOPT_COOKIEJAR</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Nombre del fichero donde guardar cookies internas cuando se cierra
+            se cierra, por e.j. después de llamar a curl_close.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-customrequest">CURLOPT_CUSTOMREQUEST</a></code></strong></td>
+           <td style="vertical-align: top;"><p class="para">
+            Método de petición personalizado a usar en lugar de
+            <code class="literal">&quot;GET&quot;</code> o <code class="literal">&quot;HEAD&quot;</code> cuando se
+            realiza una petición HTTP. Es útil para hacer
+            <code class="literal">&quot;DELETE&quot;</code> o otros tipos de peticiones HTTP menos comunes.
+            <code class="literal">&quot;GET&quot;</code>, <code class="literal">&quot;POST&quot;</code>, <code class="literal">&quot;CONNECT&quot;</code>
+            y otros, son valores válidos.
+            Ej. No introduzca toda la petición HTTP aquí, seria
+            incorrecto introducir:
+            <code class="literal">&quot;GET /index.html HTTP/1.0\r\n\r\n&quot;</code>.
+            <blockquote class="note"><p><strong class="note">Nota</strong>: 
+             <p class="para">
+              No cambie este valor sin antes asegurarse que el servidor soporta el
+              método de petición personalizado.
+             </p>
+            </p></blockquote>
+            </p></td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-default-protocol">CURLOPT_DEFAULT_PROTOCOL</a></code></strong></td>
+           <td style="vertical-align: top;"><p class="para">
+            El protocolo predeterminado a usar si al URL le falta un nombre de esquema.
+            </p></td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.45.0. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-dns-interface">CURLOPT_DNS_INTERFACE</a></code></strong></td>
+           <td style="vertical-align: top;"><p class="para">
+            Establecer el nombre de la interfaz de red a la que el resolvente de DNS debe vincularse.
+            Debe ser un nombre de interfaz (no una dirección).
+            </p></td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.33.0. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-dns-local-ip4">CURLOPT_DNS_LOCAL_IP4</a></code></strong></td>
+           <td style="vertical-align: top;"><p class="para">
+            Establecer la dirección IPv4 local a la que debe vincularse el resolvente. El argumento
+            debe contener una dirección IPv4 numérica dada como cadena.
+            </p></td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.33.0. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-dns-local-ip6">CURLOPT_DNS_LOCAL_IP6</a></code></strong></td>
+           <td style="vertical-align: top;"><p class="para">
+            Establecer la dirección IPv6 local a la que debe vincularse el resolvente. El argumento
+            debe contener una dirección IPv6 numérica dada como cadena.
+            </p></td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.33.0. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-egdsocket">CURLOPT_EGDSOCKET</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Es como <strong><code><a href="curl.constants.html#constant.curlopt-random-file">CURLOPT_RANDOM_FILE</a></code></strong>, con excepción que
+            en lugar de un fichero se utiliza un Entropy Gathering Daemon socket.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-encoding">CURLOPT_ENCODING</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Contenido del valor <code class="literal">&quot;Accept-Encoding: &quot;</code> en el header.
+            Esto permite decodificar la respuesta. Los formatos de codificación
+            disponibles son <code class="literal">&quot;identity&quot;</code>, <code class="literal">&quot;deflate&quot;</code>, y
+            <code class="literal">&quot;gzip&quot;</code>. Si el valor se envía vacío, <code class="literal">&quot;&quot;</code>,
+            se enviarán todos los tipos de condificación soportados.
+           </td>
+           <td style="vertical-align: top;">
+            Añadido en cURL 7.10.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-ftpport">CURLOPT_FTPPORT</a></code></strong></td>
+           <td style="vertical-align: top;">
+            El valor que será usando para obtener la dirección IP a usar
+            para la instrucción FTP &quot;PORT&quot;. La instrucción &quot;PORT&quot; dice al
+            servidor remoto a qué dirección IP se debe conectar. La cadena
+            puede ser una dirección IP, el nombre de un servidor o un
+            interfaz de red (bajo Unix), o simplemente &#039;-&#039; para usar
+            la dirección IP por defecto del sistema.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-interface">CURLOPT_INTERFACE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Nombre del interfaz de salida a usar. Puede ser el nombre del
+            interfaz, una dirección IP o el nombre de un servidor.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-keypasswd">CURLOPT_KEYPASSWD</a></code></strong></td>
+           <td style="vertical-align: top;">
+            El password requerido para usar la clave privada <strong><code><a href="curl.constants.html#constant.curlopt-sslkey">CURLOPT_SSLKEY</a></code></strong> 
+            o <strong><code><a href="curl.constants.html#constant.curlopt-ssh-private-keyfile">CURLOPT_SSH_PRIVATE_KEYFILE</a></code></strong>. 
+           </td>
+           <td style="vertical-align: top;">
+            Añadido en cURL 7.16.1. 
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-krb4level">CURLOPT_KRB4LEVEL</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Nivel de seguridad KRB4 (Kerberos 4). Cualquiera de los siguientes valores
+            (en orden de menos a más potentes) son válidos:
+            <code class="literal">&quot;clear&quot;</code>,
+            <code class="literal">&quot;safe&quot;</code>,
+            <code class="literal">&quot;confidential&quot;</code>,
+            <code class="literal">&quot;private&quot;.</code>.
+            Si la cadena no coincide con alguno de estos valores,
+            será usado <code class="literal">&quot;private&quot;</code>. Configure esta opción a <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>
+            para desactivar seguridad KRB4. Actualmente la seguridad KRB4 solo funciona
+            con transaciones FTP.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-login-options">CURLOPT_LOGIN_OPTIONS</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Se puede usar para establecer las opciones de inicio de sesión específicas del protocolo, tales como el
+            mecanismoe de autenticación preferido mediante &quot;AUTH=NTLM&quot; o &quot;AUTH=*&quot;,
+            debiéndose ser usada junto con la opción
+            <strong><code><a href="curl.constants.html#constant.curlopt-username">CURLOPT_USERNAME</a></code></strong>.
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.34.0. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-pinnedpublickey">CURLOPT_PINNEDPUBLICKEY</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Establecer la clave pública fijada.
+            La cadena puede ser el nombre de fichero de la clave pública fijada. El formato
+            de fichero esperado es &quot;PEM&quot; o &quot;DER&quot;. La cadena también puede ser cualquier
+            númbero de «hashes» sha256 codificados en base64 precedidos de &quot;sha256//&quot; y
+            separados por &quot;;&quot;.
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.39.0. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-postfields">CURLOPT_POSTFIELDS</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <span class="simpara">
+             Todos los datos para enviar vía HTTP &quot;POST&quot;.
+             para enviar un fichero, prefija el nombre del fichero con <code class="literal">@</code> y
+             utiliza la ruta completa. Se puede especificar explícitamente el tipo de fichero
+             añadiendo el tipo al nombre del fichero, en el formato
+             &#039;<code class="literal">;type=mimetype</code>&#039;. Se puede enviar una cadena urlencoded
+             como &#039;<code class="literal">para1=val1&amp;para2=val2&amp;...</code>&#039;
+             o también como un array con el nombre del campo como key y los datos como value.
+             Si <code class="parameter">value</code> es un array, el
+             encabezado <code class="literal">Content-Type</code> será definido como
+             <code class="literal">multipart/form-data</code>.
+            </span>
+            <span class="simpara">
+             A partir de PHP 5.2.0, <code class="parameter">value</code> debe ser un array si los archivos son 
+             pasados a esta opción con el prefijo <code class="literal">@</code>.
+            </span>
+            <span class="simpara">
+             A partir de PHP 5.5.0, el prefijo <code class="literal">@</code> está obsoleto, por lo que
+             los ficheros se pueden enviar usando <span class="classname"><a href="class.curlfile.html" class="classname">CURLFile</a></span>. El prefijo 
+             <code class="literal">@</code> puede ser deshabilitado por seguridad de proporcionar
+             valores que comienzan con <code class="literal">@</code> estableciendo la opción
+             <strong><code><a href="curl.constants.html#constant.curlopt-safe-upload">CURLOPT_SAFE_UPLOAD</a></code></strong> a <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>.
+            </span>
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-private">CURLOPT_PRIVATE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Cualquier dato que debería estar asociado con este manejador de cURL. Estos datos
+            puede ser recuperados posteriormente con la
+            opción <strong><code><a href="curl.constants.html#constant.curlinfo-private">CURLINFO_PRIVATE</a></code></strong> de
+            <span class="function"><a href="function.curl-getinfo.html" class="function">curl_getinfo()</a></span>. cURL no hace nada con estos datos.
+            Al emplear un multimanejador de  cURL, estos datos privados son típicamente una
+            clave única para identificar un manejador estándar de cURL.
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.10.3. 
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-proxy">CURLOPT_PROXY</a></code></strong></td>
+           <td style="vertical-align: top;">
+            El proxy HTTP para enviar peticiones a través de tunel.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-proxy-service-name">CURLOPT_PROXY_SERVICE_NAME</a></code></strong></td>
+           <td style="vertical-align: top;">
+            El nombre del servicio de autenticación del proxy.
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.34.0. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-proxyuserpwd">CURLOPT_PROXYUSERPWD</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Usuario y contraseña con el siguiente formato
+            <code class="literal">&quot;[username]:[password]&quot;</code> para usarse en la
+            conexión al proxy.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-random-file">CURLOPT_RANDOM_FILE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Nombre del fichero a ser usado para generar números aleatorios para el SSL.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-range">CURLOPT_RANGE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Rango(s) de datos para obtener  en el formato
+            <code class="literal">&quot;X-Y&quot;</code> donde X y Y son opcionales. Transferencias HTTP
+            también soportan varios intérvalos, separados por comas en el formato
+            <code class="literal">&quot;X-Y,N-M&quot;</code>.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-referer">CURLOPT_REFERER</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Contenido del Header <code class="literal">&quot;Referer: &quot;</code> para ser usado
+            en la petición HTTP.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-service-name">CURLOPT_SERVICE_NAME</a></code></strong></td>
+           <td style="vertical-align: top;">
+            El nombre del servicio de autenticación.
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.43.0. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-ssh-host-public-key-md5">CURLOPT_SSH_HOST_PUBLIC_KEY_MD5</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Un string que contiene 32 dígitos hexadecimales. El string debe ser el
+            MD5 checksum de la clave pública del host remoto, y libcurl rechazará 
+            la conexión a el host a menos que el md5sums coincida.
+            Esta opción es sólo para las transferencias SCP y SFTP.
+           </td>
+           <td style="vertical-align: top;">
+            Añadido en cURL 7.17.1. 
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-ssh-public-keyfile">CURLOPT_SSH_PUBLIC_KEYFILE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            El nombre de el fichero de la clave pública. Si no se utiliza, libcurl por 
+            omisión usa $HOME/.ssh/id_dsa.pub si la variable de entorno HOME es establecida, 
+            y &quot;id_dsa.pub&quot; en el directorio actual si HOME no está establecida.
+           </td>
+           <td style="vertical-align: top;">
+            Añadido en cURL 7.16.1. 
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-ssh-private-keyfile">CURLOPT_SSH_PRIVATE_KEYFILE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            El nombre de el fichero de la clave privada. Si no se utiliza, libcurl por 
+            omisión usa $HOME/.ssh/id_dsa si la variable de entorno HOME es establecida, 
+            y &quot;id_dsa&quot; en el directorio actual si HOME no está establecida.
+            Si el fichero está protegido con contraseña, establecer la contraseña con la 
+            constante <strong><code><a href="curl.constants.html#constant.curlopt-keypasswd">CURLOPT_KEYPASSWD</a></code></strong>.
+           </td>
+           <td style="vertical-align: top;">
+            Añadido en cURL 7.16.1. 
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-ssl-cipher-list">CURLOPT_SSL_CIPHER_LIST</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Lista de ciphers a ser usados por SSL. Por ejemplo,
+            <code class="literal">RC4-SHA</code> y <code class="literal">TLSv1</code> es una
+            lista válida de ciphers.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-sslcert">CURLOPT_SSLCERT</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Nombre del fichero que contiene un certificado con formato PEM.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-sslcertpasswd">CURLOPT_SSLCERTPASSWD</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Contraseña requerida para usar el certificado
+            <strong><code><a href="curl.constants.html#constant.curlopt-sslcert">CURLOPT_SSLCERT</a></code></strong>.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-sslcerttype">CURLOPT_SSLCERTTYPE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Formato del certificado. Los formatos soportados son
+            <code class="literal">&quot;PEM&quot;</code> (por defecto), <code class="literal">&quot;DER&quot;</code>,
+            y <code class="literal">&quot;ENG&quot;</code>.
+           </td>
+           <td style="vertical-align: top;">
+            Añadido en cURL 7.9.3.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-sslengine">CURLOPT_SSLENGINE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            El identificador para el crypto engine de la clave privada SSL
+            especificada en <strong><code><a href="curl.constants.html#constant.curlopt-sslkey">CURLOPT_SSLKEY</a></code></strong>.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-sslengine-default">CURLOPT_SSLENGINE_DEFAULT</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Identificador para el crypto engine usado para operaciones crypto
+            asimétricas.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-sslkey">CURLOPT_SSLKEY</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Nombre del fichero que contiene la clave privada SSL.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-sslkeypasswd">CURLOPT_SSLKEYPASSWD</a></code></strong></td>
+           <td style="vertical-align: top;"><p class="para">
+            Contraseña secreta requerida para usar la clave privada SSL especificada en
+            <strong><code><a href="curl.constants.html#constant.curlopt-sslkey">CURLOPT_SSLKEY</a></code></strong>.
+            <blockquote class="note"><p><strong class="note">Nota</strong>: 
+             <p class="para">
+              Como esta opción contiene una contraseña, recuerde mantener el PHP
+              script en un sitio seguro.
+             </p>
+            </p></blockquote>
+            </p></td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-sslkeytype">CURLOPT_SSLKEYTYPE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Tipo de llave privada SSL especificada en
+            <strong><code><a href="curl.constants.html#constant.curlopt-sslkey">CURLOPT_SSLKEY</a></code></strong>. Los tipos de claves soportadas son
+            <code class="literal">&quot;PEM&quot;</code> (default), <code class="literal">&quot;DER&quot;</code>,
+            y <code class="literal">&quot;ENG&quot;</code>.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-unix-socket-path">CURLOPT_UNIX_SOCKET_PATH</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Habilita el uso de sockets de dominio Unix como extremos de conexión y
+            establece la ruta al <span class="type"><a href="language.types.string.html" class="type string">string</a></span> dado.
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.40.0. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-url">CURLOPT_URL</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Dirección URL a capturar. Este valor también puede ser configurado
+            cuando se inicia una sesión con <span class="function"><a href="function.curl-init.html" class="function">curl_init()</a></span>.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-useragent">CURLOPT_USERAGENT</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Contenido del header <code class="literal">&quot;User-Agent: &quot;</code> a ser usado
+            en la petición HTTP.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-username">CURLOPT_USERNAME</a></code></strong></td>
+           <td style="vertical-align: top;">
+            El nombre de usuario a emplear en la autenticación.
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.19.0. Disponible desde PHP 5.5.0.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-userpwd">CURLOPT_USERPWD</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Nombre de usuario y contraseña siguiendo el formato
+            <code class="literal">&quot;[username]:[password]&quot;</code> para ser usado en la
+            conexión.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-xoauth2-bearer">CURLOPT_XOAUTH2_BEARER</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Especifica el «token» de acceso de OAuth 2.0.
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.33.0. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+      <p class="para">
+       El <code class="parameter">value</code> debe ser un array para los
+       siguientes valores del parámetro <code class="parameter">option</code>:
+       <table class="doctable informaltable">
+        
+         <thead>
+          <tr>
+           <th>Opción</th>
+           <th>Configurar <code class="parameter">value</code> a</th>
+           <th>Notas</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-connect-to">CURLOPT_CONNECT_TO</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Se conecta a un puerto y host específicos en lugar del puerto y host del URL.
+            Acepta un array de cadenas con el formato
+            <code class="literal">HOST:PORT:CONNECT-TO-HOST:CONNECT-TO-PORT</code>.
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.49.0. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-http200aliases">CURLOPT_HTTP200ALIASES</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Array de respuestas HTTP 200 que serán tratadas como respuestas
+            válidas y no como errores.
+           </td>
+           <td style="vertical-align: top;">
+            Añadido en cURL 7.10.3.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-httpheader">CURLOPT_HTTPHEADER</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Un array de campos a configurar para el header HTTP, en el formato:
+            <code class="code">
+             array(&#039;Content-type: text/plain&#039;, &#039;Content-length: 100&#039;)
+            </code>
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-postquote">CURLOPT_POSTQUOTE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Un array de comandos FTP a ejecutar en el servidor después de que
+            se realice la petición FTP.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-proxyheader">CURLOPT_PROXYHEADER</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Un array de cabeceras HTTP personalizadas a pasar a los proxies.
+           </td>
+           <td style="vertical-align: top;">
+            Añadida en cURL 7.37.0. Disponible desde PHP 7.0.7.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-quote">CURLOPT_QUOTE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Un array de comandos FTP a ejecutar en el servidor antes de que se
+            realice la petición FTP.
+           </td>
+           <td style="vertical-align: top;">
+           </td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+      <p class="para">
+       El <code class="parameter">value</code> debe ser un recurso de flujo (usando
+       <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>, por ejemplo) para los siguientes valores del
+       parámetro <code class="parameter">option</code>:
+       <table class="doctable informaltable">
+        
+         <thead>
+          <tr>
+           <th>Opción</th>
+           <th>Configurar <code class="parameter">value</code> a</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-file">CURLOPT_FILE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            El fichero en el que el proceso de transferencia guardará el resultado. Por defecto
+            es <code class="literal">STDOUT</code> (la ventana del navegador).
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-infile">CURLOPT_INFILE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            El fichero que el proceso de transferencia debe leer a la hora de subir un fichero.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-stderr">CURLOPT_STDERR</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Localización alternativa para mostrar los errores en lugar de
+            <code class="literal">STDERR</code>.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-writeheader">CURLOPT_WRITEHEADER</a></code></strong></td>
+           <td style="vertical-align: top;">
+            El fichero donde guardar la parte del header durante la transferencia.
+           </td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+      <p class="para">
+       <code class="parameter">value</code> debería ser el nombre de una función válida o un objeto Closure
+       para los siguientes valores del parámetro <code class="parameter">option</code>:
+       <table class="doctable informaltable">
+        
+         <thead>
+          <tr>
+           <th>Opción</th>
+           <th>Configurar <code class="parameter">value</code> a</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-headerfunction">CURLOPT_HEADERFUNCTION</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Una llamada de retorno que acepta dos parámetros.
+            El primero es el recurso cURL, el segundo es un
+            string con los datos de la cabecera a escribir. Los datos de la cabecera deben
+            ser escritos por esta llamada de retorno. Devuelve el número de
+            bytes escritos.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-passwdfunction">CURLOPT_PASSWDFUNCTION</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Una llamada de retorno que acepta tres parámetros.
+            El primero es el recurso cURL, el segundo es un
+            string que contiene la contraseña, y el tercero es la longitud
+            máxima para la contraseña. Devuelve un string que contiene la contraseña.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-progressfunction">CURLOPT_PROGRESSFUNCTION</a></code></strong></td>
+           <td style="vertical-align: top;">
+            <p class="para">
+             Una llamada de retorno que acepta cinco parámetros.
+             El primero es el recurso cURL, el segundo es el número total de
+             bytes que se espera descargar en esta transferencia, el tercero es
+             el número de bytes descargados hasta ahora, el cuarto es el número
+             total de bytes que se espera subir en esta transferencia, y el
+             quinto es el número de bytes subidos hasta ahora.
+            </p>
+            <blockquote class="note"><p><strong class="note">Nota</strong>: 
+             <p class="para">
+              La llamada de retorno solamente se invoca cuando la opción <strong><code><a href="curl.constants.html#constant.curlopt-noprogress">CURLOPT_NOPROGRESS</a></code></strong>
+              está establecida a <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+             </p>
+            </p></blockquote>
+            <p class="para">
+             Devuelve un valor distinto de cero para abortar la transferencia. En este caso, la
+             transferencia establecerá un error
+             <strong><code><a href="curl.constants.html#constant.curle-aborted-by-callback">CURLE_ABORTED_BY_CALLBACK</a></code></strong>.
+            </p>
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-readfunction">CURLOPT_READFUNCTION</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Una llamada de retorno que acepta tres parámetros.
+            El primero es el recurso cURL, el segundo es un
+            recurso de flujo de datos proporcionado a través  de la opción
+            <strong><code><a href="curl.constants.html#constant.curlopt-infile">CURLOPT_INFILE</a></code></strong>, y el tercero es la máxima
+            cantidad de datos a leer. La llamada de retorno debe devolver un string
+            con la misma longitud o menor que la cantidad de datos pedidos,
+            normalmente leyéndolos del recurso de flujo de datos pasado. Debe           
+            devolver una cadena vacía para marcar el <code class="literal">EOF</code>.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-writefunction">CURLOPT_WRITEFUNCTION</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Una llamada de retorno que acepta dos parámetros.
+            El primero es el recurso cURL, el segundo es un
+            string con los datos a escribir. Los datos deben ser guardados por
+            esta llamada de retorno. Debe devolver el número exacto de bytes escritos
+            o la transferencia será abortada con un error.
+           </td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+      <p class="para">
+       Otros valores:
+       <table class="doctable informaltable">
+        
+         <thead>
+          <tr>
+           <th>Opción</th>
+           <th>Establecer <code class="parameter">value</code> a</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlopt-share">CURLOPT_SHARE</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Un resultado de <span class="function"><a href="function.curl-share-init.html" class="function">curl_share_init()</a></span>. Hace que el
+            gestor de cURL use los datos del gestor compartido.
+           </td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.curl-setopt-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 changelog" id="refsect1-function.curl-setopt-changelog">
+  <h3 class="title">Historial de cambios</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Versión</th>
+       <th>Descripción</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>7.0.7</td>
+       <td>
+        Se introdujeron <strong><code><a href="curl.constants.html#constant.curl-http-version-2">CURL_HTTP_VERSION_2</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curl-http-version-2-prior-knowledge">CURL_HTTP_VERSION_2_PRIOR_KNOWLEDGE</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curl-http-version-2tls">CURL_HTTP_VERSION_2TLS</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curl-redir-post-301">CURL_REDIR_POST_301</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curl-redir-post-302">CURL_REDIR_POST_302</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curl-redir-post-303">CURL_REDIR_POST_303</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curl-redir-post-all">CURL_REDIR_POST_ALL</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curl-version-kerberos5">CURL_VERSION_KERBEROS5</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curl-version-psl">CURL_VERSION_PSL</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curl-version-unix-sockets">CURL_VERSION_UNIX_SOCKETS</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlauth-negotiate">CURLAUTH_NEGOTIATE</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curlauth-ntlm-wb">CURLAUTH_NTLM_WB</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlftp-create-dir">CURLFTP_CREATE_DIR</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curlftp-create-dir-none">CURLFTP_CREATE_DIR_NONE</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlftp-create-dir-retry">CURLFTP_CREATE_DIR_RETRY</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curlheader-separate">CURLHEADER_SEPARATE</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlheader-unified">CURLHEADER_UNIFIED</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curlmopt-chunk-length-penalty-size">CURLMOPT_CHUNK_LENGTH_PENALTY_SIZE</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlmopt-content-length-penalty-size">CURLMOPT_CONTENT_LENGTH_PENALTY_SIZE</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curlmopt-max-host-connections">CURLMOPT_MAX_HOST_CONNECTIONS</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlmopt-max-pipeline-length">CURLMOPT_MAX_PIPELINE_LENGTH</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curlmopt-max-total-connections">CURLMOPT_MAX_TOTAL_CONNECTIONS</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlopt-connect-to">CURLOPT_CONNECT_TO</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curlopt-default-protocol">CURLOPT_DEFAULT_PROTOCOL</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlopt-dns-interface">CURLOPT_DNS_INTERFACE</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curlopt-dns-local-ip4">CURLOPT_DNS_LOCAL_IP4</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlopt-dns-local-ip6">CURLOPT_DNS_LOCAL_IP6</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curlopt-expect-100-timeout-ms">CURLOPT_EXPECT_100_TIMEOUT_MS</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlopt-headeropt">CURLOPT_HEADEROPT</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curlopt-login-options">CURLOPT_LOGIN_OPTIONS</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlopt-path-as-is">CURLOPT_PATH_AS_IS</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curlopt-pinnedpublickey">CURLOPT_PINNEDPUBLICKEY</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlopt-pipewait">CURLOPT_PIPEWAIT</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curlopt-proxy-service-name">CURLOPT_PROXY_SERVICE_NAME</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlopt-proxyheader">CURLOPT_PROXYHEADER</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curlopt-sasl-ir">CURLOPT_SASL_IR</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlopt-service-name">CURLOPT_SERVICE_NAME</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curlopt-ssl-enable-alpn">CURLOPT_SSL_ENABLE_ALPN</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlopt-ssl-enable-npn">CURLOPT_SSL_ENABLE_NPN</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curlopt-ssl-falsestart">CURLOPT_SSL_FALSESTART</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlopt-ssl-verifystatus">CURLOPT_SSL_VERIFYSTATUS</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curlopt-stream-weight">CURLOPT_STREAM_WEIGHT</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlopt-tcp-fastopen">CURLOPT_TCP_FASTOPEN</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curlopt-tftp-no-options">CURLOPT_TFTP_NO_OPTIONS</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlopt-unix-socket-path">CURLOPT_UNIX_SOCKET_PATH</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curlopt-xoauth2-bearer">CURLOPT_XOAUTH2_BEARER</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlproto-smb">CURLPROTO_SMB</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curlproto-smbs">CURLPROTO_SMBS</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlproxy-http-1-0">CURLPROXY_HTTP_1_0</a></code></strong>, <strong><code><a href="curl.constants.html#constant.curlssh-auth-agent">CURLSSH_AUTH_AGENT</a></code></strong> y
+        <strong><code><a href="curl.constants.html#constant.curlsslopt-no-revoke">CURLSSLOPT_NO_REVOKE</a></code></strong>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>7.0.0</td>
+       <td>
+        Se ha eliminado el soporte para inhabilitar la opción <strong><code><a href="curl.constants.html#constant.curlopt-safe-upload">CURLOPT_SAFE_UPLOAD</a></code></strong>.
+        Todas las subidas de ficheros de curl deben emplear <span class="classname"><a href="class.curlfile.html" class="classname">CURLFile</a></span>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.6.0</td>
+       <td>
+        <strong><code><a href="curl.constants.html#constant.curlopt-safe-upload">CURLOPT_SAFE_UPLOAD</a></code></strong> ahore es <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> de forma predeterminada.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.6.0</td>
+       <td>
+        Se eliminó <strong><code>CURLOPT_CLOSEPOLICY</code></strong> y sus valores asociados.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.5.0</td>
+       <td>
+        Se añadió el recurso cURL como el primer parámetro de la
+        llamada de retorno <strong><code><a href="curl.constants.html#constant.curlopt-progressfunction">CURLOPT_PROGRESSFUNCTION</a></code></strong>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.5.0</td>
+       <td>
+        Se introdujo <strong><code><a href="curl.constants.html#constant.curlopt-share">CURLOPT_SHARE</a></code></strong>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.3.0</td>
+       <td>
+        Se introdujo <strong><code><a href="curl.constants.html#constant.curlopt-progressfunction">CURLOPT_PROGRESSFUNCTION</a></code></strong>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.2.10</td>
+       <td>
+        Se introdujo <strong><code><a href="curl.constants.html#constant.curlopt-protocols">CURLOPT_PROTOCOLS</a></code></strong>, y
+        <strong><code><a href="curl.constants.html#constant.curlopt-redir-protocols">CURLOPT_REDIR_PROTOCOLS</a></code></strong>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.2.4</td>
+       <td>
+        Se introdujo <strong><code><a href="curl.constants.html#constant.curlopt-private">CURLOPT_PRIVATE</a></code></strong>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.1.0</td>
+       <td>
+        Se introdujo <strong><code><a href="curl.constants.html#constant.curlopt-autoreferer">CURLOPT_AUTOREFERER</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlopt-binarytransfer">CURLOPT_BINARYTRANSFER</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlopt-ftpsslauth">CURLOPT_FTPSSLAUTH</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlopt-proxyauth">CURLOPT_PROXYAUTH</a></code></strong>, y
+        <strong><code><a href="curl.constants.html#constant.curlopt-timecondition">CURLOPT_TIMECONDITION</a></code></strong>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.0.0</td>
+       <td>
+        Se introdujo <strong><code><a href="curl.constants.html#constant.curlopt-ftp-use-eprt">CURLOPT_FTP_USE_EPRT</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlopt-nosignal">CURLOPT_NOSIGNAL</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlopt-unrestricted-auth">CURLOPT_UNRESTRICTED_AUTH</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlopt-buffersize">CURLOPT_BUFFERSIZE</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlopt-httpauth">CURLOPT_HTTPAUTH</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlopt-proxyport">CURLOPT_PROXYPORT</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlopt-proxytype">CURLOPT_PROXYTYPE</a></code></strong>,
+        <strong><code><a href="curl.constants.html#constant.curlopt-sslcerttype">CURLOPT_SSLCERTTYPE</a></code></strong>, y
+        <strong><code><a href="curl.constants.html#constant.curlopt-http200aliases">CURLOPT_HTTP200ALIASES</a></code></strong>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.curl-setopt-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4228">
+    <p><strong>Ejemplo #1 Inicializar una nueva sesión de cURL y obtener una página web</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Crear un nuevo recurso cURL<br /></span><span style="color: #0000BB">$ch </span><span style="color: #007700">= </span><span style="color: #0000BB">curl_init</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">// Configurar URL y otras opciones apropiadas<br /></span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">, </span><span style="color: #0000BB">CURLOPT_URL</span><span style="color: #007700">, </span><span style="color: #DD0000">"http://www.example.com/"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">, </span><span style="color: #0000BB">CURLOPT_HEADER</span><span style="color: #007700">, </span><span style="color: #0000BB">false</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Capturar la URL y pasarla al navegador<br /></span><span style="color: #0000BB">curl_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Cerrar el recurso cURL y liberar recursos del sistema<br /></span><span style="color: #0000BB">curl_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-4229">
+    <p><strong>Ejemplo #2 Subir un fichero (obsoleto a partir de PHP 5.5.0)</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/* http://localhost/upload.php:<br />print_r($_POST);<br />print_r($_FILES);<br />*/<br /><br /></span><span style="color: #0000BB">$ch </span><span style="color: #007700">= </span><span style="color: #0000BB">curl_init</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$data </span><span style="color: #007700">= array(</span><span style="color: #DD0000">'name' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Foo'</span><span style="color: #007700">, </span><span style="color: #DD0000">'file' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'@/home/user/test.png'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">, </span><span style="color: #0000BB">CURLOPT_URL</span><span style="color: #007700">, </span><span style="color: #DD0000">'http://localhost/upload.php'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">, </span><span style="color: #0000BB">CURLOPT_POST</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">, </span><span style="color: #0000BB">CURLOPT_SAFE_UPLOAD</span><span style="color: #007700">, </span><span style="color: #0000BB">false</span><span style="color: #007700">); </span><span style="color: #FF8000">// requerido a partir de PHP 5.6.0<br /></span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">, </span><span style="color: #0000BB">CURLOPT_POSTFIELDS</span><span style="color: #007700">, </span><span style="color: #0000BB">$data</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">curl_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Array
+(
+    [name] =&gt; Foo
+)
+Array
+(
+    [file] =&gt; Array
+        (
+            [name] =&gt; test.png
+            [type] =&gt; image/png
+            [tmp_name] =&gt; /tmp/phpcpjNeQ
+            [error] =&gt; 0
+            [size] =&gt; 279
+        )
+
+)</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.curl-setopt-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Si pasamos un array a <strong><code><a href="curl.constants.html#constant.curlopt-postfields">CURLOPT_POSTFIELDS</a></code></strong>
+    codificará los datos como <em>multipart/form-data</em>,
+    pero si pasamos una cadena URL-encoded codificará los datos como
+    <em>application/x-www-form-urlencoded</em>.
+   </p>
+  </p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.curl-setopt-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.curl-setopt-array.html" class="function" rel="rdfs-seeAlso">curl_setopt_array()</a> - Configura m&uacute;ltiples opciones para una transferencia cURL</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

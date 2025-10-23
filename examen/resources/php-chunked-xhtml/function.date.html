@@ -1,0 +1,573 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Dar formato a la fecha/hora local</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.checkdate.html">« checkdate</a></li>
+      <li style="float: right;"><a href="function.date-add.html">date_add »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.datetime.html">Funciones de Fecha/Hora</a></li>
+    <li>Dar formato a la fecha/hora local</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.date" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">date</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">date</span> &mdash; <span class="dc-title">Dar formato a la fecha/hora local</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.date-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>date</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$format</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$timestamp</code><span class="initializer"> = time()</span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Devuelve una cadena formateada según el formato dado usando el
+   parámetro de tipo integer <code class="parameter">timestamp</code> dado o el momento actual
+   si no se da una marca de tiempo. En otras palabras, <code class="parameter">timestamp</code>
+   es opcional y por defecto es el valor de <span class="function"><a href="function.time.html" class="function">time()</a></span>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.date-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">format</code></dt>
+     <dd>
+      <p class="para">
+       El formato de la fecha de salida tipo <span class="type"><a href="language.types.string.html" class="type string">string</a></span>. Vea las opciones
+       de formato más abajo. También hay varias
+       <a href="class.datetimeinterface.html#datetime.constants.types" class="link">constantes de fecha predefinidas</a>
+       que pueden usarse en su lugar, así por ejemplo <strong><code>DATE_RSS</code></strong>
+       contiene la cadena de formato <code class="literal">&#039;D, d M Y H:i:s&#039;</code>.
+      </p>
+      <p class="para">
+       <table class="doctable table">
+        <caption><strong>Los siguientes caracteres están reconocidos en el
+         parámetro de cadena <code class="parameter">format</code></strong></caption>
+        
+         <thead>
+          <tr>
+           <th>Carácter de <code class="parameter">format</code></th>
+           <th>Descripción</th>
+           <th>Ejemplo de valores devueltos</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td style="text-align: center;"><em>Día</em></td>
+           <td>---</td>
+           <td>---</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">d</code></td>
+           <td>Día del mes, 2 dígitos con ceros iniciales</td>
+           <td><code class="literal">01</code> a <code class="literal">31</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">D</code></td>
+           <td>Una representación textual de un día, tres letras</td>
+           <td><code class="literal">Mon</code> hasta <code class="literal">Sun</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">j</code></td>
+           <td>Día del mes sin ceros iniciales</td>
+           <td><code class="literal">1</code> a <code class="literal">31</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">l</code> (&#039;L&#039; minúscula)</td>
+           <td>Una representación textual completa del día de la semana</td>
+           <td><code class="literal">Sunday</code> hasta <code class="literal">Saturday</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">N</code></td>
+           <td>Representación numérica ISO-8601 del día de la semana (añadido en
+            PHP 5.1.0)</td>
+           <td><code class="literal">1</code> (para lunes) hasta <code class="literal">7</code> (para domingo)</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">S</code></td>
+           <td>Sufijo ordinal inglés para el día del mes, 2 caracteres</td>
+           <td>
+            <code class="literal">st</code>, <code class="literal">nd</code>, <code class="literal">rd</code> o
+            <code class="literal">th</code>. Funciona bien con <code class="literal">j</code>
+           </td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">w</code></td>
+           <td>Representación numérica del día de la semana</td>
+           <td><code class="literal">0</code> (para domingo) hasta <code class="literal">6</code> (para sábado)</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">z</code></td>
+           <td>El día del año (comenzando por 0)</td>
+           <td><code class="literal">0</code> hasta <code class="literal">365</code></td>
+          </tr>
+
+          <tr>
+           <td style="text-align: center;"><em>Semana</em></td>
+           <td>---</td>
+           <td>---</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">W</code></td>
+           <td>Número de la semana del año ISO-8601, las semanas comienzan en lunes</td>
+           <td>Ejemplo: <code class="literal">42</code> (la 42ª semana del año)</td>
+          </tr>
+
+          <tr>
+           <td style="text-align: center;"><em>Mes</em></td>
+           <td>---</td>
+           <td>---</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">F</code></td>
+           <td>Una representación textual completa de un mes, como January o March</td>
+           <td><code class="literal">January</code> hasta <code class="literal">December</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">m</code></td>
+           <td>Representación numérica de un mes, con ceros iniciales</td>
+           <td><code class="literal">01</code> hasta <code class="literal">12</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">M</code></td>
+           <td>Una representación textual corta de un mes, tres letras</td>
+           <td><code class="literal">Jan</code> hasta <code class="literal">Dec</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">n</code></td>
+           <td>Representación numérica de un mes, sin ceros iniciales</td>
+           <td><code class="literal">1</code> hasta <code class="literal">12</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">t</code></td>
+           <td>Número de días del mes dado</td>
+           <td><code class="literal">28</code> hasta <code class="literal">31</code></td>
+          </tr>
+
+          <tr>
+           <td style="text-align: center;"><em>Año</em></td>
+           <td>---</td>
+           <td>---</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">L</code></td>
+           <td>Si es un año bisiesto</td>
+           <td><code class="literal">1</code> si es bisiesto, <code class="literal">0</code> si no.</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">o</code></td>
+           <td>Año según el número de la semana ISO-8601. Esto tiene el mismo valor que
+            <code class="literal">Y</code>, excepto que si el número de la semana ISO
+            (<code class="literal">W</code>) pertenece al año anterior o siguiente, se usa
+            ese año en su lugar. (añadido en PHP 5.1.0)</td>
+           <td>Ejemplos: <code class="literal">1999</code> o <code class="literal">2003</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">Y</code></td>
+           <td>Una representación numérica completa de un año, 4 dígitos</td>
+           <td>Ejemplos: <code class="literal">1999</code> o <code class="literal">2003</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">y</code></td>
+           <td>Una representación de dos dígitos de un año</td>
+           <td>Ejemplos: <code class="literal">99</code> o <code class="literal">03</code></td>
+          </tr>
+
+          <tr>
+           <td style="text-align: center;"><em>Hora</em></td>
+           <td>---</td>
+           <td>---</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">a</code></td>
+           <td>Ante meridiem y Post meridiem en minúsculas</td>
+           <td><code class="literal">am</code> o <code class="literal">pm</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">A</code></td>
+           <td>Ante meridiem y Post meridiem en mayúsculas</td>
+           <td><code class="literal">AM</code> o <code class="literal">PM</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">B</code></td>
+           <td>Hora Internet</td>
+           <td><code class="literal">000</code> hasta <code class="literal">999</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">g</code></td>
+           <td>Formato de 12 horas de una hora sin ceros iniciales</td>
+           <td><code class="literal">1</code> hasta <code class="literal">12</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">G</code></td>
+           <td>Formato de 24 horas de una hora sin ceros iniciales</td>
+           <td><code class="literal">0</code> hasta <code class="literal">23</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">h</code></td>
+           <td>Formato de 12 horas de una hora con ceros iniciales</td>
+           <td><code class="literal">01</code> hasta <code class="literal">12</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">H</code></td>
+           <td>Formato de 24 horas de una hora con ceros iniciales</td>
+           <td><code class="literal">00</code> hasta <code class="literal">23</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">i</code></td>
+           <td>Minutos con ceros iniciales</td>
+           <td><code class="literal">00</code> hasta <code class="literal">59</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">s</code></td>
+           <td>Segundos con ceros iniciales</td>
+           <td><code class="literal">00</code> hasta <code class="literal">59</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">u</code></td>
+           <td>
+            Microsegundos (añadido en PHP 5.2.2). Observe que
+            <span class="function"><strong>date()</strong></span> siempre generará
+            <code class="literal">000000</code> ya que toma un parámetro de tipo
+            <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>, mientras que <span class="methodname"><a href="datetime.format.html" class="methodname">DateTime::format()</a></span>
+            admite microsegundos si <span class="classname"><a href="class.datetime.html" class="classname">DateTime</a></span> fue
+            creado con microsegundos.
+           </td>
+           <td>Ejemplo: <code class="literal">654321</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">v</code></td>
+           <td>
+            Milisegundos (añadido en PHP 7.0.0). La misma observación se aplica para
+            <code class="literal">u</code>.
+           </td>
+           <td>Example: <code class="literal">654</code></td>
+          </tr>
+
+          <tr>
+           <td style="text-align: center;"><em>Zona Horaria</em></td>
+           <td>---</td>
+           <td>---</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">e</code></td>
+           <td>Identificador de zona horaria (añadido en PHP 5.1.0)</td>
+           <td>Ejemplos: <code class="literal">UTC</code>, <code class="literal">GMT</code>, <code class="literal">Atlantic/Azores</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">I</code> (i mayúscula)</td>
+           <td>Si la fecha está en horario de verano o no</td>
+           <td><code class="literal">1</code> si está en horario de verano, <code class="literal">0</code> si no.</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">O</code></td>
+           <td>Diferencia de la hora de Greenwich (GMT) sin colon entre horas y minutos</td>
+           <td>Ejemplo: <code class="literal">+0200</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">P</code></td>
+           <td>Diferencia con la hora de Greenwich (GMT) con dos puntos entre horas y minutos
+            (añadido en PHP 5.1.3)</td>
+           <td>Ejemplo: <code class="literal">+02:00</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">T</code></td>
+           <td>Abreviatura de la zona horaria</td>
+           <td>Ejemplos: <code class="literal">EST</code>, <code class="literal">MDT</code> ...</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">Z</code></td>
+           <td>Índice de la zona horaria en segundos. El índice para zonas horarias al oeste de UTC
+            siempre es negativo, y para aquellas al este de UTC es siempre positivo.</td>
+           <td><code class="literal">-43200</code> hasta <code class="literal">50400</code></td>
+          </tr>
+
+          <tr>
+           <td style="text-align: center;"><em>Fecha/Hora Completa</em></td>
+           <td>---</td>
+           <td>---</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">c</code></td>
+           <td>Fecha ISO 8601 (añadido en PHP 5)</td>
+           <td>2004-02-12T15:19:21+00:00</td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">r</code></td>
+           <td>Fecha con formato <a href="http://www.faqs.org/rfcs/rfc2822" class="link external">&raquo;&nbsp;RFC 2822</a></td>
+           <td>Ejemplo: <code class="literal">Thu, 21 Dec 2000 16:01:07 +0200</code></td>
+          </tr>
+
+          <tr>
+           <td><code class="literal">U</code></td>
+           <td>Segundos desde la Época Unix (1 de Enero del 1970 00:00:00 GMT)</td>
+           <td>Vea también <span class="function"><a href="function.time.html" class="function">time()</a></span></td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+      <p class="para">
+       Los caracteres no reconocidos en la cadena de formato serán impresos
+       tal cual. El formato <code class="literal">Z</code> siempre devolverá
+       <code class="literal">0</code> cuando se usa <span class="function"><a href="function.gmdate.html" class="function">gmdate()</a></span>.
+      </p>       
+      <blockquote class="note"><p><strong class="note">Nota</strong>: 
+       <p class="para">
+        Ya que esta función sólo acepta marcas de tiempo de tipo <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> el
+        carácter de formato <code class="literal">u</code> sólo es útil cuando se usa la
+        función <span class="function"><a href="function.date-format.html" class="function">date_format()</a></span> con marcas de tiempo basadas en usuario
+        creadas con <span class="function"><a href="function.date-create.html" class="function">date_create()</a></span>.
+       </p>
+      </p></blockquote>
+     </dd>
+    
+    
+    
+<dt><code class="parameter">timestamp</code></dt><dd><p class="para">
+ El parámetro opcional <code class="parameter">timestamp</code> es una marca temporal de Unix de tipo
+ <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> que por defecto es la hora local si no se proporciona
+ ningún valor a <code class="parameter">timestamp</code>. En otras palabras,
+ es de forma predeterminada el valor de la función <span class="function"><a href="function.time.html" class="function">time()</a></span>.
+ </p></dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.date-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve una cadena de fecha formateada. Si se usa un valor no numérico para
+   <code class="parameter">timestamp</code>, se devuelve <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> y
+   se emite un error de nivel <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 errors" id="refsect1-function.date-errors">
+  <h3 class="title">Errores/Excepciones</h3>
+  
+  <p class="para">
+Cada vez que se llame a una función de fecha/hora se generará un <strong><code><a href="errorfunc.constants.html#constant.e-notice">E_NOTICE</a></code></strong>
+si la zona horaria no es válida, y/o un mensaje <strong><code><a href="errorfunc.constants.html#constant.e-strict">E_STRICT</a></code></strong>
+o <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong>
+si se emplea la configuración del sistema o la variable global
+<var class="varname">TZ</var>. Véase también <span class="function"><a href="function.date-default-timezone-set.html" class="function">date_default_timezone_set()</a></span></p>
+  
+ </div>
+
+ 
+ <div class="refsect1 changelog" id="refsect1-function.date-changelog">
+  <h3 class="title">Historial de cambios</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Versión</th>
+       <th>Descripción</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+     <tr>
+       <td>5.1.1</td>
+       <td>
+        Hay <a href="datetime.constants.html" class="link">constantes</a> útiles 
+        de los formatos estándar de fecha/hora que pueden utilizarse para especificar 
+        el parámetro <code class="parameter">format</code>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.1.0</td>
+       <td>
+        El rango válido de una marca de tiempo es típicamente desde Fri, 13 Dec
+        1901 20:45:54 GMT a Tue, 19 Jan 2038 03:14:07 GMT. (Estas son
+        las fechas que corresponden a los valores mínimo y máximo de
+        un entero con signo de 32 bit). Sin embargo, antes de PHP 5.1.0 este rango estaba limitado
+        desde 01-01-1970 a 19-01-2038 en algunos sistemas (p.ej. Windows).
+       </td>
+      </tr>
+
+      
+      <tr><td>5.1.0</td><td><p class="para">
+Ahora muestra un error <strong><code><a href="errorfunc.constants.html#constant.e-strict">E_STRICT</a></code></strong> y <strong><code><a href="errorfunc.constants.html#constant.e-notice">E_NOTICE</a></code></strong>
+cuando ocurren errores con zonas horarias.</p></td></tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.date-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-2088">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>date()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Establecer la zona horaria predeterminada a usar. Disponible desde PHP 5.1<br /></span><span style="color: #0000BB">date_default_timezone_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'UTC'</span><span style="color: #007700">);<br /><br /><br /></span><span style="color: #FF8000">// Imprime algo como: Monday<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"l"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Imprime algo como: Monday 8th of August 2005 03:12:46 PM<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">'l jS \of F Y h:i:s A'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Imprime: July 1, 2000 is on a Saturday<br /></span><span style="color: #007700">echo </span><span style="color: #DD0000">"July 1, 2000 is on a " </span><span style="color: #007700">. </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"l"</span><span style="color: #007700">, </span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">7</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2000</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">/* Usar las constantes en el parámetro de formato */<br />// Imprime algo como: Wed, 25 Sep 2013 15:28:57 -0700<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #0000BB">DATE_RFC2822</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Imprime algo como: 2000-07-01T00:00:00+00:00<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #0000BB">DATE_ATOM</span><span style="color: #007700">, </span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">7</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2000</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Puede prevenir que un carácter reconocido en la cadena de formato sea
+   expandido escapándolo con una barra invertida precedente. Si el carácter con una
+   barra invertida es ya una secuencia especial, necesitará escapar también
+   la barra invertida.
+   <div class="example" id="example-2089">
+    <p><strong>Ejemplo #2 Escapar caracteres en <span class="function"><strong>date()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// imprime algo como: Wednesday the 15th<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">'l \t\h\e jS'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Es posible usar <span class="function"><strong>date()</strong></span> y
+   <span class="function"><a href="function.mktime.html" class="function">mktime()</a></span> juntos para buscar fechas en el futuro
+   o en el pasado.
+   <div class="example" id="example-2090">
+    <p><strong>Ejemplo #3 Ejemplo de <span class="function"><strong>date()</strong></span> y <span class="function"><a href="function.mktime.html" class="function">mktime()</a></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$mañana        </span><span style="color: #007700">= </span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"m"</span><span style="color: #007700">)  , </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"d"</span><span style="color: #007700">)+</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"Y"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$mes_anterior  </span><span style="color: #007700">= </span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"m"</span><span style="color: #007700">)-</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"d"</span><span style="color: #007700">),   </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"Y"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$año_siguiente </span><span style="color: #007700">= </span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"m"</span><span style="color: #007700">),   </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"d"</span><span style="color: #007700">),   </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"Y"</span><span style="color: #007700">)+</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     Esto puede ser más fiable que añadir o sustraer simplemente el número
+     de segundos de un día o mes a una marca de tiempo debido al horario de
+     verano.
+    </p>
+   </p></blockquote>
+  </p>
+  <p class="para">
+   Algunos ejemplos de formatear <span class="function"><strong>date()</strong></span>. Observe que
+   debería escapar cualesquiera otros caracteres, ya que cualquiera que tenga
+   actualmente un significado especial producirá resultados no deseados, y
+   a otros caracteres se les pueden asignar significado en futuras versiones de PHP.
+   Cuando se escapa un carácter, asegúrese de usar comillas simples para prevenir que
+   caracteres como \n se conviertan en nuevas líneas.
+   <div class="example" id="example-2091">
+    <p><strong>Ejemplo #4 <span class="function"><strong>date()</strong></span> Formatting</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Se asume que hoy es March 10th, 2001, 5:16:18 pm, y que estamos en la<br />// zona horaria Mountain Standard Time (MST)<br /><br /></span><span style="color: #0000BB">$hoy </span><span style="color: #007700">= </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"F j, Y, g:i a"</span><span style="color: #007700">);                 </span><span style="color: #FF8000">// March 10, 2001, 5:16 pm<br /></span><span style="color: #0000BB">$hoy </span><span style="color: #007700">= </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"m.d.y"</span><span style="color: #007700">);                         </span><span style="color: #FF8000">// 03.10.01<br /></span><span style="color: #0000BB">$hoy </span><span style="color: #007700">= </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"j, n, Y"</span><span style="color: #007700">);                       </span><span style="color: #FF8000">// 10, 3, 2001<br /></span><span style="color: #0000BB">$hoy </span><span style="color: #007700">= </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"Ymd"</span><span style="color: #007700">);                           </span><span style="color: #FF8000">// 20010310<br /></span><span style="color: #0000BB">$hoy </span><span style="color: #007700">= </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">'h-i-s, j-m-y, it is w Day'</span><span style="color: #007700">);     </span><span style="color: #FF8000">// 05-16-18, 10-03-01, 1631 1618 6 Satpm01<br /></span><span style="color: #0000BB">$hoy </span><span style="color: #007700">= </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">'\i\t \i\s \t\h\e jS \d\a\y.'</span><span style="color: #007700">);   </span><span style="color: #FF8000">// it is the 10th day.<br /></span><span style="color: #0000BB">$hoy </span><span style="color: #007700">= </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"D M j G:i:s T Y"</span><span style="color: #007700">);               </span><span style="color: #FF8000">// Sat Mar 10 17:16:18 MST 2001<br /></span><span style="color: #0000BB">$hoy </span><span style="color: #007700">= </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">'H:m:s \m \i\s\ \m\o\n\t\h'</span><span style="color: #007700">);     </span><span style="color: #FF8000">// 17:03:18 m is month<br /></span><span style="color: #0000BB">$hoy </span><span style="color: #007700">= </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"H:i:s"</span><span style="color: #007700">);                         </span><span style="color: #FF8000">// 17:16:18<br /></span><span style="color: #0000BB">$hoy </span><span style="color: #007700">= </span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"Y-m-d H:i:s"</span><span style="color: #007700">);                   </span><span style="color: #FF8000">// 2001-03-10 17:16:18 (el formato DATETIME de MySQL)<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Para formatear fechas en otros lenguajes debería usar las
+   funciones <span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span> y <span class="function"><a href="function.strftime.html" class="function">strftime()</a></span>
+   en vez de <span class="function"><strong>date()</strong></span>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.date-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Para generar una marca de tiempo desde una cadena que representa la fecha,
+    puede usar <span class="function"><a href="function.strtotime.html" class="function">strtotime()</a></span>. Adicionalmente, algunas
+    bases de datos tienen funciones para convertir formatos de fecha en marcas de tiempo
+    (como la función <a href="http://dev.mysql.com/doc/mysql/en/date-and-time-functions.html" class="link external">&raquo;&nbsp;UNIX_TIMESTAMP</a>
+    de MySQL).
+   </p>
+  </p></blockquote>
+  <div class="tip"><strong class="tip">Sugerencia</strong>
+   <p class="para">
+    La marca de tiempo del inicio de una petición está disponible en
+    <var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER['REQUEST_TIME']</a></var> desde PHP 5.1.
+   </p>
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.date-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.gmdate.html" class="function" rel="rdfs-seeAlso">gmdate()</a> - Formatea una fecha/hora GMT/UTC</span></li>
+    <li><span class="function"><a href="function.idate.html" class="function" rel="rdfs-seeAlso">idate()</a> - Formatea una fecha/hora local como un entero</span></li>
+    <li><span class="function"><a href="function.getdate.html" class="function" rel="rdfs-seeAlso">getdate()</a> - Obtener informaci&oacute;n de la fecha/hora</span></li>
+    <li><span class="function"><a href="function.getlastmod.html" class="function" rel="rdfs-seeAlso">getlastmod()</a> - Obtiene la hora de la &uacute;ltima modificaci&oacute;n de la
+  p&aacute;gina</span></li>
+    <li><span class="function"><a href="function.mktime.html" class="function" rel="rdfs-seeAlso">mktime()</a> - Obtener la marca de tiempo Unix de una fecha</span></li>
+    <li><span class="function"><a href="function.strftime.html" class="function" rel="rdfs-seeAlso">strftime()</a> - Formatea una fecha/hora local seg&uacute;n una configuraci&oacute;n local</span></li>
+    <li><span class="function"><a href="function.time.html" class="function" rel="rdfs-seeAlso">time()</a> - Devuelve la fecha Unix actual</span></li>
+    <li><span class="function"><a href="function.strtotime.html" class="function" rel="rdfs-seeAlso">strtotime()</a> - Convierte una descripci&oacute;n de fecha/hora textual en Ingl&eacute;s a una fecha Unix</span></li>
+    <li><a href="class.datetimeinterface.html#datetime.constants.types" class="link">Constantes Predefinidas de DateTime</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

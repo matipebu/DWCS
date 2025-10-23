@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Delimitadores</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="regexp.introduction.html">« Introducci&oacute;n</a></li>
+      <li style="float: right;"><a href="regexp.reference.meta.html">Metacaracteres »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="reference.pcre.pattern.syntax.html">Sintaxis de expresiones regulares de PCRE</a></li>
+    <li>Delimitadores</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="regexp.reference.delimiters" class="section">
+  <h2 class="title">Delimitadores</h2>
+  <p class="para">
+   Cuando se usan funciones PCRE, se requiere que el patrón esté encerrado
+   entre <em>delimitadores</em>. Un delimitador puede ser cualquier carácter
+   no alfanumérico, que no sea una barra invertida, y que no sea un espacio en blanco.
+  </p>
+  <p class="para">
+   Los delimitadores que se usan a menudo son barras oblícuas (<code class="literal">/</code>), signos
+   de número (<code class="literal">#</code>) y virgulillas (<code class="literal">~</code>). Los
+   siguientes ejemplos son todos patrones delimitados válidos.
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="cdata"><pre>
+/foo bar/
+#^[^0-9]$#
++php+
+%[a-zA-Z0-9_-]%
+</pre></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   También es posible utilizar los
+   delimitadores estilo corchete, donde los corchetes de apertura y cierre son
+   los delimitadores inicial y final, respectivamente. <code class="literal">()</code>,
+   <code class="literal">{}</code>, <code class="literal">[]</code> y <code class="literal">&lt;&gt;</code>
+   son todos pares de delimitadores válidos.
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="cdata"><pre>
+(this [is] a (pattern))
+{this [is] a (pattern)}
+[this [is] a (pattern)]
+&lt;this [is] a (pattern)&gt;
+</pre></div>
+    </div>
+
+   </div>
+   Los delimitadores de estilo de corchete no necesitan escaparse cuando se usan 
+   como meta caracteres dentro del patrón, pero al igual que con otros delimitadores, 
+   deben ser escapados cuando se utilizan como caracteres literales.
+  </p>
+  <p class="para">
+   Si el delimitador necesita ser comparado dentro del patrón se debe
+   escapar usando una barra invertida. Si el delimitador aparece a menudo dentro del
+   patrón, es una buena idea escoger otro delimitador para aumentar
+   la legibilidad.
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="cdata"><pre>
+/http:\/\//
+#http://#
+</pre></div>
+    </div>
+
+   </div>
+   La función <span class="function"><a href="function.preg-quote.html" class="function">preg_quote()</a></span> se puede usar para escapar una cadena
+   para inyectarla dentro de un patrón y su segundo parámetro opcional de puede usar
+   parar especificar el delimitador a escapar.
+  </p>
+  <p class="para">
+   Puede añadir <a href="reference.pcre.pattern.modifiers.html" class="link">modificadores de
+   patrón</a> después del delimitador final. El siguiente es un ejemplo
+   de comparación insensible a mayúsculas-minúsculas:
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="cdata"><pre>
+#[a-z]#i
+</pre></div>
+    </div>
+
+   </div>
+  </p>
+ </div></div></div></body></html>

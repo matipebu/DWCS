@@ -1,0 +1,228 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>include</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.require.html">« require</a></li>
+      <li style="float: right;"><a href="function.require-once.html">require_once »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.control-structures.html">Estructuras de Control</a></li>
+    <li>include</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.include" class="sect1">
+ <h2 class="title">include</h2>
+ <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p>
+ <p class="simpara">
+  La sentencia <code class="literal">include</code> incluye y evalúa
+  el archivo especificado.
+ </p>
+ <p class="simpara">
+  La siguiente documentación también se aplica a <span class="function"><a href="function.require.html" class="function">require</a></span>.
+ </p>
+ <p class="simpara">
+  Los archivos son incluidos con base en la ruta de acceso dada o, si ninguna es dada, el
+  <a href="ini.core.html#ini.include-path" class="link">include_path</a> especificado. Si el archivo
+  no se encuentra en el <a href="ini.core.html#ini.include-path" class="link">include_path</a>,
+  <code class="literal">include</code> finalmente verificará en el propio directorio del script
+  que hace el llamado y en el directorio de trabajo actual, antes de fallar. El
+  constructor <code class="literal">include</code> emitirá una
+  <a href="errorfunc.constants.html#constant.e-warning" class="link">advertencia</a> si
+  no puede encontrar un archivo, éste es un comportamiento diferente al de
+  <span class="function"><a href="function.require.html" class="function">require</a></span>, el cual emitirá un
+  <a href="errorfunc.constants.html#constant.e-error" class="link">error fatal.</a>.
+ </p>
+ <p class="simpara">
+  Si una ruta es definida — ya sea absoluta (comenzando con una letra de unidad
+  o <code class="literal">\</code> en Windows o <code class="literal">/</code> en sistemas Unix/Linux) o relativa al
+  directorio actual (comenzando con <code class="literal">.</code> o
+  <code class="literal">..</code>) — el
+  <a href="ini.core.html#ini.include-path" class="link">include_path</a> será ignorado
+  por completo. Por ejemplo, si un nombre de archivo comienza con <code class="literal">../</code>,
+  el interprete buscará en el directorio padre para encontrar el archivo solicitado.
+ </p>
+ <p class="simpara">
+  Para más información sobre como PHP maneja la inclusión de archivos y la ruta de accesos para incluir,
+  ver la documentación de <a href="ini.core.html#ini.include-path" class="link">include_path</a>. 
+ </p>
+ <p class="simpara">
+  Cuando se incluye un archivo, el código que contiene hereda el
+  <a href="language.variables.scope.html" class="link">ámbito de las variables</a> de la
+  línea en la cual ocurre la inclusión. Cualquier variable disponible en esa línea
+  del archivo que hace el llamado, estará disponible en el archivo llamado, desde ese
+  punto en adelante.
+  Sin embargo, todas las funciones y clases definidas en el archivo incluido tienen el
+  ámbito global.
+ </p>
+ <p class="para">
+  <div class="example" id="example-147">
+   <p><strong>Ejemplo #1 Ejemplo básico de <code class="literal">include</code></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">vars.php<br /><span style="color: #0000BB">&lt;?php<br /><br />$color </span><span style="color: #007700">= </span><span style="color: #DD0000">'verde'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$fruta </span><span style="color: #007700">= </span><span style="color: #DD0000">'manzana'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;<br /></span><br />test.php<br /><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">echo </span><span style="color: #DD0000">"Una </span><span style="color: #0000BB">$fruta</span><span style="color: #DD0000"> </span><span style="color: #0000BB">$color</span><span style="color: #DD0000">"</span><span style="color: #007700">; </span><span style="color: #FF8000">// Una<br /><br /></span><span style="color: #007700">include </span><span style="color: #DD0000">'vars.php'</span><span style="color: #007700">;<br /><br />echo </span><span style="color: #DD0000">"Una </span><span style="color: #0000BB">$fruta</span><span style="color: #DD0000"> </span><span style="color: #0000BB">$color</span><span style="color: #DD0000">"</span><span style="color: #007700">; </span><span style="color: #FF8000">// Una manzana verde<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+  Si la inclusión ocurre al interior de una función dentro del archivo que hace el llamado,
+  entonces todo el código contenido en el archivo llamado se comportará como
+  si hubiera sido definida dentro de esa función. Por lo tanto, seguirá
+  el ámbito de las variables de esa función.
+  Una excepción a esta regla son las <a href="language.constants.predefined.html" class="link">constantes mágicas</a> las cuales son
+  evaluadas por el intérprete antes que ocurra la inclusión.
+ </p>
+ <p class="para">
+  <div class="example" id="example-148">
+   <p><strong>Ejemplo #2 Incluyendo dentro de funciones</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">()<br />{<br />    global </span><span style="color: #0000BB">$color</span><span style="color: #007700">;<br /><br />    include </span><span style="color: #DD0000">'vars.php'</span><span style="color: #007700">;<br /><br />    echo </span><span style="color: #DD0000">"Una </span><span style="color: #0000BB">$fruta</span><span style="color: #DD0000"> </span><span style="color: #0000BB">$color</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">/* vars.php está en el ámbito de foo() así que *<br />* $fruta NO está disponible por fuera de éste  *<br />* ámbito. $color sí está porque fue declarado *<br />* como global.                                 */<br /><br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">();                      </span><span style="color: #FF8000">// Una manzana verde<br /></span><span style="color: #007700">echo </span><span style="color: #DD0000">"Una </span><span style="color: #0000BB">$fruta</span><span style="color: #DD0000"> </span><span style="color: #0000BB">$color</span><span style="color: #DD0000">"</span><span style="color: #007700">;   </span><span style="color: #FF8000">// Una verde<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+  Cuando un archivo es incluido, el intérprete abandona el modo PHP e
+  ingresa al modo HTML al comienzo del archivo objetivo y se reanuda
+  de nuevo al final. Por esta razón, cualquier código al interior del archivo
+  objetivo que deba ser ejecutado como código PHP, tendrá que ser encerrado dentro de
+  <a href="language.basic-syntax.phpmode.html" class="link">etiquetas válidas de
+   comienzo y terminación de PHP</a>.
+ </p>
+ <p class="simpara">
+  Si las &quot;<a href="filesystem.configuration.html#ini.allow-url-include" class="link">envolturas URL include</a>&quot;
+  están activadas en PHP,
+  se puede especificar el archivo a ser incluido usando una URL (vía HTTP u
+  otra envoltura soportada - ver <a href="wrappers.html" class="xref">Protocolos y Envolturas soportados</a> para una lista
+  de protocolos) en lugar de una ruta de acceso local. Si el servidor objetivo interpreta
+  el archivo objetivo como código PHP, las variables se pueden pasar al archivo
+  incluido usando una string de petición como la usada con HTTP GET. Esto
+  no es, en estricto rigor, lo mismo que haber incluido el archivo y que
+  haya heredado el ámbito de variables del archivo padre; el script realmente
+  está siendo ejecutado en el servidor remoto y el resultado entonces se
+  incluye dentro del script local.
+ </p>
+ <p class="para">
+  <div class="example" id="example-149">
+   <p><strong>Ejemplo #3 <code class="literal">include</code> por medio de HTTP</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/* Este ejemplo asume que www.example.com está configurado para interpretar archivos<br />* .php y no archivos .txt. Además, aquí 'Funciona' quiere decir que las variables<br />* $foo y $bar están disponibles dentro del archivo incluido. */<br /><br />// No funciona; file.txt no puede ser manejado por www.example.com como PHP<br /></span><span style="color: #007700">include </span><span style="color: #DD0000">'http://www.example.com/file.txt?foo=1&amp;bar=2'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">// No funciona; busca por un archivo llamado 'file.php?foo=1&amp;bar=2' en el<br />// sistema de archivos local.<br /></span><span style="color: #007700">include </span><span style="color: #DD0000">'file.php?foo=1&amp;bar=2'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">// Si funciona.<br /></span><span style="color: #007700">include </span><span style="color: #DD0000">'http://www.example.com/file.php?foo=1&amp;bar=2'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$foo </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$bar </span><span style="color: #007700">= </span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />include </span><span style="color: #DD0000">'file.txt'</span><span style="color: #007700">;  </span><span style="color: #FF8000">// Funciona.<br /></span><span style="color: #007700">include </span><span style="color: #DD0000">'file.php'</span><span style="color: #007700">;  </span><span style="color: #FF8000">// Funciona.<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </p>
+ <div class="warning"><strong class="warning">Advertencia</strong>
+  <h1 class="title">Advertencia de seguridad</h1>
+  <p class="para">
+   El archivo remoto puede ser procesado en el servidor remoto (dependiendo de la extensión
+   del archivo y del hecho de si el servidor remoto corre PHP o no) pero aun así
+   tiene que producir un script PHP válido, porque será procesado en el
+   servidor local. Si el archivo desde el servidor remoto debe ser procesado
+   allá y entregar la salida solamente, <span class="function"><a href="function.readfile.html" class="function">readfile()</a></span> es la mejor
+   función para usar. De lo contrario, debe tenerse especial cuidado para asegurar que
+   el script remoto produce un código válido y deseado.
+  </p>
+ </div>
+ <p class="para">
+  Ver también <a href="features.remote-files.html" class="link">Archivos remotos</a>,
+  <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> y <span class="function"><a href="function.file.html" class="function">file()</a></span> para información
+  relacionada.
+ </p>
+ <p class="simpara">
+  Manejando retornos: <code class="literal">include</code> devuelve 
+  <code class="literal">FALSE</code> en caso de falla y eleva una advertencia. Inclusiones
+  exitosas, a menos que sea reemplazado por el archivo incluido, devolverá
+  <code class="literal">1</code>. Es posible ejecutar una sentencia <span class="function"><a href="function.return.html" class="function">return</a></span>
+  dentro de un archivo incluido con el fin de terminar el procesamiento en
+  ese archivo y volver al script que lo llamó. Además, es posible
+  retornar valores desde los archivos incluidos. Se puede tomar el valor de la
+  llamada &quot;include&quot; de la misma forma como se haría con una función normal. Esto no es, sin embargo,
+  posible si se incluyen archivos remotos, a menos que la salida del archivo
+  remoto tenga unas <a href="language.basic-syntax.phpmode.html" class="link">etiquetas válidas de
+  inicio y terminación de PHP</a> (igual que con cualquier archivo local). Se pueden declarar las
+  variables necesarias dentro de esas etiquetas y serán introducidas en
+  cualquiera sea el punto del archivo en el cual fue incluido.
+ </p>
+ <p class="para">
+  Debido a que <code class="literal">include</code> es un constructor especial del lenguaje,
+  los paréntesis no son necesarios en torno a su argumento. Se debe tener cuidado cuando se compara
+  el valor de retorno.
+  <div class="example" id="example-150">
+   <p><strong>Ejemplo #4 Comparando el valor de retorno de include</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// no funcionará, se evalúa como include(('vars.php') == TRUE), es decir, include('')<br /></span><span style="color: #007700">if (include(</span><span style="color: #DD0000">'vars.php'</span><span style="color: #007700">) == </span><span style="color: #0000BB">TRUE</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">'OK'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">// sí funciona<br /></span><span style="color: #007700">if ((include </span><span style="color: #DD0000">'vars.php'</span><span style="color: #007700">) == </span><span style="color: #0000BB">TRUE</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">'OK'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="para">
+  <div class="example" id="example-151">
+   <p><strong>Ejemplo #5 <code class="literal">include</code> y la sentencia <span class="function"><a href="function.return.html" class="function">return</a></span></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">return.php<br /><span style="color: #0000BB">&lt;?php<br /><br />$var </span><span style="color: #007700">= </span><span style="color: #DD0000">'PHP'</span><span style="color: #007700">;<br /><br />return </span><span style="color: #0000BB">$var</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;<br /></span><br />noreturn.php<br /><span style="color: #0000BB">&lt;?php<br /><br />$var </span><span style="color: #007700">= </span><span style="color: #DD0000">'PHP'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;<br /></span><br />testreturns.php<br /><span style="color: #0000BB">&lt;?php<br /><br />$foo </span><span style="color: #007700">= include </span><span style="color: #DD0000">'return.php'</span><span style="color: #007700">;<br /><br />echo </span><span style="color: #0000BB">$foo</span><span style="color: #007700">; </span><span style="color: #FF8000">// muestra 'PHP'<br /><br /></span><span style="color: #0000BB">$bar </span><span style="color: #007700">= include </span><span style="color: #DD0000">'noreturn.php'</span><span style="color: #007700">;<br /><br />echo </span><span style="color: #0000BB">$bar</span><span style="color: #007700">; </span><span style="color: #FF8000">// muestra 1<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+  <code class="literal">$bar</code> tiene el valor <code class="literal">1</code> debido a que el include
+  fue exitoso. Nótese la diferencia entre los ejemplos anteriores. El primero usa
+  <span class="function"><a href="function.return.html" class="function">return</a></span> dentro del archivo incluido, mientras que el otro no.
+  Si el archivo no se pueden incluir, se retorna <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> y
+  se emite un <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong>.
+ </p>
+ <p class="para">
+  Si hay funciones definidas en el archivo incluido, se pueden utilizar en el
+  archivo principal independientemente que hayan <span class="function"><a href="function.return.html" class="function">return</a></span> antes o después.
+  Si el archivo se incluye dos veces, PHP 5 arrojará un error fatal ya que las funciones
+  ya han sido declaradas, mientras que PHP 4 no se queja acerca de las funciones
+  definidas después de un <span class="function"><a href="function.return.html" class="function">return</a></span>.
+  Se recomienda el uso de <span class="function"><a href="function.include-once.html" class="function">include_once</a></span> en lugar de
+  comprobar si el archivo ya estaba incluido y hacer el retorno de forma condicionada dentro
+  del archivo incluido.
+ </p>
+ <p class="simpara">
+  Otra forma de &quot;incluir&quot; un archivo PHP en una variable es capturar la
+  salida mediante el uso de <a href="ref.outcontrol.html" class="link">Funciones de control de
+  salida</a> con <code class="literal">include</code>. Por ejemplo:
+ </p>
+ <p class="para">
+  <div class="example" id="example-152">
+   <p><strong>Ejemplo #6 Usando buffering de salida para incluir un archivo PHP dentro de una cadena</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$string </span><span style="color: #007700">= </span><span style="color: #0000BB">get_include_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'somefile.php'</span><span style="color: #007700">);<br /><br />function </span><span style="color: #0000BB">get_include_contents</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">) {<br />    if (</span><span style="color: #0000BB">is_file</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">)) {<br />        </span><span style="color: #0000BB">ob_start</span><span style="color: #007700">();<br />        include </span><span style="color: #0000BB">$filename</span><span style="color: #007700">;<br />        return </span><span style="color: #0000BB">ob_get_clean</span><span style="color: #007700">();<br />    }<br />    return </span><span style="color: #0000BB">false</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="para">
+  Con el fin de incluir archivos de forma automática dentro de scripts, véase también las
+  opciones de configuración
+  <a href="ini.core.html#ini.auto-prepend-file" class="link">auto_prepend_file</a> and
+  <a href="ini.core.html#ini.auto-append-file" class="link">auto_append_file</a> en <var class="filename">php.ini</var>.
+ </p>
+ 
+ <blockquote class="note"><p><strong class="note">Nota</strong>: <span class="simpara">Puesto que esto es
+una construcción del lenguaje y no una función, no puede ser llamada usando
+<a href="functions.variable-functions.html" class="link">funciones variables</a>.</span>
+</p></blockquote>
+ 
+ <p class="simpara">
+  Ver también <span class="function"><a href="function.require.html" class="function">require</a></span>, <span class="function"><a href="function.require-once.html" class="function">require_once</a></span>,
+  <span class="function"><a href="function.include-once.html" class="function">include_once</a></span>, <span class="function"><a href="function.get-included-files.html" class="function">get_included_files()</a></span>,
+  <span class="function"><a href="function.readfile.html" class="function">readfile()</a></span>, <span class="function"><a href="function.virtual.html" class="function">virtual()</a></span> y
+  <a href="ini.core.html#ini.include-path" class="link">include_path</a>.
+ </p>
+</div></div></div></body></html>

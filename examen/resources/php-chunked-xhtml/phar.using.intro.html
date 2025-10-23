@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Utilizar Archivos Phar: Introduction</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="phar.using.html">« Utilizar Archivos Phar</a></li>
+      <li style="float: right;"><a href="phar.using.stream.html">Utilizar Archivos Phar: la envoltura de flujos phar »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="phar.using.html">Utilizar Archivos Phar</a></li>
+    <li>Utilizar Archivos Phar: Introduction</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="phar.using.intro" class="section">
+  <h2 class="title">Utilizar Archivos Phar: Introduction</h2>
+  <p class="para">
+   Los archivos phar son similares en concepto a los archivo JAR de Java, pero están adaptados
+   a las necesidades y a la flexibilidad de aplicaciones de PHP. Un archivo Phar se
+   usa para distribuir una aplicación o biblioteca PHP completa en un único fichero. Una
+   aplicación de un archivo Phar se utiliza exactamente de la misma manera que otra aplicación PHP:
+  </p>
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+php aplicacion.phar
+  </pre></div>
+  </div>
+  <p class="para">
+   Utilizar una biblioteca de archivo Phar es idéntico a usar cualquier otra biblioteca de PHP:
+  </p>
+  <p class="para">
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">include </span><span style="color: #DD0000">'biblioteca.phar'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   La envoltura de flujos <code class="literal">phar</code> proporciona el núcleo de la extensión Phar, y
+   está explicada en detalle <a href="phar.using.stream.html" class="link">aquí</a>.
+   La envoltura de flujos phar permite el acceso a los ficheros dentro de un archivo phar utilizando
+   las funciones estándar de ficheros de PHP <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>, <span class="function"><a href="function.opendir.html" class="function">opendir()</a></span>, y
+   y otras que trabajan sobre ficheros normales. La envoltura de flujos <code class="literal">phar</code> soporta todas
+   las operaciones de lectura/escritura tanto en ficheros como en directorios.
+  </p>
+  <p class="para">
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">include </span><span style="color: #DD0000">'phar://biblioteca.phar/fichero/interno.php'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-type: image/jpeg'</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">// a los phar se puede acceder con la ruta completa o mediante un alias<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'phar:///ruta_completa/a/biblioteca.phar/imagenes/wow.jpg'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   La clase <span class="classname"><a href="class.phar.html" class="classname">Phar</a></span> implementa una funcionalidad avanzada para acceder
+   a ficheros y crear arhivos phar. La clas Phar está explicada en detalle
+   <a href="phar.using.object.html" class="link">aquí</a>.
+  </p>
+  <p class="para">
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">try {<br />    </span><span style="color: #FF8000">// abrir un phar existente<br />    </span><span style="color: #0000BB">$p </span><span style="color: #007700">= new </span><span style="color: #0000BB">Phar</span><span style="color: #007700">(</span><span style="color: #DD0000">'biblioteca.phar'</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">);<br />    </span><span style="color: #FF8000">// Phar extiende la clase DirectoryIterator de SPL<br />    </span><span style="color: #007700">foreach (new </span><span style="color: #0000BB">RecursiveIteratorIterator</span><span style="color: #007700">(</span><span style="color: #0000BB">$p</span><span style="color: #007700">) as </span><span style="color: #0000BB">$fichero</span><span style="color: #007700">) {<br />        </span><span style="color: #FF8000">// $fichero en una clase PharFileInfo, y hereda de SplFileInfo<br />        </span><span style="color: #007700">echo </span><span style="color: #0000BB">$fichero</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getFileName</span><span style="color: #007700">() . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />        echo </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #0000BB">$fichero</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getPathName</span><span style="color: #007700">()) . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">; </span><span style="color: #FF8000">// mostrar el contenido;<br />    </span><span style="color: #007700">}<br />    if (isset(</span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'fichero/interno.php'</span><span style="color: #007700">])) {<br />        </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'fichero/interno.php'</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">getMetadata</span><span style="color: #007700">());<br />    }<br /><br />    </span><span style="color: #FF8000">// crear un nuevo phar - phar.readonly debe ser 0 en php.ini<br />    // phar.readonly está habilitado por omisión por motivos de seguridad.<br />    // En servidores de producción, los archivos Phar nunca se crean,<br />    // sólo se ejecutan.<br />    </span><span style="color: #007700">if (</span><span style="color: #0000BB">Phar</span><span style="color: #007700">::</span><span style="color: #0000BB">canWrite</span><span style="color: #007700">()) {<br />        </span><span style="color: #0000BB">$p </span><span style="color: #007700">= new </span><span style="color: #0000BB">Phar</span><span style="color: #007700">(</span><span style="color: #DD0000">'nuevo_phar.tar.phar'</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #DD0000">'nuevo_phar.tar.phar'</span><span style="color: #007700">);<br />        </span><span style="color: #FF8000">// hacerlo un archivo phar basado en tar, comprimido con gzip (.tar.gz)<br />        </span><span style="color: #0000BB">$p </span><span style="color: #007700">= </span><span style="color: #0000BB">$p</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">convertToExecutable</span><span style="color: #007700">(</span><span style="color: #0000BB">Phar</span><span style="color: #007700">::</span><span style="color: #0000BB">TAR</span><span style="color: #007700">, </span><span style="color: #0000BB">Phar</span><span style="color: #007700">::</span><span style="color: #0000BB">GZ</span><span style="color: #007700">);<br /><br />        </span><span style="color: #FF8000">// crear una transacción -  no se escribe nada en nuevo_phar.phar<br />        // hasta que stopBuffering() sea llamado, aunque se necesita almacenamiento temporal<br />        </span><span style="color: #0000BB">$p</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">startBuffering</span><span style="color: #007700">();<br />        </span><span style="color: #FF8000">// añadir todos los ficheros de /ruta/del/proyecto, guardándolos en el phar con el prefijo "proyecto"<br />        </span><span style="color: #0000BB">$p</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">buildFromIterator</span><span style="color: #007700">(new </span><span style="color: #0000BB">RecursiveIteratorIterator</span><span style="color: #007700">(new </span><span style="color: #0000BB">DirectoryIterator</span><span style="color: #007700">(</span><span style="color: #DD0000">'/ruta/del/proyecto'</span><span style="color: #007700">)), </span><span style="color: #DD0000">'/ruta/del/'</span><span style="color: #007700">);<br /><br />        </span><span style="color: #FF8000">// añadir un nuevo fichero mediante la API de acceso a arrays<br />        </span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'fichero1.txt'</span><span style="color: #007700">] = </span><span style="color: #DD0000">'Información'</span><span style="color: #007700">;<br />        </span><span style="color: #0000BB">$fp </span><span style="color: #007700">= </span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'fichero_enorme.dat'</span><span style="color: #007700">, </span><span style="color: #DD0000">'rb'</span><span style="color: #007700">);<br />        </span><span style="color: #FF8000">// copiar toda la información del flujo<br />        </span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'datos/fichero_enorme.dat'</span><span style="color: #007700">] = </span><span style="color: #0000BB">$fp</span><span style="color: #007700">;<br /><br />        if (</span><span style="color: #0000BB">Phar</span><span style="color: #007700">::</span><span style="color: #0000BB">canCompress</span><span style="color: #007700">(</span><span style="color: #0000BB">Phar</span><span style="color: #007700">::</span><span style="color: #0000BB">GZ</span><span style="color: #007700">)) {<br />            </span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'datos/fichero_enorme.dat'</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">compress</span><span style="color: #007700">(</span><span style="color: #0000BB">Phar</span><span style="color: #007700">::</span><span style="color: #0000BB">GZ</span><span style="color: #007700">);<br />        }<br /><br />        </span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'imagenes/wow.jpg'</span><span style="color: #007700">] = </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'imagenes/wow.jpg'</span><span style="color: #007700">);<br />        </span><span style="color: #FF8000">// cualquier valor se puede guardar como metainformación específica del fichero<br />        </span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'imagenes/wow.jpg'</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">setMetadata</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'mime-type' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'image/jpeg'</span><span style="color: #007700">));<br />        </span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'index.php'</span><span style="color: #007700">] = </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'index.php'</span><span style="color: #007700">);<br />        </span><span style="color: #0000BB">$p</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setMetadata</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'bootstrap' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'index.php'</span><span style="color: #007700">));<br /><br />        </span><span style="color: #FF8000">// cuardar el archivo phar en el disco<br />        </span><span style="color: #0000BB">$p</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">stopBuffering</span><span style="color: #007700">();<br />    }<br />} catch (</span><span style="color: #0000BB">Exception $e</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">'No se pudo abrir Phar: '</span><span style="color: #007700">, </span><span style="color: #0000BB">$e</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Además, la verificación del contenido de ficheros phar se puede realizar utilizando cualquiera de los
+   algoritmos hash simétricos soportados (MD5, SHA1, SHA256 y SHA512 si la extensión Hash está habilitada)
+   y utilizando firmas de clave pública/privada asimétricas de OpenSSL (nuevo en Phar 2.0.0). Para
+   aprovechar la firmas de OpenSSL, se necesita generar una pareja de claves pública/privada, y
+   utilizar la clave privada para establecer la firma usando
+   <span class="function"><a href="phardata.setsignaturealgorithm.html" class="function">Phar::setSignatureAlgorithm()</a></span>. Además, la clave pública se
+   extrae usando este código:
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$public </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_get_publickey</span><span style="color: #007700">(</span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'private.pem'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$pkey </span><span style="color: #007700">= </span><span style="color: #DD0000">''</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">openssl_pkey_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$public</span><span style="color: #007700">, </span><span style="color: #0000BB">$pkey</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   debe ser guardada junto al archivo phar que verifica. Si el archivo phar
+   es guardado como <code class="literal">/ruta/a/mi.phar</code>, la clave pública debe guardarse
+   como <code class="literal">/ruta/a/mi.phar.pubkey</code>, o phar no será capaz de verificar
+   la firma OpenSSL.
+  </p>
+  <p class="para">
+   A partir de la verisón 2.0.0, la clase <span class="classname"><a href="class.phar.html" class="classname">Phar</a></span> también proporciona tres métodos estáticos, <span class="function"><a href="phar.webphar.html" class="function">Phar::webPhar()</a></span>,
+   <span class="function"><a href="phar.mungserver.html" class="function">Phar::mungServer()</a></span> y <span class="function"><a href="phar.interceptfilefuncs.html" class="function">Phar::interceptFileFuncs()</a></span>, los cuales son cruiciales
+   para empaquetar aplicaciones PHP diseñadas para un uso en sistemas de ficheros normales y aplicación basadas en web.
+   <span class="function"><a href="phar.webphar.html" class="function">Phar::webPhar()</a></span> implementa un controlador principal que direcciona llamadas HTTP a la ubicación
+   correcta dentro del archivo phar. <span class="function"><a href="phar.mungserver.html" class="function">Phar::mungServer()</a></span> se utiliza para modificar los valores del
+   array <var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER</a></var> para hacer que las aplicaciones procesen estos valores.
+   <span class="function"><a href="phar.interceptfilefuncs.html" class="function">Phar::interceptFileFuncs()</a></span> ordena a Phar que intercepte llamdas a
+   <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>, <span class="function"><a href="function.file-get-contents.html" class="function">file_get_contents()</a></span>, <span class="function"><a href="function.opendir.html" class="function">opendir()</a></span>, y
+   a todas las funciones basadas en estadísticas (<span class="function"><a href="function.file-exists.html" class="function">file_exists()</a></span>, <span class="function"><a href="function.is-readable.html" class="function">is_readable()</a></span>, etc.) y
+   direccione todas las rutas relativas a las ubicaciones dentro del archivo phar.
+  </p>
+  <p class="para">
+   Como ejemplo, empaquetar una versión de la popular aplicación phpMyAdmin para usarla cono un archivo phar, requiere
+   solamente este sencillo script, y después se puede acceder a <code class="literal">phpMyAdmin.phar.tar.php</code> como un fichero normal
+   desde el servidor web después de modificar el usuario/contraseña:
+  </p>
+  <p class="para">
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">@</span><span style="color: #0000BB">unlink</span><span style="color: #007700">(</span><span style="color: #DD0000">'phpMyAdmin.phar.tar.php'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">copy</span><span style="color: #007700">(</span><span style="color: #DD0000">'phpMyAdmin-2.11.3-english.tar.gz'</span><span style="color: #007700">, </span><span style="color: #DD0000">'phpMyAdmin.phar.tar.php'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$a </span><span style="color: #007700">= new </span><span style="color: #0000BB">Phar</span><span style="color: #007700">(</span><span style="color: #DD0000">'phpMyAdmin.phar.tar.php'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">startBuffering</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">"phpMyAdmin-2.11.3-english/config.inc.php"</span><span style="color: #007700">] = </span><span style="color: #DD0000">'&lt;?php<br />/* Servers configuration */<br />$i = 0;<br /><br />/* Server localhost (config:root) [1] */<br />$i++;<br />$cfg[\'Servers\'][$i][\'host\'] = \'localhost\';<br />$cfg[\'Servers\'][$i][\'extension\'] = \'mysqli\';<br />$cfg[\'Servers\'][$i][\'connect_type\'] = \'tcp\';<br />$cfg[\'Servers\'][$i][\'compress\'] = false;<br />$cfg[\'Servers\'][$i][\'auth_type\'] = \'config\';<br />$cfg[\'Servers\'][$i][\'user\'] = \'root\';<br />$cfg[\'Servers\'][$i][\'password\'] = \'\';<br /><br /><br />/* End of servers configuration */<br />if (strpos(PHP_OS, \'WIN\') !== false) {<br />    $cfg[\'UploadDir\'] = getcwd();<br />} else {<br />    $cfg[\'UploadDir\'] = \'/tmp/pharphpmyadmin\';<br />    @mkdir(\'/tmp/pharphpmyadmin\');<br />    @chmod(\'/tmp/pharphpmyadmin\', 0777);<br />}'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setStub</span><span style="color: #007700">(</span><span style="color: #DD0000">'&lt;?php<br />Phar::interceptFileFuncs();<br />Phar::webPhar("phpMyAdmin.phar", "phpMyAdmin-2.11.3-english/index.php");<br />echo "phpMyAdmin está intentando ejecutarse desde un navegador web\n";<br />exit -1;<br />__HALT_COMPILER();<br />'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">stopBuffering</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div></div></div></body></html>

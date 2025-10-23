@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Invalidar todos los &iacute;tems de la cach&eacute;</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="memcached.fetchall.html">« Memcached::fetchAll</a></li>
+      <li style="float: right;"><a href="memcached.get.html">Memcached::get »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.memcached.html">Memcached</a></li>
+    <li>Invalidar todos los &iacute;tems de la cach&eacute;</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="memcached.flush" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Memcached::flush</h1>
+  <p class="verinfo">(PECL memcached &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">Memcached::flush</span> &mdash; <span class="dc-title">Invalidar todos los ítems de la caché</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-memcached.flush-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>Memcached::flush</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$delay</code><span class="initializer"> = 0</span></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>Memcached::flush()</strong></span> invalida todos los ítems existentes en la caché
+   de forma inmediata (lo predeterminado) o después de una demora especificada por
+   <code class="parameter">delay</code>. Después de la invalidación, no se devolverá ninún ítem en
+   respuesta a un comando de obtención (a no ser que se haya guardado de nuevo bajo la
+   misma clave después de que <span class="function"><strong>Memcached::flush()</strong></span> haya invalidado los ítems).
+   El vaciado no libera la memoria ocupada por todos los ítems existentes;
+   esto irá sucediendo a medida que se vayan guardando nuevos ítems.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-memcached.flush-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">delay</code></dt>
+     <dd>
+      <p class="para">
+       El número de segundos a esperar antes de invalidar los ítems.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-memcached.flush-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+   Emplee <span class="methodname"><a href="memcached.getresultcode.html" class="methodname">Memcached::getResultCode()</a></span> si fuera necesario.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-memcached.flush-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4404">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>Memcached::flush()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$m </span><span style="color: #007700">= new </span><span style="color: #0000BB">Memcached</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addServer</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">, </span><span style="color: #0000BB">11211</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* vaciar todos los ítems en 10 segundos */<br /></span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">flush</span><span style="color: #007700">(</span><span style="color: #0000BB">10</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

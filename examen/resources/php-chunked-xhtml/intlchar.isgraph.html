@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Comprobar si un punto de c&oacute;digo es un car&aacute;ter gr&aacute;fico</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="intlchar.isdigit.html">« IntlChar::isdigit</a></li>
+      <li style="float: right;"><a href="intlchar.isidignorable.html">IntlChar::isIDIgnorable »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.intlchar.html">IntlChar</a></li>
+    <li>Comprobar si un punto de c&oacute;digo es un car&aacute;ter gr&aacute;fico</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="intlchar.isgraph" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">IntlChar::isgraph</h1>
+  <p class="verinfo">(PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">IntlChar::isgraph</span> &mdash; <span class="dc-title">Comprobar si un punto de código es un caráter gráfico</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-intlchar.isgraph-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="methodname"><strong>IntlChar::isgraph</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$codepoint</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Determina si el punto de código especificado es un carácter «graphic» (imprimible, excluyendo los espacios).
+  </p>
+  <p class="para">
+   <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> para todos los caracteres excepto aquellos con categorías generales &quot;Cc&quot; (códigos de control), &quot;Cf&quot; (controles de formato), &quot;Cs&quot; (sustitutos), &quot;Cn&quot; (sin asignar), y &quot;Z&quot; (separadores).
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-intlchar.isgraph-parameters">
+  <h3 class="title">Parámetros</h3>
+  <dl>
+   
+    <dt><code class="parameter">codepoint</code></dt>
+    <dd>
+     <p class="para">El valor de tipo <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> del punto de código (p.ej. <code class="literal">0x2603</code> para <em>U+2603 SNOWMAN</em>), o el carácter codificado como un <span class="type"><a href="language.types.string.html" class="type string">string</a></span> UTF-8 (p.ej. <code class="literal">&quot;\u{2603}&quot;</code>)</p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-intlchar.isgraph-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> si
+   <code class="parameter">codepoint</code> es un caráter «gráfico», <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si no.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-intlchar.isgraph-examples">
+  <h3 class="title">Ejemplos</h3>
+  <div class="example" id="example-2521">
+   <p><strong>Ejemplo #1 Probar diferentes puntos de código</strong></p>
+   <div class="example-contents">
+    <div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">isgraph</span><span style="color: #007700">(</span><span style="color: #DD0000">"A"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">isgraph</span><span style="color: #007700">(</span><span style="color: #DD0000">"1"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">isgraph</span><span style="color: #007700">(</span><span style="color: #DD0000">"\u{2603}"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">isgraph</span><span style="color: #007700">(</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+   <div class="example-contents screen">
+    <div class="examplescode"><pre class="examplescode">bool(true)
+bool(true)
+bool(true)
+bool(false)</pre>
+</div>
+   </div>
+  </div>
+ </div>
+
+
+</div></div></div></body></html>

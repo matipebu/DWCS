@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Establecer una traslaci&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.ps-symbol-width.html">« ps_symbol_width</a></li>
+      <li style="float: right;"><a href="book.rpminfo.html">RpmInfo »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.ps.html">Funciones de PS</a></li>
+    <li>Establecer una traslaci&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.ps-translate" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ps_translate</h1>
+  <p class="verinfo">(PECL ps &gt;= 1.1.0)</p><p class="refpurpose"><span class="refname">ps_translate</span> &mdash; <span class="dc-title">Establecer una traslación</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ps-translate-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>ps_translate</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$psdoc</code></span>, <span class="methodparam"><span class="type"><a href="language.types.float.html" class="type float">float</a></span> <code class="parameter">$x</code></span>, <span class="methodparam"><span class="type"><a href="language.types.float.html" class="type float">float</a></span> <code class="parameter">$y</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Establece un nuevo punto inicial del sistema de coordenadas.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.ps-translate-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">psdoc</code></dt>
+     <dd>
+      <p class="para">
+       El identificador de recursos del fichero postscript,
+       como el devuelto por la función <span class="function"><a href="function.ps-new.html" class="function">ps_new()</a></span>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">x</code></dt>
+     <dd>
+      <p class="para">
+       La coordenada x del origen del sistema de coordenadas trasladado.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">y</code></dt>
+     <dd>
+      <p class="para">
+       La coordenada y del origen del sistema de coordenadas trasladado.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.ps-translate-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.ps-translate-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-3207">
+    <p><strong>Ejemplo #1 Traslación del sistema de coordenadas</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">rectángulo</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">ps_moveto</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">ps_lineto</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">50</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">ps_lineto</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">, </span><span style="color: #0000BB">50</span><span style="color: #007700">, </span><span style="color: #0000BB">50</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">ps_lineto</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">, </span><span style="color: #0000BB">50</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">ps_lineto</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">ps_stroke</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$ps </span><span style="color: #007700">= </span><span style="color: #0000BB">ps_new</span><span style="color: #007700">();<br />if (!</span><span style="color: #0000BB">ps_open_file</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">, </span><span style="color: #DD0000">"traslación.ps"</span><span style="color: #007700">)) {<br />  print </span><span style="color: #DD0000">"No se puede abrir el fichero PostScript\n"</span><span style="color: #007700">;<br />  exit;<br />}<br /><br /></span><span style="color: #0000BB">ps_set_info</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">, </span><span style="color: #DD0000">"Creator"</span><span style="color: #007700">, </span><span style="color: #DD0000">"traslación.php"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ps_set_info</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">, </span><span style="color: #DD0000">"Author"</span><span style="color: #007700">, </span><span style="color: #DD0000">"Uwe Steinmann"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ps_set_info</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">, </span><span style="color: #DD0000">"Title"</span><span style="color: #007700">, </span><span style="color: #DD0000">"Ejemplo de traslación"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ps_set_info</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">, </span><span style="color: #DD0000">"BoundingBox"</span><span style="color: #007700">, </span><span style="color: #DD0000">"0 0 596 842"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$psfont </span><span style="color: #007700">= </span><span style="color: #0000BB">ps_findfont</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">, </span><span style="color: #DD0000">"Helvetica"</span><span style="color: #007700">, </span><span style="color: #DD0000">""</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">ps_begin_page</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">, </span><span style="color: #0000BB">596</span><span style="color: #007700">, </span><span style="color: #0000BB">842</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ps_set_text_pos</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ps_translate</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">, </span><span style="color: #0000BB">500</span><span style="color: #007700">, </span><span style="color: #0000BB">750</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">rectángulo</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ps_translate</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">, -</span><span style="color: #0000BB">500</span><span style="color: #007700">, -</span><span style="color: #0000BB">750</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ps_setfont</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">, </span><span style="color: #0000BB">$psfont</span><span style="color: #007700">, </span><span style="color: #0000BB">8.0</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ps_show</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">, </span><span style="color: #DD0000">"Texto en posición inicial"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ps_end_page</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">ps_begin_page</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">, </span><span style="color: #0000BB">596</span><span style="color: #007700">, </span><span style="color: #0000BB">842</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ps_set_text_pos</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ps_save</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ps_translate</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">, </span><span style="color: #0000BB">500</span><span style="color: #007700">, </span><span style="color: #0000BB">750</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">rectángulo</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ps_restore</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ps_setfont</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">, </span><span style="color: #0000BB">$psfont</span><span style="color: #007700">, </span><span style="color: #0000BB">8.0</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ps_show</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">, </span><span style="color: #DD0000">"Texto en posición inicial"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ps_end_page</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">ps_delete</span><span style="color: #007700">(</span><span style="color: #0000BB">$ps</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El ejemplo anterior demuestra dos maneras posibles de colocar
+     un gráfico (en este caso un rectángulo) en cualquier posición de la página,
+     mientras que el gráfico mismo utiliza su propio sistema de coordenadas. El truco está
+     en cambiar el origen del sistema de coodenadas acutal antes de dibujar
+     el rectángulo. La traslación tiene que ser deshecha después de dibujar
+     el gráfico.
+    </p></div>
+    <div class="example-contents"><p>
+     En la segunda página se aplica un enfoque algo diferente y más elegante.
+     En vez de deshacer la traslación con una segunda llamada a la función
+     <span class="function"><strong>ps_translate()</strong></span> el contexto de gráficos se guarda antes
+     de modificar el sistema de coordenadas y se restaura después de dibujar el rectángulo.
+    </p></div>
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.ps-translate-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.ps-scale.html" class="function" rel="rdfs-seeAlso">ps_scale()</a> - Estalecer el factor de escala</span></li>
+    <li><span class="function"><a href="function.ps-rotate.html" class="function" rel="rdfs-seeAlso">ps_rotate()</a> - Establecer el factor de rotaci&oacute;n</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

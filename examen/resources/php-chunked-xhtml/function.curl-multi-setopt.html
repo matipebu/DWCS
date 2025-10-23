@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Configura una opci&oacute;n para el multi gestor cURL</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.curl-multi-select.html">« curl_multi_select</a></li>
+      <li style="float: right;"><a href="function.curl-multi-strerror.html">curl_multi_strerror »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.curl.html">Funciones de cURL</a></li>
+    <li>Configura una opci&oacute;n para el multi gestor cURL</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.curl-multi-setopt" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">curl_multi_setopt</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.5.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">curl_multi_setopt</span> &mdash; <span class="dc-title">Configura una opción para el multi gestor cURL</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.curl-multi-setopt-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>curl_multi_setopt</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$mh</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$option</code></span>, <span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$value</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+
+  </p>
+
+  <div class="warning"><strong class="warning">Advertencia</strong><p class="simpara">Esta función
+no está documentada actualmente, solamente se encuentra disponible la lista de parámetros.
+</p></div>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.curl-multi-setopt-parameters">
+  <h3 class="title">Parámetros</h3>
+  <dl>
+   
+    <dt><code class="parameter">mh</code></dt>
+    <dd>
+     <p class="para">
+      
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">option</code></dt>
+    <dd>
+     <p class="para">
+      Una de las constantes <strong><code>CURLMOPT_*</code></strong> .
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">value</code></dt>
+    <dd>
+      <p class="para">
+       El valor a configurar para el parámetro <code class="parameter">option</code>.
+      </p>
+      <p class="para">
+       <code class="parameter">value</code> debe ser un <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> para los siguientes valores del parámetro <code class="parameter">option</code> :
+       <table class="doctable informaltable">
+        
+         <thead>
+          <tr>
+           <th>Opción</th>
+           <th>Definir parámetro <code class="parameter">value</code> con</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlmopt-pipelining">CURLMOPT_PIPELINING</a></code></strong></td>
+           <td style="vertical-align: top;">
+            1 para activar o 0 para desactivar. Activar el pipelining en un multi
+            gestor hará que intente realizar Pipelining HTTP siempre que sea
+            posible para transferencias que utilicen ese gestor. Esto significa que si se añade
+            una segunda petición que puede usar una conexión ya existente, la
+            segunda petición será canalizada en la misma conexión.
+            A partir de cURL 7.43.0, se puede pasar 2 para probar multiplexar la nueva
+            transferencia en una conexión HTTP/2 existente, si es posible.
+            Se pueden utilizar las constantes CURLPIPE_* en lugar de literales de números
+            enteros si están dispoinbles.
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code><a href="curl.constants.html#constant.curlmopt-maxconnects">CURLMOPT_MAXCONNECTS</a></code></strong></td>
+           <td style="vertical-align: top;">
+            Número máximo de conexiones abiertas simultáneamente
+            que libcurl puede guardar en la cache. Por defecto es 10.
+            Cuando la caché está llena, curl elige el más antiguo de la caché 
+            para que no se incremente el número de conexiones abiertas.
+           </td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.curl-multi-setopt-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+
+
+</div></div></div></body></html>

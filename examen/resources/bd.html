@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/estilos.css">
+        <title>Base de datos</title>
+    </head>
+    <body>
+        <h1>Base de datos examen_ud1</h1>
+        <h2>Tabla alumno</h2>
+        <img src="bd.png">
+
+        <h2>Código</h2>
+        <pre style="text-align: left; margin:auto; padding: 20px; width: fit-content; background-color:aliceblue">
+CREATE TABLE equipos(
+	id_equipo INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(20) NOT NULL,
+    email VARCHAR(360) NOT NULL,
+    num_integrantes DECIMAL(2,0) UNSIGNED,
+    puntuacion DECIMAL(4,2) UNSIGNED
+);
+    </pre>
+
+    <h2>Datos de conexión</h2>
+    <ul style="width: fit-content; margin: auto; text-align: left;">
+        <li>Servidor:   <code>mariadb</code></li>
+        <li>Usuario:    <code>usuarioBD</code></li>
+        <li>Contraseña: <code>abc123</code></li>
+    </ul>
+
+    </body>
+</html>

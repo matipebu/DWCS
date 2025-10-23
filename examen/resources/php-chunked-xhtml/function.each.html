@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Devolver el par clave/valor actual de un array y avanzar el cursor del array</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.current.html">« current</a></li>
+      <li style="float: right;"><a href="function.end.html">end »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.array.html">Funciones de Arrays</a></li>
+    <li>Devolver el par clave/valor actual de un array y avanzar el cursor del array</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.each" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">each</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">each</span> &mdash; <span class="dc-title">Devolver el par clave/valor actual de un array y avanzar el cursor del array</span></p>
+
+ </div>
+ 
+ <div id="function.each-refsynopsisdiv">
+   <div class="warning"><strong class="warning">Advertencia</strong><p class="simpara">Esta función ha sido declarada
+<em>OBSOLETA</em> a partir de PHP 7.2.0. Su uso está
+totalmente desaconsejado.</p></div>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.each-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>each</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter reference">&$array</code></span>): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+
+  <p class="para rdfs-comment">
+   Devuelve el par clave/valor actual de un array y avanza el cursor del
+   array.
+  </p>
+  <p class="para">
+   Después de que <span class="function"><strong>each()</strong></span> haya sido ejecutado, el cursor del array
+   será puesto en el siguiente elemento del array, o pasado el último
+   elemento si alcanza el final del array. Se tiene que usar
+   <span class="function"><a href="function.reset.html" class="function">reset()</a></span> si se quiere atravesar de nuevo el
+   array usando each.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.each-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">array</code></dt>
+     <dd>
+      <p class="para">
+       El array de entrada.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.each-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el par clave/valor actual del array dado por
+   <code class="parameter">array</code>. Este par es devuelto en un array de cuatro
+   elementos, con las claves <code class="literal">0</code>, <code class="literal">1</code>,
+   <code class="literal">key</code>, y <code class="literal">value</code>. Los elementos
+   <code class="literal">0</code> y <code class="literal">key</code> contienen el nombre de la clave del
+   elemento del array, y <code class="literal">1</code> y <code class="literal">value</code>
+   contienen la información.
+  </p>
+  <p class="para">
+   Si el puntero interno del array apunta al final del contenido de
+   array, <span class="function"><strong>each()</strong></span> devuelve
+   <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.each-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4982">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>each()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$foo </span><span style="color: #007700">= array(</span><span style="color: #DD0000">"bob"</span><span style="color: #007700">, </span><span style="color: #DD0000">"fred"</span><span style="color: #007700">, </span><span style="color: #DD0000">"jussi"</span><span style="color: #007700">, </span><span style="color: #DD0000">"jouni"</span><span style="color: #007700">, </span><span style="color: #DD0000">"egon"</span><span style="color: #007700">, </span><span style="color: #DD0000">"marliese"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$bar </span><span style="color: #007700">= </span><span style="color: #0000BB">each</span><span style="color: #007700">(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$bar</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>
+     <var class="varname">$bar</var> ahora contienelos siguientes pares
+     clave/valor:
+    </p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Array
+(
+    [1] =&gt; bob
+    [value] =&gt; bob
+    [0] =&gt; 0
+    [key] =&gt; 0
+)</pre>
+</div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$foo </span><span style="color: #007700">= array(</span><span style="color: #DD0000">"Robert" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"Bob"</span><span style="color: #007700">, </span><span style="color: #DD0000">"Seppo" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"Sepi"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$bar </span><span style="color: #007700">= </span><span style="color: #0000BB">each</span><span style="color: #007700">(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$bar</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <p class="para">
+     <var class="varname">$bar</var> ahora contienelos siguientes pares
+     clave/valor:
+    </p>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Array
+(
+    [1] =&gt; Bob
+    [value] =&gt; Bob
+    [0] =&gt; Robert
+    [key] =&gt; Robert
+)</pre>
+</div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <span class="function"><strong>each()</strong></span> se usa normalmente junto con
+   <span class="function"><a href="function.list.html" class="function">list()</a></span> para atravesar un array. Aquí hay un
+   ejemplo:
+   <div class="example" id="example-4983">
+    <p><strong>Ejemplo #2 Atravesar un array con <span class="function"><strong>each()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$fruta </span><span style="color: #007700">= array(</span><span style="color: #DD0000">'a' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'manzana'</span><span style="color: #007700">, </span><span style="color: #DD0000">'b' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'banana'</span><span style="color: #007700">, </span><span style="color: #DD0000">'c' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'arándano'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">reset</span><span style="color: #007700">(</span><span style="color: #0000BB">$fruta</span><span style="color: #007700">);<br />while (list(</span><span style="color: #0000BB">$clave</span><span style="color: #007700">, </span><span style="color: #0000BB">$valor</span><span style="color: #007700">) = </span><span style="color: #0000BB">each</span><span style="color: #007700">(</span><span style="color: #0000BB">$fruta</span><span style="color: #007700">)) {<br />    echo </span><span style="color: #DD0000">"</span><span style="color: #0000BB">$clave</span><span style="color: #DD0000"> =&gt; </span><span style="color: #0000BB">$valor</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">a =&gt; manzana
+b =&gt; banana
+c =&gt; arándano</pre>
+</div>
+    </div>
+   </div>
+  </p>
+  <div class="caution"><strong class="caution">Precaución</strong>
+   <p class="para">
+    Ya que asignar un array a otra variable reinicia el puntero del array
+    original (nuestro ejemplo de arriba causaría un bucle sin fin), hemos
+    asignado <var class="varname">$fruta</var> a otra variable dentro del
+    bucle.
+   </p>
+  </div>
+  <div class="warning"><strong class="warning">Advertencia</strong>
+   <p class="para">
+    <span class="function"><strong>each()</strong></span> también aceptará objetos, pero puede devolver resultados
+    inesperados. Por lo tanto, no se recomienda iterar propiedades de objetos
+    con <span class="function"><strong>each()</strong></span>.
+   </p>
+  </div>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.each-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.key.html" class="function" rel="rdfs-seeAlso">key()</a> - Obtiene una clave de un array</span></li>
+    <li><span class="function"><a href="function.list.html" class="function" rel="rdfs-seeAlso">list()</a> - Asignar variables como si fueran un array</span></li>
+    <li><span class="function"><a href="function.current.html" class="function" rel="rdfs-seeAlso">current()</a> - Devuelve el elemento actual en un array</span></li>
+    <li><span class="function"><a href="function.reset.html" class="function" rel="rdfs-seeAlso">reset()</a> - Establece el puntero interno de un array a su primer elemento</span></li>
+    <li><span class="function"><a href="function.next.html" class="function" rel="rdfs-seeAlso">next()</a> - Avanza el puntero interno de un array</span></li>
+    <li><span class="function"><a href="function.prev.html" class="function" rel="rdfs-seeAlso">prev()</a> - Rebobina el puntero interno del array</span></li>
+    <li><a href="control-structures.foreach.html" class="link">foreach</a></li>
+    <li><a href="language.oop5.iterations.html" class="link">Iteración de Objetos</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

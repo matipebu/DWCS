@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Introducci&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="book.ctype.html">« Ctype</a></li>
+      <li style="float: right;"><a href="ctype.setup.html">Instalaci&oacute;n/Configuraci&oacute;n »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.ctype.html">Ctype</a></li>
+    <li>Introducci&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="intro.ctype" class="preface">
+  <h1 class="title">Introducción</h1>
+  <p class="para">
+   Las funciones proporcionadas con esta extensión comprueban si un carácter
+   o string caen dentro de una cierta clase de caracteres según la
+   configuración regional en uso (véase también <span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span>). 
+  </p>
+  <p class="para">
+   Cuando estas funciones se invocan con un argumento de tipo integer,
+   se comportan exactamente como sus homólogas en C de
+   <var class="filename">ctype.h</var>.
+   Esto significa que si se pasa un valor de tipo integer menor que 256 se usará el
+   valor ASCII del mismo para ver si encaja en el rango especificado (los dígitos están en
+   el rango 0x30-0x39). Si el número está entre -128 y -1 inclusive, se añadirá 256
+   y la comprobación se hará sobre el resultado.
+  </p>
+  <p class="para">
+   Cuando se invocan con un argumento de tipo string, comprobarán
+   cada carácter de la cadena y sólo devolverá
+   <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> si cada carácter de la cadena coincide con el
+   criterio solicitado. Cuando se invocan con un string vacío,
+   el resultado será siempre <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en PHP &lt; 5.1 y <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> desde 5.1.
+  </p>
+  <p class="para">
+   Pasar cualquier cosa que no sea un valor de tipo string o integer
+   devolverá inmediatamente <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+  </p>
+  <p class="para">
+   Se debería observar que siempre son preferibles las funciones de ctype a las
+   expresiones regulares, e incluso a algunas funciones <code class="literal">str_*</code> y <code class="literal">is_*</code> equivalentes.
+   Esto es así por el hecho de que ctype usa una biblioteca nativa de C y
+   por lo tanto procesa significativamente más rápido.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Estas funciones no están relacionadas con la biblioteca &quot;ctypes&quot; de Python de ningún modo.
+    El nombre de la extensión proviene del fichero de cabecera <var class="filename">ctype.h</var>
+    de C donde están definidas sus equivalentes.
+   </p>
+   <p class="para">
+    Esta extensión también es anterior a &quot;ctypes&quot; de Python, por lo que cualquier confusión
+    causada por este nombramiento apenas es por nuestra culpa...
+   </p>
+  </p></blockquote>
+ </div></div></div></body></html>

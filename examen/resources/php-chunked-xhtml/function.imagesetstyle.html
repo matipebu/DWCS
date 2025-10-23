@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Establecer el estilo para el dibujo de l&iacute;neas</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.imagesetpixel.html">« imagesetpixel</a></li>
+      <li style="float: right;"><a href="function.imagesetthickness.html">imagesetthickness »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.image.html">Funciones de GD e Im&aacute;genes</a></li>
+    <li>Establecer el estilo para el dibujo de l&iacute;neas</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.imagesetstyle" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">imagesetstyle</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">imagesetstyle</span> &mdash; <span class="dc-title">Establecer el estilo para el dibujo de líneas</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.imagesetstyle-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>imagesetstyle</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$image</code></span>, <span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$style</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>imagesetstyle()</strong></span> establece el estilo para ser usado por todas
+   las funciones de dibujo de líneas (como <span class="function"><a href="function.imageline.html" class="function">imageline()</a></span>
+   y <span class="function"><a href="function.imagepolygon.html" class="function">imagepolygon()</a></span>) cuando se dibuja con el color
+   especial <strong><code><a href="image.constants.html#constant.img-color-styled">IMG_COLOR_STYLED</a></code></strong> o líneas de imágenes con el color
+   <strong><code><a href="image.constants.html#constant.img-color-styledbrushed">IMG_COLOR_STYLEDBRUSHED</a></code></strong>.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.imagesetstyle-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    <dt><code class="parameter">
+image</code></dt><dd><p class="para">Un recurso image, es devuelto por una de las funciones de creación de imágenes,
+como <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>.</p></dd>
+    
+     <dt><code class="parameter">style</code></dt>
+     <dd>
+      <p class="para">
+       Una matriz de colores de píxel. Se puede usar la
+       constante <strong><code><a href="image.constants.html#constant.img-color-transparent">IMG_COLOR_TRANSPARENT</a></code></strong> para añadir un
+       píxel transparente.
+       Observe que <code class="parameter">style</code> no debe ser un <span class="type"><a href="language.types.array.html" class="type array">array</a></span> vacío.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.imagesetstyle-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.imagesetstyle-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   El siguiente script de ejemplo dibuja una línea discontinua desde la esquina superior
+   izquierda a la esquina inferior derecha del lienzo:
+   <div class="example" id="example-2716">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>imagesetstyle()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />header</span><span style="color: #007700">(</span><span style="color: #DD0000">"Content-type: image/jpeg"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$im  </span><span style="color: #007700">= </span><span style="color: #0000BB">imagecreatetruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">100</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$b   </span><span style="color: #007700">= </span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">255</span><span style="color: #007700">, </span><span style="color: #0000BB">255</span><span style="color: #007700">, </span><span style="color: #0000BB">255</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$rojo </span><span style="color: #007700">= </span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">255</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* Dibujar una línea discontinua, 5 píxeles rojos, 5 píxeles blancos */<br /></span><span style="color: #0000BB">$estilo </span><span style="color: #007700">= array(</span><span style="color: #0000BB">$rojo</span><span style="color: #007700">, </span><span style="color: #0000BB">$rojo</span><span style="color: #007700">, </span><span style="color: #0000BB">$rojo</span><span style="color: #007700">, </span><span style="color: #0000BB">$rojo</span><span style="color: #007700">, </span><span style="color: #0000BB">$rojo</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagesetstyle</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">$estilo</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imageline</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">, </span><span style="color: #0000BB">IMG_COLOR_STYLED</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* Dibujar una línea de caras felices usando imagesetbrush() con imagesetstyle */<br /></span><span style="color: #0000BB">$estilo </span><span style="color: #007700">= array(</span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">, </span><span style="color: #0000BB">$rojo</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagesetstyle</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">$estilo</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$pincel </span><span style="color: #007700">= </span><span style="color: #0000BB">imagecreatefrompng</span><span style="color: #007700">(</span><span style="color: #DD0000">"http://www.libpng.org/pub/png/images/smile.happy.png"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$b2 </span><span style="color: #007700">= </span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$pincel</span><span style="color: #007700">, </span><span style="color: #0000BB">255</span><span style="color: #007700">, </span><span style="color: #0000BB">255</span><span style="color: #007700">, </span><span style="color: #0000BB">255</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagecolortransparent</span><span style="color: #007700">(</span><span style="color: #0000BB">$pincel</span><span style="color: #007700">, </span><span style="color: #0000BB">$b2</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagesetbrush</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">$pincel</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imageline</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">, </span><span style="color: #0000BB">IMG_COLOR_STYLEDBRUSHED</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">imagejpeg</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+    <div class="mediaobject">
+     
+     <div class="imageobject">
+      <img src="images/21009b70229598c6a80eef8b45bf282b-imagesetstyle.jpg" alt="Salida del ejemplo : imagesetstyle()" width="100" height="100" />
+     </div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.imagesetstyle-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.imagesetbrush.html" class="function" rel="rdfs-seeAlso">imagesetbrush()</a> - Establecer la imagen de pincel para el dibujo de l&iacute;neas</span></li>
+    <li><span class="function"><a href="function.imageline.html" class="function" rel="rdfs-seeAlso">imageline()</a> - Dibujar una l&iacute;nea</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

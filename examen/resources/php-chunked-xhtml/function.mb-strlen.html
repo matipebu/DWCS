@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Obtiene la longitud de una cadena de caracteres</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.mb-stristr.html">« mb_stristr</a></li>
+      <li style="float: right;"><a href="function.mb-strpos.html">mb_strpos »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.mbstring.html">Funciones de cadenas de caracteres multibyte</a></li>
+    <li>Obtiene la longitud de una cadena de caracteres</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mb-strlen" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mb_strlen</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mb_strlen</span> &mdash; <span class="dc-title">Obtiene la longitud de una cadena de caracteres</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.mb-strlen-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mb_strlen</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$str</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$encoding</code><span class="initializer"> = mb_internal_encoding()</span></span>): <span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span></div>
+
+  <p class="para rdfs-comment">
+   Obtiene la longitud de un <span class="type"><a href="language.types.string.html" class="type string">string</a></span>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.mb-strlen-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">str</code></dt>
+     <dd>
+      <p class="para">
+       El <span class="type"><a href="language.types.string.html" class="type string">string</a></span> del que se va a obtener su longitud.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">encoding</code></dt>
+     <dd>
+      <p class="para">El parámetro <code class="parameter">encoding</code>
+es la codificación de caracteres. Si es omitido, será usado el valor de la
+codificación de caracteres interna.</p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.mb-strlen-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el número de caracteres del
+   <span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">str</code>, teniendo éste una codificación de caracteres
+   dada por <code class="parameter">encoding</code>. Un carácter multibyte cuenta
+   como 1.
+  </p>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si la codificación dada por <code class="parameter">encoding</code> no es válida.
+  </p>
+  <div class="warning"><strong class="warning">Advertencia</strong><p class="simpara">Esta función puede
+devolver el valor booleano <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>, pero también puede devolver un valor no booleano que se
+evalúa como <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>. Por favor lea la sección sobre <a href="language.types.boolean.html" class="link">Booleanos</a> para más
+información. Use <a href="language.operators.comparison.html" class="link">el operador
+===</a> para comprobar el valor devuelto por esta
+función.</p></div>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.mb-strlen-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.mb-internal-encoding.html" class="function" rel="rdfs-seeAlso">mb_internal_encoding()</a> - Establece/obtiene la codificaci&oacute;n de caracteres interna</span></li>
+    <li><span class="function"><a href="function.grapheme-strlen.html" class="function" rel="rdfs-seeAlso">grapheme_strlen()</a> - Obtener la longitud de un string en unidades de grafema</span></li>
+    <li><span class="function"><a href="function.iconv-strlen.html" class="function" rel="rdfs-seeAlso">iconv_strlen()</a> - Retorna el n&uacute;mero de caracteres de un string</span></li>
+    <li><span class="function"><a href="function.strlen.html" class="function" rel="rdfs-seeAlso">strlen()</a> - Obtiene la longitud de un string</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

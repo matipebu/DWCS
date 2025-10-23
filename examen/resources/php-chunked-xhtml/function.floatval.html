@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Obtener el valor flotante de una variable</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.empty.html">« empty</a></li>
+      <li style="float: right;"><a href="function.get-debug-type.html">get_debug_type »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.var.html">Funciones de manejo de variables</a></li>
+    <li>Obtener el valor flotante de una variable</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.floatval" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">floatval</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">floatval</span> &mdash; <span class="dc-title">Obtener el valor flotante de una variable</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.floatval-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>floatval</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$var</code></span>): <span class="type"><a href="language.types.float.html" class="type float">float</a></span></div>
+
+  <p class="para rdfs-comment">
+   Obtiene el valor valor <span class="type"><a href="language.types.float.html" class="type float">float</a></span> de <code class="parameter">var</code>.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.floatval-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">var</code></dt>
+     <dd>
+      <p class="para">
+       Puede ser cualquier tipo escalar. No se puede utilizar <span class="function"><strong>floatval()</strong></span>
+       en objetos, si es usado emitirá un error de nivel <strong><code><a href="errorfunc.constants.html#constant.e-notice">E_NOTICE</a></code></strong> y
+       devolverá 1.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.floatval-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   El valor flotante de la variable dada. Arrays vacios devolverán 0, arrays no vacios
+   devolverán 1.
+  </p>
+  <p class="para">
+   Las cadenas generalmente devolverán 0, aunque esto depende de los
+   primeros caracteres de la cadena. Las reglas comunes de
+   <a href="language.types.float.html#language.types.float.casting" class="link">conversión a flotante</a>
+   se aplican en cualquier caso.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.floatval-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-5268">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>floatval()</strong></span></strong></p>
+    <div class="example-contents">
+ <div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /> $var </span><span style="color: #007700">= </span><span style="color: #DD0000">'122.34343El'</span><span style="color: #007700">;<br /> </span><span style="color: #0000BB">$valor_float_de_var </span><span style="color: #007700">= </span><span style="color: #0000BB">floatval</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">);<br /> echo </span><span style="color: #0000BB">$valor_float_de_var</span><span style="color: #007700">; </span><span style="color: #FF8000">// 122.34343<br /> </span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-5269">
+    <p><strong>Ejemplo #2 Ejemplo de <span class="function"><strong>floatval()</strong></span> con caracteres a la izquierda no numéricos</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$var </span><span style="color: #007700">= </span><span style="color: #DD0000">'El122.34343'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$float_value_of_var </span><span style="color: #007700">= </span><span style="color: #0000BB">floatval</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">);<br />echo </span><span style="color: #0000BB">$float_value_of_var</span><span style="color: #007700">; </span><span style="color: #FF8000">// 0<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.floatval-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.boolval.html" class="function" rel="rdfs-seeAlso">boolval()</a> - Obtener el valor booleano de una variable</span></li>
+    <li><span class="function"><a href="function.intval.html" class="function" rel="rdfs-seeAlso">intval()</a> - Obtiene el valor entero de una variable</span></li>
+    <li><span class="function"><a href="function.strval.html" class="function" rel="rdfs-seeAlso">strval()</a> - Obtiene el valor de cadena de una variable</span></li>
+    <li><span class="function"><a href="function.settype.html" class="function" rel="rdfs-seeAlso">settype()</a> - Establece el tipo de una variable</span></li>
+    <li><a href="language.types.type-juggling.html" class="link">Conversión de Tipos</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

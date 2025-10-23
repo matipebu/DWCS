@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Establece la hora de modificaci&oacute;n de una entrada definida por su nombre</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ziparchive.setmtimeindex.html">« ZipArchive::setMtimeIndex</a></li>
+      <li style="float: right;"><a href="ziparchive.setpassword.html">ZipArchive::setPassword »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.ziparchive.html">ZipArchive</a></li>
+    <li>Establece la hora de modificaci&oacute;n de una entrada definida por su nombre</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="ziparchive.setmtimename" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ZipArchive::setMtimeName</h1>
+  <p class="verinfo">(PHP &gt;= 8.0.0, PECL zip &gt;= 1.16.0)</p><p class="refpurpose"><span class="refname">ZipArchive::setMtimeName</span> &mdash; <span class="dc-title">Establece la hora de modificación de una entrada definida por su nombre</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-ziparchive.setmtimename-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>ZipArchive::setMtimeName</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$name</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$timestamp</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Establece la hora de modificación de una entrada definida por su nombre.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-ziparchive.setmtimename-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">name</code></dt>
+     <dd>
+      <p class="para">
+       Nombre de la entrada.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">timestamp</code></dt>
+     <dd>
+      <p class="para">
+       La hora de modificación (unix timestamp) del archivo.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">flags</code></dt>
+     <dd>
+      <p class="para">
+       Flags opcionales, sin usar por ahora.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-ziparchive.setmtimename-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-ziparchive.setmtimename-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   Este ejemplo crea un archivo ZIP
+   <var class="filename">test.zip</var> y añade
+   al archivo <var class="filename">test.txt</var>
+   con su fecha de modificación.
+  </p>
+  <div class="example" id="example-872">
+   <p><strong>Ejemplo #1 Archivar un fichero</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$zip </span><span style="color: #007700">= new </span><span style="color: #0000BB">ZipArchive</span><span style="color: #007700">();<br />if (</span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">open</span><span style="color: #007700">(</span><span style="color: #DD0000">'test.zip'</span><span style="color: #007700">, </span><span style="color: #0000BB">ZipArchive</span><span style="color: #007700">::</span><span style="color: #0000BB">CREATE</span><span style="color: #007700">) === </span><span style="color: #0000BB">TRUE</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addFile</span><span style="color: #007700">(</span><span style="color: #DD0000">'text.txt'</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setMtimeName</span><span style="color: #007700">(</span><span style="color: #DD0000">'text.txt'</span><span style="color: #007700">, </span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,</span><span style="color: #0000BB">0</span><span style="color: #007700">,</span><span style="color: #0000BB">0</span><span style="color: #007700">,</span><span style="color: #0000BB">12</span><span style="color: #007700">,</span><span style="color: #0000BB">25</span><span style="color: #007700">,</span><span style="color: #0000BB">2019</span><span style="color: #007700">));<br />    </span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br />    echo </span><span style="color: #DD0000">"Ok\n"</span><span style="color: #007700">;<br />} else {<br />    echo </span><span style="color: #DD0000">"KO\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-ziparchive.setmtimename-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Esta función sólo está disponible si se construye con libzip ≥ 1.0.0.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-ziparchive.setmtimename-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="methodname"><a href="ziparchive.setmtimeindex.html" class="methodname" rel="rdfs-seeAlso">ZipArchive::setMtimeIndex()</a> - Establece el tiempo de modificaci&oacute;n de una entrada definido por su &iacute;ndice</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Decodifica una cadena binaria codificada hexadecimalmente</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.hebrevc.html">« hebrevc</a></li>
+      <li style="float: right;"><a href="function.html-entity-decode.html">html_entity_decode »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.strings.html">Funciones de strings</a></li>
+    <li>Decodifica una cadena binaria codificada hexadecimalmente</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.hex2bin" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">hex2bin</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.4.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">hex2bin</span> &mdash; <span class="dc-title">Decodifica una cadena binaria codificada hexadecimalmente</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.hex2bin-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>hex2bin</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$data</code></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Decodifica una cadena binaria codificada hexadecimalmente.
+  </p>
+  <div class="caution"><strong class="caution">Precaución</strong>
+   <p class="para">
+    Esta función <em>NO</em> convierte un número hexadecimal en un número
+    binario. Esto se puede realizar usando la función <span class="function"><a href="function.base-convert.html" class="function">base_convert()</a></span>.
+   </p>
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.hex2bin-parameters">
+  <h3 class="title">Parámetros</h3>
+  <dl>
+   
+    <dt><code class="parameter">data</code></dt>
+    <dd>
+     <p class="para">
+      La representación hexadecimal de datos.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.hex2bin-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve la representación binaria de los datos dados  o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 errors" id="refsect1-function.hex2bin-errors">
+  <h3 class="title">Errores/Excepciones</h3>
+  <p class="para">
+   Si la cadena de entrada hexadecimal tiene una longitud impar o es una cadena hexadecimal no válida
+   se emite un error de nivel <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 changelog" id="refsect1-function.hex2bin-changelog">
+  <h3 class="title">Historial de cambios</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Versión</th>
+       <th>Descripción</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.5.1</td>
+       <td>
+        Se emite una advertencia si el string de entrada es un string hexadecimal no válido.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.4.4</td>
+       <td>
+        Se emite una advertencia si la cadena de entrada tiene una longitud impar. En PHP 5.4.0 la cadena
+        era aceptada de forma silenciosa, pero el último byte era truncado.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.hex2bin-examples">
+  <h3 class="title">Ejemplos</h3>
+  <div class="example" id="hex2bin.example.basic">
+   <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>hex2bin()</strong></span></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$hex </span><span style="color: #007700">= </span><span style="color: #0000BB">hex2bin</span><span style="color: #007700">(</span><span style="color: #DD0000">"6578616d706c65206865782064617461"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$hex</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">string(16) &quot;example hex data&quot;</pre>
+</div>
+   </div>
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.hex2bin-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.bin2hex.html" class="function" rel="rdfs-seeAlso">bin2hex()</a> - Convierte datos binarios en su representaci&oacute;n hexadecimal</span></li>
+    <li><span class="function"><a href="function.unpack.html" class="function" rel="rdfs-seeAlso">unpack()</a> - Desempaqueta datos de una cadena binaria</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Errores y su manejo</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="pdo.prepared-statements.html">« Sentencias preparadas y procedimientos almacenados</a></li>
+      <li style="float: right;"><a href="pdo.lobs.html">Objetos grandes (LOB) »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.pdo.html">PDO</a></li>
+    <li>Errores y su manejo</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="pdo.error-handling" class="chapter">
+ <h1 class="title">Errores y su manejo</h1>
+
+ <p class="para">
+  PDO ofrece tres estrategias diferentes de manejar errores para adaptarse
+  a cualquier estilo de desarrollo de aplicaciones.
+ </p>
+ <ul class="itemizedlist">
+  <li class="listitem">
+   <p class="para">
+    <strong><code><a href="pdo.constants.html#pdo.constants.errmode-silent">PDO::ERRMODE_SILENT</a></code></strong>
+   </p>
+   <p class="para">
+    Este es el modo predeterminado. PDO simplemente establecerá él mismo el código de error
+    para su inspección utilizando los métodos <span class="function"><a href="pdo.errorcode.html" class="function">PDO::errorCode()</a></span> y
+    <span class="function"><a href="pdo.errorinfo.html" class="function">PDO::errorInfo()</a></span> tanto en
+    objetos de sentencias como de bases de datos. Si el error resultó de una llamada a un
+    objeto de sentencia, se deberá invocar al método
+    <span class="function"><a href="pdostatement.errorcode.html" class="function">PDOStatement::errorCode()</a></span> o 
+    <span class="function"><a href="pdostatement.errorinfo.html" class="function">PDOStatement::errorInfo()</a></span>
+    sobre dicho objeto. Si el error resultó de una llamada a
+    un objeto de bases de datos, se deberá invocar, en su lugar, a los métodos del objeto
+    de bases de datos.
+   </p>
+  </li>
+  <li class="listitem">
+   <p class="para">
+    <strong><code><a href="pdo.constants.html#pdo.constants.errmode-warning">PDO::ERRMODE_WARNING</a></code></strong>
+   </p>
+   <p class="para">
+    Además de establecer el código de error, PDO emitirá un mensaje E_WARNING
+    tradicional. Esta configuración es útil durante la depuración o realización de pruebas
+    para visualizar los problemas que han ocurrido sin interrumpir el
+    flujo de la aplicación. 
+   </p>
+  </li>
+  <li class="listitem">
+   <p class="para">
+    <strong><code><a href="pdo.constants.html#pdo.constants.errmode-exception">PDO::ERRMODE_EXCEPTION</a></code></strong>
+   </p>
+   <p class="para">
+    Además de establecer el código de error, PDO lanzará una
+    <span class="classname"><a href="class.pdoexception.html" class="classname">PDOException</a></span>
+    y establecerá sus propiedades para reflejar el error y la información
+    del mismo. Esta configuración también es útil durante la depuración, ya que,
+    de hecho, señalará el lugar del error del script, 
+    apuntando a áreas potencialmente problemáticas del código
+    (recuerde: las transacciones son automáticamente revertidas si la excepción
+    causa la finalización del script).
+   </p>
+   <p class="para">
+    El modo Exception también es útil porque se puede estructurar el manejo de
+    errores con más claridad que con el estilo tradicional de advertencias de PHP, y
+    con menos código/anidación que con la ejecución en modo silencioso, comprobando así
+    explícitamente el valor devuelto de cada llamada a la base de datos.
+   </p>
+   <p class="para">
+    Véase la referencia de <a href="language.exceptions.html" class="link">Excepciones</a> para más
+    información sobre excepciones en PHP.
+   </p>
+  </li>
+ </ul>
+ <p class="para">
+  PDO utiliza las cadenas de código de error SQLSTATE del estándar SQL-92; cada
+  controlador de PDO es responsable de la correspondencia de su códigos nativos con los
+  códigos SQLSTATE apropiados. El método <span class="function"><a href="pdo.errorcode.html" class="function">PDO::errorCode()</a></span>
+  devuelve un único código SQLSTATE. Si fuera necesaria más información
+  específica sobre el error, PDO también ofrece el método
+  <span class="function"><a href="pdo.errorinfo.html" class="function">PDO::errorInfo()</a></span>, que devuelve un array
+  que contiene el código SQLSTATE, el código de error específico del controlador, y la 
+  cadena de error específica.
+ </p>
+ 
+ <p class="para">
+  <div class="example" id="example-1016">
+   <p><strong>Ejemplo #1 Crear una instancia de PDO y establecer el modo de error</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$dsn </span><span style="color: #007700">= </span><span style="color: #DD0000">'mysql:dbname=prueba;host=127.0.0.1'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$usuario </span><span style="color: #007700">= </span><span style="color: #DD0000">'usuario'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$contraseña </span><span style="color: #007700">= </span><span style="color: #DD0000">'contraseña'</span><span style="color: #007700">;<br /><br />try {<br />    </span><span style="color: #0000BB">$mbd </span><span style="color: #007700">= new </span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #0000BB">$dsn</span><span style="color: #007700">, </span><span style="color: #0000BB">$usuario</span><span style="color: #007700">, </span><span style="color: #0000BB">$contraseña</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">$mbd</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_ERRMODE</span><span style="color: #007700">, </span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ERRMODE_EXCEPTION</span><span style="color: #007700">);<br />} catch (</span><span style="color: #0000BB">PDOException $e</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">'Falló la conexión: ' </span><span style="color: #007700">. </span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">();<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </p>
+ <blockquote class="note"><p><strong class="note">Nota</strong>: 
+  <p class="para">
+   <span class="function"><a href="pdo.construct.html" class="function">PDO::__construct()</a></span> siempre lanzará una <span class="classname"><a href="class.pdoexception.html" class="classname">PDOException</a></span> si la conexión falla,
+   independientemente de que <strong><code><a href="pdo.constants.html#pdo.constants.attr-errmode">PDO::ATTR_ERRMODE</a></code></strong> esté esteblecido. Las excepciones no capturadas son fatales.
+  </p>
+ </p></blockquote>
+ <p class="para">
+  <div class="example" id="example-1017">
+   <p><strong>Ejemplo #2 Crear una instancia de PDO y establecer el modo de error desde el constructor</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$dsn </span><span style="color: #007700">= </span><span style="color: #DD0000">'mysql:dbname=prueba;host=127.0.0.1'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$usuario </span><span style="color: #007700">= </span><span style="color: #DD0000">'usuario'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$contraseña </span><span style="color: #007700">= </span><span style="color: #DD0000">'contraseña'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">/*<br />    El empleo de try/catch en el constructor sigue siendo válido aunque se establezca ERRMODE a WARNING,<br />    ya que PDO::__construct siempre lanzará una PDOException si la conexión falla.<br />*/<br /></span><span style="color: #007700">try {<br />    </span><span style="color: #0000BB">$mbd </span><span style="color: #007700">= new </span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #0000BB">$dsn</span><span style="color: #007700">, </span><span style="color: #0000BB">$usuario</span><span style="color: #007700">, </span><span style="color: #0000BB">$contraseña</span><span style="color: #007700">, array(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_ERRMODE </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ERRMODE_WARNING</span><span style="color: #007700">));<br />} catch (</span><span style="color: #0000BB">PDOException $e</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">'Error de conexión: ' </span><span style="color: #007700">. </span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">();<br />    exit;<br />}<br /><br /></span><span style="color: #FF8000">// Esto hará que PDO lance un error de nivel E_WARNING en lugar de una excepción (cuando la tabla no exista)<br /></span><span style="color: #0000BB">$mbd</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT columna_incorrecta FROM tabla_incorrecta"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Warning: PDO::query(): SQLSTATE[42S02]: Base table or view not found: 1146 Table &#039;prueba.tabla_incorrecta&#039; doesn&#039;t exist in
+/tmp/prueba_pdo.php on line 18
+</pre></div>
+   </div>
+  </div>
+ </p>
+</div>
+</div></div></body></html>

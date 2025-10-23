@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Soporte de Windows</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="migration73.other-changes.html">« Other Changes</a></li>
+      <li style="float: right;"><a href="migration72.html">Migraci&oacute;n de PHP 7.1.x a PHP 7.2.x »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="migration73.html">Migraci&oacute;n de PHP 7.2.x a PHP 7.3.x</a></li>
+    <li>Soporte de Windows</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="migration73.windows-support" class="sect1">
+ <h2 class="title">Soporte de Windows</h2>
+
+ <div class="sect2" id="migration73.windows-support.core">
+  <h3 class="title">Núcleo PHP</h3>
+
+  <div class="sect3" id="migration73.windows-support.core.file-descriptors">
+   <h4 class="title">Más eliminación de archivos conforme con POSIX</h4>
+
+   <p class="para">
+    Los descriptores de archivos son abiertos en modo compartido lectura/escritura/borrado por defecto.
+    Esto mapea efectivamente la semántica de <abbr class="abbrev">POSIX</abbr> y permite eliminar
+    los archivos con manejador en uso. No es 100% igual, algunas diferencias de
+    plataforma todavía persisten. Después de la eliminación, la entrada del nombre
+    del archivo es bloqueada, hasta que todos los manejadores abiertos estén cerrados.
+   </p>
+  </div>
+
+ </div>
+
+</div></div></div></body></html>

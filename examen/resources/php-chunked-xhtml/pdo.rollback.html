@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Revierte una transacci&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="pdo.quote.html">« PDO::quote</a></li>
+      <li style="float: right;"><a href="pdo.setattribute.html">PDO::setAttribute »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.pdo.html">PDO</a></li>
+    <li>Revierte una transacci&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="pdo.rollback" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PDO::rollBack</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8, PECL pdo &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">PDO::rollBack</span> &mdash; <span class="dc-title">
+   Revierte una transacción
+  </span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-pdo.rollback-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>PDO::rollBack</strong></span>(): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  
+  <p class="para rdfs-comment">
+   Revierte la transacción actual, que fue iniciada por
+   <span class="function"><a href="pdo.begintransaction.html" class="function">PDO::beginTransaction()</a></span>.
+  </p>
+  <p class="para">
+   Si la base de datos se estableció al modo &#039;autocommit&#039;, esta función restablecerá
+   el modo &#039;autocommit&#039; después de haber revertido la transacción.
+  </p>
+  <p class="para">
+   Algunas bases de datos, incluyendo MySQL, ejecutan un COMMIT implícito
+   cuando una sentencia de lenguaje de definición de base de datos (DDL), como
+   DROP TABLE o CREATE TABLE, se ejecuta dentro de una transacción. El COMMIT
+   implícito pevendrá de revertir cualquier otro cambio dentro de los límites
+   de la transacción.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-pdo.rollback-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 errors" id="refsect1-pdo.rollback-errors">
+  <h3 class="title">Errores/Excepciones</h3>
+  <p class="para">
+   Lanza una <span class="classname"><a href="class.pdoexception.html" class="classname">PDOException</a></span> si no hay ninguna transacción activa.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: <span class="simpara">Se emite una excepción inclusi cuando el atributo <strong><code><a href="pdo.constants.html#pdo.constants.attr-errmode">PDO::ATTR_ERRMODE</a></code></strong> no es <strong><code><a href="pdo.constants.html#pdo.constants.errmode-exception">PDO::ERRMODE_EXCEPTION</a></code></strong>.</span></p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-pdo.rollback-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-1038"><p><strong>Ejemplo #1 Revertir una transacción</strong></p>
+    <div class="example-contents"><p>
+     El siguiente ejemplo comienza una transacción y ejecuta dos sentencias
+     que modifican la base de datos antes de revertir los cambios. En MySQL,
+     sin embargo, la sentencia DROP TABLE consigna automáticamente la
+     transacción, por lo que no son revertidos ninguno de los cambios en la
+     transacción.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/* Comenzar una transacción, desactivando el modo 'autocommit' */<br /></span><span style="color: #0000BB">$gbd</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">beginTransaction</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">/* Cambiar el esquema y los datos de la base de datos */<br /></span><span style="color: #0000BB">$sth </span><span style="color: #007700">= </span><span style="color: #0000BB">$gbd</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exec</span><span style="color: #007700">(</span><span style="color: #DD0000">"DROP TABLE fruit"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth </span><span style="color: #007700">= </span><span style="color: #0000BB">$gbd</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exec</span><span style="color: #007700">(</span><span style="color: #DD0000">"UPDATE dessert<br />    SET name = 'hamburger'"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* Reconocer el error y revertir los cambios */<br /></span><span style="color: #0000BB">$gbd</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">rollBack</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">/* Ahora la conexión a la base de datos a vuelto al modo 'autocommit' */<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-pdo.rollback-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="pdo.begintransaction.html" class="function" rel="rdfs-seeAlso">PDO::beginTransaction()</a> - Inicia una transacci&oacute;n</span></li>
+    <li><span class="function"><a href="pdo.commit.html" class="function" rel="rdfs-seeAlso">PDO::commit()</a> - Consigna una transacci&oacute;n</span></li>
+    <li><a href="pdo.transactions.html" class="link">Transacciones y &#039;auto-commit&#039;</a></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+ 
+</div></div></div></body></html>

@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Establecer la tolerancia del analizador</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="intldateformatter.setcalendar.html">« IntlDateFormatter::setCalendar</a></li>
+      <li style="float: right;"><a href="intldateformatter.setpattern.html">IntlDateFormatter::setPattern »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.intldateformatter.html">IntlDateFormatter</a></li>
+    <li>Establecer la tolerancia del analizador</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="intldateformatter.setlenient" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">IntlDateFormatter::setLenient</h1>
+  <h1 class="refname">datefmt_set_lenient</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8, PECL intl &gt;= 1.0.0)</p><p class="refpurpose"><span class="refname">IntlDateFormatter::setLenient</span> -- <span class="refname">datefmt_set_lenient</span> &mdash; <span class="dc-title">Establecer la tolerancia del analizador</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-intldateformatter.setlenient-description">
+  <h3 class="title">Descripción</h3>
+  <p class="para">
+   Estilo orientado a objetos
+  </p>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>IntlDateFormatter::setLenient</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$lenient</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Estilo por procedimientos
+  </p>
+  <div class="methodsynopsis dc-description"><span class="methodname"><strong>datefmt_set_lenient</strong></span>(<span class="methodparam"><span class="type"><a href="class.intldateformatter.html" class="type IntlDateFormatter">IntlDateFormatter</a></span> <code class="parameter">$fmt</code></span>, <span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$lenient</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Define si el analizador es estricto o tolerante al interpretar salidas que no coinciden exactamente con el patrón.
+   Habilitar el análisis tolerante permite al analizador aceptar patrones de fecha u hora
+   defectuosos, procesando lo más posible para obtener un valor.
+   No se aceptan los espacios extra, tokens no reconocidos, o valores no válidos (&quot;30 de febrero&quot;).
+  </p> 
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-intldateformatter.setlenient-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">fmt</code></dt>
+     <dd>
+      <p class="para">
+       El recurso del formatedor.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">lenient</code></dt>
+     <dd>
+      <p class="para">
+       Establecer si el analizador es tolerante o no, por defecto es <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> (tolerante).
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ 
+ <div class="refsect1 returnvalues" id="refsect1-intldateformatter.setlenient-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-intldateformatter.setlenient-examples">
+  <h3 class="title">Ejemplos</h3>
+  <div class="example" id="example-2459">
+   <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>datefmt_set_lenient()</strong></span></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$fmt </span><span style="color: #007700">= </span><span style="color: #0000BB">datefmt_create</span><span style="color: #007700">(<br />    </span><span style="color: #DD0000">'en_US'</span><span style="color: #007700">, <br />    </span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">FULL</span><span style="color: #007700">, <br />    </span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">FULL</span><span style="color: #007700">, <br />    </span><span style="color: #DD0000">'America/Los_Angeles'</span><span style="color: #007700">, <br />    </span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">GREGORIAN</span><span style="color: #007700">, <br />    </span><span style="color: #DD0000">'dd/MM/yyyy'<br /></span><span style="color: #007700">);<br />echo </span><span style="color: #DD0000">'La tolerancia del formateador es : '</span><span style="color: #007700">;<br />if (</span><span style="color: #0000BB">$fmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isLenient</span><span style="color: #007700">()) {<br />    echo </span><span style="color: #DD0000">'TRUE'</span><span style="color: #007700">;<br />} else {<br />    echo </span><span style="color: #DD0000">'FALSE'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">datefmt_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$fmt</span><span style="color: #007700">, </span><span style="color: #DD0000">'35/13/1971'</span><span style="color: #007700">);<br />echo </span><span style="color: #DD0000">'\n Intentar realizar parse('</span><span style="color: #0000BB">35</span><span style="color: #007700">/</span><span style="color: #0000BB">13</span><span style="color: #007700">/</span><span style="color: #0000BB">1971</span><span style="color: #DD0000">').\nEl resultado es : ' </span><span style="color: #007700">. </span><span style="color: #0000BB">datefmt_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$fmt</span><span style="color: #007700">, </span><span style="color: #DD0000">'35/13/1971'</span><span style="color: #007700">);<br />if( </span><span style="color: #0000BB">intl_get_error_code</span><span style="color: #007700">() !=</span><span style="color: #0000BB">0 </span><span style="color: #007700">){<br />    echo </span><span style="color: #DD0000">"\nEl mensaje del error es : "</span><span style="color: #007700">.</span><span style="color: #0000BB">intl_get_error_message</span><span style="color: #007700">();<br />    echo </span><span style="color: #DD0000">"\nEl código del error es : "</span><span style="color: #007700">.</span><span style="color: #0000BB">intl_get_error_code</span><span style="color: #007700">();<br />}<br /></span><span style="color: #0000BB">datefmt_set_lenient</span><span style="color: #007700">(</span><span style="color: #0000BB">$fmt</span><span style="color: #007700">,</span><span style="color: #0000BB">false</span><span style="color: #007700">);<br />echo </span><span style="color: #DD0000">"\nAhora la toleranca del formateador es : "</span><span style="color: #007700">;<br />if (</span><span style="color: #0000BB">$fmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isLenient</span><span style="color: #007700">() ){<br />    echo(</span><span style="color: #DD0000">'TRUE'</span><span style="color: #007700">);<br />} else{<br />    echo(</span><span style="color: #DD0000">'FALSE'</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">datefmt_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$fmt</span><span style="color: #007700">,</span><span style="color: #DD0000">"35/13/1971"</span><span style="color: #007700">);<br />echo </span><span style="color: #DD0000">"\n Intentar realizar parse('35/13/1971').\nEl resultado es : " </span><span style="color: #007700">. </span><span style="color: #0000BB">datefmt_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$fmt</span><span style="color: #007700">, </span><span style="color: #DD0000">'35/13/1971'</span><span style="color: #007700">);<br />if (</span><span style="color: #0000BB">intl_get_error_code</span><span style="color: #007700">() !=</span><span style="color: #0000BB">0 </span><span style="color: #007700">){<br />    echo </span><span style="color: #DD0000">"\nEl mensaje del error es : "</span><span style="color: #007700">.</span><span style="color: #0000BB">intl_get_error_message</span><span style="color: #007700">();<br />    echo </span><span style="color: #DD0000">"\nEl código del error es : "</span><span style="color: #007700">.</span><span style="color: #0000BB">intl_get_error_code</span><span style="color: #007700">();<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+  <div class="example" id="example-2460">
+   <p><strong>Ejemplo #2 Ejemplo orientado a objetos</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$fmt </span><span style="color: #007700">= new </span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">(<br />    </span><span style="color: #DD0000">'en_US'</span><span style="color: #007700">,<br />    </span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">FULL</span><span style="color: #007700">,<br />    </span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">FULL</span><span style="color: #007700">,<br />    </span><span style="color: #DD0000">'America/Los_Angeles'</span><span style="color: #007700">,<br />    </span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">GREGORIAN</span><span style="color: #007700">,<br />    </span><span style="color: #DD0000">'dd/MM/yyyy'<br /></span><span style="color: #007700">);<br />echo </span><span style="color: #0000BB">La tolerancia del formateador es </span><span style="color: #007700">: </span><span style="color: #DD0000">';<br />if ($fmt-&gt;isLenient() ){<br />    echo('</span><span style="color: #0000BB">TRUE</span><span style="color: #DD0000">');<br />} else{<br />    echo('</span><span style="color: #0000BB">FALSE</span><span style="color: #DD0000">');<br />}<br />$fmt-&gt;parse("35/13/1971");<br />echo "\n Intentar realizar parse('</span><span style="color: #0000BB">35</span><span style="color: #007700">/</span><span style="color: #0000BB">13</span><span style="color: #007700">/</span><span style="color: #0000BB">1971</span><span style="color: #DD0000">').\nEl resultado es : " . $fmt-&gt;parse('</span><span style="color: #0000BB">35</span><span style="color: #007700">/</span><span style="color: #0000BB">13</span><span style="color: #007700">/</span><span style="color: #0000BB">1971</span><span style="color: #DD0000">');<br />if (intl_get_error_code() !=0 ){<br />    echo "\nEl mensaje del error es : ".intl_get_error_message();<br />    echo "\nEl código del error es : ".intl_get_error_code();<br />}<br /><br />$fmt-&gt;setLenient(FALSE);<br />echo '</span><span style="color: #0000BB">\nAhora la toleranca del formateador es </span><span style="color: #007700">: </span><span style="color: #DD0000">';<br />if ($fmt-&gt;isLenient() ){<br />    echo('</span><span style="color: #0000BB">TRUE</span><span style="color: #DD0000">');<br />} else{<br />    echo('</span><span style="color: #0000BB">FALSE</span><span style="color: #DD0000">');<br />}<br />$fmt-&gt;parse("35/13/1971");<br />echo "\n Intentar realizar parse('</span><span style="color: #0000BB">35</span><span style="color: #007700">/</span><span style="color: #0000BB">13</span><span style="color: #007700">/</span><span style="color: #0000BB">1971</span><span style="color: #DD0000">').\nEl resultado es : " . $fmt-&gt;parse('</span><span style="color: #0000BB">35</span><span style="color: #007700">/</span><span style="color: #0000BB">13</span><span style="color: #007700">/</span><span style="color: #0000BB">1971</span><span style="color: #DD0000">');<br />if (intl_get_error_code() !=0 ){<br />    echo "\nEl mensaje del error es : ".intl_get_error_message();<br />    echo "\nEl código del error es : ".intl_get_error_code();<br />}<br /><br />?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+  <p class="para">El resultado del ejemplo sería:</p>
+  <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">La tolerancia del formateador es : TRUE
+Intentar realizar parse(&#039;35/13/1971&#039;).
+El resultado es : 66038400
+Ahora la toleranca del formateador es : FALSE
+Intentar realizar parse(&#039;35/13/1971&#039;).
+El resultado es :
+El mensaje del error es : Date parsing failed: U_PARSE_ERROR
+El código del error es : 9</pre>
+</div>
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-intldateformatter.setlenient-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="intldateformatter.islenient.html" class="function" rel="rdfs-seeAlso">datefmt_is_lenient()</a> - Obtener la tolerancia usada por un formateador de IntlDateFormatter</span></li>
+    <li><span class="function"><a href="intldateformatter.create.html" class="function" rel="rdfs-seeAlso">datefmt_create()</a> - Crear un formateador de fechas</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

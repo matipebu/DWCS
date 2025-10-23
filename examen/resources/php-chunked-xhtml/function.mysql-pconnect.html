@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Abre una conexi&oacute;n persistente a un servidor MySQL</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.mysql-num-rows.html">« mysql_num_rows</a></li>
+      <li style="float: right;"><a href="function.mysql-ping.html">mysql_ping »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.mysql.html">Funciones de MySQL</a></li>
+    <li>Abre una conexi&oacute;n persistente a un servidor MySQL</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mysql-pconnect" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysql_pconnect</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">mysql_pconnect</span> &mdash; <span class="dc-title">Abre una conexión persistente a un servidor MySQL</span></p>
+
+ </div>
+
+ <div id="function.mysql-pconnect-refsynopsisdiv">
+  <div class="warning"><strong class="warning">Advertencia</strong>
+   <p class="para">Esta extensión fue declarada obsoleta en PHP 5.5.0 y eliminada en PHP 7.0.0.
+En su lugar debería utilzarse las extensiones <a href="book.mysqli.html" class="link">MySQLi</a> o <a href="ref.pdo-mysql.html" class="link">PDO_MySQL</a>.
+Véase también la guía <a href="mysqlinfo.api.choosing.html" class="link">MySQL: elegir una API</a>.
+Las alternativas a esta función son:</p>
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.mysqli-connect.html" class="function">mysqli_connect()</a></span> con <code class="literal">p:</code> host prefix</li>
+    <li><span class="methodname"><a href="pdo.construct.html" class="methodname">PDO::__construct()</a></span> con <strong><code><a href="pdo.constants.html#pdo.constants.attr-persistent">PDO::ATTR_PERSISTENT</a></code></strong> como una opción de controlador</li>
+   </ul>
+  </div>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.mysql-pconnect-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mysql_pconnect</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$server</code><span class="initializer"> = ini_get(&quot;mysql.default_host&quot;)</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$username</code><span class="initializer"> = ini_get(&quot;mysql.default_user&quot;)</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$password</code><span class="initializer"> = ini_get(&quot;mysql.default_password&quot;)</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$client_flags</code><span class="initializer"> = 0</span></span><br>): <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span></div>
+
+  
+  <p class="para rdfs-comment">
+   Establece una conexión persistente a un servidor MySQL.
+  </p>
+  
+  <p class="para">
+   <span class="function"><strong>mysql_pconnect()</strong></span> se parece mucho a
+   <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> con dos grandes diferencias.
+  </p>
+  <p class="para">
+   En primer lugar, cuando se conecta, la función primero intenta encontrar un
+   enlace (persistente) que ya esté abierto con el mismo anfitrión,
+   nombre de usuario y contraseña. Si se encuentra uno, se devolverá un identificador
+   para él, en lugar de abrir una nueva conexión.
+  </p>
+  <p class="para">
+   Segundo, la conexión al servidor SQL no será cerrada cuando
+   la ejecución del script finalice. En su lugar, el enlace permanecerá
+   abierto para su uso futuro (<span class="function"><a href="function.mysql-close.html" class="function">mysql_close()</a></span> no
+   cerrará los enlaces establecidos mediante <span class="function"><strong>mysql_pconnect()</strong></span>).
+  </p>
+  <p class="para">
+   Por eso a este tipo de enlace se le llama &#039;persistente&#039;.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mysql-pconnect-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">server</code></dt>
+     <dd>
+      <p class="para">
+       El servidor de MySQL. También puede incluir un número de puerto. P.ej.
+       &quot;nombre_anfitrión:puerto&quot; o una ruta a un socket local, p.ej. &quot;:/ruta/al/socket&quot; para
+       el localhost.
+      </p>
+      <p class="para">
+       Si la directiva de PHP <a href="mysql.configuration.html#ini.mysql.default-host" class="link">
+       mysql.default_host</a> no se ha definido (predeterminado), entonces el
+       valor por defecto es &#039;localhost:3306&#039;
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">username</code></dt>
+     <dd>
+      <p class="para">
+       El nombre de usuario. El valor por defecto es el nombre del usuario al que pertenece el
+       proceso del servidor.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">password</code></dt>
+     <dd>
+      <p class="para">
+       La contraseña. El valor por defecto es una contraseña vacia.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">client_flags</code></dt>
+     <dd>
+      <p class="para">
+       El parámetro <code class="parameter">client_flags</code> puede ser una combinación
+       de las siguientes constantes:
+       128 (habilita el manejo de <code class="literal">LOAD DATA LOCAL</code>),
+       <strong><code><a href="mysql.constants.html#constant.mysql-client-ssl">MYSQL_CLIENT_SSL</a></code></strong>,
+       <strong><code><a href="mysql.constants.html#constant.mysql-client-compress">MYSQL_CLIENT_COMPRESS</a></code></strong>,
+       <strong><code><a href="mysql.constants.html#constant.mysql-client-ignore-space">MYSQL_CLIENT_IGNORE_SPACE</a></code></strong> o
+       <strong><code><a href="mysql.constants.html#constant.mysql-client-interactive">MYSQL_CLIENT_INTERACTIVE</a></code></strong>.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mysql-pconnect-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve un identificador de enlace persistente a MySQL en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en
+   caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.mysql-pconnect-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Tenga en cuenta que este tipo de enlaces solo funcionan si se está usando
+    una versión de  módulo de PHP. Véase la
+    sección <a href="features.persistent-connections.html" class="link">Conexiones
+    persistentes a bases de datos</a> para más información.
+   </p>
+  </p></blockquote>
+  <div class="warning"><strong class="warning">Advertencia</strong>
+   <p class="para">
+    El uso de conexiones persistentes puede requerir ajustar un poco las configuraciones
+    de Apache y de MySQL para asegurarse de que no se excede el número de conexiones
+    permitidas por MySQL.
+   </p>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mysql-pconnect-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.mysql-connect.html" class="function" rel="rdfs-seeAlso">mysql_connect()</a> - Abre una conexi&oacute;n al servidor MySQL</span></li>
+    <li><a href="features.persistent-connections.html" class="link">Conexiones
+     persistentes a bases de datos</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

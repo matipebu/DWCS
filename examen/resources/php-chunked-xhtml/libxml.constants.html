@@ -1,0 +1,360 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Constantes predefinidas</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="libxml.resources.html">« Tipos de recursos</a></li>
+      <li style="float: right;"><a href="class.libxmlerror.html">libXMLError »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.libxml.html">libxml</a></li>
+    <li>Constantes predefinidas</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="libxml.constants" class="appendix">
+ <h1 class="title">Constantes predefinidas</h1>
+
+ <p class="simpara">
+Estas constantes están definidas por esta extensión y
+estarán disponibles sólo cuando la extensión haya sido
+compilada con PHP, o bien sea cargada dinámicamente en ejecución.
+</p>
+ <dl>
+  
+   <dt id="constant.libxml-compact">
+    <strong><code><a href="libxml.constants.html#constant.libxml-compact">LIBXML_COMPACT</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Activa la optimización de asignación de nodos pequeños. Esto puede acelerar la aplicación
+     sin la necesidad de cambiar el código.
+    </span>
+    <blockquote class="note"><p><strong class="note">Nota</strong>: 
+     <p class="para">
+      Solo disponible en Libxml &gt;= 2.6.21
+     </p>
+    </p></blockquote>
+   </dd>
+  
+  
+   <dt id="constant.libxml-dtdattr">
+    <strong><code><a href="libxml.constants.html#constant.libxml-dtdattr">LIBXML_DTDATTR</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Atributos DTD por defecto
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.libxml-dtdload">
+    <strong><code><a href="libxml.constants.html#constant.libxml-dtdload">LIBXML_DTDLOAD</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Carga el subconjunto externo
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.libxml-dtdvalid">
+    <strong><code><a href="libxml.constants.html#constant.libxml-dtdvalid">LIBXML_DTDVALID</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Valida con el DTD
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.libxml-html-noimplied">
+    <strong><code><a href="libxml.constants.html#constant.libxml-html-noimplied">LIBXML_HTML_NOIMPLIED</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Establece el indicador HTML_PARSE_NOIMPLIED flag, el cual desactiva la
+     adición automática de elementos html/body... implicados.
+    </span>
+    <blockquote class="note"><p><strong class="note">Nota</strong>: 
+     <p class="para">
+      Solamente disponible en Libxml &gt;= 2.7.7 (a partir de PHP &gt;= 5.4.0)
+     </p>
+    </p></blockquote>
+   </dd>
+  
+  
+   <dt id="constant.libxml-html-nodefdtd">
+    <strong><code><a href="libxml.constants.html#constant.libxml-html-nodefdtd">LIBXML_HTML_NODEFDTD</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Establece el indicador HTML_PARSE_NODEFDTD, el cual previente que se añada un
+     tipo de documento predeterminado cuando no se encuentra uno.
+    </span>
+    <blockquote class="note"><p><strong class="note">Nota</strong>: 
+     <p class="para">
+      Solamente disponible en Libxml &gt;= 2.7.8 (a partir de PHP &gt;= 5.4.0)
+     </p>
+    </p></blockquote>
+   </dd>
+  
+  
+   <dt id="constant.libxml-noblanks">
+    <strong><code><a href="libxml.constants.html#constant.libxml-noblanks">LIBXML_NOBLANKS</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Elimina nodos en blanco
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.libxml-nocdata">
+    <strong><code><a href="libxml.constants.html#constant.libxml-nocdata">LIBXML_NOCDATA</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Combina CDATA como nodos de texto
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.libxml-noemptytag">
+    <strong><code><a href="libxml.constants.html#constant.libxml-noemptytag">LIBXML_NOEMPTYTAG</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Expande etiquetas vacías (por ej. de <code class="literal">&lt;br/&gt;</code> a
+     <code class="literal">&lt;br&gt;&lt;/br&gt;</code>)
+    </span>
+    <blockquote class="note"><p><strong class="note">Nota</strong>: 
+     <p class="para">
+      Esta opción está actualmente disponible solo en
+      las funciones <a href="domdocument.save.html" class="xref">DOMDocument::save</a> y
+      <a href="domdocument.savexml.html" class="xref">DOMDocument::saveXML</a>.
+     </p>
+    </p></blockquote>
+   </dd>
+  
+  
+   <dt id="constant.libxml-noent">
+    <strong><code><a href="libxml.constants.html#constant.libxml-noent">LIBXML_NOENT</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Sustituye entidades
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.libxml-noerror">
+    <strong><code><a href="libxml.constants.html#constant.libxml-noerror">LIBXML_NOERROR</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Suprime reportes de errores
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.libxml-nonet">
+    <strong><code><a href="libxml.constants.html#constant.libxml-nonet">LIBXML_NONET</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Deshabilita el acceso a red cuando se cargan documentos
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.libxml-nowarning">
+    <strong><code><a href="libxml.constants.html#constant.libxml-nowarning">LIBXML_NOWARNING</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Suprime reportes de advertencias
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.libxml-noxmldecl">
+    <strong><code><a href="libxml.constants.html#constant.libxml-noxmldecl">LIBXML_NOXMLDECL</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Omite la declaración XML cuando se guarda un documento
+    </span>
+    <blockquote class="note"><p><strong class="note">Nota</strong>: 
+     <p class="para">
+      Solo disponible en Libxml &gt;= 2.6.21
+     </p>
+    </p></blockquote>
+   </dd>
+  
+  
+   <dt id="constant.libxml-nsclean">
+    <strong><code><a href="libxml.constants.html#constant.libxml-nsclean">LIBXML_NSCLEAN</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Eliminar declaraciones de nombre de espacios redundantes
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.libxml-parsehuge">
+    <strong><code><a href="libxml.constants.html#constant.libxml-parsehuge">LIBXML_PARSEHUGE</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Establece la bandera XML_PARSE_HUGE, que hace más flexible cualquier límite hardcode del analizador. Esto afecta
+     a los límites tales como la profundidad máxima de un documento o la recursión de entidades, así como
+     los límites de tamaño de los nodos de texto.
+    </span>
+    <blockquote class="note"><p><strong class="note">Nota</strong>: 
+     <p class="para">
+      Solamente está disponible en Libxml &gt;= 2.7.0 (a partir de PHP &gt;= 5.3.2 y PHP &gt;= 5.2.12)
+     </p>
+    </p></blockquote>    
+   </dd>
+  
+  
+   <dt id="constant.libxml-pedantic">
+    <strong><code><a href="libxml.constants.html#constant.libxml-pedantic">LIBXML_PEDANTIC</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Establece el indicador XML_PARSE_PEDANTIC, el cual habilita el informe de errores pedante.
+    </span>
+    <blockquote class="note"><p><strong class="note">Nota</strong>: 
+     <p class="para">
+      Disponible a partir de PHP &gt;= 5.4.0
+     </p>
+    </p></blockquote>
+   </dd>
+  
+  
+   <dt id="constant.libxml-xinclude">
+    <strong><code><a href="libxml.constants.html#constant.libxml-xinclude">LIBXML_XINCLUDE</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Implementa la sustitución XInclude
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.libxml-err-error">
+    <strong><code><a href="libxml.constants.html#constant.libxml-err-error">LIBXML_ERR_ERROR</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Un error recuperable
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.libxml-err-fatal">
+    <strong><code><a href="libxml.constants.html#constant.libxml-err-fatal">LIBXML_ERR_FATAL</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Un error fatal
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.libxml-err-none">
+    <strong><code><a href="libxml.constants.html#constant.libxml-err-none">LIBXML_ERR_NONE</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Sin errores
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.libxml-err-warning">
+    <strong><code><a href="libxml.constants.html#constant.libxml-err-warning">LIBXML_ERR_WARNING</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Una simple advertencia
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.libxml-version">
+    <strong><code><a href="libxml.constants.html#constant.libxml-version">LIBXML_VERSION</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     La versión de libxml, como 20605 o 20617
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.libxml-dotted-version">
+    <strong><code><a href="libxml.constants.html#constant.libxml-dotted-version">LIBXML_DOTTED_VERSION</a></code></strong>
+    (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     La versión de libxml, como 2.6.5 o 2.6.17
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.libxml-schema-create">
+    <strong><code><a href="libxml.constants.html#constant.libxml-schema-create">LIBXML_SCHEMA_CREATE</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Crear nodos de valor predeterminado/fijo durante la validación del esquema XSD
+    </span>
+    <blockquote class="note"><p><strong class="note">Nota</strong>: 
+     <p class="para">
+      Solamente disponible en Libxml &gt;= 2.6.14 (a partir de PHP &gt;= 5.5.2)
+     </p>
+    </p></blockquote>    
+   </dd>
+  
+ </dl>
+</div>
+</div></div></body></html>

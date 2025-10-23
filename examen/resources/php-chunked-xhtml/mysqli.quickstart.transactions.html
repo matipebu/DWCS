@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Soporte de la API para transacciones</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqli.quickstart.multiple-statement.html">« Sentencias M&uacute;ltiples</a></li>
+      <li style="float: right;"><a href="mysqli.quickstart.metadata.html">Metadatos »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="mysqli.quickstart.html">Gu&iacute;a r&aacute;pida</a></li>
+    <li>Soporte de la API para transacciones</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqli.quickstart.transactions" class="section">
+  <h2 class="title">Soporte de la API para transacciones</h2>
+  <p class="para">
+   El servidor MySQL soporta transacciones dependiendo de del motor de almacenamiento usado.
+   Desde MySQL 5.5, el motor de almacenamiento predeterminado es InnoDB.
+   InnoDB tiene soporte completo para transacciones ACID.
+  </p>
+  <p class="para">
+   Las transacciones se pueden controlar usando SQL o llamadas a la API.
+   Se recomienda usar llamadas a la API para habilitar y deshabilitar el
+   modo de autoconsignación (auto commit) y para consignar y reiniciar transacciones.
+  </p>
+  <p class="para">
+   <div class="example" id="example-1427">
+    <p><strong>Ejemplo #1 Establecer el modo de autoconsignación con SQL y a través de la API</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$mysqli </span><span style="color: #007700">= new </span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"ejemplo.com"</span><span style="color: #007700">, </span><span style="color: #DD0000">"usuario"</span><span style="color: #007700">, </span><span style="color: #DD0000">"contraseña"</span><span style="color: #007700">, </span><span style="color: #DD0000">"basedatos"</span><span style="color: #007700">);<br />if (</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect_errno</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">"Falló la conexión a MySQL: (" </span><span style="color: #007700">. </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect_errno </span><span style="color: #007700">. </span><span style="color: #DD0000">") " </span><span style="color: #007700">. </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect_error</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">/* Recomendado: usar la API para cotrolar las configuraciones transaccionales */<br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">autocommit</span><span style="color: #007700">(</span><span style="color: #0000BB">false</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* No serán monitorizadas y reconocidas por la aplicación y el complemento de balance de carga */<br /></span><span style="color: #007700">if (!</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">'SET AUTOCOMMIT = 0'</span><span style="color: #007700">)) {<br />    echo </span><span style="color: #DD0000">"Falló la consulta: (" </span><span style="color: #007700">. </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno </span><span style="color: #007700">. </span><span style="color: #DD0000">") " </span><span style="color: #007700">. </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">error</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Los paquetes de características opcionales, como los comlementos de replicación y el de balance de carga,
+   pueden fácilmente monitorizar llamadas a la API. El complemento de replicación transacciones
+   conscientes del balance de carga, si las transacciones están controladas con llamadas a la API.
+   Las transacciones conscientes del balance de carga no están disponibles si las sentencias SQL se
+   usan para establecer el modo de autoconsignación, consignación y reinicio de una transacción.
+  </p>
+  <p class="para">
+   <div class="example" id="example-1428">
+    <p><strong>Ejemplo #2 Consignación y reinicio</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$mysqli </span><span style="color: #007700">= new </span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"ejemplo.com"</span><span style="color: #007700">, </span><span style="color: #DD0000">"usuario"</span><span style="color: #007700">, </span><span style="color: #DD0000">"contraseña"</span><span style="color: #007700">, </span><span style="color: #DD0000">"basedatos"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">autocommit</span><span style="color: #007700">(</span><span style="color: #0000BB">false</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"INSERT INTO test(id) VALUES (1)"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">rollback</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"INSERT INTO test(id) VALUES (2)"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">commit</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Observe que el servidor MySQL no puede reiniciar todas las sentencias.
+   Algunoas sentencias causan una consignación implícia.
+  </p>
+  <p class="para">
+   <strong>Véase también</strong>
+  </p>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="methodname"><a href="mysqli.autocommit.html" class="methodname">mysqli::autocommit()</a></span></li>
+    <li><span class="methodname"><strong>mysqli_result::commit()</strong></span></li>
+    <li><span class="methodname"><strong>mysqli_result::rollback()</strong></span></li>
+   </ul>
+  </p>
+ </div></div></div></body></html>

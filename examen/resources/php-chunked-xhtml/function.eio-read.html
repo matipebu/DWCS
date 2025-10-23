@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Leer de un descriptor de fichero en un &iacute;ndice dado</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.eio-poll.html">« eio_poll</a></li>
+      <li style="float: right;"><a href="function.eio-readahead.html">eio_readahead »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.eio.html">Funciones Eio</a></li>
+    <li>Leer de un descriptor de fichero en un &iacute;ndice dado</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.eio-read" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">eio_read</h1>
+  <p class="verinfo">(PECL eio &gt;= 0.0.1dev)</p><p class="refpurpose"><span class="refname">eio_read</span> &mdash; <span class="dc-title">Leer de un descriptor de fichero en un índice dado</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.eio-read-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>eio_read</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$fd</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$length</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$offset</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$pri</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$callback</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$data</code><span class="initializer"> = NULL</span></span><br>): <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>eio_read()</strong></span> lee hasta <code class="parameter">length</code>
+   bytes desde el descriptor de fichero <code class="parameter">fd</code> empezando en
+   <code class="parameter">offset</code>. Los bytes leídos son almacenados en el
+   argumento <code class="parameter">result</code> de <code class="parameter">callback</code>.
+  </p>
+  
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.eio-read-parameters">
+  <h3 class="title">Parámetros</h3>
+  <dl>
+   
+    <dt><code class="parameter">fd</code></dt>
+    <dd>
+     <p class="para">
+      Un flujo, un recurso Socket, o un descriptor numérico de fichero.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">length</code></dt>
+    <dd>
+     <p class="para">
+      El número máximo de bytes a leer.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">offset</code></dt>
+    <dd>
+     <p class="para">
+      El índice dentro del fichero.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">pri</code></dt>
+    <dd>
+     <p class="para">La prioridad de petición: <strong><code><a href="eio.constants.html#constant.eio-pri-default">EIO_PRI_DEFAULT</a></code></strong>, <strong><code><a href="eio.constants.html#constant.eio-pri-min">EIO_PRI_MIN</a></code></strong>, <strong><code><a href="eio.constants.html#constant.eio-pri-max">EIO_PRI_MAX</a></code></strong>, o <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>.
+Si se pasa <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>, <code class="parameter">pri</code> es establecido internamente a
+<strong><code><a href="eio.constants.html#constant.eio-pri-default">EIO_PRI_DEFAULT</a></code></strong>.
+</p>
+
+    </dd>
+   
+   
+    <dt><code class="parameter">callback</code></dt>
+    <dd>
+     <p class="para">
+La función <code class="parameter">callback</code> es llamada cuando la petición está hecha.
+Debería seguir el siguiente prototipo: <div class="example-contents"><div class="phpcode"><code><span style="color: #000000">void callback(mixed $data, int $result[, resource $req]);</span></code></div></div>
+
+<dl>
+ 
+  <dt><code class="parameter">data</code></dt>
+  <dd><p class="para">son datos personalizados pasados a la petición.</p></dd>
+ 
+ 
+  <dt><code class="parameter">result</code></dt>
+  <dd><p class="para">es el valor del resultado específico de la petición; básicamente, el valor devuelto por la correspondiente
+   llamada al sistema.</p></dd>
+ 
+ 
+  <dt><code class="parameter">req</code></dt>
+  <dd><p class="para">es el recurso de petición opcional que puede usarse con funciones como <span class="function"><a href="function.eio-get-last-error.html" class="function">eio_get_last_error()</a></span></p></dd>
+ 
+</dl>
+</p>
+
+    </dd>
+   
+   
+    <dt><code class="parameter">data</code></dt>
+    <dd>
+     <p class="para">
+      Variable arbitraria pasada a <code class="parameter">callback</code>.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.eio-read-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   <span class="function"><strong>eio_read()</strong></span> almacena los bytes leídos en el
+   argumento <code class="parameter">result</code> de la función
+   <code class="parameter">callback</code>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.eio-read-examples">
+  <h3 class="title">Ejemplos</h3>
+  <div class="example" id="example-3254">
+   <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>eio_read()</strong></span></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Abrir un fichero temporal y escribir algunos bytes en él<br /></span><span style="color: #0000BB">$nombre_fichero_temp </span><span style="color: #007700">= </span><span style="color: #DD0000">"eio-temp-file.tmp"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$fp </span><span style="color: #007700">= </span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$nombre_fichero_temp</span><span style="color: #007700">, </span><span style="color: #DD0000">"w"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">, </span><span style="color: #DD0000">"1234567890"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* Es llamada cuando eio_read() termina */<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">mi_llamada_retorno_read</span><span style="color: #007700">(</span><span style="color: #0000BB">$datos</span><span style="color: #007700">, </span><span style="color: #0000BB">$resultado</span><span style="color: #007700">) {<br />    global </span><span style="color: #0000BB">$nombre_fichero_temp</span><span style="color: #007700">;<br /><br /> </span><span style="color: #FF8000">// Imprimir los bytes leídos<br />    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$resultado</span><span style="color: #007700">);<br /><br /> </span><span style="color: #FF8000">// Cerrar el fichero<br />    </span><span style="color: #0000BB">eio_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$datos</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">eio_event_loop</span><span style="color: #007700">();<br /><br /> </span><span style="color: #FF8000">// Eliminar el fichero temporal<br />    </span><span style="color: #007700">@</span><span style="color: #0000BB">unlink</span><span style="color: #007700">(</span><span style="color: #0000BB">$nombre_fichero_temp</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">/* Es llamada cuanco eio_open() termina */<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">mi_llamada_retorno_fichero abierto</span><span style="color: #007700">(</span><span style="color: #0000BB">$datos</span><span style="color: #007700">, </span><span style="color: #0000BB">$resultado</span><span style="color: #007700">) {<br /> </span><span style="color: #FF8000">// $resultado debería contener el descriptor del fichero<br />    </span><span style="color: #007700">if (</span><span style="color: #0000BB">$resultado </span><span style="color: #007700">&gt; </span><span style="color: #0000BB">0</span><span style="color: #007700">) {<br />  </span><span style="color: #FF8000">// Leer 5 bytes empezando desde el tercero<br />        </span><span style="color: #0000BB">eio_read</span><span style="color: #007700">(</span><span style="color: #0000BB">$resultado</span><span style="color: #007700">, </span><span style="color: #0000BB">5</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">, </span><span style="color: #DD0000">"mi_llamada_retorno_read"</span><span style="color: #007700">, </span><span style="color: #0000BB">$resultado</span><span style="color: #007700">);<br />        </span><span style="color: #0000BB">eio_event_loop</span><span style="color: #007700">();<br />    } else {<br />  </span><span style="color: #FF8000">// eio_open() falló<br />        </span><span style="color: #0000BB">unlink</span><span style="color: #007700">(</span><span style="color: #0000BB">$datos</span><span style="color: #007700">);<br />    }<br />}<br /><br /></span><span style="color: #FF8000">// Abrir el fichero para leer y escribir<br /></span><span style="color: #0000BB">eio_open</span><span style="color: #007700">(</span><span style="color: #0000BB">$nombre_fichero_temp</span><span style="color: #007700">, </span><span style="color: #0000BB">EIO_O_RDWR</span><span style="color: #007700">, </span><span style="color: #0000BB">NULL</span><span style="color: #007700">,<br />    </span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">, </span><span style="color: #DD0000">"mi_llamada_retorno_fichero abierto"</span><span style="color: #007700">, </span><span style="color: #0000BB">$nombre_fichero_temp</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">eio_event_loop</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">string(5) &quot;34567&quot;</pre>
+</div>
+   </div>
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.eio-read-seealso">
+  <h3 class="title">Ver también</h3>
+  <ul class="simplelist">
+   <li><span class="function"><a href="function.eio-open.html" class="function" rel="rdfs-seeAlso">eio_open()</a> - Abrir un fichero</span></li>
+   <li><span class="function"><a href="function.eio-write.html" class="function" rel="rdfs-seeAlso">eio_write()</a> - Escribir en un fichero</span></li>
+   <li><span class="function"><a href="function.eio-close.html" class="function" rel="rdfs-seeAlso">eio_close()</a> - Cerrar un fichero</span></li>
+   <li><span class="function"><a href="function.eio-event-loop.html" class="function" rel="rdfs-seeAlso">eio_event_loop()</a> - Monitorizar libeio hasta que todas las peticiones sean procesadas</span></li>
+  </ul>
+ </div>
+
+ 
+</div></div></div></body></html>

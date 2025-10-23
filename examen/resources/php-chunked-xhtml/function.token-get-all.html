@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Divide la fuente dada en tokens PHP</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ref.tokenizer.html">« Funciones Tokenizer</a></li>
+      <li style="float: right;"><a href="function.token-name.html">token_name »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.tokenizer.html">Funciones Tokenizer</a></li>
+    <li>Divide la fuente dada en tokens PHP</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.token-get-all" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">token_get_all</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">token_get_all</span> &mdash; <span class="dc-title">Divide la fuente dada en tokens PHP</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.token-get-all-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>token_get_all</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$code</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span>): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>token_get_all()</strong></span> parsea el string de la <code class="parameter">source</code> dada
+   en tokens PHP usando el escaneador de léxico de Zend Engine.
+  </p>
+  <p class="para">
+   Para ver la lista de los tokens analizados, vea <a href="tokens.html" class="xref">Lista de componentes l&eacute;xicos del analizador</a>, o use 
+   <span class="function"><a href="function.token-name.html" class="function">token_name()</a></span> para traducir un valor token en su representación en string.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.token-get-all-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">source</code></dt>
+     <dd>
+      <p class="para">
+       La fuente PHP a analizar.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">flags</code></dt>
+     <dd>
+      <p class="para">
+       Banderas válidas:
+       <ul class="itemizedlist">
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>TOKEN_PARSE</code></strong> - Reconoce la capacidad de usar palabras reservadas en contextos específicos.
+         </span>
+        </li>
+       </ul>
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">flags</code></dt>
+     <dd>
+      <p class="para">
+       Valores válidos:
+       <ul class="itemizedlist">
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>TOKEN_PARSE</code></strong> - Reconoce la capacidad de usar
+           palabras reservadas en contextos específicos.
+         </span>
+        </li>
+       </ul>
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.token-get-all-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Un array de tokens identificadores. Cada token identificador individual es al 
+   mismo tiempo un carácter único (por ejemplo: <code class="literal">;</code>, <code class="literal">.</code>, 
+   <code class="literal">&gt;</code>, <code class="literal">!</code>, etc...),
+   un array de tres elementos conteniendo el índice de token en el elemento 0, el contenido
+   del string del token original en el elemento 1 y el número de línea en el elemento 2.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.token-get-all-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-3848">
+    <p><strong>Ejemplo #1 <span class="function"><strong>token_get_all()</strong></span> ejemplos</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$tokens </span><span style="color: #007700">= </span><span style="color: #0000BB">token_get_all</span><span style="color: #007700">(</span><span style="color: #DD0000">'&lt;?php echo; ?&gt;'</span><span style="color: #007700">);<br /><br />foreach (</span><span style="color: #0000BB">$tokens </span><span style="color: #007700">as </span><span style="color: #0000BB">$token</span><span style="color: #007700">) {<br />    if (</span><span style="color: #0000BB">is_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$token</span><span style="color: #007700">)) {<br />        echo </span><span style="color: #DD0000">"Line </span><span style="color: #007700">{</span><span style="color: #0000BB">$token</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">]}</span><span style="color: #DD0000">: "</span><span style="color: #007700">, </span><span style="color: #0000BB">token_name</span><span style="color: #007700">(</span><span style="color: #0000BB">$token</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]), </span><span style="color: #DD0000">" ('</span><span style="color: #007700">{</span><span style="color: #0000BB">$token</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]}</span><span style="color: #DD0000">')"</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />    }<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Line 1: T_OPEN_TAG (&#039;&lt;?php &#039;)
+Line 1: T_ECHO (&#039;echo&#039;)
+Line 1: T_WHITESPACE (&#039; &#039;)
+Line 1: T_CLOSE_TAG (&#039;?&gt;&#039;)</pre>
+</div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-3849">
+    <p><strong>Ejemplo #2 <span class="function"><strong>token_get_all()</strong></span> ejemplo de uso incorrecto</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$tokens </span><span style="color: #007700">= </span><span style="color: #0000BB">token_get_all</span><span style="color: #007700">(</span><span style="color: #DD0000">'/* comment */'</span><span style="color: #007700">);<br /><br />foreach (</span><span style="color: #0000BB">$tokens </span><span style="color: #007700">as </span><span style="color: #0000BB">$token</span><span style="color: #007700">) {<br />    if (</span><span style="color: #0000BB">is_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$token</span><span style="color: #007700">)) {<br />        echo </span><span style="color: #DD0000">"Line </span><span style="color: #007700">{</span><span style="color: #0000BB">$token</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">]}</span><span style="color: #DD0000">: "</span><span style="color: #007700">, </span><span style="color: #0000BB">token_name</span><span style="color: #007700">(</span><span style="color: #0000BB">$token</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]), </span><span style="color: #DD0000">" ('</span><span style="color: #007700">{</span><span style="color: #0000BB">$token</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]}</span><span style="color: #DD0000">')"</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />    }<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Line 1: T_INLINE_HTML (&#039;/* comment */&#039;)</pre>
+</div>
+    </div>
+   </div>
+   Ten en cuenta en el ejemplo anterior que la cadena se analiza como
+   <strong><code>T_INLINE_HTML</code></strong> en lugar del esperado
+   <strong><code>T_COMMENT</code></strong>. Esto se debe a que no se utilizó ninguna etiqueta de apertura en el
+   código proporcionado. Esto sería equivalente a colocar un comentario fuera de las
+   etiquetas PHP en un archivo normal.
+  </p>
+  <p class="para">
+   <div class="example" id="example-3850">
+    <p><strong>Ejemplo #3 <span class="function"><strong>token_get_all()</strong></span> en un ejemplo de clase que usa una palabra reservada</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$source </span><span style="color: #007700">= &lt;&lt;&lt;'code'<br /></span><span style="color: #DD0000">&lt;?php<br /><br />class A<br />{<br />    const PUBLIC = 1;<br />}<br /></span><span style="color: #007700">code;<br /><br /></span><span style="color: #0000BB">$tokens </span><span style="color: #007700">= </span><span style="color: #0000BB">token_get_all</span><span style="color: #007700">(</span><span style="color: #0000BB">$source</span><span style="color: #007700">, </span><span style="color: #0000BB">TOKEN_PARSE</span><span style="color: #007700">);<br /><br />foreach (</span><span style="color: #0000BB">$tokens </span><span style="color: #007700">as </span><span style="color: #0000BB">$token</span><span style="color: #007700">) {<br />    if (</span><span style="color: #0000BB">is_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$token</span><span style="color: #007700">)) {<br />        echo </span><span style="color: #0000BB">token_name</span><span style="color: #007700">(</span><span style="color: #0000BB">$token</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]) , </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />    }<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">T_OPEN_TAG
+T_WHITESPACE
+T_CLASS
+T_WHITESPACE
+T_STRING
+T_CONST
+T_WHITESPACE
+T_STRING
+T_LNUMBER</pre>
+</div>
+    </div>
+   </div>
+   Sin la bandera <strong><code>TOKEN_PARSE</code></strong>, el penúltimo
+   token (<strong><code>T_STRING</code></strong>) habría sido
+   <strong><code>T_PUBLIC</code></strong>.
+  </p>
+  <p class="para">
+   <div class="example" id="example-3851">
+    <p><strong>Ejemplo #4 
+     ejemplo de <span class="function"><strong>token_get_all()</strong></span> usado en una clase con una palabra reservada
+    </strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$source </span><span style="color: #007700">= &lt;&lt;&lt;'code'<br /></span><span style="color: #DD0000">&lt;?php<br /><br />class A<br />{<br />    const PUBLIC = 1;<br />}<br /></span><span style="color: #007700">code;<br /><br /></span><span style="color: #0000BB">$tokens </span><span style="color: #007700">= </span><span style="color: #0000BB">token_get_all</span><span style="color: #007700">(</span><span style="color: #0000BB">$source</span><span style="color: #007700">, </span><span style="color: #0000BB">TOKEN_PARSE</span><span style="color: #007700">);<br /><br />foreach (</span><span style="color: #0000BB">$tokens </span><span style="color: #007700">as </span><span style="color: #0000BB">$token</span><span style="color: #007700">) {<br />    if (</span><span style="color: #0000BB">is_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$token</span><span style="color: #007700">)) {<br />        echo </span><span style="color: #0000BB">token_name</span><span style="color: #007700">(</span><span style="color: #0000BB">$token</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]) , </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />    }<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">T_OPEN_TAG
+T_WHITESPACE
+T_CLASS
+T_WHITESPACE
+T_STRING
+T_CONST
+T_WHITESPACE
+T_STRING
+T_LNUMBER</pre>
+</div>
+    </div>
+   </div>
+   Sin el uso de <strong><code>TOKEN_PARSE</code></strong>, el penúltimo token (<strong><code>T_STRING</code></strong>) hubiese sido 
+   <strong><code>T_PUBLIC</code></strong>.
+  </p>
+ </div>
+
+<div class="refsect1 seealso" id="refsect1-function.token-get-all-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="phptoken.tokenize.html" class="function" rel="rdfs-seeAlso">PhpToken::tokenize()</a> - Splits given source into PHP tokens, represented by PhpToken objects.</span></li>
+    <li><span class="function"><a href="function.token-name.html" class="function" rel="rdfs-seeAlso">token_name()</a> - Obtiene el nombre simb&oacute;lico de un token PHP dado</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

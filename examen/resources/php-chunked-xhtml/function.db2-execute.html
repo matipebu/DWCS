@@ -1,0 +1,227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Ejecutar una sentencia SQL preparada</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.db2-exec.html">« db2_exec</a></li>
+      <li style="float: right;"><a href="function.db2-fetch-array.html">db2_fetch_array »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.ibm-db2.html">Funciones de IBM DB2</a></li>
+    <li>Ejecutar una sentencia SQL preparada</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.db2-execute" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">db2_execute</h1>
+  <p class="verinfo">(PECL ibm_db2 &gt;= 1.0.0)</p><p class="refpurpose"><span class="refname">db2_execute</span> &mdash; <span class="dc-title">
+   Ejecutar una sentencia SQL preparada
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.db2-execute-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>db2_execute</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$stmt</code></span>, <span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$parameters</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>db2_execute()</strong></span> ejecuta una sentencia SQL que ha sido 
+   preparada por <span class="function"><a href="function.db2-prepare.html" class="function">db2_prepare()</a></span>.
+  </p>
+  <p class="para">
+   Si la sentencia SQL devuelve un bloque de resultados, por ejemplo, una sentencia SELECT o una llamada 
+   a un procedimiento que devuelve bloques de resultados, se puede extraer
+   una fila como arreglo a partir del recurso <code class="literal">stmt</code> 
+   usando <span class="function"><a href="function.db2-fetch-assoc.html" class="function">db2_fetch_assoc()</a></span>,
+   <span class="function"><a href="function.db2-fetch-both.html" class="function">db2_fetch_both()</a></span>, o
+   <span class="function"><a href="function.db2-fetch-array.html" class="function">db2_fetch_array()</a></span>. Alternativamente, se puede usar 
+   <span class="function"><a href="function.db2-fetch-row.html" class="function">db2_fetch_row()</a></span> para mover el apuntador del resultado a la 
+   siguiente fila y extraer una columna de esa fila con 
+   <span class="function"><a href="function.db2-result.html" class="function">db2_result()</a></span>.
+  </p>
+  <p class="para">
+   En la función <span class="function"><a href="function.db2-prepare.html" class="function">db2_prepare()</a></span> se discuten brevementen las ventajas de 
+   utilizar <span class="function"><a href="function.db2-prepare.html" class="function">db2_prepare()</a></span> y
+   <span class="function"><strong>db2_execute()</strong></span> en lugar de <span class="function"><a href="function.db2-exec.html" class="function">db2_exec()</a></span>.
+  </p>
+
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.db2-execute-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">stmt</code></dt>
+     <dd>
+      <p class="para">
+       La sentencia preparada devuelta por <span class="function"><a href="function.db2-prepare.html" class="function">db2_prepare()</a></span>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">parameters</code></dt>
+     <dd>
+      <p class="para">
+       Un arreglo de parámetros de entrada que reemplazarán a los marcadores contenidos en 
+       la sentencia preparada.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.db2-execute-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.db2-execute-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-1246">
+    <p><strong>Ejemplo #1 Preparando y ejecutando una sentencia SQL con marcadores de parámetros</strong></p>
+    <div class="example-contents"><p>
+     El siguiente ejemplo prepara una sentencia INSERT que acepta cuatro 
+     marcadores de parámetros, después la ejecuta con <span class="function"><strong>db2_execute()</strong></span>.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$pet </span><span style="color: #007700">= array(</span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #DD0000">'cat'</span><span style="color: #007700">, </span><span style="color: #DD0000">'Pook'</span><span style="color: #007700">, </span><span style="color: #0000BB">3.2</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$insert </span><span style="color: #007700">= </span><span style="color: #DD0000">'INSERT INTO animals (id, breed, name, weight)<br />    VALUES (?, ?, ?, ?)'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$stmt </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$insert</span><span style="color: #007700">);<br />if (</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">$result </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">, </span><span style="color: #0000BB">$pet</span><span style="color: #007700">);<br />    if (</span><span style="color: #0000BB">$result</span><span style="color: #007700">) {<br />        print </span><span style="color: #DD0000">"Successfully added new pet."</span><span style="color: #007700">;<br />    }<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Successfully added new pet.</pre>
+</div>
+    </div>
+   </div>
+   <div class="example" id="example-1247">
+    <p><strong>Ejemplo #2 Llamando a un procedimiento almacenado con un parámetro OUT</strong></p>
+    <div class="example-contents"><p>
+     El siguiente ejemplo prepara una sentencia CALL que acepta un  
+     marcador de parámetro que representa al parámetro OUT, enlaza la variable de PHP 
+     <code class="literal">$my_pets</code> al parámetro utilizando 
+     <span class="function"><a href="function.db2-bind-param.html" class="function">db2_bind_param()</a></span>, después utiliza 
+     <span class="function"><strong>db2_execute()</strong></span> para ejecutar la sentencia CALL. Después de que 
+     la llamada al procedimiento almacenado se ha hecho, el valor de 
+     <code class="literal">$num_pets</code> se actualiza con el valor devuelto por el procedimiento 
+     almacenado para ese parámetro OUT.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$num_pets </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$res </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #DD0000">"CALL count_my_pets(?)"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$rc </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_bind_param</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #DD0000">"num_pets"</span><span style="color: #007700">, </span><span style="color: #0000BB">DB2_PARAM_OUT</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$rc </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">);<br />print </span><span style="color: #DD0000">"I have </span><span style="color: #0000BB">$num_pets</span><span style="color: #DD0000"> pets!"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">I have 7 pets!</pre>
+</div>
+    </div>
+   </div>
+   <div class="example" id="example-1248">
+    <p><strong>Ejemplo #3 Devolviendo datos XML como resultado SQL</strong></p>
+    <div class="example-contents"><p>
+     El siguiente ejemplo demuestra como trabajar con documentos almacenados  
+     en una columna XML usando la base de datos SAMPLE. Por medio de SQL/XML, 
+     este ejemplo devuelve algunos nodos en un documento XML contendos en  
+     un resultado SQL.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$conn </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"SAMPLE"</span><span style="color: #007700">, </span><span style="color: #DD0000">"db2inst1"</span><span style="color: #007700">, </span><span style="color: #DD0000">"ibmdb2"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$query </span><span style="color: #007700">= </span><span style="color: #DD0000">'SELECT * FROM XMLTABLE(<br />    XMLNAMESPACES (DEFAULT \'http://posample.org\'),<br />    \'db2-fn:xmlcolumn("CUSTOMER.INFO")/customerinfo\'<br />    COLUMNS<br />    "CID" VARCHAR (50) PATH \'@Cid\',<br />    "NAME" VARCHAR (50) PATH \'name\',<br />    "PHONE" VARCHAR (50) PATH \'phone [ @type = "work"]\'<br />    ) AS T<br />    WHERE NAME = ?<br />    '</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$stmt </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$name </span><span style="color: #007700">= </span><span style="color: #DD0000">'Kathy Smith'</span><span style="color: #007700">;<br /><br />if (</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">db2_bind_param</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #DD0000">"name"</span><span style="color: #007700">, </span><span style="color: #0000BB">DB2_PARAM_IN</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">db2_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">);<br /><br />    while(</span><span style="color: #0000BB">$row </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_fetch_object</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">)){<br />    </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">CID</span><span style="color: #DD0000">     </span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">NAME</span><span style="color: #DD0000">     </span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">PHONE</span><span style="color: #DD0000">\n"</span><span style="color: #007700">);<br />    }<br />}<br /></span><span style="color: #0000BB">db2_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">1000     Kathy Smith     416-555-1358
+1001     Kathy Smith     905-555-7258</pre>
+</div>
+    </div>
+   </div>
+   <div class="example" id="example-1249">
+    <p><strong>Ejemplo #4 Ejecutando un &quot;JOIN&quot; con datos XML</strong></p>
+    <div class="example-contents"><p>
+     El siguiente ejemplo funciona con documentos almacenados en dos diferentes  
+     columnas XML en la base de datos SAMPLE. Crea dos tablas temporales  
+     de los documentos XML de las dos columnas y devuelve  
+     un resultado SQL con información acerca del estado de compra de un cliente.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$conn </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"SAMPLE"</span><span style="color: #007700">, </span><span style="color: #DD0000">"db2inst1"</span><span style="color: #007700">, </span><span style="color: #DD0000">"ibmdb2"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$query </span><span style="color: #007700">= </span><span style="color: #DD0000">'<br />SELECT A.CID, A.NAME, A.PHONE, C.PONUM, C.STATUS<br />FROM<br />XMLTABLE(<br />XMLNAMESPACES (DEFAULT \'http://posample.org\'),<br />\'db2-fn:xmlcolumn("CUSTOMER.INFO")/customerinfo\'<br />COLUMNS<br />"CID" BIGINT PATH \'@Cid\',<br />"NAME" VARCHAR (50) PATH \'name\',<br />"PHONE" VARCHAR (50) PATH \'phone [ @type = "work"]\'<br />) as A,<br />PURCHASEORDER AS B,<br />XMLTABLE (<br />XMLNAMESPACES (DEFAULT \'http://posample.org\'),<br />\'db2-fn:xmlcolumn("PURCHASEORDER.PORDER")/PurchaseOrder\'<br />COLUMNS<br />"PONUM"  BIGINT PATH \'@PoNum\',<br />"STATUS" VARCHAR (50) PATH \'@Status\'<br />) as C<br />WHERE A.CID = B.CUSTID AND<br />    B.POID = C.PONUM AND<br />    A.NAME = ?<br />'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$stmt </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$name </span><span style="color: #007700">= </span><span style="color: #DD0000">'Kathy Smith'</span><span style="color: #007700">;<br /><br />if (</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">db2_bind_param</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #DD0000">"name"</span><span style="color: #007700">, </span><span style="color: #0000BB">DB2_PARAM_IN</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">db2_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">);<br /><br />    while(</span><span style="color: #0000BB">$row </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_fetch_object</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">)){<br />    </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">CID</span><span style="color: #DD0000">     </span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">NAME</span><span style="color: #DD0000">     </span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">PHONE</span><span style="color: #DD0000">     </span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">PONUM</span><span style="color: #DD0000">     </span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">STATUS</span><span style="color: #DD0000">\n"</span><span style="color: #007700">);<br />    }<br />}<br /><br /></span><span style="color: #0000BB">db2_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">1001     Kathy Smith     905-555-7258     5002     Shipped</pre>
+</div>
+    </div>
+   </div>
+   <div class="example" id="example-1250">
+    <p><strong>Ejemplo #5 Devolviendo datos SQL como parte un documento XML más extenso</strong></p>
+    <div class="example-contents"><p>
+     El siguiente ejemplo trabaja con una parte de los documentos PRODUCT.DESCRIPTION 
+     en la base de datos SAMPLE. Crea un documento XML que contiene  
+     descripciones del producto (datos XML) y precios (datos SQL).
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$conn </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"SAMPLE"</span><span style="color: #007700">, </span><span style="color: #DD0000">"db2inst1"</span><span style="color: #007700">, </span><span style="color: #DD0000">"ibmdb2"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$query </span><span style="color: #007700">= </span><span style="color: #DD0000">'<br />SELECT<br />XMLSERIALIZE(<br />XMLQUERY(\'<br />    declare boundary-space strip;<br />    declare default element namespace "http://posample.org";<br />    &lt;promoList&gt; {<br />    for $prod in $doc/product<br />    where $prod/description/price &lt; 10.00<br />    order by $prod/description/price ascending<br />    return(<br />        &lt;promoitem&gt; {<br />        $prod,<br />        &lt;startdate&gt; {$start} &lt;/startdate&gt;,<br />        &lt;enddate&gt; {$end} &lt;/enddate&gt;,<br />        &lt;promoprice&gt; {$promo} &lt;/promoprice&gt;<br />            } &lt;/promoitem&gt;<br />    )<br />    } &lt;/promoList&gt;<br />\' passing by ref DESCRIPTION AS "doc",<br />PROMOSTART as "start",<br />PROMOEND as "end",<br />PROMOPRICE as "promo"<br />RETURNING SEQUENCE)<br />AS CLOB (32000))<br />AS NEW_PRODUCT_INFO<br />FROM PRODUCT<br />WHERE PID = ?<br />'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$stmt </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$pid </span><span style="color: #007700">= </span><span style="color: #DD0000">"100-100-01"</span><span style="color: #007700">;<br /><br />if (</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">db2_bind_param</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #DD0000">"pid"</span><span style="color: #007700">, </span><span style="color: #0000BB">DB2_PARAM_IN</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">db2_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">);<br /><br />    while(</span><span style="color: #0000BB">$row </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">)){<br />    </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]</span><span style="color: #DD0000">\n"</span><span style="color: #007700">);<br />    }<br />}<br /><br /></span><span style="color: #0000BB">db2_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">&lt;promoList xmlns=&quot;http://posample.org&quot;&gt;
+    &lt;promoitem&gt;
+    &lt;product pid=&quot;100-100-01&quot;&gt;
+        &lt;description&gt;
+            &lt;name&gt;Snow Shovel, Basic 22 inch&lt;/name&gt;
+            &lt;details&gt;Basic Snow Shovel, 22 inches wide, straight handle with D-Grip&lt;/details&gt;
+            &lt;price&gt;9.99&lt;/price&gt;
+            &lt;weight&gt;1 kg&lt;/weight&gt;
+        &lt;/description&gt;
+    &lt;/product&gt;
+    &lt;startdate&gt;2004-11-19&lt;/startdate&gt;
+    &lt;enddate&gt;2004-12-19&lt;/enddate&gt;
+    &lt;promoprice&gt;7.25&lt;/promoprice&gt;
+    &lt;/promoitem&gt;
+&lt;/promoList&gt;</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.db2-execute-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.db2-exec.html" class="function" rel="rdfs-seeAlso">db2_exec()</a> - Ejecutar directamente una sentencia SQL</span></li>
+    <li><span class="function"><a href="function.db2-fetch-array.html" class="function" rel="rdfs-seeAlso">db2_fetch_array()</a> - Devolver un arreglo, indexado por la posici&oacute;n de las columnas, que represanta una fila de un bloque de resultados</span></li>
+    <li><span class="function"><a href="function.db2-fetch-assoc.html" class="function" rel="rdfs-seeAlso">db2_fetch_assoc()</a> - Devolver un arreglo, indexado por el nombre de las columnas, representando una fila del bloque de resultados</span></li>
+    <li><span class="function"><a href="function.db2-fetch-both.html" class="function" rel="rdfs-seeAlso">db2_fetch_both()</a> - Devolver un arreglo, indexado por el nombre y por la posici&oacute;n de la columna, representando una fila de un bloque de resultados</span></li>
+    <li><span class="function"><a href="function.db2-fetch-row.html" class="function" rel="rdfs-seeAlso">db2_fetch_row()</a> - Establecer el apuntador de los resultados hacia la siguiente fila o a la fila solicitada</span></li>
+    <li><span class="function"><a href="function.db2-prepare.html" class="function" rel="rdfs-seeAlso">db2_prepare()</a> - Prepara un comando SQL para su ejecuci&oacute;n</span></li>
+    <li><span class="function"><a href="function.db2-result.html" class="function" rel="rdfs-seeAlso">db2_result()</a> - Devolver una columna espec&iacute;fica del resultado</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+
+</div></div></div></body></html>

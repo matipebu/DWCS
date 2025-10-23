@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Instalaci&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="rar.requirements.html">« Requerimientos</a></li>
+      <li style="float: right;"><a href="rar.configuration.html">Configuraci&oacute;n en tiempo de ejecuci&oacute;n »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="rar.setup.html">Instalaci&oacute;n/Configuraci&oacute;n</a></li>
+    <li>Instalaci&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="rar.installation" class="section">
+  <h2 class="title">Instalación</h2>
+  <p class="para">
+   Rar está actualmente disponible a través de PECL
+   <a href="https://pecl.php.net/package/rar" class="link external">&raquo;&nbsp;https://pecl.php.net/package/rar</a>.
+  </p>
+  <p class="para">
+   También puede usar el instalador PECL para instalar la extensión Rar,
+   utilizando el siguiente comando: <strong class="command">pecl -v install rar</strong>.
+  </p>
+  <p class="para">
+   Siempre puede descargar el paquete <var class="filename">tar.gz</var> e instalar Rar a mano:
+   <div class="example" id="example-791">
+    <p><strong>Ejemplo #1 Instalación Rar</strong></p>
+    <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">gunzip rar-xxx.tgz
+tar -xvf rar-xxx.tar
+cd rar-xxx
+phpize
+./configure &amp;&amp; make &amp;&amp; make install</pre>
+</div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Los usuarios de Windows habilitarán <var class="filename">php_rar.dll</var> en el interior
+   de <var class="filename">php.ini</var> con el fin de utilizar estas funciones.
+   Actualmente, no hay ninguna <abbr title="Dynamic Link Library">DLL</abbr> disponible para
+esta extensión <abbr title="PHP Extension and Application Repository">PECL</abbr>. Véase también la sección
+<a href="install.windows.building.html" class="link">Compilación en Windows</a>
+.
+  </p>
+ </div></div></div></body></html>

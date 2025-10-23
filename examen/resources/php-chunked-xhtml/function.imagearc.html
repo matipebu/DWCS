@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Dibujar un arco</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.imageantialias.html">« imageantialias</a></li>
+      <li style="float: right;"><a href="function.imageavif.html">imageavif »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.image.html">Funciones de GD e Im&aacute;genes</a></li>
+    <li>Dibujar un arco</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.imagearc" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">imagearc</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">imagearc</span> &mdash; <span class="dc-title">Dibujar un arco</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.imagearc-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>imagearc</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$image</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$cx</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$cy</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$width</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$height</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$start</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$end</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$color</code></span><br>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>imagearc()</strong></span> dibuja un arco de circunferencia con centro en las
+   coordenadas dadas.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.imagearc-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    <dt><code class="parameter">
+image</code></dt><dd><p class="para">Un recurso image, es devuelto por una de las funciones de creación de imágenes,
+como <span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>.</p></dd>
+    
+     <dt><code class="parameter">cx</code></dt>
+     <dd>
+      <p class="para">
+       Coordenada x del centro.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">cy</code></dt>
+     <dd>
+      <p class="para">
+       Coordenada y del centro
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">width</code></dt>
+     <dd>
+      <p class="para">
+       El ancho del arco.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">height</code></dt>
+     <dd>
+      <p class="para">
+       El alto del arco.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">start</code></dt>
+     <dd>
+      <p class="para">
+       El ángulo de inicio del arco, en grados.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">end</code></dt>
+     <dd>
+      <p class="para">
+       El ángulo de finalización del arco, en grados.
+       0° está localizado en la posición que marca la aguja horaria a las tres en punto, y
+       el arco se dibuja en el sentido de las agujas del reloj.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">color</code></dt>
+     <dd>
+      <p class="para">
+       Un identificador de color creado con
+       <span class="function"><a href="function.imagecolorallocate.html" class="function">imagecolorallocate()</a></span>.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.imagearc-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.imagearc-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-2621">
+    <p><strong>Ejemplo #1 Dibujar un círculo con <span class="function"><strong>imagearc()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">// crear una imagen de 200*200<br /></span><span style="color: #0000BB">$img </span><span style="color: #007700">= </span><span style="color: #0000BB">imagecreatetruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">200</span><span style="color: #007700">, </span><span style="color: #0000BB">200</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// asignar algunos colores<br /></span><span style="color: #0000BB">$blanco </span><span style="color: #007700">= </span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$img</span><span style="color: #007700">, </span><span style="color: #0000BB">255</span><span style="color: #007700">, </span><span style="color: #0000BB">255</span><span style="color: #007700">, </span><span style="color: #0000BB">255</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$rojo   </span><span style="color: #007700">= </span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$img</span><span style="color: #007700">, </span><span style="color: #0000BB">255</span><span style="color: #007700">,   </span><span style="color: #0000BB">0</span><span style="color: #007700">,   </span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$verde </span><span style="color: #007700">= </span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$img</span><span style="color: #007700">,   </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">255</span><span style="color: #007700">,   </span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$azul  </span><span style="color: #007700">= </span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$img</span><span style="color: #007700">,   </span><span style="color: #0000BB">0</span><span style="color: #007700">,   </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">255</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// dibujar la cabeza<br /></span><span style="color: #0000BB">imagearc</span><span style="color: #007700">(</span><span style="color: #0000BB">$img</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">, </span><span style="color: #0000BB">200</span><span style="color: #007700">, </span><span style="color: #0000BB">200</span><span style="color: #007700">,  </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">360</span><span style="color: #007700">, </span><span style="color: #0000BB">$blanco</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">// la boca<br /></span><span style="color: #0000BB">imagearc</span><span style="color: #007700">(</span><span style="color: #0000BB">$img</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">, </span><span style="color: #0000BB">100</span><span style="color: #007700">, </span><span style="color: #0000BB">150</span><span style="color: #007700">, </span><span style="color: #0000BB">150</span><span style="color: #007700">, </span><span style="color: #0000BB">25</span><span style="color: #007700">, </span><span style="color: #0000BB">155</span><span style="color: #007700">, </span><span style="color: #0000BB">$rojo</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">// el ojo izquierdo y después el ojo derecho<br /></span><span style="color: #0000BB">imagearc</span><span style="color: #007700">(</span><span style="color: #0000BB">$img</span><span style="color: #007700">,  </span><span style="color: #0000BB">60</span><span style="color: #007700">,  </span><span style="color: #0000BB">75</span><span style="color: #007700">,  </span><span style="color: #0000BB">50</span><span style="color: #007700">,  </span><span style="color: #0000BB">50</span><span style="color: #007700">,  </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">360</span><span style="color: #007700">, </span><span style="color: #0000BB">$verde</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagearc</span><span style="color: #007700">(</span><span style="color: #0000BB">$img</span><span style="color: #007700">, </span><span style="color: #0000BB">140</span><span style="color: #007700">,  </span><span style="color: #0000BB">75</span><span style="color: #007700">,  </span><span style="color: #0000BB">50</span><span style="color: #007700">,  </span><span style="color: #0000BB">50</span><span style="color: #007700">,  </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">360</span><span style="color: #007700">, </span><span style="color: #0000BB">$azul</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// imprimir la imagen en el navegador<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">"Content-type: image/png"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagepng</span><span style="color: #007700">(</span><span style="color: #0000BB">$img</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// liberar memoria<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$img</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+    <div class="mediaobject">
+     
+     <div class="imageobject">
+      <img src="images/21009b70229598c6a80eef8b45bf282b-imagearc.png" alt="Salida del ejemplo : Dibujar un círculo con imagearc()" width="200" height="200" />
+     </div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.imagearc-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.imagefilledarc.html" class="function" rel="rdfs-seeAlso">imagefilledarc()</a> - Dibujar un arco parcial y rellenarlo</span></li>
+    <li><span class="function"><a href="function.imageellipse.html" class="function" rel="rdfs-seeAlso">imageellipse()</a> - Dibujar una elipse</span></li>
+    <li><span class="function"><a href="function.imagefilledellipse.html" class="function" rel="rdfs-seeAlso">imagefilledellipse()</a> - Dibujar una elipse con relleno</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Funci&oacute;n para extraer una secuencia de un cl&uacute;ster de grafemas predeterminados desde un buffer de texto, que puede estar codificado en UTF-8</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ref.intl.grapheme.html">« Funciones de Grapheme</a></li>
+      <li style="float: right;"><a href="function.grapheme-str-split.html">grapheme_str_split »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.intl.grapheme.html">Funciones de Grapheme</a></li>
+    <li>Funci&oacute;n para extraer una secuencia de un cl&uacute;ster de grafemas predeterminados desde un buffer de texto, que puede estar codificado en UTF-8</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.grapheme-extract" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">grapheme_extract</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8, PECL intl &gt;= 1.0.0)</p><p class="refpurpose"><span class="refname">grapheme_extract</span> &mdash; <span class="dc-title">Función para extraer una secuencia de un clúster de grafemas predeterminados desde un buffer de texto, que puede estar codificado en UTF-8</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.grapheme-extract-description">
+  <h3 class="title">Descripción</h3>
+  <p class="para">Estilo por procedimientos</p>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>grapheme_extract</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$haystack</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$size</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$extract_type</code><span class="initializer"> = ?</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$start</code><span class="initializer"> = 0</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter reference">&$next</code><span class="initializer"> = ?</span></span><br>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Función para extraer una secuencia de un clúster de grafemas predeterminados desde un buffer de texto, que puede estar codificado en UTF-8. 
+  </p> 
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.grapheme-extract-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">haystack</code></dt>
+     <dd>
+      <p class="para">
+       La cadena a buscar.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">size</code></dt>
+     <dd>
+      <p class="para">
+       Número máximo de elementos -basado en el parámetro $extract_type- a devolver.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">extract_type</code></dt>
+     <dd>
+      <p class="para">
+       Define el tipo de unidades mencionadas por el parámetro $size:
+      </p>
+      <p class="para">
+       <ul class="simplelist">
+        <li>GRAPHEME_EXTR_COUNT (predeterminado) - $size es el número predeterminado de
+         grupos de grafemas a extraer.</li>
+        <li>GRAPHEME_EXTR_MAXBYTES - $size es el número máximo de bytes
+         devueltos.</li>
+        <li>GRAPHEME_EXTR_MAXCHARS - $size es el número máximo de caracteres
+         UTF-8 devueltos.</li>
+       </ul>
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">start</code></dt>
+     <dd>
+      <p class="para">
+       Posición de inicio del parámetro $haystack en bytes -si se proporciona, debe ser cero o un
+       valor positivo que sea menor o igual que la longitud del parámetro $haystack en
+       bytes. Si $start no apunta al primer byte de un carácter
+       UTF-8, la posición de inicio se mueve al límite del siguiente carácter.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">next</code></dt>
+     <dd>
+      <p class="para">
+       Una referencia a un valor que será establecido a la posición de inicio siguiente.
+       Cuando la funcion devuelve, este parámetro puede apuntar a la posición del primer byte después del final de la cadena.
+      </p>
+     </dd>
+    
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.grapheme-extract-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Una cadena que empieza en el índice $start y termina en un límite de un grupo de grafemas
+   predeterminado que se ajusta al $size y $extract_type especificados.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.grapheme-extract-examples">
+  <h3 class="title">Ejemplos</h3>
+  <div class="example" id="example-2477">
+   <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>grapheme_extract()</strong></span></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$carácter_a_anillo_nfd </span><span style="color: #007700">= </span><span style="color: #DD0000">"a\xCC\x8A"</span><span style="color: #007700">;  </span><span style="color: #FF8000">// 'LETRA MINÚSCULA LATINA A CON ANILLO SUPERIOR' (U+00E5) forma de normalización "D"<br /></span><span style="color: #0000BB">$carácter_o_diéresis_nfd </span><span style="color: #007700">= </span><span style="color: #DD0000">"o\xCC\x88"</span><span style="color: #007700">; </span><span style="color: #FF8000">// 'LETRA MINÚSCULA LATINA O CON DIÉRESIS' (U+00F6) forma de normalización "D"<br /><br /></span><span style="color: #007700">print </span><span style="color: #0000BB">urlencode</span><span style="color: #007700">(</span><span style="color: #0000BB">grapheme_extract</span><span style="color: #007700">( </span><span style="color: #0000BB">$carácter_a_anillo_nfd </span><span style="color: #007700">. </span><span style="color: #0000BB">$carácter_o_diéresis_nfd</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">GRAPHEME_EXTR_COUNT</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+  <p class="para">El resultado del ejemplo sería:</p>
+  <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">o%CC%88</pre>
+</div>
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.grapheme-extract-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.grapheme-substr.html" class="function" rel="rdfs-seeAlso">grapheme_substr()</a> - Devolver parte de una cadena</span></li>
+    <li>
+     <a href="http://unicode.org/reports/tr29/#Grapheme_Cluster_Boundaries" class="link external">&raquo;&nbsp;
+      Segementación de Texto Unicode: Límites de Grupos de Grafemas
+     </a>
+    </li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

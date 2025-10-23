@@ -1,0 +1,1317 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Estad&iacute;sticas</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqlnd.persist.html">« Conexiones persistentes</a></li>
+      <li style="float: right;"><a href="mysqlnd.notes.html">Notas »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.mysqlnd.html">Mysqlnd</a></li>
+    <li>Estad&iacute;sticas</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqlnd.stats" class="chapter">
+ <h1 class="title">Estadísticas</h1>
+
+ <p class="para">
+  <strong>Usar datos estadísticos</strong>
+ </p>
+ <p class="para">
+  El Controlador Nativo de MySQL soporta la obtención de estadísticas sobre la
+  comunicación entre el cliente y el servidor. Las estadísticas obtenidas
+  son de dos tipos principales:
+ </p>
+ <ul class="itemizedlist">
+  <li class="listitem">
+   <p class="para">
+    Estadísticas del cliente
+   </p>
+  </li>
+  <li class="listitem">
+   <p class="para">
+    Estadísticas de conexión
+   </p>
+  </li>
+ </ul>
+ <p class="para">
+  Si se está usando la extensión <code class="literal">mysqli</code>, estas
+  estadísticas se pueden obtener a través de dos llamadas a la API:
+ </p>
+ <ul class="itemizedlist">
+  <li class="listitem">
+   <p class="para">
+    <span class="function"><a href="function.mysqli-get-client-stats.html" class="function">mysqli_get_client_stats()</a></span>
+   </p>
+  </li>
+  <li class="listitem">
+   <p class="para">
+    <span class="function"><a href="mysqli.get-connection-stats.html" class="function">mysqli_get_connection_stats()</a></span>
+   </p>
+  </li>
+ </ul>
+ <blockquote class="note"><p><strong class="note">Nota</strong>: 
+  <p class="para">
+   Las estadísticas son acumuladas entre todas las extensiones que usan el Controlador Nativo de
+   MySQL. Por ejemplo, al compilar <code class="literal">ext/mysql</code>
+   y <code class="literal">ext/mysqli</code> con el Controlador Nativo de MySQL, las
+   llamadas a las funciones de <code class="literal">ext/mysql</code> y
+   <code class="literal">ext/mysqli</code> cambiarán las estadísticas. No existe ninguna
+   forma de averiguar cuanto ha impactado una cierta llamada a la API de una extensión que ha
+   sido compilada con el Controlador Nativo de MySQL en una cierta
+   estadística. Se puede configurar el Controlador PDO MySQL,
+   <code class="literal">ext/mysql</code> y <code class="literal">ext/mysqli</code> para que
+   opcionalmente usen el Controlador Nativo de MySQL. Cuando se hace esto, las tres
+   extensiones cambiarán las estadísticas.
+  </p>
+ </p></blockquote>
+ <p class="para">
+  <strong>Acceder a las estadísticas del cliente</strong>
+ </p>
+ <p class="para">
+  Para acceder a las estadísticas del cliente se necesita llamar a
+  <span class="function"><a href="function.mysqli-get-client-stats.html" class="function">mysqli_get_client_stats()</a></span>. La llamada a la función
+  no necesita ningún parámetro.
+ </p>
+ <p class="para">
+  La función devuelve un array asociativo que contiene el nombre de
+  la estadística como clave y los datos de la estadística como valor.
+ </p>
+ <p class="para">
+  A las estadísticas del cliente también se pueden acceder llamando a la
+  función <span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span>.
+ </p>
+ <p class="para">
+  <strong>Acceder a las estadísticas de conexión</strong>
+ </p>
+ <p class="para">
+  Para acceder a las estadísticas de conexión se ha de llamar a
+  <span class="function"><a href="mysqli.get-connection-stats.html" class="function">mysqli_get_connection_stats()</a></span>. Esta toma el
+  gestor de conexión de la base de datos como parámetro.
+ </p>
+ <p class="para">
+  La función devuelve un array asociativo que contiene el nombre de
+  la estadística como clave y los datos de la estadística como valor.
+ </p>
+ <p class="para">
+  <strong>Conjuntos de resultados almacenados y no almacenados en buffer</strong>
+ </p>
+ <p class="para">
+  Los conjuntos de resultados puede ser almacenados o no almacenados en buffer. Al usar la configuración predeterminada,
+  <code class="literal">ext/mysql</code> y <code class="literal">ext/mysqli</code> trabajan
+  con conjuntos de resultados almacenados en buffer para consultas normales (sentencia no preparada).
+  Los conjuntos de resultados almacenados en buffer son almacenados en la caché del cliente. Después de la ejecución
+  de una consulta, todos los resultados son traidos desde el Servidor MySQL y almacenados en
+  una caché del cliente. La gran ventaja de los conjuntos de resultados almacenados en buffer es
+  que permiten al servidor liberar todos los recursos asignados a un conjunto de
+  resultados, una vez que los resultados han sido obtenidos por el cliente.
+ </p>
+ <p class="para">
+  Por otra parte, los conjuntos de resultados no almacenados en buffer se mantienen mucho más tiempo en el
+  servidor. server. Si se quiere reducir el consumo de memoria del cliente, aunque
+  incrementando la carga del servidor, se han de usar conjunto de resultados no almacenados en buffer. Si se experimenta
+  una alta carga del servidor y las cigras de los conjuntos de resultados no almacenados en buffer son
+  altas, se debería considerar trasladar la carga a los cliente. Estos
+  normalmente escalan mejor que los servidores. La <q class="quote">carga</q> no solamente
+  se refiere a los buffers de memoria - el servidor también necesita mantener otros recursos
+  abiertos, como por ejemplo, gestores de ficheros e hilos, antes de que un conjunto
+  de resultados sea liberado.
+ </p>
+ <p class="para">
+  Las Sentencias Preparadas usan conjuntos de resultados no almacenados en buffer de manera predeterminada.
+  Sin embargo, se puede usar <span class="function"><a href="mysqli-stmt.store-result.html" class="function">mysqli_stmt_store_result()</a></span> para habilitar
+  los conjuntos de resultados almacenados en buffer.
+ </p>
+ <p class="para">
+  <strong>Estadísticas devueltas por el Controlador Nativo de
+   MySQL</strong>
+ </p>
+ <p class="para">
+  Las siguientes tablas muestran una lista de las estadísticas devueltas por las funciones
+  <span class="function"><a href="function.mysqli-get-client-stats.html" class="function">mysqli_get_client_stats()</a></span> y
+  <span class="function"><a href="mysqli.get-connection-stats.html" class="function">mysqli_get_connection_stats()</a></span>.
+ </p>
+ <table class="doctable table">
+  <caption><strong>Estadísticas devueltas de mysqlnd: Red</strong></caption>
+  
+   <col width="10*" />
+   <col width="10*" />
+   <col width="40*" />
+   <col width="40*" />
+   <thead>
+    <tr>
+     <th>Estadística</th>
+     <th>Ámbito</th>
+     <th>Descripción</th>
+     <th>Notas</th>
+    </tr>
+
+   </thead>
+
+   <tbody class="tbody">
+    <tr>
+     <td><code class="literal">bytes_sent</code></td>
+     <td>Conexión</td>
+     <td>Número de bytes enviados desde PHP al servidor MySQL</td>
+     <td>Se puede usar para comprobar la eficiencia del protocolo de compresión</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">bytes_received</code></td>
+     <td>Conexión</td>
+     <td>Número de bytes recibidos desde el servidor MySQL</td>
+     <td>Se puede usar para comprobar la eficiencia del protocolo de compresión</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">packets_sent</code></td>
+     <td>Conexión</td>
+     <td>Número de paquetes enviados del protocolo Cliente Servidor de MySQL</td>
+     <td>Usado para la depuración de la implementación del protoclo Cliente Servidor</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">packets_received</code></td>
+     <td>Conexión</td>
+     <td>Número de paquetes recividos del protocolo Cliente Servidor de MySQL</td>
+     <td>Usado para la depuración de la implementación del protoclo Cliente Servidor</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">protocol_overhead_in</code></td>
+     <td>Conexión</td>
+     <td>Carga adicional de protocolo Cliente Servidor de MySQL en bytes para el tráfico entrante.
+      Actualmente, sólo el Paquete de Cabecera (4 bytes) se considera como
+      carga adicional. protocol_overhead_in = packets_received * 4</td>
+     <td>Usado para la depuración de la implementación del protoclo Cliente Servidor</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">protocol_overhead_out</code></td>
+     <td>Conexión</td>
+     <td>Carga adicional de protocolo Cliente Servidor de MySQL en bytes para el tráfico saliente.
+      Actualmente, sólo el Paquete de Cabecera (4 bytes) se considera como
+      carga adicional. protocol_overhead_out = packets_sent * 4</td>
+     <td>Usado para la depuración de la implementación del protoclo Cliente Servidor</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">bytes_received_ok_packet</code></td>
+     <td>Conexión</td>
+     <td>Tamaño total en bytes de los paquetes OK recibidos del protocolo Cliente Servidor de MySQL.
+      Los paquetes OK pueden contener un mensaje de estado. La longitud del mensaje de
+      estado puede variar y, por lo tanto, el tamaño del paquete OK no es fijo.</td>
+     <td>Usado para la implementación de protocolo CS. Observe que el tamaño total
+      en bytes incluye el tamaño del paquete de cabecera (4 bytes, véase
+      la carga adicional del protocolo - protocol_overhead_*).</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">packets_received_ok</code></td>
+     <td>Conexión</td>
+     <td>Número de paquetes OK recibidos del protocolo Cliente Servidor de MySQL.</td>
+     <td>Usado para la implementación de protocolo CS. Observe que el tamaño total
+      en bytes incluye el tamaño del paquete de cabecera (4 bytes, véase
+      la carga adicional del protocolo - protocol_overhead_*).</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">bytes_received_eof_packet</code></td>
+     <td>Conexión</td>
+     <td>Tamaño total en bytes de los paquetes OEF recibidos del protocolo Cliente Servidor de
+      MySQL. EOF puede variar de tamaño dependiendo de la versión del servidor.
+      También, EOF puede transportar un mensaje de error.</td>
+     <td>Usado para la implementación de protocolo CS. Observe que el tamaño total
+      en bytes incluye el tamaño del paquete de cabecera (4 bytes, véase
+      la carga adicional del protocolo - protocol_overhead_*).</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">packets_received_eof</code></td>
+     <td>Conexión</td>
+     <td>Número de paquetes EOF del del protocolo Cliente Servidor de MySQL. Al igual que otras
+      estadísticias de paquetes, el número de paquetes se incrementará incluso si
+      PHP no recibe el paquete esperado, sino, por ejemplo, un
+      mensaje de error.</td>
+     <td>Usado para la implementación de protocolo CS. Observe que el tamaño total
+      en bytes incluye el tamaño del paquete de cabecera (4 bytes, véase
+      la carga adicional del protocolo - protocol_overhead_*).</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">bytes_received_rset_header_packet</code></td>
+     <td>Conexión</td>
+     <td>Tamaño total en bytes de los paquetes de cabecera de conjuntos de resultados del protocolo Cliente Servidor de
+      MySQL. El tamaño de los paquetes varía dependiendo de la carga útil
+      (<code class="literal">LOAD LOCAL INFILE</code>, <code class="literal">INSERT</code>,
+      <code class="literal">UPDATE</code>, <code class="literal">SELECT</code>, mensaje
+      de error).</td>
+     <td>Usado para la implementación de protocolo CS. Observe que el tamaño total
+      en bytes incluye el tamaño del paquete de cabecera (4 bytes, véase
+      la carga adicional del protocolo - protocol_overhead_*).</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">packets_received_rset_header</code></td>
+     <td>Conexión</td>
+     <td>Número de paquetes de cabecera de conjuntos de resultados del protocolo Cliente Servidor de MySQL.</td>
+     <td>Usado para la implementación de protocolo CS. Observe que el tamaño total
+      en bytes incluye el tamaño del paquete de cabecera (4 bytes, véase
+      la carga adicional del protocolo - protocol_overhead_*).</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">bytes_received_rset_field_meta_packet</code></td>
+     <td>Conexión</td>
+     <td>Tamaño total en bytes de los paquetes de metadatos (información de campos) de conjuntos de resultados del protocolo
+      Cliente Servidor de MySQL. Por supuesto, el tamaño total vaía con los
+      campos del conjunto de resultados. El paquete también puede transportar un error
+      o un paquete EOF en el caso de COM_LIST_FIELDS.</td>
+     <td>Solamente útil para la implementación de protocolo CS. Observe que el tamaño total
+      en bytes incluye el tamaño del paquete de cabecera (4 bytes, véase
+      la carga adicional del protocolo - protocol_overhead_*).</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">packets_received_rset_field_meta</code></td>
+     <td>Conexión</td>
+     <td>Número de paquetes de metadatos (información de campos) de conjuntos de resultados del protocolo
+      Cliente Servidor de MySQL.</td>
+     <td>Solamente útil para la implementación de protocolo CS. Observe que el tamaño total
+      en bytes incluye el tamaño del paquete de cabecera (4 bytes, véase
+      la carga adicional del protocolo - protocol_overhead_*).</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">bytes_received_rset_row_packet</code></td>
+     <td>Conexión</td>
+     <td>Tamaño total en bytes de los paquetes de datos de fila de conjuntos de resultados del protocolo
+      Cliente Servidor de MySQL. El paquete también puede transportar un error o un paquete EOF.
+      Se puede obtener el número de error y los paquetes EOF
+      restando <code class="literal">rows_fetched_from_server_normal</code>
+      y <code class="literal">rows_fetched_from_server_ps</code> de
+      <code class="literal">bytes_received_rset_row_packet</code>.</td>
+     <td>Solamente útil para la implementación de protocolo CS. Observe que el tamaño total
+      en bytes incluye el tamaño del paquete de cabecera (4 bytes, véase
+      la carga adicional del protocolo - protocol_overhead_*).</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">packets_received_rset_row</code></td>
+     <td>Conexión</td>
+     <td>Número de paquetes de datos de fila de conjuntos de datos del protocolo Cliente Servidor de MySQL y
+      su tamaño total en bytes.</td>
+     <td>Solamente útil para la implementación de protocolo CS. Observe que el tamaño total
+      en bytes incluye el tamaño del paquete de cabecera (4 bytes, véase
+      la carga adicional del protocolo - protocol_overhead_*).</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">bytes_received_prepare_response_packet</code></td>
+     <td>Conexión</td>
+     <td>Tamaño total de los paquetes OK para la Inicialización de Sentencias Preparadas del protocolo
+      Cliente Servidor de MySQL (paquetes init de sentencias
+      preparadas). El paquete también puede transportar un error. El tamaño del paquete
+      depende de la versión de: 9 bytes con MySQL 4.1 y 12 bytes
+      desde MySQL 5.0. No existe una manera segura de conocer cuántos errores han
+      sucedido. Se puede suponer que ha sucedido un error si,
+      por ejemplo, si siempre se conecta a MySQL 5.0 o superior y
+      <code class="literal">bytes_received_prepare_response_packet</code> !=
+      <code class="literal">packets_received_prepare_response</code> * 12. Véase
+      también <code class="literal">ps_prepared_never_executed</code>,
+      <code class="literal">ps_prepared_once_executed</code>.</td>
+     <td>Solamente útil para la implementación de protocolo CS. Observe que el tamaño total
+      en bytes incluye el tamaño del paquete de cabecera (4 bytes, véase
+      la carga adicional del protocolo - protocol_overhead_*).</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">packets_received_prepare_response</code></td>
+     <td>Conexión</td>
+     <td>Número de paquetes OK para la Inicialización de Sentencias Preparadas del protocolo
+      Cliente Servidor de MySQL (paquetes init de sentencias preparadas).</td>
+     <td>Solamente útil para la implementación de protocolo CS. Observe que el tamaño total
+      en bytes incluye el tamaño del paquete de cabecera (4 bytes, véase
+      la carga adicional del protocolo - protocol_overhead_*).</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">bytes_received_change_user_packet</code></td>
+     <td>Conexión</td>
+     <td>Tamaño total en bytes de los paquetes COM_CHANGE_USER del protocolo Cliente Servidor de
+      MySQL. El paquete también puede transportar un error o EOF.</td>
+     <td>Solamente útil para la implementación de protocolo CS. Observe que el tamaño total
+      en bytes incluye el tamaño del paquete de cabecera (4 bytes, véase
+      la carga adicional del protocolo - protocol_overhead_*).</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">packets_received_change_user</code></td>
+     <td>Conexión</td>
+     <td>Número de paquetes COM_CHANGE_USER del protocolo Cliente Servidor de MySQL</td>
+     <td>Solamente útil para la implementación de protocolo CS. Observe que el tamaño total
+      en bytes incluye el tamaño del paquete de cabecera (4 bytes, véase
+      la carga adicional del protocolo - protocol_overhead_*).</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">packets_sent_command</code></td>
+     <td>Conexión</td>
+     <td>Número de comandos enviados del protocolo Cliente Servidor de MySQL desde PHP a MySQL.
+      No hay forma de conocer los comandos específicos ni cuántos
+      han sido enviados. En el mejor de los casos, se puede usar para comprobar si PHP
+      ha enviado cualquier comando a MySQL para saber si se puede considerar
+      deshabilitar el soporte para MySQL en el binario de PHP. Tampoco hay forma de
+      obtener el número de errores que pueden haber ocurrido mientras
+      se envían datos a MySQL. El único error que se registra es
+      command_buffer_too_small (véase abajo).</td>
+     <td>Solamente útil para la implementación de protocolo CS.</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">bytes_received_real_data_normal</code></td>
+     <td>Conexión</td>
+     <td>Número de bytes de carga útil obtenidos por el cliente de PHP desde
+      <code class="literal">mysqlnd</code> usando el protocolo de texto.</td>
+     <td>Es el tamaño de los datos reales contenidos en conjuntos de resultados que no
+      son originados desde sentencias preparadas y que han sido obtenidos por
+      el cliente de PHP. Observe que aunque un conjunto de resultados completo puede haber sido
+      obtenido desde MySQL por <code class="literal">mysqlnd</code>, esta estadística
+      únicamente cuenta los datos reales obtenidos desde <code class="literal">mysqlnd</code> por
+      el cliente de PHP. Un ejemplo de una secuencia de código que incrementará
+      el valor es el siguiente:
+      <div class="example-contents">
+<div class="cdata"><pre>
+$mysqli = new mysqli();
+$res = $mysqli-&gt;query(&quot;SELECT &#039;abc&#039;&quot;);
+$res-&gt;fetch_assoc();
+$res-&gt;close();
+</pre></div>
+      </div>
+
+      <p class="para">
+       Cada operación de obtención incrementará el valor.
+      </p>
+
+      <p class="para">
+       La estadística no se incrementará si el conjunto de resultados sólo se almancena
+       en buffer en el cliente, pero no se obtiene, como en el siguiente
+       ejemplo:
+      </p>
+      <div class="example-contents">
+<div class="cdata"><pre>
+$mysqli = new mysqli();
+$res = $mysqli-&gt;query(&quot;SELECT &#039;abc&#039;&quot;);
+$res-&gt;close();
+</pre></div>
+      </div>
+
+      <p class="para">
+       Esta estadística está disponible a partir de la versión 5.3.4 de PHP.
+      </p></td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">bytes_received_real_data_ps</code></td>
+     <td>Conexión</td>
+     <td>Número de bytes de la carga útil obtenida por el cliente de PHP desde
+      <code class="literal">mysqlnd</code> usando el protocolo de sentencias preparadas.</td>
+     <td>Es el tamaño de los datos reales contenidos en conjuntos de resultados que no
+      son originados desde sentencias preparadas y que han sido obtenidos por
+      el cliente de PHP. El valor no será incrementado si el conjunto de resultados
+      no es leído subsiguientemente por el cliente de PHP. Observe que aunque un
+      un conjunto de resultados completo puede haber sido obtenido desde MySQL por
+      <code class="literal">mysqlnd</code>, esta estadística únicamente cuenta los datos reales
+      obtenidos desde <code class="literal">mysqlnd</code> por el cliente de PHP. Véase también
+      <code class="literal">bytes_received_real_data_normal</code>. Esta estadística
+      está disponible a partir de la versión 5.3.4 de PHP.</td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+ <p class="para">
+  <strong>Conjuntos de Resultados</strong>
+ </p>
+ <table class="doctable table">
+  <caption><strong>Estadísticas devueltas de mysqlnd: Conjunto de Resultados</strong></caption>
+  
+   <col width="10*" />
+   <col width="10*" />
+   <col width="40*" />
+   <col width="40*" />
+   <thead>
+    <tr>
+     <th>Estadística</th>
+     <th>Ámbito</th>
+     <th>Descripción</th>
+     <th>Notas</th>
+    </tr>
+
+   </thead>
+
+   <tbody class="tbody">
+    <tr>
+     <td><code class="literal">result_set_queries</code></td>
+     <td>Conexión</td>
+     <td>Número de consultas que han generado un conjunto de resultados. Ejemplos de consultas
+      que generan un conjunto de resultados: <code class="literal">SELECT</code>,
+      <code class="literal">SHOW</code>. La estadística no será incrementada si
+      hay un error al leer el paquete de cabecera del conjunto de resultados desde la
+      línea.</td>
+     <td>Se puede usar como una medida indirecta del número de consultas que PHP ha
+      enviado a MySQL, por ejemplo, para identificar un cliente que causa una
+      carga alta de base de datos.</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">non_result_set_queries</code></td>
+     <td>Conexión</td>
+     <td>Número de consultas que no generan un conjunto de resultados. Ejemplos de
+      consultas que no generan un conjunto de resultados:
+      <code class="literal">INSERT</code>, <code class="literal">UPDATE</code>,
+      <code class="literal">LOAD DATA</code>, <code class="literal">SHOW</code>. La
+      estadística no será incrementada si hay un error al leer el
+      paquete de cabecera del conjunto de resultados desde la línea.</td>
+     <td>Se puede usar como una medida indirecta del número de consultas que PHP ha
+      enviado a MySQL, por ejemplo, para identificar un cliente que causa una
+      carga alta de base de datos.</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">no_index_used</code></td>
+     <td>Conexión</td>
+     <td>Número de consultas que ha generado un conjunto de resultados pero que no usan un
+      índice (véase también la opción de inicio de mysqld
+      –log-queries-not-using-indexes). Si se desea que estas consultas sean
+      reportadas, se puede usar mysqli_report(MYSQLI_REPORT_INDEX) para hacer que
+      ext/mysqli lance una excepción. Si se prefiere una advertencia en lugar de
+      una excepción, use mysqli_report(MYSQLI_REPORT_INDEX ^
+      MYSQLI_REPORT_STRICT).</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">bad_index_used</code></td>
+     <td>Conexión</td>
+     <td>Número de consultas que han generado un conjunto de resultados y que no usan un
+      índice bueno (véase también la opción de inicio de mysqld –log-slow-queries).</td>
+     <td>Si se desea que estas consultas sean reportadas, se puede usar
+      mysqli_report(MYSQLI_REPORT_INDEX) para hacer que ext/mysqli lance una
+      excepción. Si se prefiere que se emita una advertencia en lugar de una excepción, use
+      mysqli_report(MYSQLI_REPORT_INDEX ^ MYSQLI_REPORT_STRICT)</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">slow_queries</code></td>
+     <td>Conexión</td>
+     <td>Senetencias SQL que toman más de <code class="literal">long_query_time</code>
+      segundos para ejecutarse y que requieren al menos
+      <code class="literal">min_examined_row_limit</code> filas para ser examinadas.</td>
+     <td>No reportadas a través de <span class="function"><a href="function.mysqli-report.html" class="function">mysqli_report()</a></span></td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">buffered_sets</code></td>
+     <td>Conexión</td>
+     <td>Número de conjuntos de resultados almacenados en buffer mediante consultas
+      <q class="quote">normales</q>. <q class="quote">Normal</q> significa <q class="quote">sentencia no
+      preparada</q> en las siguientes notas.</td>
+     <td>Ejemplos de llamada a la API que almacenarán en buffer conjuntos de resultados en el cliente:
+      <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span>,
+      <span class="function"><a href="mysqli.query.html" class="function">mysqli_query()</a></span>,
+      <span class="function"><a href="mysqli.store-result.html" class="function">mysqli_store_result()</a></span>,
+      <span class="function"><a href="mysqli-stmt.get-result.html" class="function">mysqli_stmt_get_result()</a></span>. Al almacenar en buffer conjuntos de resultados
+      en el cliente se asegura que los recursos del servidor sean liberados tan pronto como sea
+      posible y hace que el desplazamiento del conjunto de resultados sea más sencillo. El inconveniente es
+      el consumo adicional de memoria en el cliente para almacenar en buffer
+      datos. Observe que mysqlnd (a diferencia de la Biblioteca Cliente de MySQL) respeta
+      el límite de memoria de PHP debido a que utiliza las funciones de gestión de memoria
+      internas de PHP para asignar memoria. Ésta también es la razón
+      de por qué <span class="function"><a href="function.memory-get-usage.html" class="function">memory_get_usage()</a></span> informa de un consumo de
+      memoria al usar mysqlnd en lugar de la Bliblioteca Cliente de
+      MySQL. <span class="function"><a href="function.memory-get-usage.html" class="function">memory_get_usage()</a></span> no mide en absoluto
+      el consumo de memoria de la Bliblioteca Cliente de MySQL debido a que
+      ¡la Biblioteca Cliente de MySQL no usa las funciones de gestión de memoria
+      internas de PHP monitorizadas por la función!</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">unbuffered_sets</code></td>
+     <td>Conexión</td>
+     <td>Número de conjuntos de resultados no almacenados en buffer devueltos por consultas
+      normales (sentencia no preparada).</td>
+     <td>Ejemplos de llamadas a la API que no almacenan en buffer conjuntos de resultados en el clilente:
+      <span class="function"><a href="mysqli.use-result.html" class="function">mysqli_use_result()</a></span></td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">ps_buffered_sets</code></td>
+     <td>Conexión</td>
+     <td>Número de conjuntos de resultados almacenados en buffer devueltos por sentencias preparadas. Por
+      defecto, las sentencias preparadas no se almacenan en buffer.</td>
+     <td>Ejemplos de llamadas a la API que no almacenarán en buffer conjuntos de resultados en el cliente:
+      <code class="literal">mysqli_stmt_store_result</code></td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">ps_unbuffered_sets</code></td>
+     <td>Conexión</td>
+     <td>Número de conjuntos de resultados no almacenados en buffer devueltos por sentencias preparadas.</td>
+     <td>Por defecto, las sentencias preparadas no se almacenan en buffer.</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">flushed_normal_sets</code></td>
+     <td>Conexión</td>
+     <td>Número de conjuntos de resultados de consultas normales (sentencia no preparada) con
+      datos no leídos que han sido volcados de manera silenciosa. El volcado
+      sucede solamente con conjuntos de resultados no almacenados en buffer.</td>
+     <td>Los conjuntos de resultados no almacenados en buffer deben ser obtenidos completamente antes de que una nueva consulta
+      pueda ser ejecutada en la conexión, si no, MySQL lanzará un error. Si
+      la aplicación no obtiene todas las filas de un conjunto de resultados no almacenado en
+      buffer, mysqlnd obtendrá implícitamente el conjunto de resultados para limpiar la
+      línea. Véase también <code class="literal">rows_skipped_normal</code>,
+      <code class="literal">rows_skipped_ps</code>. Algunas posibles causas de un
+      volcado implícito:
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <p class="para">
+         Aplicación cliente defectuosa
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         El cliente para de leer después de que encuentre que lo que estaba buscando,
+         pero ha hecho que MySQL calcule más registros que los necesarios
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         La aplicación cliente se ha detenido de improviso
+        </p>
+       </li>
+      </ul></td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">flushed_ps_sets</code></td>
+     <td>Conexión</td>
+     <td>Número de conjuntos de resultados de sentencias preparadas con datos no leídos que
+      han sido volcados de forma silenciosa.  El volcado sucede solamente con
+      conjuntos de resultados no almacenados en buffer.</td>
+     <td>Los conjuntos de resultados no almacenados en buffer deben ser obtenidos completamente antes de que una nueva consulta
+      pueda ser ejecutada en la conexión, si no, MySQL lanzará un error. Si
+      la aplicación no obtiene todas las filas de un conjunto de resultados no almacenado en
+      buffer, mysqlnd obtendrá implícitamente el conjunto de resultados para limpiar la
+      línea. Véase también <code class="literal">rows_skipped_normal</code>,
+      <code class="literal">rows_skipped_ps</code>. Algunas posibles causas de un
+      volcado implícito:
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <p class="para">
+         Aplicación cliente defectuosa
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         El cliente para de leer después de que encuentre que lo que estaba buscando,
+         pero ha hecho que MySQL calcule más registros que los necesarios
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         La aplicación cliente se ha detenido de improviso
+        </p>
+       </li>
+      </ul></td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">ps_prepared_never_executed</code></td>
+     <td>Conexión</td>
+     <td>Número de sentencias preparadas pero nunca ejecutadas.</td>
+     <td>Las sentencias preparadas ocupan recursos del servidor. No se debería preparar una
+      sentencia si no se planea ejecutarla.</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">ps_prepared_once_executed</code></td>
+     <td>Conexión</td>
+     <td>Número de sentencias preparadas ejecutadas una única vez.</td>
+     <td>Una de las ideas detrás de las sentencias preparadas es que la misma consulta se
+      ejecuta una y otra vez (con diferentes parámetros) y así se puede
+      ahorrar algo de análisis y otros trabajos de preparación, si la ejecución
+      de la sentencia se divide en diferentes fases de preparación y ejecución. La
+      idea es preparar una vez y <q class="quote">almacenar en caché</q> los resultados, por
+      ejemplo, el árbol de análisis a ser reutilizado durante la ejecución de sentencias
+      múltiples. Si se ejecuta una sentencia prearada una sola vez, los dos
+      procesamientos de las fases pueden ser ineficientes comparados con
+      consultas <q class="quote">normales</q>, ya que todo el almacenamiento en caché significa trabajo
+      extra y toma recursos (limitados) del servidor para mantener la información almacenada
+      en caché. Consecuentemente, las sentencias preparadas que son ejecutadas
+      una sola vez pueden causar daños al rendimiento.</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">rows_fetched_from_server_normal</code>,
+      <code class="literal">rows_fetched_from_server_ps</code></td>
+     <td>Conexión</td>
+     <td>Número total de conjuntos de resultados obtenidos con éxito de MySQL
+      sin considerar si la aplicación cliente los ha consumido o no.
+      Algunas filas pueden no haber sido obtenidas por la aplicación
+      cliente aunque hayan sido volcadas implícitamente.</td>
+     <td>Véase también <code class="literal">packets_received_rset_row</code></td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">rows_buffered_from_client_normal</code>,
+      <code class="literal">rows_buffered_from_client_ps</code></td>
+     <td>Conexión</td>
+     <td>Número total de filas almacenadas en buffer con éxito originadas desde una consulta
+      &quot;normal&quot; o una sentencia preparada. Este es el número de filas que
+      han sido obtenidas de MySQL y almacenadas en buffer en el cliente. Observe que
+      existen dos estadísticas distintas de filas que has sido almacenadas en buffer
+      (MySQL al buffer internto de mysqlnd) y filas almacenadas en buffer que han
+      sido obtenidas por la aplicación cliente (buffer interno de mysqlnd a
+      la aplicación cliente). Si el número de filas almacenadas en buffer es mayor que
+      el número de filas almacenadas en buffer obtenidas, puede significar que la aplicación
+      cliente ejecuta consultas que originan conjuntos de resultados grandes que necesitan
+      resultar en filas no leídas por el cliente.</td>
+     <td>Ejemplos de consultas que almacenarán en buffer resultados:
+      <span class="function"><a href="mysqli.query.html" class="function">mysqli_query()</a></span>,
+      <span class="function"><a href="mysqli.store-result.html" class="function">mysqli_store_result()</a></span></td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">rows_fetched_from_client_normal_buffered</code>,
+      <code class="literal">rows_fetched_from_client_ps_buffered</code></td>
+     <td>Conexión</td>
+     <td>Número total de filas obtenidas por el cliente desde un conjunto de resultados almacenado en buffer
+      creado por una consulta normal o una sentencia preparada.</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">rows_fetched_from_client_normal_unbuffered</code>,
+      <code class="literal">rows_fetched_from_client_ps_unbuffered</code></td>
+     <td>Conexión</td>
+     <td>Número total de filas obtenidas por el cliente desde un conjunto de resultados no almacenado en buffer
+      creado por una consulta &quot;normal&quot; o una sentencia no preparada.</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">rows_fetched_from_client_ps_cursor</code></td>
+     <td>Conexión</td>
+     <td>Número total de filas obtenidas por el cliente desde un cursor creado por una
+      sentencia preparada.</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">rows_skipped_normal</code>,
+      <code class="literal">rows_skipped_ps</code></td>
+     <td>Conexión</td>
+     <td>Reservado para un uso futuro (actualmente no soportado)</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">copy_on_write_saved</code>,
+      <code class="literal">copy_on_write_performed</code></td>
+     <td>Proceso</td>
+     <td>Con mysqlnd, las variables devueltas por las extensiones apuntan a los buffers de resultados
+      de red internos de mysqlnd. Si no se cambian las variables,
+      los datos obtenidos serán conservados en memoria una sola vez. Si se
+      cambian las variables, mysqlnd tiene que realizar una copia mientras se escribe para
+      proteger los buffers de resultados de red internos de ser cambiados.
+      Con la Biblioteca Clientes de MySQL siempre se conservan dos veces en memoria
+      los datos obtenidos. Una en los buffers internos de la Biblioteca Cliente de MySQL y
+      otra en las variables devueltas por las extensiones. En teoría,
+      mysqlnd puede ahorrar hasta un 40% de memoria, Sin embargo, observe que el ahorro de
+      memoria no puede ser medido usando
+      <span class="function"><a href="function.memory-get-usage.html" class="function">memory_get_usage()</a></span>.</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">explicit_free_result</code>,
+      <code class="literal">implicit_free_result</code></td>
+     <td>Conexión, Processo (sólo durante la limpieza de sentencias preparadas)</td>
+     <td>Número de total de conjuntos de resultados liberados.</td>
+     <td>La liberación es considerada siempres explícita excepto para conjuntos de resultados creados por un
+      comando init, por ejemplo,
+      <code class="literal">mysqli_options(MYSQLI_INIT_COMMAND , ...)</code></td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">proto_text_fetched_null</code>,
+      <code class="literal">proto_text_fetched_bit</code>,
+      <code class="literal">proto_text_fetched_tinyint</code>
+      <code class="literal">proto_text_fetched_short</code>,
+      <code class="literal">proto_text_fetched_int24</code>,
+      <code class="literal">proto_text_fetched_int</code>
+      <code class="literal">proto_text_fetched_bigint</code>,
+      <code class="literal">proto_text_fetched_decimal</code>,
+      <code class="literal">proto_text_fetched_float</code>
+      <code class="literal">proto_text_fetched_double</code>,
+      <code class="literal">proto_text_fetched_date</code>,
+      <code class="literal">proto_text_fetched_year</code>
+      <code class="literal">proto_text_fetched_time</code>,
+      <code class="literal">proto_text_fetched_datetime</code>,
+      <code class="literal">proto_text_fetched_timestamp</code>
+      <code class="literal">proto_text_fetched_string</code>,
+      <code class="literal">proto_text_fetched_blob</code>,
+      <code class="literal">proto_text_fetched_enum</code>
+      <code class="literal">proto_text_fetched_set</code>,
+      <code class="literal">proto_text_fetched_geometry</code>,
+      <code class="literal">proto_text_fetched_other</code></td>
+     <td>Conexión</td>
+     <td>Número total de columnas de un cierto tipo obtenidas de una consulta normal
+      (protocolo de texto de MySQL).</td>
+     <td>Referencia de los tipos de metadatos de la API de C / MySQL para el nombre de la estadística:
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <p class="para">
+         <code class="literal">MYSQL_TYPE_NULL</code> - proto_text_fetched_null
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         <code class="literal">MYSQL_TYPE_BIT</code> - proto_text_fetched_bit
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         <code class="literal">MYSQL_TYPE_TINY</code> - proto_text_fetched_tinyint
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         <code class="literal">MYSQL_TYPE_SHORT</code> - proto_text_fetched_short
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         <code class="literal">MYSQL_TYPE_INT24</code> - proto_text_fetched_int24
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         <code class="literal">MYSQL_TYPE_LONG</code> - proto_text_fetched_int
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         <code class="literal">MYSQL_TYPE_LONGLONG</code> -
+         proto_text_fetched_bigint
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         <code class="literal">MYSQL_TYPE_DECIMAL</code>,
+         <code class="literal">MYSQL_TYPE_NEWDECIMAL</code> -
+         proto_text_fetched_decimal
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         <code class="literal">MYSQL_TYPE_FLOAT</code> - proto_text_fetched_float
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         <code class="literal">MYSQL_TYPE_DOUBLE</code> -
+         proto_text_fetched_double
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         <code class="literal">MYSQL_TYPE_DATE</code>,
+         <code class="literal">MYSQL_TYPE_NEWDATE</code> - proto_text_fetched_date
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         <code class="literal">MYSQL_TYPE_YEAR</code> - proto_text_fetched_year
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         <code class="literal">MYSQL_TYPE_TIME</code> - proto_text_fetched_time
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         <code class="literal">MYSQL_TYPE_DATETIME</code> -
+         proto_text_fetched_datetime
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         <code class="literal">MYSQL_TYPE_TIMESTAMP</code> -
+         proto_text_fetched_timestamp
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         <code class="literal">MYSQL_TYPE_STRING</code>,
+         <code class="literal">MYSQL_TYPE_VARSTRING</code>,
+         <code class="literal">MYSQL_TYPE_VARCHAR</code> -
+         proto_text_fetched_string
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         <code class="literal">MYSQL_TYPE_TINY_BLOB</code>,
+         <code class="literal">MYSQL_TYPE_MEDIUM_BLOB</code>,
+         <code class="literal">MYSQL_TYPE_LONG_BLOB</code>,
+         <code class="literal">MYSQL_TYPE_BLOB</code> - proto_text_fetched_blob
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         <code class="literal">MYSQL_TYPE_ENUM</code> - proto_text_fetched_enum
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         <code class="literal">MYSQL_TYPE_SET</code> - proto_text_fetched_set
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         <code class="literal">MYSQL_TYPE_GEOMETRY</code> -
+         proto_text_fetched_geometry
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         Todos los <code class="literal">MYSQL_TYPE_*</code> no listados antes (no
+         debería ser ninguno) - proto_text_fetched_other
+        </p>
+       </li>
+      </ul>
+      <p class="para">
+       Observe que las constantes MYSQL_*-type pueden no estar asociadas con
+       los mismos tipos de columnas SQL en cada versión de MySQL.
+      </p></td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">proto_binary_fetched_null</code>,
+      <code class="literal">proto_binary_fetched_bit</code>,
+      <code class="literal">proto_binary_fetched_tinyint</code>
+      <code class="literal">proto_binary_fetched_short</code>,
+      <code class="literal">proto_binary_fetched_int24</code>,
+      <code class="literal">proto_binary_fetched_int</code>,
+      <code class="literal">proto_binary_fetched_bigint</code>,
+      <code class="literal">proto_binary_fetched_decimal</code>,
+      <code class="literal">proto_binary_fetched_float</code>,
+      <code class="literal">proto_binary_fetched_double</code>,
+      <code class="literal">proto_binary_fetched_date</code>,
+      <code class="literal">proto_binary_fetched_year</code>,
+      <code class="literal">proto_binary_fetched_time</code>,
+      <code class="literal">proto_binary_fetched_datetime</code>,
+      <code class="literal">proto_binary_fetched_timestamp</code>,
+      <code class="literal">proto_binary_fetched_string</code>,
+      <code class="literal">proto_binary_fetched_blob</code>,
+      <code class="literal">proto_binary_fetched_enum</code>,
+      <code class="literal">proto_binary_fetched_set</code>,
+      <code class="literal">proto_binary_fetched_geometry</code>,
+      <code class="literal">proto_binary_fetched_other</code></td>
+     <td>Conexión</td>
+     <td>Número total de columnas de un cierto tipo obtenidas desde una sentencia
+      preparada (protocolo binario de MySQL).</td>
+     <td>Para la referenciacición de tipos, véase <code class="literal">proto_text_*</code> descrito en el
+      texto anterior.</td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+ <table class="doctable table">
+  <caption><strong>Estadísticas devueltas de mysqlnd: Conexión</strong></caption>
+  
+   <col width="10*" />
+   <col width="10*" />
+   <col width="40*" />
+   <col width="40*" />
+   <thead>
+    <tr>
+     <th>Estadística</th>
+     <th>Ámbito</th>
+     <th>Descripción</th>
+     <th>Notas</th>
+    </tr>
+
+   </thead>
+
+   <tbody class="tbody">
+    <tr>
+     <td><code class="literal">connect_success</code>, <code class="literal">connect_failure</code></td>
+     <td>Conexión</td>
+     <td>Número total de intentos de conexión con éxito/falladas.</td>
+     <td>Están incluidas las conexiones rechazadas y los demás tipos de conexiones.</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">reconnect</code></td>
+     <td>Proceso</td>
+     <td>Número total de intentos de conexión verdadera (real_) hechas sobre un gestor de conexión
+      ya abierto.</td>
+     <td>La secuencia de código <code class="literal">$enlace = new mysqli(...);
+      $enlace-&gt;real_connect(...)</code> ocasionará una reconexión. Pero
+      <code class="literal">$link = new mysqli(...); $enlace-&gt;connect(...)</code>
+      no lo hará ya que <code class="literal">$enlca-&gt;connect(...)</code>
+      cerrará explícitamente la conexión existente antes de que se establezca una
+      nueva conexión.</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">pconnect_success</code></td>
+     <td>Conexión</td>
+     <td>Número total de intentos de conexión persistente realizados con éxito.</td>
+     <td>Observe que <code class="literal">connect_success</code> contiene la suma de intentos de
+      conexión persistente y no persistente realizados con éxito. El número de
+      intentos de conexión no persistente realizados con éxito es
+      <code class="literal">connect_success</code> -
+      <code class="literal">pconnect_success</code>.</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">active_connections</code></td>
+     <td>Conexión</td>
+     <td>Número total de conexiones persistentes y no persistentes activas.</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">active_persistent_connections</code></td>
+     <td>Conexión</td>
+     <td>Número de conexiones persistentes activas.</td>
+     <td>El número total de conexiones no persistentes activas es
+      <code class="literal">active_connections</code> -
+      <code class="literal">active_persistent_connections</code>.</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">explicit_close</code></td>
+     <td>Conexión</td>
+     <td>Número total de conexiones cerradas explícitamente (sólo ext/mysqli).</td>
+     <td>Ejemplos de trozos de código que causan un cierre explícito :
+      <div class="example-contents">
+<div class="cdata"><pre>
+$enlace = new mysqli(...); $enlace-&gt;close(...)
+$enlace = new mysqli(...); $enlace-&gt;connect(...)
+</pre></div>
+      </div>
+</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">implicit_close</code></td>
+     <td>Conexión</td>
+     <td>Número total de conexiones cerradas implícitamente (sólo ext/mysqli).</td>
+     <td>Ejemplos de trozos de código que causan un cierre implícito :
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <p class="para">
+         <code class="literal">$enlace = new mysqli(...);
+          $enlace-&gt;real_connect(...)</code>
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         <code class="literal">unset($enlace)</code>
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         Conexión persistente: conexión almacenada en caché que ha sido creada con
+         real_connect y que puede poseer un conjunto de opciones desconocidas - cerrar
+         implícitamente para evitar devolver una conexión con opciones desconocidas
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         Conexión persistente: ping/change_user falla y ext/mysqli
+         cierra la conexión
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         fin de la ejecución de un script: cierra la conexiones que no han sido
+         cerradas por el usuario
+        </p>
+       </li>
+      </ul></td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">disconnect_close</code></td>
+     <td>Conexión</td>
+     <td>Fallos de conexión indicados por la llamada a la API en C de
+      <span class="function"><strong>mysql_real_connect()</strong></span> durante un intento de
+      establecer una conexión.</td>
+     <td>Es llamada <code class="literal">disconnect_close</code> porque el gestor de
+      conexión pasado a la llamada a la API en C será cerrado.</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">in_middle_of_command_close</code></td>
+     <td>Proceso</td>
+     <td>Una conexión ha sido cerrada en mitad de la ejecución de un comando
+      (conjuntos de resultados pendientes no obtenidos, después de enviar una consulta y
+      antes de obtener una respuesta, mientras se obtienen los datos, mientras
+      se transfieren datos con LOAD DATA).</td>
+     <td>A menos que se usen consultas asíncronas, esto únicamente debería ocurrir si el
+      script se detiene inesperadamente y PHP cierra las conexiones por sí
+      solo.</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">init_command_executed_count</code></td>
+     <td>Conexión</td>
+     <td>Número totas de ejecuciones de comandos init, por ejemplo,
+      <code class="literal">mysqli_options(MYSQLI_INIT_COMMAND , ...)</code>.</td>
+     <td>El número de ejecuciones realizadas con éxito es
+      <code class="literal">init_command_executed_count</code> -
+      <code class="literal">init_command_failed_count</code>.</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">init_command_failed_count</code></td>
+     <td>Conexión</td>
+     <td>Número total de comnados init fallados.</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+ <table class="doctable table">
+  <caption><strong>Estadísticas devueltas de mysqlnd: Comando COM_*</strong></caption>
+  
+   <col width="10*" />
+   <col width="10*" />
+   <col width="40*" />
+   <col width="40*" />
+   <thead>
+    <tr>
+     <th>Estadística</th>
+     <th>Ámbito</th>
+     <th>Descripción</th>
+     <th>Notas</th>
+    </tr>
+
+   </thead>
+
+   <tbody class="tbody">
+    <tr>
+     <td><code class="literal">com_quit</code>, <code class="literal">com_init_db</code>,
+      <code class="literal">com_query</code>, <code class="literal">com_field_list</code>,
+      <code class="literal">com_create_db</code>, <code class="literal">com_drop_db</code>,
+      <code class="literal">com_refresh</code>, <code class="literal">com_shutdown</code>,
+      <code class="literal">com_statistics</code>,
+      <code class="literal">com_process_info</code>,
+      <code class="literal">com_connect</code>,
+      <code class="literal">com_process_kill</code>, <code class="literal">com_debug</code>,
+      <code class="literal">com_ping</code>, <code class="literal">com_time</code>,
+      <code class="literal">com_delayed_insert</code>,
+      <code class="literal">com_change_user</code>,
+      <code class="literal">com_binlog_dump</code>,
+      <code class="literal">com_table_dump</code>,
+      <code class="literal">com_connect_out</code>,
+      <code class="literal">com_register_slave</code>,
+      <code class="literal">com_stmt_prepare</code>,
+      <code class="literal">com_stmt_execute</code>,
+      <code class="literal">com_stmt_send_long_data</code>,
+      <code class="literal">com_stmt_close</code>,
+      <code class="literal">com_stmt_reset</code>,
+      <code class="literal">com_stmt_set_option</code>,
+      <code class="literal">com_stmt_fetch</code>, <code class="literal">com_daemon</code></td>
+     <td>Conexión</td>
+     <td>Número total de intentos de enviar un cierto comando COM_* desde PHP a
+      MySQL.</td>
+     <td><p class="para">
+      Las estadísticas son incrementadas después de comprobar la línea e
+      inmediatamente antes de enviar el paquete de protocolo cliente-servidor de
+      MySQL correspondiente. Si mysqlnd falla al enviar el paquete sobre el
+      cable, las estadísticas no serán incrementadas. En case de fallo,
+      mysqlnd emite una advertencia de PHP <q class="quote">Error while sending %s packet.
+      PID=%d.</q>
+      </p>
+
+      <p class="para">
+       Ejemplos de uso:
+      </p>
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <p class="para">
+         Comprobar si PHP eviía ciertos comandos a MySQL, por ejemplo,
+         comprobar si un cliente envía <code class="literal">COM_PROCESS_KILL</code>
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         Calcuar el promedio de ejecuciones de sentencias preparadas
+         comparando <code class="literal">COM_EXECUTE</code> con
+         <code class="literal">COM_PREPARE</code>
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         Comprobar si PHP ha ejecuato cualquier sentencia SQL no preparada
+         comprobando si <code class="literal">COM_QUERY</code> es cero
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         Identificar los scripts de PHP que ejecutan un número excesivo de
+         sentencias SQL comprobando <code class="literal">COM_QUERY</code> y
+         <code class="literal">COM_EXECUTE</code>
+        </p>
+       </li>
+      </ul></td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+ <p class="para">
+  <strong>Miscelánea</strong>
+ </p>
+ <table class="doctable table">
+  <caption><strong>Estadísticas devueltas de mysqlnd: Miscelánea</strong></caption>
+  
+   <col width="10*" />
+   <col width="10*" />
+   <col width="40*" />
+   <col width="40*" />
+   <thead>
+    <tr>
+     <th>Estadística</th>
+     <th>Ámbito</th>
+     <th>Descripción</th>
+     <th>Notas</th>
+    </tr>
+
+   </thead>
+
+   <tbody class="tbody">
+    <tr>
+     <td><code class="literal">explicit_stmt_close</code>,
+      <code class="literal">implicit_stmt_close</code></td>
+     <td>Proceso</td>
+     <td>Número total de sentencias preparadas cerradas.</td>
+     <td>Un cierre siempre es considerado explícito excepto para una preparación fallida.</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">mem_emalloc_count</code>,
+      <code class="literal">mem_emalloc_ammount</code>,
+      <code class="literal">mem_ecalloc_count</code>,
+      <code class="literal">mem_ecalloc_ammount</code>,
+      <code class="literal">mem_erealloc_count</code>,
+      <code class="literal">mem_erealloc_ammount</code>,
+      <code class="literal">mem_efree_count</code>,
+      <code class="literal">mem_malloc_count</code>,
+      <code class="literal">mem_malloc_ammount</code>,
+      <code class="literal">mem_calloc_count</code>,
+      <code class="literal">mem_calloc_ammount</code>,
+      <code class="literal">mem_realloc_count</code>,
+      <code class="literal">mem_realloc_ammount</code>,
+      <code class="literal">mem_free_count</code></td>
+     <td>Proceso</td>
+     <td>Llamadas de gestión de memoria.</td>
+     <td>Solamente desarrollo.</td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">command_buffer_too_small</code></td>
+     <td>Conexión</td>
+     <td>Número de extensiones de buffer de comandos de red mientras se envían
+      comando desde PHP a MySQL.</td>
+     <td><p class="para">
+      mysqlnd asigna un buffer de comandos/red interno de
+      <code class="literal">mysqlnd.net_cmd_buffer_size</code>
+      (<var class="filename">php.ini</var>) bytes para cada conexión. Si un
+      comando del protocolo Cliente Servidor de MySQL, por ejemplo,
+      <code class="literal">COM_QUERY</code> (consulta normal), no se ajusta al
+      buffer, mysqlnd will aumentará el buffer lo que sea necesario para
+      enviar el comando. Siempre que el buffer se extienda para una
+      conexión, <code class="literal">command_buffer_too_small</code> será
+      incrementado en uno.
+      </p>
+
+      <p class="para">
+       Si mysqlnd tiene que aumentar el buffer más allá de su tamaño inicial de
+       <code class="literal">mysqlnd.net_cmd_buffer_size</code>
+       (<var class="filename">php.ini</var>) bytes para casi todas las conexiones,
+       se debería considerar aumentar el tamaño predeterminado para evitar
+       reasignaciones.
+      </p>
+
+      <p class="para">
+       El tamaño predeterminado del buffer es de 2048 bytes en PHP 5.3.0. En futuras
+       versiones, el tamaño predeterminado serán de 4kB o más. Se puede cambiar el valor
+       predeterminado a través de <var class="filename">php.ini</var> estableciendo
+       <code class="literal">mysqlnd.net_cmd_buffer_size</code> o usando
+       <code class="literal">mysqli_options(MYSQLI_OPT_NET_CMD_BUFFER_SIZE, int
+        tamaño)</code>.
+      </p>
+
+      <p class="para">
+       Se recomienda establecer el tamaño de buffer a no menos de 4096
+       bytes debido a que mysqlnd también lo utiliza al leer ciertos
+       paquete de comunicación desde MySQL. En PHP 5.3.0, mysqlnd no
+       aumentará el buffer si MySQL envía un paquete que es más grande que el
+       tamaño actual del buffer. Como consecuencia, mysqlnd no es capaz de
+       decodificar el paquete y la aplicación cliente obtendrá un error.
+       Solamente hay dos situacioines en las que un paquete es más grande que
+       los 2048 bytes predeterminados de
+       <code class="literal">mysqlnd.net_cmd_buffer_size</code> en PHP 5.3.0: el
+       paquete transporta un mensaje de error muy grande, o el paquete contiene
+       los metadatos de columnas de <code class="literal">COM_LIST_FIELD</code>
+       (<span class="function"><a href="function.mysql-list-fields.html" class="function">mysql_list_fields()</a></span>) y los metadatos provienen
+       de una columna de cadena con un valor predeterminado muy grande (&gt;1900
+       bytes). No existe reporte de errores sobre esto - debería ocurrir raramente.
+      </p>
+
+      <p class="para">
+       A partir de PHP 5.3.2, mysqlnd no permite establecer buffers menores
+       que 4096 bytes.
+      </p></td>
+    </tr>
+
+    <tr>
+     <td><code class="literal">connection_reused</code></td>
+     <td class="empty">&nbsp;</td>
+     <td class="empty">&nbsp;</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+</div>
+</div></div></body></html>

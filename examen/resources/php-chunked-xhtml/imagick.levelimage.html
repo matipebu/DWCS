@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Ajusta los niveles de la imagen</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="imagick.labelimage.html">« Imagick::labelImage</a></li>
+      <li style="float: right;"><a href="imagick.linearstretchimage.html">Imagick::linearStretchImage »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.imagick.html">Imagick</a></li>
+    <li>Ajusta los niveles de la imagen</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="imagick.levelimage" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Imagick::levelImage</h1>
+  <p class="verinfo">(PECL imagick 2, PECL imagick 3)</p><p class="refpurpose"><span class="refname">Imagick::levelImage</span> &mdash; <span class="dc-title">Ajusta los niveles de la imagen</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-imagick.levelimage-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>Imagick::levelImage</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.float.html" class="type float">float</a></span> <code class="parameter">$blackPoint</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.float.html" class="type float">float</a></span> <code class="parameter">$gamma</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.float.html" class="type float">float</a></span> <code class="parameter">$whitePoint</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$channel</code><span class="initializer"> = Imagick::CHANNEL_DEFAULT</span></span><br>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Ajusta los niveles de una imagen escalando la caída de los colores
+   entre los puntos blanco y negro especificados al rango completo de
+   cuantía disponible. Los parámetros proporcionados representan
+   los puntos negro, mitad, y blanco. El punto negro especifica
+   el color más oscuro de la imagen. Los colores más oscuros que el punto
+   negro se establecen a cero. El punto medio especifica una corrección
+   gamma a aplicar a la imagen. Mientras que el punto blanco especifica el
+   color más claro de la imagen. Los colores más claros que el punto
+   blanco se establecen al valor de cuantía máximo.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-imagick.levelimage-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">blackPoint</code></dt>
+     <dd>
+      <p class="para">
+      El punto negro de la imagen
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">gamma</code></dt>
+     <dd>
+      <p class="para">
+      El valor gamma
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">whitePoint</code></dt>
+     <dd>
+      <p class="para">
+      El punto blanco de la imagen
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">channel</code></dt>
+     <dd>
+      <p class="para">
+       Proporcione cualquier constante de canal que sea válida para su modo de canal. Para
+       aplicar más de un canal, combine las constantes channeltype usando
+       operadores a nivel de bits. Consulte esta lista de
+       <a href="imagick.constants.html#imagick.constants.channel" class="link">constantes de canal</a>.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-imagick.levelimage-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-imagick.levelimage-errors">
+  <h3 class="title">Errores/Excepciones</h3>
+  <p class="para">
+   Lanza ImagickException en caso de error.
+  </p>
+ </div>
+
+
+
+
+ <div class="refsect1 examples" id="refsect1-imagick.levelimage-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+    <div class="example" id="example-2807">
+      <p><strong>Ejemplo #1  <span class="function"><strong>Imagick::levelImage()</strong></span></strong></p>
+      <div class="example-contents">
+      <div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">levelImage</span><span style="color: #007700">(</span><span style="color: #0000BB">$blackPoint</span><span style="color: #007700">, </span><span style="color: #0000BB">$gamma</span><span style="color: #007700">, </span><span style="color: #0000BB">$whitePoint</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">$imagick </span><span style="color: #007700">= new </span><span style="color: #0000BB">\Imagick</span><span style="color: #007700">();<br />    </span><span style="color: #0000BB">$imagick</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">newPseudoimage</span><span style="color: #007700">(</span><span style="color: #0000BB">500</span><span style="color: #007700">, </span><span style="color: #0000BB">500</span><span style="color: #007700">, </span><span style="color: #DD0000">'gradient:black-white'</span><span style="color: #007700">);<br /><br />    </span><span style="color: #0000BB">$imagick</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setFormat</span><span style="color: #007700">(</span><span style="color: #DD0000">'png'</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">$quantum </span><span style="color: #007700">= </span><span style="color: #0000BB">$imagick</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getQuantum</span><span style="color: #007700">();<br />    </span><span style="color: #0000BB">$imagick</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">levelImage</span><span style="color: #007700">(</span><span style="color: #0000BB">$blackPoint </span><span style="color: #007700">/ </span><span style="color: #0000BB">100 </span><span style="color: #007700">, </span><span style="color: #0000BB">$gamma</span><span style="color: #007700">, </span><span style="color: #0000BB">$quantum </span><span style="color: #007700">* </span><span style="color: #0000BB">$whitePoint </span><span style="color: #007700">/ </span><span style="color: #0000BB">100</span><span style="color: #007700">);<br /><br />    </span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">"Content-Type: image/png"</span><span style="color: #007700">);<br />    echo </span><span style="color: #0000BB">$imagick</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getImageBlob</span><span style="color: #007700">();<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+      </div>
+
+    </div>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

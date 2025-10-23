@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>El Formato de Fichero Phar</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="phar.fileformat.zip.html">« Archivos phar basados en zip</a></li>
+      <li style="float: right;"><a href="phar.fileformat.flags.html">Banderas mapeadas en bit globales de Phar »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="phar.fileformat.html">&iquest;Qu&eacute; hace de un phar un phar y no un tar o un zip?</a></li>
+    <li>El Formato de Fichero Phar</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="phar.fileformat.phar" class="section">
+  <h2 class="title">El Formato de Fichero Phar</h2>
+  <p class="para">
+   El formato de fichero phar está dispuesto literalmente como rutina_de_interoperabilidad/manifiesto/contenido/firma, y
+   almacena la información crucial de lo que está incluido en el archivo phar en su
+   <code class="literal">manifiesto</code>.
+  </p>
+  <p class="para">
+   El manifiesto de phar es un formato altamente optimizado que permite especificaciones
+   por fichero de compresión de ficheros, permisos de ficheros, e incluso metainformación
+   definida por el usuario como el usuario o grupo del fichero. Todos los valores mayores que 1 byte son almacenados
+   en el orden de byte little-endian, con la excepción de la versión de la API, que
+   por motivos históricos es almacenada como 3 en el orden big-endian.
+  </p>
+  <p class="para">
+   Todas las banderas sin utilizar están reservadas para un uso futuro, y no deben usarse
+   para almacenar información personalizada.to store custom information.  Use la característica de metainformación por fichero
+   para alamacenar información personalizada sobre ficheros en particular.
+  </p>
+  <p class="para">
+   El formato de fichero básico de un manifiesto Phar es como sigue:
+  </p>
+  <p class="para">
+   <table class="doctable table">
+    <caption><strong>Formato del manifiesto global de Phar</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>Tamaño en bytes</th>
+       <th>Descripción</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>4 bytes</td>
+       <td>Longitud del manifiesto en bytes (límite 1 MB)</td>
+      </tr>
+
+      <tr>
+       <td>4 bytes</td>
+       <td>Número de ficheros en el Phar</td>
+      </tr>
+
+      <tr>
+       <td>2 bytes</td>
+       <td>Versión de la API del manifiesto de Phar (actualmente 1.0.0)</td>
+      </tr>
+
+      <tr>
+       <td>4 bytes</td>
+       <td>Banderas mapeadas en bit globales de Phar</td>
+      </tr>
+
+      <tr>
+       <td>4 bytes</td>
+       <td>Longitud del alisa del Phar</td>
+      </tr>
+
+      <tr>
+       <td>??</td>
+       <td>Alias del Phar (la longitud basada en lo anterior)</td>
+      </tr>
+
+      <tr>
+       <td>4 bytes</td>
+       <td>Longitud de la metainformación del Phar (<code class="literal">0</code> para ninguna)</td>
+      </tr>
+
+      <tr>
+       <td>??</td>
+       <td>Metainformación de Phar serializada, almacenada en el formato de <span class="function"><a href="function.serialize.html" class="function">serialize()</a></span></td>
+      </tr>
+
+      <tr>
+       <td>al menos 24 * número de entradas bytes</td>
+       <td>entradas para cada fichero</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div></div></div></body></html>

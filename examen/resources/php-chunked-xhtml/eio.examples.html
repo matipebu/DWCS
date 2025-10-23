@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Ejemplos</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="eio.constants.html">« Constantes predefinidas</a></li>
+      <li style="float: right;"><a href="ref.eio.html">Funciones Eio »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.eio.html">Eio</a></li>
+    <li>Ejemplos</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="eio.examples" class="chapter">
+ <h1 class="title">Ejemplos</h1>
+
+ <p class="para">
+  <div class="example" id="example-3234">
+   <p><strong>Ejemplo #1 Cancelar una petición</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /> </span><span style="color: #FF8000">/* Es llamada cuando finaliza eio_nop() */<br /> </span><span style="color: #007700">function </span><span style="color: #0000BB">mi_llamada_retorno_nop</span><span style="color: #007700">(</span><span style="color: #0000BB">$datos</span><span style="color: #007700">, </span><span style="color: #0000BB">$resultado</span><span style="color: #007700">) {<br />  echo </span><span style="color: #DD0000">"mi_nop "</span><span style="color: #007700">, </span><span style="color: #0000BB">$datos</span><span style="color: #007700">, </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /> }<br /><br /></span><span style="color: #FF8000">// Esta llamada a eio_nop() será cancelada<br /></span><span style="color: #0000BB">$petición </span><span style="color: #007700">= </span><span style="color: #0000BB">eio_nop</span><span style="color: #007700">(</span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">, </span><span style="color: #DD0000">"mi_llamada_retorno_nop"</span><span style="color: #007700">, </span><span style="color: #DD0000">"1"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$petición</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">eio_cancel</span><span style="color: #007700">(</span><span style="color: #0000BB">$petición</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Esta vez eio_nop() será procesada<br /></span><span style="color: #0000BB">eio_nop</span><span style="color: #007700">(</span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">, </span><span style="color: #DD0000">"mi_llamada_retorno_nop"</span><span style="color: #007700">, </span><span style="color: #DD0000">"2"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Process requests<br /></span><span style="color: #0000BB">eio_event_loop</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+resource(4) of type (EIO Request Descriptor)
+mi_nop 2
+ </pre></div>
+   </div>
+  </div>
+ </p>
+ 
+ <p class="para">
+  <div class="example" id="example-3235">
+   <p><strong>Ejemplo #2 Llamar a <span class="function"><a href="function.eio-chmod.html" class="function">eio_chmod()</a></span></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$nombre_fichero_temp </span><span style="color: #007700">= </span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">) .</span><span style="color: #DD0000">"eio-fichero-temp.tmp"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">touch</span><span style="color: #007700">(</span><span style="color: #0000BB">$nombre_fichero_temp</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* Es llamada cuando finaliza eio_chmod() */<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">mi_llamada_retorno_chmod</span><span style="color: #007700">(</span><span style="color: #0000BB">$datos</span><span style="color: #007700">, </span><span style="color: #0000BB">$resultado</span><span style="color: #007700">) {<br />    global </span><span style="color: #0000BB">$nombre_fichero_temp</span><span style="color: #007700">;<br /><br />    if (</span><span style="color: #0000BB">$resultado </span><span style="color: #007700">== </span><span style="color: #0000BB">0 </span><span style="color: #007700">&amp;&amp; !</span><span style="color: #0000BB">is_readable</span><span style="color: #007700">(</span><span style="color: #0000BB">$nombre_fichero_temp</span><span style="color: #007700">) &amp;&amp; </span><span style="color: #0000BB">is_writable</span><span style="color: #007700">(</span><span style="color: #0000BB">$nombre_fichero_temp</span><span style="color: #007700">)) {<br />        echo </span><span style="color: #DD0000">"eio_chmod_ok"</span><span style="color: #007700">;<br />    }<br /><br />    @</span><span style="color: #0000BB">unlink</span><span style="color: #007700">(</span><span style="color: #0000BB">$nombre_fichero_temp</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">eio_chmod</span><span style="color: #007700">(</span><span style="color: #0000BB">$nombre_fichero_temp</span><span style="color: #007700">, </span><span style="color: #0000BB">0200</span><span style="color: #007700">, </span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">, </span><span style="color: #DD0000">"mi_llamada_retorno_chmod"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">eio_event_loop</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+eio_chmod_ok
+ </pre></div>
+   </div>
+  </div>
+ </p>
+ 
+ <p class="para">
+  <div class="example" id="example-3236">
+   <p><strong>Ejemplo #3 Realizar una petición personalizada</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/* Llamada de retorno para la llamada de retorno personalizada */<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">mi_llamada_retorno_personalizada</span><span style="color: #007700">(</span><span style="color: #0000BB">$datos</span><span style="color: #007700">, </span><span style="color: #0000BB">$resultado</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$datos</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$resultado</span><span style="color: #007700">));<br />    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$resultado</span><span style="color: #007700">[</span><span style="color: #DD0000">'data_modified'</span><span style="color: #007700">]);<br />    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$resultado</span><span style="color: #007700">[</span><span style="color: #DD0000">'result'</span><span style="color: #007700">]);<br />}<br /><br /></span><span style="color: #FF8000">/* La petición personalizada */<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">mi_personalizada</span><span style="color: #007700">(</span><span style="color: #0000BB">$datos</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$datos</span><span style="color: #007700">);<br /><br />    </span><span style="color: #0000BB">$resultado </span><span style="color: #007700">= array(<br />        </span><span style="color: #DD0000">'result'        </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1001</span><span style="color: #007700">,<br />        </span><span style="color: #DD0000">'data_modified' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"mis datos personalizados"</span><span style="color: #007700">,<br />    );<br /><br />    return </span><span style="color: #0000BB">$resultado</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$datos </span><span style="color: #007700">= </span><span style="color: #DD0000">"mis_datos_personalizados"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$petición </span><span style="color: #007700">= </span><span style="color: #0000BB">eio_custom</span><span style="color: #007700">(</span><span style="color: #DD0000">"mi_personalizada"</span><span style="color: #007700">, </span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">, </span><span style="color: #DD0000">"mi_llamada_retorno_personalizada"</span><span style="color: #007700">, </span><span style="color: #0000BB">$datos</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$petición</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">eio_event_loop</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+resource(4) of type (EIO Request Descriptor)
+string(24) &quot;mis_datos_personalizados&quot;
+string(24) &quot;mis_datos_personalizados&quot;
+int(2)
+string(24) &quot;mis datos personalizados&quot;
+int(1001)
+ </pre></div>
+   </div>
+  </div>
+ </p>
+ 
+ <p class="para">
+  <div class="example" id="example-3237">
+   <p><strong>Ejemplo #4 Agrupar peticiones</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*<br /> * Crear un grupo de peticiones para abrir, leer y cerrar un fichero<br /> */<br /><br /></span><span style="color: #0000BB">$nombre_fichero_temp </span><span style="color: #007700">= </span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">) .</span><span style="color: #DD0000">"/eio-file.tmp"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$fp </span><span style="color: #007700">= </span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$nombre_fichero_temp</span><span style="color: #007700">, </span><span style="color: #DD0000">"w"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">, </span><span style="color: #DD0000">"algunos datos"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* Es llamada cuando el grupo de peticiones está hecho */<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">mi_grupo_hecho</span><span style="color: #007700">(</span><span style="color: #0000BB">$datos</span><span style="color: #007700">, </span><span style="color: #0000BB">$resultado</span><span style="color: #007700">) {<br /> global </span><span style="color: #0000BB">$nombre_fichero_temp</span><span style="color: #007700">;<br /> </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$resultado </span><span style="color: #007700">== </span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /> @</span><span style="color: #0000BB">unlink</span><span style="color: #007700">(</span><span style="color: #0000BB">$nombre_fichero_temp</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">/* Es llamada cuando eio_open() termina */<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">mi_grupo_llamada_retorno_fichero_abierto</span><span style="color: #007700">(</span><span style="color: #0000BB">$datos</span><span style="color: #007700">, </span><span style="color: #0000BB">$resultado</span><span style="color: #007700">) {<br /> global </span><span style="color: #0000BB">$mi_df_fichero</span><span style="color: #007700">, </span><span style="color: #0000BB">$grupo</span><span style="color: #007700">;<br /><br /> </span><span style="color: #0000BB">$mi_df_fichero </span><span style="color: #007700">= </span><span style="color: #0000BB">$resultado</span><span style="color: #007700">;<br /><br /> </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$resultado </span><span style="color: #007700">&gt; </span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br /> </span><span style="color: #FF8000">// Crear una petición eio_read() y añadirla al grupo<br /> </span><span style="color: #0000BB">$petición </span><span style="color: #007700">= </span><span style="color: #0000BB">eio_read</span><span style="color: #007700">(</span><span style="color: #0000BB">$mi_df_fichero</span><span style="color: #007700">, </span><span style="color: #0000BB">4</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">, </span><span style="color: #DD0000">"mi_grupo_llamada_retorno_fichero_leído"</span><span style="color: #007700">);<br /> </span><span style="color: #0000BB">eio_grp_add</span><span style="color: #007700">(</span><span style="color: #0000BB">$grupo</span><span style="color: #007700">, </span><span style="color: #0000BB">$petición</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">/* Is called when eio_read() done */<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">mi_grupo_llamada_retorno_fichero_leído</span><span style="color: #007700">(</span><span style="color: #0000BB">$datos</span><span style="color: #007700">, </span><span style="color: #0000BB">$resultado</span><span style="color: #007700">) {<br /> global </span><span style="color: #0000BB">$mi_df_fichero</span><span style="color: #007700">, </span><span style="color: #0000BB">$grupo</span><span style="color: #007700">;<br /><br /> </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$resultado</span><span style="color: #007700">);<br /><br /> </span><span style="color: #FF8000">// Crear una petición eio_close() y añadirla al grupo<br /> </span><span style="color: #0000BB">$petición </span><span style="color: #007700">= </span><span style="color: #0000BB">eio_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$mi_df_fichero</span><span style="color: #007700">);<br /> </span><span style="color: #0000BB">eio_grp_add</span><span style="color: #007700">(</span><span style="color: #0000BB">$grupo</span><span style="color: #007700">, </span><span style="color: #0000BB">$petición</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$grupo </span><span style="color: #007700">= </span><span style="color: #0000BB">eio_grp</span><span style="color: #007700">(</span><span style="color: #DD0000">"mi_grupo_hecho"</span><span style="color: #007700">, </span><span style="color: #DD0000">"mis_datos_grupo"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Crear una petición eio_open() y añadirla al grupo<br /></span><span style="color: #0000BB">$petición </span><span style="color: #007700">= </span><span style="color: #0000BB">eio_open</span><span style="color: #007700">(</span><span style="color: #0000BB">$nombre_fichero_temp</span><span style="color: #007700">, </span><span style="color: #0000BB">EIO_O_RDWR </span><span style="color: #007700">| </span><span style="color: #0000BB">EIO_O_APPEND </span><span style="color: #007700">, </span><span style="color: #0000BB">NULL</span><span style="color: #007700">,<br />  </span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">, </span><span style="color: #DD0000">"mi_grupo_llamada_retorno_fichero_abierto"</span><span style="color: #007700">, </span><span style="color: #0000BB">NULL</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">eio_grp_add</span><span style="color: #007700">(</span><span style="color: #0000BB">$grupo</span><span style="color: #007700">, </span><span style="color: #0000BB">$petición</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$grupo</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">eio_event_loop</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+resource(6) of type (EIO Group Descriptor)
+bool(true)
+string(7) &quot;algunos&quot;
+bool(true)
+ </pre></div>
+   </div>
+  </div>
+ </p>
+ 
+ <p class="para">
+  <div class="example" id="example-3238">
+   <p><strong>Ejemplo #5 Emplear eio con la extensión libevent</strong></p>
+<div class="example-contents"><div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">mi_eio_poll</span><span style="color: #007700">(</span><span style="color: #0000BB">$df</span><span style="color: #007700">, </span><span style="color: #0000BB">$eventos</span><span style="color: #007700">, </span><span style="color: #0000BB">$argumentos</span><span style="color: #007700">) {<br />    </span><span style="color: #FF8000">/* Algunas regulaciones de libevent podrían ir aquí .. */<br />    </span><span style="color: #007700">if (</span><span style="color: #0000BB">eio_nreqs</span><span style="color: #007700">()) {<br />        </span><span style="color: #0000BB">eio_poll</span><span style="color: #007700">();<br />    }<br />    </span><span style="color: #FF8000">/* .. y aquí */<br /></span><span style="color: #007700">}<br /><br />function </span><span style="color: #0000BB">mi_llamada_retorno_nop</span><span style="color: #007700">(</span><span style="color: #0000BB">$d</span><span style="color: #007700">, </span><span style="color: #0000BB">$r</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$r</span><span style="color: #007700">); </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$d</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$base </span><span style="color: #007700">= </span><span style="color: #0000BB">event_base_new</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$evento </span><span style="color: #007700">= </span><span style="color: #0000BB">event_new</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$df </span><span style="color: #007700">= </span><span style="color: #0000BB">eio_get_event_stream</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$df</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">eio_nop</span><span style="color: #007700">(</span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">, </span><span style="color: #DD0000">"mi_llamada_retorno_nop"</span><span style="color: #007700">, </span><span style="color: #DD0000">"nop data"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">eio_mkdir</span><span style="color: #007700">(</span><span style="color: #DD0000">"/tmp/abc-eio-temp"</span><span style="color: #007700">, </span><span style="color: #0000BB">0750</span><span style="color: #007700">, </span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">, </span><span style="color: #DD0000">"mi_llamada_retorno_nop"</span><span style="color: #007700">, </span><span style="color: #DD0000">"nop data"</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">/* algunas llamadas eio_* aquí ... */<br /><br /><br />// establecer las banderas del evento<br /></span><span style="color: #0000BB">event_set</span><span style="color: #007700">(</span><span style="color: #0000BB">$evento</span><span style="color: #007700">, </span><span style="color: #0000BB">$df</span><span style="color: #007700">, </span><span style="color: #0000BB">EV_READ </span><span style="color: #FF8000">/*| EV_PERSIST*/</span><span style="color: #007700">, </span><span style="color: #DD0000">"my_eio_poll"</span><span style="color: #007700">, array(</span><span style="color: #0000BB">$evento</span><span style="color: #007700">, </span><span style="color: #0000BB">$base</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">// Establecer la base del evento<br /></span><span style="color: #0000BB">event_base_set</span><span style="color: #007700">(</span><span style="color: #0000BB">$evento</span><span style="color: #007700">, </span><span style="color: #0000BB">$base</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// habilitar el evento<br /></span><span style="color: #0000BB">event_add</span><span style="color: #007700">(</span><span style="color: #0000BB">$evento</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// iniciar el bucle de eventos<br /></span><span style="color: #0000BB">event_base_loop</span><span style="color: #007700">(</span><span style="color: #0000BB">$base</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* Lo mismo estará disponible mediante interfaz libevent con buffer */<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div></div>
+
+   
+   <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+int(3)
+int(0)
+string(8) &quot;nop data&quot;
+int(0)
+string(10) &quot;mkdir data&quot;
+ </pre></div>
+   </div>
+  </div>
+ </p>
+ 
+ <p class="para">
+  <div class="example" id="example-3239">
+   <p><strong>Ejemplo #6 Emplear eio con la extensión event</strong></p>
+<div class="example-contents"><div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$base </span><span style="color: #007700">= new </span><span style="color: #0000BB">EventBase</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">// Recuperar el flujo de sondeo de eio.<br />// Observe, esta variable debería permanecer viva mientras se ejecute el bucle.<br /></span><span style="color: #0000BB">$eio_stream </span><span style="color: #007700">= </span><span style="color: #0000BB">eio_get_event_stream</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">// Vincular el flujo de sondeo de eio al bucle de evento.<br /></span><span style="color: #0000BB">$poll_event </span><span style="color: #007700">= new </span><span style="color: #0000BB">Event</span><span style="color: #007700">(</span><span style="color: #0000BB">$base</span><span style="color: #007700">, </span><span style="color: #0000BB">$eio_stream</span><span style="color: #007700">, </span><span style="color: #0000BB">Event</span><span style="color: #007700">::</span><span style="color: #0000BB">READ</span><span style="color: #007700">, function () {<br />  if (</span><span style="color: #0000BB">eio_nreqs</span><span style="color: #007700">()) {<br />    </span><span style="color: #0000BB">eio_poll</span><span style="color: #007700">();<br />  }<br />});<br /></span><span style="color: #0000BB">$poll_event</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">// Añadir trabajos de eio<br /></span><span style="color: #0000BB">eio_nop</span><span style="color: #007700">(</span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">, function () {<br />  echo </span><span style="color: #DD0000">"eio_nop\n"</span><span style="color: #007700">;<br />});<br /><br /></span><span style="color: #FF8000">// Añadir eventos<br /></span><span style="color: #0000BB">$timer </span><span style="color: #007700">= </span><span style="color: #0000BB">Event</span><span style="color: #007700">::</span><span style="color: #0000BB">timer</span><span style="color: #007700">(</span><span style="color: #0000BB">$base</span><span style="color: #007700">, function () {<br />  echo </span><span style="color: #DD0000">"2 segundos transcurridos\n"</span><span style="color: #007700">;<br />});<br /></span><span style="color: #0000BB">$timer</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Despachar eventos.<br /></span><span style="color: #0000BB">$base</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">dispatch</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div></div>
+
+   
+   <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+eio_nop
+2 segundos transcurridos
+ </pre></div>
+   </div>
+ </div>
+ </p>
+ 
+</div>
+</div></div></body></html>

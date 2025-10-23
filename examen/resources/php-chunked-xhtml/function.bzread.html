@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Lectura segura de ficheros bzip2</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.bzopen.html">« bzopen</a></li>
+      <li style="float: right;"><a href="function.bzwrite.html">bzwrite »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.bzip2.html">Funciones de Bzip2</a></li>
+    <li>Lectura segura de ficheros bzip2</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.bzread" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">bzread</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">bzread</span> &mdash; <span class="dc-title">Lectura segura de ficheros bzip2</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.bzread-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>bzread</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$bz</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$length</code><span class="initializer"> = 1024</span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>bzread()</strong></span> lee del puntero de fichero bzip2 pasado como parámetro.
+  </p>
+  <p class="para">
+   La lectura finaliza una vez que se han leído <code class="parameter">length</code> bytes (descomprimidos)
+   o cuando se alcanza EOF, lo primero que suceda.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.bzread-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">bz</code></dt>
+     <dd>
+      <p class="para">
+       El puntero al fichero. Tiene que ser válido y debe apuntar a un
+       fichero que se haya abierto con éxito con <span class="function"><a href="function.bzopen.html" class="function">bzopen()</a></span>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">length</code></dt>
+     <dd>
+      <p class="para">
+       Si no se especifica, <span class="function"><strong>bzread()</strong></span> leerá bloques de 1024 
+       bytes (descomprimidos) al momento. Un máximo de 8192 
+       bytes descomprimidos serán leídos.
+      </p>
+     </dd>
+    
+   </dl>
+  </p> 
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.bzread-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve la información descomprimida, o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.bzread-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-707">
+    <p><strong>Ejemplo #1 ejemplo de <span class="function"><strong>bzread()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$file </span><span style="color: #007700">= </span><span style="color: #DD0000">"/tmp/foo.bz2"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$bz </span><span style="color: #007700">= </span><span style="color: #0000BB">bzopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">, </span><span style="color: #DD0000">"r"</span><span style="color: #007700">) or die(</span><span style="color: #DD0000">"No se ha podido abrir </span><span style="color: #0000BB">$file</span><span style="color: #DD0000">"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$decompressed_file </span><span style="color: #007700">= </span><span style="color: #DD0000">''</span><span style="color: #007700">;<br />while (!</span><span style="color: #0000BB">feof</span><span style="color: #007700">(</span><span style="color: #0000BB">$bz</span><span style="color: #007700">)) {<br />  </span><span style="color: #0000BB">$decompressed_file </span><span style="color: #007700">.= </span><span style="color: #0000BB">bzread</span><span style="color: #007700">(</span><span style="color: #0000BB">$bz</span><span style="color: #007700">, </span><span style="color: #0000BB">4096</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">bzclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$bz</span><span style="color: #007700">);<br /><br />echo </span><span style="color: #DD0000">"El contenido de </span><span style="color: #0000BB">$file</span><span style="color: #DD0000"> es: &lt;br /&gt;\n"</span><span style="color: #007700">;<br />echo </span><span style="color: #0000BB">$decompressed_file</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.bzread-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.bzwrite.html" class="function" rel="rdfs-seeAlso">bzwrite()</a> - Escribe en un fichero bzip2 de forma segura binariamente</span></li>
+    <li><span class="function"><a href="function.feof.html" class="function" rel="rdfs-seeAlso">feof()</a> - Comprueba si el puntero a un archivo est&aacute; al final del archivo</span></li>
+    <li><span class="function"><a href="function.bzopen.html" class="function" rel="rdfs-seeAlso">bzopen()</a> - Abre un fichero comprimido con bzip2</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

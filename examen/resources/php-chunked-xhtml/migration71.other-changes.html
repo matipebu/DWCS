@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Otros cambios</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="migration71.changed-functions.html">« Changed functions</a></li>
+      <li style="float: right;"><a href="migration71.windows-support.html">Soporte para Windows »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="migration71.html">Migraci&oacute;n de PHP 7.0.x a PHP 7.1.x</a></li>
+    <li>Otros cambios</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="migration71.other-changes" class="sect1">
+ <h2 class="title">Otros cambios</h2>
+ 
+ <div class="sect2" id="migration71.other-changes.apprise-on-arithmetic-with-invalid-strings">
+  <h3 class="title">Avisos y advertencias sobre aritmética con cadenas no inválidas</h3>
+  
+  <p class="para">
+   Se han introducido nuevos errores <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong>
+   y <strong><code><a href="errorfunc.constants.html#constant.e-notice">E_NOTICE</a></code></strong> al forzar cadenas no válidas usando operadores
+   que esperan número (<code class="literal">+</code> <code class="literal">-</code>
+   <code class="literal">*</code> <code class="literal">/</code> <code class="literal">**</code>
+   <code class="literal">%</code> <code class="literal">&lt;&lt;</code> <code class="literal">&gt;&gt;</code>
+   <code class="literal">|</code> <code class="literal">&amp;</code> <code class="literal">^</code>) o sus
+   equivalentes de asignación. Se emite un <strong><code><a href="errorfunc.constants.html#constant.e-notice">E_NOTICE</a></code></strong> cuando la
+   cadena comienza con un valor numérico pero contiene al final caracteres no
+   numéricos, y se emite un <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong> cuando la cadena
+   no contiene ningún valor numérico.
+  </p>
+  
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #DD0000">'1b' </span><span style="color: #007700">+ </span><span style="color: #DD0000">'algo'</span><span style="color: #007700">;</span></span></code></div>
+   </div>
+
+   <p class="para">El resultado del ejemplo sería:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Notice: A non well formed numeric value encountered in %s on line %d
+Warning: A non-numeric value encountered in %s on line %d
+</pre></div>
+   </div>
+  </div>
+ </div>
+ 
+ <div class="sect2" id="migration71.other-changes.warn-on-octal-overflow">
+  <h3 class="title">Advertencia de desbordamiento de secuencia de escape octal</h3>
+  
+  <p class="para">
+   Anteriormente, las secuencias de escape de cadenas octales de tres octetos desbordaban silenciosamente.
+   Ahora, siguen desbordando, pero se emite un
+   <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong>.
+  </p>
+  
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(</span><span style="color: #DD0000">"\500"</span><span style="color: #007700">);</span></span></code></div>
+   </div>
+
+   <p class="para">El resultado del ejemplo sería:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Warning: Octal escape sequence overflow \500 is greater than \377 in %s on line %d
+string(1) &quot;@&quot;
+</pre></div>
+   </div>
+  </div>
+ </div>
+ 
+ <div class="sect2" id="migration71.other-changes.inconsistency-fixes-to-this">
+  <h3 class="title">Reparación de inconsistencias en <code class="literal">$this</code></h3>
+  
+  <p class="para">
+   Pese a que <code class="literal">$this</code> está considerada un variable especial en PHP,
+   carece de comprobaciones apropiadas para asegurarse de que no se usó como un nombre de variable o
+   fue reasignada. Ahora, esto se ha rectificado para asegurarse de que
+   <code class="literal">$this</code> no puede ser una variable definida por el usuario, reasignada
+   a un valor diferente, o globalizada.
+  </p>
+ </div>
+ 
+ <div class="sect2" id="migration71.other-changes.session-id-generation-without-hashing">
+  <h3 class="title">Generación de ID de sesión sin  &#039;hash&#039;</h3>
+  
+  <p class="para">
+   Los ID de sesión ya no utilzarán &#039;hash&#039; en su generación. Este cambio 
+   provoca la eliminación de los cuatro siguientes ajustes ini:
+  </p>
+  
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <code class="parameter">session.entropy_file</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <code class="parameter">session.entropy_length</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <code class="parameter">session.hash_function</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <code class="parameter">session.hash_bits_per_character</code>
+    </span>
+   </li>
+  </ul>
+  
+  <p class="para">
+   Y la adición de los dos siguientes ajustes ini:
+  </p>
+  
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <code class="parameter">session.sid_length</code> - define la longitud del
+     ID de sesión, siendo 32 caracteres la predeterminada por retrocompatibilidad
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <code class="parameter">session.sid_bits_per_character</code> - define el número
+     de bits a almacenar por carácter (esto es, aumenta el rango de caracteres
+     que se pueden utilizar en el ID de sesión), siendo 4 el predeterminado por
+     retrocompatibilidad
+    </span>
+   </li>
+  </ul>
+ </div>
+ 
+ <div class="sect2" id="migration71.other-changes.ini-file-handling">
+  <h3 class="title">Cambios en el manejo del fichero INI</h3>
+  <dl>
+   
+    <dt><code class="parameter">precision</code></dt>
+    <dd>
+     <p class="para">
+      Si el valor se establece a -1, se usará el modo dtoa 0. El valor
+      predeterminado aún es 14.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">serialize_precision</code></dt>
+    <dd>
+     <p class="para">
+      Si el valor se establece a -1, se usará el modo dtoa 0. Ahora se usa
+      el valor -1 como predeterminado.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">gd.jpeg_ignore_warning</code></dt>
+    <dd>
+     <p class="para">
+      El valor predeterminado de este ajuste de <var class="filename">php.ini</var> ha cambiado a 1, por lo que
+      las advertencias predeterminadas de libjpeg son ignoradas.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">opcache.enable_cli</code></dt>
+    <dd>
+     <p class="para">
+      El valor predeterminado para este ajuste <var class="filename">php.ini</var> ha cambiado a 1
+      (habilitado) en PHP 7.1.2.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+ 
+ <div class="sect2" id="migration71.other-changes.session-id-csprng-gen">
+  <h3 class="title">Generación de ID de sesión con un CSPRNG solamente</h3>
+  
+  <p class="para">
+   Los ID de sesión ahora solamente serán generados con un CSPRNG.
+  </p>
+ </div>
+ 
+ <div class="sect2" id="migration71.other-changes.typeerror-error-messages">
+  <h3 class="title">Mensajes <span class="classname"><a href="class.typeerror.html" class="classname">TypeError</a></span> más informativos cuando se permite <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong></h3>
+  <p class="para">
+   Las excepciones <span class="classname"><a href="class.typeerror.html" class="classname">TypeError</a></span> para comprobaciones de tipo arg_info ahora
+   proporcionan mensajes de error más informativos. Si el tipo de parámetro o el tipo
+   devuelto acepta <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> (ya sea teniente un valor predeterminado de <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> o siendo
+   un tipo «nullable»), el mensaje de error ahora mencionará esto con un mensaje
+   &quot;must be ... or null&quot; o &quot;must ... or be null.&quot;
+  </p>
+ </div>
+</div></div></div></body></html>

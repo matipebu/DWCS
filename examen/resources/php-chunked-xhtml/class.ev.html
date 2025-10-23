@@ -1,0 +1,957 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>La clase Ev</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ev.periodic-modes.html">« Periodic watcher operation modes</a></li>
+      <li style="float: right;"><a href="ev.backend.html">Ev::backend »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.ev.html">Ev</a></li>
+    <li>La clase Ev</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.ev" class="reference">
+ <h1 class="title">La clase Ev</h1>
+ 
+ <div class="partintro"><p class="verinfo">(PECL ev &gt;= 0.2.0)</p>
+
+  <div class="section" id="ev.intro">
+   <h2 class="title">Introducción</h2>
+   <p class="para">
+    Ev es una clase estática que proporciona acceso al bucle por omsión y a algunas
+    operaciones comunes.
+   </p>
+  </div>
+
+  <div class="section" id="ev.synopsis">
+   <h2 class="title">Sinopsis de la Clase</h2>
+
+
+   <div class="classsynopsis">
+    <span class="ooclass">
+     <strong class="classname"></strong>
+    </span>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">final</span>
+      <span class="modifier">class</span> <strong class="classname">Ev</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constantes */</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.flag-auto"><var class="varname">FLAG_AUTO</var></a></var><span class="initializer"> = 0</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.flag-noenv"><var class="varname">FLAG_NOENV</var></a></var><span class="initializer"> = 16777216</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.flag-forkcheck"><var class="varname">FLAG_FORKCHECK</var></a></var><span class="initializer"> = 33554432</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.flag-noinotify"><var class="varname">FLAG_NOINOTIFY</var></a></var><span class="initializer"> = 1048576</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.flag-signalfd"><var class="varname">FLAG_SIGNALFD</var></a></var><span class="initializer"> = 2097152</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.flag-nosigmask"><var class="varname">FLAG_NOSIGMASK</var></a></var><span class="initializer"> = 4194304</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.run-nowait"><var class="varname">RUN_NOWAIT</var></a></var><span class="initializer"> = 1</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.run-once"><var class="varname">RUN_ONCE</var></a></var><span class="initializer"> = 2</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.break-cancel"><var class="varname">BREAK_CANCEL</var></a></var><span class="initializer"> = 0</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.break-one"><var class="varname">BREAK_ONE</var></a></var><span class="initializer"> = 1</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.break-all"><var class="varname">BREAK_ALL</var></a></var><span class="initializer"> = 2</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.minpri"><var class="varname">MINPRI</var></a></var><span class="initializer"> = -2</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.maxpri"><var class="varname">MAXPRI</var></a></var><span class="initializer"> = 2</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.read"><var class="varname">READ</var></a></var><span class="initializer"> = 1</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.write"><var class="varname">WRITE</var></a></var><span class="initializer"> = 2</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.timer"><var class="varname">TIMER</var></a></var><span class="initializer"> = 256</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.periodic"><var class="varname">PERIODIC</var></a></var><span class="initializer"> = 512</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.signal"><var class="varname">SIGNAL</var></a></var><span class="initializer"> = 1024</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.child"><var class="varname">CHILD</var></a></var><span class="initializer"> = 2048</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.stat"><var class="varname">STAT</var></a></var><span class="initializer"> = 4096</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.idle"><var class="varname">IDLE</var></a></var><span class="initializer"> = 8192</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.prepare"><var class="varname">PREPARE</var></a></var><span class="initializer"> = 16384</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.check"><var class="varname">CHECK</var></a></var><span class="initializer"> = 32768</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.embed"><var class="varname">EMBED</var></a></var><span class="initializer"> = 65536</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.custom"><var class="varname">CUSTOM</var></a></var><span class="initializer"> = 16777216</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.error"><var class="varname">ERROR</var></a></var><span class="initializer"> = 2147483648</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.backend-select"><var class="varname">BACKEND_SELECT</var></a></var><span class="initializer"> = 1</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.backend-poll"><var class="varname">BACKEND_POLL</var></a></var><span class="initializer"> = 2</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.backend-epoll"><var class="varname">BACKEND_EPOLL</var></a></var><span class="initializer"> = 4</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.backend-kqueue"><var class="varname">BACKEND_KQUEUE</var></a></var><span class="initializer"> = 8</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.backend-devpoll"><var class="varname">BACKEND_DEVPOLL</var></a></var><span class="initializer"> = 16</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.backend-port"><var class="varname">BACKEND_PORT</var></a></var><span class="initializer"> = 32</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.backend-all"><var class="varname">BACKEND_ALL</var></a></var><span class="initializer"> = 63</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.ev.html#ev.constants.backend-mask"><var class="varname">BACKEND_MASK</var></a></var><span class="initializer"> = 65535</span>;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Métodos */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="methodname"><a href="ev.backend.html" class="methodname">backend</a></span>(): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="methodname"><a href="ev.depth.html" class="methodname">depth</a></span>(): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="methodname"><a href="ev.embeddablebackends.html" class="methodname">embeddableBackends</a></span>(): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="methodname"><a href="ev.feedsignal.html" class="methodname">feedSignal</a></span>(<span class="methodparam">
+    
+    <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$signum</code>
+   </span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="methodname"><a href="ev.feedsignalevent.html" class="methodname">feedSignalEvent</a></span>(<span class="methodparam">
+    
+    <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$signum</code>
+   </span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="methodname"><a href="ev.iteration.html" class="methodname">iteration</a></span>(): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="methodname"><a href="ev.now.html" class="methodname">now</a></span>(): <span class="type"><a href="language.types.float.html" class="type float">float</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="methodname"><a href="ev.nowupdate.html" class="methodname">nowUpdate</a></span>(): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="methodname"><a href="ev.recommendedbackends.html" class="methodname">recommendedBackends</a></span>(): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="methodname"><a href="ev.resume.html" class="methodname">resume</a></span>(): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="methodname"><a href="ev.run.html" class="methodname">run</a></span>(<span class="methodparam">
+    
+    <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$flags</code>
+   <span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="methodname"><a href="ev.sleep.html" class="methodname">sleep</a></span>(<span class="methodparam">
+    
+    <span class="type"><a href="language.types.float.html" class="type float">float</a></span> <code class="parameter">$seconds</code>
+   </span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="methodname"><a href="ev.stop.html" class="methodname">stop</a></span>(<span class="methodparam">
+    
+    <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$how</code>
+   <span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="methodname"><a href="ev.supportedbackends.html" class="methodname">supportedBackends</a></span>(): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="methodname"><a href="ev.suspend.html" class="methodname">suspend</a></span>(): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="methodname"><a href="ev.time.html" class="methodname">time</a></span>(): <span class="type"><a href="language.types.float.html" class="type float">float</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="methodname"><a href="ev.verify.html" class="methodname">verify</a></span>(): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+
+   }</div>
+
+  </div>
+
+  <div class="section" id="ev.constants">
+   <h2 class="title">Constantes predefinidas</h2>
+
+  <p class="para" id="ev.constants.loop-flags">
+    Flags disponibles para crear un bucle:
+
+    <dl>
+     
+      <dt id="ev.constants.flag-auto">
+       <strong><code><a href="class.ev.html#ev.constants.flag-auto">Ev::FLAG_AUTO</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        El valor del flag por defecto
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.flag-noenv">
+       <strong><code><a href="class.ev.html#ev.constants.flag-noenv">Ev::FLAG_NOENV</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        Si este flag es utilizado (o el programa corre setuid o setgid),
+        <code class="literal">libev</code>
+        no tendrá en cuenta la variable de entorno
+        <var class="varname">LIBEV_FLAGS</var>
+        . De otro modo (por defecto),
+        <var class="varname">LIBEV_FLAGS</var>
+        reemplazará los flags completamente si es definido. Útil para evaluación
+        de performance y para encontrar errores.
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.flag-forkcheck">
+       <strong><code><a href="class.ev.html#ev.constants.flag-forkcheck">Ev::FLAG_FORKCHECK</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        Permite que libev verifique un fork en cada iteración, en lugar de llamar a
+        <span class="methodname"><a href="evloop.fork.html" class="methodname">EvLoop::fork()</a></span>
+        manualmente. Esto funciona al llamar a
+        <code class="literal">getpid()</code>
+        en cada iteración del bucle, y como tal podrá alentizar el bucle de eventos con
+        numerosas iteraciones, aunque esto no es usualmente notorio. Este flag no puede
+        ser reemplazado o especificado mediante la variable de entorno
+        <var class="varname">LIBEV_FLAGS</var>.
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.flag-noinotify">
+       <strong><code><a href="class.ev.html#ev.constants.flag-noinotify">Ev::FLAG_NOINOTIFY</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        Cuando este flag es especificado,
+        <code class="literal">libev</code>
+        no intentará utilizar la API
+        <code class="literal">inotify</code>
+        para sus watchers
+        <a href="http://pod.tst.eu/http://cvs.schmorp.de/libev/ev.pod#code_ev_stat_code_did_the_file_attri" class="link external">&raquo;&nbsp;ev_stat</a>.
+        El flag puede ser útil para conservar los descriptores de archivo inotify,
+        ya que de otro modo cada bucle que utilice watchers
+        <code class="literal">ev_stat</code>
+        consumen un handle
+        <code class="literal">inotify</code>.
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.flag-signalfd">
+       <strong><code><a href="class.ev.html#ev.constants.flag-signalfd">Ev::FLAG_SIGNALFD</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        Cuando este flag es especificado,
+        <code class="literal">libev</code>
+        intentará utilizar la API
+        <code class="literal">signalfd</code>
+        para sus watchers
+        <a href="http://pod.tst.eu/http://cvs.schmorp.de/libev/ev.pod#code_ev_signal_code_signal_me_when_a" class="link external">&raquo;&nbsp;ev_signal</a>
+        (y
+        <a href="http://pod.tst.eu/http://cvs.schmorp.de/libev/ev.pod#code_ev_child_code_watch_out_for_pro" class="link external">&raquo;&nbsp;ev_child</a>
+        ). Esta API entrega las señales sincrónicamente, lo que la hace más rápida
+        y puede permitir obtener los datos de señal encolados.
+        También puede simplificar el manejo de señales mediante hilos, siempre y cuando
+        las señales sean bloqueadas apropiadamente en los hilos.
+        <code class="literal">Signalfd</code>
+        no será utilizado por defecto.
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.flag-nosigmask">
+       <strong><code><a href="class.ev.html#ev.constants.flag-nosigmask">Ev::FLAG_NOSIGMASK</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        Cuando este flag es especificado,
+        <code class="literal">libev</code>
+        hará imposible la modificación de la máscara de señal. Esto significa
+        que será necesario asegurarse que las señales están desbloqueadas antes
+        de recibirlas.
+       </p>
+       <p class="para">
+        Este comportamiento es útil para el manejo de señales personalizado, o para
+        manipular señales solamente en hilos específicos.
+       </p>
+      </dd>
+     
+    </dl>
+   </p>
+
+   <p class="para" id="ev.constants.run-flags">
+    Flags disponibles para
+    <span class="methodname"><a href="ev.run.html" class="methodname">Ev::run()</a></span>
+    , o
+    <span class="methodname"><a href="evloop.run.html" class="methodname">EvLoop::run()</a></span>
+
+    <dl>
+     
+      <dt id="ev.constants.run-nowait">
+       <strong><code><a href="class.ev.html#ev.constants.run-nowait">Ev::RUN_NOWAIT</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        Significa que el bucle de eventos buscará nuevos eventos, y manejará
+        aquellos eventos y cualquier otro evento pendiente, pero no esperará
+        ni bloqueará el proceso en caso de que no haya eventos, retornando
+        luego de una iteración del bucle. Esto es útil para obtener nuevos
+        eventos mientras se realizan cálculos costosos, manteniendo el
+        programa funcionando.
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.run-once">
+       <strong><code><a href="class.ev.html#ev.constants.run-once">Ev::RUN_ONCE</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        Significa que el bucle de eventos buscará nuevos eventos (esperando
+        si es necesario) y manejará aquellos eventos, y cualquier otro evento
+        pendiente. Bloqueará el proceso hasta que al menos un evento esté
+        disponible (que podría ser un evento interno a <code class="literal">libev</code>,
+        por lo que no hay garantía de que un callback registrado por el usuario
+        sea llamado), y retornará luego de una iteración del bucle.
+       </p>
+      </dd>
+     
+    </dl>
+   </p>
+
+   <p class="para" id="ev.constants.break-flags">
+    Flags disponibles para
+    <span class="methodname"><a href="ev.stop.html" class="methodname">Ev::stop()</a></span>
+    , o
+    <span class="methodname"><a href="evloop.stop.html" class="methodname">EvLoop::stop()</a></span>
+
+    <dl>
+     
+      <dt id="ev.constants.break-cancel">
+       <strong><code><a href="class.ev.html#ev.constants.break-cancel">Ev::BREAK_CANCEL</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        Cancelar la operación break.
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.break-one">
+       <strong><code><a href="class.ev.html#ev.constants.break-one">Ev::BREAK_ONE</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        Hace que la llamada interior
+        <span class="methodname"><a href="ev.run.html" class="methodname">Ev::run()</a></span>
+        (o
+        <span class="methodname"><a href="evloop.run.html" class="methodname">EvLoop::run()</a></span>
+        ) retorne.
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.break-all">
+       <strong><code><a href="class.ev.html#ev.constants.break-all">Ev::BREAK_ALL</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        Hace que todas las llamadas
+        <span class="methodname"><a href="ev.run.html" class="methodname">Ev::run()</a></span>
+        (o
+        <span class="methodname"><a href="evloop.run.html" class="methodname">EvLoop::run()</a></span>
+        ) retornen.
+       </p>
+      </dd>
+     
+    </dl>
+   </p>
+
+   <p class="para" id="ev.constants.watcher-pri">
+    Prioridades Watcher:
+
+    <dl>
+     
+      <dt id="ev.constants.minpri">
+       <strong><code><a href="class.ev.html#ev.constants.minpri">Ev::MINPRI</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        Prioridad mínima disponible.
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.maxpri">
+       <strong><code><a href="class.ev.html#ev.constants.maxpri">Ev::MAXPRI</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        Prioridad máxima disponible.
+       </p>
+      </dd>
+     
+    </dl>
+   </p>
+
+   <p class="para" id="ev.constants.watcher-revents">
+    Máscaras de Bit de los eventos (recibidos):
+
+    <dl>
+     
+      <dt id="ev.constants.read">
+       <strong><code><a href="class.ev.html#ev.constants.read">Ev::READ</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        El descriptor de archivo en el watcher
+        <span class="classname"><a href="class.evio.html" class="classname">EvIo</a></span>
+        se ha vuelto disponible.
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.write">
+       <strong><code><a href="class.ev.html#ev.constants.write">Ev::WRITE</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        El descriptor de archivo en el watcher
+        <span class="classname"><a href="class.evio.html" class="classname">EvIo</a></span>
+        se ha vuelto modificable.
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.timer">
+       <strong><code><a href="class.ev.html#ev.constants.timer">Ev::TIMER</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        El watcher <span class="classname"><a href="class.evtimer.html" class="classname">EvTimer</a></span>
+        ha agotado su tiempo.
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.periodic">
+       <strong><code><a href="class.ev.html#ev.constants.periodic">Ev::PERIODIC</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        El watcher <span class="classname"><a href="class.evperiodic.html" class="classname">EvPeriodic</a></span>
+        ha agotado su tiempo.
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.signal">
+       <strong><code><a href="class.ev.html#ev.constants.signal">Ev::SIGNAL</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        Una señal especificada en
+        <span class="methodname"><a href="evsignal.construct.html" class="methodname">EvSignal::__construct()</a></span>
+        ha sido recibida.
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.child">
+       <strong><code><a href="class.ev.html#ev.constants.child">Ev::CHILD</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        El
+        <code class="parameter">pid</code>
+        especificado en
+        <span class="methodname"><a href="evchild.construct.html" class="methodname">EvChild::__construct()</a></span>
+        ha recibido una alteración de estado.
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.stat">
+       <strong><code><a href="class.ev.html#ev.constants.stat">Ev::STAT</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        El path especificado en el watcher
+        <span class="classname"><a href="class.evstat.html" class="classname">EvStat</a></span>
+        ha modificado sus atributos.
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.idle">
+       <strong><code><a href="class.ev.html#ev.constants.idle">Ev::IDLE</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        El watcher <span class="classname"><a href="class.evidle.html" class="classname">EvIdle</a></span>
+        trabaja cuando no hay nada que hacer con otros watchers.
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.prepare">
+       <strong><code><a href="class.ev.html#ev.constants.prepare">Ev::PREPARE</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        Todos los watchers
+        <span class="classname"><a href="class.evprepare.html" class="classname">EvPrepare</a></span>
+        son invocados justo antes de que
+        <span class="methodname"><a href="ev.run.html" class="methodname">Ev::run()</a></span>
+        comience. Así, los watchers
+        <span class="classname"><a href="class.evprepare.html" class="classname">EvPrepare</a></span>
+        son los últimos en ser invocados antes de que el bucle de
+        eventos duerma, o busque nuevos eventos.
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.check">
+       <strong><code><a href="class.ev.html#ev.constants.check">Ev::CHECK</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        Todos los watchers
+        <span class="classname"><a href="class.evcheck.html" class="classname">EvCheck</a></span>
+        son encolados justo luego de que
+        <span class="methodname"><a href="ev.run.html" class="methodname">Ev::run()</a></span>
+        haya obtenido los nuevos eventos,
+        pero antes de que encole cualquier
+        callback para los eventos recibidos.
+        Así, los watchers
+        <span class="classname"><a href="class.evcheck.html" class="classname">EvCheck</a></span>
+        serán invocados antes que cualquier otro watcher
+        de la misma o menor prioridad dentro de la iteración
+        del bucle de eventos.
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.embed">
+       <strong><code><a href="class.ev.html#ev.constants.embed">Ev::EMBED</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        El bucle embebido especificado en el watcher
+        <span class="classname"><a href="class.evembed.html" class="classname">EvEmbed</a></span>
+        necesita atención.
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.custom">
+       <strong><code><a href="class.ev.html#ev.constants.custom">Ev::CUSTOM</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        Nunca enviado (o utilizado) por
+        <code class="literal">libev</code>, pero puede
+        ser libremente utilizado por los usuarios de
+        <code class="literal">libev</code>
+        para enviar señales a watchers (por ejemplo
+        a través de
+        <span class="methodname"><a href="evwatcher.feed.html" class="methodname">EvWatcher::feed()</a></span>
+        ).
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.error">
+       <strong><code><a href="class.ev.html#ev.constants.error">Ev::ERROR</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        Un error no especificado ha ocurrido, y el watcher se ha detenido. Esto
+        puede ocurrir ya sea porque el watcher no haya sido inicializado apropiadamente
+        debido a que
+        <code class="literal">libev</code>
+        ha agotado la memoria disponible, porque un descriptor de archivo se encontraba ya cerrado,
+        o por cualquier otro problema.
+        <code class="literal">Libev</code>
+        considera estos errores como errores de aplicación. Véase también
+        <a href="http://pod.tst.eu/http://cvs.schmorp.de/libev/ev.pod#ANATOMY_OF_A_WATCHER_CONTENT" class="link external">&raquo;&nbsp;ANATOMY
+    OF A WATCHER</a>
+       </p>
+      </dd>
+     
+    </dl>
+   </p>
+
+   <p class="para" id="ev.constants.watcher-backends">
+    Flags de Backend:
+
+    <dl>
+     
+      <dt id="ev.constants.backend-select">
+       <strong><code><a href="class.ev.html#ev.constants.backend-select">Ev::BACKEND_SELECT</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        <code class="literal">Backend select(2)</code>
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.backend-poll">
+       <strong><code><a href="class.ev.html#ev.constants.backend-poll">Ev::BACKEND_POLL</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        <code class="literal">Backend poll(2)</code>
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.backend-epoll">
+       <strong><code><a href="class.ev.html#ev.constants.backend-epoll">Ev::BACKEND_EPOLL</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        Backend específico a Linux
+        <code class="literal">epoll(7)</code>
+        tanto para kernels anteriores o posteriores a la
+        versión 2.6.9
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.backend-kqueue">
+       <strong><code><a href="class.ev.html#ev.constants.backend-kqueue">Ev::BACKEND_KQUEUE</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        Backend <code class="literal">kqueue</code>
+        utilizado en la mayoría de los sistemas BSD.
+        El watcher <span class="classname"><a href="class.evembed.html" class="classname">EvEmbed</a></span>
+        puede ser utilizado para embeber un bucle (con e backend
+        <code class="literal">kqueue</code>
+        )
+        dentro de otro. Por ejemplo, uno puede intentar crear un bucle de
+        eventos con el backend
+        <code class="literal">kqueue</code>
+        y utilizarlo solamente por sus sockets.
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.backend-devpoll">
+       <strong><code><a href="class.ev.html#ev.constants.backend-devpoll">Ev::BACKEND_DEVPOLL</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        Backend Solaris 8. Aún no implementado.
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.backend-port">
+       <strong><code><a href="class.ev.html#ev.constants.backend-port">Ev::BACKEND_PORT</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        Mecanismo de puerto Solaris 10 con buena escalabilidad.
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.backend-all">
+       <strong><code><a href="class.ev.html#ev.constants.backend-all">Ev::BACKEND_ALL</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        Intentar todos los backends (incluso los corrompidos). No es
+        recomendado utilizar este flag explícitamente. En su lugar deberían
+        utilizarse operaciones Bitwise (por ejemplo
+        <strong><code><a href="class.ev.html#ev.constants.backend-all">Ev::BACKEND_ALL</a></code></strong>
+        &amp; ~
+        <strong><code><a href="class.ev.html#ev.constants.backend-kqueue">Ev::BACKEND_KQUEUE</a></code></strong>
+        ). Utiliza
+        <span class="methodname"><a href="ev.recommendedbackends.html" class="methodname">Ev::recommendedBackends()</a></span>
+        , o no especifiques ningún backend en especial.
+       </p>
+      </dd>
+     
+     
+      <dt id="ev.constants.backend-mask">
+       <strong><code><a href="class.ev.html#ev.constants.backend-mask">Ev::BACKEND_MASK</a></code></strong>
+      </dt>
+      <dd>
+       <p class="para">
+        No es un backend, sino una máscara que permite seleccionar todos
+        los bits de backends desde el valor
+        <code class="parameter">flags</code>
+        para sacar de la máscara cualquier backend (por ejemplo cuando se modifica
+        la variable de entorno
+        <var class="varname">LIBEV_FLAGS</var>
+        ).
+       </p>
+      </dd>
+     
+    </dl>
+   </p>
+
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     Durante la fase de inicialización del módulo,
+     <code class="literal">Ev</code>
+     registtra para el bucle por defecto una llamada a
+     <a href="http://pod.tst.eu/http://cvs.schmorp.de/libev/ev.pod#FUNCTIONS_CONTROLLING_EVENT_LOOPS_CO" class="link external">&raquo;&nbsp;ev_loop_fork</a>
+     a través de
+     <code class="literal">pthread_atfork</code>
+     (si se encuentra disponible).
+    </p>
+   </p></blockquote>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     Existen métodos que ofrecen acceso al
+     <em>bucle de eventos por defecto</em>
+     en la clase
+     <span class="classname"><strong class="classname">Ev</strong></span>
+     (por ejemplo
+     <span class="methodname"><a href="ev.iteration.html" class="methodname">Ev::iteration()</a></span>
+     ,
+     <span class="methodname"><a href="ev.depth.html" class="methodname">Ev::depth()</a></span>
+     etc.) Para
+     <em>bucles personalizados</em>
+     (creados con
+     <span class="methodname"><a href="evloop.construct.html" class="methodname">EvLoop::__construct()</a></span>
+     ) estos valores pueden ser accedidos a través de propiedades y métodos correspondientes
+     de la clase
+     <span class="classname"><a href="class.evloop.html" class="classname">EvLoop</a></span>
+     .
+    </p>
+    <p class="para">
+     La instancia del bucle de eventos por defecto puede ser obtenida a través del método
+     <span class="methodname"><a href="evloop.defaultloop.html" class="methodname">EvLoop::defaultLoop()</a></span>
+     .
+    </p>
+   </p></blockquote>
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Tabla de contenidos</h2><ul class="chunklist chunklist_reference"><li><a href="ev.backend.html">Ev::backend</a> — Devuelve un entero que describe el back-end utilizado por libev</li><li><a href="ev.depth.html">Ev::depth</a> — Devuelve la profundidad de la recursividad</li><li><a href="ev.embeddablebackends.html">Ev::embeddableBackends</a> — Returns the set of backends that are embeddable in other event loops</li><li><a href="ev.feedsignal.html">Ev::feedSignal</a> — Feed a signal event info Ev</li><li><a href="ev.feedsignalevent.html">Ev::feedSignalEvent</a> — Feed signal event into the default loop</li><li><a href="ev.iteration.html">Ev::iteration</a> — Return the number of times the default event loop has polled for new
+  events</li><li><a href="ev.now.html">Ev::now</a> — Returns the time when the last iteration of the default event
+  loop has started</li><li><a href="ev.nowupdate.html">Ev::nowUpdate</a> — Establishes the current time by querying the kernel, updating the time
+    returned by Ev::now in the progress</li><li><a href="ev.recommendedbackends.html">Ev::recommendedBackends</a> — Returns a bit mask of recommended backends for current
+  platform</li><li><a href="ev.resume.html">Ev::resume</a> — Resume previously suspended default event loop</li><li><a href="ev.run.html">Ev::run</a> — Begin checking for events and calling callbacks for the default
+  loop</li><li><a href="ev.sleep.html">Ev::sleep</a> — Block the process for the given number of seconds</li><li><a href="ev.stop.html">Ev::stop</a> — Stops the default event loop</li><li><a href="ev.supportedbackends.html">Ev::supportedBackends</a> — Returns the set of backends supported by current libev
+  configuration</li><li><a href="ev.suspend.html">Ev::suspend</a> — Suspend the default event loop</li><li><a href="ev.time.html">Ev::time</a> — Returns the current time in fractional seconds since the epoch</li><li><a href="ev.verify.html">Ev::verify</a> — Performs internal consistency checks(for debugging)</li></ul>
+</div>
+</div></div></body></html>

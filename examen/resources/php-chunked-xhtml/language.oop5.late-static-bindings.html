@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Enlaces est&aacute;ticos en tiempo de ejecuci&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.oop5.object-comparison.html">« Comparaci&oacute;n de Objetos</a></li>
+      <li style="float: right;"><a href="language.oop5.references.html">Objetos y referencias »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.oop5.html">Clases y objetos</a></li>
+    <li>Enlaces est&aacute;ticos en tiempo de ejecuci&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.oop5.late-static-bindings" class="sect1">
+ <h2 class="title">Enlaces estáticos en tiempo de ejecución</h2>
+ <p class="para">
+  Desde su versión 5.3.0, PHP incorpora una nueva funcionalidad llamada enlace estático en tiempo de
+  ejecución (&quot;late static bindings&quot; en inglés) que permite referirse referencias a la clase invocada en un contexto de herencia estática.
+ </p>
+ 
+ <p class="para">
+  De forma más precisa, un enlace estático en tiempo de ejecución funciona almacenando el nombre de clase de
+  la última llamada que no tenga «propagación». En el caso de llamadas a métodos estáticos,
+  se trata de la clase nombrada explícitamente (normalmente la que precede al operador 
+  <a href="language.oop5.paamayim-nekudotayim.html" class="link"><code class="literal">::</code></a>);
+  en los casos de llamadas a métodos no estáticos, es clase del objeto. Una
+  «llamada con propagación» es una llamada estática que precedida por <code class="literal">self::</code>,
+  <code class="literal">parent::</code>, <code class="literal">static::</code>, o, siguiendo
+  la jerarquía de clases, <span class="function"><a href="function.forward-static-call.html" class="function">forward_static_call()</a></span>.
+  
+  
+  La función <span class="function"><a href="function.get-called-class.html" class="function">get_called_class()</a></span> puede utilizarse para obtener
+  una cadena con el nombre de la clase invocada, y <code class="literal">static::</code>
+  revela cuál es su alcance. 
+ </p>
+ 
+ <p class="para">
+  A esta funcionalidad se le ha llamado «enlace estático en tiempo de ejecución» teniendo en cuenta un punto
+  de vista interno. «Enlace en tiempo de ejecución» viene del hecho de que <code class="literal">static::</code>
+  no será resuelto usando la clase donde el método está definido, sino que en su lugar se
+  calculará utilizando información en tiempo de ejecución.
+  
+  También se le llamó «enlace estático» debido a que se puede utilizar
+  (entre otras cosas) para llamadas a métodos estáticos.
+ </p>
+ 
+ <div class="sect2" id="language.oop5.late-static-bindings.self">
+  <h3 class="title">Limitaciones de <code class="literal">self::</code></h3>
+  <p class="para">
+   Las referencias estáticas a la clase en uso, como <code class="literal">self::</code> o 
+   <code class="literal">__CLASS__</code>, se resuelven empleando la clase a la que
+   pertenece la función:
+  </p>
+  <div class="example" id="example-298">
+   <p><strong>Ejemplo #1 Uso de <code class="literal">self::</code></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">A </span><span style="color: #007700">{<br />    public static function </span><span style="color: #0000BB">who</span><span style="color: #007700">() {<br />        echo </span><span style="color: #0000BB">__CLASS__</span><span style="color: #007700">;<br />    }<br />    public static function </span><span style="color: #0000BB">test</span><span style="color: #007700">() {<br />        </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">who</span><span style="color: #007700">();<br />    }<br />}<br /><br />class </span><span style="color: #0000BB">B </span><span style="color: #007700">extends </span><span style="color: #0000BB">A </span><span style="color: #007700">{<br />    public static function </span><span style="color: #0000BB">who</span><span style="color: #007700">() {<br />        echo </span><span style="color: #0000BB">__CLASS__</span><span style="color: #007700">;<br />    }<br />}<br /><br /></span><span style="color: #0000BB">B</span><span style="color: #007700">::</span><span style="color: #0000BB">test</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+A
+</pre></div>
+   </div>
+  </div>
+  
+ </div>
+ 
+ <div class="sect2" id="language.oop5.late-static-bindings.usage">
+  <h3 class="title">Uso de enlaces estático en tiempo de ejecución</h3>
+  
+  <p class="para">
+   Los enlaces estáticos en tiempo de ejecución tratan de resolver esta limitación empleando una
+   palabra reservada que se refiera a la clase invocada inicialmente en tiempo de ejecución;
+   básicamente, una palabra reservada que permita referirse a
+   a <code class="literal">B</code> desde <code class="literal">test()</code>, según el ejemplo
+   anterior. Se decidió no crear una nueva palabra reservada, si no utilizar
+   en su lugar <code class="literal">static</code>, que ya era reservada.
+  </p>
+  
+  <div class="example" id="example-299">
+   <p><strong>Ejemplo #2 Uso básico de <code class="literal">static::</code></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">A </span><span style="color: #007700">{<br />    public static function </span><span style="color: #0000BB">who</span><span style="color: #007700">() {<br />        echo </span><span style="color: #0000BB">__CLASS__</span><span style="color: #007700">;<br />    }<br />    public static function </span><span style="color: #0000BB">test</span><span style="color: #007700">() {<br />        static::</span><span style="color: #0000BB">who</span><span style="color: #007700">(); </span><span style="color: #FF8000">// He aquí el enlace estático en tiempo de ejecución<br />    </span><span style="color: #007700">}<br />}<br /><br />class </span><span style="color: #0000BB">B </span><span style="color: #007700">extends </span><span style="color: #0000BB">A </span><span style="color: #007700">{<br />    public static function </span><span style="color: #0000BB">who</span><span style="color: #007700">() {<br />        echo </span><span style="color: #0000BB">__CLASS__</span><span style="color: #007700">;<br />    }<br />}<br /><br /></span><span style="color: #0000BB">B</span><span style="color: #007700">::</span><span style="color: #0000BB">test</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+B
+</pre></div>
+   </div>
+  </div>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    En contextos no estáticos, la clase invocada será la clase de la instancia del
+    objeto. Dado que <code class="literal">$this-&gt;</code> trata de invocar métodos
+    privados desde su mismo ámbito, el uso de <code class="literal">static::</code> puede dar
+    diferentes resultados. Otra diferencia es que <code class="literal">static::</code>
+    sólo puede referirse a propiedades estáticas.
+   </p>
+  </p></blockquote>
+  <div class="example" id="example-300">
+   <p><strong>Ejemplo #3 Uso de <code class="literal">static::</code> en un contexto no estático</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">A </span><span style="color: #007700">{<br />    private function </span><span style="color: #0000BB">foo</span><span style="color: #007700">() {<br />        echo </span><span style="color: #DD0000">"¡Éxito!\n"</span><span style="color: #007700">;<br />    }<br />    public function </span><span style="color: #0000BB">test</span><span style="color: #007700">() {<br />        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br />        static::</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br />    }<br />}<br /><br />class </span><span style="color: #0000BB">B </span><span style="color: #007700">extends </span><span style="color: #0000BB">A </span><span style="color: #007700">{<br />   </span><span style="color: #FF8000">/* foo() se copiará en B, por lo tanto su ámbito seguirá siendo A<br />    * y la llamada tendrá éxito */<br /></span><span style="color: #007700">}<br /><br />class </span><span style="color: #0000BB">C </span><span style="color: #007700">extends </span><span style="color: #0000BB">A </span><span style="color: #007700">{<br />    private function </span><span style="color: #0000BB">foo</span><span style="color: #007700">() {<br />        </span><span style="color: #FF8000">/* se reemplaza el método original; el ámbito del nuevo es ahora C */<br />    </span><span style="color: #007700">}<br />}<br /><br /></span><span style="color: #0000BB">$b </span><span style="color: #007700">= new </span><span style="color: #0000BB">B</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$b</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">test</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$c </span><span style="color: #007700">= new </span><span style="color: #0000BB">C</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$c</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">test</span><span style="color: #007700">();   </span><span style="color: #FF8000">//falla<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+¡Éxito!
+¡Éxito!
+¡Éxito!
+
+
+Fatal error:  Call to private method C::foo() from context &#039;A&#039; in /tmp/test.php on line 9
+</pre></div>
+   </div>
+  </div>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    En una llamada que se resuelva como estática, la resolución de enlaces estáticos
+    en tiempo de ejecución se detendrá sin propagarse. Por otra parte, las
+    llamadas estáticas que utilicen palabras reservadas como <code class="literal">parent::</code> o
+    <code class="literal">self::</code> sí propagarán la información de llamada.
+   </p>
+   <div class="example" id="example-301">
+    <p><strong>Ejemplo #4 Llamadas que propagan y que no propagan la información de llamada</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">A </span><span style="color: #007700">{<br />    public static function </span><span style="color: #0000BB">foo</span><span style="color: #007700">() {<br />        static::</span><span style="color: #0000BB">who</span><span style="color: #007700">();<br />    }<br /><br />    public static function </span><span style="color: #0000BB">who</span><span style="color: #007700">() {<br />        echo </span><span style="color: #0000BB">__CLASS__</span><span style="color: #007700">.</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />    }<br />}<br /><br />class </span><span style="color: #0000BB">B </span><span style="color: #007700">extends </span><span style="color: #0000BB">A </span><span style="color: #007700">{<br />    public static function </span><span style="color: #0000BB">test</span><span style="color: #007700">() {<br />        </span><span style="color: #0000BB">A</span><span style="color: #007700">::</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br />        </span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br />        </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br />    }<br /><br />    public static function </span><span style="color: #0000BB">who</span><span style="color: #007700">() {<br />        echo </span><span style="color: #0000BB">__CLASS__</span><span style="color: #007700">.</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />    }<br />}<br />class </span><span style="color: #0000BB">C </span><span style="color: #007700">extends </span><span style="color: #0000BB">B </span><span style="color: #007700">{<br />    public static function </span><span style="color: #0000BB">who</span><span style="color: #007700">() {<br />        echo </span><span style="color: #0000BB">__CLASS__</span><span style="color: #007700">.</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />    }<br />}<br /><br /></span><span style="color: #0000BB">C</span><span style="color: #007700">::</span><span style="color: #0000BB">test</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+A
+C
+C
+</pre></div>
+    </div>
+   </div>
+  </p></blockquote>
+ </div>
+</div></div></div></body></html>

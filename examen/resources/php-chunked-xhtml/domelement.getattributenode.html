@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Devuelve el nodo de un atributo</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="domelement.getattributenames.html">« DOMElement::getAttributeNames</a></li>
+      <li style="float: right;"><a href="domelement.getattributenodens.html">DOMElement::getAttributeNodeNS »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.domelement.html">DOMElement</a></li>
+    <li>Devuelve el nodo de un atributo</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="domelement.getattributenode" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DOMElement::getAttributeNode</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">DOMElement::getAttributeNode</span> &mdash; <span class="dc-title">Devuelve el nodo de un atributo</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-domelement.getattributenode-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>DOMElement::getAttributeNode</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$qualifiedName</code></span>): <span class="type"><span class="type"><a href="class.domattr.html" class="type DOMAttr">DOMAttr</a></span>|<span class="type"><a href="class.domnamespacenode.html" class="type DOMNameSpaceNode">DOMNameSpaceNode</a></span>|<span class="type"><a href="language.types.value.html" class="type false">false</a></span></span></div>
+
+  <p class="para rdfs-comment">
+   Devuelve el nodo del atributo con nombre <code class="parameter">qualifiedName</code> para el
+   elemento actual.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-domelement.getattributenode-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">qualifiedName</code></dt>
+     <dd>
+      <p class="para">
+       El nombre del atributo.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-domelement.getattributenode-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   El nodo de atributos. Observe que para los atributos de las declaraciones
+   del espacio de nombres XML (<code class="literal">xmlns</code> y <code class="literal">xmlns:*</code>) una
+   instancia de <span class="classname"><a href="class.domnamespacenode.html" class="classname">DOMNameSpaceNode</a></span> es devuelta en vez de una instancia de
+   <span class="classname"><a href="class.domattr.html" class="classname">DOMAttr</a></span>.
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-domelement.getattributenode-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="methodname"><a href="domelement.hasattribute.html" class="methodname" rel="rdfs-seeAlso">DOMElement::hasAttribute()</a> - Comprueba si existe un atributo</span></li>
+    <li><span class="methodname"><a href="domelement.setattributenode.html" class="methodname" rel="rdfs-seeAlso">DOMElement::setAttributeNode()</a> - A&ntilde;ade un nuevo nodo de atributo al elemento</span></li>
+    <li><span class="methodname"><a href="domelement.removeattributenode.html" class="methodname" rel="rdfs-seeAlso">DOMElement::removeAttributeNode()</a> - Elimina un atributo</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Comprueba si una clave privada se corresponde a un certificado</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.openssl-verify.html">« openssl_verify</a></li>
+      <li style="float: right;"><a href="function.openssl-x509-checkpurpose.html">openssl_x509_checkpurpose »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.openssl.html">Funciones de OpenSSL</a></li>
+    <li>Comprueba si una clave privada se corresponde a un certificado</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.openssl-x509-check-private-key" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">openssl_x509_check_private_key</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">openssl_x509_check_private_key</span> &mdash; <span class="dc-title">Comprueba si una clave privada se corresponde a un certificado</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.openssl-x509-check-private-key-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>openssl_x509_check_private_key</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$cert</code></span>, <span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$key</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Comprueba si <code class="parameter">key</code> es la clave privada
+   que se corresponde con <code class="parameter">cert</code>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.openssl-x509-check-private-key-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">cert</code></dt>
+     <dd>
+      <p class="para">
+       El certificado.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">key</code></dt>
+     <dd>
+      <p class="para">
+       La clave privada.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.openssl-x509-check-private-key-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> si <code class="parameter">key</code> el la clave privada que se
+   conrresponde con <code class="parameter">cert</code>, o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si no.
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

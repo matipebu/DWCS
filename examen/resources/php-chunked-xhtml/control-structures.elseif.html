@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>elseif/else if</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="control-structures.else.html">« else</a></li>
+      <li style="float: right;"><a href="control-structures.alternative-syntax.html">Sintaxis alternativa de estructuras de control »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.control-structures.html">Estructuras de Control</a></li>
+    <li>elseif/else if</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="control-structures.elseif" class="sect1">
+ <h2 class="title"><code class="literal">elseif</code>/<code class="literal">else if</code></h2>
+ <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p>
+ <p class="para">
+  <code class="literal">elseif</code>, como su nombre lo sugiere, es una combinación
+  de <code class="literal">if</code> y <code class="literal">else</code>.  Del mismo modo que
+  <code class="literal">else</code>, extiende una sentencia <code class="literal">if</code>
+  para ejecutar una sentencia diferente en caso que la expresión 
+  <code class="literal">if</code> original se evalúe como
+  <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>. Sin embargo, a diferencia de
+  <code class="literal">else</code>, esa expresión alternativa sólo se
+  ejecutará si la expresión condicional del <code class="literal">elseif</code> 
+  se evalúa como <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>. Por ejemplo, el 
+  siguiente código debe mostrar <span class="computeroutput">a es mayor que
+  b</span>, <span class="computeroutput">a es igual que b</span>
+  o <span class="computeroutput">a es menor que b</span>:
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if (</span><span style="color: #0000BB">$a </span><span style="color: #007700">&gt; </span><span style="color: #0000BB">$b</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">"a es mayor que b"</span><span style="color: #007700">;<br />} elseif (</span><span style="color: #0000BB">$a </span><span style="color: #007700">== </span><span style="color: #0000BB">$b</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">"a es igual que b"</span><span style="color: #007700">;<br />} else {<br />    echo </span><span style="color: #DD0000">"a es menor que b"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+  Puede haber varios <code class="literal">elseif</code> dentro de la misma
+  sentencia <code class="literal">if</code>. La primera 
+  expresión <code class="literal">elseif</code> (si hay alguna) que se evalúe como
+  <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> sería ejecutada. En PHP también se puede
+  escribir &#039;else if&#039; (en dos palabras) y el comportamiento sería idéntico
+  al de &#039;elseif&#039; (en una sola palabra). El significado sintáctico
+  es ligeramente diferente (si se está familiarizado con C, este es el mismo
+  comportamiento) pero la conclusión es que ambos resultarían tener exactamente
+  el mismo comportamiento.
+ </p>
+ <p class="simpara">
+  La sentencia <code class="literal">elseif</code> es ejecutada solamente si la
+  expresión <code class="literal">if</code> precedente y cualquiera de las expresiones
+  <code class="literal">elseif</code> precedentes son evaluadas como
+  <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>, y la expresión
+  <code class="literal">elseif</code> actual se evalúa como
+  <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>.
+ </p>
+ <blockquote class="note"><p><strong class="note">Nota</strong>: 
+  <span class="simpara">
+   Tenga en cuenta que <code class="literal">elseif</code> y <code class="literal">else if</code>
+   serán considerados exactamente iguales sólamente cuando se utilizan llaves
+   como en el ejemplo anterior. Al utilizar los dos puntos para definir las
+   condiciones <code class="literal">if</code>/<code class="literal">elseif</code>, no debe
+   separarse <code class="literal">else if</code> en dos palabras o PHP
+   fallará con un error del interprete.
+  </span>
+ </p></blockquote>
+ <p class="para">
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/* Método incorrecto: */<br /></span><span style="color: #007700">if (</span><span style="color: #0000BB">$a </span><span style="color: #007700">&gt; </span><span style="color: #0000BB">$b</span><span style="color: #007700">):<br />    echo </span><span style="color: #0000BB">$a</span><span style="color: #007700">.</span><span style="color: #DD0000">" es mayor que "</span><span style="color: #007700">.</span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br />else if (</span><span style="color: #0000BB">$a </span><span style="color: #007700">== </span><span style="color: #0000BB">$b</span><span style="color: #007700">): </span><span style="color: #FF8000">// No compilará<br />    </span><span style="color: #007700">echo </span><span style="color: #DD0000">"La línea anterior provoca un error del interprete."</span><span style="color: #007700">;<br />endif;<br /><br /><br /></span><span style="color: #FF8000">/* Método correcto: */<br /></span><span style="color: #007700">if (</span><span style="color: #0000BB">$a </span><span style="color: #007700">&gt; </span><span style="color: #0000BB">$b</span><span style="color: #007700">):<br />    echo </span><span style="color: #0000BB">$a</span><span style="color: #007700">.</span><span style="color: #DD0000">" es mayor que "</span><span style="color: #007700">.</span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br />elseif (</span><span style="color: #0000BB">$a </span><span style="color: #007700">== </span><span style="color: #0000BB">$b</span><span style="color: #007700">): </span><span style="color: #FF8000">// Tenga en cuenta la combinación de las palabras.<br />    </span><span style="color: #007700">echo </span><span style="color: #0000BB">$a</span><span style="color: #007700">.</span><span style="color: #DD0000">" igual "</span><span style="color: #007700">.</span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br />else:<br />    echo </span><span style="color: #0000BB">$a</span><span style="color: #007700">.</span><span style="color: #DD0000">" no es ni mayor ni igual a "</span><span style="color: #007700">.</span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br />endif;<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+  </div>
+ </p>
+</div></div></div></body></html>

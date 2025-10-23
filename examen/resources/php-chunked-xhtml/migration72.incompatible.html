@@ -1,0 +1,328 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Cambios incompatibles hacia atr&aacute;s</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="migration72.constants.html">« Nuevas constantes globales</a></li>
+      <li style="float: right;"><a href="migration72.deprecated.html">Caracter&iacute;sticas obsoletas en PHP 7.2.x »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="migration72.html">Migraci&oacute;n de PHP 7.1.x a PHP 7.2.x</a></li>
+    <li>Cambios incompatibles hacia atr&aacute;s</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="migration72.incompatible" class="sect1">
+ <h2 class="title">Cambios incompatibles hacia atrás</h2>
+
+ <div class="sect2" id="migration72.incompatible.number_format-no-neg-zero">
+  <h3 class="title">Evitar que <span class="function"><a href="function.number-format.html" class="function">number_format()</a></span> devuelva el cero negativo</h3>
+
+  <p class="para">
+   Anteriormente, era posible que la función <span class="function"><a href="function.number-format.html" class="function">number_format()</a></span>
+   devolviera <code class="literal">-0</code>. Aunque esto es perfectamente válido
+   de acuerdo con la especificación de punto flotante IEEE 754, esta peculiaridad no era
+   deseable para mostrar los números formateados en una forma legible para los humanos.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">number_format</span><span style="color: #007700">(-</span><span style="color: #0000BB">0.01</span><span style="color: #007700">)); </span><span style="color: #FF8000">// now outputs string(1) "0" instead of string(2) "-0"</span></span></code></div>
+   </div>
+
+  </div>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.object-array-casts">
+  <h3 class="title">Convertir las claves numéricas de objetos y arrays</h3>
+
+  <p class="para">
+   Las claves numéricas ahora se manejan mejor cuando se hacen arrays de objetos y
+   objetos en arrays (ya sea de un modo explícito o por
+   <span class="function"><a href="function.settype.html" class="function">settype()</a></span>).
+  </p>
+
+  <p class="para">
+   Esto significa que las claves de números integer (o números integer en string) de los array que están siendo
+   lanzados a los objetos son ahora accesibles:
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">// array to object<br /></span><span style="color: #0000BB">$arr </span><span style="color: #007700">= [</span><span style="color: #0000BB">0 </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1</span><span style="color: #007700">];<br /></span><span style="color: #0000BB">$obj </span><span style="color: #007700">= (object)</span><span style="color: #0000BB">$arr</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(<br />    </span><span style="color: #0000BB">$obj</span><span style="color: #007700">,<br />    </span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;{</span><span style="color: #DD0000">'0'</span><span style="color: #007700">}, </span><span style="color: #FF8000">// ahora accesible<br />    </span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;{</span><span style="color: #0000BB">0</span><span style="color: #007700">} </span><span style="color: #FF8000">// ahora accesible<br /></span><span style="color: #007700">);</span></span></code></div>
+   </div>
+
+   <p class="para">El resultado del ejemplo sería:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+object(stdClass)#1 (1) {
+  [&quot;0&quot;]=&gt;    // la clave string ahora, en lugar de la clave de los números integer
+  int(1)
+}
+int(1)
+int(1)
+</pre></div>
+   </div>
+  </div>
+
+  <p class="para">
+   Y las claves de números enteros (o string de números enteros) de los objetos que están siendo
+   lanzados a los array son ahora accesibles:
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">// object to array<br /></span><span style="color: #0000BB">$obj </span><span style="color: #007700">= new class {<br />    public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">()<br />    {<br />        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;{</span><span style="color: #0000BB">0</span><span style="color: #007700">} = </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />    }<br />};<br /></span><span style="color: #0000BB">$arr </span><span style="color: #007700">= (array)</span><span style="color: #0000BB">$obj</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(<br />    </span><span style="color: #0000BB">$arr</span><span style="color: #007700">,<br />    </span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">], </span><span style="color: #FF8000">// ahora accesible<br />    </span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #DD0000">'0'</span><span style="color: #007700">] </span><span style="color: #FF8000">// ahora accesible<br /></span><span style="color: #007700">);</span></span></code></div>
+   </div>
+
+   <p class="para">El resultado del ejemplo sería:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+array(1) {
+  [0]=&gt;    // clave integer ahora, en lugar de la clave de string
+  int(1)
+}
+int(1)
+int(1)
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.no-null-to-get_class">
+  <h3 class="title">No se permite pasar <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> a <span class="function"><a href="function.get-class.html" class="function">get_class()</a></span></h3>
+
+  <p class="para">
+   Anteriormente, pasar <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> a la función <span class="function"><a href="function.get-class.html" class="function">get_class()</a></span>
+   daría a conocer el nombre de la clase adjunta. Este comportamiento ya ha sido
+   eliminado, donde se emitirá un <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong> en su lugar. Para
+   lograr el mismo comportamiento que antes, el argumento debe ser simplemente omitido.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.warn-on-non-countable-types">
+  <h3 class="title">Advertencia al contar los tipos no contables</h3>
+
+  <p class="para">
+   Una advertencia <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong> se emitirá ahora cuando se intente
+   contar (<span class="function"><a href="function.count.html" class="function">count()</a></span>) tipos no contables (esto incluye la
+   función alias <span class="function"><a href="function.sizeof.html" class="function">sizeof()</a></span>).
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />var_dump</span><span style="color: #007700">(<br />    </span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">), </span><span style="color: #FF8000">// NULL si no es contable<br />    </span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">), </span><span style="color: #FF8000">// integers no son contables<br />    </span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #DD0000">'abc'</span><span style="color: #007700">), </span><span style="color: #FF8000">// strings no son contables<br />    </span><span style="color: #0000BB">count</span><span style="color: #007700">(new </span><span style="color: #0000BB">stdclass</span><span style="color: #007700">), </span><span style="color: #FF8000">// objetos que no implementen la interfaz Countable no son contables<br />    </span><span style="color: #0000BB">count</span><span style="color: #007700">([</span><span style="color: #0000BB">1</span><span style="color: #007700">,</span><span style="color: #0000BB">2</span><span style="color: #007700">]) </span><span style="color: #FF8000">// arrays son contables<br /></span><span style="color: #007700">);</span></span></code></div>
+   </div>
+
+   <p class="para">El resultado del ejemplo sería:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Warning: count(): Parameter must be an array or an object that implements Countable in %s on line %d
+
+Warning: count(): Parameter must be an array or an object that implements Countable in %s on line %d
+
+Warning: count(): Parameter must be an array or an object that implements Countable in %s on line %d
+
+Warning: count(): Parameter must be an array or an object that implements Countable in %s on line %d
+int(0)
+int(1)
+int(1)
+int(1)
+int(2)
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.hash-ext-to-objects">
+  <h3 class="title">Mover ext/hash de los recursos a los objetos</h3>
+
+  <p class="para">
+   Como parte de la migración a largo plazo lejos de los recursos, la extensión <a href="book.hash.html" class="link">Hash</a>
+   se ha actualizado para utilizar objetos en lugar de recursos. El cambio debería ser perfecto para los
+   desarrolladores de PHP, excepto cuando
+   <span class="function"><a href="function.is-resource.html" class="function">is_resource()</a></span> ha hecho comprobaciones (que necesitará ser
+   actualizado a <span class="function"><a href="function.is-object.html" class="function">is_object()</a></span> en su lugar).
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.ssl-tls-defaults">
+  <h3 class="title">Mejorar los valores por omisión de SSL/TLS</h3>
+
+  <p class="para">
+   Se han hecho los siguientes cambios a los valores predeterminados:
+  </p>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <code class="literal">tls://</code> ahora por omisión a TLSv1.0 o TLSv1.1 o TLSv1.2
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <code class="literal">ssl://</code> un alias de <code class="literal">tls://</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Las constantes <code class="literal">STREAM_CRYPTO_METHOD_TLS_*</code> por omisión a TLSv1.0
+     o TLSv1.1 + TLSv1.2, en lugar de sólo TLSv1.0
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.gettype-on-closed-resource">
+  <h3 class="title"><span class="function"><a href="function.gettype.html" class="function">gettype()</a></span> devolviendo valores en recursos cerrados</h3>
+
+  <p class="para">
+   Anteriormente, usar <span class="function"><a href="function.gettype.html" class="function">gettype()</a></span> en un recurso cerrado devolvería
+   un string de <code class="literal">&quot;unknown type&quot;</code>. Ahora, un string de
+   <code class="literal">&quot;resource (closed)&quot;</code> es devuelto.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.is_object-on-incomplete_class">
+  <h3 class="title"><span class="function"><a href="function.is-object.html" class="function">is_object()</a></span> y <span class="classname"><strong class="classname">__PHP_Incomplete_Class</strong></span></h3>
+
+  <p class="para">
+   Anteriormente, usar <span class="function"><a href="function.is-object.html" class="function">is_object()</a></span> en la clase
+   <span class="classname"><strong class="classname">__PHP_Incomplete_Class</strong></span> devolvería <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+   Ahora, <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> será devuelto.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.undefined-constants">
+  <h3 class="title">Promover el nivel de error de las constantes no definidas</h3>
+
+  <p class="para">
+   Las referencias no cualificadas a constantes no definidas generarán ahora una
+   advertencia <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong> (en vez de una <strong><code><a href="errorfunc.constants.html#constant.e-notice">E_NOTICE</a></code></strong>).
+   En la próxima versión principal de PHP, generarán
+   excepciones <span class="classname"><a href="class.error.html" class="classname">Error</a></span>.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.windows-support">
+  <h3 class="title">Soporte de Windows</h3>
+
+  <p class="para">
+   Las versiones mínimas oficialmente soportadas de Windows son ahora Windows 7/Server
+   2008 R2.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.trait-properties">
+  <h3 class="title">Comprobación de los valores de propiedad predeterminados de los rasgos (traits)</h3>
+
+  <p class="para">
+   Las comprobaciones de compatibilidad de los valores de propiedad de los rasgos
+   por omisión ya no se realizarán.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.object-reserved-word">
+  <h3 class="title"><code class="literal">object</code> para los nombres de las clases</h3>
+
+  <p class="para">
+   El nombre <code class="literal">object</code> fue previamente reservado en PHP 7.0.
+   Esto ahora se ha reservado con fuerza, prohibiendo su uso como nombre de clase, rasgo
+   o nombre de interfaz.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.netware-support">
+  <h3 class="title">Soporte de NetWare</h3>
+
+  <p class="para">
+   El soporte para NetWare ha sido eliminado.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.array-unique">
+  <h3 class="title"><span class="function"><a href="function.array-unique.html" class="function">array_unique()</a></span> con <strong><code><a href="array.constants.html#constant.sort-string">SORT_STRING</a></code></strong></h3>
+
+  <p class="para">
+   Mientras que <span class="function"><a href="function.array-unique.html" class="function">array_unique()</a></span> con <strong><code><a href="array.constants.html#constant.sort-string">SORT_STRING</a></code></strong>
+   antes copiaba el array y eliminaba los elementos no únicos (sin empaquetar
+   el array después), ahora se construye un nuevo array añadiendo
+   los elementos únicos. Esto puede dar lugar a diferentes índices numéricos.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.bcmod-and-floats">
+  <h3 class="title">Cambios con floats en la función <span class="function"><a href="function.bcmod.html" class="function">bcmod()</a></span></h3>
+
+  <p class="para">
+   La función <span class="function"><a href="function.bcmod.html" class="function">bcmod()</a></span> ya no trunca números fraccionarios
+   a números enteros. Como tal, su comportamiento ahora sigue
+   <span class="function"><a href="function.fmod.html" class="function">fmod()</a></span>, en lugar del operador <code class="literal">%</code>.
+   Por ejemplo <code class="literal">bcmod(&#039;4&#039;, &#039;3.5&#039;)</code> ahora devuelve
+   <code class="literal">0.5</code> en lugar de <code class="literal">1</code>.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.hash-functions">
+  <h3 class="title">Funciones de hash y hash no criptográficas</h3>
+
+  <p class="para">
+   Las funciones <span class="function"><a href="function.hash-hmac.html" class="function">hash_hmac()</a></span>, <span class="function"><a href="function.hash-hmac-file.html" class="function">hash_hmac_file()</a></span>,
+   <span class="function"><a href="function.hash-pbkdf2.html" class="function">hash_pbkdf2()</a></span>, y <span class="function"><a href="function.hash-init.html" class="function">hash_init()</a></span> (con
+   <strong><code><a href="hash.constants.html#constant.hash-hmac">HASH_HMAC</a></code></strong>) ya no aceptan los no criptográficos
+   hashes.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.json_decode-changes">
+  <h3 class="title">Opciones de la función <span class="function"><a href="function.json-decode.html" class="function">json_decode()</a></span></h3>
+
+  <p class="para">
+   La opción de la función <span class="function"><a href="function.json-decode.html" class="function">json_decode()</a></span>,
+   <strong><code><a href="json.constants.html#constant.json-object-as-array">JSON_OBJECT_AS_ARRAY</a></code></strong>, es ahora usada si el segundo
+   parámetro (asociativo) es <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>. Anteriormente,
+   <strong><code><a href="json.constants.html#constant.json-object-as-array">JSON_OBJECT_AS_ARRAY</a></code></strong> siempre fue ignorado.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.rand-mt_rand-output">
+  <h3 class="title">Salida de <span class="function"><a href="function.rand.html" class="function">rand()</a></span> y <span class="function"><a href="function.mt-rand.html" class="function">mt_rand()</a></span></h3>
+
+  <p class="para">
+   secuencias generadas por <span class="function"><a href="function.rand.html" class="function">rand()</a></span> y
+   <span class="function"><a href="function.mt-rand.html" class="function">mt_rand()</a></span> para una semilla específica puede diferir de PHP 7.1 en
+   máquinas de 64 bits (debido a la fijación de un error de sesgo de módulo en la
+   aplicación).
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.sqlsafe_mode-ini-setting">
+  <h3 class="title">La eliminación de la configuración ini <a href="ini.core.html#ini.sql.safe-mode" class="link"><code class="parameter">sql.safe_mode</code></a></h3>
+
+  <p class="para">
+   La configuración ini <code class="parameter">sql.safe_mode</code> ha sido eliminada.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration72.incompatible.date_parse_from_format">
+  <h3 class="title">Cambios a las funciones <span class="function"><a href="function.date-parse.html" class="function">date_parse()</a></span> y <span class="function"><a href="function.date-parse-from-format.html" class="function">date_parse_from_format()</a></span></h3>
+
+  <p class="para">
+   El elemento <code class="literal">zone</code> de el array devuelto por las funciones <span class="function"><a href="function.date-parse.html" class="function">date_parse()</a></span>
+   y <span class="function"><a href="function.date-parse-from-format.html" class="function">date_parse_from_format()</a></span> ahora representan segundos en vez de
+   minutos, y su signo está invertido. Por ejemplo <code class="literal">-120</code>
+   es ahora <code class="literal">7200</code>.
+  </p>
+ </div>
+</div></div></div></body></html>

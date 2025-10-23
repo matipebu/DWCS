@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Crea un nuevo nodo elemento</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="domdocument.createdocumentfragment.html">« DOMDocument::createDocumentFragment</a></li>
+      <li style="float: right;"><a href="domdocument.createelementns.html">DOMDocument::createElementNS »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.domdocument.html">DOMDocument</a></li>
+    <li>Crea un nuevo nodo elemento</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="domdocument.createelement" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DOMDocument::createElement</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">DOMDocument::createElement</span> &mdash; <span class="dc-title">Crea un nuevo nodo elemento</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-domdocument.createelement-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>DOMDocument::createElement</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$localName</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$value</code><span class="initializer"> = &quot;&quot;</span></span>): <span class="type"><span class="type"><a href="class.domelement.html" class="type DOMElement">DOMElement</a></span>|<span class="type"><a href="language.types.value.html" class="type false">false</a></span></span></div>
+
+  <p class="para rdfs-comment">
+   Esta función crea una nueva instancia de la clase
+   <span class="classname"><a href="class.domelement.html" class="classname">DOMElement</a></span>. Este nodo no se mostrará en el documento a no ser que
+sea insertado con (p.e.j.) <span class="function"><a href="domnode.appendchild.html" class="function">DOMNode::appendChild()</a></span>.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-domdocument.createelement-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">localName</code></dt>
+     <dd>
+      <p class="para">
+       El nombre de etiqueta del elemento.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">value</code></dt>
+     <dd>
+      <p class="para">
+       El valor del elemento. De manera predeterminada se creará un elemento vacio.
+       El valor también puede ser asignado más tarde con <a href="class.domnode.html#domnode.props.nodevalue" class="link">DOMElement::$nodeValue</a>.
+      </p>
+      <p class="para">
+       El valor es usado al pie de la letra, excepto que las referencias de entidad
+       &lt; y &gt; se escaparán. Tenga en cuenta que &amp; tiene que ser escapado manualmente;
+       de lo contrario, se tomará como inicio de una referencia de entidad. Además &quot;
+       no sera escapado.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-domdocument.createelement-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve una nueva instanca de la clase <span class="classname"><a href="class.domelement.html" class="classname">DOMElement</a></span> o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>
+   si ha ocurrido un error.
+  </p>
+ </div>
+
+ <div class="refsect1 errors" id="refsect1-domdocument.createelement-errors">
+  <h3 class="title">Errores/Excepciones</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><strong><code><a href="dom.constants.html#constant.dom-invalid-character-err">DOM_INVALID_CHARACTER_ERR</a></code></strong></dt>
+     <dd>
+      <p class="para">
+       Lanzado si <code class="parameter">localName</code> contiene un carácter inválido.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-domdocument.createelement-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-5381">
+    <p><strong>Ejemplo #1 Crear un nuevo elemento e insertarlo como raíz</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$dom </span><span style="color: #007700">= new </span><span style="color: #0000BB">DOMDocument</span><span style="color: #007700">(</span><span style="color: #DD0000">'1.0'</span><span style="color: #007700">, </span><span style="color: #DD0000">'utf-8'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$element </span><span style="color: #007700">= </span><span style="color: #0000BB">$dom</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createElement</span><span style="color: #007700">(</span><span style="color: #DD0000">'test'</span><span style="color: #007700">, </span><span style="color: #DD0000">'This is the root element!'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Insertamos el nuevo elemento como raíz (hijo del documento)<br /></span><span style="color: #0000BB">$dom</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">appendChild</span><span style="color: #007700">(</span><span style="color: #0000BB">$element</span><span style="color: #007700">);<br /><br />echo </span><span style="color: #0000BB">$dom</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">saveXML</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;test&gt;This is the root element!&lt;/test&gt;</pre>
+</div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-5382">
+    <p><strong>Ejemplo #2 Pasando texto que contiene un &amp; sin escapar como <code class="parameter">valor</code></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$dom </span><span style="color: #007700">= new </span><span style="color: #0000BB">DOMDocument</span><span style="color: #007700">(</span><span style="color: #DD0000">'1.0'</span><span style="color: #007700">, </span><span style="color: #DD0000">'utf-8'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$element </span><span style="color: #007700">= </span><span style="color: #0000BB">$dom</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createElement</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">, </span><span style="color: #DD0000">'me &amp; you'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$dom</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">appendChild</span><span style="color: #007700">(</span><span style="color: #0000BB">$element</span><span style="color: #007700">);<br />echo </span><span style="color: #0000BB">$dom</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">saveXML</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Warning: DOMDocument::createElement(): unterminated entity reference             you in /in/BjTCg on line 4
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;foo/&gt;</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 notes" id="refsect1-domdocument.createelement-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    El parámetro <code class="parameter">value</code> <em>no</em> será escapado.
+    Utilice <span class="methodname"><a href="domdocument.createtextnode.html" class="methodname">DOMDocument::createTextNode()</a></span> para crear un
+    nodo de texto con <em>soporte para escape de carácteres</em>.
+   </p>
+  </p></blockquote>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-domdocument.createelement-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="methodname"><a href="domnode.appendchild.html" class="methodname" rel="rdfs-seeAlso">DOMNode::appendChild()</a> - A&ntilde;ade un nuevo hijo al final de los hijos</span></li>
+    <li><span class="methodname"><a href="domdocument.createattribute.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::createAttribute()</a> - Crear nuevo attribute</span></li>
+    <li><span class="methodname"><a href="domdocument.createattributens.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::createAttributeNS()</a> - Crea un nuevo nodo atributo con un namespace asociado.</span></li>
+    <li><span class="methodname"><a href="domdocument.createcdatasection.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::createCDATASection()</a> - Crea un nuevo nodo cdata</span></li>
+    <li><span class="methodname"><a href="domdocument.createcomment.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::createComment()</a> - Crea un nuevo nodo de comentario</span></li>
+    <li><span class="methodname"><a href="domdocument.createdocumentfragment.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::createDocumentFragment()</a> - Crea un nuevo fragmento de documento</span></li>
+    <li><span class="methodname"><a href="domdocument.createelementns.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::createElementNS()</a> - Crea un nuevo nodo elemento con el nombre de espacio asociado</span></li>
+    <li><span class="methodname"><a href="domdocument.createentityreference.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::createEntityReference()</a> - Create new entity reference node</span></li>
+    <li><span class="methodname"><a href="domdocument.createprocessinginstruction.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::createProcessingInstruction()</a> - Crea un nuevo nodo PI</span></li>
+    <li><span class="methodname"><a href="domdocument.createtextnode.html" class="methodname" rel="rdfs-seeAlso">DOMDocument::createTextNode()</a> - Crea un nuevo nodo de texto</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

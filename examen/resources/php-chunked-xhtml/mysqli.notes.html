@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Notas</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqli.constants.html">« Constantes predefinidas</a></li>
+      <li style="float: right;"><a href="mysqli.summary.html">Resumen de las funciones de la extensi&oacute;n MySQLi »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.mysqli.html">MySQLi</a></li>
+    <li>Notas</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqli.notes" class="chapter">
+ <h1 class="title">Notas</h1>
+
+ 
+ <p class="para">Algunas notas sobre la implementación:</p>
+ 
+ <ol type="1">
+  <li class="listitem">
+   <p class="para">
+    El soporte para <code class="literal">MYSQL_TYPE_GEOMETRY</code> fue agregado
+    a la extensión MySQLi en PHP 5.3.
+   </p>
+  </li>
+  <li class="listitem">
+   <p class="para">
+    Nótese que existen diferentes implementaciones internas en
+    <code class="literal">libmysqlclient</code> y <code class="literal">mysqlnd</code> para manejar 
+    columnas del tipo <code class="literal">MYSQL_TYPE_GEOMETRY</code>. En términos generales,
+    <code class="literal">mysqlnd</code> asignará significativamente menos memoria. Por
+    ejemplo, si hay una columna <code class="literal">POINT</code> 
+    en un set de resultado, <code class="literal">libmysqlclient</code> puede pre-asignar
+    hasta 4GB de RAM aunque se necesitan menos de 50 bytes
+    para mantener una comuna <code class="literal">POINT</code> en memoria. La asignación
+    de memoria es mucho menor, menos de 50 bytes, si se
+    utiliza <code class="literal">mysqlnd</code>.
+   </p>
+  </li>
+ </ol>
+ 
+</div>
+</div></div></body></html>

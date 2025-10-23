@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Encontrar el valor m&aacute;s alto</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.log1p.html">« log1p</a></li>
+      <li style="float: right;"><a href="function.min.html">min »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.math.html">Funciones Matem&aacute;ticas</a></li>
+    <li>Encontrar el valor m&aacute;s alto</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.max" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">max</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">max</span> &mdash; <span class="dc-title">Encontrar el valor más alto</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.max-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>max</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$values</code></span>): <span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span></div>
+
+  <div class="methodsynopsis dc-description"><span class="methodname"><strong>max</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$value1</code></span>, <span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$value2</code></span>, <span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$...</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span></div>
+
+  <p class="para rdfs-comment">
+   Si el primer y único parámetro es un array, <span class="function"><strong>max()</strong></span>
+   devuelve el valor más alto de ese array. Si se proporcionan al menos dos
+   parámetros, <span class="function"><strong>max()</strong></span> devuelve el mayor de estos valores.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Los valores de diferentes tipos serán comparados utilizando las <a href="language.operators.comparison.html" class="link">
+    reglas de comparación estándar</a>. Por ejemplo, un <span class="type"><a href="language.types.string.html" class="type string">string</a></span> no numérico será
+    comparado con un <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> como si fuera <code class="literal">0</code>, aunque varios valores no
+    numéricos de tipo <span class="type"><a href="language.types.string.html" class="type string">string</a></span> serán comparados alfanuméricamente. El valor real devuelto será del
+    tipo original sin ninguna conversión aplicada.
+   </p>
+  </p></blockquote>
+  <div class="caution"><strong class="caution">Precaución</strong>
+   <p class="simpara">
+    Tenga cuidado al pasar argumentos con valores de tipos mezclados debido a que
+    <span class="function"><strong>max()</strong></span> puede producir resultados impredecibles.
+   </p>
+  </div>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.max-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">values</code></dt>
+     <dd>
+      <p class="para">
+       Un array que contiene los valores.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">value1</code></dt>
+     <dd>
+      <p class="para">
+       Cualquier valor
+       <a href="language.operators.comparison.html" class="link">comparable</a>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">value2</code></dt>
+     <dd>
+      <p class="para">
+       Cualquier valor
+       <a href="language.operators.comparison.html" class="link">comparable</a>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">...</code></dt>
+     <dd>
+      <p class="para">
+       Cualquier valor
+       <a href="language.operators.comparison.html" class="link">comparable</a>.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.max-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   <span class="function"><strong>max()</strong></span> devuelve el valor del parámetro considerado &quot;el mayor&quot; según las reglas de comparación
+   estándar. Si varios valores de diferentes tipos se evalúan como iguales (p.ej. <code class="literal">0</code>
+   y <code class="literal">&#039;abc&#039;</code>), será devuelto el primero proporcionado a la función.
+  </p>
+  
+  <p class="para">
+   Si se pasa un array vacío, se devolverá <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> y se
+   emitirá un error <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong>.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.max-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-3123">
+    <p><strong>Ejemplo #1 Ejemplos de uso de <span class="function"><strong>max()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">max</span><span style="color: #007700">(</span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">6</span><span style="color: #007700">, </span><span style="color: #0000BB">7</span><span style="color: #007700">);  </span><span style="color: #FF8000">// 7<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">max</span><span style="color: #007700">(array(</span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">4</span><span style="color: #007700">, </span><span style="color: #0000BB">5</span><span style="color: #007700">)); </span><span style="color: #FF8000">// 5<br /><br />// La cadena 'hola' es tratada como 0 cuando se compara con un número entero<br />// Ya que los dos valores son iguales, el orden en el que se proporcionan determina el resultado<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">max</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #DD0000">'hola'</span><span style="color: #007700">);     </span><span style="color: #FF8000">// 0<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">max</span><span style="color: #007700">(</span><span style="color: #DD0000">'hola'</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">);     </span><span style="color: #FF8000">// hola<br /><br />// Aquí se compara -1 &lt; 0, por lo que 'hola' es el valor mayor<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">max</span><span style="color: #007700">(-</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #DD0000">'hola'</span><span style="color: #007700">);    </span><span style="color: #FF8000">// hola<br /><br />// Con varios arrays de diferentes longitudes, max devuelve el más largo<br /></span><span style="color: #0000BB">$val </span><span style="color: #007700">= </span><span style="color: #0000BB">max</span><span style="color: #007700">(array(</span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">), array(</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">)); </span><span style="color: #FF8000">// array(1, 1, 1, 1)<br /><br />// Varios arrays de la misma longitud son comparados de izquierda a derecha,<br />// así que en nuestro ejemplo: 2 == 2, pero 5 &gt; 4<br /></span><span style="color: #0000BB">$val </span><span style="color: #007700">= </span><span style="color: #0000BB">max</span><span style="color: #007700">(array(</span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">4</span><span style="color: #007700">, </span><span style="color: #0000BB">8</span><span style="color: #007700">), array(</span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">5</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">)); </span><span style="color: #FF8000">// array(2, 5, 1)<br /><br />// Si se pasan un array y algo que no sea un array, será devuelto el array,<br />// ya que las comparaciones tratan a los arrays como mayores que cualquier otro valor<br /></span><span style="color: #0000BB">$val </span><span style="color: #007700">= </span><span style="color: #0000BB">max</span><span style="color: #007700">(</span><span style="color: #DD0000">'cadena'</span><span style="color: #007700">, array(</span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">5</span><span style="color: #007700">, </span><span style="color: #0000BB">7</span><span style="color: #007700">), </span><span style="color: #0000BB">42</span><span style="color: #007700">);   </span><span style="color: #FF8000">// array(2, 5, 7)<br /><br />// Si un argumento es NULL o un booleano, será comparado con<br />// otros valores usando la regla FALSE &lt; TRUE independientemente de los otros tipos involucrados<br />// En los ejemplos de abajo, -10 y 10 son tratados como TRUE en la comparación<br /></span><span style="color: #0000BB">$val </span><span style="color: #007700">= </span><span style="color: #0000BB">max</span><span style="color: #007700">(-</span><span style="color: #0000BB">10</span><span style="color: #007700">, </span><span style="color: #0000BB">FALSE</span><span style="color: #007700">); </span><span style="color: #FF8000">// -10<br /><br />// 0, por el contrario, es tratado como FALSE, por lo que es "menor que" TRUE<br /></span><span style="color: #0000BB">$val </span><span style="color: #007700">= </span><span style="color: #0000BB">max</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">TRUE</span><span style="color: #007700">); </span><span style="color: #FF8000">// TRUE<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div> 
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.max-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.min.html" class="function" rel="rdfs-seeAlso">min()</a> - Encontrar el valor m&aacute;s bajo</span></li>
+    <li><span class="function"><a href="function.count.html" class="function" rel="rdfs-seeAlso">count()</a> - Cuenta todos los elementos de un array o algo de un objeto</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

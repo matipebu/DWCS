@@ -1,0 +1,471 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Constantes predefinidas</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="stream.resources.html">« Clases de Flujos</a></li>
+      <li style="float: right;"><a href="stream.filters.html">Filtros de Flujos »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.stream.html">Flujos</a></li>
+    <li>Constantes predefinidas</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="stream.constants" class="appendix">
+ <h1 class="title">Constantes predefinidas</h1>
+
+ <p class="simpara">
+Estas constantes están definidas por esta extensión y
+estarán disponibles sólo cuando la extensión haya sido
+compilada con PHP, o bien sea cargada dinámicamente en ejecución.
+</p>
+ <p class="para">
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>Constante</th>
+      <th>Descripción</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr id="constant.stream-filter-read">
+      <td><strong><code><a href="stream.constants.html#constant.stream-filter-read">STREAM_FILTER_READ</a></code></strong> *</td>
+      <td>
+       Usada con <span class="function"><a href="function.stream-filter-append.html" class="function">stream_filter_append()</a></span> y
+       <span class="function"><a href="function.stream-filter-prepend.html" class="function">stream_filter_prepend()</a></span> para indicar
+       que el filtro especificado debería aplicarse solamente al
+       <em>leer</em>
+      </td>
+     </tr>
+
+     <tr id="constant.stream-filter-write">
+      <td><strong><code><a href="stream.constants.html#constant.stream-filter-write">STREAM_FILTER_WRITE</a></code></strong> *</td>
+      <td>
+       Usada con <span class="function"><a href="function.stream-filter-append.html" class="function">stream_filter_append()</a></span> y
+       <span class="function"><a href="function.stream-filter-prepend.html" class="function">stream_filter_prepend()</a></span> para indicar
+       que el filtro especificado debería aplicarse solamente al
+       <em>escribir</em>
+      </td>
+     </tr>
+
+     <tr id="constant.stream-filter-all">
+      <td><strong><code><a href="stream.constants.html#constant.stream-filter-all">STREAM_FILTER_ALL</a></code></strong> *</td>
+      <td>
+       Esta constante es equivalente a
+       <code class="code">STREAM_FILTER_READ | STREAM_FILTER_WRITE</code>
+      </td>
+     </tr>
+
+     <tr id="constant.psfs-pass-on">
+      <td><strong><code><a href="stream.constants.html#constant.psfs-pass-on">PSFS_PASS_ON</a></code></strong> *</td>
+      <td><code class="literal">Codigo Devuelto</code> indicando que el
+       filtro de espacio de usuario devolvió recipientes en <code class="parameter">$out</code>.
+      </td>
+     </tr>
+
+     <tr id="constant.psfs-feed-me">
+      <td><strong><code><a href="stream.constants.html#constant.psfs-feed-me">PSFS_FEED_ME</a></code></strong> *</td>
+      <td><code class="literal">Codigo Devuelto</code> indicando que el
+       filtro de espacio de usuario no devolvió recipientes en <code class="parameter">$out</code>
+       (es decir, No hay información disponible).
+      </td>
+     </tr>
+
+     <tr id="constant.psfs-err-fatal">
+      <td><strong><code><a href="stream.constants.html#constant.psfs-err-fatal">PSFS_ERR_FATAL</a></code></strong> *</td>
+      <td><code class="literal">Codigo Devuelto</code> indicando que el
+       filtro de espacio de usuario encontró un error irrecuperable
+       (es decir, Recibida información no válida).
+      </td>
+     </tr>
+
+     <tr id="constant.psfs-flag-normal">
+      <td><strong><code><a href="stream.constants.html#constant.psfs-flag-normal">PSFS_FLAG_NORMAL</a></code></strong></td>
+      <td>Lectura/escritura normal.</td>
+     </tr>
+
+     <tr id="constant.psfs-flag-flush-inc">
+      <td><strong><code><a href="stream.constants.html#constant.psfs-flag-flush-inc">PSFS_FLAG_FLUSH_INC</a></code></strong></td>
+      <td>Un volcado incremental.</td>
+     </tr>
+
+     <tr id="constant.psfs-flag-flush-close">
+      <td><strong><code><a href="stream.constants.html#constant.psfs-flag-flush-close">PSFS_FLAG_FLUSH_CLOSE</a></code></strong></td>
+      <td>Volcado final antes de cerrar.</td>
+     </tr>
+
+     <tr id="constant.stream-use-path">
+      <td><strong><code><a href="stream.constants.html#constant.stream-use-path">STREAM_USE_PATH</a></code></strong></td>
+      <td><code class="literal">Bandera</code> que indica si el <code class="literal">flujo</code>
+       usó la ruta incluida.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-report-errors">
+      <td><strong><code><a href="stream.constants.html#constant.stream-report-errors">STREAM_REPORT_ERRORS</a></code></strong></td>
+      <td><code class="literal">Bandera</code> que indica si la <code class="literal">envoltura</code>
+       es responsable de lanzar errores usando <span class="function"><a href="function.trigger-error.html" class="function">trigger_error()</a></span> 
+       durante la apertura del flujo. Si no se establece esta bandera, no
+       debería de lanzarse ningún error.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-client-async-connect">
+      <td><strong><code><a href="stream.constants.html#constant.stream-client-async-connect">STREAM_CLIENT_ASYNC_CONNECT</a></code></strong> *</td>
+      <td>Apertura del socket del cliente de manera asíncrona. Esta opción debe utilizarse
+       junto con la bandera <strong><code><a href="stream.constants.html#constant.stream-client-connect">STREAM_CLIENT_CONNECT</a></code></strong>.
+       Usada con <span class="function"><a href="function.stream-socket-client.html" class="function">stream_socket_client()</a></span>.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-client-connect">
+      <td><strong><code><a href="stream.constants.html#constant.stream-client-connect">STREAM_CLIENT_CONNECT</a></code></strong> *</td>
+      <td>Apertura de la conexión de socket del cliente. Los sockets del cliente deberían
+       incluir siempre esta bandera. Usada con <span class="function"><a href="function.stream-socket-client.html" class="function">stream_socket_client()</a></span>.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-client-persistent">
+      <td><strong><code><a href="stream.constants.html#constant.stream-client-persistent">STREAM_CLIENT_PERSISTENT</a></code></strong> *</td>
+      <td>El socket del cliente abierto con <span class="function"><a href="function.stream-socket-client.html" class="function">stream_socket_client()</a></span>
+       debería permanecer persistente entre cargas de páginas.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-server-bind">
+      <td><strong><code><a href="stream.constants.html#constant.stream-server-bind">STREAM_SERVER_BIND</a></code></strong> *</td>
+      <td>Le indica a un flujo creado con <span class="function"><a href="function.stream-socket-server.html" class="function">stream_socket_server()</a></span> que
+       enlace al objetivo especificado. Los sockets del servidor deberían incluir siempre esta bandera.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-server-listen">
+      <td><strong><code><a href="stream.constants.html#constant.stream-server-listen">STREAM_SERVER_LISTEN</a></code></strong> *</td>
+      <td>Le indica a un flujo creado con <span class="function"><a href="function.stream-socket-server.html" class="function">stream_socket_server()</a></span>
+       y enlazado usando la bandera <strong><code><a href="stream.constants.html#constant.stream-server-bind">STREAM_SERVER_BIND</a></code></strong> que inicie
+       la escucha del socket. Los transportes orientados a conexión (como TCP)
+       deben usar esta bandera, de otro modo el socket del servidor no se habilitará.
+       Usar esta bandera para transportes no orientados a conexión (como UDP) es un error.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-resolve">
+      <td><strong><code><a href="stream.constants.html#constant.stream-notify-resolve">STREAM_NOTIFY_RESOLVE</a></code></strong> *</td>
+      <td>
+       Ha sido resuelta una dirección remota necesaria para este flujo, o la resolución
+       falló. Véase <code class="parameter">severity</code> para una indicación de lo que sucedió.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-connect">
+      <td><strong><code><a href="stream.constants.html#constant.stream-notify-connect">STREAM_NOTIFY_CONNECT</a></code></strong></td>
+      <td>
+       Ha sido establecida una conexión con un recurso externo.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-auth-required">
+      <td><strong><code><a href="stream.constants.html#constant.stream-notify-auth-required">STREAM_NOTIFY_AUTH_REQUIRED</a></code></strong></td>
+      <td>
+       Se requiere autorización adicional para acceder al recurso especificado.
+       Normalmente emitido con nivel de <code class="parameter">severity</code> de
+       <strong><code><a href="stream.constants.html#constant.stream-notify-severity-err">STREAM_NOTIFY_SEVERITY_ERR</a></code></strong>.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-mime-type-is">
+      <td><strong><code><a href="stream.constants.html#constant.stream-notify-mime-type-is">STREAM_NOTIFY_MIME_TYPE_IS</a></code></strong></td>
+      <td>
+       El <code class="literal">tipo mime</code> del recurso ha sido indentificado,
+       consulte <code class="parameter">message</code> para una descripción del
+       tipo encontrado.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-file-size-is">
+      <td><strong><code><a href="stream.constants.html#constant.stream-notify-file-size-is">STREAM_NOTIFY_FILE_SIZE_IS</a></code></strong></td>
+      <td>
+       El <code class="literal">tamaño</code> del recurso ha sido encontrado.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-redirected">
+      <td><strong><code><a href="stream.constants.html#constant.stream-notify-redirected">STREAM_NOTIFY_REDIRECTED</a></code></strong></td>
+      <td>
+       El recurso externo ha redireccionado el flujo a una ubicación
+       alternativa. Consulte <code class="parameter">message</code>.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-progress">
+      <td><strong><code><a href="stream.constants.html#constant.stream-notify-progress">STREAM_NOTIFY_PROGRESS</a></code></strong></td>
+      <td>
+       Indica el progreso actual de la transmisión del flujo en
+       <code class="parameter">bytes_transferred</code> y posiblemente también en
+       <code class="parameter">bytes_max</code>.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-completed">
+      <td><strong><code><a href="stream.constants.html#constant.stream-notify-completed">STREAM_NOTIFY_COMPLETED</a></code></strong> *</td>
+      <td>
+       No hay más información disponible en el flujo.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-failure">
+      <td><strong><code><a href="stream.constants.html#constant.stream-notify-failure">STREAM_NOTIFY_FAILURE</a></code></strong></td>
+      <td>
+       Ocurrión un error genérico en el flujo, consulte
+       <code class="parameter">message</code> y <code class="parameter">message_code</code>
+       para más detalles.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-auth-result">
+      <td><strong><code><a href="stream.constants.html#constant.stream-notify-auth-result">STREAM_NOTIFY_AUTH_RESULT</a></code></strong></td>
+      <td>
+       La autorización ha sido completada (con o sin éxito).
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-severity-info">
+      <td><strong><code><a href="stream.constants.html#constant.stream-notify-severity-info">STREAM_NOTIFY_SEVERITY_INFO</a></code></strong></td>
+      <td>
+       Notificación normal, ningún error relacionado.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-severity-warn">
+      <td><strong><code><a href="stream.constants.html#constant.stream-notify-severity-warn">STREAM_NOTIFY_SEVERITY_WARN</a></code></strong></td>
+      <td>
+       Condición de no haber ningún error crítico. El proceso puede continuar.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-severity-err">
+      <td><strong><code><a href="stream.constants.html#constant.stream-notify-severity-err">STREAM_NOTIFY_SEVERITY_ERR</a></code></strong></td>
+      <td>
+       Ocurrió un error crítico. El proceso no puede continuar.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-ipproto-icmp">
+      <td><strong><code><a href="stream.constants.html#constant.stream-ipproto-icmp">STREAM_IPPROTO_ICMP</a></code></strong> +</td>
+      <td>
+       Proporciona un socket ICMP.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-ipproto-ip">
+      <td><strong><code><a href="stream.constants.html#constant.stream-ipproto-ip">STREAM_IPPROTO_IP</a></code></strong> +</td>
+      <td>
+       Proporciona un socket IP.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-ipproto-raw">
+      <td><strong><code><a href="stream.constants.html#constant.stream-ipproto-raw">STREAM_IPPROTO_RAW</a></code></strong> +</td>
+      <td>
+       Proporciona un socket RAW.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-ipproto-tcp">
+      <td><strong><code><a href="stream.constants.html#constant.stream-ipproto-tcp">STREAM_IPPROTO_TCP</a></code></strong> +</td>
+      <td>
+       Proporciona un socket TCP.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-ipproto-udp">
+      <td><strong><code><a href="stream.constants.html#constant.stream-ipproto-udp">STREAM_IPPROTO_UDP</a></code></strong> +</td>
+      <td>
+       Proporciona un socket UDP.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-pf-inet">
+      <td><strong><code><a href="stream.constants.html#constant.stream-pf-inet">STREAM_PF_INET</a></code></strong> +</td>
+      <td>
+       Protocolo de Internet Versión 4 (IPv4).
+      </td>
+     </tr>
+
+     <tr id="constant.stream-pf-inet6">
+      <td><strong><code><a href="stream.constants.html#constant.stream-pf-inet6">STREAM_PF_INET6</a></code></strong> +</td>
+      <td>
+       Protocolo de Internet Versión 6 (IPv6).
+      </td>
+     </tr>
+
+     <tr id="constant.stream-pf-unix">
+      <td><strong><code><a href="stream.constants.html#constant.stream-pf-unix">STREAM_PF_UNIX</a></code></strong> +</td>
+      <td>
+       Protocolos internos de sistemas Unix.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-sock-dgram">
+      <td><strong><code><a href="stream.constants.html#constant.stream-sock-dgram">STREAM_SOCK_DGRAM</a></code></strong> +</td>
+      <td>
+       Proporciona datagramas, que son mensajes no orientados a conexión (UDP, por
+       ejemplo).
+      </td>
+     </tr>
+
+     <tr id="constant.stream-sock-raw">
+      <td><strong><code><a href="stream.constants.html#constant.stream-sock-raw">STREAM_SOCK_RAW</a></code></strong> +</td>
+      <td>
+       Proporciona un socket sin tratar, el cuál porporciona acceso a los protocolos e interfaces
+       de red internos. Normalmente este tipo de socket está disponible
+       para el usuario root.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-sock-rdm">
+      <td><strong><code><a href="stream.constants.html#constant.stream-sock-rdm">STREAM_SOCK_RDM</a></code></strong> +</td>
+      <td>
+       Proporciona un socket RDM (Reliably-Delivered Messages, Mensajes Formalmente Emitidos).
+      </td>
+     </tr>
+
+     <tr id="constant.stream-sock-seqpacket">
+      <td><strong><code><a href="stream.constants.html#constant.stream-sock-seqpacket">STREAM_SOCK_SEQPACKET</a></code></strong> +</td>
+      <td>
+       Proporciona un socket de flujo de paquetes secuenciados.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-sock-stream">
+      <td><strong><code><a href="stream.constants.html#constant.stream-sock-stream">STREAM_SOCK_STREAM</a></code></strong> +</td>
+      <td>
+       Proporciona flujos secuenciados de bytes bidireccionales con un mecanismo de transmisión
+       de información fuera de banda (TCP, por ejemplo).
+      </td>
+     </tr>
+
+     <tr id="constant.stream-shut-rd">
+      <td><strong><code><a href="stream.constants.html#constant.stream-shut-rd">STREAM_SHUT_RD</a></code></strong></td>
+      <td>
+       Usado con <span class="function"><a href="function.stream-socket-shutdown.html" class="function">stream_socket_shutdown()</a></span> para deshabilitar
+       más recepciones. Añadido en PHP 5.2.1.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-shut-wr">
+      <td><strong><code><a href="stream.constants.html#constant.stream-shut-wr">STREAM_SHUT_WR</a></code></strong></td>
+      <td>
+       Usado con <span class="function"><a href="function.stream-socket-shutdown.html" class="function">stream_socket_shutdown()</a></span> para deshabilitar
+       más transmisiones. Añadido en PHP 5.2.1.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-shut-rdwr">
+      <td><strong><code><a href="stream.constants.html#constant.stream-shut-rdwr">STREAM_SHUT_RDWR</a></code></strong></td>
+      <td>
+       Usado con <span class="function"><a href="function.stream-socket-shutdown.html" class="function">stream_socket_shutdown()</a></span> para deshabilitar
+       más recepciones y transmisiones. Añadido en PHP 5.2.1.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-cast-for-select">
+      <td><strong><code><a href="stream.constants.html#constant.stream-cast-for-select">STREAM_CAST_FOR_SELECT</a></code></strong></td>
+      <td>
+       Conversión del tipo de flujo, para cuando <span class="function"><a href="function.stream-select.html" class="function">stream_select()</a></span> llama
+       a <span class="function"><strong>stream_cast()</strong></span>.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-cast-as-stream">
+      <td><strong><code><a href="stream.constants.html#constant.stream-cast-as-stream">STREAM_CAST_AS_STREAM</a></code></strong></td>
+      <td>
+       Conversión del tipo de flujo, cuando <span class="function"><strong>stream_cast()</strong></span> es llamada
+       de otro modo (vea la constante de arriba).
+      </td>
+     </tr>
+
+     <tr id="constant.stream-meta-touch">
+      <td><strong><code><a href="stream.constants.html#constant.stream-meta-touch">STREAM_META_TOUCH</a></code></strong></td>
+      <td>
+       Usado con <span class="function"><strong>stream_metadata()</strong></span>, para especificar la llamada a <span class="function"><a href="function.touch.html" class="function">touch()</a></span>.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-meta-owner">
+      <td><strong><code><a href="stream.constants.html#constant.stream-meta-owner">STREAM_META_OWNER</a></code></strong></td>
+      <td>
+       Usado con <span class="function"><strong>stream_metadata()</strong></span>, para especificar la llamda a <span class="function"><a href="function.chown.html" class="function">chown()</a></span>.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-meta-owner-name">
+      <td><strong><code><a href="stream.constants.html#constant.stream-meta-owner-name">STREAM_META_OWNER_NAME</a></code></strong></td>
+      <td>
+       Usado con <span class="function"><strong>stream_metadata()</strong></span>, para especificar la llamada a <span class="function"><a href="function.chown.html" class="function">chown()</a></span>.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-meta-group">
+      <td><strong><code><a href="stream.constants.html#constant.stream-meta-group">STREAM_META_GROUP</a></code></strong></td>
+      <td>
+       Usado con <span class="function"><strong>stream_metadata()</strong></span>, para especificar la llamada a <span class="function"><a href="function.chgrp.html" class="function">chgrp()</a></span>.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-meta-group-name">
+      <td><strong><code><a href="stream.constants.html#constant.stream-meta-group-name">STREAM_META_GROUP_NAME</a></code></strong></td>
+      <td>
+       Usado con <span class="function"><strong>stream_metadata()</strong></span>, para especificar la llamada a <span class="function"><a href="function.chgrp.html" class="function">chgrp()</a></span>.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-meta-access">
+      <td><strong><code><a href="stream.constants.html#constant.stream-meta-access">STREAM_META_ACCESS</a></code></strong></td>
+      <td>
+       Usado con <span class="function"><strong>stream_metadata()</strong></span>, para especificar la llamada a <span class="function"><a href="function.chmod.html" class="function">chmod()</a></span>.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </p>
+ <blockquote class="note"><p><strong class="note">Nota</strong>: 
+  <span class="simpara">
+   Las constantes marcadas con <code class="literal">*</code> están disponibles desde
+   PHP 5.0.0.
+  </span>
+ </p></blockquote>
+ <blockquote class="note"><p><strong class="note">Nota</strong>: 
+  <span class="simpara">
+   Las constantes marcadas con <code class="literal">+</code> están disponibles desde PHP
+   5.1.0 y son usadas junto con
+   <span class="function"><a href="function.stream-socket-pair.html" class="function">stream_socket_pair()</a></span>. Por favor, observe que alguna de estas
+   constantes podría no estar disponible en su sistema.
+  </span>
+ </p></blockquote>
+ <blockquote class="note"><p><strong class="note">Nota</strong>: 
+  <span class="simpara">
+   Las constantes <strong><code>STREAM_META_*</code></strong> están disponibles desde PHP
+   5.4.0 y están destinadas a ser usadas con <span class="function"><strong>stream_metadata()</strong></span>. 
+  </span>
+ </p></blockquote>
+</div>
+</div></div></body></html>

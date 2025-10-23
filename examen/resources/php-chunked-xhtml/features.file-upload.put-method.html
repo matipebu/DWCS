@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Soporte para el m&eacute;todo PUT</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="features.file-upload.multiple.html">« Subida de varios ficheros</a></li>
+      <li style="float: right;"><a href="features.file-upload.errors.seealso.html">Ver tambi&eacute;n »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="features.file-upload.html">Subida de ficheros</a></li>
+    <li>Soporte para el m&eacute;todo PUT</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="features.file-upload.put-method" class="sect1">
+  <h2 class="title">Soporte para el método PUT</h2>
+  <p class="para">
+   PHP ofrece soporte para el método PUT de HTTP utilizado por algunos clientes para almacenar
+   ficheros en un servidor.
+   Las peticiones PUT son mucho más simples que una subida de ficheros mediante peticiones POST.
+   Se ven algo como esto:
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="HTTPcode"><pre class="HTTPcode">PUT /ruta/nombrefichero.html HTTP/1.1</pre>
+</div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Esto normalmente significaría que el cliente remoto quiere guardar
+   el contenido que le sigue como: <var class="filename">/ruta/nombrefichero.html</var> en el árbol web.
+   Obviamente, no es una buena idea que Apache o PHP permitan a todo el mundo
+   sobrescribir automáticamente cualquier fichero del árbol web. Por tanto, para manejar
+   tales peticiones se debe primero indicar al servidor web que
+   cierto script de PHP maneje la petición. En Apache, esto se
+   hace con la directiva <em>Script</em>. Esta se puede
+   colocar casi en cualquier parte del fichero de configuración de Apache. Un
+   lugar común es dentro de un bloque <code class="literal">&lt;Directory&gt;</code> o tal vez dentro
+   de un bloque <code class="literal">&lt;VirtualHost&gt;</code>. Una línea como ésta resolvería el problema:
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="cdata"><pre>
+Script PUT /put.php
+</pre></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="simpara">
+   Esto le indica a Apache que envíe todas las peticiones PUT para los URI que coincidan con
+   el contexto en el cual se pone esta línea en el script <var class="filename">put.php</var>. Se
+   asume, por supuesto, que se tiene habilitado PHP para la extensión
+   <var class="filename">.php</var> y que PHP está activo. El recurso de destino para todas las
+   peiticiones PUT a este script tiene que ser el propio script, no el nombre de fichero que
+   debería tener el fichero subido.
+  </p>
+  <p class="simpara">
+   Entonces, con PHP se haría algo como lo siguiente en el
+   fichero put.php. Se copiaría el contenido del fichero subido al
+   fichero <var class="filename">mificheroput.ext</var> en el servidor.
+   Podría ser conveniente realizar algunas comprobaciones y/o
+   autenticar al usuario antes de realizar esta copia del fichero.
+  </p>
+  <p class="para">
+   <div class="example" id="example-459">
+    <p><strong>Ejemplo #1 Guardar ficheros PUT de HTTP</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/* Los datos de PUT vienen en el flujo de entrada estándar */<br /></span><span style="color: #0000BB">$datosPUT </span><span style="color: #007700">= </span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"php://input"</span><span style="color: #007700">, </span><span style="color: #DD0000">"r"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* Abrir un fichero para escritura */<br /></span><span style="color: #0000BB">$fp </span><span style="color: #007700">= </span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"mificheroput.ext"</span><span style="color: #007700">, </span><span style="color: #DD0000">"w"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* Leer 1 KB de datos cada vez<br />   y escribir en el fichero */<br /></span><span style="color: #007700">while (</span><span style="color: #0000BB">$datos </span><span style="color: #007700">= </span><span style="color: #0000BB">fread</span><span style="color: #007700">(</span><span style="color: #0000BB">$datosPUT</span><span style="color: #007700">, </span><span style="color: #0000BB">1024</span><span style="color: #007700">))<br />  </span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">, </span><span style="color: #0000BB">$datos</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* Cerrar los flujos */<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$datosPUT</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div></div></div></body></html>

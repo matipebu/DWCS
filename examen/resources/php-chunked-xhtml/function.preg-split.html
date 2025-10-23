@@ -1,0 +1,250 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Divide un string mediante una expresi&oacute;n regular</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.preg-replace-callback-array.html">« preg_replace_callback_array</a></li>
+      <li style="float: right;"><a href="book.ssdeep.html">ssdeep »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.pcre.html">Funciones de PCRE</a></li>
+    <li>Divide un string mediante una expresi&oacute;n regular</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.preg-split" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">preg_split</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">preg_split</span> &mdash; <span class="dc-title">Divide un string mediante una expresión regular</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.preg-split-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>preg_split</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$pattern</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$subject</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$limit</code><span class="initializer"> = -1</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span><br>): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+
+  <p class="para rdfs-comment">
+   Divide el string dado mediante una expresión regular.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.preg-split-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">pattern</code></dt>
+     <dd>
+      <p class="para">
+       El patrón de búsqueda, dado como string.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">subject</code></dt>
+     <dd>
+      <p class="para">
+       El string de entrada.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">limit</code></dt>
+     <dd>
+      <p class="para">
+       Si se especifica, son devueltos únicamente los substrings hasta
+       <code class="parameter">limit</code>, con el resto del string colocado en el último
+       substring. Si <code class="parameter">limit</code> vale -1 o 0 significa &quot;sin límite&quot;.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">flags</code></dt>
+     <dd>
+      <p class="para">
+       <code class="parameter">flags</code> puede ser una combinación de las siguientes
+       banderas (combinadas con el operador <code class="literal">|</code> de bits):
+       <dl>
+        
+         <dt><strong><code><a href="pcre.constants.html#constant.preg-split-no-empty">PREG_SPLIT_NO_EMPTY</a></code></strong></dt>
+         <dd>
+          <span class="simpara">
+           Si se aplica esta bandera, solo serán devueltos los elementos no vacíos por
+           <span class="function"><strong>preg_split()</strong></span>.
+          </span>
+         </dd>
+        
+        
+         <dt><strong><code><a href="pcre.constants.html#constant.preg-split-delim-capture">PREG_SPLIT_DELIM_CAPTURE</a></code></strong></dt>
+         <dd>
+          <span class="simpara">
+           Si se aplica esta bandera, las expresiones entre paréntesis en el patrón delimitador
+           serán capturadas y devueltas.
+          </span>
+         </dd>
+        
+        
+         <dt><strong><code><a href="pcre.constants.html#constant.preg-split-offset-capture">PREG_SPLIT_OFFSET_CAPTURE</a></code></strong></dt>
+         <dd>
+          <p class="para">
+           Si se aplica esta bandera, por cada coincidencia producida, el índice del string añadido
+           también será devuelto. Observe que esto cambia el valor devuelto
+           dentro de un array donde cada elemento es un array consistente en
+           el string coincidente en el índice <code class="literal">0</code> y su índice de string
+           dentro de <code class="parameter">subject</code> en el índice <code class="literal">1</code>.
+          </p>
+         </dd>
+        
+       </dl>
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.preg-split-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve un array que contiene substrings de <code class="parameter">subject</code>
+   dividido por los límites coincidentes de <code class="parameter">pattern</code>,  o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.preg-split-errors">
+  <h3 class="title">Errores/Excepciones</h3>
+  <p class="para">
+If the regex pattern passed does not compile to a valid regex, an <strong><code><a href="errorfunc.constants.html#constant.e-warning">E_WARNING</a></code></strong> is emitted.
+</p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.preg-split-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4763">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>preg_split()</strong></span> : Obtener las partes de un string de búsqueda</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// divide la frase mediante cualquier número de comas o caracteres de espacio,<br />// lo que incluye " ", \r, \t, \n y \f<br /></span><span style="color: #0000BB">$claves </span><span style="color: #007700">= </span><span style="color: #0000BB">preg_split</span><span style="color: #007700">(</span><span style="color: #DD0000">"/[\s,]+/"</span><span style="color: #007700">, </span><span style="color: #DD0000">"hypertext language, programming"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$claves</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Array
+(
+    [0] =&gt; hypertext
+    [1] =&gt; language
+    [2] =&gt; programming
+)</pre>
+</div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-4764">
+    <p><strong>Ejemplo #2 Dividir un string en sus caracteres constituyentes</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$str </span><span style="color: #007700">= </span><span style="color: #DD0000">'string'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$caracteres </span><span style="color: #007700">= </span><span style="color: #0000BB">preg_split</span><span style="color: #007700">(</span><span style="color: #DD0000">'//'</span><span style="color: #007700">, </span><span style="color: #0000BB">$str</span><span style="color: #007700">, -</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">PREG_SPLIT_NO_EMPTY</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$caracteres</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Array
+(
+    [0] =&gt; s
+    [1] =&gt; t
+    [2] =&gt; r
+    [3] =&gt; i
+    [4] =&gt; n
+    [5] =&gt; g
+)</pre>
+</div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-4765">
+    <p><strong>Ejemplo #3 Dividir un string mediante coincidencias y sus índices</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$str </span><span style="color: #007700">= </span><span style="color: #DD0000">'hypertext language programming'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$caracteres </span><span style="color: #007700">= </span><span style="color: #0000BB">preg_split</span><span style="color: #007700">(</span><span style="color: #DD0000">'/ /'</span><span style="color: #007700">, </span><span style="color: #0000BB">$str</span><span style="color: #007700">, -</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">PREG_SPLIT_OFFSET_CAPTURE</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$caracteres</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Array
+(
+    [0] =&gt; Array
+        (
+            [0] =&gt; hypertext
+            [1] =&gt; 0
+        )
+
+    [1] =&gt; Array
+        (
+            [0] =&gt; language
+            [1] =&gt; 10
+        )
+
+    [2] =&gt; Array
+        (
+            [0] =&gt; programming
+            [1] =&gt; 19
+        )
+
+)</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.preg-split-notes">
+  <h3 class="title">Notas</h3>
+  <div class="tip"><strong class="tip">Sugerencia</strong>
+   <p class="para">
+    Si no necesita la potencia de expresiones regulares, puede optar por
+    alternativas más rápidas (no obstante más sencillas) como <span class="function"><a href="function.explode.html" class="function">explode()</a></span>
+    o <span class="function"><a href="function.str-split.html" class="function">str_split()</a></span>.
+   </p>
+  </div>
+  <div class="tip"><strong class="tip">Sugerencia</strong>
+   <p class="para">
+    Si la comparación falla, será devuelto un array con un único elemento que contiene el string de entrada.
+   </p>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.preg-split-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><a href="pcre.pattern.html" class="link">Patrones de PCRE</a></li>
+    <li><span class="function"><a href="function.preg-quote.html" class="function" rel="rdfs-seeAlso">preg_quote()</a> - Escapar caracteres en una expresi&oacute;n regular</span></li>
+    <li><span class="function"><a href="function.implode.html" class="function" rel="rdfs-seeAlso">implode()</a> - Une elementos de un array en un string</span></li>
+    <li><span class="function"><a href="function.preg-match.html" class="function" rel="rdfs-seeAlso">preg_match()</a> - Realiza una comparaci&oacute;n con una expresi&oacute;n regular</span></li>
+    <li><span class="function"><a href="function.preg-match-all.html" class="function" rel="rdfs-seeAlso">preg_match_all()</a> - Realiza una comparaci&oacute;n global de una expresi&oacute;n regular</span></li>
+    <li><span class="function"><a href="function.preg-replace.html" class="function" rel="rdfs-seeAlso">preg_replace()</a> - Realiza una b&uacute;squeda y sustituci&oacute;n de una expresi&oacute;n regular</span></li>
+    <li><span class="function"><a href="function.preg-last-error.html" class="function" rel="rdfs-seeAlso">preg_last_error()</a> - Devuelve el c&oacute;digo de error de la &uacute;ltima ejecuci&oacute;n de expresi&oacute;n regular de PCRE</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

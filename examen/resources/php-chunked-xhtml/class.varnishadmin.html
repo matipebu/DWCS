@@ -1,0 +1,260 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>La clase VarnishAdmin</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="varnish.example.log.html">« Uso b&aacute;sico de VarnishLog</a></li>
+      <li style="float: right;"><a href="varnishadmin.auth.html">VarnishAdmin::auth »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.varnish.html">Varnish</a></li>
+    <li>La clase VarnishAdmin</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.varnishadmin" class="reference">
+
+ <h1 class="title">La clase VarnishAdmin</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PECL varnish &gt;= 0.3)</p>
+
+
+  <div class="section" id="varnishadmin.intro">
+   <h2 class="title">Introducción</h2>
+   <p class="para">
+
+   </p>
+  </div>
+
+
+  <div class="section" id="varnishadmin.synopsis">
+   <h2 class="title">Sinopsis de la Clase</h2>
+
+
+   <div class="classsynopsis">
+    <span class="ooclass"><strong class="classname"></strong></span>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">class</span> <strong class="classname">VarnishAdmin</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Métodos */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="varnishadmin.auth.html" class="methodname">auth</a></span>(): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="varnishadmin.ban.html" class="methodname">ban</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$vcl_regex</code></span>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="varnishadmin.banurl.html" class="methodname">banUrl</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$vcl_regex</code></span>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="varnishadmin.clearpanic.html" class="methodname">clearPanic</a></span>(): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="varnishadmin.connect.html" class="methodname">connect</a></span>(): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="varnishadmin.construct.html" class="methodname">__construct</a></span>(<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$args</code><span class="initializer"> = ?</span></span>)</div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="varnishadmin.disconnect.html" class="methodname">disconnect</a></span>(): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="varnishadmin.getpanic.html" class="methodname">getPanic</a></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="varnishadmin.getparams.html" class="methodname">getParams</a></span>(): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="varnishadmin.isrunning.html" class="methodname">isRunning</a></span>(): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="varnishadmin.setcompat.html" class="methodname">setCompat</a></span>(<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$compat</code></span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="varnishadmin.sethost.html" class="methodname">setHost</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$host</code></span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="varnishadmin.setident.html" class="methodname">setIdent</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$ident</code></span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="varnishadmin.setparam.html" class="methodname">setParam</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$name</code></span>, <span class="methodparam"><span class="type"><span class="type"><a href="language.types.string.html" class="type string">string</a></span>|<span class="type"><a href="language.types.integer.html" class="type int">int</a></span></span> <code class="parameter">$value</code></span>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="varnishadmin.setport.html" class="methodname">setPort</a></span>(<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$port</code></span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="varnishadmin.setsecret.html" class="methodname">setSecret</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$secret</code></span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="varnishadmin.settimeout.html" class="methodname">setTimeout</a></span>(<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$timeout</code></span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="varnishadmin.start.html" class="methodname">start</a></span>(): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="varnishadmin.stop.html" class="methodname">stop</a></span>(): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Tabla de contenidos</h2><ul class="chunklist chunklist_reference"><li><a href="varnishadmin.auth.html">VarnishAdmin::auth</a> — Autentificar en una instancia de varnish</li><li><a href="varnishadmin.ban.html">VarnishAdmin::ban</a> — Prohibe URLs usando una expresi&oacute;n VCL</li><li><a href="varnishadmin.banurl.html">VarnishAdmin::banUrl</a> — Prohibe una URL usando una expresi&oacute;n VCL</li><li><a href="varnishadmin.clearpanic.html">VarnishAdmin::clearPanic</a> — Limpia mensajes de p&aacute;nico de la instancia varnish</li><li><a href="varnishadmin.connect.html">VarnishAdmin::connect</a> — Conectarse a una interfaz de administraci&oacute;n de instancias de varnish</li><li><a href="varnishadmin.construct.html">VarnishAdmin::__construct</a> — VarnishAdmin constructor</li><li><a href="varnishadmin.disconnect.html">VarnishAdmin::disconnect</a> — Desconecta interfaz de administraci&oacute;n de la instancia de varnish</li><li><a href="varnishadmin.getpanic.html">VarnishAdmin::getPanic</a> — Obtener el &uacute;ltimo mensaje de p&aacute;nico en una instancia varnish</li><li><a href="varnishadmin.getparams.html">VarnishAdmin::getParams</a> — Busca los par&aacute;metros de configuraci&oacute;n de la instancia varnish actual</li><li><a href="varnishadmin.isrunning.html">VarnishAdmin::isRunning</a> — Comprueba si el proceso varnish esclavo est&aacute; actualmente en marcha</li><li><a href="varnishadmin.setcompat.html">VarnishAdmin::setCompat</a> — Establece el par&aacute;metro de configuraci&oacute;n de la clase compacta</li><li><a href="varnishadmin.sethost.html">VarnishAdmin::setHost</a> — Establece el par&aacute;metro de configuraci&oacute;n del host de la clase</li><li><a href="varnishadmin.setident.html">VarnishAdmin::setIdent</a> — Establece el par&aacute;metro de configuraci&oacute;n de la identificaci&oacute;n de la clase</li><li><a href="varnishadmin.setparam.html">VarnishAdmin::setParam</a> — Establece los par&aacute;metros de configuraci&oacute;n en la instancia varnish actual</li><li><a href="varnishadmin.setport.html">VarnishAdmin::setPort</a> — Establece el par&aacute;metro de configuraci&oacute;n del puerto de clase</li><li><a href="varnishadmin.setsecret.html">VarnishAdmin::setSecret</a> — Establece los par&aacute;metros secretos de configuraci&oacute;n de la clase</li><li><a href="varnishadmin.settimeout.html">VarnishAdmin::setTimeout</a> — Configura el par&aacute;metro de tiempo de espera de la clase</li><li><a href="varnishadmin.start.html">VarnishAdmin::start</a> — Iniciar el proceso de varnish</li><li><a href="varnishadmin.stop.html">VarnishAdmin::stop</a> — Detener el proceso de varnish</li></ul>
+</div>
+</div></div></body></html>

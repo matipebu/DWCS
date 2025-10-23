@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Operadores de ejecuci&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.operators.errorcontrol.html">« Operadores de control de errores</a></li>
+      <li style="float: right;"><a href="language.operators.increment.html">Operadores de incremento/decremento »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.operators.html">Operadores</a></li>
+    <li>Operadores de ejecuci&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.operators.execution" class="sect1">
+  <h2 class="title">Operadores de ejecución</h2>
+  <p class="para">
+   PHP soporta un operador de ejecución: las comillas invertidas (``). ¡Note que
+   estas no son las comillas sencillas! PHP intentará ejecutar el
+   contenido entre las comillas invertidas como si se tratara de un comando del shell; la salida será
+   retornada (es decir, no será simplemente volcada como salida; puede ser
+   asignada a una variable). El uso del operador de comillas invertidas es idéntico
+   al de <span class="function"><a href="function.shell-exec.html" class="function">shell_exec()</a></span>.
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$output </span><span style="color: #007700">= `</span><span style="color: #DD0000">ls -al</span><span style="color: #007700">`;<br />echo </span><span style="color: #DD0000">"&lt;pre&gt;</span><span style="color: #0000BB">$output</span><span style="color: #DD0000">&lt;/pre&gt;"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    El operador de comillas invertidas se deshabilita cuando
+    <span class="function"><a href="function.shell-exec.html" class="function">shell_exec()</a></span> esta desactivado.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    A diferencia de otros lenguajes, las comillas invertidas no tienen un significa especial
+    dentro de string entre comillas dobles.
+   </p>
+  </p></blockquote>
+  <p class="para">
+   Vea también la sección del manual sobre <a href="ref.exec.html" class="link">funciones
+   de ejecución de programas</a>, <span class="function"><a href="function.popen.html" class="function">popen()</a></span>
+   <span class="function"><a href="function.proc-open.html" class="function">proc_open()</a></span> y
+   <a href="features.commandline.html" class="link">Usando PHP desde la
+    línea de comandos</a>.
+  </p>
+ </div></div></div></body></html>

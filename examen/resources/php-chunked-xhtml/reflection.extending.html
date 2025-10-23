@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Extensi&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="reflection.examples.html">« Ejemplos</a></li>
+      <li style="float: right;"><a href="class.reflection.html">Reflection »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.reflection.html">Reflection</a></li>
+    <li>Extensi&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="reflection.extending" class="chapter">
+ <h1 class="title">Extensión</h1>
+
+ <p class="para">
+  Si se deseara crear versiones especializadas de las clases que vienen
+  incorporadas (por ejemplo, para crear HTML en color cuando se
+  exportan, parar tener variables de acceso rápido en lugar de usar métodos,
+  o parar crear métodos auxiliares), deberá 
+  extender la clase.
+ </p>
+ <div class="example" id="example-5140">
+  <p><strong>Ejemplo #1 Extendiendo las clases incorporadas</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/**<br /> * Mi clase Reflection_Method<br /> */<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">My_Reflection_Method </span><span style="color: #007700">extends </span><span style="color: #0000BB">ReflectionMethod<br /></span><span style="color: #007700">{<br />    public </span><span style="color: #0000BB">$visibility </span><span style="color: #007700">= array();<br /><br />    public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">$o</span><span style="color: #007700">, </span><span style="color: #0000BB">$m</span><span style="color: #007700">)<br />    {<br />        </span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">$o</span><span style="color: #007700">, </span><span style="color: #0000BB">$m</span><span style="color: #007700">);<br />        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">visibility </span><span style="color: #007700">= </span><span style="color: #0000BB">Reflection</span><span style="color: #007700">::</span><span style="color: #0000BB">getModifierNames</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getModifiers</span><span style="color: #007700">());<br />    }<br />}<br /><br /></span><span style="color: #FF8000">/**<br /> * Clase demo #1<br /> *<br /> */<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">T </span><span style="color: #007700">{<br />    protected function </span><span style="color: #0000BB">x</span><span style="color: #007700">() {}<br />}<br /><br /></span><span style="color: #FF8000">/**<br /> * Clase demo #2<br /> *<br /> */<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">U </span><span style="color: #007700">extends </span><span style="color: #0000BB">T </span><span style="color: #007700">{<br />    function </span><span style="color: #0000BB">x</span><span style="color: #007700">() {}<br />}<br /><br /></span><span style="color: #FF8000">// Mostrar información<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(new </span><span style="color: #0000BB">My_Reflection_Method</span><span style="color: #007700">(</span><span style="color: #DD0000">'U'</span><span style="color: #007700">, </span><span style="color: #DD0000">'x'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+  </div>
+
+  <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+object(My_Reflection_Method)#1 (3) {
+  [&quot;visibility&quot;]=&gt;
+  array(1) {
+    [0]=&gt;
+    string(6) &quot;public&quot;
+  }
+  [&quot;name&quot;]=&gt;
+  string(1) &quot;x&quot;
+  [&quot;class&quot;]=&gt;
+  string(1) &quot;U&quot;
+}
+</pre></div>
+  </div>
+ </div>
+ <div class="caution"><strong class="caution">Precaución</strong>
+  <p class="para">
+   Si se sobrescribe el constructor, no hay que olvidar llamar
+   en primer lugar al constructor de la clase padre.
+   Si esto fallara, se lanzará el siguiente error: 
+   <code class="literal">Fatal error: Internal error: Failed to retrieve the reflection object</code>
+  </p>
+ </div>
+</div>
+</div></div></body></html>

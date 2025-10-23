@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Operadores de asignaci&oacute;n</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.operators.arithmetic.html">« Operadores aritm&eacute;ticos</a></li>
+      <li style="float: right;"><a href="language.operators.bitwise.html">Operadores bit a bit »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.operators.html">Operadores</a></li>
+    <li>Operadores de asignaci&oacute;n</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.operators.assignment" class="sect1">
+  <h2 class="title">Operadores de asignación</h2>
+  <p class="simpara">
+   El operador básico de asignación es &quot;=&quot;. Se podría inclinar a pensar
+   primero que es como un &quot;igual a&quot;. No lo es. Realmente significa que el
+   operando de la izquierda se establece con el valor de la expresión de la
+   derecha (es decir, &quot;se define como&quot;).
+  </p>
+  <p class="para">
+   El valor de una expresión de asignación es el valor asignado. Es
+   decir, el valor de &quot;<code class="literal">$a = 3</code>&quot; es de 3. Esto permite hacer algunas cosas
+   intrincadas:
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$a </span><span style="color: #007700">= (</span><span style="color: #0000BB">$b </span><span style="color: #007700">= </span><span style="color: #0000BB">4</span><span style="color: #007700">) + </span><span style="color: #0000BB">5</span><span style="color: #007700">; </span><span style="color: #FF8000">// ahora $a es igual a 9 y $b se ha establecido en 4.<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Además del operador básico de asignación, existen «operadores
+   combinados» para todos los de <a href="language.operators.html" class="link">aritmética
+   binaria</a>, unión de arrays y operadores de strings que permiten usar un valor en una
+   expresión y entonces establecer su valor como el resultado de esa expresión. Por
+   ejemplo:
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$a </span><span style="color: #007700">= </span><span style="color: #0000BB">3</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$a </span><span style="color: #007700">+= </span><span style="color: #0000BB">5</span><span style="color: #007700">; </span><span style="color: #FF8000">// establece $a en 8, como si se hubiera dicho: $a = $a + 5;<br /></span><span style="color: #0000BB">$b </span><span style="color: #007700">= </span><span style="color: #DD0000">"Hola "</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b </span><span style="color: #007700">.= </span><span style="color: #DD0000">"ahí!"</span><span style="color: #007700">; </span><span style="color: #FF8000">// establece $b en "Hola ahí!", al igual que $b = $b . "ahí!";<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Observe que la asignación copia la variable original en la nueva
+   (asignación por valor), por lo que los cambios en una no afectarán a la
+   otra. Esto también puede tener relevancia si se necesita copiar algo
+   como un gran array dentro de un bucle estrecho.
+  </p>
+  <p class="para">
+   Una excepción al comportamiento usual de la asignación por valor en PHP ocurre
+   con <span class="type"><a href="language.types.object.html" class="type object">object</a></span>s los cuales son asignados por referencia en PHP 5.
+   Los objetos pueden ser explícitamente copiados por medio de la palabra clave
+   <a href="language.oop5.cloning.html" class="link">clone</a>.
+  </p>
+
+  <div class="sect2" id="language.operators.assignment.reference">
+   <h3 class="title">Asignación por referencia</h3>
+   <p class="para">
+    La asignación por referencia también está soportada, utilizando la
+    sintaxis &quot;<span class="computeroutput">$var = &amp;$othervar;</span>&quot;.
+    Asignación por referencia significa que ambas variables terminan apuntando a los
+    mismos datos y nada es copiado en ninguna parte.
+   </p>
+   <p class="para">
+    <div class="example" id="example-116">
+     <p><strong>Ejemplo #1 Asignación por referencia</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$a </span><span style="color: #007700">= </span><span style="color: #0000BB">3</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b </span><span style="color: #007700">= &amp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">; </span><span style="color: #FF8000">// $b es una referencia para $a<br /><br /></span><span style="color: #007700">print </span><span style="color: #DD0000">"</span><span style="color: #0000BB">$a</span><span style="color: #DD0000">\n"</span><span style="color: #007700">; </span><span style="color: #FF8000">// muestra 3<br /></span><span style="color: #007700">print </span><span style="color: #DD0000">"</span><span style="color: #0000BB">$b</span><span style="color: #DD0000">\n"</span><span style="color: #007700">; </span><span style="color: #FF8000">// muestra 3<br /><br /></span><span style="color: #0000BB">$a </span><span style="color: #007700">= </span><span style="color: #0000BB">4</span><span style="color: #007700">; </span><span style="color: #FF8000">// cambia $a<br /><br /></span><span style="color: #007700">print </span><span style="color: #DD0000">"</span><span style="color: #0000BB">$a</span><span style="color: #DD0000">\n"</span><span style="color: #007700">; </span><span style="color: #FF8000">// muestra 4<br /></span><span style="color: #007700">print </span><span style="color: #DD0000">"</span><span style="color: #0000BB">$b</span><span style="color: #DD0000">\n"</span><span style="color: #007700">; </span><span style="color: #FF8000">// muestra 4 también, dado que $b es una referencia para $a, la cual ha<br />              // sido cambiada<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    Desde PHP 5, el operador <a href="language.oop5.basic.html#language.oop5.basic.new" class="link">new</a>
+    retorna una referencia automáticamente, así que asignar el resultado de
+    <a href="language.oop5.basic.html#language.oop5.basic.new" class="link">new</a> por referencia, resulta
+    en un mensaje <strong><code><a href="errorfunc.constants.html#constant.e-deprecated">E_DEPRECATED</a></code></strong> en PHP 5.3 y posteriores y
+    un mensaje <strong><code><a href="errorfunc.constants.html#constant.e-strict">E_STRICT</a></code></strong> en versiones anteriores.
+   </p>
+   <p class="para">
+    Por ejemplo, éste código resultará en una advertencia:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class </span><span style="color: #0000BB">C </span><span style="color: #007700">{}<br /><br /></span><span style="color: #FF8000">/* La siguiente línea genera el siguiente mensaje de error:<br /> * Deprecated: Assigning the return value of new by reference is deprecated in...<br /> */<br /></span><span style="color: #0000BB">$o </span><span style="color: #007700">= &amp;new </span><span style="color: #0000BB">C</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    Más información sobre referencias y sus usos potenciales se puede encontrar en
+    la sección del manual
+    <a href="language.references.html" class="link">Referencias Explicadas</a>
+   </p>
+  </div>
+ </div></div></div></body></html>

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Separaci&oacute;n de instrucciones</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.basic-syntax.phpmode.html">« Salir de HTML</a></li>
+      <li style="float: right;"><a href="language.basic-syntax.comments.html">Comentarios »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.basic-syntax.html">Sintaxis b&aacute;sica</a></li>
+    <li>Separaci&oacute;n de instrucciones</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.basic-syntax.instruction-separation" class="sect1">
+  <h2 class="title">Separación de instrucciones</h2>
+  <p class="para">
+   Como en C o en Perl, PHP requiere que las instrucciones terminen
+   en punto y coma al final de cada sentencia. La etiqueta de cierre
+   de un bloque de código de PHP automáticamente implica un punto y coma; no
+   es necesario usar un punto y coma para cerrar la última línea de un
+   bloque de PHP. La etiqueta de cierre del bloque incluirá la nueva línea
+   final inmediata si está presente.
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />    </span><span style="color: #007700">echo </span><span style="color: #DD0000">'Esto es una prueba'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;<br /></span><br /><span style="color: #0000BB">&lt;?php </span><span style="color: #007700">echo </span><span style="color: #DD0000">'Esto es una prueba' </span><span style="color: #0000BB">?&gt;<br /></span><br /><span style="color: #0000BB">&lt;?php </span><span style="color: #007700">echo </span><span style="color: #DD0000">'Hemos omitido la última etiqueta de cierre'</span><span style="color: #007700">;</span></span></code></div>
+    </div>
+
+   </div>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     La etiqueta de cierre de un bloque de PHP es opcional al final de un fichero,
+     y en algunos casos es útil omitirla cuando se usa <span class="function"><a href="function.include.html" class="function">include</a></span>
+     o <span class="function"><a href="function.require.html" class="function">require</a></span>, para que no se produzcan espacios
+     en blanco al final de los ficheros, pudiéndose aún añadir así
+     cabeceras para la respuesta posterior. También es práctico si se utiliza la salida
+     del buffer y no se desean espacios en blanco no deseados
+     al final de las partes generadas por ficheros incluídos.
+    </p>
+   </p></blockquote>
+  </p>
+ </div></div></div></body></html>

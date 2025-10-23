@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Devuelve una matriz con los detalles de la clave</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.openssl-pkey-free.html">« openssl_pkey_free</a></li>
+      <li style="float: right;"><a href="function.openssl-pkey-get-private.html">openssl_pkey_get_private »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.openssl.html">Funciones de OpenSSL</a></li>
+    <li>Devuelve una matriz con los detalles de la clave</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.openssl-pkey-get-details" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">openssl_pkey_get_details</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.2.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">openssl_pkey_get_details</span> &mdash; <span class="dc-title">Devuelve una matriz con los detalles de la clave</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.openssl-pkey-get-details-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>openssl_pkey_get_details</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$key</code></span>): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+
+  <p class="para rdfs-comment">
+   Esta función devuelve los detalles de la clave (bits, key, type).
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.openssl-pkey-get-details-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">key</code></dt>
+     <dd>
+      <p class="para">
+       Un recurso que contiene la clave.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.openssl-pkey-get-details-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve una matriz con los detalles de la clave si se tuvo éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si falló.
+   La matriz devuelta tiene indexados <code class="literal">bits</code> (número de bits),
+   <code class="literal">key</code> (representación de cadena de la clave pública) y
+   <code class="literal">type</code> (el tipo de la clave que es
+   <strong><code><a href="openssl.key-types.html#constant.openssl-keytype-rsa">OPENSSL_KEYTYPE_RSA</a></code></strong>,
+   <strong><code><a href="openssl.key-types.html#constant.openssl-keytype-dsa">OPENSSL_KEYTYPE_DSA</a></code></strong>,
+   <strong><code><a href="openssl.key-types.html#constant.openssl-keytype-dh">OPENSSL_KEYTYPE_DH</a></code></strong>,
+   <strong><code><a href="openssl.key-types.html#constant.openssl-keytype-ec">OPENSSL_KEYTYPE_EC</a></code></strong> o -1 significa desconocido).
+  </p>
+  <p class="para">
+   Dependiendo del tipo de clave usada, se pueden devolver detalles adicionales. Observe que
+   algunos elementos pueden no estar disponibles.
+  </p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code><a href="openssl.key-types.html#constant.openssl-keytype-rsa">OPENSSL_KEYTYPE_RSA</a></code></strong>, una clave adicional del array llamada <code class="literal">&quot;rsa&quot;</code>,
+     que contiene la información de la clave, es devuelta.
+    </span>
+    <table class="doctable informaltable">
+     
+      <thead>
+       <tr>
+        <th>Clave</th>
+        <th>Descripción</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td><code class="literal">&quot;n&quot;</code></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><code class="literal">&quot;e&quot;</code></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><code class="literal">&quot;d&quot;</code></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><code class="literal">&quot;p&quot;</code></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><code class="literal">&quot;q&quot;</code></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><code class="literal">&quot;dmp1&quot;</code></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><code class="literal">&quot;dmq1&quot;</code></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><code class="literal">&quot;iqmp&quot;</code></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code><a href="openssl.key-types.html#constant.openssl-keytype-dsa">OPENSSL_KEYTYPE_DSA</a></code></strong>, una clave adicional del array llamada <code class="literal">&quot;dsa&quot;</code>,
+     que contiene la información de la clave, es devuelta.
+    </span>
+    <table class="doctable informaltable">
+     
+      <thead>
+       <tr>
+        <th>Clave</th>
+        <th>Descripción</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td><code class="literal">&quot;p&quot;</code></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><code class="literal">&quot;q&quot;</code></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><code class="literal">&quot;g&quot;</code></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><code class="literal">&quot;priv_key&quot;</code></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><code class="literal">&quot;pub_key&quot;</code></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code><a href="openssl.key-types.html#constant.openssl-keytype-dh">OPENSSL_KEYTYPE_DH</a></code></strong>, una clave adicional del array llamada <code class="literal">&quot;dh&quot;</code>,
+     que contiene la información de la clave, es devuelta.
+    </span>
+    <table class="doctable informaltable">
+     
+      <thead>
+       <tr>
+        <th>Clave</th>
+        <th>Descripción</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td><code class="literal">&quot;p&quot;</code></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><code class="literal">&quot;g&quot;</code></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><code class="literal">&quot;priv_key&quot;</code></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><code class="literal">&quot;pub_key&quot;</code></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </li>
+  </ul>
+ </div>
+
+ 
+</div></div></div></body></html>

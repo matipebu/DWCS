@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Conviertir valores de un array asociativo en valores adecuados para sentencias SQL</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.pg-consume-input.html">« pg_consume_input</a></li>
+      <li style="float: right;"><a href="function.pg-copy-from.html">pg_copy_from »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.pgsql.html">Funciones de PostgreSQL</a></li>
+    <li>Conviertir valores de un array asociativo en valores adecuados para sentencias SQL</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.pg-convert" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">pg_convert</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">pg_convert</span> &mdash; <span class="dc-title">
+   Conviertir valores de un array asociativo en valores adecuados para sentencias SQL
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.pg-convert-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>pg_convert</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$connection</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$table_name</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$assoc_array</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$options</code><span class="initializer"> = 0</span></span><br>): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>pg_convert()</strong></span> evalua y convierte los valores de un
+   <code class="parameter">assoc_array</code> en valores adecuados para su uso en una sentencia
+   SQL. La condición previa para la función <span class="function"><strong>pg_convert()</strong></span> es la
+   existencia de una tabla con nombre igual al parámetro <code class="parameter">table_name</code> que tiene
+   por lo menos tantas columnas como elementos tiene el <code class="parameter">assoc_array</code>. Los
+   nombres de campos en <code class="parameter">table_name</code> deben coincidir con los índices de
+   <code class="parameter">assoc_array</code> y los tipos de datos correspondientes deben ser
+   compatibles. Devuelve un array con los valores convertidos en caso de éxito, <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>
+   de lo contrario.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Los valores booleanos son aceptados y se convierten a booleanos de PostgreSQL.
+    También se admiten representaciones de string de valores booleanos. <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> se
+    convierte al NULL de PostgreSQL.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.pg-convert-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">connection</code></dt>
+     <dd>
+      <p class="para">
+       Recurso de conexión de base de datos PostgreSQL.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">table_name</code></dt>
+     <dd>
+      <p class="para">
+       Nombre de la tabla contra la que convertir los tipos.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">assoc_array</code></dt>
+     <dd>
+      <p class="para">
+       Los datos que desea convertir.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">options</code></dt>
+     <dd>
+      <p class="para">
+       Cualquier número de <strong><code><a href="pgsql.constants.html#constant.pgsql-conv-ignore-default">PGSQL_CONV_IGNORE_DEFAULT</a></code></strong>,
+       <strong><code><a href="pgsql.constants.html#constant.pgsql-conv-force-null">PGSQL_CONV_FORCE_NULL</a></code></strong> ó
+       <strong><code><a href="pgsql.constants.html#constant.pgsql-conv-ignore-not-null">PGSQL_CONV_IGNORE_NOT_NULL</a></code></strong>, ó una combinación de estos.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.pg-convert-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Un <span class="type"><a href="language.types.array.html" class="type array">array</a></span> de valores convertidos, o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.pg-convert-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-1898">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>pg_convert()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />  $dbconn </span><span style="color: #007700">= </span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'dbname=foo'</span><span style="color: #007700">);<br /><br />  </span><span style="color: #0000BB">$tmp </span><span style="color: #007700">= array(<br />      </span><span style="color: #DD0000">'author' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Joe Thackery'</span><span style="color: #007700">,<br />      </span><span style="color: #DD0000">'year' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">2005</span><span style="color: #007700">,<br />      </span><span style="color: #DD0000">'title' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'My Life, by Joe Thackery'<br />  </span><span style="color: #007700">);<br /><br />  </span><span style="color: #0000BB">$vals </span><span style="color: #007700">= </span><span style="color: #0000BB">pg_convert</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbconn</span><span style="color: #007700">, </span><span style="color: #DD0000">'authors'</span><span style="color: #007700">, </span><span style="color: #0000BB">$tmp</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.pg-convert-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.pg-meta-data.html" class="function" rel="rdfs-seeAlso">pg_meta_data()</a> - Get meta data for table</span></li>
+    <li><span class="function"><a href="function.pg-insert.html" class="function" rel="rdfs-seeAlso">pg_insert()</a> - Insert array into table</span></li>
+    <li><span class="function"><a href="function.pg-select.html" class="function" rel="rdfs-seeAlso">pg_select()</a> - Select records</span></li>
+    <li><span class="function"><a href="function.pg-update.html" class="function" rel="rdfs-seeAlso">pg_update()</a> - Actualizar tabla</span></li>
+    <li><span class="function"><a href="function.pg-delete.html" class="function" rel="rdfs-seeAlso">pg_delete()</a> - Borra registros</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

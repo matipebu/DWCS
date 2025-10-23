@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>&iquest;Qu&eacute; hacen las referencias?</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.references.whatare.html">« &iquest;Qu&eacute; son las Referencias?</a></li>
+      <li style="float: right;"><a href="language.references.arent.html">&iquest;Qu&eacute; NO son las Referencias? »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.references.html">Explicaci&oacute;n de las Referencias</a></li>
+    <li>&iquest;Qu&eacute; hacen las referencias?</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.references.whatdo" class="sect1">
+  <h2 class="title">¿Qué hacen las referencias?</h2>
+  <p class="para">
+   Hay tres operaciones básicas que se realizan usando referencias:
+   <a href="language.references.whatdo.html#language.references.whatdo.assign" class="link">asignar por
+    referencia</a>, <a href="language.references.whatdo.html#language.references.whatdo.pass" class="link">pasar por
+   referencia</a>,
+   y <a href="language.references.whatdo.html#language.references.whatdo.return" class="link">devolver por
+   referencia</a>. En esta sección se dará una introducción a estas
+   operaciones, con enlaces para una lectura complementaria.
+  </p>
+  <div class="sect2" id="language.references.whatdo.assign">
+   <h3 class="title">Asignar por Referencia</h3>
+   <p class="para">
+    En la primera de estas operaciones, las referencias de PHP permiten hacer que dos
+    variables hagan referencia al mismo contenido. Es decir, cuando se hace:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$a </span><span style="color: #007700">=&amp; </span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+    </div>
+    significa que <var class="varname">$a</var> y <var class="varname">$b</var>
+    apuntan al mismo contenido.
+    <blockquote class="note"><p><strong class="note">Nota</strong>: 
+     <p class="para">
+      <var class="varname">$a</var> y <var class="varname">$b</var> aquí son completamente
+      iguales. <var class="varname">$a</var> no está apuntando a
+      <var class="varname">$b</var> o viceversa.
+      <var class="varname">$a</var> y <var class="varname">$b</var> están apuntando al
+      mismo lugar.
+     </p>
+    </p></blockquote>
+   </p>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     Si se asigna, pasa, o devuelve una variable no definida por referencia, 
+     la variable se creará.
+     <div class="example" id="example-362">
+      <p><strong>Ejemplo #1 Usar referencias con variables no definidas</strong></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(&amp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">) { }<br /><br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">); </span><span style="color: #FF8000">// $a es "creada" y asignada a null<br /><br /></span><span style="color: #0000BB">$b </span><span style="color: #007700">= array();<br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$b</span><span style="color: #007700">[</span><span style="color: #DD0000">'b'</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">array_key_exists</span><span style="color: #007700">(</span><span style="color: #DD0000">'b'</span><span style="color: #007700">, </span><span style="color: #0000BB">$b</span><span style="color: #007700">)); </span><span style="color: #FF8000">// bool(true)<br /><br /></span><span style="color: #0000BB">$c </span><span style="color: #007700">= new </span><span style="color: #0000BB">StdClass</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$c</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">d</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">property_exists</span><span style="color: #007700">(</span><span style="color: #0000BB">$c</span><span style="color: #007700">, </span><span style="color: #DD0000">'d'</span><span style="color: #007700">)); </span><span style="color: #FF8000">// bool(true)<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+      </div>
+
+     </div>
+    </p>
+   </p></blockquote>
+   <p class="para">
+    Se puede usar la misma sintaxis con funciones que devuelven
+    referencias:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$foo </span><span style="color: #007700">=&amp; </span><span style="color: #0000BB">find_var</span><span style="color: #007700">(</span><span style="color: #0000BB">$bar</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+    </div>
+    Desde PHP 5, <a href="language.oop5.basic.html#language.oop5.basic.new" class="link">new</a>
+    devuelve una referencia automáticamente, por lo que
+    usar <code class="literal">=&amp;</code> en este contexto es obsoleto y
+    produce un mensaje <strong><code><a href="errorfunc.constants.html#constant.e-deprecated">E_DEPRECATED</a></code></strong> en PHP 5.3 y
+    posteriores, y un mensaje <strong><code><a href="errorfunc.constants.html#constant.e-strict">E_STRICT</a></code></strong> en versiones anteriores.
+    A partir de PHP 7.0 es sintácticamente inválido.
+    (Técnicamente, la diferencia es que, en PHP 5, las variables de objetos, como
+    los recursos, son meros punteros a la información del objeto actual, por lo que estas referencias
+    a objetos no son &quot;referencias&quot; en el mismo sentido usado antes (alias).
+    Para más información, véase <a href="language.oop5.references.html" class="link">Objetos
+    y referencias</a>.)
+   </p>
+   <div class="warning"><strong class="warning">Advertencia</strong>
+    <p class="para">
+     Si se asigna una referencia a una varible declarada <code class="literal">global</code>
+     dentro de una función, la referencia será visible sólo dentro de la función.
+     Se puede evitar esto usando la matriz <var class="varname"><a href="reserved.variables.globals.html" class="classname">$GLOBALS</a></var>.
+     <div class="example" id="example-363">
+      <p><strong>Ejemplo #2 Refenciar variables globales dentro de funciones</strong></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$var1 </span><span style="color: #007700">= </span><span style="color: #DD0000">"Variable de ejemplo"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$var2 </span><span style="color: #007700">= </span><span style="color: #DD0000">""</span><span style="color: #007700">;<br /><br />function </span><span style="color: #0000BB">referencias_globales</span><span style="color: #007700">(</span><span style="color: #0000BB">$usar_globals</span><span style="color: #007700">)<br />{<br />    global </span><span style="color: #0000BB">$var1</span><span style="color: #007700">, </span><span style="color: #0000BB">$var2</span><span style="color: #007700">;<br />    if (!</span><span style="color: #0000BB">$usar_globals</span><span style="color: #007700">) {<br />        </span><span style="color: #0000BB">$var2 </span><span style="color: #007700">=&amp; </span><span style="color: #0000BB">$var1</span><span style="color: #007700">; </span><span style="color: #FF8000">// visible sólo dentro de la función<br />    </span><span style="color: #007700">} else {<br />        </span><span style="color: #0000BB">$GLOBALS</span><span style="color: #007700">[</span><span style="color: #DD0000">"var2"</span><span style="color: #007700">] =&amp; </span><span style="color: #0000BB">$var1</span><span style="color: #007700">; </span><span style="color: #FF8000">// visible también en el contexto global<br />    </span><span style="color: #007700">}<br />}<br /><br /></span><span style="color: #0000BB">referencias_globales</span><span style="color: #007700">(</span><span style="color: #0000BB">false</span><span style="color: #007700">);<br />echo </span><span style="color: #DD0000">"var2 está establecida a '</span><span style="color: #0000BB">$var2</span><span style="color: #DD0000">'\n"</span><span style="color: #007700">; </span><span style="color: #FF8000">// var2 está establecida a ''<br /></span><span style="color: #0000BB">referencias_globales</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br />echo </span><span style="color: #DD0000">"var2 está establecida a '</span><span style="color: #0000BB">$var2</span><span style="color: #DD0000">'\n"</span><span style="color: #007700">; </span><span style="color: #FF8000">// var2 está establecida a 'Variable de ejemplo'<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+      </div>
+
+     </div>
+     Piense en <code class="literal">global $var;</code> como simplificación de <code class="literal">$var
+     =&amp; $GLOBALS[&#039;var&#039;];</code>. De este modo, al asignar otra referencia
+     a <code class="literal">$var</code> sólo cambia la referencia de la variable local.
+    </p>
+   </div>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     Si se asigna un valor a una variable con referencias en una
+     sentencia <a href="control-structures.foreach.html" class="link">foreach</a>, también se modifican las referencias.
+     <div class="example" id="example-364">
+      <p><strong>Ejemplo #3 Referencias y la sentencia foreach</strong></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$ref </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$fila </span><span style="color: #007700">=&amp; </span><span style="color: #0000BB">$ref</span><span style="color: #007700">;<br />foreach (array(</span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">) as </span><span style="color: #0000BB">$fila</span><span style="color: #007700">) {<br />    </span><span style="color: #FF8000">// hacer algo<br /></span><span style="color: #007700">}<br />echo </span><span style="color: #0000BB">$ref</span><span style="color: #007700">; </span><span style="color: #FF8000">// 3 - último elemento de la matriz iterada<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+      </div>
+
+     </div>
+    </p>
+   </p></blockquote>
+   <p class="para">
+    Mientras que no sea estrictamente una asignación por referencia, las expresiones creadas
+    con el constructor de lenguaje
+    <a href="function.array.html" class="link"><code class="literal">array()</code></a> también pueden
+    comportarse como tales prefijando <code class="literal">&amp;</code> al elemento del array
+    a añadir. Ejemplo:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$a </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b </span><span style="color: #007700">= array(</span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$arr </span><span style="color: #007700">= array(&amp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">, &amp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">], &amp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]++; </span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]++; </span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">]++;<br /></span><span style="color: #FF8000">/* $a == 2, $b == array(3, 4); */<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    Observe, sin embargo, que las referencias dentro de arrays son potencialmente peligrosas.
+    Realizar una asignación normal (no por referencia) con una referencia en el
+    lado derecho no convierte el lado izquierdo en una referencia, pero las referencias
+    dentro de arrays son conservadas en estas asignaciones normales. Esto también se aplica
+    a las llamadas a funciones donde el array es pasado por valor. Ejemplo:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/* Asignación de variables escalares */<br /></span><span style="color: #0000BB">$a </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b </span><span style="color: #007700">=&amp; </span><span style="color: #0000BB">$a</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$c </span><span style="color: #007700">= </span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$c </span><span style="color: #007700">= </span><span style="color: #0000BB">7</span><span style="color: #007700">; </span><span style="color: #FF8000">//$c no es una referencia; no cambia $a o $b<br /><br />/* Asignación de variables de array */<br /></span><span style="color: #0000BB">$arr </span><span style="color: #007700">= array(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$a </span><span style="color: #007700">=&amp; </span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]; </span><span style="color: #FF8000">// $a y $arr[0] son el mismo conjunto de referencias<br /></span><span style="color: #0000BB">$arr2 </span><span style="color: #007700">= </span><span style="color: #0000BB">$arr</span><span style="color: #007700">; </span><span style="color: #FF8000">// ¡no es una asignación por referencia!<br /></span><span style="color: #0000BB">$arr2</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]++;<br /></span><span style="color: #FF8000">/* $a == 2, $arr == array(2) */<br />/* ¡El contenido de $arr se cambia incluso si no es una referencia! */<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+    </div>
+    En otras palabras, el comportamiento de las referencias de arrays está definido en una
+    base elemento-por-elemento; el comportamiento de las referencias de elementos individuales
+    está desasociado del estado de la referencia del array contenedor.
+   </p>
+  </div>
+  <div class="sect2" id="language.references.whatdo.pass">
+   <h3 class="title">Pasar por Referencia</h3>
+   <p class="para">
+    Lo segundo que hacen las referencias es pasar variables por
+    referencia. Esto se lleva a cabo haciendo que una variable local en una función
+    y una variable en el ámbito de la llamada referencien al mismo
+    contenido. Ejemplo:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(&amp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">)<br />{<br />    </span><span style="color: #0000BB">$var</span><span style="color: #007700">++;<br />}<br /><br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">=</span><span style="color: #0000BB">5</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+     </div>
+
+    </div>
+    hará que <var class="varname">$a</var> sea 6. Esto sucede porque en
+    la función <var class="varname">foo</var> la variable
+    <var class="varname">$var</var> hace referencia al mismo contenido que
+    <var class="varname">$a</var>. Para más información sobre esto, lea
+    la sección <a href="language.references.pass.html" class="link">pasar por
+    referencia</a>.
+   </p>
+  </div>
+  <div class="sect2" id="language.references.whatdo.return">
+   <h3 class="title">Devolver por Referencia</h3>
+   <p class="para">
+    Lo tercero que hacen las referncias es <a href="language.references.return.html" class="link">devolver por referencia</a>.
+   </p>
+  </div>
+ </div></div></div></body></html>

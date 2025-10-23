@@ -1,0 +1,423 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Realiza una comparaci&oacute;n global de una expresi&oacute;n regular</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.preg-match.html">« preg_match</a></li>
+      <li style="float: right;"><a href="function.preg-quote.html">preg_quote »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.pcre.html">Funciones de PCRE</a></li>
+    <li>Realiza una comparaci&oacute;n global de una expresi&oacute;n regular</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.preg-match-all" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">preg_match_all</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">preg_match_all</span> &mdash; <span class="dc-title">Realiza una comparación global de una expresión regular</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.preg-match-all-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>preg_match_all</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$pattern</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$subject</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter reference">&$matches</code><span class="initializer"> = ?</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$flags</code><span class="initializer"> = <strong><code><a href="pcre.constants.html#constant.preg-pattern-order">PREG_PATTERN_ORDER</a></code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$offset</code><span class="initializer"> = 0</span></span><br>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="para rdfs-comment">
+   Busca en <code class="parameter">subject</code> todas las coincidencias de la expresión
+   regular dada en <code class="parameter">pattern</code> y las introduce en
+   <code class="parameter">matches</code> en el orden especificado por
+   <code class="parameter">flags</code>.
+  </p>
+  <p class="para">
+   Después haber encontrado la primera coincidencia, las búsquedas subsiguientes continuarán
+   desde el final de la dicha coincidencia.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.preg-match-all-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">pattern</code></dt>
+     <dd>
+      <p class="para">
+       El patrón de búsqueda, dado como string.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">subject</code></dt>
+     <dd>
+      <p class="para">
+       La cadena de entrada.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">matches</code></dt>
+     <dd>
+      <p class="para">
+       Un array con todas las coincidencias en un array multi-dimensional ordenadas según
+       <code class="parameter">flags</code>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">flags</code></dt>
+     <dd>
+      <p class="para">
+       Puede ser una combinación de las siguientes banderas (observe que no tiene
+       sentido usar <strong><code><a href="pcre.constants.html#constant.preg-pattern-order">PREG_PATTERN_ORDER</a></code></strong> junto con
+       <strong><code><a href="pcre.constants.html#constant.preg-set-order">PREG_SET_ORDER</a></code></strong>):
+       <dl>
+        
+         <dt><strong><code><a href="pcre.constants.html#constant.preg-pattern-order">PREG_PATTERN_ORDER</a></code></strong></dt>
+         <dd>
+          <p class="para">
+           Ordena los resultados de forma que <var class="varname">$matches[0]</var> es un array de coincidencias
+           del patrón completo, <var class="varname">$matches[1]</var> es un array de cadenas coincidentes por
+           el primer subpatrón entre paréntesis, y así sucesivamente.
+          </p>
+          <p class="para">
+           <div class="informalexample">
+            <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />preg_match_all</span><span style="color: #007700">(</span><span style="color: #DD0000">"|&lt;[^&gt;]+&gt;(.*)&lt;/[^&gt;]+&gt;|U"</span><span style="color: #007700">,<br />    </span><span style="color: #DD0000">"&lt;b&gt;ejemplo: &lt;/b&gt;&lt;div align=left&gt;esto es una prueba&lt;/div&gt;"</span><span style="color: #007700">,<br />    </span><span style="color: #0000BB">$salida</span><span style="color: #007700">, </span><span style="color: #0000BB">PREG_PATTERN_ORDER</span><span style="color: #007700">);<br />echo </span><span style="color: #0000BB">$salida</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">] . </span><span style="color: #DD0000">", " </span><span style="color: #007700">. </span><span style="color: #0000BB">$salida</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">][</span><span style="color: #0000BB">1</span><span style="color: #007700">] . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo </span><span style="color: #0000BB">$salida</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">] . </span><span style="color: #DD0000">", " </span><span style="color: #007700">. </span><span style="color: #0000BB">$salida</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">][</span><span style="color: #0000BB">1</span><span style="color: #007700">] . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+            </div>
+
+            <p class="para">El resultado del ejemplo sería:</p>
+            <div class="example-contents screen">
+<div class="parameterscode"><pre class="parameterscode">&lt;b&gt;ejemplo: &lt;/b&gt;, &lt;div align=left&gt;esto es una prueba&lt;/div&gt;
+ejemplo: , esto es una prueba</pre>
+</div>
+            </div>
+            <p class="para">
+             Así, <var class="varname">$salida[0]</var> contiene un array de cadenas que coinciden con el patrón completo,
+             y <var class="varname">$salida[1]</var> contiene un array de cadenas encerradas entre etiquetas.
+            </p>
+           </div>
+          </p>
+          <p class="para">
+           Si el patrón contiene subpatrones con nombre, <var class="varname">$matches</var>
+           contendrá además entradas para claves con el nombre del subpatrón.
+          </p>
+          <p class="para">
+           Si el subpatrón contiene subpatrones con nombres duplicados, solamente se almacenará
+           en <var class="varname">$matches[NAME]</var> el último subpatrón de la derecha.
+           <div class="informalexample">
+            <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />preg_match_all</span><span style="color: #007700">(<br />    </span><span style="color: #DD0000">'/(?J)(?&lt;match&gt;foo)|(?&lt;match&gt;bar)/'</span><span style="color: #007700">,<br />    </span><span style="color: #DD0000">'foo bar'</span><span style="color: #007700">,<br />    </span><span style="color: #0000BB">$matches</span><span style="color: #007700">,<br />    </span><span style="color: #0000BB">PREG_PATTERN_ORDER<br /></span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$matches</span><span style="color: #007700">[</span><span style="color: #DD0000">'match'</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+            </div>
+
+            <p class="para">El resultado del ejemplo sería:</p>
+            <div class="example-contents screen">
+<div class="parameterscode"><pre class="parameterscode">Array
+(
+    [0] =&gt; 
+    [1] =&gt; bar
+)</pre>
+</div>
+            </div>
+           </div>
+          </p>
+         </dd>
+        
+        
+         <dt><strong><code><a href="pcre.constants.html#constant.preg-set-order">PREG_SET_ORDER</a></code></strong></dt>
+         <dd>
+          <p class="para">
+           Ordena los resultados de forma que <var class="varname">$matches[0]</var> es un array del primer conjunto
+           de coincidencias, <var class="varname">$matches[1]</var> es un array del segundo conjunto de coincidencias,
+           y así sucesivamente.
+           <div class="informalexample">
+            <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />preg_match_all</span><span style="color: #007700">(</span><span style="color: #DD0000">"|&lt;[^&gt;]+&gt;(.*)&lt;/[^&gt;]+&gt;|U"</span><span style="color: #007700">,<br />    </span><span style="color: #DD0000">"&lt;b&gt;ejemplo: &lt;/b&gt;&lt;div align=\"left\"&gt;esto es una prueba&lt;/div&gt;"</span><span style="color: #007700">,<br />    </span><span style="color: #0000BB">$salida</span><span style="color: #007700">, </span><span style="color: #0000BB">PREG_SET_ORDER</span><span style="color: #007700">);<br />echo </span><span style="color: #0000BB">$salida</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">] . </span><span style="color: #DD0000">", " </span><span style="color: #007700">. </span><span style="color: #0000BB">$salida</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">][</span><span style="color: #0000BB">1</span><span style="color: #007700">] . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo </span><span style="color: #0000BB">$salida</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">] . </span><span style="color: #DD0000">", " </span><span style="color: #007700">. </span><span style="color: #0000BB">$salida</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">][</span><span style="color: #0000BB">1</span><span style="color: #007700">] . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+            </div>
+
+            <p class="para">El resultado del ejemplo sería:</p>
+            <div class="example-contents screen">
+<div class="parameterscode"><pre class="parameterscode">&lt;b&gt;ejemplo: &lt;/b&gt;, ejemplo:
+&lt;div align=&quot;left&quot;&gt;esto es una prueba&lt;/div&gt;, esto es una prueba</pre>
+</div>
+            </div>
+           </div>
+          </p>
+         </dd>
+        
+        
+         <dt><strong><code><a href="pcre.constants.html#constant.preg-offset-capture">PREG_OFFSET_CAPTURE</a></code></strong></dt>
+         <dd>
+          <p class="para">
+           Si se pasa esta bandera, por cada coincidencia producida, el índice de la cadena añadida
+           también será devuelto. Observe que esto cambia el valor de
+           <code class="parameter">matches</code> dentro de un array de arrays donde cada elemento es un array
+           consistente en la cadena coincidente en el índice <code class="literal">0</code>
+           y su índice de cadena dentro de <code class="parameter">subject</code> en el índice
+           <code class="literal">1</code>.
+           <div class="informalexample">
+            <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />preg_match_all</span><span style="color: #007700">(</span><span style="color: #DD0000">'/(foo)(bar)(baz)/'</span><span style="color: #007700">, </span><span style="color: #DD0000">'foobarbaz'</span><span style="color: #007700">, </span><span style="color: #0000BB">$matches</span><span style="color: #007700">, </span><span style="color: #0000BB">PREG_OFFSET_CAPTURE</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$matches</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+            </div>
+
+            <p class="para">El resultado del ejemplo sería:</p>
+            <div class="example-contents screen">
+<div class="parameterscode"><pre class="parameterscode">Array
+(
+    [0] =&gt; Array
+        (
+            [0] =&gt; Array
+                (
+                    [0] =&gt; foobarbaz
+                    [1] =&gt; 0
+                )
+
+        )
+
+    [1] =&gt; Array
+        (
+            [0] =&gt; Array
+                (
+                    [0] =&gt; foo
+                    [1] =&gt; 0
+                )
+
+        )
+
+    [2] =&gt; Array
+        (
+            [0] =&gt; Array
+                (
+                    [0] =&gt; bar
+                    [1] =&gt; 3
+                )
+
+        )
+
+    [3] =&gt; Array
+        (
+            [0] =&gt; Array
+                (
+                    [0] =&gt; baz
+                    [1] =&gt; 6
+                )
+
+        )
+
+)</pre>
+</div>
+            </div>
+           </div>
+          </p>
+         </dd>
+        
+       </dl>
+      </p>
+      <p class="para">
+       Si no se da un orden de bandera, se asume
+       <strong><code><a href="pcre.constants.html#constant.preg-pattern-order">PREG_PATTERN_ORDER</a></code></strong>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">offset</code></dt>
+     <dd>
+      <p class="para">
+       Normalmente, la búsqueda comienza por el principio de la cadena objetivo.
+       El parámetro opcional <code class="parameter">offset</code> se puede usar para
+       especificar el lugar alternativo desde el cual comenzar la búsqueda (en bytes).
+      </p>
+      <blockquote class="note"><p><strong class="note">Nota</strong>: 
+       <p class="para">
+        Usar <code class="parameter">offset</code> no es equivalente a pasar
+        <code class="literal">substr($sujeto, $índice)</code> a
+        <span class="function"><a href="function.preg-match.html" class="function">preg_match()</a></span> en lugar de la cadena objetivo,
+        ya que <code class="parameter">pattern</code> puede contener declaraciones como
+        <em>^</em>, <em>$</em> o
+        <em>(?&lt;=x)</em>. Véase <span class="function"><a href="function.preg-match.html" class="function">preg_match()</a></span>
+        para los ejemplos.
+       </p>
+      </p></blockquote>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.preg-match-all-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el número de coincidencias del patrón completo (el cual puede ser cero),
+   o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si se produjo un error.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 changelog" id="refsect1-function.preg-match-all-changelog">
+  <h3 class="title">Historial de cambios</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Versión</th>
+       <th>Descripción</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.4.0</td>
+       <td>
+        El parámetro <code class="parameter">matches</code> ahora es opcional.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.3.6</td>
+       <td>
+        Devuelve <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si <code class="parameter">offset</code>
+        es mayor que la longitud de
+        <code class="parameter">subject</code>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.2.2</td>
+       <td>
+        Los sub-patrones nominados ahora aceptan la
+        sintaxis <code class="literal">(?&lt;nombre&gt;)</code>
+        y <code class="literal">(?&#039;nombre&#039;)</code> así como
+        <code class="literal">(?P&lt;nombre&gt;)</code>. Versiones anteriores
+        sólo aceptaban <code class="literal">(?P&lt;nombre&gt;)</code>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.preg-match-all-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4749">
+    <p><strong>Ejemplo #1 Obtener todos los números de teléfono de algún texto.</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />preg_match_all</span><span style="color: #007700">(</span><span style="color: #DD0000">"/\(?  (\d{3})?  \)?  (?(1)  [\-\s] ) \d{3}-\d{4}/x"</span><span style="color: #007700">,<br />                </span><span style="color: #DD0000">"Llame al 555-1212 o al 1-800-555-1212"</span><span style="color: #007700">, </span><span style="color: #0000BB">$teléfonos</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-4750">
+    <p><strong>Ejemplo #2 Buscar coincidencias de etiquetas HTML (codicioso)</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// El \\2 es un ejemplo de retro-referencia. Esto le dice a pcre que<br />// debe coincidir el segundo conjunto de paréntesis en la expresión regular<br />// misma, el cual sería el ([\w]+) en este caso. La barra invertida extra es<br />// necesaria ya que la cadena está entre comilla dobles.<br /></span><span style="color: #0000BB">$html </span><span style="color: #007700">= </span><span style="color: #DD0000">"&lt;b&gt;texto en negrita&lt;/b&gt;&lt;a href=hola.html&gt;Haz clic sobre mí&lt;/a&gt;"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">preg_match_all</span><span style="color: #007700">(</span><span style="color: #DD0000">"/(&lt;([\w]+)[^&gt;]*&gt;)(.*?)(&lt;\/\\2&gt;)/"</span><span style="color: #007700">, </span><span style="color: #0000BB">$html</span><span style="color: #007700">, </span><span style="color: #0000BB">$coincidencias</span><span style="color: #007700">, </span><span style="color: #0000BB">PREG_SET_ORDER</span><span style="color: #007700">);<br /><br />foreach (</span><span style="color: #0000BB">$coincidencias </span><span style="color: #007700">as </span><span style="color: #0000BB">$valor</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">"coindicido: " </span><span style="color: #007700">. </span><span style="color: #0000BB">$valor</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">] . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />    echo </span><span style="color: #DD0000">"parte 1: " </span><span style="color: #007700">. </span><span style="color: #0000BB">$valor</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">] . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />    echo </span><span style="color: #DD0000">"parte 2: " </span><span style="color: #007700">. </span><span style="color: #0000BB">$valor</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">] . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />    echo </span><span style="color: #DD0000">"parte 3: " </span><span style="color: #007700">. </span><span style="color: #0000BB">$valor</span><span style="color: #007700">[</span><span style="color: #0000BB">3</span><span style="color: #007700">] . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />    echo </span><span style="color: #DD0000">"parte 4: " </span><span style="color: #007700">. </span><span style="color: #0000BB">$valor</span><span style="color: #007700">[</span><span style="color: #0000BB">4</span><span style="color: #007700">] . </span><span style="color: #DD0000">"\n\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">coindicido: &lt;b&gt;texto en negrita&lt;/b&gt;
+parte 1: &lt;b&gt;
+parte 2: b
+parte 3: texto en negrita
+parte 4: &lt;/b&gt;
+
+coindicido: &lt;a href=hola.html&gt;Haz clic sobre mí&lt;/a&gt;
+parte 1: &lt;a href=hola.html&gt;
+parte 2: a
+parte 3: Haz clic sobre mí
+parte 4: &lt;/a&gt;</pre>
+</div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-4751">
+    <p><strong>Ejemplo #3 Usar sub-patrones nominados</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br />$cadena </span><span style="color: #007700">= &lt;&lt;&lt;FOO<br /></span><span style="color: #DD0000">a: 1<br />b: 2<br />c: 3<br /></span><span style="color: #007700">FOO;<br /><br /></span><span style="color: #0000BB">preg_match_all</span><span style="color: #007700">(</span><span style="color: #DD0000">'/(?P&lt;nombre&gt;\w+): (?P&lt;dígito&gt;\d+)/'</span><span style="color: #007700">, </span><span style="color: #0000BB">$cadena</span><span style="color: #007700">, </span><span style="color: #0000BB">$coincidencias</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/* Esto también funciona en PHP 5.2.2 (PCRE 7.0) y posteriores, sin embargo<br /> * la forma de arriba es la recomendada por compatibilidad con versiones anteriores */<br />// preg_match_all('/(?&lt;nombre&gt;\w+): (?&lt;dígito&gt;\d+)/', $cadena, $coincidencias);<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$coincidencias</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Array
+(
+    [0] =&gt; Array
+        (
+            [0] =&gt; a: 1
+            [1] =&gt; b: 2
+            [2] =&gt; c: 3
+        )
+
+    [nombre] =&gt; Array
+        (
+            [0] =&gt; a
+            [1] =&gt; b
+            [2] =&gt; c
+        )
+
+    [1] =&gt; Array
+        (
+            [0] =&gt; a
+            [1] =&gt; b
+            [2] =&gt; c
+        )
+
+    [dígito] =&gt; Array
+        (
+            [0] =&gt; 1
+            [1] =&gt; 2
+            [2] =&gt; 3
+        )
+
+    [2] =&gt; Array
+        (
+            [0] =&gt; 1
+            [1] =&gt; 2
+            [2] =&gt; 3
+        )
+
+)</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.preg-match-all-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><a href="pcre.pattern.html" class="link">Patrones de PCRE</a></li>
+    <li><span class="function"><a href="function.preg-quote.html" class="function" rel="rdfs-seeAlso">preg_quote()</a> - Escapar caracteres en una expresi&oacute;n regular</span></li>
+    <li><span class="function"><a href="function.preg-match.html" class="function" rel="rdfs-seeAlso">preg_match()</a> - Realiza una comparaci&oacute;n con una expresi&oacute;n regular</span></li>
+    <li><span class="function"><a href="function.preg-replace.html" class="function" rel="rdfs-seeAlso">preg_replace()</a> - Realiza una b&uacute;squeda y sustituci&oacute;n de una expresi&oacute;n regular</span></li>
+    <li><span class="function"><a href="function.preg-split.html" class="function" rel="rdfs-seeAlso">preg_split()</a> - Divide un string mediante una expresi&oacute;n regular</span></li>
+    <li><span class="function"><a href="function.preg-last-error.html" class="function" rel="rdfs-seeAlso">preg_last_error()</a> - Devuelve el c&oacute;digo de error de la &uacute;ltima ejecuci&oacute;n de expresi&oacute;n regular de PCRE</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

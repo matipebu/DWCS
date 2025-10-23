@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Restablecer los valores del mecanismo de reescritura de URLs</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.output-add-rewrite-var.html">« output_add_rewrite_var</a></li>
+      <li style="float: right;"><a href="book.info.html">Opciones/Info de PHP »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.outcontrol.html">Funciones del Control de la salida</a></li>
+    <li>Restablecer los valores del mecanismo de reescritura de URLs</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.output-reset-rewrite-vars" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">output_reset_rewrite_vars</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">output_reset_rewrite_vars</span> &mdash; <span class="dc-title">Restablecer los valores del mecanismo de reescritura de URLs</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.output-reset-rewrite-vars-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>output_reset_rewrite_vars</strong></span>(): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Esta función restablece el mecanismo de reescritura de URLs y elimina todas las
+   variables de reescritura establecidas previamente por la función
+   <span class="function"><a href="function.output-add-rewrite-var.html" class="function">output_add_rewrite_var()</a></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.output-reset-rewrite-vars-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> en caso de éxito o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.output-reset-rewrite-vars-changelog">
+  <h3 class="title">Historial de cambios</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Versión</th>
+       <th>Descripción</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>7.1.0</td>
+       <td>
+        Antes de PHP 7.1.0, la variables reescritas por <span class="function"><a href="function.output-add-rewrite-var.html" class="function">output_add_rewrite_var()</a></span>
+        utilizaban el mismo buffer de salida del módulo de sesión trans sid. Desde PHP 7.1.0,
+        se usa un buffer de salida dedicado y <span class="function"><strong>output_reset_rewrite_vars()</strong></span> 
+        solo elimina las variables reescritas definidas por <span class="function"><a href="function.output-add-rewrite-var.html" class="function">output_add_rewrite_var()</a></span>.
+      </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.output-reset-rewrite-vars-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-545">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>output_reset_rewrite_vars()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />session_start</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">output_add_rewrite_var</span><span style="color: #007700">(</span><span style="color: #DD0000">'var'</span><span style="color: #007700">, </span><span style="color: #DD0000">'value'</span><span style="color: #007700">);<br /><br />echo </span><span style="color: #DD0000">'&lt;a href="file.php"&gt;link&lt;/a&gt;'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">ob_flush</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">output_reset_rewrite_vars</span><span style="color: #007700">();<br />echo </span><span style="color: #DD0000">'&lt;a href="file.php"&gt;link&lt;/a&gt;'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">&lt;a href=&quot;file.php?PHPSESSID=xxx&amp;var=value&quot;&gt;link&lt;/a&gt;
+&lt;a href=&quot;file.php&quot;&gt;link&lt;/a&gt;</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.output-reset-rewrite-vars-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.output-add-rewrite-var.html" class="function" rel="rdfs-seeAlso">output_add_rewrite_var()</a> - A&ntilde;adir valores al mecanismo de reescritura de URLs</span></li>
+    <li><span class="function"><a href="function.ob-flush.html" class="function" rel="rdfs-seeAlso">ob_flush()</a> - Vaciar (enviar) el b&uacute;fer de salida</span></li>
+    <li><span class="function"><a href="function.ob-list-handlers.html" class="function" rel="rdfs-seeAlso">ob_list_handlers()</a> - Enumerar todos los gestores de salida en uso</span></li>
+    <li><a href="outcontrol.configuration.html#ini.url-rewriter.tags" class="link">url_rewriter.tags</a></li>
+    <li><a href="outcontrol.configuration.html#ini.url-rewriter.hosts" class="link">url_rewriter.hosts</a></li>
+    <li><a href="session.configuration.html#ini.session.trans-sid-tags" class="link">session.trans_sid_tags</a></li>
+    <li><a href="session.configuration.html#ini.session.trans-sid-hosts" class="link">session.trans_sid_hosts</a></li>
+   </ul>
+  </p>
+ </div>
+  
+
+</div></div></div></body></html>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Devuelve un string que describe el c&oacute;digo de error dado</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.curl-share-strerror.html">« curl_share_strerror</a></li>
+      <li style="float: right;"><a href="function.curl-unescape.html">curl_unescape »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.curl.html">Funciones de cURL</a></li>
+    <li>Devuelve un string que describe el c&oacute;digo de error dado</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.curl-strerror" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">curl_strerror</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.5.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">curl_strerror</span> &mdash; <span class="dc-title">Devuelve un string que describe el código de error dado</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.curl-strerror-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>curl_strerror</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$errornum</code></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Devuelve un mensaje de texto describiendo el código de error dado.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.curl-strerror-parameters">
+  <h3 class="title">Parámetros</h3>
+  <dl>
+   
+    <dt><code class="parameter">errornum</code></dt>
+    <dd>
+     <p class="para">
+      Una de las constantes de <a href="http://curl.haxx.se/libcurl/c/libcurl-errors.html" class="link external">&raquo;&nbsp;código de error cURL</a> .
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.curl-strerror-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve la descripción de error o <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> para códigos de error inválidos.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.curl-strerror-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4235">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><a href="function.curl-errno.html" class="function">curl_errno()</a></span> </strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Crea un gestor curl con un protocolo con nombre erróneo en una URL<br /></span><span style="color: #0000BB">$ch </span><span style="color: #007700">= </span><span style="color: #0000BB">curl_init</span><span style="color: #007700">(</span><span style="color: #DD0000">"htp://example.com/"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Envía solicitud<br /></span><span style="color: #0000BB">curl_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">// Valida si se ha producido errores y muestra el mensaje de error<br /></span><span style="color: #007700">if(</span><span style="color: #0000BB">$errno </span><span style="color: #007700">= </span><span style="color: #0000BB">curl_errno</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">)) {<br />    </span><span style="color: #0000BB">$error_message </span><span style="color: #007700">= </span><span style="color: #0000BB">curl_strerror</span><span style="color: #007700">(</span><span style="color: #0000BB">$errno</span><span style="color: #007700">);<br />    echo </span><span style="color: #DD0000">"cURL error (</span><span style="color: #007700">{</span><span style="color: #0000BB">$errno</span><span style="color: #007700">}</span><span style="color: #DD0000">):\n </span><span style="color: #007700">{</span><span style="color: #0000BB">$error_message</span><span style="color: #007700">}</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">// Cierra el gestor<br /></span><span style="color: #0000BB">curl_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">cURL error (1):
+ Unsupported protocol</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.curl-strerror-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.curl-errno.html" class="function" rel="rdfs-seeAlso">curl_errno()</a> - Devuelve el &uacute;ltimo n&uacute;mero de error</span></li>
+    <li><span class="function"><a href="function.curl-error.html" class="function" rel="rdfs-seeAlso">curl_error()</a> - Devuelve una cadena que contiene el &uacute;ltimo error de la sesi&oacute;n actual</span></li>
+    <li><a href="http://curl.haxx.se/libcurl/c/libcurl-errors.html" class="link external">&raquo;&nbsp;códigos de error Curl</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

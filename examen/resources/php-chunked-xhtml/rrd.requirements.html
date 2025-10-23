@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Requerimientos</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="rrd.setup.html">« Instalaci&oacute;n/Configuraci&oacute;n</a></li>
+      <li style="float: right;"><a href="rrd.installation.html">Instalaci&oacute;n »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="rrd.setup.html">Instalaci&oacute;n/Configuraci&oacute;n</a></li>
+    <li>Requerimientos</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="rrd.requirements" class="section">
+  <h2 class="title">Requerimientos</h2>
+  <p class="para">
+   Es necesario instalar librrd antes de poder utilizar PECL/rrd. La opción más común
+   es utilizando el paquete librrd-dev de su distribución Linux favorita.
+   PECL/rrd ha sido testeado con librrd 1.4.3, versiones más antiguas o más recientes
+   quizás podrían no funcionarle.
+   La instalación de PECL/rrd ha sido testeada con PHP 5.3.2 o superior.
+  </p>
+  <div class="warning"><strong class="warning">Advertencia</strong>
+   <p class="para">
+    Librrd y por lo tanto la extensión en sí no son en general seguro para subprocesos. Hay muchos estados
+    globales y compartidos en librrd. Puede ser peligroso utilizar esta extensión
+    en múltiples entornos multihilo como Apache2 mpm worker.
+    Si hay muchas solicitudes paralelas, una solicitud puede modificar algún estado global
+    librrd de otras solicitudes que se estén ejecutando.
+   </p>
+  </div>
+ </div></div></div></body></html>

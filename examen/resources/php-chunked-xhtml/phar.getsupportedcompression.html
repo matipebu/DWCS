@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Devolver un array de los algoritmos de compresi&oacute;n soportados</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="phar.getstub.html">« Phar::getStub</a></li>
+      <li style="float: right;"><a href="phar.getsupportedsignatures.html">Phar::getSupportedSignatures »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.phar.html">Phar</a></li>
+    <li>Devolver un array de los algoritmos de compresi&oacute;n soportados</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="phar.getsupportedcompression" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Phar::getSupportedCompression</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8, PECL phar &gt;= 1.2.0)</p><p class="refpurpose"><span class="refname">Phar::getSupportedCompression</span> &mdash; <span class="dc-title">Devolver un array de los algoritmos de compresión soportados</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-phar.getsupportedcompression-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="modifier">static</span> <span class="methodname"><strong>Phar::getSupportedCompression</strong></span>(): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+
+  <p class="para rdfs-comment">
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-phar.getsupportedcompression-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   No tiene parámetros.
+  </p>
+
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-phar.getsupportedcompression-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve un array que contiene <strong><code><a href="phar.constants.html#phar.constants.gz">Phar::GZ</a></code></strong> o
+   <strong><code><a href="phar.constants.html#phar.constants.bz2">Phar::BZ2</a></code></strong>, dependiendo de la disponibilidad de
+   la extensión <a href="book.zlib.html" class="link">zlib</a> o de la
+   extensión <a href="book.bzip2.html" class="link">bz2</a>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-phar.getsupportedcompression-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="pharfileinfo.getcompressedsize.html" class="function" rel="rdfs-seeAlso">PharFileInfo::getCompressedSize()</a> - Devolver el tama&ntilde;o real de un fichero (con compresi&oacute;n) dentro de un archivo Phar</span></li>
+    <li><span class="function"><a href="pharfileinfo.iscompressed.html" class="function" rel="rdfs-seeAlso">PharFileInfo::isCompressed()</a> - Devolver si la entrada est&aacute; comprimida</span></li>
+    <li><span class="function"><a href="pharfileinfo.compress.html" class="function" rel="rdfs-seeAlso">PharFileInfo::compress()</a> - Comprimir la entrada del Phar actual con la compresi&oacute;n zlib o bzip2</span></li>
+    <li><span class="function"><a href="pharfileinfo.decompress.html" class="function" rel="rdfs-seeAlso">PharFileInfo::decompress()</a> - Descomprimir la entrada Phar actual dentro del phar</span></li>
+    <li><span class="function"><a href="phar.compress.html" class="function" rel="rdfs-seeAlso">Phar::compress()</a> - Comprimir el archivo Phar entero usando la compresi&oacute;n Gzip o Bzip2</span></li>
+    <li><span class="function"><a href="phar.decompress.html" class="function" rel="rdfs-seeAlso">Phar::decompress()</a> - Descomprimir un archivo Phar entero</span></li>
+    <li><span class="function"><a href="phar.cancompress.html" class="function" rel="rdfs-seeAlso">Phar::canCompress()</a> - Devuelve si la extensi&oacute;n phar soporta la compresi&oacute;n usando zlib o bzip2</span></li>
+    <li><span class="function"><a href="phar.iscompressed.html" class="function" rel="rdfs-seeAlso">Phar::isCompressed()</a> - Devuelve Phar::GZ oPHAR::BZ2 si el archivo phar entero est&aacute; comprimido (.tar.gz/tar.bz, etc.)</span></li>
+    <li><span class="function"><a href="phar.compressfiles.html" class="function" rel="rdfs-seeAlso">Phar::compressFiles()</a> - Comprime todos los ficheros del archivo Phar actual</span></li>
+    <li><span class="function"><a href="phar.decompressfiles.html" class="function" rel="rdfs-seeAlso">Phar::decompressFiles()</a> - Descomprimir todos los ficheros del archivo Phar actual</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

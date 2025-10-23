@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Leer un fichero</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="splfileobject.fputcsv.html">« SplFileObject::fputcsv</a></li>
+      <li style="float: right;"><a href="splfileobject.fscanf.html">SplFileObject::fscanf »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.splfileobject.html">SplFileObject</a></li>
+    <li>Leer un fichero</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="splfileobject.fread" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SplFileObject::fread</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.5.11, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">SplFileObject::fread</span> &mdash; <span class="dc-title">Leer un fichero</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-splfileobject.fread-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>SplFileObject::fread</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$length</code></span>): <span class="type"><span class="type"><a href="language.types.string.html" class="type string">string</a></span>|<span class="type"><a href="language.types.value.html" class="type false">false</a></span></span></div>
+
+  <p class="para rdfs-comment">
+   Lee de un fichero el número de bytes dado.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-splfileobject.fread-parameters">
+  <h3 class="title">Parámetros</h3>
+  <dl>
+   
+    <dt><code class="parameter">length</code></dt>
+    <dd>
+     <p class="para">
+      El número de bytes a leer.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-splfileobject.fread-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el string léido desde el fichero  o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-splfileobject.fread-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="splfileobject.fread.examples.basic">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="methodname"><strong>SplFileObject::fread()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Pasar el contenido de un fichero a un string<br /></span><span style="color: #0000BB">$nombre_fichero </span><span style="color: #007700">= </span><span style="color: #DD0000">"/usr/local/something.txt"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$fichero </span><span style="color: #007700">= new </span><span style="color: #0000BB">SplFileObject</span><span style="color: #007700">(</span><span style="color: #0000BB">$nombre_fichero</span><span style="color: #007700">, </span><span style="color: #DD0000">"r"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$contenido </span><span style="color: #007700">= </span><span style="color: #0000BB">$fichero</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fread</span><span style="color: #007700">(</span><span style="color: #0000BB">$fichero</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getSize</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-splfileobject.fread-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Observe que <span class="methodname"><strong>SplFileObject::fread()</strong></span> lee desde la posición
+    actual del puntero del fichero. Use <span class="methodname"><a href="splfileobject.ftell.html" class="methodname">SplFileObject::ftell()</a></span>
+    para conocer la posición actual del puntero, y <span class="methodname"><a href="splfileobject.rewind.html" class="methodname">SplFileObject::rewind()</a></span>
+    (o <span class="methodname"><a href="splfileobject.fseek.html" class="methodname">SplFileObject::fseek()</a></span>) para posicionar el puntero al inicio.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-splfileobject.fread-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.fread.html" class="function" rel="rdfs-seeAlso">fread()</a> - Lectura de un fichero en modo binario seguro</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

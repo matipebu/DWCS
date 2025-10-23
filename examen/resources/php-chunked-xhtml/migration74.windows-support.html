@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Soporte para Windows</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="migration74.other-changes.html">« Other Changes</a></li>
+      <li style="float: right;"><a href="migration73.html">Migraci&oacute;n de PHP 7.2.x a PHP 7.3.x »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="migration74.html">Migraci&oacute;n de PHP 7.3.x a PHP 7.4.x</a></li>
+    <li>Soporte para Windows</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="migration74.windows-support" class="sect1">
+ <h2 class="title">Soporte para Windows</h2>
+
+ <div class="sect2" id="migration74.windows-support.configure">
+  <h3 class="title"><strong class="command">configure</strong> flags</h3>
+  <p class="para">
+   <strong class="command">configure</strong> ahora considera a los conjuntos adicionales como <code class="literal">CFLAGS</code> y <code class="literal">LDFLAGS</code>
+   variables de entorno.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration74.windows-support.other">
+  <h3 class="title">Manejo de CTRL</h3>
+  <p class="para">
+   CTRL+C y CTRL+BREAK en la consola pueden ser capturados mediante la configuración de una función de manejo
+   con <span class="function"><a href="function.sapi-windows-set-ctrl-handler.html" class="function">sapi_windows_set_ctrl_handler()</a></span>.
+  </p>
+  <p class="para">
+   <span class="function"><a href="function.proc-open.html" class="function">proc_open()</a></span> en Windows se puede pasar una
+   opción &quot;create_process_group&quot;. Se requiere si el proceso del hijo
+   se supone que maneja eventos CTRL.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration74.windows-support.opcache">
+  <h3 class="title">OPcache</h3>
+  <p class="para">
+   OPcache ahora soporta un número arbitrario de cachés separados por usuario
+   a través de la directiva INI <code class="literal">opcache.cache_id</code>.
+   Todos los procesos con el mismo ID de caché y el usuario comparten una instancia OPcache.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration74.windows-support.stat">
+  <h3 class="title">stat</h3>
+  <p class="para">
+   La implementación de la estadística se ha refactorizado.
+  </p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     Un número inode 
+     An inode number se entregado y se basa en el índice de archivos NTFS.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     El número del dispositivo se basa ahora en el número de serie del volumen.
+    </span>
+   </li>
+  </ul>
+  <p class="para">
+   Obsérvese que ambos valores se derivan del sistema y se proporcionan tal cual en los sistemas de
+   64 bits. En sistemas de 32 bits, estos valores podrían desbordar el entero de 32 bits en
+   PHP, así que son falsos.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration74.windows-support.sqlite3">
+  <h3 class="title">libsqlite3</h3>
+  <p class="para">
+   libsqlite3 ya no está compilada estáticamente en <var class="filename">php_sqlite3.dll</var>
+   y <var class="filename">php_pdo_sqlite.dll</var>, pero más bien disponible como <var class="filename">libsqlite3.dll</var>.
+   Consulte las instrucciones de instalación para <a href="sqlite3.installation.html" class="link">SQLite3</a> y
+   <a href="ref.pdo-sqlite.html#ref.pdo-sqlite.installation" class="link">PDO_SQLITE</a>, respectivamente.
+  </p>
+ </div>
+
+</div></div></div></body></html>

@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Recupera columnas especiales</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.odbc-setoption.html">« odbc_setoption</a></li>
+      <li style="float: right;"><a href="function.odbc-statistics.html">odbc_statistics »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.uodbc.html">Funciones ODBC</a></li>
+    <li>Recupera columnas especiales</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.odbc-specialcolumns" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">odbc_specialcolumns</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">odbc_specialcolumns</span> &mdash; <span class="dc-title">Recupera columnas especiales</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.odbc-specialcolumns-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>odbc_specialcolumns</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$connection_id</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$type</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$qualifier</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$owner</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$table</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$scope</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$nullable</code></span><br>): <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span></div>
+
+  <p class="para rdfs-comment">
+   Recupera o bien el conjunto óptimo de columnas que identifican de manera única una
+   fila de la tabla, o las columnas que son actualizadas automáticamente cuando cualquier
+   valor de la fila es actualizado por una transacción.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.odbc-specialcolumns-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">connection_id</code></dt>
+     <dd>
+      <p class="para">El conector identificador ODBC,
+ver <span class="function"><a href="function.odbc-connect.html" class="function">odbc_connect()</a></span> para más información.</p>
+     </dd>
+    
+    
+     <dt><code class="parameter">type</code></dt>
+     <dd>
+      <span class="simpara">
+       Cuando el tipo de argumento es <strong><code><a href="uodbc.constants.html#constant.sql-best-rowid">SQL_BEST_ROWID</a></code></strong>,
+       <span class="function"><strong>odbc_specialcolumns()</strong></span> devuelve la
+       columna o columnas que identifican de forma única cada fila de la tabla.
+      </span>
+      <span class="simpara">
+       Cuando el tipo de argumento es <strong><code><a href="uodbc.constants.html#constant.sql-rowver">SQL_ROWVER</a></code></strong>,
+       <span class="function"><strong>odbc_specialcolumns()</strong></span> devuelve la columnas o columnas de la
+       tabla especificada, si hibiera alguna, que son actualizadas automáticamente por la fuente de datos
+       cuando cualquier valor de la fila es actualizado por cualquier transacción.
+      </span>
+     </dd>
+    
+    
+     <dt><code class="parameter">qualifier</code></dt>
+     <dd>
+      <p class="para">
+       El cualificador.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">owner</code></dt>
+     <dd>
+      <p class="para">
+       El propietario.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">table</code></dt>
+     <dd>
+      <p class="para">
+       La tabla.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">scope</code></dt>
+     <dd>
+      <p class="para">
+       El alcance, el cual ordena el conjunto de resultados.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">nullable</code></dt>
+     <dd>
+      <p class="para">
+       La opción nullable.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.odbc-specialcolumns-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve un identificador de resultado ODBC o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> si
+   se produjo un fallo.
+  </p>
+  <p class="para">
+   El conjunto de resultados tiene las siguientes columnas:
+   <ul class="itemizedlist">
+    <li class="listitem"><span class="simpara">SCOPE</span></li>
+    <li class="listitem"><span class="simpara">COLUMN_NAME</span></li>
+    <li class="listitem"><span class="simpara">DATA_TYPE</span></li>
+    <li class="listitem"><span class="simpara">TYPE_NAME</span></li>
+    <li class="listitem"><span class="simpara">PRECISION</span></li>
+    <li class="listitem"><span class="simpara">LENGTH</span></li>
+    <li class="listitem"><span class="simpara">SCALE</span></li>
+    <li class="listitem"><span class="simpara">PSEUDO_COLUMN</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

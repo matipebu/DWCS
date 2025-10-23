@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Abrir una base de datos de forma persistente</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.dba-optimize.html">« dba_optimize</a></li>
+      <li style="float: right;"><a href="function.dba-replace.html">dba_replace »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.dba.html">Funciones de DBA</a></li>
+    <li>Abrir una base de datos de forma persistente</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.dba-popen" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">dba_popen</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">dba_popen</span> &mdash; <span class="dc-title">Abrir una base de datos de forma persistente</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.dba-popen-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>dba_popen</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$path</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$mode</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$handler</code><span class="initializer"> = ?</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$...</code><span class="initializer"> = ?</span></span><br>): <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>dba_popen()</strong></span> establece una instancia de base de
+   datos persistente para el archivo en <code class="parameter">path</code> con el <code class="parameter">mode</code> indicado,
+   usando <code class="parameter">handler</code>.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.dba-popen-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">path</code></dt>
+     <dd>
+      <p class="para">
+       Usualmente una ruta normal en su sistema de archivos.
+     </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">mode</code></dt>
+     <dd>
+      <p class="para">
+       Es <code class="literal">r</code> para acceso de lectura, <code class="literal">w</code>
+       para acceso de lectura/escritura a una base de datos existente, <code class="literal">c</code> para acceso de
+       lectura/escritura y creación de base de datos si no existe actualmente,
+       y <code class="literal">n</code> para crear, truncar y tener acceso de lectura/escritura.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">handler</code></dt>
+     <dd>
+      <p class="para">
+       El nombre del <a href="dba.requirements.html" class="link">gestor</a>
+       que será usado para acceder a <code class="parameter">path</code>. A él se le pasan todos los
+       parámetros opcionales dados a <span class="function"><strong>dba_popen()</strong></span>
+       y puede actuar sobre ellos.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.dba-popen-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve un gestor positivo en caso de éxito, o  o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.dba-popen-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.dba-open.html" class="function" rel="rdfs-seeAlso">dba_open()</a> - Abrir una base de datos</span></li>
+    <li><span class="function"><a href="function.dba-close.html" class="function" rel="rdfs-seeAlso">dba_close()</a> - Cerrar una base de datos DBA</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

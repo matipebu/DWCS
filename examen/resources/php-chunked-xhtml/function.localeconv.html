@@ -1,0 +1,273 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Obtener informaci&oacute;n sobre el formato num&eacute;rico</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.levenshtein.html">« levenshtein</a></li>
+      <li style="float: right;"><a href="function.ltrim.html">ltrim »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.strings.html">Funciones de strings</a></li>
+    <li>Obtener informaci&oacute;n sobre el formato num&eacute;rico</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.localeconv" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">localeconv</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.5, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">localeconv</span> &mdash; <span class="dc-title">Obtener información sobre el formato numérico</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.localeconv-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>localeconv</strong></span>(): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+
+  <p class="para rdfs-comment">
+   Devuelve una matriz asociativa que contiene información de los formatos
+   numérico y monetario, localizados.
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.localeconv-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   <span class="function"><strong>localeconv()</strong></span> devuelve información basada en la
+   localidad actual, tal y como haya sido definida mediante
+   <span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span>. La matriz asociativa que devuelve
+   contiene los siguientes campos:
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Elemento de la matriz</th>
+       <th>Descripción</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>decimal_point</td>
+       <td>Caracter de punto decimal</td>
+      </tr>
+
+      <tr>
+       <td>thousands_sep</td>
+       <td>Separador de miles</td>
+      </tr>
+
+      <tr>
+       <td>grouping</td>
+       <td>Matriz que contiene agrupaciones numéricas</td>
+      </tr>
+
+      <tr>
+       <td>int_curr_symbol</td>
+       <td>Símbolo internacional de moneda (i.e. USD)</td>
+      </tr>
+
+      <tr>
+       <td>currency_symbol</td>
+       <td>Símbolo local de moneda (i.e. $)</td>
+      </tr>
+
+      <tr>
+       <td>mon_decimal_point</td>
+       <td>Caracter de punto decimal monetario</td>
+      </tr>
+
+      <tr>
+       <td>mon_thousands_sep</td>
+       <td>Separador de miles monetario</td>
+      </tr>
+
+      <tr>
+       <td>mon_grouping</td>
+       <td>Matriz que contiene agrupaciones de moneda</td>
+      </tr>
+
+      <tr>
+       <td>positive_sign</td>
+       <td>Signo para valores positivos</td>
+      </tr>
+
+      <tr>
+       <td>negative_sign</td>
+       <td>Signo para valores negativos</td>
+      </tr>
+
+      <tr>
+       <td>int_frac_digits</td>
+       <td>Dígitos fraccionarios internacionales</td>
+      </tr>
+
+      <tr>
+       <td>frac_digits</td>
+       <td>Dígitos fraccionarios locales</td>
+      </tr>
+
+      <tr>
+       <td>p_cs_precedes</td>
+       <td>
+        <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> si currency_symbol precede un valor positivo, <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>
+        si lo sucede
+       </td>
+      </tr>
+
+      <tr>
+       <td>p_sep_by_space</td>
+       <td>
+        <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> si un espacio separa currency_symbol de un valor positivo,
+        <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> de lo contrario
+       </td>
+      </tr>
+
+      <tr>
+       <td>n_cs_precedes</td>
+       <td>
+        <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> si currency_symbol precede un valor negativo, <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>
+        si lo sucede
+       </td>
+      </tr>
+
+      <tr>
+       <td>n_sep_by_space</td>
+       <td>
+        <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> si un espacio separa currency_symbol de un valor
+        negativo, <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> de lo contrario
+       </td>
+      </tr>
+
+      <tr style="vertical-align: top;">
+       <td>p_sign_posn</td>
+       <td>
+        <ul class="simplelist">
+         <li>0 - Paréntesis rodean la cantidad y
+         currency_symbol</li>
+         <li>1 - La cadena de signo precede la cantidad y
+         currency_symbol</li>
+         <li>2 - La cadena de signo sucede la cantidad y
+         currency_symbol</li>
+         <li>3 - La cadena de signo precede inmediatamente
+         currency_symbol</li>
+         <li>4 - La cadena de signo sucede inmediatamente
+         currency_symbol</li>
+        </ul>
+      </td>
+     </tr>
+
+     <tr style="vertical-align: top;">
+      <td>n_sign_posn</td>
+      <td>
+        <ul class="simplelist">
+         <li>0 - Paréntesis rodean la cantidad y
+         currency_symbol</li>
+         <li>1 - La cadena de signo precede la cantidad y
+         currency_symbol</li>
+         <li>2 - La cadena de signo sucede la cantidad y
+         currency_symbol</li>
+         <li>3 - La cadena de signo precede inmediatamente
+         currency_symbol</li>
+         <li>4 - La cadena de signo sucede inmediatamente
+         currency_symbol</li>
+        </ul>
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+  <p class="para">
+   Los valores de <code class="literal">p_sign_posn</code> y
+   <code class="literal">n_sign_posn</code> contienen una cadena de opciones de
+   formato. Cada número representa una de las condiciones listadas
+   anteriormente.
+  </p>
+  <p class="para">
+   Los campos de agrupamiento contienen matrices que definen el modo en que
+   los números deben ser agrupados. Por ejemplo, el campo de agrupamiento
+   monetario para la localidad nl_NL (en modo UTF-8 con el signo de euro),
+   tendría una matriz de 2 elementos con los valores 3 y 3. Entre más alto
+   sea el índice dentro de la matriz, lo más lejos hacia la izquierda se
+   encuentra el agrupamiento. Si un elemento de la matriz es igual a
+   <strong><code><a href="string.constants.html#constant.char-max">CHAR_MAX</a></code></strong>, no se realiza ningún agrupamiento
+   posterior. Si un elemento de la matriz es igual a 0, el elemento anterior
+   deberá ser usado.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.localeconv-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4793">
+    <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>localeconv()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if (</span><span style="color: #0000BB">false </span><span style="color: #007700">!== </span><span style="color: #0000BB">setlocale</span><span style="color: #007700">(</span><span style="color: #0000BB">LC_ALL</span><span style="color: #007700">, </span><span style="color: #DD0000">'nl_NL.UTF-8@euro'</span><span style="color: #007700">)) {<br />    </span><span style="color: #0000BB">$info_localidad </span><span style="color: #007700">= </span><span style="color: #0000BB">localeconv</span><span style="color: #007700">();<br />    </span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$info_localidad</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo sería:</p></div>
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Array
+(
+    [decimal_point] =&gt; .
+    [thousands_sep] =&gt;
+    [int_curr_symbol] =&gt; EUR
+    [currency_symbol] =&gt; €
+    [mon_decimal_point] =&gt; ,
+    [mon_thousands_sep] =&gt;
+    [positive_sign] =&gt;
+    [negative_sign] =&gt; -
+    [int_frac_digits] =&gt; 2
+    [frac_digits] =&gt; 2
+    [p_cs_precedes] =&gt; 1
+    [p_sep_by_space] =&gt; 1
+    [n_cs_precedes] =&gt; 1
+    [n_sep_by_space] =&gt; 1
+    [p_sign_posn] =&gt; 1
+    [n_sign_posn] =&gt; 2
+    [grouping] =&gt; Array
+        (
+        )
+
+    [mon_grouping] =&gt; Array
+        (
+            [0] =&gt; 3
+            [1] =&gt; 3
+        )
+
+)</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.localeconv-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.setlocale.html" class="function" rel="rdfs-seeAlso">setlocale()</a> - Establecer la informaci&oacute;n del localismo</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

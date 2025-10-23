@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Establecer el contenido de un fichero dentro de un tar/zip a aquel de un fichero o cadena externos</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="phardata.iswritable.html">« PharData::isWritable</a></li>
+      <li style="float: right;"><a href="phardata.offsetunset.html">PharData::offsetUnset »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.phardata.html">PharData</a></li>
+    <li>Establecer el contenido de un fichero dentro de un tar/zip a aquel de un fichero o cadena externos</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="phardata.offsetset" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PharData::offsetSet</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8, PECL phar &gt;= 2.0.0)</p><p class="refpurpose"><span class="refname">PharData::offsetSet</span> &mdash; <span class="dc-title">Establecer el contenido de un fichero dentro de un tar/zip a aquel de un fichero o cadena externos</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-phardata.offsetset-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>PharData::offsetSet</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$offset</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$value</code></span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+
+  
+  
+  <p class="para rdfs-comment">
+   Ésta es una implementación de la interfaz <span class="interfacename"><a href="class.arrayaccess.html" class="interfacename">ArrayAccess</a></span> que permite
+   la manipulación directa del contenido de un archivo tar/zip utilizando
+   los corchetes de acceso al array. offsetSet se utiliza para modificar un
+   fichero existente, o añadir un nuevo fichero al archivo tar/zip.
+  </p>
+  
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-phardata.offsetset-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">offset</code></dt>
+     <dd>
+      <p class="para">
+       El nombre del fichero (ruta relativa) a modificar en un archivo tar o zip.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">value</code></dt>
+     <dd>
+      <p class="para">
+       El contenido del fichero.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-phardata.offsetset-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   No devuelve ningún valor.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 errors" id="refsect1-phardata.offsetset-errors">
+  <h3 class="title">Errores/Excepciones</h3>
+  <p class="para">
+   Lanza un excepción de tipo
+   <span class="classname"><a href="class.pharexception.html" class="classname">PharException</a></span> si existe cualquier problema volcando
+   los cambios hechos al archivo tar/zip al disco.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-phardata.offsetset-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-776">
+    <p><strong>Ejemplo #1 Un ejemplo de <span class="function"><strong>PharData::offsetSet()</strong></span></strong></p>
+    <div class="example-contents"><p>
+     No se debería acceder directamente a offsetSet, en su lugar se utiliza
+     el operador <code class="literal">[]</code> para acceder al array.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$p </span><span style="color: #007700">= new </span><span style="color: #0000BB">PharData</span><span style="color: #007700">(</span><span style="color: #DD0000">'/ruta/a/mi.phar'</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #DD0000">'mi.phar'</span><span style="color: #007700">);<br />try {<br />    </span><span style="color: #FF8000">// llama a offsetSet<br />    </span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'fichero.txt'</span><span style="color: #007700">] = </span><span style="color: #DD0000">'Hola qué tal'</span><span style="color: #007700">;<br />} catch (</span><span style="color: #0000BB">Exception $e</span><span style="color: #007700">) {<br />    echo </span><span style="color: #DD0000">'No se pudo modificar fichero.txt:'</span><span style="color: #007700">, </span><span style="color: #0000BB">$e</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-phardata.offsetset-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="phar.offsetset.html" class="function" rel="rdfs-seeAlso">Phar::offsetSet()</a> - Establecer el contenido de un fichero interno a aquel de un fichero externo</span></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+ 
+</div></div></div></body></html>

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Pasar por Referencia</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.references.arent.html">« &iquest;Qu&eacute; NO son las Referencias?</a></li>
+      <li style="float: right;"><a href="language.references.return.html">Devolver Referencias »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.references.html">Explicaci&oacute;n de las Referencias</a></li>
+    <li>Pasar por Referencia</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.references.pass" class="sect1">
+  <h2 class="title">Pasar por Referencia</h2>
+  <p class="para">
+   Se puede pasar una variable por referencia a una función y así hacer que la función
+   pueda modificar la variable. La sintaxis es la siguiente:
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(&amp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">)<br />{<br />    </span><span style="color: #0000BB">$var</span><span style="color: #007700">++;<br />}<br /><br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">=</span><span style="color: #0000BB">5</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">// $a es 6 aquí<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <span class="simpara">
+     No existe ningún signo de referencia en una llamada a una función - sólo en
+     la definición de la función. Las definiciones de funciones por sí solas son suficientes para
+     pasar correctamente el argumento por referencia. A partir de PHP 5.3.0,
+     se obtendrá una advertencia diciendo que &quot;call-time pass-by-reference&quot; (pasar por referencia
+     en tiempo de llamada) está obsoleto cuando se use &amp; en <code class="literal">foo(&amp;$a);</code>.
+     A partir de PHP 5.4.0, el paso por referencia en tiempo de llamada ha sido eliminado,
+     por lo que su uso emitirá un error fatal.
+    </span>
+   </p></blockquote>
+  </p>
+  <p class="para">
+   Se puede pasar por referencia lo siguiente:
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      Variables, esto es, <code class="literal">foo($a)</code>
+     </span>
+    </li>
+    <li class="listitem">
+     <p class="para">
+      Referencias devueltas desde funciones, esto es:
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(&amp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">)<br />{<br />    </span><span style="color: #0000BB">$var</span><span style="color: #007700">++;<br />}<br />function &amp;</span><span style="color: #0000BB">bar</span><span style="color: #007700">()<br />{<br />    </span><span style="color: #0000BB">$a </span><span style="color: #007700">= </span><span style="color: #0000BB">5</span><span style="color: #007700">;<br />    return </span><span style="color: #0000BB">$a</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">bar</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+       </div>
+
+      </div>
+      Vea más sobre <a href="language.references.return.html" class="link">devolver por referencia</a>. 
+     </p>
+    </li>
+   </ul>
+  </p>
+  <p class="para">
+   Ninguna otra expresión debería pasarse por referencia, ya que el
+   resultado no está definido. Por ejemplo, los siguientes ejemplos de pasar
+   por referencia no son válidos:
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(&amp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">)<br />{<br />    </span><span style="color: #0000BB">$var</span><span style="color: #007700">++;<br />}<br />function </span><span style="color: #0000BB">bar</span><span style="color: #007700">() </span><span style="color: #FF8000">// Observe que falta el &amp;<br /></span><span style="color: #007700">{<br />    </span><span style="color: #0000BB">$a </span><span style="color: #007700">= </span><span style="color: #0000BB">5</span><span style="color: #007700">;<br />    return </span><span style="color: #0000BB">$a</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">bar</span><span style="color: #007700">()); </span><span style="color: #FF8000">// Produce un error fatal a partir de PHP 5.0.5,un aviso de estándar estricto<br />            // a partir de PHP 5.1.1, y un aviso a partir de PHP 7.0.0<br /><br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$a </span><span style="color: #007700">= </span><span style="color: #0000BB">5</span><span style="color: #007700">); </span><span style="color: #FF8000">// Expresión, no una variable<br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">5</span><span style="color: #007700">); </span><span style="color: #FF8000">// Produce un error fatal<br /><br /></span><span style="color: #007700">class </span><span style="color: #0000BB">Foobar<br /></span><span style="color: #007700">{<br />}<br /><br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">(new </span><span style="color: #0000BB">Foobar</span><span style="color: #007700">()) </span><span style="color: #FF8000">// Produce un aviso a partir de PHP 7.0.7<br />                  // Observación: Solo las variables deben pasarse por referencia<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+ </div></div></div></body></html>

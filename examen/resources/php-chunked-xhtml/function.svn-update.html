@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Actualiza la copia de trabajo</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.svn-status.html">« svn_status</a></li>
+      <li style="float: right;"><a href="book.tcpwrap.html">TCP »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.svn.html">Funciones SVN</a></li>
+    <li>Actualiza la copia de trabajo</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.svn-update" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">svn_update</h1>
+  <p class="verinfo">(PECL svn &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">svn_update</span> &mdash; <span class="dc-title">Actualiza la copia de trabajo</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.svn-update-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>svn_update</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$path</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$revno</code><span class="initializer"> = SVN_REVISION_HEAD</span></span>, <span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$recurse</code><span class="initializer"> = true</span></span>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="para rdfs-comment">
+   Actualiza la copia de trabajo en <code class="parameter">path</code> a la revisión 
+   <code class="parameter">revno</code>. Si <code class="parameter">recurse</code> es true,
+   los directorios serán actualizados recursivamente.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.svn-update-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">path</code></dt>
+     <dd>
+      <p class="para">
+       Ruta a la copia de trabajo local.
+      </p>
+      <blockquote class="note"><p><strong class="note">Nota</strong>: <span class="simpara">Las rutas relativas se resolverán como si el directorio de trabajo actual es el que contiene el binario de PHP. Para utilizar el directorio de trabajo que contiene el script a llamar, use <span class="function"><a href="function.realpath.html" class="function">realpath()</a></span> o dirname(__FILE__).</span></p></blockquote>
+     </dd>
+    
+    
+     <dt><code class="parameter">revno</code></dt>
+     <dd>
+      <p class="para">
+       Número de revisión a actualziar, por omisión es <strong><code><a href="svn.constants.html#constant.svn-revision-head">SVN_REVISION_HEAD</a></code></strong>.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">recurse</code></dt>
+     <dd>
+      <p class="para">
+       Si se actualizan o no recursivamente directorios.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+  
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.svn-update-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve un nuevo número de revisión en caso de tener éxito, devuelve <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> al fallar.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.svn-update-notes">
+  <h3 class="title">Notas</h3>
+  <div class="warning"><strong class="warning">Advertencia</strong><p class="simpara">Esta función ha sido declarada
+<em>EXPERIMENTAL</em>. Su funcionamiento, nombre y
+la documentación que le acompaña puede cambiar sin previo aviso en futuras versiones de PHP.
+Utilícela bajo su propia responsabilidad.
+</p></div>
+ </div>
+
+ 
+ 
+ 
+ 
+ 
+ <div class="refsect1 examples" id="refsect1-function.svn-update-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-4597">
+    <p><strong>Ejemplo #1 Ejemplo básico</strong></p>
+    <div class="example-contents"><p>
+     Este ejemplo demuestra el uso básico de esta función:
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo </span><span style="color: #0000BB">svn_update</span><span style="color: #007700">(</span><span style="color: #0000BB">realpath</span><span style="color: #007700">(</span><span style="color: #DD0000">'working-copy'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">234</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.svn-update-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.svn-checkout.html" class="function" rel="rdfs-seeAlso">svn_checkout()</a> - Descarga una copia de trabajo desde el repositorio</span></li>
+    <li><span class="function"><a href="function.svn-commit.html" class="function" rel="rdfs-seeAlso">svn_commit()</a> - Env&iacute;a los cambios desde el directorio local de trabajo al repositorio</span></li>
+    <li><a href="http://svnbook.red-bean.com/en/1.2/svn.ref.svn.c.update.html" class="link external">&raquo;&nbsp;SVN documentation for svn update</a></li>
+   </ul>
+  </p>
+ </div>
+
+ 
+</div></div></div></body></html>

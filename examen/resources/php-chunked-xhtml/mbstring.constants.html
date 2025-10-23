@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Constantes predefinidas</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mbstring.resources.html">« Tipos de recursos</a></li>
+      <li style="float: right;"><a href="mbstring.encodings.html">Resumen de codificaciones soportadas »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.mbstring.html">Cadenas de caracteres multibyte</a></li>
+    <li>Constantes predefinidas</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mbstring.constants" class="appendix">
+ <h1 class="title">Constantes predefinidas</h1>
+
+ <p class="simpara">
+Estas constantes están definidas por esta extensión y
+estarán disponibles sólo cuando la extensión haya sido
+compilada con PHP, o bien sea cargada dinámicamente en ejecución.
+</p>
+ <dl>
+  
+   <dt id="constant.mb-overload-mail">
+    <strong><code><a href="mbstring.constants.html#constant.mb-overload-mail">MB_OVERLOAD_MAIL</a></code></strong> 
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.mb-overload-string">
+    <strong><code><a href="mbstring.constants.html#constant.mb-overload-string">MB_OVERLOAD_STRING</a></code></strong> 
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.mb-overload-regex">
+    <strong><code><a href="mbstring.constants.html#constant.mb-overload-regex">MB_OVERLOAD_REGEX</a></code></strong> 
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.mb-case-upper">
+    <strong><code><a href="mbstring.constants.html#constant.mb-case-upper">MB_CASE_UPPER</a></code></strong> 
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Realiza un doblaje completo de las mayúsculas.
+     Esto puede cambiar la longitud del string.
+     Este es el modo utilizado por mb_strtoupper().
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.mb-case-lower">
+    <strong><code><a href="mbstring.constants.html#constant.mb-case-lower">MB_CASE_LOWER</a></code></strong> 
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Realiza un doblaje completo de las minúsculas.
+     Esto puede cambiar la longitud del string.
+     Este es el modo utilizado por mb_strtolower().
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.mb-case-title">
+    <strong><code><a href="mbstring.constants.html#constant.mb-case-title">MB_CASE_TITLE</a></code></strong> 
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Realiza una conversión completa título-caso basada en las propiedades derivadas de
+     Unicode Cased y CaseIgnorable.
+     En particular, esto mejora el manejo de las comillas y los apóstrofes.
+     Esto puede cambiar la longitud del string.
+    </span>
+    </dd>
+  
+  
+   <dt id="constant.mb-case-fold">
+    <strong><code><a href="mbstring.constants.html#constant.mb-case-fold">MB_CASE_FOLD</a></code></strong> 
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Realiza una conversión de doblaje de mayúsculas y minúsculas que elimina las distinciones de
+     mayúsculas y minúsculas presentes en el string.
+     Esto se utiliza para la comparación de los casos.
+     Esto puede cambiar la longitud del string.
+     Disponible desde PHP 7.3.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.mb-case-lower-simple">
+    <strong><code><a href="mbstring.constants.html#constant.mb-case-lower-simple">MB_CASE_LOWER_SIMPLE</a></code></strong> 
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Realiza una simple conversión de doblaje en minúsculas.
+     Esto no cambia la longitud del string.
+     Disponible a partir de PHP 7.3.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.mb-case-upper-simple">
+    <strong><code><a href="mbstring.constants.html#constant.mb-case-upper-simple">MB_CASE_UPPER_SIMPLE</a></code></strong> 
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Realiza una simple conversión de doblado de mayúsculas.
+     Esto no cambia la longitud del string.
+     Disponible a partir de PHP 7.3.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.mb-case-title-simple">
+    <strong><code><a href="mbstring.constants.html#constant.mb-case-title-simple">MB_CASE_TITLE_SIMPLE</a></code></strong> 
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Realiza una simple conversión de doblado de título-caso.
+     Esto no cambia la longitud del string.
+     Disponible a partir de PHP 7.3.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.mb-case-fold-simple">
+    <strong><code><a href="mbstring.constants.html#constant.mb-case-fold-simple">MB_CASE_FOLD_SIMPLE</a></code></strong> 
+    (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     Realiza una simple conversión de doblaje de mayúsculas y minúsculas que elimina las distinciones
+     de mayúsculas y minúsculas presentes en el string.
+     Esto se utiliza para la comparación de los casos.
+     Esto no cambia la longitud del string.
+     Utilizado por las operaciones insensibles a los casos internamente por la extensión MBString.
+     Disponible a partir de PHP 7.3.
+    </span>
+   </dd>
+  
+  
+   <dt id="constant.mb-oniguruma-version">
+    <strong><code><a href="mbstring.constants.html#constant.mb-oniguruma-version">MB_ONIGURUMA_VERSION</a></code></strong> 
+    (<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)
+   </dt>
+   <dd>
+    <span class="simpara">
+     La versión de Oniguruma, p.e. <code class="literal">6.9.4</code>.
+     Disponible a partir de PHP 7.4.
+    </span>
+   </dd>
+  
+ </dl>
+</div>
+</div></div></body></html>

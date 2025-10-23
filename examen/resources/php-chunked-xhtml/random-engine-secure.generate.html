@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Generate cryptographically secure randomness</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="class.random-engine-secure.html">« Random\Engine\Secure</a></li>
+      <li style="float: right;"><a href="class.random-engine-mt19937.html">Random\Engine\Mt19937 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.random-engine-secure.html">Random\Engine\Secure</a></li>
+    <li>Generate cryptographically secure randomness</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="random-engine-secure.generate" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Random\Engine\Secure::generate</h1>
+  <p class="verinfo">(PHP 8 &gt;= 8.2.0)</p><p class="refpurpose"><span class="refname">Random\Engine\Secure::generate</span> &mdash; <span class="dc-title">Generate cryptographically secure randomness</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-random-engine-secure.generate-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>Random\Engine\Secure::generate</strong></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Returns cryptographically secure randomness.
+  </p>
+
+  
+<p class="para">
+ Las fuentes de aleatoriedad empleadas por esta función son las siguientes:
+</p>
+<ul class="itemizedlist">
+ <li class="listitem">
+  <span class="simpara">
+   En Windows,
+   se utilizará siempre
+   <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa379942(v=vs.85).aspx" class="link external">&raquo;&nbsp;<span class="function"><strong>CryptGenRandom()</strong></span></a>.
+   A partir de PHP 7.2.0,
+   se usará siempre
+   <a href="https://docs.microsoft.com/en-us/windows/desktop/SecCNG/cng-portal" class="link external">&raquo;&nbsp;CNG-API</a>.
+  </span>
+ </li>
+ <li class="listitem">
+  <span class="simpara">
+   En Linux, se utilizará la llamada al sistema
+   <a href="http://man7.org/linux/man-pages/man2/getrandom.2.html" class="link external">&raquo;&nbsp;getrandom(2)</a>
+   si está disponible.
+  </span>
+ </li>
+ <li class="listitem">
+  <span class="simpara">
+   En otras plataformas, se utilizará <var class="filename">/dev/urandom</var>.
+  </span>
+ </li>
+ <li class="listitem">
+  <span class="simpara">
+   Si no están disponibles ninguna de las fuentes citadas anteriormente, se
+   lanzará una <span class="classname"><a href="class.exception.html" class="classname">Exception</a></span>.
+  </span>
+ </li>
+</ul>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-random-engine-secure.generate-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">Esta función no tiene parámetros.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-random-engine-secure.generate-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   A string containing <strong><code><a href="reserved.constants.html#constant.php-int-size">PHP_INT_SIZE</a></code></strong> cryptographically secure random bytes.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-random-engine-secure.generate-errors">
+  <h3 class="title">Errores/Excepciones</h3>
+  <ul class="itemizedlist">
+   
+<li class="listitem">
+ <span class="simpara">
+  Si no se puede encontrar una fuente de aleatoriedad apropiada,
+  se lanzará una <span class="classname"><a href="class.exception.html" class="classname">Exception</a></span>.
+ </span>
+</li>
+<li class="listitem">
+ <span class="simpara">
+  Si se proporcionan parámetros inválidos, se lanzará
+  un <span class="classname"><a href="class.typeerror.html" class="classname">TypeError</a></span>.
+ </span>
+</li>
+
+  </ul>
+ </div>
+
+
+
+</div></div></div></body></html>

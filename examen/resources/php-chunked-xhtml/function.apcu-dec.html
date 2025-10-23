@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Disminuir un n&uacute;mero almacenado</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.apcu-clear-cache.html">« apcu_clear_cache</a></li>
+      <li style="float: right;"><a href="function.apcu-delete.html">apcu_delete »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.apcu.html">Funciones APCu</a></li>
+    <li>Disminuir un n&uacute;mero almacenado</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.apcu-dec" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">apcu_dec</h1>
+  <p class="verinfo">(PECL apcu &gt;= 4.0.0)</p><p class="refpurpose"><span class="refname">apcu_dec</span> &mdash; <span class="dc-title">Disminuir un número almacenado</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.apcu-dec-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>apcu_dec</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$key</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$step</code><span class="initializer"> = 1</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter reference">&$success</code><span class="initializer"> = ?</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$ttl</code><span class="initializer"> = 0</span></span><br>): <span class="type"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span>|<span class="type"><a href="language.types.value.html" class="type false">false</a></span></span></div>
+
+  <p class="para rdfs-comment">
+   Disminuye un valor entero almacenado.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.apcu-dec-parameters">
+  <h3 class="title">Parámetros</h3>
+  <dl>
+   
+    <dt><code class="parameter">key</code></dt>
+    <dd>
+     <p class="para">
+      La clave de el valor a ser disminuido.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">step</code></dt>
+    <dd>
+     <p class="para">
+      El paso, o valor a disminuir.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">success</code></dt>
+    <dd>
+     <p class="para">
+      Opcionalmente pasa el valor booleano en caso de éxito o
+      en caso de error a esta variable referenciada.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">ttl</code></dt>
+    <dd>
+     <p class="para">
+      TTL para usar si la operación inserta un nuevo valor (en lugar de disminuir uno existente).
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.apcu-dec-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve el valor actual del valor de las claves (<code class="parameter">key</code>) en caso de éxito,
+    o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.apcu-dec-examples">
+  <h3 class="title">Ejemplos</h3>
+  <div class="example" id="example-505">
+   <p><strong>Ejemplo #1 Ejemplo de <span class="function"><strong>apcu_dec()</strong></span></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo </span><span style="color: #DD0000">"Let's do something with success"</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">apcu_store</span><span style="color: #007700">(</span><span style="color: #DD0000">'anumber'</span><span style="color: #007700">, </span><span style="color: #0000BB">42</span><span style="color: #007700">);<br /><br />echo </span><span style="color: #0000BB">apcu_fetch</span><span style="color: #007700">(</span><span style="color: #DD0000">'anumber'</span><span style="color: #007700">), </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br />echo </span><span style="color: #0000BB">apcu_dec</span><span style="color: #007700">(</span><span style="color: #DD0000">'anumber'</span><span style="color: #007700">), </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo </span><span style="color: #0000BB">apcu_dec</span><span style="color: #007700">(</span><span style="color: #DD0000">'anumber'</span><span style="color: #007700">, </span><span style="color: #0000BB">10</span><span style="color: #007700">), </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo </span><span style="color: #0000BB">apcu_dec</span><span style="color: #007700">(</span><span style="color: #DD0000">'anumber'</span><span style="color: #007700">, </span><span style="color: #0000BB">10</span><span style="color: #007700">, </span><span style="color: #0000BB">$success</span><span style="color: #007700">), </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$success</span><span style="color: #007700">);<br /><br />echo </span><span style="color: #DD0000">"Now, let's fail"</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">apcu_store</span><span style="color: #007700">(</span><span style="color: #DD0000">'astring'</span><span style="color: #007700">, </span><span style="color: #DD0000">'foo'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$ret </span><span style="color: #007700">= </span><span style="color: #0000BB">apcu_dec</span><span style="color: #007700">(</span><span style="color: #DD0000">'astring'</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">$fail</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$ret</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$fail</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+   </div>
+
+   <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Let&#039;s do something with success
+42
+41
+31
+21
+bool(true)
+Now, let&#039;s fail
+
+bool(false)
+bool(false)</pre>
+</div>
+   </div>
+  </div>
+ </div>
+
+
+
+ <div class="refsect1 seealso" id="refsect1-function.apcu-dec-seealso">
+  <h3 class="title">Ver también</h3>
+  <ul class="simplelist">
+   <li><span class="function"><a href="function.apcu-inc.html" class="function" rel="rdfs-seeAlso">apcu_inc()</a> - Increase a stored number</span></li>
+  </ul>
+ </div>
+
+
+</div></div></div></body></html>

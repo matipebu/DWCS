@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Permitir al llamador manipular directamente el espacio de disco
+   asignado a un fichero</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.eio-event-loop.html">« eio_event_loop</a></li>
+      <li style="float: right;"><a href="function.eio-fchmod.html">eio_fchmod »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.eio.html">Funciones Eio</a></li>
+    <li>Permitir al llamador manipular directamente el espacio de disco
+   asignado a un fichero</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.eio-fallocate" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">eio_fallocate</h1>
+  <p class="verinfo">(PECL eio &gt;= 0.0.1dev)</p><p class="refpurpose"><span class="refname">eio_fallocate</span> &mdash; <span class="dc-title">Permitir al llamador manipular directamente el espacio de disco
+   asignado a un fichero</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.eio-fallocate-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>eio_fallocate</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$fd</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$mode</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$offset</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$length</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$pri</code><span class="initializer"> = EIO_PRI_DEFAULT</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$callback</code><span class="initializer"> = NULL</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$data</code><span class="initializer"> = NULL</span></span><br>): <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span></div>
+
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>eio_fallocate()</strong></span> permite al llamador manipular directamente el espacio de disco asignado al
+   fichero especificado por el descriptor de fichero <code class="parameter">fd</code> para el rango de bytes
+   empezando por <code class="parameter">offset</code> y continuando
+   <code class="parameter">length</code> bytes.
+  </p>
+
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <strong>El fichero debería abrirse para lectura</strong><br />
+   <p class="para">Se debería usar <em>OR</em> entre
+    <strong><code><a href="eio.constants.html#constant.eio-o-creat">EIO_O_CREAT</a></code></strong> y
+    <strong><code><a href="eio.constants.html#constant.eio-o-wronly">EIO_O_WRONLY</a></code></strong> o <strong><code><a href="eio.constants.html#constant.eio-o-rdwr">EIO_O_RDWR</a></code></strong>
+   </p>
+  </p></blockquote>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.eio-fallocate-parameters">
+  <h3 class="title">Parámetros</h3>
+  <dl>
+   
+    <dt><code class="parameter">fd</code></dt>
+    <dd>
+     <p class="para">
+      Un flujo, un recurso Socket, o un descriptor numérico de fichero, p.ej., devuelto por <span class="function"><a href="function.eio-open.html" class="function">eio_open()</a></span>.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">mode</code></dt>
+    <dd>
+     <p class="para">Actualmente sólo está soportada una bandera para el modo:
+      <strong><code><a href="eio.constants.html#constant.eio-falloc-fl-keep-size">EIO_FALLOC_FL_KEEP_SIZE</a></code></strong> (lo mismo que la constante POSIX
+      <strong><code>FALLOC_FL_KEEP_SIZE</code></strong>).
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">offset</code></dt>
+    <dd>
+     <p class="para">
+      Especifica el inicio del rango de bytes.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">length</code></dt>
+    <dd>
+     <p class="para">
+      Especifica la longitud del rango de bytes.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">pri</code></dt>
+    <dd>
+     <p class="para">La prioridad de petición: <strong><code><a href="eio.constants.html#constant.eio-pri-default">EIO_PRI_DEFAULT</a></code></strong>, <strong><code><a href="eio.constants.html#constant.eio-pri-min">EIO_PRI_MIN</a></code></strong>, <strong><code><a href="eio.constants.html#constant.eio-pri-max">EIO_PRI_MAX</a></code></strong>, o <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>.
+Si se pasa <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>, <code class="parameter">pri</code> es establecido internamente a
+<strong><code><a href="eio.constants.html#constant.eio-pri-default">EIO_PRI_DEFAULT</a></code></strong>.
+</p>
+
+    </dd>
+   
+   
+    <dt><code class="parameter">callback</code></dt>
+    <dd>
+     <p class="para">
+La función <code class="parameter">callback</code> es llamada cuando la petición está hecha.
+Debería seguir el siguiente prototipo: <div class="example-contents"><div class="phpcode"><code><span style="color: #000000">void callback(mixed $data, int $result[, resource $req]);</span></code></div></div>
+
+<dl>
+ 
+  <dt><code class="parameter">data</code></dt>
+  <dd><p class="para">son datos personalizados pasados a la petición.</p></dd>
+ 
+ 
+  <dt><code class="parameter">result</code></dt>
+  <dd><p class="para">es el valor del resultado específico de la petición; básicamente, el valor devuelto por la correspondiente
+   llamada al sistema.</p></dd>
+ 
+ 
+  <dt><code class="parameter">req</code></dt>
+  <dd><p class="para">es el recurso de petición opcional que puede usarse con funciones como <span class="function"><a href="function.eio-get-last-error.html" class="function">eio_get_last_error()</a></span></p></dd>
+ 
+</dl>
+</p>
+
+    </dd>
+   
+   
+    <dt><code class="parameter">data</code></dt>
+    <dd>
+     <p class="para">
+      Variable arbitraria pasada a <code class="parameter">callback</code>.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.eio-fallocate-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   <span class="function"><strong>eio_fallocate()</strong></span> devuelve un recurso de petición en caso de éxito, o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> en caso de error.
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

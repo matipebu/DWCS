@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Utilizar Archivos Phar: las clases Phar y PharData</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="phar.using.stream.html">« Utilizar Archivos Phar: la envoltura de flujos phar</a></li>
+      <li style="float: right;"><a href="phar.creating.html">Creaci&oacute;n de archivos Phar »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="phar.using.html">Utilizar Archivos Phar</a></li>
+    <li>Utilizar Archivos Phar: las clases Phar y PharData</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="phar.using.object" class="section">
+  <h2 class="title">Utilizar Archivos Phar: las clases Phar y PharData</h2>
+  <p class="para">
+   La clase <span class="classname"><a href="class.phar.html" class="classname">Phar</a></span> admite la lectura y la manipulación
+   de archivos Phar, así como la iteración a través de la funcionalidad de
+   la clase <span class="classname"><a href="class.recursivedirectoryiterator.html" class="classname">RecursiveDirectoryIterator</a></span>.
+   Con el soporte para la interfaz <span class="classname"><a href="class.arrayaccess.html" class="classname">ArrayAccess</a></span>,
+   se puede acceder a los ficheros que están dentro de un archivo Phar como si fueran
+   parte de un array asociativo.
+  </p>
+  <p class="para">
+   La clase <span class="classname"><a href="class.phardata.html" class="classname">PharData</a></span> extiende la clase <span class="classname"><a href="class.phar.html" class="classname">Phar</a></span>, y
+   permite crear y modificar archivos tar y zip no ejecutables (datos) incluso si
+   <code class="literal">phar.readonly</code>=1 en php.ini. Por lo tanto,
+   <span class="function"><a href="phardata.setalias.html" class="function">PharData::setAlias()</a></span> y <span class="function"><a href="phardata.setstub.html" class="function">PharData::setStub()</a></span>
+   están desactivados ya que los conceptos de alias y rutina de interoperabilidad (stub) son válidos únicamente para archivos
+   phar ejecutables.
+  </p>
+  <p class="para">
+   Observe que al crear un archivo Phar, se debería pasar la
+   ruta completa al contructor del objeto de la clase <span class="classname"><a href="class.phar.html" class="classname">Phar</a></span>.
+   Las rutas relativas causarán un error en la inicialización.
+  </p>
+  <p class="para">
+   Asumiendo que <code class="literal">$p</code> es un objeto de la clase Phar inicializado como sigue:
+  </p>
+  <p class="para">
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$p </span><span style="color: #007700">= new </span><span style="color: #0000BB">Phar</span><span style="color: #007700">(</span><span style="color: #DD0000">'/ruta/a/miphar.phar'</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #DD0000">'miphar.phar'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   se creará un archivo Phar vacío en <code class="literal">/ruta/a/miphar.phar</code>,
+   o si <code class="literal">/ruta/a/miphar.phar</code> ya existe, se abrirá
+   de nuevo. El literal <code class="literal">miphar.phar</code> demuestra el concepto de un alias
+   que puede ser usado para referenciar a <code class="literal">/ruta/a/miphar.phar</code> en URLs, como en:
+  </p>
+  <p class="para">
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// estas dos llamadas a file_get_contents() son equivalentes si<br />// /ruta/a/miphar.phar tiene un alias especificado como "miphar.phar"<br />// en su manifiesto, o si el phar fue inicializado con la<br />// configuración del objeto Phar del ejemplo anterior<br /></span><span style="color: #0000BB">$f </span><span style="color: #007700">= </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'phar:///ruta/a/miphar.phar/loquesea.txt'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$f </span><span style="color: #007700">= </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'phar://miphar.phar/loquesea.txt'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Con el recién creado objeto <code class="literal">$p</code> de la clase <span class="classname"><a href="class.phar.html" class="classname">Phar</a></span>,
+   lo siguiente es posible:
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      <code class="literal">$a = $p[&#039;fichero.php&#039;]</code> creates a <span class="classname"><a href="class.pharfileinfo.html" class="classname">PharFileInfo</a></span>
+      class that refers to the contents of <code class="literal">phar://miphar.phar/fichero.php</code>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <code class="literal">$p[&#039;fichero.php&#039;] = $v</code> crea un nuevo fichero
+      (<code class="literal">phar://miphar.phar/fichero.php</code>), o sobrescribe
+      un fichero existente dentro de <code class="literal">miphar.phar</code>. <code class="literal">$v</code>
+      puede ser una cadena o un puntero de fichero abierto, en cuyo caso todo el
+      contenido del fichero se usará para crear el nuevo fichero. Observe que
+      <code class="literal">$p-&gt;addFromString(&#039;fichero.php&#039;, $v)</code> es funcionalmente
+      equivalente a lo de más arriba. También es posible añadir el contenido de un fichero
+      con <code class="literal">$p-&gt;addFile(&#039;/path/to/fichero.php&#039;, &#039;fichero.php&#039;)</code>.
+      Por ultimo, se puede crear un directorio vacío con
+      <code class="literal">$p-&gt;addEmptyDir(&#039;vacio&#039;)</code>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <code class="literal">isset($p[&#039;fichero.php&#039;])</code> se puede usar para determinar
+      si <code class="literal">phar://miphar.phar/fichero.php</code> existe dentro de
+      <code class="literal">miphar.phar</code>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <code class="literal">unset($p[&#039;fichero.php&#039;])</code> borra
+      <code class="literal">phar://miphar.phar/fichero.php</code> de
+      <code class="literal">miphar.phar</code>.
+     </span>
+    </li>
+   </ul>
+  </p>
+  <p class="para">
+   Además, el objeto de la clase <span class="classname"><a href="class.phar.html" class="classname">Phar</a></span> es la única manera de acceder
+   a metainformación específica de Phar, a través de
+   <span class="function"><a href="phar.getmetadata.html" class="function">Phar::getMetadata()</a></span>,
+   y la única manera de establecer o recuperar una rutina de interoperabilidad (stub) del cargador de PHP de un archivo Phar a través de
+   <span class="function"><a href="phar.getstub.html" class="function">Phar::getStub()</a></span> y
+   <span class="function"><a href="phar.setstub.html" class="function">Phar::setStub()</a></span>.
+   Además, la compresión del archivo completo Phar de una vez, sólo puede ser manipulada
+   utilizando la clase <span class="classname"><a href="class.phar.html" class="classname">Phar</a></span>.
+  </p>
+  <p class="para">
+   La lista completa de la funcionalidad de objetos de la clase <span class="classname"><a href="class.phar.html" class="classname">Phar</a></span> está documentada
+   más adelante.
+  </p>
+  <p class="para">
+   La clase <span class="classname"><a href="class.pharfileinfo.html" class="classname">PharFileInfo</a></span> extiende a la
+   clase <span class="classname"><a href="class.splfileinfo.html" class="classname">SplFileInfo</a></span>,
+   y añade varios métodos para manipular detalles específicos de Phar de un fichero
+   contenido en un Phar, tales como la manipulación de la compresión y la metainformación.
+  </p>
+ </div></div></div></body></html>

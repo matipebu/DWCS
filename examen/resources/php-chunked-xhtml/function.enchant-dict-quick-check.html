@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Verifica si la palabra est&aacute; correctamente escrita y proporciona sugerencias</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.enchant-dict-is-in-session.html">« enchant_dict_is_in_session</a></li>
+      <li style="float: right;"><a href="function.enchant-dict-store-replacement.html">enchant_dict_store_replacement »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.enchant.html">Funciones de Enchant</a></li>
+    <li>Verifica si la palabra est&aacute; correctamente escrita y proporciona sugerencias</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.enchant-dict-quick-check" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">enchant_dict_quick_check</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8, PECL enchant:0.2.0-1.0.1)</p><p class="refpurpose"><span class="refname">enchant_dict_quick_check</span> &mdash; <span class="dc-title">Verifica si la palabra está correctamente escrita y proporciona sugerencias</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.enchant-dict-quick-check-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>enchant_dict_quick_check</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$dict</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$word</code></span>, <span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter reference">&$suggestions</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   Si la palabra está correctamente escrita devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>, de otro modo devuelve <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>, si la varialbe de sugerencias
+   se proporciona, la rellena con alternativas ortográficas.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.enchant-dict-quick-check-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">dict</code></dt>
+     <dd>
+      <p class="para">
+       Recurso de diccionario
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">word</code></dt>
+     <dd>
+      <p class="para">
+       La palabra a verificar
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">suggestions</code></dt>
+     <dd>
+      <p class="para">
+       Si la palabra no está correctamente escrita, está variable
+       contendrá una matriz de sugerencias.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.enchant-dict-quick-check-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Devuelve <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> si la palabra está correctamente escrita o <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.enchant-dict-quick-check-examples">
+  <h3 class="title">Ejemplos</h3>
+  <p class="para">
+   <div class="example" id="example-2266">
+    <p><strong>Ejemplo #1 Un ejemplo de <span class="function"><strong>enchant_dict_quick_check()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br />$etiqueta </span><span style="color: #007700">= </span><span style="color: #DD0000">'en_US'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$r </span><span style="color: #007700">= </span><span style="color: #0000BB">enchant_broker_init</span><span style="color: #007700">();<br /><br />if (</span><span style="color: #0000BB">enchant_broker_dict_exists</span><span style="color: #007700">(</span><span style="color: #0000BB">$r</span><span style="color: #007700">,</span><span style="color: #0000BB">$etiqueta</span><span style="color: #007700">)) {<br />    </span><span style="color: #0000BB">$d </span><span style="color: #007700">= </span><span style="color: #0000BB">enchant_broker_request_dict</span><span style="color: #007700">(</span><span style="color: #0000BB">$r</span><span style="color: #007700">, </span><span style="color: #0000BB">$etiqueta</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">enchant_dict_quick_check</span><span style="color: #007700">(</span><span style="color: #0000BB">$d</span><span style="color: #007700">, </span><span style="color: #DD0000">'soong'</span><span style="color: #007700">, </span><span style="color: #0000BB">$sugerencias</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$sugerencias</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+    </div>
+
+    <div class="example-contents"><p>El resultado del ejemplo
+sería algo similar a:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Array
+(
+    [0] =&gt; song
+    [1] =&gt; snog
+    [2] =&gt; soon
+    [3] =&gt; Sang
+    [4] =&gt; Sung
+    [5] =&gt; sang
+    [6] =&gt; sung
+    [7] =&gt; sponge
+    [8] =&gt; spongy
+    [9] =&gt; snag
+    [10] =&gt; snug
+    [11] =&gt; sonic
+    [12] =&gt; sing
+    [13] =&gt; songs
+    [14] =&gt; Son
+    [15] =&gt; Sonja
+    [16] =&gt; Synge
+    [17] =&gt; son
+    [18] =&gt; Sejong
+    [19] =&gt; sarong
+    [20] =&gt; sooner
+    [21] =&gt; Sony
+    [22] =&gt; sown
+    [23] =&gt; scone
+    [24] =&gt; song&#039;s
+)</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.enchant-dict-quick-check-seealso">
+  <h3 class="title">Ver también</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.enchant-dict-check.html" class="function" rel="rdfs-seeAlso">enchant_dict_check()</a> - Comprobar si una palabra est&aacute; correctamente escrita o no</span></li>
+    <li><span class="function"><a href="function.enchant-dict-suggest.html" class="function" rel="rdfs-seeAlso">enchant_dict_suggest()</a> - Devolver&aacute; una lista de valores si no se re&uacute;nen esas pre-condiciones</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

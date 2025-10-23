@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Devolver la firma MD5/SHA1/SHA256/SHA512/OpenSSL de un archivo Phar</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="phar.getpath.html">« Phar::getPath</a></li>
+      <li style="float: right;"><a href="phar.getstub.html">Phar::getStub »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="class.phar.html">Phar</a></li>
+    <li>Devolver la firma MD5/SHA1/SHA256/SHA512/OpenSSL de un archivo Phar</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="phar.getsignature" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Phar::getSignature</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8, PECL phar &gt;= 1.0.0)</p><p class="refpurpose"><span class="refname">Phar::getSignature</span> &mdash; <span class="dc-title">Devolver la firma MD5/SHA1/SHA256/SHA512/OpenSSL de un archivo Phar</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-phar.getsignature-description">
+  <h3 class="title">Descripción</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>Phar::getSignature</strong></span>(): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+
+  
+  <p class="para rdfs-comment">
+   Devuelve la firma de verificación de un archivo phar en una cadena hexadecimal.
+  </p>
+  
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-phar.getsignature-parameters">
+  <h3 class="title">Parámetros</h3>
+  <p class="para">
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-phar.getsignature-returnvalues">
+  <h3 class="title">Valores devueltos</h3>
+  <p class="para">
+   Un array con las firmas del archivo abierto en la clave <code class="literal">hash</code>, y <code class="literal">MD5</code>,
+   <code class="literal">SHA-1</code>,
+   <code class="literal">SHA-256</code>, <code class="literal">SHA-512</code>, o <code class="literal">OpenSSL</code>
+   en la clave <code class="literal">hash_type</code>. Esta firma es un hash calculado sobre el
+   contenido entero del phar, y puede ser usada para verificar la integridad del archivo.
+   Se requiere absolutamente una firma válida de todos los archivos phar ejecutables si la
+   variable INI <a href="phar.configuration.html#ini.phar.require-hash" class="link">phar.require_hash</a>
+   está establecida a true.
+  </p>
+ </div>
+
+ 
+ 
+</div></div></div></body></html>
