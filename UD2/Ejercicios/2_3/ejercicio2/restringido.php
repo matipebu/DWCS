@@ -1,6 +1,25 @@
 <?php
+session_set_cookie_params([
+    'lifetime' => 0,
+    'path' => '/',
+    'domain' => '',
+    'secure' => false, 
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
 session_start();
 
+//Reiniciar sesion cada 10 min
+if (!isset($_COOKIE['reiniciar'])) {
+    setcookie('reiniciar', time());
+    session_regenerate_id(true);
+
+} elseif (time() - $_COOKIE['reiniciar'] >= 600) {
+    setcookie('reiniciar', time());
+    session_regenerate_id(true);
+}
+
+//Si hay no hay sesión guardada, redireccion a login
 if (!isset($_SESSION['nic'])) {
     header("Location: login.php");
     exit();
