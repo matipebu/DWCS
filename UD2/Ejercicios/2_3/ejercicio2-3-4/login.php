@@ -22,8 +22,8 @@ if (!isset($_COOKIE['reiniciar'])) {
     session_regenerate_id(true);
 
 } elseif (time() - $_COOKIE['reiniciar'] >= 600) {
-    setcookie('reiniciar', time());
     session_regenerate_id(true);
+    setcookie('reiniciar', time());
 }
 
 
