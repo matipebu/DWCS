@@ -11,13 +11,6 @@ class Producto
     public $descripcion;
     public $precio;
 
-    public function __construct(int $id, string $nombre, string $descripcion, int $precio)
-    {
-        $this->id = $id;
-        $this->nombre = $nombre;
-        $this->descripcion = $descripcion;
-        $this->precio = $precio;
-    }
 }
 
 function conexion_bd()
@@ -39,6 +32,7 @@ function getProductos()
         $statement = $db->query($sql);
         foreach ($statement as $producto) {
             $prod = new Producto();
+            $prod->id = $producto['id_producto'];
             $prod->nombre = $producto['nombre'];
             $prod->descripcion = $producto['descripcion'];
             $prod->precio = $producto['precio'];
@@ -55,8 +49,42 @@ function getProductos()
 
 }
 
+function getProductoById($id){
+    $sql = "SELECT nombre,descripcion,precio FROM productos WHERE id_producto == $id";
+    $db = conexion_bd();
+    try {
+        $statement=$db->query($sql);
+        $statement->fetch();       
+        } catch (PDOException $th) {
+            error_log($th->getMessage());
+        }
+    return $statement;
 
+}
+function addProductoId(Producto $producto)
+{  
+    $id_producto = $producto->id;
+    $addProductos = [];
+    $sql = "SELECT id_producto,nombre,descripcion,precio FROM productos WHERE id_producto == $id_producto";
+    try {
+        $db = conexion_bd();
+        $statement = $db->query($sql);
+        foreach ($statement as $producto) {
+            $prod = new Producto();
+            $prod->id=$producto['id_producto'];
+            $prod->nombre = $producto['nombre'];
+            $prod->descripcion = $producto['descripcion'];
+            $prod->precio = $producto['precio'];
+            $productos[] = $prod;
+        }
+    } catch (PDOException $ex) {
+        error_log($ex->getMessage());
 
+    } finally {
+        $statement->closeCursor();
+        $db = null;
+    }
+    return $addProductos;
 
-
+}
 ?>

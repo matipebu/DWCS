@@ -1,3 +1,10 @@
+<?php
+include_once "funciones.php";
+$productos = getProductos();
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,14 +15,25 @@
 <body>
     <table>
         <tr>
-            <td>Producto</td>
-            <td>Precio</td>
-            <td>Acciones</td>
-            
+            <th>Producto</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+            <th>Carrito</th>
+
         </tr>
-        <tr>
-            <td></td>
-        </tr>
+        
+        <?php
+          if (!empty($productos)) {
+            foreach ($productos as $producto) {
+                echo "<tr>";
+                    echo "<td>" . $producto->nombre . "</td>";
+                    echo "<td>" . $producto->descripcion . "</td>";
+                    echo "<td>" . $producto->precio . "</td>";
+                    echo "<td> <a href='?carrito=".$producto->id."'>Carrito</a></td>";
+                echo "</tr>";
+            }
+        } 
+        ?>
     </table>
     
 </body>
