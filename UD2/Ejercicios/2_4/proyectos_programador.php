@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyectos Jefe</title>
+    <title>Proyectos Programador</title>
 </head>
 <body>
     
