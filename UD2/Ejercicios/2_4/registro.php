@@ -3,11 +3,12 @@ include_once "funciones.php";
 session_start();
 $roles = obtenerRoles();
 
-$correo = $_POST['correo'] ?: null;
-$nombre = $_POST['nombre'] ?: null;
-$rol = $_POST['rol'] ?: null;
-$contrasena = $_POST['contrasena'] ?: null;
-$contrasena2 = $_POST['contrasena2'] ?: null;
+$correo = $_POST['correo'] ?? null;
+$nombre = $_POST['nombre'] ?? null;
+$rol = $_POST['rol'] ?? null;
+$contrasena = $_POST['contrasena'] ?? null;
+$contrasena2 = $_POST['contrasena2'] ?? null;
+
 
 
 if (isset($correo) && isset($nombre) && isset($rol) && isset($contrasena) && isset($contrasena2)) {
@@ -22,8 +23,8 @@ if (isset($correo) && isset($nombre) && isset($rol) && isset($contrasena) && iss
     }
 
     if (empty($errores)) {
-        $u = new Usuario($nombre, $correo, $rol, $contrasena);
-        if (altaUsuario($u)) {
+        $u = new Usuario(nombre:$nombre, correo:$correo, contrasena: $contrasena);
+        if (altaUsuario($u,$rol)) {
             $msg = 'Usuario creado';
         } else {
             $msg = 'No se ha podido crear el usuario';

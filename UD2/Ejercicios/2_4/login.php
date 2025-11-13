@@ -1,5 +1,6 @@
 <?php
 include_once "funciones.php";
+include_once "usuario.php";
 session_start();
 
 if (isset($_SESSION['logged']) && isset($_SESSION['rol'])) {
@@ -19,16 +20,19 @@ if (isset($_SESSION['logged']) && isset($_SESSION['rol'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['correo']) && isset($_POST['contrasena']) && !empty($_POST['correo']) && !empty($_POST['contrasena'])) {
 
-        $usuario = comprobar_usuario($_POST['correo'], $_POST['contrasena']);
+        $comprobarUsuario = comprobar_usuario($_POST['correo'], $_POST['contrasena']);
 
-        if ($usuario) {
-            $idUsuario = $usuario['id'];
+        if ($comprobarUsuario) {
+            $usuario = new Usuario($comprobarUsuario['nombre'],$comprobarUsuario['correo'],$comprobarUsuario['contrasena'],$comprobarUsuario['id']);
+            $idUsuario = $usuario->getId();
             $rolUsuario = getRolById($idUsuario);
+            
+            
             
 
             // Guardar datos de sesión
-            $_SESSION['logged'] = $idUsuario;
-            $_SESSION['rol'] = $rolUsuario;
+            $_SESSION['logged'] = $usuario;
+            $_SESSION['rol'] = strtolower($rolUsuario);
 
             // Cookie segura
             $sesParams = session_get_cookie_params();

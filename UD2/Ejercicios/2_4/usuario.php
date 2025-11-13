@@ -1,21 +1,27 @@
 <?php
 class Usuario {
-    private $nombre;
-    private $correo;
-    private $rol_id;
-    private $contrasena;
+    private ?int $id;
+    private string $nombre;
+    private string $correo;
+    private ?string $contrasena;
 
-    public function __construct($nombre, $correo, $rol_id, $contrasena) {
+
+    // Constructor flexible
+    public function __construct(string $nombre,string $correo,?string $contrasena = null,?int $id = null) {
         $this->nombre = $nombre;
         $this->correo = $correo;
-        $this->rol_id = $rol_id;
         $this->contrasena = $contrasena;
+        $this->id = $id;
     }
 
-    public function getNombre() { return $this->nombre; }
-    public function getCorreo() { return $this->correo; }
-    public function getRolId() { return $this->rol_id; }
-    public function getContrasena() { return $this->contrasena; }
+    // === GETTERS ===
+    public function getId(): ?int { return $this->id; }
+    public function getNombre(): string { return $this->nombre; }
+    public function getCorreo(): string { return $this->correo; }
+    public function getContrasena(): ?string { return $this->contrasena; }
+
+    // === SETTERS (opcional) ===
+    public function setId(int $id): void { $this->id = $id; }
 }
 
 ?>

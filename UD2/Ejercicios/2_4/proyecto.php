@@ -1,10 +1,8 @@
 <?php
 // clases/Proyecto.php
-declare(strict_types=1);
-
 class Proyecto
 {
-    private ?int $id = null;
+    private int $id;
     private string $nombre;
     private ?string $descripcion;
     private int $id_responsable;
@@ -12,8 +10,7 @@ class Proyecto
     /**
      * Constructor
      */
-    public function __construct(string $nombre,?string $descripcion = null,int $id_responsable
-    ) {
+    public function __construct(string $nombre,?string $descripcion = null,int $id_responsable) {
         $this->nombre = $nombre;
         $this->descripcion = $descripcion;
         $this->id_responsable = $id_responsable;
@@ -39,13 +36,6 @@ class Proyecto
     {
         return $this->id_responsable;
     }
-
-    public function getResponsableNombre(): ?string
-    {
-        return $this->responsable_nombre;
-    }
-
-  
 
     public function setId(?int $id): void
     {
