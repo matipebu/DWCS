@@ -22,9 +22,11 @@ $proyectos = getProyectosByRol($usuario);
 </head>
 <body>
       <h2>Proyectos Programador</h2><br>
+      <h2><?=$usuario->getNombre()?></h2>
 
     <?php
     foreach ($proyectos as $proyecto) {
+     
         $responsable = getUsuarioById($proyecto->getIdResponsable());
         echo ' <article style="border: 1px solid;" "gap:2px;">';
         echo '<h3>' . $proyecto->getNombre() . '</h3>';

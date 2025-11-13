@@ -16,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 $proyecto = getProyectoById($idProyecto);
-$programadores = getProgramadoresProyecto($idProyecto);
 ?>
 
 <!DOCTYPE html>

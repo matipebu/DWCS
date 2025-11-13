@@ -138,8 +138,15 @@ function getProyectosByRol(Usuario $usuario)
             $stm->execute();
 
         } elseif ($rol === 'programador') {
-           $sql = "SELECT id, nombre, descripcion, id_responsable FROM proyectos";
-            $stm = $db->query($sql);
+           $sql = "SELECT id, nombre, descripcion, id_responsable 
+                    FROM proyectos p
+                    INNER JOIN programador_proyecto pp on pp.proyecto_id = p.id
+                    INNER JOIN usuario_rol ur on ur.usuario_id = pp.programador_id
+                    WHERE ur.rol_id = 2 AND ur.usuario_id = :id_usuario;";
+            
+            $stm = $db->prepare($sql);
+            $stm->bindValue(':id_usuario', $usuario->getId(), PDO::PARAM_INT);
+            $stm->execute();
 
         } else {
             return [];
@@ -297,43 +304,6 @@ function getProyectoById(int $id): Proyecto|null
     } finally {
         $db = null;
     }
-}
-function getProgramadoresProyecto(int $idProyecto): array
-{
-    $db = conexionDb();
-    $programadores = [];
-
-    $sql = "SELECT u.id, u.nombre, u.correo,pp.proyecto_id
-            FROM usuarios u
-            INNER JOIN usuario_rol ur 
-                ON u.id = ur.usuario_id 
-                AND ur.rol_id = 2
-            LEFT JOIN programador_proyecto pp 
-                ON u.id = pp.programador_id 
-                AND pp.proyecto_id = :idProyecto";
-
-    try {
-        $stmt = $db->prepare($sql);
-        $stmt->bindValue(':idProyecto', $idProyecto, PDO::PARAM_INT);
-        $stmt->execute();
-
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $programadores[] = [
-                'id' => (int)$row['id'],
-                'nombre' => $row['nombre'],
-                'correo' => $row['correo'],
-                'asignado' => !is_null($row['proyecto_id'])
-            ];
-        }
-
-        $stmt->closeCursor();
-    } catch (PDOException $e) {
-        error_log("Error en getProgramadoresAsignacion: " . $e->getMessage());
-    } finally {
-        $db = null;
-    }
-
-    return $programadores;
 }
 
 function actualizarProgramadoresProyecto(int $idProyecto, array $programadoresSeleccionados): bool
