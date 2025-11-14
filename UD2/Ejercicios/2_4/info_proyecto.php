@@ -10,7 +10,7 @@ $proyecto = getProyectoById($idProyecto);
 
 
 
-$proyecto = getProyectoById($idProyecto);
+
 ?>
 
 <!DOCTYPE html>
