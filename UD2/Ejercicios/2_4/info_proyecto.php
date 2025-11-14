@@ -8,11 +8,6 @@ if (!isset($_REQUEST["id"])) {
 $idProyecto = (int) $_REQUEST["id"];
 $proyecto = getProyectoById($idProyecto);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $programadoresSeleccionados = $_POST['programadores'] ?? [];
-    actualizarProgramadoresProyecto($idProyecto, $programadoresSeleccionados);
-    echo "<p style='color:green;'> Cambios guardados correctamente.</p>";
-}
 
 
 $proyecto = getProyectoById($idProyecto);
