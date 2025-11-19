@@ -2,6 +2,17 @@
 include_once "funciones.php";
 $productos = getProductos();
 
+if (isset($_GET['idProducto'])){
+    if (!isset($_COOKIE['carrito'])) {
+        $idCarrito = addCarrito();
+        setcookie('carrito',$idCarrito,time()+172800);
+    }else {
+        $idCarrito = $_COOKIE['carrito'];
+    }
+    $idProducto=$_GET['idProducto'];
+    addProductoCarrito($idProducto,$idCarrito);
+
+}
 
 ?>
 
@@ -29,12 +40,17 @@ $productos = getProductos();
                     echo "<td>" . $producto->nombre . "</td>";
                     echo "<td>" . $producto->descripcion . "</td>";
                     echo "<td>" . $producto->precio . "</td>";
-                    echo "<td> <a href='?carrito=".$producto->id."'>Carrito</a></td>";
+                    echo "<td> <a href='?idProducto=".$producto->id."'>Carrito</a></td>";
                 echo "</tr>";
             }
-        } 
+        }
         ?>
     </table>
+    <?php
+        if(isset($_COOKIE['carrito']) || isset($carritoId)){
+            echo "<br><a href='carrito.php'>Ver carrito</a>";
+        } 
+    ?>
     
 </body>
 </html>

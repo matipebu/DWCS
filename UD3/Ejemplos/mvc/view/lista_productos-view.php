@@ -22,7 +22,6 @@
             echo "<td> " . $row['titulo'] . " </td>";
             echo "</tr>";
         }
-        echo "</table>";
 
         ?>
     </table>

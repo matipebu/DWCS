@@ -87,4 +87,72 @@ function addProductoId(Producto $producto)
     return $addProductos;
 
 }
+function addCarrito(): int
+{   
+    $sql = "INSERT INTO CARRITO (id_carrito) VALUES (null)";
+    $db = conexion_bd();
+
+    try {
+        if ($db->exec($sql)) {
+            $sql = "SELECT MAX(id_carrito) as id FROM CARRITO";
+            $statement = $db->query(query: $sql);
+            $row = $statement->fetch();
+            $idCarrito = $row['id'];
+            $statement->closeCursor();
+        }
+    } catch (PDOException $ex) {
+        error_log($ex->getMessage());
+
+    } finally {
+        $statement->closeCursor();
+        $db = null;
+    }
+    return $idCarrito;
+
+}
+
+function addProductoCarrito($idProducto,$idCarrito){
+    $sql = "INSERT INTO CARRITO_PRODUCTO(id_carrito,id_producto) VALUES (:idCarrito, :idProducto)";
+    $db = conexion_bd();
+    try {
+        $query = $db->prepare($sql);
+        $query->bindValue('idCarrito',$idCarrito,PDO::PARAM_INT);
+        $query->bindValue('idProducto',$idProducto,PDO::PARAM_INT);
+        $toret = $query->execute();
+    } catch (PDOException $th) {
+        die($th->getMessage());
+    }finally{
+        $db = null;
+    }
+    return $toret;
+
+}
+
+function getProductosCarrito($idCarrito){
+    $sql ="SELECT nombre,descripcion,precio 
+            FROM productos c
+            INNER JOIN CARRITO_PRODUCTO cp ON cp.id_producto =c.id_producto
+            WHERE cp.id_carrito = :idCarrito; ";
+    $db = conexion_bd();
+    $productos=[];
+
+    try {
+        $statement = $db->prepare($sql);
+        $statement->bindValue('idCarrito',$idCarrito,PDO::PARAM_INT);
+        $statement-> execute();
+        foreach ($statement as $producto) {
+            $p = new Producto();
+            $p->nombre = $producto['nombre'];
+            $p->descripcion = $producto['descripcion'];
+            $p->precio = $producto['precio'];
+            $productos[]=$p;
+        }
+        
+        $statement->closeCursor();
+        return $productos;
+
+    } catch (PDOException $th) {
+        die($th->getMessage());
+    }
+}
 ?>

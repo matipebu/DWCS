@@ -34,4 +34,7 @@ class ArticuloModel
 
         return $arr;
     }
+
+
+    
 }
