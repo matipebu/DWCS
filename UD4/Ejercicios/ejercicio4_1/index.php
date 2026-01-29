@@ -1,7 +1,8 @@
-<?php 
-use Ejercicios\musica\core\Request;
-use Ejercicios\musica\core\Router;
-include_once "globals.php";
+<?php
+require_once "globals.php";
+use Ejercicios\ejercicio4_1\core\Request;
+use Ejercicios\ejercicio4_1\core\Router;
+
 spl_autoload_register(function ($clase) {
 
     $ruta = $_SERVER['DOCUMENT_ROOT'] . '/' . str_replace('\\', '/', $clase) . '.php';
@@ -12,11 +13,9 @@ spl_autoload_register(function ($clase) {
     }
 });
 
-
 $request = new Request();
 $router = new Router();
 
 require_once 'config/routes.php';
 
-$router->dispatch($request)
-?>
+$router->dispatch($request);

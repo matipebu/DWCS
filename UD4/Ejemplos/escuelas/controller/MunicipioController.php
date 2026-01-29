@@ -19,8 +19,8 @@ class MunicipioController{
         Response::json($json, 200);
     }
 
-    public function show(int $id){
-        //Obtener todos los municipios
+    public function show(int $id): void{
+        //Obtener municipios por id
         $municipio = MunicipioModel::getById($id);
         if(!isset($municipio)){
             Response::notFound();
